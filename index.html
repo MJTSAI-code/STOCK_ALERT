@@ -17,9 +17,9 @@
     --accent: #c8ff00; --accent2: #00d4ff; --text: #e8e8f0;
     --muted: #5a5a7a; --up: #39ff8a; --down: #ff4d6d; --discord: #5865F2;
   }
-  html, body { overflow-x: hidden; width: 100%; height: 100%; margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { overflow-x: hidden; width: 100%; min-height: 100%; margin: 0; padding: 0; box-sizing: border-box; }
   * { box-sizing: inherit; }
-  body { background: var(--bg); color: var(--text); font-family: 'Noto Sans TC', sans-serif; font-weight: 300; min-height: 100vh; padding-bottom: 20px; max-width: 1200px; margin: 0 auto; position: relative; }
+  body { background: var(--bg); color: var(--text); font-family: 'Noto Sans TC', sans-serif; font-weight: 300; padding-bottom: 20px; max-width: 1200px; margin: 0 auto; position: relative; }
   header, .hero, .control-strip { padding: 16px 20px 0; display: flex; align-items: center; justify-content: space-between; width: 100%; }
   header { padding-top: 18px; }
   .logo { font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 0.15em; color: var(--muted); text-transform: uppercase; }
@@ -38,7 +38,10 @@
   
   .grid { display: grid; grid-template-columns: 1fr; gap: 12px; padding: 0 16px 12px; width: 100%; }
   .card { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 16px; cursor: pointer; transition: border-color 0.2s, grid-column 0.2s; min-height: 105px; display: flex; flex-direction: column; justify-content: space-between; width: 100%; overflow: hidden; }
-  .card.expanded { border-color: var(--accent2); grid-column: 1 / -1; }
+  
+  /* ⚡ 點選時強行置頂於最左上角第一格，並展開滿版 */
+  .card.expanded { border-color: var(--accent2); grid-column: 1 / -1; order: -1; }
+  
   .card-top { display: flex; justify-content: space-between; align-items: flex-start; width: 100%; }
   .card-sym { font-family: 'DM Mono', monospace; font-size: 13px; font-weight: 500; color: var(--accent2); }
   .card-name { font-size: 9px; color: var(--muted); margin-top: 1px; }
@@ -55,7 +58,8 @@
   .card-news-item .news-time { font-size: 9px; color: var(--muted); margin-top: 1px; }
   .card-detail { display: none; margin-top: 12px; border-top: 1px solid var(--border); padding-top: 12px; width: 100%; }
   .card.expanded .card-detail { display: block; }
-  .chart-box { border-radius: 10px; overflow: hidden; border: 1px solid var(--border); height: 240px; margin-bottom: 10px; width: 100%; }
+  
+  .chart-box { border-radius: 10px; overflow: hidden; border: 1px solid var(--border); height: 420px; margin-bottom: 12px; width: 100%; }
   .chart-box iframe { width: 100%; height: 100%; border: none; }
   .detail-news-item { background: var(--bg); border: 1px solid var(--border); border-radius: 8px; padding: 10px 12px; margin-bottom: 6px; text-decoration: none; display: block; width: 100%; }
   .detail-news-title { font-size: 12px; color: var(--text); line-height: 1.5; }
@@ -64,7 +68,7 @@
   .discord-box { margin: 12px 16px; padding: 16px; background: rgba(88,101,242,0.03); border: 1px solid rgba(88,101,242,0.15); border-radius: 16px; display: flex; flex-direction: column; gap: 10px; }
   .discord-title { font-size: 12px; font-weight: 500; color: #5865F2; display: flex; align-items: center; gap: 6px; text-transform: uppercase; letter-spacing: 0.05em; }
   
-  /* ⚡ 手機長文案強行同排鋼絲防線 */
+  /* ⚡ 手機長文案強行同排鋼絲線 */
   .discord-text { font-size: 11px; color: var(--muted); line-height: 1.8; word-break: keep-all; white-space: normal; }
   @media (max-width: 380px) { .discord-text { font-size: 10px; } }
   .time-group { white-space: nowrap; display: inline-block; vertical-align: middle; }
@@ -90,10 +94,14 @@
     .grid { grid-template-columns: repeat(3, 1fr); }
   }
 
-  /* ⚡ 桌面 1920 滿版無滾輪環境安全鎖 */
+  /* ⚡ 智慧型桌面 1920 滿版與滾輪控制器 */
   @media (min-width: 1200px) {
-    html, body { height: 100vh; max-height: 100vh; overflow: hidden !important; }
+    html, body { height: 100vh; max-height: 100vh; overflow: hidden; }
+    /* 核心精髓：一旦網頁內有卡片被點開，主動放開高度限制並長出滾輪，供用戶下拉看詳細新聞 */
+    html:has(.card.expanded), body:has(.card.expanded) { height: auto !important; max-height: none !important; overflow-y: auto !important; }
+    
     body { max-width: 1400px; display: flex; flex-direction: column; justify-content: space-between; padding-bottom: 15px; }
+    body:has(.card.expanded) { justify-content: flex-start; gap: 10px; }
     .grid { gap: 16px; padding-bottom: 5px; }
     .discord-box { margin: 6px 16px; padding: 14px; }
     .notice { margin: 0 16px; }
@@ -127,7 +135,7 @@
 <div class="discord-box">
   <div class="discord-title"><span>🛡️</span> 24H 雲端自動推送已部署</div>
   <div class="discord-text">
-    無須開啟網頁，GITHUB雲端將於每日 <span class="time-group"><span class="discord-highlight">06:00</span> 與 <span class="discord-highlight">18:00</span></span> 自動抓取推送至ＤＩＳＣＯＲＤ
+    無須開啟網頁，GitHub雲端將於每日 <span class="time-group"><span class="discord-highlight">06:00</span> 與 <span class="discord-highlight">18:00</span></span> 自動抓取推送至 Discord
   </div>
   <div class="discord-btn-group">
     <a class="discord-btn" href="https://discord.gg/vzVbybVvys" target="_blank">
@@ -193,6 +201,9 @@ function toggleCard(sym, ex) {
   expandedSym = isExp ? sym : null;
   document.getElementById(`chart-${sym}`).src = isExp ? `https://www.tradingview.com/widgetembed/?symbol=${ex}:${sym}&interval=D&hidesidetoolbar=1&theme=dark&style=1&timezone=Asia/Taipei&locale=zh_TW` : '';
   if (isExp && newsCache[sym]) renderDetailNews(sym, newsCache[sym]);
+  
+  // ⚡ 點開的同時，畫面自動平滑對齊至卡片正上方
+  if (isExp) { window.scrollTo({ top: card.offsetTop - 20, behavior: 'smooth' }); }
 }
 
 function renderDetailNews(sym, items) {
