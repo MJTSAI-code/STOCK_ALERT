@@ -22,12 +22,12 @@ jobs:
             sleep 3600
           fi
           
-          # 🎯 隱藏網址大絕招：用 [文字](網址) 語法，並開啟網頁預覽
-          # 這樣畫面上完全看不到網址，但 Telegram 系統會直接逼出那個小 ICON！
-          TEXT="🛡️ 美股情報室數據已更新！%0A[🚀 開啟儀表板](https://mjtsai-code.github.io/STOCK_ALERT/)"
+          # 🎯 終極 HTML 語法：用 <a> 標籤把網址包在裡面
+          # 網頁預覽開成 true，逼 Telegram 吐出 ICON，但畫面上只會顯示中文字！
+          TEXT="🛡️ 美股情報室數據已更新！%0A<a href='https://mjtsai-code.github.io/STOCK_ALERT/'>🚀 開啟儀表板</a>"
           
           curl -s -X POST "https://api.telegram.org/bot${{ secrets.TELEGRAM_TOKEN }}/sendMessage" \
             -d "chat_id=${{ secrets.TELEGRAM_CHAT_ID }}" \
             -d "text=${TEXT}" \
-            -d "parse_mode=MarkdownV2" \
+            -d "parse_mode=HTML" \
             -d "disable_web_page_preview=false"
