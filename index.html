@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#0a0a0f">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="盤前情報">
+<link rel="manifest" href="manifest.json">
+<title>盤前情報</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Noto+Sans+TC:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0a0a0f;
+    --surface: #12121a;
+    --border: #1e1e2e;
+    --accent: #c8ff00;
+    --accent2: #00d4ff;
+    --text: #e8e8f0;
+    --muted: #5a5a7a;
+    --up: #39ff8a;
+    --down: #ff4d6d;
+    --warn: #ffb800;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Noto Sans TC', sans-serif;
+    font-weight: 300;
+    min-height: 100vh;
+    padding: 0 0 80px;
+  }
+
+  header {
+    padding: 20px 20px 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .logo {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    color: var(--muted);
+    text-transform: uppercase;
+  }
+
+  .clock {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--muted);
+    letter-spacing: 0.05em;
+  }
+
+  .hero {
+    padding: 32px 20px 20px;
+  }
+
+  .hero-time {
+    font-family: 'DM Mono', monospace;
+    font-size: 52px;
+    font-weight: 500;
+    line-height: 1;
+    letter-spacing: -0.02em;
+    color: var(--text);
+  }
+
+  .hero-time span { color: var(--accent); }
+
+  .hero-sub {
+    font-size: 12px;
+    color: var(--muted);
+    margin-top: 8px;
+    letter-spacing: 0.08em;
+  }
+
+  .alarm-strip {
+    display: flex;
+    gap: 10px;
+    padding: 16px 20px;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+
+  .alarm-chip {
+    flex-shrink: 0;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 100px;
+    padding: 8px 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .alarm-chip.active {
+    border-color: var(--accent);
+    background: rgba(200,255,0,0.05);
+  }
+
+  .alarm-chip-dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--muted);
+  }
+
+  .alarm-chip.active .alarm-chip-dot {
+    background: var(--accent);
+    box-shadow: 0 0 6px var(--accent);
+  }
+
+  .alarm-chip-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    color: var(--muted);
+  }
+
+  .alarm-chip.active .alarm-chip-label { color: var(--accent); }
+
+  .section-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    color: var(--muted);
+    text-transform: uppercase;
+    padding: 0 20px;
+    margin-bottom: 12px;
+  }
+
+  .tickers {
+    padding: 0 20px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin-bottom: 24px;
+  }
+
+  .ticker-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 14px;
+    transition: border-color 0.2s;
+  }
+
+  .ticker-card:active { border-color: var(--muted); }
+
+  .ticker-sym {
+    font-family: 'DM Mono', monospace;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--accent2);
+    margin-bottom: 4px;
+  }
+
+  .ticker-name {
+    font-size: 10px;
+    color: var(--muted);
+    margin-bottom: 10px;
+  }
+
+  .ticker-price {
+    font-family: 'DM Mono', monospace;
+    font-size: 18px;
+    font-weight: 500;
+  }
+
+  .ticker-change {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    margin-top: 2px;
+  }
+
+  .up { color: var(--up); }
+  .down { color: var(--down); }
+  .neutral { color: var(--muted); }
+
+  .report-box {
+    margin: 0 20px 24px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    overflow: hidden;
+  }
+
+  .report-header {
+    padding: 14px 16px;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .report-title {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    color: var(--muted);
+  }
+
+  .report-badge {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    padding: 3px 8px;
+    border-radius: 100px;
+    background: rgba(200,255,0,0.1);
+    color: var(--accent);
+    border: 1px solid rgba(200,255,0,0.2);
+  }
+
+  .report-content {
+    padding: 16px;
+    font-size: 13px;
+    line-height: 1.8;
+    color: var(--text);
+    min-height: 80px;
+  }
+
+  .report-content.loading {
+    color: var(--muted);
+    font-style: italic;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .dot-pulse {
+    display: inline-flex;
+    gap: 4px;
+  }
+
+  .dot-pulse span {
+    width: 4px; height: 4px;
+    border-radius: 50%;
+    background: var(--muted);
+    animation: pulse 1.2s infinite;
+  }
+
+  .dot-pulse span:nth-child(2) { animation-delay: 0.2s; }
+  .dot-pulse span:nth-child(3) { animation-delay: 0.4s; }
+
+  @keyframes pulse {
+    0%, 80%, 100% { opacity: 0.2; transform: scale(0.8); }
+    40% { opacity: 1; transform: scale(1); }
+  }
+
+  .fetch-btn {
+    width: calc(100% - 40px);
+    margin: 0 20px 12px;
+    padding: 14px;
+    background: var(--accent);
+    color: #0a0a0f;
+    border: none;
+    border-radius: 12px;
+    font-family: 'Noto Sans TC', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    letter-spacing: 0.05em;
+    transition: opacity 0.2s, transform 0.1s;
+  }
+
+  .fetch-btn:active { transform: scale(0.98); opacity: 0.9; }
+  .fetch-btn:disabled { opacity: 0.4; cursor: not-allowed; }
+
+  .notif-btn {
+    width: calc(100% - 40px);
+    margin: 0 20px 24px;
+    padding: 14px;
+    background: transparent;
+    color: var(--text);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    font-family: 'Noto Sans TC', sans-serif;
+    font-size: 13px;
+    font-weight: 300;
+    cursor: pointer;
+    letter-spacing: 0.05em;
+    transition: border-color 0.2s;
+  }
+
+  .notif-btn:hover { border-color: var(--muted); }
+  .notif-btn.granted { border-color: var(--up); color: var(--up); }
+
+  .notice {
+    margin: 0 20px 16px;
+    padding: 12px 14px;
+    background: rgba(255,184,0,0.05);
+    border: 1px solid rgba(255,184,0,0.2);
+    border-radius: 10px;
+    font-size: 11px;
+    color: var(--warn);
+    line-height: 1.7;
+  }
+
+  .stock-line {
+    border-bottom: 1px solid var(--border);
+    padding: 10px 0;
+  }
+
+  .stock-line:last-child { border-bottom: none; }
+
+  .stock-sym-inline {
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    color: var(--accent2);
+    font-weight: 500;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo">盤前情報 · PRO</div>
+  <div class="clock" id="clock">--:--:--</div>
+</header>
+
+<div class="hero">
+  <div class="hero-time" id="heroTime">--<span>:</span>--</div>
+  <div class="hero-sub" id="heroDate">載入中...</div>
+</div>
+
+<div class="alarm-strip">
+  <div class="alarm-chip" id="chip-morning" onclick="toggleAlarm('morning')">
+    <div class="alarm-chip-dot"></div>
+    <div class="alarm-chip-label">早盤 06:00</div>
+  </div>
+  <div class="alarm-chip" id="chip-evening" onclick="toggleAlarm('evening')">
+    <div class="alarm-chip-dot"></div>
+    <div class="alarm-chip-label">盤前 18:00</div>
+  </div>
+</div>
+
+<div class="section-label">監控持股</div>
+<div class="tickers">
+  <div class="ticker-card">
+    <div class="ticker-sym">NOW</div>
+    <div class="ticker-name">ServiceTitan</div>
+    <div class="ticker-price neutral" id="p-NOW">$--</div>
+    <div class="ticker-change neutral" id="c-NOW">--</div>
+  </div>
+  <div class="ticker-card">
+    <div class="ticker-sym">NVDA</div>
+    <div class="ticker-name">Nvidia</div>
+    <div class="ticker-price neutral" id="p-NVDA">$--</div>
+    <div class="ticker-change neutral" id="c-NVDA">--</div>
+  </div>
+  <div class="ticker-card">
+    <div class="ticker-sym">LITE</div>
+    <div class="ticker-name">Lumentum</div>
+    <div class="ticker-price neutral" id="p-LITE">$--</div>
+    <div class="ticker-change neutral" id="c-LITE">--</div>
+  </div>
+  <div class="ticker-card">
+    <div class="ticker-sym">ON</div>
+    <div class="ticker-name">onsemi</div>
+    <div class="ticker-price neutral" id="p-ON">$--</div>
+    <div class="ticker-change neutral" id="c-ON">--</div>
+  </div>
+  <div class="ticker-card">
+    <div class="ticker-sym">DS</div>
+    <div class="ticker-name">待確認</div>
+    <div class="ticker-price neutral" id="p-DS">$--</div>
+    <div class="ticker-change neutral" id="c-DS">--</div>
+  </div>
+  <div class="ticker-card">
+    <div class="ticker-sym">MRVL</div>
+    <div class="ticker-name">Marvell</div>
+    <div class="ticker-price neutral" id="p-MRVL">$--</div>
+    <div class="ticker-change neutral" id="c-MRVL">--</div>
+  </div>
+</div>
+
+<div class="section-label">AI 情報快報</div>
+<div class="report-box">
+  <div class="report-header">
+    <div class="report-title">最新盤前分析</div>
+    <div class="report-badge" id="reportBadge">待查詢</div>
+  </div>
+  <div class="report-content" id="reportContent">
+    點擊下方按鈕，AI 立即為你分析六檔最新情報。
+  </div>
+</div>
+
+<button class="fetch-btn" id="fetchBtn" onclick="fetchReport()">⚡ 立即查詢情報</button>
+
+<button class="notif-btn" id="notifBtn" onclick="requestNotification()">🔔 開啟推播通知（每日 06:00 / 18:00）</button>
+
+<div class="notice">
+  ⚠️ 推播通知需要：①點擊開啟通知 ②允許瀏覽器權限 ③將此頁面加入手機主畫面（PWA）。Safari / iOS 需在「加入主畫面」後才支援通知。
+</div>
+
+<script>
+const TICKERS = ['NOW','NVDA','LITE','ON','DS','MRVL'];
+let alarms = { morning: true, evening: true };
+let alarmChecked = { morning: false, evening: false };
+
+// Clock
+function updateClock() {
+  const now = new Date();
+  const h = String(now.getHours()).padStart(2,'0');
+  const m = String(now.getMinutes()).padStart(2,'0');
+  const s = String(now.getSeconds()).padStart(2,'0');
+  document.getElementById('clock').textContent = `${h}:${m}:${s}`;
+  document.getElementById('heroTime').innerHTML = `${h}<span>:</span>${m}`;
+  const days = ['日','一','二','三','四','五','六'];
+  const d = now;
+  document.getElementById('heroDate').textContent =
+    `${d.getFullYear()}.${String(d.getMonth()+1).padStart(2,'0')}.${String(d.getDate()).padStart(2,'0')} 週${days[d.getDay()]}`;
+
+  // Check alarms
+  const nowH = now.getHours(), nowM = now.getMinutes(), nowS = now.getSeconds();
+  if (nowH === 6 && nowM === 0 && nowS < 10 && alarms.morning && !alarmChecked.morning) {
+    alarmChecked.morning = true;
+    triggerAlarm('早盤開盤');
+  }
+  if (nowH === 18 && nowM === 0 && nowS < 10 && alarms.evening && !alarmChecked.evening) {
+    alarmChecked.evening = true;
+    triggerAlarm('盤前情報');
+  }
+  if (nowH !== 6) alarmChecked.morning = false;
+  if (nowH !== 18) alarmChecked.evening = false;
+}
+
+setInterval(updateClock, 1000);
+updateClock();
+
+function toggleAlarm(which) {
+  alarms[which] = !alarms[which];
+  const chip = document.getElementById(`chip-${which}`);
+  chip.classList.toggle('active', alarms[which]);
+}
+
+// Init chips
+document.getElementById('chip-morning').classList.add('active');
+document.getElementById('chip-evening').classList.add('active');
+
+async function triggerAlarm(label) {
+  if (Notification.permission === 'granted') {
+    new Notification(`📊 ${label}快報`, {
+      body: '正在為你查詢 NOW NVDA LITE ON DS MRVL 最新情報...',
+      icon: 'icon-192.png'
+    });
+  }
+  await fetchReport();
+}
+
+async function fetchReport() {
+  const btn = document.getElementById('fetchBtn');
+  const content = document.getElementById('reportContent');
+  const badge = document.getElementById('reportBadge');
+
+  btn.disabled = true;
+  badge.textContent = '查詢中';
+  content.className = 'report-content loading';
+  content.innerHTML = `<div class="dot-pulse"><span></span><span></span><span></span></div> AI 分析中，請稍候...`;
+
+  const now = new Date();
+  const dateStr = `${now.getFullYear()}/${now.getMonth()+1}/${now.getDate()} ${String(now.getHours()).padStart(2,'0')}:${String(now.getMinutes()).padStart(2,'0')}`;
+  const session = now.getHours() < 12 ? '早盤開盤前' : now.getHours() < 18 ? '盤中' : '美股盤前';
+
+  try {
+    const res = await fetch('https://api.anthropic.com/v1/messages', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        model: 'claude-sonnet-4-20250514',
+        max_tokens: 1000,
+        tools: [{ type: 'web_search_20250305', name: 'web_search' }],
+        system: `你是專業股票情報助理。用繁體中文回答。每檔股票只用兩句話報完。格式固定：
+【代號】$價格｜第一句重點新聞。第二句操作提示或展望。
+不要多餘說明，直接開始報盤。`,
+        messages: [{
+          role: 'user',
+          content: `現在時間 ${dateStr}，${session}情報快報。請搜尋 NOW(ServiceTitan/TTAN) NVDA(Nvidia) LITE(Lumentum) ON(onsemi) MRVL(Marvell) 最新消息，每檔兩句話報完。`
+        }]
+      })
+    });
+
+    const data = await res.json();
+    const text = data.content?.filter(b => b.type === 'text').map(b => b.text).join('') || '查詢失敗，請重試。';
+
+    content.className = 'report-content';
+    content.innerHTML = formatReport(text);
+    badge.textContent = dateStr.split(' ')[1] + ' 更新';
+  } catch (e) {
+    content.className = 'report-content';
+    content.innerHTML = `<span style="color:var(--down)">查詢失敗：${e.message}</span>`;
+    badge.textContent = '失敗';
+  }
+
+  btn.disabled = false;
+}
+
+function formatReport(text) {
+  return text
+    .split('\n')
+    .filter(l => l.trim())
+    .map(line => {
+      line = line.replace(/【(\w+)】/g, '<span class="stock-sym-inline">$1</span>');
+      return `<div class="stock-line">${line}</div>`;
+    })
+    .join('');
+}
+
+async function requestNotification() {
+  const btn = document.getElementById('notifBtn');
+  if (!('Notification' in window)) {
+    btn.textContent = '❌ 此瀏覽器不支援通知';
+    return;
+  }
+  const perm = await Notification.requestPermission();
+  if (perm === 'granted') {
+    btn.textContent = '✅ 推播通知已開啟';
+    btn.className = 'notif-btn granted';
+    new Notification('✅ 盤前情報', {
+      body: '每日 06:00 早盤、18:00 盤前情報將自動通知你！',
+    });
+  } else {
+    btn.textContent = '❌ 通知已被拒絕，請至設定手動開啟';
+  }
+}
+</script>
+</body>
+</html>
