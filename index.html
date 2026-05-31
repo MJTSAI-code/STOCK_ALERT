@@ -19,7 +19,7 @@
   }
   html, body { overflow-x: hidden; width: 100%; height: 100%; margin: 0; padding: 0; box-sizing: border-box; }
   * { box-sizing: inherit; }
-  body { background: var(--bg); color: var(--text); font-family: 'Noto Sans TC', sans-serif; font-weight: 300; min-height: 100vh; padding-bottom: 40px; max-width: 1200px; margin: 0 auto; position: relative; }
+  body { background: var(--bg); color: var(--text); font-family: 'Noto Sans TC', sans-serif; font-weight: 300; min-height: 100vh; padding-bottom: 20px; max-width: 1200px; margin: 0 auto; position: relative; }
   header, .hero, .control-strip { padding: 16px 20px 0; display: flex; align-items: center; justify-content: space-between; width: 100%; }
   header { padding-top: 18px; }
   .logo { font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 0.15em; color: var(--muted); text-transform: uppercase; }
@@ -63,10 +63,11 @@
   
   .discord-box { margin: 12px 16px; padding: 16px; background: rgba(88,101,242,0.03); border: 1px solid rgba(88,101,242,0.15); border-radius: 16px; display: flex; flex-direction: column; gap: 10px; }
   .discord-title { font-size: 12px; font-weight: 500; color: #5865F2; display: flex; align-items: center; gap: 6px; text-transform: uppercase; letter-spacing: 0.05em; }
-  .discord-text { font-size: 11px; color: var(--muted); line-height: 1.8; word-break: keep-all; white-space: normal; }
   
-  /* ⚡ 強制將這段時間連同中間的「與」完全綁定，在小螢幕下也絕對待在同一行、不打斷 */
-  .time-group { white-space: nowrap; display: inline-block; }
+  /* ⚡ 鋼絲級防跑位設定：長文案在窄螢幕自動微縮，並限制 06:00 與 18:00 區段絕對不換行 */
+  .discord-text { font-size: 11px; color: var(--muted); line-height: 1.8; word-break: keep-all; white-space: normal; }
+  @media (max-width: 380px) { .discord-text { font-size: 10px; } }
+  .time-group { white-space: nowrap; display: inline-block; vertical-align: middle; }
   .discord-highlight { color: var(--accent); border: 1px solid var(--accent); border-radius: 100px; padding: 1px 6px; font-size: 10px; font-weight: 500; display: inline-block; background: rgba(200, 255, 0, 0.05); margin: 0 1px; line-height: 1.2; vertical-align: middle; }
   
   .discord-btn-group { display: flex; flex-direction: column; gap: 8px; width: 100%; }
@@ -87,6 +88,15 @@
   }
   @media (min-width: 1024px) {
     .grid { grid-template-columns: repeat(3, 1fr); }
+  }
+
+  /* ⚡ 1920*1080 滿版無滾輪環境鎖：完全保持原本中置美學比例，絕不產生上下左右任何滾輪 */
+  @media (min-width: 1200px) {
+    html, body { height: 100vh; max-height: 100vh; overflow: hidden !important; }
+    body { max-width: 1400px; display: flex; flex-direction: column; justify-content: space-between; padding-bottom: 15px; }
+    .grid { gap: 16px; padding-bottom: 5px; }
+    .discord-box { margin: 6px 16px; padding: 14px; }
+    .notice { margin: 0 16px; }
   }
 </style>
 </head>
@@ -117,7 +127,7 @@
 <div class="discord-box">
   <div class="discord-title"><span>🛡️</span> 24H 雲端自動推送已部署</div>
   <div class="discord-text">
-    無需開啟網頁，GitHub 雲端將於每日 <span class="time-group"><span class="discord-highlight">早上 06:00</span> 與 <span class="discord-highlight">晚上 18:00</span></span> 自動抓取行情並定時推送至 Discord。
+    無須開啟網頁，GITHUB雲端將於每日 <span class="time-group"><span class="discord-highlight">06:00</span> 與 <span class="discord-highlight">18:00</span></span> 自動抓取推送至ＤＩＳＣＯＲＤ
   </div>
   <div class="discord-btn-group">
     <a class="discord-btn" href="https://discord.gg/vzVbybVvys" target="_blank">
@@ -187,7 +197,6 @@ function toggleCard(sym, ex) {
 
 function renderDetailNews(sym, items) {
   const box = document.getElementById('detail-news-' + sym);
-  // ✨ 保留 3 條新聞
   if (box) box.innerHTML = items.slice(0, 3).map(item => {
     const d = new Date(item.datetime * 1000);
     return `<a class="detail-news-item" href="${item.url}" target="_blank" onclick="event.stopPropagation();">
@@ -205,7 +214,7 @@ async function fetchAll() {
 
 async function fetchStock(sym) {
   try {
-    const res = await fetch(`https://finnhub.io/api/v1/quote?symbol=${sym}&token=${API_KEY}`), d = await res.json();
+    const res = await fetch(`https://finnhub.io/api/v1/quote?symbol=${sym}&token=\" + API_KEY), d = await res.json();
     if (d.c) {
       const cls = d.d >= 0 ? 'up' : 'down', sign = d.d >= 0 ? '+' : '';
       document.getElementById(`price-${sym}`).textContent = `$${d.c.toFixed(2)}`;
@@ -217,7 +226,6 @@ async function fetchStock(sym) {
 
   try {
     const today = new Date(), from = new Date(today - 7 * 24 * 60 * 60 * 1000), fmt = d => d.toISOString().split('T')[0];
-    // ✨ 精準修復：把錯誤的 {from} 改回正確的 ${fmt(from)}，新聞絕對抓得到！
     const res = await fetch(`https://finnhub.io/api/v1/company-news?symbol=${sym}&from=${fmt(from)}&to=${fmt(today)}&token=${API_KEY}`), items = await res.json();
     newsCache[sym] = items;
     const newsBox = document.getElementById(`news-${sym}`);
