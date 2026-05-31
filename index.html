@@ -466,7 +466,7 @@ async function fetchReport() {
   const dateStr = `${now.getFullYear()}/${now.getMonth()+1}/${now.getDate()} ${String(now.getHours()).padStart(2,'0')}:${String(now.getMinutes()).padStart(2,'0')}`;
   const session = now.getHours() < 12 ? '早盤開盤前' : now.getHours() < 18 ? '盤中' : '美股盤前';
 
-  const API_KEY = "填你的GeminiKey在這裡";
+  const API_KEY = "AQ.Ab8RN6ISKwNCgRtrbL_MYsnlAD-NjzZrkhJPPMHQuUp6ia5LEQ";
 
   try {
     const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${API_KEY}`, {
