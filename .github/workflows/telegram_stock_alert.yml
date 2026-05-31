@@ -2,7 +2,6 @@ name: 美股精選情報室
 
 on:
   schedule:
-    # 📝 智慧時區防線：提前到台灣時間 05:00 與 17:00 喚醒
     - cron: '0 21 * * *'
     - cron: '0 9 * * *'
   workflow_dispatch:
@@ -22,11 +21,11 @@ jobs:
             sleep 3600
           fi
           
-          # 📝 中文說明（跟大腦說話的部分）
-          CAPTION="🛡️ 【美股精選情報室】數據已更新完成！%0A👉 點擊通知即可直接開啟精美看盤儀表板。"
+          # 🎯 終極代碼：利用 # 號後面直接塞純中文！
+          # 整條訊息在 Telegram 通知列會「全數轉為藍色超連結」，達成完美的中文看盤直達車！
+          TEXT="https://mjtsai-code.github.io/STOCK_ALERT/#美股情報室數據已更新"
           
-          # 🎯 核心升級：改用 sendPhoto 發送精美圖卡，網址裸露在最前面擴大點擊面積
-          curl -s -X POST "https://api.telegram.org/bot${{ secrets.TELEGRAM_TOKEN }}/sendPhoto" \
+          curl -s -X POST "https://api.telegram.org/bot${{ secrets.TELEGRAM_TOKEN }}/sendMessage" \
             -d "chat_id=${{ secrets.TELEGRAM_CHAT_ID }}" \
-            -d "photo=https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=500" \
-            -d "caption=https://mjtsai-code.github.io/STOCK_ALERT/%0A%0A${CAPTION}"
+            -d "text=${TEXT}" \
+            -d "disable_web_page_preview=true"
