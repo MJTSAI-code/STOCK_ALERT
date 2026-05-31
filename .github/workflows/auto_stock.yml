@@ -2,18 +2,31 @@ name: 每日美股盤前推播
 
 on:
   schedule:
-    # 📝 轉換為國際標準時間 UTC（台灣 06:00 = UTC 22:00 / 台灣 18:00 = UTC 10:00）
-    - cron: '0 22 * * *'
-    - cron: '0 10 * * *'
-  workflow_dispatch: # 讓你可以手動在 GitHub 點擊按鈕測試
+    # 📝 為了防禦冬令時間，我們把時間提前到台灣時間 05:00 與 17:00 喚醒
+    # (UTC 21:00 = 台灣 05:00 / UTC 09:00 = 台灣 17:00)
+    - cron: '0 21 * * *'
+    - cron: '0 9 * * *'
+  workflow_dispatch:
 
 jobs:
   send-push:
     runs-on: ubuntu-latest
     steps:
-      - name: 呼叫 Telegram 機器人發送通知
+      - name: 檢查並鎖定台灣絕對時間
         run: |
-          # ⚡ 這裡設定你要顯示的手機通知文字
+          # 1. 強制設定環境為台北時區
+          export TZ="Asia/Taipei"
+          CURRENT_HOUR=$(date +%H)
+          
+          echo "當前台北時間的整點為: ${CURRENT_HOUR} 點"
+          
+          # 2. 如果醒來時是 05 點或 17 點（代表此時是夏令時間），就原地罰站 3600 秒（1小時）
+          if [ "$CURRENT_HOUR" = "05" ] || [ "$CURRENT_HOUR" = "17" ]; then
+            echo "偵測到目前為夏令時間，機器人開始沉睡 60 分鐘..."
+            sleep 3600
+          fi
+          
+          # 3. 執行發送 Telegram 通知
           TEXT="🛡️ 24H 雲端盤前情報已部署%0A%0A雲端已自動完成數據更新。%0A👉 [點我一秒開啟精美儀表板](${{ env.MY_URL }})"
           
           curl -s -X POST "https://api.telegram.org/bot${{ secrets.TELEGRAM_TOKEN }}/sendMessage" \
@@ -22,5 +35,4 @@ jobs:
             -d "parse_mode=Markdown" \
             -d "disable_web_page_preview=true"
         env:
-          # ⚠️ 最關鍵：請把下面這行改成你平常在看、放在桌面上的那個真實 Yahoo 盤前網頁網址！
           MY_URL: "https://mjtsai-code.github.io/STOCK_ALERT/"
