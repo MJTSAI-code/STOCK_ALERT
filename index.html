@@ -63,8 +63,8 @@
   
   .discord-box { margin: 12px 16px; padding: 16px; background: rgba(88,101,242,0.03); border: 1px solid rgba(88,101,242,0.15); border-radius: 16px; display: flex; flex-direction: column; gap: 10px; }
   .discord-title { font-size: 12px; font-weight: 500; color: #5865F2; display: flex; align-items: center; gap: 6px; text-transform: uppercase; letter-spacing: 0.05em; }
-  .discord-text { font-size: 11px; color: var(--muted); line-height: 1.7; }
-  .discord-highlight { color: var(--accent); border: 1px solid var(--accent); border-radius: 100px; padding: 1px 7px; font-size: 10px; font-weight: 500; display: inline-block; background: rgba(200, 255, 0, 0.05); margin: 0 2px; line-height: 1.2; vertical-align: middle; }
+  .discord-text { font-size: 11px; color: var(--muted); line-height: 1.8; word-break: keep-all; white-space: normal; }
+  .discord-highlight { color: var(--accent); border: 1px solid var(--accent); border-radius: 100px; padding: 1px 6px; font-size: 10px; font-weight: 500; display: inline-block; background: rgba(200, 255, 0, 0.05); margin: 0 1px; line-height: 1.2; vertical-align: middle; white-space: nowrap; }
   
   .discord-btn-group { display: flex; flex-direction: column; gap: 8px; width: 100%; }
   .discord-btn { width: 100%; padding: 12px; background: var(--discord); color: #fff; border: none; border-radius: 12px; font-family: 'Noto Sans TC', sans-serif; font-size: 12px; font-weight: 500; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; text-decoration: none; transition: all 0.2s; }
@@ -114,7 +114,7 @@
 <div class="discord-box">
   <div class="discord-title"><span>🛡️</span> 24H 雲端自動推送已部署</div>
   <div class="discord-text">
-    無須保持網頁開啟，GitHub 雲端腳本將在每日 <span class="discord-highlight">早上 06:00</span> 與 <span class="discord-highlight">晚上 18:00</span> 自動抓取行情並推送至您的 Discord 頻道。
+    無需開啟網頁，GitHub 雲端將於每日 <span class="discord-highlight">早上 06:00</span> 與 <span class="discord-highlight">晚上 18:00</span> 自動抓取行情並定時推送至 Discord。
   </div>
   <div class="discord-btn-group">
     <a class="discord-btn" href="https://discord.gg/vzVbybVvys" target="_blank">
@@ -184,7 +184,7 @@ function toggleCard(sym, ex) {
 
 function renderDetailNews(sym, items) {
   const box = document.getElementById('detail-news-' + sym);
-  if (box) box.innerHTML = items.slice(0, 8).map(item => {
+  if (box) box.innerHTML = items.slice(0, 3).map(item => {
     const d = new Date(item.datetime * 1000);
     return `<a class="detail-news-item" href="${item.url}" target="_blank" onclick="event.stopPropagation();">
       <div class="detail-news-title">${item.headline}</div>
