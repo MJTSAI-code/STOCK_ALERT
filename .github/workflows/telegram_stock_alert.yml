@@ -21,8 +21,8 @@ jobs:
             sleep 3600
           fi
           
-          # 🎯 物理保證版：用最簡短的網址與中文綁在一起，通知列絕對 100% 吐出 ICON！
-          TEXT="🛡️ 美股情報室數據已更新！%0A🚀 開啟儀表板：https://tinyurl.com/mushv6be"
+          # 🎯 回歸最原始、最乾淨、絕對保證有 ICON 的黃金排版
+          TEXT="🛡️ 美股情報室數據已更新！%0A🚀 開啟儀表板：https://mjtsai-code.github.io/STOCK_ALERT/"
           
           curl -s -X POST "https://api.telegram.org/bot${{ secrets.TELEGRAM_TOKEN }}/sendMessage" \
             -d "chat_id=${{ secrets.TELEGRAM_CHAT_ID }}" \
