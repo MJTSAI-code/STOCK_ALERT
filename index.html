@@ -34,7 +34,6 @@
   .grid { display: flex; flex-wrap: wrap; justify-content: flex-start; gap: 14px; padding: 0 12px 12px; width: 100%; transition: all 0.3s ease; }
   .grid.has-expanded { justify-content: center; }
   
-  /* 手機排版防護線：預設 100% 寬度不跑版 */
   .card { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 18px; cursor: pointer; transition: border-color 0.2s ease, width 0.3s cubic-bezier(0.25, 1, 0.5, 1), max-width 0.3s cubic-bezier(0.25, 1, 0.5, 1); min-height: 105px; display: flex; flex-direction: column; justify-content: space-between; -webkit-tap-highlight-color: transparent; width: 100%; overflow: hidden; order: 0; flex-grow: 0; flex-shrink: 0; }
   .card.expanded { border-color: var(--accent2); cursor: default; width: 100% !important; max-width: 100% !important; order: -1; }
   
@@ -56,7 +55,6 @@
   .card-detail { display: none; margin-top: 16px; border-top: 1px solid var(--border); padding-top: 16px; cursor: default; width: 100%; }
   .card.expanded .card-detail { display: block; }
   
-  /* 觸控鎖定機制 */
   .chart-box { border-radius: 10px; overflow: hidden; border: 1px solid var(--border); height: 260px; margin-bottom: 16px; background: var(--bg); width: 100%; position: relative; cursor: pointer; }
   .chart-box iframe { width: 100%; height: 100%; border: none; display: block; pointer-events: none; }
   .chart-box.active iframe { pointer-events: auto; }
@@ -178,6 +176,7 @@ const FALLBACK_NEWS = {
 
 let expandedSym = null;
 let globalDataCache = null;
+let lastJsonUpdateTime = null; // ⚡ 記憶錨點：紀錄上一次推播檔的雲端發布時間
 
 function updateClock() {
   const now = new Date();
@@ -189,19 +188,14 @@ function updateClock() {
 setInterval(updateClock, 1000);
 updateClock();
 
-// ⚡ 核心優化：深層探針解碼器（遞迴搜尋所有可能的字串欄位）
 function findStringByKeys(obj, priorityKeys) {
   if (!obj) return "";
   if (typeof obj === 'string') return obj;
-  
-  // 第一階段：優先檢查同層的已知高頻欄位
   for (let key of priorityKeys) {
     if (obj[key] && typeof obj[key] === 'string' && obj[key].trim().length > 0) {
       return obj[key];
     }
   }
-  
-  // 第二階段：如果被嵌套，展開深層遞迴探針
   for (let key in obj) {
     if (obj.hasOwnProperty(key) && obj[key] && typeof obj[key] === 'object') {
       let found = findStringByKeys(obj[key], priorityKeys);
@@ -211,15 +205,15 @@ function findStringByKeys(obj, priorityKeys) {
   return "";
 }
 
-// ⚡ 萬能時間戳解碼器
 function parseFlexibleDate(item) {
-  let raw = item.datetime || item.time || item.pubDate || item.date || Date.now();
+  let raw = item.datetime || item.time || item.pubDate || item.date || null;
+  if (!raw) return null;
   if (typeof raw === 'number') {
-    if (raw < 9999999999) raw *= 1000; // 秒級轉毫秒
+    if (raw < 9999999999) raw *= 1000;
     return new Date(raw);
   }
   let parsed = Date.parse(raw);
-  return isNaN(parsed) ? new Date() : new Date(parsed);
+  return isNaN(parsed) ? null : new Date(parsed);
 }
 
 function getCleanValidNews(newsArray) {
@@ -234,13 +228,12 @@ function getCleanValidNews(newsArray) {
       const title = findStringByKeys(i, titleKeys);
       const url = findStringByKeys(i, urlKeys) || "https://tw.stock.yahoo.com/us";
       const source = findStringByKeys(i, srcKeys) || "即時財經";
-      const datetime = parseFlexibleDate(i);
+      const datetime = parseFlexibleDate(i) || new Date(); 
       return { title: title.trim(), url, source, datetime };
     })
     .filter(i => {
       if (!i.title || i.title.length < 5) return false;
       const t = i.title;
-      // 智慧過濾無意義的機器人佔位字串
       return !t.includes("無新聞") && !t.includes("無最新新聞") && !t.includes("沒有相關新聞") && !t.includes("測試標題") && !t.includes("null");
     })
     .sort((a, b) => b.datetime - a.datetime);
@@ -309,27 +302,8 @@ function toggleCard(sym, ex, event) {
       iframe.src = `https://www.tradingview.com/widgetembed/?symbol=${ex}:${sym}&interval=D&hidesidetoolbar=1&theme=dark&style=1&timezone=Asia/Taipei&locale=zh_TW`;
     }
     
-    const box = document.getElementById('detail-news-' + sym);
-    if (box) {
-      const rawItems = globalDataCache?.[sym]?.news || globalDataCache?.[sym]?.feed;
-      const cleanItems = getCleanValidNews(rawItems);
-      
-      if (cleanItems.length > 0) {
-        box.innerHTML = cleanItems.slice(0, 3).map(item => `
-          <a class="detail-news-item" href="${item.url}" target="_blank" rel="noopener noreferrer">
-            <div class="detail-news-title">📰 ${item.title}</div>
-            <span class="detail-news-meta">${item.datetime.getMonth()+1}/${item.datetime.getDate()} ${String(item.datetime.getHours()).padStart(2,'0')}:${String(item.datetime.getMinutes()).padStart(2,'0')} · ${item.source}</span>
-          </a>
-        `).join('');
-      } else {
-        box.innerHTML = FALLBACK_NEWS[sym].map(f => `
-          <a class="detail-news-item" href="${f.url}" target="_blank" rel="noopener noreferrer">
-            <div class="detail-news-title">📰 [精選觀察] ${f.title}</div>
-            <span class="detail-news-meta">本日最新 · ${f.src}</span>
-          </a>
-        `).join('');
-      }
-    }
+    // 渲染展開後的細節新聞
+    renderDetailNews(sym);
     
     setTimeout(() => { card.scrollIntoView({ behavior: 'smooth', block: 'start' }); }, 120);
 
@@ -345,6 +319,31 @@ function toggleCard(sym, ex, event) {
       history.replaceState("", document.title, window.location.pathname + window.location.search);
     }
     setTimeout(() => { card.scrollIntoView({ behavior: 'smooth', block: 'nearest' }); }, 50);
+  }
+}
+
+// 獨立出來的新聞渲染函數
+function renderDetailNews(sym) {
+  const box = document.getElementById('detail-news-' + sym);
+  if (!box) return;
+  
+  const rawItems = globalDataCache?.[sym]?.news || globalDataCache?.[sym]?.feed;
+  const cleanItems = getCleanValidNews(rawItems);
+  
+  if (cleanItems.length > 0) {
+    box.innerHTML = cleanItems.slice(0, 3).map(item => `
+      <a class="detail-news-item" href="${item.url}" target="_blank" rel="noopener noreferrer">
+        <div class="detail-news-title">📰 ${item.title}</div>
+        <span class="detail-news-meta">${item.datetime.getMonth()+1}/${item.datetime.getDate()} ${String(item.datetime.getHours()).padStart(2,'0')}:${String(item.datetime.getMinutes()).padStart(2,'0')} · ${item.source}</span>
+      </a>
+    `).join('');
+  } else {
+    box.innerHTML = FALLBACK_NEWS[sym].map(f => `
+      <a class="detail-news-item" href="${f.url}" target="_blank" rel="noopener noreferrer">
+        <div class="detail-news-title">📰 [精選觀察] ${f.title}</div>
+        <span class="detail-news-meta">本日最新 · ${f.src}</span>
+      </a>
+    `).join('');
   }
 }
 
@@ -366,9 +365,14 @@ async function loadCloudData() {
   try {
     const res = await fetch(`./stock_data.json?t=${Date.now()}`);
     const json = await res.json();
+    
+    // ⚡ 核心邏輯改善：檢查雲端推播時間是否有更新
+    const incomingUpdateTime = json?.updated_at || null;
+    const isFileChanged = (incomingUpdateTime !== lastJsonUpdateTime);
+    
     globalDataCache = json?.data ?? {};
     
-    const dataTime = json?.updated_at ? new Date(json.updated_at) : new Date();
+    const dataTime = incomingUpdateTime ? new Date(incomingUpdateTime) : new Date();
     const nyTimeStr = dataTime.toLocaleTimeString('en-US', { timeZone: 'America/New_York', hour12: false });
     const [nyHour, nyMin] = nyTimeStr.split(':').map(Number);
     const totalNyMinutes = nyHour * 60 + nyMin;
@@ -381,6 +385,7 @@ async function loadCloudData() {
       const sData = globalDataCache[s.sym];
       if (!sData) return;
       
+      // 1. 價格屬於高頻變動，每次刷新照常更新
       const d = sData.quote || sData.price;
       const priceEl = document.getElementById(`price-${s.sym}`);
       const chgEl = document.getElementById(`chg-${s.sym}`);
@@ -390,7 +395,6 @@ async function loadCloudData() {
         const currentPrice = d.c || d.price || 0;
         const change = d.d || d.change || 0;
         const changePercent = d.dp || d.changePercent || 0;
-        
         const cls = change >= 0 ? 'up' : 'down';
         const sign = change >= 0 ? '+' : '';
         
@@ -405,25 +409,38 @@ async function loadCloudData() {
         }
       }
       
-      const newsBox = document.getElementById(`news-${s.sym}`);
-      if (newsBox) {
-        const rawNews = sData.news || sData.feed || [];
-        const cleanNews = getCleanValidNews(rawNews);
+      // 2. ⚡ 新聞屬於低頻（跟推播時間一致），只有當 JSON 有變動時才去動 DOM，防止被洗掉
+      if (isFileChanged) {
+        const newsBox = document.getElementById(`news-${s.sym}`);
+        if (newsBox) {
+          const rawNews = sData.news || sData.feed || [];
+          const cleanNews = getCleanValidNews(rawNews);
+          
+          if (cleanNews.length > 0) {
+            newsBox.innerHTML = cleanNews.slice(0, 3).map(item => `
+              <div class="card-news-item">
+                • ${item.title}
+                <div class="news-time">${item.datetime.getMonth()+1}/${item.datetime.getDate()} · ${item.source}</div>
+              </div>
+            `).join('');
+          } else {
+            newsBox.innerHTML = FALLBACK_NEWS[s.sym].map(f => `
+              <div class="card-news-item">• ${f.title}<div class="news-time">今日即時 · ${f.src}</div></div>
+            `).join('');
+          }
+        }
         
-        if (cleanNews.length > 0) {
-          newsBox.innerHTML = cleanNews.slice(0, 3).map(item => `
-            <div class="card-news-item">
-              • ${item.title}
-              <div class="news-time">${item.datetime.getMonth()+1}/${item.datetime.getDate()} · ${item.source}</div>
-            </div>
-          `).join('');
-        } else {
-          newsBox.innerHTML = FALLBACK_NEWS[s.sym].map(f => `
-            <div class="card-news-item">• ${f.title}<div class="news-time">今日即時 · ${f.src}</div></div>
-          `).join('');
+        // 如果目前這張卡片剛好是展開狀態，順便重新刷一下裡面的細節新聞
+        if (expandedSym === s.sym) {
+          renderDetailNews(s.sym);
         }
       }
     });
+    
+    // 記憶這次的更新時間
+    if (incomingUpdateTime) {
+      lastJsonUpdateTime = incomingUpdateTime;
+    }
     
     if (statusEl) {
       const nowTime = new Date();
@@ -435,7 +452,11 @@ async function loadCloudData() {
   }
 }
 
-function manualRefresh() { loadCloudData(); }
+function manualRefresh() { 
+  lastJsonUpdateTime = null; // 手動刷新時強制重刷新聞
+  loadCloudData(); 
+}
+
 buildGrid(); 
 loadCloudData();
 setInterval(loadCloudData, 60000); 
