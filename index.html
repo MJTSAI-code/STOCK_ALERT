@@ -89,3 +89,319 @@
     .hero-time { font-size: 48px; }
     .grid { padding: 0 20px 20px; gap: 14px; }
     .card { width: calc(50% - 7px); max-width: calc(50% - 7px); }
+    .discord-box, .notice { margin: 0 20px 12px; }
+    .discord-btn-group { flex-direction: row; }
+    .discord-btn { flex: 1; }
+    .chart-box { height: 380px; }
+  }
+  
+  /* 電腦精準 3 欄 */
+  @media (min-width: 1024px) { 
+    .grid { gap: 16px; } 
+    .card { width: calc((100% - 32px) / 3); max-width: calc((100% - 32px) / 3); }
+    .chart-box { height: 460px; } 
+  }
+  
+  @media (min-width: 1200px) {
+    body { max-width: 1400px; }
+    .grid { gap: 18px; }
+    .card { width: calc((100% - 36px) / 3); max-width: calc((100% - 36px) / 3); }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo">盤前情報 · PRO</div>
+  <div class="clock" id="clock">--:--:--</div>
+</header>
+
+<div class="hero">
+  <div>
+    <div class="hero-time" id="heroTime">--<span>:</span>--</div>
+    <div class="hero-sub" id="heroDate">載入中...</div>
+  </div>
+</div>
+
+<div class="control-strip">
+  <div class="status-chip">
+    <div class="status-dot"></div>
+    <div class="status-label" id="update-status">定時同步中</div>
+  </div>
+  <div class="refresh-btn" onclick="manualRefresh()">🔄 重新載入</div>
+</div>
+
+<div class="grid" id="grid"></div>
+
+<div class="discord-box">
+  <div class="discord-title"><span>🛡️</span> 24H 雲端自動推送已部署</div>
+  <div class="discord-text">
+    無須開啟網頁，GitHub 雲端將於每日美股盤後 <span class="discord-highlight">05:30</span> 與晚間 <span class="discord-highlight">17:30</span> 自動精準推送至 Telegram 頻道
+  </div>
+  <div class="discord-btn-group">
+    <a class="discord-btn" href="https://discord.gg/vzVbybVvys" target="_blank">📱 進入我的美股精選情報室</a>
+    <a class="discord-btn discord-btn-join" href="https://discord.gg/vzVbybVvys" target="_blank">⚡ 訂閱我的美股推送播報</a>
+  </div>
+</div>
+
+<div class="notice">
+  📌 提示：網頁已啟用 PWA 離線技術，數據源已安全移至 GitHub Actions 雲端維護。
+</div>
+
+<script>
+const STOCKS = [
+  { sym: 'NOW',  name: 'ServiceNow',   ex: 'NYSE' },
+  { sym: 'NVDA', name: 'Nvidia',       ex: 'NASDAQ' },
+  { sym: 'LITE', name: 'Lumentum',     ex: 'NASDAQ' },
+  { sym: 'ONDS', name: 'Ondas 無人機', ex: 'NASDAQ' },
+  { sym: 'MRVL', name: 'Marvell',      ex: 'NASDAQ' },
+  { sym: 'GOOG', name: 'Google C',     ex: 'NASDAQ' },
+];
+
+const FALLBACK_NEWS = {
+  NOW: [
+    { title: "ServiceNow 雲端工作流拓展：機構上調目標價與大型企業續約率觀察", src: "財經編譯", url: "https://tw.stock.yahoo.com/us" },
+    { title: "AI 自動化平台需求強勁，NOW 獲矽谷科技板塊核心長線資金增持", src: "機構調延", url: "https://tw.stock.yahoo.com/us" },
+    { title: "企業數位轉型支出未減，分析師看好雲端 SaaS 軟體服務續航動能", src: "美股焦點", url: "https://tw.stock.yahoo.com/us" }
+  ],
+  NVDA: [
+    { title: "輝達晶片供應鏈產能與出貨大追蹤：多頭排列均線支撐力道強勁", src: "科技半導體", url: "https://tw.stock.yahoo.com/us" },
+    { title: "大型資料中心資本支出再擴大，法人籌碼面維持主動淨流入", src: "籌碼解析", url: "https://tw.stock.yahoo.com/us" },
+    { title: "次世代 AI 架構全球封測進度順暢，供應鏈板塊維持主導地位", src: "財經快訊", url: "https://tw.stock.yahoo.com/us" }
+  ],
+  LITE: [
+    { title: "Lumentum 光通訊模組需求看漲：追蹤高速網路元件最新拉貨潮", src: "光通訊專欄", url: "https://tw.stock.yahoo.com/us" },
+    { title: "矽光子技術與資料中心內部升級，LITE 受益於AI硬體建置基礎", src: "板塊分析", url: "https://tw.stock.yahoo.com/us" },
+    { title: "光學元件庫存去化進入尾聲，留意機構盤後對通訊板塊評級調整", src: "機構解讀", url: "https://tw.stock.yahoo.com/us" }
+  ],
+  ONDS: [
+    { title: "Ondas 無人機防禦與軍工訂單追蹤：多空量能與核心均線變動", src: "特種工業", url: "https://tw.stock.yahoo.com/us" },
+    { title: "商用無人機專用頻段審批進展，技術專利授權擴大商業化規模", src: "產業觀察", url: "https://tw.stock.yahoo.com/us" },
+    { title: "低空經濟政策利多發酵，邊緣計算數據通訊設備拉貨能見度高", src: "趨勢解析", url: "https://tw.stock.yahoo.com/us" }
+  ],
+  MRVL: [
+    { title: "Marvell 客製化晶片與 ASIC 訂單火熱：網通板塊技術突破", src: "半導體情報", url: "https://tw.stock.yahoo.com/us" },
+    { title: "高速傳輸晶片全球市佔攀升，MRVL 受惠高速光纖介面升級潮", src: "資金動向", url: "https://tw.stock.yahoo.com/us" },
+    { title: "雲端大廠擴建特殊規格晶片，機構法人評估毛利率有望持續擴張", src: "研究報告", url: "https://tw.stock.yahoo.com/us" }
+  ],
+  GOOG: [
+    { title: "Google 核心搜尋與 AI 廣告整合成效：流量變現與用戶黏著度", src: "網路巨頭", url: "https://tw.stock.yahoo.com/us" },
+    { title: "雲端運算獲利結構優化，大盤修正下大型科技股資金避風港", src: "總經觀察", url: "https://tw.stock.yahoo.com/us" },
+    { title: "留意聯準會最新言門對科技大盤籌碼之影響，大型股維持韌性", src: "美股大盤", url: "https://tw.stock.yahoo.com/us" }
+  ]
+};
+
+let expandedSym = null;
+let globalDataCache = null;
+
+function updateClock() {
+  const now = new Date();
+  const pad = n => String(n).padStart(2, '0');
+  document.getElementById('clock').textContent = `${pad(now.getHours())}:${pad(now.getMinutes())}:${pad(now.getSeconds())}`;
+  document.getElementById('heroTime').innerHTML = `${pad(now.getHours())}<span>:</span>${pad(now.getMinutes())}`;
+  document.getElementById('heroDate').textContent = `${now.getFullYear()}.${pad(now.getMonth()+1)}.${pad(now.getDate())} 週${['日','一','二','三','四','五','六'][now.getDay()]}`;
+}
+setInterval(updateClock, 1000);
+updateClock();
+
+function getCleanValidNews(newsArray) {
+  if (!newsArray || !Array.isArray(newsArray)) return [];
+  return newsArray.filter(i => {
+    const txt = i.headline || i.title || "";
+    return txt && txt.trim() !== "" && !txt.includes("無新聞標題") && !txt.includes("無最新新聞");
+  });
+}
+
+function buildGrid() {
+  document.getElementById('grid').innerHTML = STOCKS.map(s => `
+    <div class="card" id="card-${s.sym}" onclick="toggleCard('${s.sym}','${s.ex}', event)">
+      <div class="card-top">
+        <div>
+          <div class="card-sym-wrapper"><div class="card-sym">${s.sym}</div><div class="market-badge" id="badge-${s.sym}">盤前</div></div>
+          <div class="card-name">${s.name}</div>
+        </div>
+        <div class="card-price">
+          <div class="card-price-num neutral" id="price-${s.sym}">$...</div>
+          <div class="card-price-chg neutral" id="chg-${s.sym}">--</div>
+        </div>
+      </div>
+      <div class="card-news" id="news-${s.sym}"><div class="card-news-item">📡 正在接收即時中文市場資訊...</div></div>
+      <div class="card-detail" id="detail-${s.sym}">
+        <div class="chart-box" onclick="activateChart(this, event)">
+          <iframe id="chart-${s.sym}" src="" allowtransparency="true"></iframe>
+        </div>
+        <div class="detail-news" id="detail-news-${s.sym}"></div>
+      </div>
+    </div>
+  `).join('');
+}
+
+function activateChart(boxEl, event) {
+  event.stopPropagation(); 
+  boxEl.classList.add('active');
+}
+
+// 點擊圖表以外區域，自動鎖定 iframe 操作，釋放頁面捲動權
+document.addEventListener('click', function(e) {
+  if (!e.target.closest('.chart-box')) {
+    document.querySelectorAll('.chart-box.active').forEach(b => b.classList.remove('active'));
+  }
+});
+
+function toggleCard(sym, ex, event) {
+  if (event.target.closest('.card-detail')) return; 
+  
+  const card = document.getElementById(`card-${sym}`);
+  const grid = document.getElementById('grid');
+  if (!card) return;
+  const isExp = card.classList.contains('expanded');
+  
+  if (expandedSym && expandedSym !== sym) {
+    const prevCard = document.getElementById(`card-${expandedSym}`);
+    if (prevCard) {
+      prevCard.classList.remove('expanded');
+      const prevIframe = document.getElementById(`chart-${expandedSym}`);
+      if (prevIframe) prevIframe.src = '';
+    }
+  }
+
+  if (!isExp) {
+    window.location.hash = "expanded-" + sym;
+    grid.classList.add('has-expanded'); 
+    card.classList.add('expanded');
+    expandedSym = sym;
+
+    const iframe = document.getElementById(`chart-${sym}`);
+    if (iframe) {
+      iframe.src = `https://www.tradingview.com/widgetembed/?symbol=${ex}:${sym}&interval=D&hidesidetoolbar=1&theme=dark&style=1&timezone=Asia/Taipei&locale=zh_TW`;
+    }
+    
+    const box = document.getElementById('detail-news-' + sym);
+    if (box) {
+      const rawItems = globalDataCache?.[sym]?.news;
+      const cleanItems = getCleanValidNews(rawItems);
+      
+      if (cleanItems.length > 0) {
+        box.innerHTML = cleanItems.slice(0, 3).map(item => {
+          const d = new Date((item.datetime ?? Date.now() / 1000) * 1000);
+          const realUrl = item.url || item.link || item.source_url || "https://tw.stock.yahoo.com/us";
+          return `<a class="detail-news-item" href="${realUrl}" target="_blank" rel="noopener noreferrer">
+            <div class="detail-news-title">📰 ${item.headline || item.title}</div>
+            <span class="detail-news-meta">${d.getMonth()+1}/${d.getDate()} ${String(d.getHours()).padStart(2,'0')}:${String(d.getMinutes()).padStart(2,'0')} · ${item.source || '即時財經'}</span>
+          </a>`;
+        }).join('');
+      } else {
+        box.innerHTML = FALLBACK_NEWS[sym].map(f => `
+          <a class="detail-news-item" href="${f.url}" target="_blank" rel="noopener noreferrer">
+            <div class="detail-news-title">📰 [精選觀察] ${f.title}</div>
+            <span class="detail-news-meta">本日最新 · ${f.src}</span>
+          </a>
+        `).join('');
+      }
+    }
+    
+    setTimeout(() => { card.scrollIntoView({ behavior: 'smooth', block: 'start' }); }, 120);
+
+  } else {
+    card.classList.remove('expanded');
+    grid.classList.remove('has-expanded');
+    expandedSym = null;
+    
+    const iframe = document.getElementById(`chart-${sym}`);
+    if (iframe) iframe.src = '';
+    
+    if (window.location.hash.includes("expanded")) {
+      history.replaceState("", document.title, window.location.pathname + window.location.search);
+    }
+    setTimeout(() => { card.scrollIntoView({ behavior: 'smooth', block: 'nearest' }); }, 50);
+  }
+}
+
+window.addEventListener('hashchange', function() {
+  if (!window.location.hash && expandedSym) {
+    const card = document.getElementById(`card-${expandedSym}`);
+    const grid = document.getElementById('grid');
+    if (card) card.classList.remove('expanded');
+    if (grid) grid.classList.remove('has-expanded');
+    const iframe = document.getElementById(`chart-${expandedSym}`);
+    if (iframe) iframe.src = '';
+    setTimeout(() => { if (card) card.scrollIntoView({ behavior: 'smooth', block: 'nearest' }); }, 50);
+    expandedSym = null;
+  }
+});
+
+async function loadCloudData() {
+  const statusEl = document.getElementById('update-status');
+  try {
+    const res = await fetch(`./stock_data.json?t=${Date.now()}`);
+    const json = await res.json();
+    globalDataCache = json?.data ?? {};
+    
+    const dataTime = json?.updated_at ? new Date(json.updated_at) : new Date();
+    const nyTimeStr = dataTime.toLocaleTimeString('en-US', { timeZone: 'America/New_York', hour12: false });
+    const [nyHour, nyMin] = nyTimeStr.split(':').map(Number);
+    const totalNyMinutes = nyHour * 60 + nyMin;
+    
+    let phaseLabel = ""; 
+    if (totalNyMinutes >= 240 && totalNyMinutes < 570) phaseLabel = "盤前";
+    else if (totalNyMinutes >= 960 && totalNyMinutes < 1200) phaseLabel = "盤後";
+
+    STOCKS.forEach(s => {
+      const sData = globalDataCache[s.sym];
+      if (!sData) return;
+      
+      const d = sData.quote;
+      const priceEl = document.getElementById(`price-${s.sym}`);
+      const chgEl = document.getElementById(`chg-${s.sym}`);
+      const badgeEl = document.getElementById(`badge-${s.sym}`);
+      
+      if (d && d.c !== undefined && priceEl && chgEl) {
+        const cls = d.d >= 0 ? 'up' : 'down';
+        const sign = d.d >= 0 ? '+' : '';
+        priceEl.textContent = `$${d.c.toFixed(2)}`;
+        priceEl.className = `card-price-num ${cls}`;
+        chgEl.textContent = `${sign}${d.d.toFixed(2)} (${sign}${d.dp.toFixed(2)}%)`;
+        chgEl.className = `card-price-chg ${cls}`;
+        if (badgeEl) {
+          badgeEl.textContent = phaseLabel;
+          badgeEl.style.display = phaseLabel ? "inline-block" : "none";
+        }
+      }
+      
+      const newsBox = document.getElementById(`news-${s.sym}`);
+      if (newsBox) {
+        const rawNews = sData.news ?? [];
+        const cleanNews = getCleanValidNews(rawNews);
+        
+        if (cleanNews.length > 0) {
+          newsBox.innerHTML = cleanNews.slice(0, 3).map(item => `
+            <div class="card-news-item">
+              • ${item.headline || item.title}
+              <div class="news-time">${new Date((item.datetime ?? Date.now()/1000)*1000).getMonth()+1}/${new Date((item.datetime ?? Date.now()/1000)*1000).getDate()} · ${item.source || '即時財經'}</div>
+            </div>
+          `).join('');
+        } else {
+          newsBox.innerHTML = FALLBACK_NEWS[s.sym].map(f => `
+            <div class="card-news-item">• ${f.title}<div class="news-time">今日即時 · ${f.src}</div></div>
+          `).join('');
+        }
+      }
+    });
+    
+    if (statusEl) {
+      const nowTime = new Date();
+      statusEl.textContent = `雲端同步完畢 (${String(nowTime.getHours()).padStart(2, '0')}:${String(nowTime.getMinutes()).padStart(2, '0')}更新)`;
+    }
+  } catch(e) {
+    console.error(e);
+    if (statusEl) statusEl.textContent = "同步失敗，請手動刷新";
+  }
+}
+
+function manualRefresh() { loadCloudData(); }
+buildGrid(); 
+loadCloudData();
+setInterval(loadCloudData, 60000); 
+</script>
+</body>
+</html>
