@@ -1,168 +1,120 @@
-{
-  "name": "美股盤前情報資料庫",
-  "updated_at": "2026-06-02T22:41:14.072440+00:00",
-  "data": {
-    "NOW": {
-      "quote": {
-        "c": 127.6500015258789,
-        "d": -4.339998474121103,
-        "dp": -3.288126732419958
-      },
-      "news": [
-        {
-          "headline": "無新聞標題",
-          "datetime": 1780440072,
-          "source": "Yahoo Finance",
-          "url": "#"
-        },
-        {
-          "headline": "無新聞標題",
-          "datetime": 1780440072,
-          "source": "Yahoo Finance",
-          "url": "#"
-        },
-        {
-          "headline": "無新聞標題",
-          "datetime": 1780440072,
-          "source": "Yahoo Finance",
-          "url": "#"
-        }
-      ]
-    },
-    "NVDA": {
-      "quote": {
-        "c": 222.82000732421875,
-        "d": -1.0999926757812375,
-        "dp": -0.4912436029748292
-      },
-      "news": [
-        {
-          "headline": "無新聞標題",
-          "datetime": 1780440072,
-          "source": "Yahoo Finance",
-          "url": "#"
-        },
-        {
-          "headline": "無新聞標題",
-          "datetime": 1780440072,
-          "source": "Yahoo Finance",
-          "url": "#"
-        },
-        {
-          "headline": "無新聞標題",
-          "datetime": 1780440072,
-          "source": "Yahoo Finance",
-          "url": "#"
-        }
-      ]
-    },
-    "LITE": {
-      "quote": {
-        "c": 1029.1500244140625,
-        "d": 114.85002441406255,
-        "dp": 12.561525146457678
-      },
-      "news": [
-        {
-          "headline": "無新聞標題",
-          "datetime": 1780440073,
-          "source": "Yahoo Finance",
-          "url": "#"
-        },
-        {
-          "headline": "無新聞標題",
-          "datetime": 1780440073,
-          "source": "Yahoo Finance",
-          "url": "#"
-        },
-        {
-          "headline": "無新聞標題",
-          "datetime": 1780440073,
-          "source": "Yahoo Finance",
-          "url": "#"
-        }
-      ]
-    },
-    "ONDS": {
-      "quote": {
-        "c": 13.579999923706055,
-        "d": 0.1692999237060544,
-        "dp": 1.2624242113092858
-      },
-      "news": [
-        {
-          "headline": "無新聞標題",
-          "datetime": 1780440073,
-          "source": "Yahoo Finance",
-          "url": "#"
-        },
-        {
-          "headline": "無新聞標題",
-          "datetime": 1780440073,
-          "source": "Yahoo Finance",
-          "url": "#"
-        },
-        {
-          "headline": "無新聞標題",
-          "datetime": 1780440073,
-          "source": "Yahoo Finance",
-          "url": "#"
-        }
-      ]
-    },
-    "MRVL": {
-      "quote": {
-        "c": 290.7900085449219,
-        "d": 71.29700854492188,
-        "dp": 32.48258875905923
-      },
-      "news": [
-        {
-          "headline": "無新聞標題",
-          "datetime": 1780440073,
-          "source": "Yahoo Finance",
-          "url": "#"
-        },
-        {
-          "headline": "無新聞標題",
-          "datetime": 1780440073,
-          "source": "Yahoo Finance",
-          "url": "#"
-        },
-        {
-          "headline": "無新聞標題",
-          "datetime": 1780440073,
-          "source": "Yahoo Finance",
-          "url": "#"
-        }
-      ]
-    },
-    "GOOG": {
-      "quote": {
-        "c": 358.3900146484375,
-        "d": -11.6099853515625,
-        "dp": -3.1378338788006754
-      },
-      "news": [
-        {
-          "headline": "無新聞標題",
-          "datetime": 1780440074,
-          "source": "Yahoo Finance",
-          "url": "#"
-        },
-        {
-          "headline": "無新聞標題",
-          "datetime": 1780440074,
-          "source": "Yahoo Finance",
-          "url": "#"
-        },
-        {
-          "headline": "無新聞標題",
-          "datetime": 1780440074,
-          "source": "Yahoo Finance",
-          "url": "#"
-        }
-      ]
+import json
+import datetime
+import pytz
+import yfinance as yf
+
+STOCKS = ['NOW', 'NVDA', 'LITE', 'ONDS', 'MRVL', 'GOOG']
+
+def fetch_stock_data():
+    output_data = {}
+    
+    for sym in STOCKS:
+        try:
+            print(f"正在抓取 {sym}...")
+            ticker = yf.Ticker(sym)
+            info = ticker.info
+
+            # 盤前優先 → 盤後次之 → 正式收盤保底
+            current_price = (
+                info.get('preMarketPrice') or
+                info.get('postMarketPrice') or
+                info.get('regularMarketPrice') or
+                info.get('currentPrice', 0)
+            )
+            previous_close = (
+                info.get('regularMarketPreviousClose') or
+                info.get('previousClose', 0)
+            )
+
+            dollar_change = current_price - previous_close
+            percent_change = (dollar_change / previous_close) * 100 if previous_close else 0
+
+            # 判斷目前是哪個盤
+            phase = "正式盤"
+            if info.get('preMarketPrice'):
+                phase = "盤前"
+            elif info.get('postMarketPrice'):
+                phase = "盤後"
+
+            # 新聞抓取：相容新舊兩種 yfinance 格式
+            news_list = []
+            try:
+                yf_news = ticker.news
+                for item in (yf_news or [])[:3]:
+                    content = item.get('content', {})
+
+                    # 標題：新格式在 content.title，舊格式在 item.title
+                    title = (
+                        content.get('title') or
+                        item.get('title') or
+                        item.get('headline', '')
+                    )
+
+                    # 時間：新格式在 content.pubDate (ISO字串)，舊格式在 item.providerPublishTime (timestamp)
+                    pub_time = content.get('pubDate') or item.get('providerPublishTime')
+                    if isinstance(pub_time, str):
+                        try:
+                            dt = datetime.datetime.fromisoformat(pub_time.replace('Z', '+00:00'))
+                            pub_time = int(dt.timestamp())
+                        except:
+                            pub_time = int(datetime.datetime.now().timestamp())
+                    elif not pub_time:
+                        pub_time = int(datetime.datetime.now().timestamp())
+
+                    # 連結：新格式在 content.canonicalUrl.url，舊格式在 item.link
+                    link = (
+                        content.get('canonicalUrl', {}).get('url') or
+                        content.get('clickThroughUrl', {}).get('url') or
+                        item.get('link') or
+                        item.get('url', '#')
+                    )
+
+                    # 來源：新格式在 content.provider.displayName，舊格式在 item.publisher
+                    source = (
+                        content.get('provider', {}).get('displayName') or
+                        item.get('publisher', 'Yahoo Finance')
+                    )
+
+                    # 過濾掉空標題
+                    if title and title.strip() and link and link != '#':
+                        news_list.append({
+                            "headline": title.strip(),
+                            "datetime": pub_time,
+                            "source": source,
+                            "url": link
+                        })
+
+            except Exception as ne:
+                print(f"  {sym} 新聞抓取失敗: {ne}")
+
+            output_data[sym] = {
+                "quote": {
+                    "c": round(current_price, 2),
+                    "d": round(dollar_change, 2),
+                    "dp": round(percent_change, 4),
+                    "phase": phase
+                },
+                "news": news_list
+            }
+            print(f"  ✅ {sym} [{phase}] ${current_price:.2f} ({dollar_change:+.2f}) 新聞:{len(news_list)}則")
+
+        except Exception as e:
+            print(f"  ❌ {sym} 失敗: {e}")
+            output_data[sym] = {
+                "quote": {"c": 0.0, "d": 0.0, "dp": 0.0, "phase": ""},
+                "news": []
+            }
+
+    now_utc = datetime.datetime.now(pytz.utc).isoformat()
+    final_payload = {
+        "name": "美股盤前情報資料庫",
+        "updated_at": now_utc,
+        "data": output_data
     }
-  }
-}
+
+    with open('stock_data.json', 'w', encoding='utf-8') as f:
+        json.dump(final_payload, f, ensure_ascii=False, indent=2)
+    print("✅ stock_data.json 寫入成功！")
+
+if __name__ == "__main__":
+    fetch_stock_data()
