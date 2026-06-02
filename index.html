@@ -18,97 +18,98 @@
     --muted: #5a5a7a; --up: #39ff8a; --down: #ff4d6d; --discord: #5865F2;
   }
   
-  html, body { overflow-x: hidden; width: 100%; min-height: 100%; margin: 0; padding: 0; box-sizing: border-box; -webkit-font-smoothing: antialiased; }
+  html, body { width: 100%; min-height: 100vh; margin: 0; padding: 0; box-sizing: border-box; -webkit-font-smoothing: antialiased; background: var(--bg); color: var(--text); font-family: 'Noto Sans TC', sans-serif; }
   * { box-sizing: inherit; }
-  body { background: var(--bg); color: var(--text); font-family: 'Noto Sans TC', sans-serif; font-weight: 400; padding-bottom: 24px; max-width: 1200px; margin: 0 auto; position: relative; }
   
-  header, .hero, .control-strip { padding: 16px 20px 0; display: flex; align-items: center; justify-content: space-between; width: 100%; }
-  header { padding-top: 18px; }
+  body { display: flex; flex-direction: column; padding: 10px 16px 20px; max-width: 100%; margin: 0 auto; position: relative; }
+  
+  header, .hero, .control-strip { display: flex; align-items: center; justify-content: space-between; width: 100%; padding: 4px 6px; }
   .logo { font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 0.15em; color: var(--muted); text-transform: uppercase; }
   .clock, .hero-sub, .status-label, .card-price-chg, .card-news-item .news-time, .detail-news-meta { font-family: 'DM Mono', monospace; }
   .clock, .hero-sub { font-size: 11px; color: var(--muted); }
-  .hero { padding-bottom: 10px; }
-  .hero-time { font-family: 'DM Mono', monospace; font-size: 32px; font-weight: 500; line-height: 1; }
-  .hero-time span { color: var(--accent); }
-  .hero-sub { margin-top: 4px; }
   
-  .control-strip { padding-bottom: 14px; }
+  .hero-time { font-family: 'DM Mono', monospace; font-size: 32px; font-weight: 500; line-height: 1; margin-top: 2px; }
+  .hero-time span { color: var(--accent); }
+  .hero-sub { margin-top: 2px; }
+  
+  .control-strip { margin-bottom: 4px; }
   .status-chip { background: var(--surface); border: 1px solid var(--border); border-radius: 100px; padding: 6px 12px; display: flex; align-items: center; gap: 6px; }
   .status-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 6px var(--accent); animation: blink 2s infinite; }
   .status-label { font-size: 10px; color: var(--accent); }
   .refresh-btn { background: rgba(0,212,255,0.1); border: 1px solid var(--accent2); border-radius: 100px; padding: 6px 14px; font-size: 11px; color: var(--accent2); cursor: pointer; transition: all 0.2s; -webkit-tap-highlight-color: transparent; }
-  .refresh-btn:active, .discord-btn:active { transform: scale(0.95); }
+  .refresh-btn:active { transform: scale(0.95); }
   
-  .grid { display: grid; grid-template-columns: 1fr; gap: 12px; padding: 0 16px 12px; width: 100%; }
-  .card { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 16px; cursor: pointer; transition: border-color 0.2s cubic-bezier(0.4, 0, 0.2, 1), grid-column 0.2s; min-height: 105px; display: flex; flex-direction: column; justify-content: space-between; width: 100%; overflow: hidden; -webkit-tap-highlight-color: transparent; }
-  .card.expanded { border-color: var(--accent2); grid-column: 1 / -1; order: -1; cursor: default; }
+  /* 網頁柵格基礎排版 */
+  .grid { display: grid; grid-template-columns: 1fr; gap: 12px; width: 100%; margin-bottom: 12px; }
+  .card { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 14px; cursor: pointer; transition: border-color 0.2s cubic-bezier(0.4, 0, 0.2, 1); display: flex; flex-direction: column; justify-content: flex-start; width: 100%; overflow: hidden; -webkit-tap-highlight-color: transparent; }
+  .card.expanded { border-color: var(--accent2); grid-column: 1 / -1 !important; order: -1; cursor: default; }
   
   .card-top { display: flex; justify-content: space-between; align-items: center; width: 100%; }
   .card-sym-wrapper { display: flex; align-items: center; gap: 8px; }
-  .card-sym { font-family: 'DM Mono', monospace !important; font-size: 22px !important; font-weight: 700 !important; color: var(--accent2) !important; letter-spacing: 0.02em; line-height: 1.1; }
+  .card-sym { font-family: 'DM Mono', monospace; font-size: 20px; font-weight: 700; color: var(--accent2); letter-spacing: 0.02em; line-height: 1.1; }
   
-  .market-badge { font-family: 'Noto Sans TC', sans-serif; font-size: 9px; font-weight: 700; color: var(--accent); border: 1px solid var(--accent); padding: 2px 6px; border-radius: 4px; background: rgba(200, 255, 0, 0.08); letter-spacing: 0.05em; display: none; text-shadow: 0 0 4px rgba(200, 255, 0, 0.2); }
+  .market-badge { font-family: 'Noto Sans TC', sans-serif; font-size: 9px; font-weight: 700; color: var(--accent); border: 1px solid var(--accent); padding: 1px 5px; border-radius: 4px; background: rgba(200, 255, 0, 0.08); display: none; }
   
-  .card-name { font-size: 11px; color: var(--muted); margin-top: 4px; }
+  .card-name { font-size: 11px; color: var(--muted); margin-top: 2px; }
   .card-price { text-align: right; }
   .card-price-num { font-family: 'DM Mono', monospace; font-size: 18px; font-weight: 700; }
-  .card-price-chg { font-size: 11px; margin-top: 2px; }
+  .card-price-chg { font-size: 11px; margin-top: 1px; }
   .up { color: var(--up) !important; } .down { color: var(--down) !important; } .neutral { color: var(--muted); }
   
-  .card-news { border-top: 1px solid var(--border); padding-top: 8px; margin-top: 8px; width: 100%; pointer-events: none; }
+  .card-news { border-top: 1px solid var(--border); padding-top: 6px; margin-top: 6px; width: 100%; pointer-events: none; }
   .card.expanded .card-news { display: none; }
-  .card-news-item { font-size: 11px; color: var(--text); line-height: 1.6; padding: 5px 0; border-bottom: 1px solid rgba(255,255,255,0.04); text-overflow: ellipsis; overflow: hidden; white-space: nowrap; width: 100%; }
+  .card-news-item { font-size: 11px; color: var(--text); line-height: 1.5; padding: 4px 0; border-bottom: 1px solid rgba(255,255,255,0.02); text-overflow: ellipsis; overflow: hidden; white-space: nowrap; width: 100%; }
   .card-news-item .news-time { font-size: 9px; color: var(--muted); margin-top: 1px; }
   .card-news-item:last-child { border-bottom: none; }
   
   .card-detail { display: none; margin-top: 12px; border-top: 1px solid var(--border); padding-top: 12px; width: 100%; }
   .card.expanded .card-detail { display: block; }
   
-  .chart-box { border-radius: 10px; overflow: hidden; border: 1px solid var(--border); height: 320px; margin-bottom: 14px; width: 100%; background: var(--bg); transform: translateZ(0); }
+  .chart-box { border-radius: 10px; overflow: hidden; border: 1px solid var(--border); height: 320px; margin-bottom: 14px; width: 100%; background: var(--bg); }
   .chart-box iframe { width: 100%; height: 100%; border: none; }
   
-  .detail-news-item { background: var(--bg); border: 1px solid var(--border); border-radius: 8px; padding: 12px; margin-bottom: 8px; text-decoration: none; display: block; width: 100%; transition: border-color 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease; -webkit-tap-highlight-color: transparent; }
+  .detail-news-item { background: var(--bg); border: 1px solid var(--border); border-radius: 8px; padding: 12px; margin-bottom: 8px; text-decoration: none; display: block; width: 100%; }
   .detail-news-title { font-size: 12px; color: var(--text); line-height: 1.5; }
   .detail-news-meta { margin-top: 4px; display: block; font-size: 9px; color: var(--muted); }
   
-  .detail-news-item:hover, .detail-news-item:active { border-color: var(--accent) !important; background: rgba(200, 255, 0, 0.04); box-shadow: 0 0 10px rgba(200, 255, 0, 0.12); }
-  
-  .discord-box { margin: 12px 16px; padding: 16px; background: rgba(88,101,242,0.03); border: 1px solid rgba(88,101,242,0.15); border-radius: 16px; display: flex; flex-direction: column; gap: 10px; }
+  .discord-box { padding: 14px; background: rgba(88,101,242,0.03); border: 1px solid rgba(88,101,242,0.12); border-radius: 14px; display: flex; flex-direction: column; gap: 8px; margin-bottom: 10px; }
   .discord-title { font-size: 12px; font-weight: 500; color: #5865F2; display: flex; align-items: center; gap: 6px; text-transform: uppercase; letter-spacing: 0.05em; }
-  .discord-text { font-size: 11px; color: var(--muted); line-height: 1.8; word-break: keep-all; white-space: normal; }
-  @media (max-width: 380px) { .discord-text { font-size: 10px; } }
-  .time-group { white-space: nowrap; display: inline-block; vertical-align: middle; }
-  .discord-highlight { color: var(--accent); border: 1px solid var(--accent); border-radius: 100px; padding: 1px 6px; font-size: 10px; font-weight: 500; display: inline-block; background: rgba(200, 255, 0, 0.05); margin: 0 1px; line-height: 1.2; vertical-align: middle; }
+  .discord-text { font-size: 11px; color: var(--muted); line-height: 1.6; }
+  .time-group { white-space: nowrap; display: inline-block; }
+  .discord-highlight { color: var(--accent); border: 1px solid var(--accent); border-radius: 100px; padding: 1px 6px; font-size: 10px; font-weight: 500; display: inline-block; background: rgba(200, 255, 0, 0.05); }
   
   .discord-btn-group { display: flex; flex-direction: column; gap: 8px; width: 100%; }
-  .discord-btn { width: 100%; padding: 12px; background: var(--discord); color: #fff; border: none; border-radius: 12px; font-family: 'Noto Sans TC', sans-serif; font-size: 12px; font-weight: 500; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; text-decoration: none; transition: all 0.2s; }
+  .discord-btn { width: 100%; padding: 10px; background: var(--discord); color: #fff; border: none; border-radius: 10px; font-family: 'Noto Sans TC', sans-serif; font-size: 12px; font-weight: 500; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; text-decoration: none; }
   .discord-btn-join { background: transparent; border: 1.5px solid var(--discord); color: #fff; }
-  .discord-btn-join:active { background: rgba(88,101,242,0.15); }
   
-  .notice { margin: 0 16px; padding: 10px 12px; background: rgba(0, 212, 255, 0.05); border: 1px solid rgba(0, 212, 255, 0.2); border-radius: 10px; font-size: 10px; color: var(--accent2); line-height: 1.7; }
-  .loading-dot { display: inline-block; animation: blink 1s infinite; }
+  .notice { padding: 8px 12px; background: rgba(0, 212, 255, 0.04); border: 1px solid rgba(0, 212, 255, 0.15); border-radius: 10px; font-size: 10px; color: var(--accent2); line-height: 1.6; }
   @keyframes blink { 0%,100%{opacity:0.2} 50%{opacity:1} }
 
-  @media (min-width: 600px) {
-    .hero-time { font-size: 48px; }
-    .grid { grid-template-columns: repeat(2, 1fr); gap: 12px; padding: 0 20px 20px; }
-    .discord-box, .notice { margin: 0 20px 12px; }
-    .discord-btn-group { flex-direction: row; }
-    .discord-btn { flex: 1; }
-    .chart-box { height: 420px; }
-  }
-  @media (min-width: 1024px) {
-    .grid { grid-template-columns: repeat(3, 1fr); }
+  /* 💻 核心修改：大螢幕（1920) 滿版且不產生滾動條排版 */
+  @media (min-width: 1200px) {
+    body { max-width: 1600px; height: 100vh; overflow: hidden; padding: 12px 24px; justify-content: space-between; }
+    /* 當有卡片被展開時，自動釋放高度限制允許滾動 */
+    body.has-expanded { height: auto !important; overflow-y: auto !important; }
+    
+    .hero-time { font-size: 42px; }
+    .grid { grid-template-columns: repeat(3, 1fr); gap: 14px; margin-bottom: 8px; flex: 1; align-content: center; }
+    .card { min-height: 155px; justify-content: space-between; padding: 16px; }
+    .card-news { margin-top: 8px; padding-top: 8px; }
+    .card-news-item { padding: 5px 0; font-size: 11.5px; }
+    
+    .discord-box { flex-direction: row; align-items: center; justify-content: space-between; padding: 12px 18px; gap: 20px; margin-bottom: 8px; }
+    .discord-text { margin-top: 0; max-width: 50%; }
+    .discord-btn-group { flex-direction: row; width: auto; gap: 12px; }
+    .discord-btn { width: 220px; padding: 11px; }
+    
+    .chart-box { height: 460px; }
   }
 
-  @media (min-width: 1200px) {
-    html, body { height: 100vh; max-height: 100vh; overflow: hidden; }
-    html:has(.card.expanded), body:has(.card.expanded) { height: auto !important; max-height: none !important; overflow-y: auto !important; }
-    body { max-width: 1400px; display: flex; flex-direction: column; justify-content: space-between; padding-bottom: 15px; }
-    body:has(.card.expanded) { justify-content: flex-start; gap: 10px; }
-    .grid { gap: 16px; padding-bottom: 5px; }
-    .discord-box { margin: 6px 16px; padding: 14px; }
-    .notice { margin: 0 16px; }
+  /* 平板裝置適應 */
+  @media (min-width: 600px) and (max-width: 1199px) {
+    .grid { grid-template-columns: repeat(2, 1fr); }
+    .discord-btn-group { flex-direction: row; }
+    .discord-btn { flex: 1; }
   }
 </style>
 </head>
@@ -129,7 +130,7 @@
 <div class="control-strip">
   <div class="status-chip">
     <div class="status-dot"></div>
-    <div class="status-label" id="update-status">初始化數據中</div>
+    <div class="status-label" id="update-status">定時同步中</div>
   </div>
   <div class="refresh-btn" onclick="manualRefresh()">🔄 重新載入</div>
 </div>
@@ -137,9 +138,11 @@
 <div class="grid" id="grid"></div>
 
 <div class="discord-box">
-  <div class="discord-title"><span>🛡️</span> 24H 雲端自動推送已部署</div>
-  <div class="discord-text">
-    無須開啟網頁，GitHub 雲端將於每日美股盤後 <span class="time-group"><span class="discord-highlight">05:30</span> 與晚間 <span class="discord-highlight">17:30</span></span> 自動精準推送至 Telegram 頻道
+  <div>
+    <div class="discord-title"><span>🛡️</span> 24H 雲端自動推送已部署</div>
+    <div class="discord-text">
+      無須開啟網頁，GitHub 雲端將於每日美股盤後 <span class="time-group"><span class="discord-highlight">05:30</span> 與晚間 <span class="discord-highlight">17:30</span></span> 自動精準推送至 Telegram 頻道
+    </div>
   </div>
   <div class="discord-btn-group">
     <a class="discord-btn" href="https://discord.gg/vzVbybVvys" target="_blank">📱 進入我的美股精選情報室</a>
@@ -161,7 +164,6 @@ const STOCKS = [
   { sym: 'GOOG', name: 'Google C',     ex: 'NASDAQ' },
 ];
 
-// 本地繁體中文預備防線：當雲端數據缺漏時觸發
 const FALLBACK_NEWS = {
   NOW: [
     { title: "ServiceNow 雲端工作流拓展：機構上調目標價與大型企業續約率觀察", src: "財經編譯" },
@@ -210,7 +212,7 @@ updateClock();
 
 function buildGrid() {
   document.getElementById('grid').innerHTML = STOCKS.map(s => `
-    <div class="card" id="card-${s.sym}" onclick="toggleCard('${s.sym}','${s.ex}', event)">
+    <div class="card" id="card-${s.sym}" onclick="handleCardClick('${s.sym}','${s.ex}', event)">
       <div class="card-top">
         <div>
           <div class="card-sym-wrapper">
@@ -235,146 +237,41 @@ function buildGrid() {
   `).join('');
 }
 
-function toggleCard(sym, ex, event) {
+// 點擊卡片觸發的入口
+function handleCardClick(sym, ex, event) {
   if (event.target.closest('.detail-news-item')) return;
   const card = document.getElementById(`card-${sym}`);
   if (!card) return;
-  const isExp = card.classList.contains('expanded');
   
-  if (expandedSym && expandedSym !== sym) {
-    const prevCard = document.getElementById(`card-${expandedSym}`);
-    if (prevCard) {
-      prevCard.classList.remove('expanded');
-      const prevIframe = document.getElementById(`chart-${expandedSym}`);
-      if (prevIframe) prevIframe.src = '';
-    }
-  }
-
-  if (!isExp) {
-    card.classList.add('expanded');
-    expandedSym = sym;
-    window.location.hash = "expanded";
-    setTimeout(() => { window.scrollTo({ top: card.offsetTop - 15, behavior: 'smooth' }); }, 60);
-
-    const iframe = document.getElementById(`chart-${sym}`);
-    if (iframe) {
-      iframe.src = `https://www.tradingview.com/widgetembed/?symbol=${ex}:${sym}&interval=D&hidesidetoolbar=1&theme=dark&style=1&timezone=Asia/Taipei&locale=zh_TW`;
-    }
-    
-    // 渲染詳細新聞（若雲端抓取的包含空白標題，則自動使用備用防線項目）
-    const box = document.getElementById('detail-news-' + sym);
-    if (box && globalDataCache?.[sym]) {
-      const items = globalDataCache[sym].news;
-      const validItems = items ? items.filter(i => i.headline && i.headline !== "無新聞標題" && i.headline.trim() !== "") : [];
-      
-      if (validItems.length > 0) {
-        box.innerHTML = validItems.slice(0, 3).map(item => {
-          const d = new Date((item.datetime ?? Date.now() / 1000) * 1000);
-          return `<a class="detail-news-item" href="${item.url ?? '#'}" target="_blank" rel="noopener noreferrer">
-            <div class="detail-news-title">📰 ${item.headline}</div>
-            <span class="detail-news-meta">${d.getMonth()+1}/${d.getDate()} ${String(d.getHours()).padStart(2,'0')}:${String(d.getMinutes()).padStart(2,'0')} · ${item.source ?? 'Yahoo'}</span>
-          </a>`;
-        }).join('');
-      } else {
-        box.innerHTML = FALLBACK_NEWS[sym].map(f => `
-          <div class="detail-news-item">
-            <div class="detail-news-title">📰 [產業觀察] ${f.title}</div>
-            <span class="detail-news-meta">本日最新 · ${f.src}</span>
-          </div>
-        `).join('');
-      }
-    }
+  if (card.classList.contains('expanded')) {
+    // 點擊已打開的卡片 -> 執行關閉（並退回歷史紀錄）
+    history.back();
   } else {
-    card.classList.remove('expanded');
-    expandedSym = null;
-    const iframe = document.getElementById(`chart-${sym}`);
-    if (iframe) iframe.src = '';
-    if (window.location.hash === "#expanded") history.replaceState(null, null, ' ');
+    // 打開新卡片 -> 注入歷史紀錄狀態，達成原生「上一步」效果
+    history.pushState({ expandedSym: sym, ex: ex }, "");
+    renderExpandedCard(sym, ex);
   }
 }
 
-async function loadCloudData() {
-  const statusEl = document.getElementById('update-status');
-  try {
-    const res = await fetch(`./stock_data.json?t=${Date.now()}`);
-    const json = await res.json();
-    globalDataCache = json?.data ?? {};
-    
-    const dataTime = json?.updated_at ? new Date(json.updated_at) : new Date();
-    const nyTimeStr = dataTime.toLocaleTimeString('en-US', { timeZone: 'America/New_York', hour12: false });
-    const [nyHour, nyMin] = nyTimeStr.split(':').map(Number);
-    const totalNyMinutes = nyHour * 60 + nyMin;
-    
-    let phaseLabel = ""; 
-    if (totalNyMinutes >= 240 && totalNyMinutes < 570) phaseLabel = "盤前";
-    else if (totalNyMinutes >= 960 && totalNyMinutes < 1200) phaseLabel = "盤後";
+// 真正執行渲染展開卡片的邏輯
+function renderExpandedCard(sym, ex) {
+  closeCurrentExpanded();
+  
+  const card = document.getElementById(`card-${sym}`);
+  if (!card) return;
+  
+  card.classList.add('expanded');
+  document.body.classList.add('has-expanded');
+  expandedSym = sym;
+  
+  setTimeout(() => { window.scrollTo({ top: card.offsetTop - 15, behavior: 'smooth' }); }, 60);
 
-    STOCKS.forEach(s => {
-      const sData = globalDataCache[s.sym];
-      if (!sData) return;
-      
-      const d = sData.quote;
-      const priceEl = document.getElementById(`price-${s.sym}`);
-      const chgEl = document.getElementById(`chg-${s.sym}`);
-      const badgeEl = document.getElementById(`badge-${s.sym}`);
-      
-      if (d && d.c !== undefined && priceEl && chgEl) {
-        const cls = d.d >= 0 ? 'up' : 'down';
-        const sign = d.d >= 0 ? '+' : '';
-        
-        priceEl.textContent = `$${d.c.toFixed(2)}`;
-        priceEl.className = `card-price-num ${cls}`;
-        chgEl.textContent = `${sign}${d.d.toFixed(2)} (${sign}${d.dp.toFixed(2)}%)`;
-        chgEl.className = `card-price-chg ${cls}`;
-        
-        if (badgeEl) {
-          if (phaseLabel) {
-            badgeEl.textContent = phaseLabel;
-            badgeEl.style.display = "inline-block";
-          } else {
-            badgeEl.style.display = "none";
-          }
-        }
-      }
-      
-      // 🛠️ 智能新聞防線：嚴格過濾掉所有「無新聞標題」，若不足 3 則立刻啟用完美繁中預備隊
-      const newsBox = document.getElementById(`news-${s.sym}`);
-      if (newsBox) {
-        const rawNews = sData.news ?? [];
-        const validNews = rawNews.filter(item => item.headline && item.headline !== "無新聞標題" && item.headline.trim() !== "");
-        
-        if (validNews.length >= 3) {
-          newsBox.innerHTML = validNews.slice(0, 3).map(item => `
-            <div class="card-news-item">
-              • ${item.headline}
-              <div class="news-time">${new Date((item.datetime ?? Date.now()/1000)*1000).getMonth()+1}/${new Date((item.datetime ?? Date.now()/1000)*1000).getDate()} · ${item.source ?? 'Yahoo'}</div>
-            </div>
-          `).join('');
-        } else {
-          // 不足 3 則直接塞滿我們準備的 3 則高質感中文財經產業觀點
-          newsBox.innerHTML = FALLBACK_NEWS[s.sym].map(f => `
-            <div class="card-news-item">
-              • ${f.title}
-              <div class="news-time">今日即時 · ${f.src}</div>
-            </div>
-          `).join('');
-        }
-      }
-    });
-    
-    if (statusEl) {
-      const updateTime = new Date(json?.updated_at ?? Date.now());
-      statusEl.textContent = `雲端同步完畢 (${String(updateTime.getHours()).padStart(2,'0')}:${String(updateTime.getMinutes()).padStart(2,'0')}更新)`;
-    }
-  } catch(e) {
-    console.error(e);
-    if (statusEl) statusEl.textContent = "同步失敗，請手動刷新";
+  const iframe = document.getElementById(`chart-${sym}`);
+  if (iframe) {
+    iframe.src = `https://www.tradingview.com/widgetembed/?symbol=${ex}:${sym}&interval=D&hidesidetoolbar=1&theme=dark&style=1&timezone=Asia/Taipei&locale=zh_TW`;
   }
-}
-
-function manualRefresh() { loadCloudData(); }
-buildGrid(); 
-loadCloudData();
-</script>
-</body>
-</html>
+  
+  const box = document.getElementById('detail-news-' + sym);
+  if (box && globalDataCache?.[sym]) {
+    const items = globalDataCache[sym].news;
+    const validItems = items ? items.
