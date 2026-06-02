@@ -1,41 +1,33 @@
 name: 24H 雲端股票數據自動同步
-
 on:
   push:
-    branches: [ main, master ]  # 兼容 main 或 master 分支
+    branches: [ main, master ]
+    paths-ignore:
+      - 'stock_data.json'
   schedule:
-    # 🕒 避開整點塞車機制（轉換為台灣時間）：
-    # 1. UTC 21:18 = 台灣時間 早上 05:18（準備抓盤後，預期 05:30 附近完成）
-    # 2. UTC 09:18 = 台灣時間 晚上 17:18（準備抓盤前，預期 17:30 附近完成）
-    # 3. 每 1 小時的第 42 分鐘自動背景更新，確保網頁數據維持最新狀態
     - cron: '18 21 * * *'
     - cron: '18 9 * * *'
     - cron: '42 * * * *'
-  workflow_dispatch:            # 保留手動秒發按鈕
-
+  workflow_dispatch:
 jobs:
   refresh-data:
     runs-on: ubuntu-latest
     
     permissions:
-      contents: write           # 強制開啟寫入權限
+      contents: write
       
     steps:
     - name: 複製專案代碼
       uses: actions/checkout@v4
-
     - name: 設定 Python 環境
       uses: actions/setup-python@v5
       with:
         python-version: '3.10'
-
     - name: 安裝極速依賴套件
       run: |
         pip install yfinance pytz
-
     - name: 執行資料爬蟲
       run: python update_stocks.py
-
     - name: 將最新 stock_data.json 推送回 GitHub 倉庫
       run: |
         git config --local user.email "action@github.com"
@@ -47,13 +39,10 @@ jobs:
         else
           echo "數據無變動，跳過 Commit"
         fi
-
-    # 🎯 時間過濾核心：把小時轉換成純數字，容許 5~8 點、17~20 點
     - name: 檢查是否符合 Telegram 推播窗口
       id: check_window
       run: |
         export TZ="Asia/Taipei"
-        # 轉成純數字（去除前導0，例如 05 變成 5），避免 Bash 八進位判定錯誤
         TW_HOUR=$(date +%k | tr -d ' ')
         echo "目前 GitHub 實際執行時的台灣時間: ${TW_HOUR} 點"
         
@@ -70,8 +59,6 @@ jobs:
           echo "🤫 當前為背景例行更新，保持安靜，不發送 Telegram。"
           echo "send_alert=false" >> $GITHUB_ENV
         fi
-
-    # 🚀 修正後的 Telegram 發射台（注意此處是 == 'true'）
     - name: 發射 Telegram 情報推送
       if: env.send_alert == 'true'
       run: |
