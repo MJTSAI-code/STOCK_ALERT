@@ -1,186 +1,134 @@
-<!DOCTYPE html>
-<html lang="zh-TW">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
-<meta name="theme-color" content="#0a0a0f">
-<title>美股情報監控儀表板 PRO</title>
-<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500;700&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
-<style>
-  :root {
-    --bg: #0a0a0f; --surface: #12121a; --border: #1e1e2e;
-    --accent: #c8ff00; --accent2: #00d4ff; --text: #e8e8f0;
-    --muted: #5a5a7a; --up: #39ff8a; --down: #ff4d6d; --discord: #5865F2;
-  }
-  html, body { overflow-x: hidden; width: 100%; min-height: 100%; margin: 0; padding: 0; box-sizing: border-box; -webkit-font-smoothing: antialiased; background: var(--bg); color: var(--text); font-family: 'Noto Sans TC', sans-serif; scroll-behavior: smooth; }
-  * { box-sizing: inherit; }
-  body { padding-bottom: 24px; max-width: 1200px; margin: 0 auto; }
-  
-  header, .hero, .control-strip { padding: 16px 16px 0; display: flex; align-items: center; justify-content: space-between; }
-  header { padding-top: 18px; }
-  .logo { font-size: 24px; font-weight: 700; color: var(--up); }
-  .clock, .hero-sub, .status-label, .card-price-chg, .card-news-item .news-time, .detail-news-meta { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--muted); }
-  .hero { padding-bottom: 10px; }
-  .hero-time { font-family: 'DM Mono', monospace; font-size: 52px; font-weight: 500; line-height: 1; }
-  .hero-time span { color: var(--text); }
-  .hero-sub { font-size: 13px; color: var(--muted); margin-top: 4px; }
-  
-  .control-strip { padding-bottom: 14px; }
-  .status-chip { background: var(--surface); border: 1px solid var(--border); border-radius: 100px; padding: 6px 12px; display: flex; align-items: center; gap: 6px; }
-  .status-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 6px var(--accent); animation: blink 2s infinite; }
-  .status-label { font-size: 14px; color: var(--up); font-family: 'Noto Sans TC', sans-serif; }
-  .refresh-btn { background: #00d4ff; border: none; border-radius: 8px; padding: 10px 18px; font-size: 14px; font-weight: 500; color: #fff; cursor: pointer; transition: all 0.2s; -webkit-tap-highlight-color: transparent; display: flex; align-items: center; gap: 6px; }
-  
-  .grid { display: flex; flex-wrap: wrap; justify-content: flex-start; gap: 14px; padding: 0 12px 12px; width: 100%; transition: all 0.3s ease; }
-  .grid.has-expanded { justify-content: center; }
-  
-  .card { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 18px; cursor: pointer; transition: border-color 0.2s ease, width 0.3s cubic-bezier(0.25, 1, 0.5, 1), max-width 0.3s cubic-bezier(0.25, 1, 0.5, 1); min-height: 105px; display: flex; flex-direction: column; justify-content: space-between; -webkit-tap-highlight-color: transparent; width: 100%; overflow: hidden; order: 0; flex-grow: 0; flex-shrink: 0; }
-  
-  /* 手機單欄排版：展開的卡片原地放大撐開，order 維持 0 留在原地 */
-  .card.expanded { border-color: var(--accent2); cursor: default; width: 100% !important; max-width: 100% !important; order: 0; }
-  
-  .card-top { display: flex; justify-content: space-between; align-items: center; width: 100%; }
-  .card-sym-wrapper { display: flex; align-items: center; gap: 8px; }
-  .card-sym { font-family: 'DM Mono', monospace; font-size: 26px; font-weight: 700; color: var(--accent2); line-height: 1.1; }
-  .market-badge { font-size: 12px; font-weight: 700; color: #000; padding: 2px 6px; border-radius: 6px; background: var(--accent); display: inline-block; font-family: 'Noto Sans TC', sans-serif; }
-  
-  .card-name { font-size: 16px; color: var(--muted); margin-top: 4px; text-align: right; }
-  .card-price-num { font-family: 'DM Mono', monospace; font-size: 24px; font-weight: 700; color: var(--accent2); }
-  .card-price-chg { font-family: 'DM Mono', monospace; font-size: 16px; font-weight: 500; margin-top: 2px; text-align: right; }
-  .up { color: var(--up) !important; } .down { color: var(--down) !important; } .neutral { color: var(--muted); }
-  
-  .card-news { border-top: 1px solid var(--border); padding-top: 8px; margin-top: 8px; pointer-events: none; width: 100%; }
-  .card.expanded .card-news { display: none; }
-  .card-news-item { font-size: 14px; color: #00d4ff; line-height: 1.6; padding: 5px 0; border-bottom: 1px solid rgba(255,255,255,0.04); text-overflow: ellipsis; overflow: hidden; white-space: nowrap; width: 100%; }
-  .card-news-item:last-child { border-bottom: none; }
-  .news-time-label { font-size: 12px; color: var(--muted); margin-top: 4px; }
-  
-  .card-detail { display: none; margin-top: 16px; border-top: 1px solid var(--border); padding-top: 16px; cursor: default; width: 100%; }
-  .card.expanded .card-detail { display: block; }
-  
-  .chart-box { border-radius: 10px; overflow: hidden; border: 1px solid var(--border); height: 260px; margin-bottom: 16px; background: var(--bg); width: 100%; position: relative; cursor: pointer; }
-  .chart-box iframe { width: 100%; height: 100%; border: none; display: block; pointer-events: none; }
-  .chart-box.active iframe { pointer-events: auto; }
-  
-  .detail-news-item { background: var(--bg); border: 1px solid var(--border); border-radius: 8px; padding: 14px; margin-bottom: 10px; text-decoration: none; display: block; -webkit-tap-highlight-color: transparent; width: 100%; transition: border-color 0.2s; }
-  .detail-news-title { font-size: 14px; color: #00d4ff; line-height: 1.5; }
-  .detail-news-item:active, .detail-news-item:hover { border-color: var(--accent2); background: rgba(0, 212, 255, 0.04); }
-  
-  .discord-box { margin: 12px 12px; padding: 18px; background: var(--surface); border: 1px solid var(--border); border-radius: 16px; display: flex; flex-direction: column; gap: 10px; }
-  .discord-box .discord-title { font-size: 20px; font-weight: 700; color: #fff; }
-  .discord-tag { background: var(--accent); color: #000; border-radius: 20px; padding: 4px 10px; font-size: 14px; font-weight: 700; display: inline-block; margin-top: 4px; width: fit-content; }
-  .discord-btn { background: #5865F2; color: #fff; border: none; border-radius: 8px; padding: 10px; font-size: 16px; font-weight: 700; text-decoration: none; display: flex; align-items: center; justify-content: center; gap: 8px; width: fit-content; min-width: 120px; }
-  
-  .notice { margin: 12px 12px; padding: 18px; background: var(--surface); border: 1px solid var(--border); border-radius: 16px; display: flex; flex-direction: column; gap: 10px; }
-  .notice .notice-title { font-size: 20px; font-weight: 700; color: #fff; }
-  .notice-tag { background: var(--accent); color: #000; border-radius: 20px; padding: 4px 10px; font-size: 14px; font-weight: 700; display: inline-block; margin-top: 4px; width: fit-content; }
-  .notice-text { font-size: 14px; color: var(--muted); line-height: 1.6; }
+import json
+import time
+import os
+from datetime import datetime
+import pytz
+import yfinance as yf
 
-  @keyframes blink { 0%,100%{opacity:0.2} 50%{opacity:1} }
+STOCKS = ['NOW', 'NVDA', 'LITE', 'ONDS', 'MRVL', 'GOOG']
 
-  @media (min-width: 600px) {
-    header, .hero, .control-strip { padding: 16px 20px 0; }
-    .hero-time { font-size: 52px; }
-    .grid { padding: 0 20px 20px; gap: 14px; }
-    .card { width: calc(50% - 7px); max-width: calc(50% - 7px); }
-    /* 網頁寬螢幕版：保留點擊字卡飛到最前方置頂的 order: -1 特權 */
-    .card.expanded { order: -1; }
-    .discord-box, .notice { margin: 12px 20px; }
-    .chart-box { height: 380px; }
-  }
-  
-  @media (min-width: 1024px) { 
-    .grid { gap: 16px; } 
-    .card { width: calc((100% - 32px) / 3); max-width: calc((100% - 32px) / 3); }
-    .chart-box { height: 460px; } 
-  }
-  
-  @media (min-width: 1200px) {
-    body { max-width: 1400px; }
-    .grid { gap: 18px; }
-    .card { width: calc((100% - 36px) / 3); max-width: calc((100% - 36px) / 3); }
-  }
-</style>
-</head>
-<body>
+def is_news_catching_window():
+    """⏰ 早上 04:30-05:30 / 晚上 16:30-17:30 才會去 Yahoo 抓新新聞"""
+    tz = pytz.timezone('Asia/Taipei')
+    now_local = datetime.now(tz)
+    current_time_str = now_local.strftime("%H:%M")
+    
+    is_morning_window = ("04:30" <= current_time_str <= "05:30")
+    is_evening_window = ("16:30" <= current_time_str <= "17:30")
+    
+    if is_morning_window or is_evening_window:
+        print(f"⏰ 台北時間 {current_time_str} 【黃金一小時】更新即時新聞")
+        return True
+    else:
+        print(f"🔒 台北時間 {current_time_str} 非準備時段，鎖定並沿用歷史新聞")
+        return False
 
-<header>
-  <div class="logo">美股情報監控儀表板 PRO</div>
-  <div class="clock" id="clock">06:14:00</div>
-</header>
+def load_existing_news():
+    """💾 讀取現有的 json，完整繼承上一次抓到的真新聞"""
+    existing_news_map = {symbol: [] for symbol in STOCKS}
+    filename = 'stock_data.json'
+    if os.path.exists(filename):
+        try:
+            with open(filename, 'r', encoding='utf-8') as f:
+                old_data = json.load(f)
+                data_block = old_data.get('data', {})
+                for symbol in STOCKS:
+                    if symbol in data_block and 'news' in data_block[symbol]:
+                        existing_news_map[symbol] = data_block[symbol]['news']
+        except Exception as e:
+            print(f"⚠️ 讀取舊 JSON 失敗: {e}")
+    return existing_news_map
 
-<div class="hero">
-  <div>
-    <div class="hero-time" id="heroTime">06<span>:</span>14</div>
-    <div class="hero-sub" id="heroDate">2024.11.23 週六<br><span style="font-size:11px;color:#5a5a7a;">美股情報監控儀表板</span></div>
-  </div>
-</div>
+def fetch_stock_data():
+    output_data = {}
+    allow_news_fetch = is_news_catching_window()
+    history_news_map = load_existing_news()
+    
+    for symbol in STOCKS:
+        try:
+            ticker = yf.Ticker(symbol)
+            
+            # 1. 價格部分：每次執行都拿最新報價
+            info = ticker.info
+            current_price = info.get('regularMarketPrice') or info.get('currentPrice') or 0.0
+            dollar_change = info.get('regularMarketChange') or 0.0
+            percent_change = info.get('regularMarketChangePercent') or 0.0
+            
+            if current_price == 0.0:
+                hist = ticker.history(period="1d")
+                if not hist.empty:
+                    current_price = float(hist['Close'].iloc[-1])
+                    open_p = float(hist['Open'].iloc[-1])
+                    dollar_change = current_price - open_p
+                    percent_change = (dollar_change / open_p) * 100 if open_p != 0 else 0.0
 
-<div class="control-strip">
-  <div class="status-chip">
-    <div class="status-dot"></div>
-    <div class="status-label" id="update-status">正在同步雲端即時數據...</div>
-  </div>
-  <div class="refresh-btn" onclick="manualRefresh()">🔄 重新載入</div>
-</div>
+            # 2. 新聞部分：實施時段防守策略
+            processed_news = []
+            
+            if allow_news_fetch:
+                raw_news = ticker.news
+                if raw_news:
+                    for item in raw_news[:3]:
+                        # 🎯 改用最新結構：相容新版 yfinance
+                        content = item.get('content', {})
+                        headline = content.get('title') or item.get('title') or ""
+                        news_time = content.get('pubDate') or item.get('providerPublishTime')
+                        
+                        # 🎯 核心修復：抓取 clickThroughUrl 的真正真新聞網址
+                        click_through = content.get('clickThroughUrl', {}) if content else {}
+                        news_url = click_through.get('url') or item.get('link') or item.get('url') or ""
+                        
+                        if headline and news_url and news_url != "#" and news_time:
+                            headline_str = headline.strip()
+                            if "無新聞標題" not in headline_str and "無最新新聞" not in headline_str:
+                                # 時間戳記轉換
+                                if isinstance(news_time, str):
+                                    try:
+                                        dt = datetime.fromisoformat(news_time.replace('Z', '+00:00'))
+                                        t_stamp = int(dt.timestamp())
+                                    except:
+                                        t_stamp = int(time.time())
+                                else:
+                                    t_stamp = int(news_time)
 
-<div class="grid" id="grid"></div>
+                                processed_news.append({
+                                    "headline": headline_str,
+                                    "datetime": t_stamp,
+                                    "source": content.get('provider', {}).get('displayName') or item.get('publisher') or "Yahoo Finance",
+                                    "url": news_url.strip()  # 直達真正的第三方新聞網站
+                                })
+                
+                if not processed_news:
+                    processed_news = history_news_map.get(symbol, [])
+            else:
+                # 🌟 非黃金時段：百分之百原封不動，沿用上一次抓到的歷史真新聞
+                processed_news = history_news_map.get(symbol, [])
+            
+            output_data[symbol] = {
+                "quote": {
+                    "c": float(current_price),
+                    "d": float(dollar_change),
+                    "dp": float(percent_change)
+                },
+                "news": processed_news
+            }
+            time.sleep(1.5)
+            
+        except Exception as e:
+            print(f"❌ 處理 {symbol} 出現異常: {str(e)}")
+            output_data[symbol] = {
+                "quote": {"c": 0.0, "d": 0.0, "dp": 0.0},
+                "news": history_news_map.get(symbol, [])
+            }
 
-<div class="discord-box">
-  <div class="discord-title">Discord</div>
-  <div><span class="discord-tag">Lime 觀察美股情報監控儀表板！</span></div>
-  <a class="discord-btn" href="https://discord.gg/vzVbybVvys" target="_blank">🍇 Discord</a>
-</div>
+    final_json = {
+        "name": "美股盤前情報資料庫",
+        "updated_at": datetime.utcnow().isoformat() + "+00:00",
+        "data": output_data
+    }
+    
+    with open('stock_data.json', 'w', encoding='utf-8') as f:
+        json.dump(final_json, f, ensure_ascii=False, indent=2)
 
-<div class="notice">
-  <div class="notice-title">Notice</div>
-  <div><span class="notice-tag">【美股情報監控儀表板PRO】</span></div>
-  <div class="notice-text">這排日貌提在日按數的不會更新一種，邊訊有通知分享下躢，請於是打造更新的方案。</div>
-</div>
-
-<script>
-const STOCKS = [
-  { sym: 'NOW',  name: 'ServiceNow',   ex: 'NYSE' },
-  { sym: 'NVDA', name: 'Nvidia',       ex: 'NASDAQ' },
-  { sym: 'LITE', name: 'Lumentum',     ex: 'NASDAQ' },
-  { sym: 'ONDS', name: 'Ondas 無人機', ex: 'NASDAQ' },
-  { sym: 'MRVL', name: 'Marvell',      ex: 'NASDAQ' },
-  { sym: 'GOOG', name: 'Google C',     ex: 'NASDAQ' },
-];
-
-const FALLBACK_NEWS = {
-  NOW: [{ title: "ServiceNow 雲端工作流拓展：機構上調目標價與大型企業續約率觀察", src: "財經編譯", url: "https://tw.stock.yahoo.com/us" }],
-  NVDA: [{ title: "輝達晶片供應鏈產能與出貨大追蹤：多頭排列均線支撐力道強勁", src: "科技半導體", url: "https://tw.stock.yahoo.com/us" }],
-  LITE: [{ title: "Lumentum 光通訊模組需求看漲：追蹤高速網路元件最新拉貨潮", src: "光通訊專欄", url: "https://tw.stock.yahoo.com/us" }],
-  ONDS: [{ title: "Ondas 無人機防禦與軍工訂單追蹤：多空量能與核心均線變動", src: "特種工業", url: "https://tw.stock.yahoo.com/us" }],
-  MRVL: [{ title: "Marvell 客製化晶片與 ASIC 訂單火熱：網通板塊技術突破", src: "半導體情報", url: "https://tw.stock.yahoo.com/us" }],
-  GOOG: [{ title: "Google 核心搜尋與 AI 廣告整合成效：流量變現與用戶黏著度", src: "網路巨頭", url: "https://tw.stock.yahoo.com/us" }]
-};
-
-let expandedSym = null;
-let globalDataCache = null;
-
-function updateClock() {
-  const now = new Date();
-  const pad = n => String(n).padStart(2, '0');
-  document.getElementById('clock').textContent = `${pad(now.getHours())}:${pad(now.getMinutes())}:${pad(now.getSeconds())}`;
-  document.getElementById('heroTime').innerHTML = `${pad(now.getHours())}<span>:</span>${pad(now.getMinutes())}`;
-  document.getElementById('heroDate').innerHTML = `${now.getFullYear()}.${pad(now.getMonth()+1)}.${pad(now.getDate())} 週${['日','一','二','三','四','五','六'][now.getDay()]}<br><span style="font-size:11px;color:#5a5a7a;">美股情報監控儀表板</span>`;
-}
-setInterval(updateClock, 1000);
-updateClock();
-
-function getCleanValidNews(newsArray) {
-  if (!newsArray || !Array.isArray(newsArray)) return [];
-  return newsArray.filter(i => {
-    const txt = i.headline || i.title || "";
-    return txt && txt.trim() !== "" && !txt.includes("無新聞標題") && !txt.includes("無最新新聞");
-  });
-}
-
-function buildGrid() {
-  document.getElementById('grid').innerHTML = STOCKS.map(s => `
-    <div class="card" id="card-${s.sym}" onclick="toggleCard('${s.sym}','${s.ex}', event)">
-      <div class="card-top">
-        <div>
-          <div class="card-sym-wrapper"><div class="card-sym">${s
+if __name__ == "__main__":
+    fetch_stock_data()
