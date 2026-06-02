@@ -36,7 +36,7 @@
   
   .card { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 18px; cursor: pointer; transition: border-color 0.2s ease, width 0.3s cubic-bezier(0.25, 1, 0.5, 1), max-width 0.3s cubic-bezier(0.25, 1, 0.5, 1); min-height: 105px; display: flex; flex-direction: column; justify-content: space-between; -webkit-tap-highlight-color: transparent; width: 100%; overflow: hidden; order: 0; flex-grow: 0; flex-shrink: 0; }
   
-  /* 🎯 核心修正：手機版單欄時，展開的卡片不要強制置頂 (order: 0)，讓它原地放大推開別人 */
+  /* 🎯 手機版單欄時，展開的卡片原地放大推開別人，不要強制置頂 */
   .card.expanded { border-color: var(--accent2); cursor: default; width: 100% !important; max-width: 100% !important; order: 0; }
   
   .card-top { display: flex; justify-content: space-between; align-items: center; width: 100%; }
@@ -83,7 +83,7 @@
     .hero-time { font-size: 52px; }
     .grid { padding: 0 20px 20px; gap: 14px; }
     .card { width: calc(50% - 7px); max-width: calc(50% - 7px); }
-    /* 🎯 核心修正：大螢幕多欄排版時，才允許將展開的字卡移到最前方最優先 (order: -1) */
+    /* 🎯 大螢幕多欄排版時，才將展開的字卡移到最前方最優先 (order: -1) */
     .card.expanded { order: -1; }
     .discord-box, .notice { margin: 12px 20px; }
     .chart-box { height: 380px; }
@@ -119,7 +119,7 @@
 <div class="control-strip">
   <div class="status-chip">
     <div class="status-dot"></div>
-    <div class="status-label" id="update-status">Statustõr</div>
+    <div class="status-label" id="update-status">正在同步雲端即時數據...</div>
   </div>
   <div class="refresh-btn" onclick="manualRefresh()">🔄 重新載入</div>
 </div>
@@ -272,7 +272,7 @@ function toggleCard(sym, ex, event) {
       }
     }
     
-    // 🎯 核心修正：優化滾動邏輯，手機版單欄放大時，平滑地將畫面對齊到該字卡的頂端，絕不亂跳！
+    // 🎯 平滑地將畫面對齊到該字卡的頂端，絕不亂跳
     setTimeout(() => { 
       card.scrollIntoView({ behavior: 'smooth', block: 'start' }); 
     }, 150);
@@ -375,7 +375,7 @@ async function loadCloudData() {
     });
     
     if (statusEl) {
-      statusEl.textContent = "Statustõr";
+      statusEl.textContent = "正在同步雲端即時數據...";
     }
   } catch(e) {
     console.error(e);
