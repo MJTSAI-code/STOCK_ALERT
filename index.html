@@ -31,14 +31,11 @@
   .status-label { font-size: 10px; color: var(--accent); }
   .refresh-btn { background: rgba(0,212,255,0.1); border: 1px solid var(--accent2); border-radius: 100px; padding: 6px 14px; font-size: 11px; color: var(--accent2); cursor: pointer; transition: all 0.2s; -webkit-tap-highlight-color: transparent; }
   
-  /* Flexbox 佈局：有人展開時靠中對齊（讓最後一排落單的卡片水平居中） */
   .grid { display: flex; flex-wrap: wrap; justify-content: flex-start; gap: 14px; padding: 0 12px 12px; width: 100%; transition: all 0.3s ease; }
   .grid.has-expanded { justify-content: center; }
   
-  /* 手機版預設：全部卡片 100% 滿版，絕對安全 */
+  /* 手機排版防護線：預設 100% 寬度不跑版 */
   .card { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 18px; cursor: pointer; transition: border-color 0.2s ease, width 0.3s cubic-bezier(0.25, 1, 0.5, 1), max-width 0.3s cubic-bezier(0.25, 1, 0.5, 1); min-height: 105px; display: flex; flex-direction: column; justify-content: space-between; -webkit-tap-highlight-color: transparent; width: 100%; overflow: hidden; order: 0; flex-grow: 0; flex-shrink: 0; }
-  
-  /* 展開卡片獨佔第一行，將其他卡片全數擠到下方 */
   .card.expanded { border-color: var(--accent2); cursor: default; width: 100% !important; max-width: 100% !important; order: -1; }
   
   .card-top { display: flex; justify-content: space-between; align-items: center; width: 100%; }
@@ -56,18 +53,14 @@
   .card-news-item { font-size: 11px; color: var(--text); line-height: 1.6; padding: 5px 0; border-bottom: 1px solid rgba(255,255,255,0.04); text-overflow: ellipsis; overflow: hidden; white-space: nowrap; width: 100%; }
   .card-news-item:last-child { border-bottom: none; }
   
-  /* 展開細節面板 */
   .card-detail { display: none; margin-top: 16px; border-top: 1px solid var(--border); padding-top: 16px; cursor: default; width: 100%; }
   .card.expanded .card-detail { display: block; }
   
-  /* 圖表外框 */
+  /* 觸控鎖定機制 */
   .chart-box { border-radius: 10px; overflow: hidden; border: 1px solid var(--border); height: 260px; margin-bottom: 16px; background: var(--bg); width: 100%; position: relative; cursor: pointer; }
-  
-  /* ⚡ 修正防線：預設完全穿透，點擊激活後才允許操作 */
   .chart-box iframe { width: 100%; height: 100%; border: none; display: block; pointer-events: none; }
   .chart-box.active iframe { pointer-events: auto; }
   
-  /* 新聞超連結條目 */
   .detail-news-item { background: var(--bg); border: 1px solid var(--border); border-radius: 8px; padding: 14px; margin-bottom: 10px; text-decoration: none; display: block; -webkit-tap-highlight-color: transparent; width: 100%; transition: border-color 0.2s; }
   .detail-news-title { font-size: 13px; color: var(--text); line-height: 1.5; }
   .detail-news-item:active, .detail-news-item:hover { border-color: var(--accent2); background: rgba(0, 212, 255, 0.04); }
@@ -83,7 +76,6 @@
   .notice { margin: 0 12px; padding: 10px 12px; background: rgba(0, 212, 255, 0.05); border: 1px solid rgba(0, 212, 255, 0.2); border-radius: 10px; font-size: 10px; color: var(--accent2); line-height: 1.7; }
   @keyframes blink { 0%,100%{opacity:0.2} 50%{opacity:1} }
 
-  /* 平板雙欄 */
   @media (min-width: 600px) {
     header, .hero, .control-strip { padding: 16px 20px 0; }
     .hero-time { font-size: 48px; }
@@ -95,17 +87,10 @@
     .chart-box { height: 380px; }
   }
   
-  /* 電腦精準 3 欄 */
   @media (min-width: 1024px) { 
     .grid { gap: 16px; } 
     .card { width: calc((100% - 32px) / 3); max-width: calc((100% - 32px) / 3); }
     .chart-box { height: 460px; } 
-  }
-  
-  @media (min-width: 1200px) {
-    body { max-width: 1400px; }
-    .grid { gap: 18px; }
-    .card { width: calc((100% - 36px) / 3); max-width: calc((100% - 36px) / 3); }
   }
 </style>
 </head>
@@ -145,7 +130,7 @@
 </div>
 
 <div class="notice">
-  📌 提示：網頁已啟用 PWA 離線技術，數據源已安全移至 GitHub Actions 雲端維護。
+  📌 提示：網頁已啟用 PWA 離線技術，數據源已安全移至 GitHub Actions 雲端。
 </div>
 
 <script>
@@ -187,7 +172,7 @@ const FALLBACK_NEWS = {
   GOOG: [
     { title: "Google 核心搜尋與 AI 廣告整合成效：流量變現與用戶黏著度", src: "網路巨頭", url: "https://tw.stock.yahoo.com/us" },
     { title: "雲端運算獲利結構優化，大盤修正下大型科技股資金避風港", src: "總經觀察", url: "https://tw.stock.yahoo.com/us" },
-    { title: "留意聯準會最新言門對科技大盤籌碼之影響，大型股維持韌性", src: "美股大盤", url: "https://tw.stock.yahoo.com/us" }
+    { title: "留意聯準會最新言論對科技大盤籌碼之影響，大型股維持韌性", src: "美股大盤", url: "https://tw.stock.yahoo.com/us" }
   ]
 };
 
@@ -204,12 +189,61 @@ function updateClock() {
 setInterval(updateClock, 1000);
 updateClock();
 
+// ⚡ 核心優化：深層探針解碼器（遞迴搜尋所有可能的字串欄位）
+function findStringByKeys(obj, priorityKeys) {
+  if (!obj) return "";
+  if (typeof obj === 'string') return obj;
+  
+  // 第一階段：優先檢查同層的已知高頻欄位
+  for (let key of priorityKeys) {
+    if (obj[key] && typeof obj[key] === 'string' && obj[key].trim().length > 0) {
+      return obj[key];
+    }
+  }
+  
+  // 第二階段：如果被嵌套，展開深層遞迴探針
+  for (let key in obj) {
+    if (obj.hasOwnProperty(key) && obj[key] && typeof obj[key] === 'object') {
+      let found = findStringByKeys(obj[key], priorityKeys);
+      if (found) return found;
+    }
+  }
+  return "";
+}
+
+// ⚡ 萬能時間戳解碼器
+function parseFlexibleDate(item) {
+  let raw = item.datetime || item.time || item.pubDate || item.date || Date.now();
+  if (typeof raw === 'number') {
+    if (raw < 9999999999) raw *= 1000; // 秒級轉毫秒
+    return new Date(raw);
+  }
+  let parsed = Date.parse(raw);
+  return isNaN(parsed) ? new Date() : new Date(parsed);
+}
+
 function getCleanValidNews(newsArray) {
   if (!newsArray || !Array.isArray(newsArray)) return [];
-  return newsArray.filter(i => {
-    const txt = i.headline || i.title || "";
-    return txt && txt.trim() !== "" && !txt.includes("無新聞標題") && !txt.includes("無最新新聞");
-  });
+  
+  const titleKeys = ['headline', 'title', 'news_title', 'subject', 'content', 'desc', 'summary'];
+  const urlKeys = ['url', 'link', 'source_url', 'href'];
+  const srcKeys = ['source', 'provider', 'author', 'site'];
+
+  return newsArray
+    .map(i => {
+      const title = findStringByKeys(i, titleKeys);
+      const url = findStringByKeys(i, urlKeys) || "https://tw.stock.yahoo.com/us";
+      const source = findStringByKeys(i, srcKeys) || "即時財經";
+      const datetime = parseFlexibleDate(i);
+      return { title: title.trim(), url, source, datetime };
+    })
+    .filter(i => {
+      if (!i.title || i.title.length < 5) return false;
+      const t = i.title;
+      // 智慧過濾無意義的機器人佔位字串
+      return !t.includes("無新聞") && !t.includes("無最新新聞") && !t.includes("沒有相關新聞") && !t.includes("測試標題") && !t.includes("null");
+    })
+    .sort((a, b) => b.datetime - a.datetime);
 }
 
 function buildGrid() {
@@ -241,7 +275,6 @@ function activateChart(boxEl, event) {
   boxEl.classList.add('active');
 }
 
-// 點擊圖表以外區域，自動鎖定 iframe 操作，釋放頁面捲動權
 document.addEventListener('click', function(e) {
   if (!e.target.closest('.chart-box')) {
     document.querySelectorAll('.chart-box.active').forEach(b => b.classList.remove('active'));
@@ -278,18 +311,16 @@ function toggleCard(sym, ex, event) {
     
     const box = document.getElementById('detail-news-' + sym);
     if (box) {
-      const rawItems = globalDataCache?.[sym]?.news;
+      const rawItems = globalDataCache?.[sym]?.news || globalDataCache?.[sym]?.feed;
       const cleanItems = getCleanValidNews(rawItems);
       
       if (cleanItems.length > 0) {
-        box.innerHTML = cleanItems.slice(0, 3).map(item => {
-          const d = new Date((item.datetime ?? Date.now() / 1000) * 1000);
-          const realUrl = item.url || item.link || item.source_url || "https://tw.stock.yahoo.com/us";
-          return `<a class="detail-news-item" href="${realUrl}" target="_blank" rel="noopener noreferrer">
-            <div class="detail-news-title">📰 ${item.headline || item.title}</div>
-            <span class="detail-news-meta">${d.getMonth()+1}/${d.getDate()} ${String(d.getHours()).padStart(2,'0')}:${String(d.getMinutes()).padStart(2,'0')} · ${item.source || '即時財經'}</span>
-          </a>`;
-        }).join('');
+        box.innerHTML = cleanItems.slice(0, 3).map(item => `
+          <a class="detail-news-item" href="${item.url}" target="_blank" rel="noopener noreferrer">
+            <div class="detail-news-title">📰 ${item.title}</div>
+            <span class="detail-news-meta">${item.datetime.getMonth()+1}/${item.datetime.getDate()} ${String(item.datetime.getHours()).padStart(2,'0')}:${String(item.datetime.getMinutes()).padStart(2,'0')} · ${item.source}</span>
+          </a>
+        `).join('');
       } else {
         box.innerHTML = FALLBACK_NEWS[sym].map(f => `
           <a class="detail-news-item" href="${f.url}" target="_blank" rel="noopener noreferrer">
@@ -350,18 +381,24 @@ async function loadCloudData() {
       const sData = globalDataCache[s.sym];
       if (!sData) return;
       
-      const d = sData.quote;
+      const d = sData.quote || sData.price;
       const priceEl = document.getElementById(`price-${s.sym}`);
       const chgEl = document.getElementById(`chg-${s.sym}`);
       const badgeEl = document.getElementById(`badge-${s.sym}`);
       
-      if (d && d.c !== undefined && priceEl && chgEl) {
-        const cls = d.d >= 0 ? 'up' : 'down';
-        const sign = d.d >= 0 ? '+' : '';
-        priceEl.textContent = `$${d.c.toFixed(2)}`;
+      if (d && priceEl && chgEl) {
+        const currentPrice = d.c || d.price || 0;
+        const change = d.d || d.change || 0;
+        const changePercent = d.dp || d.changePercent || 0;
+        
+        const cls = change >= 0 ? 'up' : 'down';
+        const sign = change >= 0 ? '+' : '';
+        
+        priceEl.textContent = `$${currentPrice.toFixed(2)}`;
         priceEl.className = `card-price-num ${cls}`;
-        chgEl.textContent = `${sign}${d.d.toFixed(2)} (${sign}${d.dp.toFixed(2)}%)`;
+        chgEl.textContent = `${sign}${change.toFixed(2)} (${sign}${changePercent.toFixed(2)}%)`;
         chgEl.className = `card-price-chg ${cls}`;
+        
         if (badgeEl) {
           badgeEl.textContent = phaseLabel;
           badgeEl.style.display = phaseLabel ? "inline-block" : "none";
@@ -370,14 +407,14 @@ async function loadCloudData() {
       
       const newsBox = document.getElementById(`news-${s.sym}`);
       if (newsBox) {
-        const rawNews = sData.news ?? [];
+        const rawNews = sData.news || sData.feed || [];
         const cleanNews = getCleanValidNews(rawNews);
         
         if (cleanNews.length > 0) {
           newsBox.innerHTML = cleanNews.slice(0, 3).map(item => `
             <div class="card-news-item">
-              • ${item.headline || item.title}
-              <div class="news-time">${new Date((item.datetime ?? Date.now()/1000)*1000).getMonth()+1}/${new Date((item.datetime ?? Date.now()/1000)*1000).getDate()} · ${item.source || '即時財經'}</div>
+              • ${item.title}
+              <div class="news-time">${item.datetime.getMonth()+1}/${item.datetime.getDate()} · ${item.source}</div>
             </div>
           `).join('');
         } else {
