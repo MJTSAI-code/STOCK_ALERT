@@ -4,11 +4,6 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <meta name="theme-color" content="#0a0a0f">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="apple-mobile-web-app-title" content="盤前情報">
-<link rel="apple-touch-icon" href="./icon-192.png">
-<link rel="manifest" href="./manifest.json">
 <title>盤前情報</title>
 <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500;700&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
@@ -17,16 +12,14 @@
     --accent: #c8ff00; --accent2: #00d4ff; --text: #e8e8f0;
     --muted: #5a5a7a; --up: #39ff8a; --down: #ff4d6d; --discord: #5865F2;
   }
-  
-  html, body { overflow-x: hidden; width: 100%; min-height: 100%; margin: 0; padding: 0; box-sizing: border-box; -webkit-font-smoothing: antialiased; }
+  html, body { overflow-x: hidden; width: 100%; min-height: 100%; margin: 0; padding: 0; box-sizing: border-box; -webkit-font-smoothing: antialiased; background: var(--bg); color: var(--text); font-family: 'Noto Sans TC', sans-serif; }
   * { box-sizing: inherit; }
-  body { background: var(--bg); color: var(--text); font-family: 'Noto Sans TC', sans-serif; font-weight: 400; padding-bottom: 24px; max-width: 1200px; margin: 0 auto; position: relative; }
+  body { padding-bottom: 24px; max-width: 1200px; margin: 0 auto; }
   
-  header, .hero, .control-strip { padding: 16px 20px 0; display: flex; align-items: center; justify-content: space-between; width: 100%; }
+  header, .hero, .control-strip { padding: 16px 20px 0; display: flex; align-items: center; justify-content: space-between; }
   header { padding-top: 18px; }
   .logo { font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 0.15em; color: var(--muted); text-transform: uppercase; }
-  .clock, .hero-sub, .status-label, .card-price-chg, .card-news-item .news-time, .detail-news-meta { font-family: 'DM Mono', monospace; }
-  .clock, .hero-sub { font-size: 11px; color: var(--muted); }
+  .clock, .hero-sub, .status-label, .card-price-chg, .card-news-item .news-time, .detail-news-meta { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--muted); }
   .hero { padding-bottom: 10px; }
   .hero-time { font-family: 'DM Mono', monospace; font-size: 32px; font-weight: 500; line-height: 1; }
   .hero-time span { color: var(--accent); }
@@ -37,51 +30,43 @@
   .status-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 6px var(--accent); animation: blink 2s infinite; }
   .status-label { font-size: 10px; color: var(--accent); }
   .refresh-btn { background: rgba(0,212,255,0.1); border: 1px solid var(--accent2); border-radius: 100px; padding: 6px 14px; font-size: 11px; color: var(--accent2); cursor: pointer; transition: all 0.2s; -webkit-tap-highlight-color: transparent; }
-  .refresh-btn:active { transform: scale(0.95); }
   
-  .grid { display: grid; grid-template-columns: 1fr; gap: 12px; padding: 0 16px 12px; width: 100%; }
-  .card { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 16px; cursor: pointer; transition: border-color 0.2s cubic-bezier(0.4, 0, 0.2, 1); min-height: 105px; display: flex; flex-direction: column; justify-content: space-between; width: 100%; overflow: hidden; -webkit-tap-highlight-color: transparent; }
+  .grid { display: grid; grid-template-columns: 1fr; gap: 12px; padding: 0 16px 12px; }
+  .card { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 16px; cursor: pointer; transition: border-color 0.2s ease; min-height: 105px; display: flex; flex-direction: column; justify-content: space-between; -webkit-tap-highlight-color: transparent; }
   .card.expanded { border-color: var(--accent2); cursor: default; }
   
-  .card-top { display: flex; justify-content: space-between; align-items: center; width: 100%; }
+  .card-top { display: flex; justify-content: space-between; align-items: center; }
   .card-sym-wrapper { display: flex; align-items: center; gap: 8px; }
-  .card-sym { font-family: 'DM Mono', monospace !important; font-size: 22px !important; font-weight: 700 !important; color: var(--accent2) !important; letter-spacing: 0.02em; line-height: 1.1; }
-  
-  .market-badge { font-family: 'Noto Sans TC', sans-serif; font-size: 9px; font-weight: 700; color: var(--accent); border: 1px solid var(--accent); padding: 2px 6px; border-radius: 4px; background: rgba(200, 255, 0, 0.08); letter-spacing: 0.05em; display: none; text-shadow: 0 0 4px rgba(200, 255, 0, 0.2); }
+  .card-sym { font-family: 'DM Mono', monospace !important; font-size: 22px !important; font-weight: 700 !important; color: var(--accent2) !important; line-height: 1.1; }
+  .market-badge { font-size: 9px; font-weight: 700; color: var(--accent); border: 1px solid var(--accent); padding: 2px 6px; border-radius: 4px; background: rgba(200, 255, 0, 0.08); display: none; }
   
   .card-name { font-size: 11px; color: var(--muted); margin-top: 4px; }
-  .card-price { text-align: right; }
   .card-price-num { font-family: 'DM Mono', monospace; font-size: 18px; font-weight: 700; }
   .card-price-chg { font-size: 11px; margin-top: 2px; }
   .up { color: var(--up) !important; } .down { color: var(--down) !important; } .neutral { color: var(--muted); }
   
-  .card-news { border-top: 1px solid var(--border); padding-top: 8px; margin-top: 8px; width: 100%; pointer-events: none; }
+  .card-news { border-top: 1px solid var(--border); padding-top: 8px; margin-top: 8px; pointer-events: none; }
   .card.expanded .card-news { display: none; }
-  .card-news-item { font-size: 11px; color: var(--text); line-height: 1.6; padding: 5px 0; border-bottom: 1px solid rgba(255,255,255,0.04); text-overflow: ellipsis; overflow: hidden; white-space: nowrap; width: 100%; }
-  .card-news-item .news-time { font-size: 9px; color: var(--muted); margin-top: 1px; }
+  .card-news-item { font-size: 11px; color: var(--text); line-height: 1.6; padding: 5px 0; border-bottom: 1px solid rgba(255,255,255,0.04); text-overflow: ellipsis; overflow: hidden; white-space: nowrap; }
   .card-news-item:last-child { border-bottom: none; }
   
-  .card-detail { display: none; margin-top: 12px; border-top: 1px solid var(--border); padding-top: 12px; width: 100%; cursor: default; }
+  .card-detail { display: none; margin-top: 12px; border-top: 1px solid var(--border); padding-top: 12px; cursor: default; }
   .card.expanded .card-detail { display: block; }
   
-  .chart-box { border-radius: 10px; overflow: hidden; border: 1px solid var(--border); height: 320px; margin-bottom: 14px; width: 100%; background: var(--bg); transform: translateZ(0); }
+  .chart-box { border-radius: 10px; overflow: hidden; border: 1px solid var(--border); height: 320px; margin-bottom: 14px; background: var(--bg); }
   .chart-box iframe { width: 100%; height: 100%; border: none; }
   
-  .detail-news-item { background: var(--bg); border: 1px solid var(--border); border-radius: 8px; padding: 12px; margin-bottom: 8px; text-decoration: none; display: block; width: 100%; transition: border-color 0.2s ease, background-color 0.2s ease; -webkit-tap-highlight-color: transparent; }
+  .detail-news-item { background: var(--bg); border: 1px solid var(--border); border-radius: 8px; padding: 12px; margin-bottom: 8px; text-decoration: none; display: block; -webkit-tap-highlight-color: transparent; }
   .detail-news-title { font-size: 12px; color: var(--text); line-height: 1.5; }
-  .detail-news-meta { margin-top: 4px; display: block; font-size: 9px; color: var(--muted); }
   .detail-news-item:active { border-color: var(--accent) !important; background: rgba(200, 255, 0, 0.06); }
   
   .discord-box { margin: 12px 16px; padding: 16px; background: rgba(88,101,242,0.03); border: 1px solid rgba(88,101,242,0.15); border-radius: 16px; display: flex; flex-direction: column; gap: 10px; }
-  .discord-title { font-size: 12px; font-weight: 500; color: #5865F2; display: flex; align-items: center; gap: 6px; text-transform: uppercase; letter-spacing: 0.05em; }
-  .discord-text { font-size: 11px; color: var(--muted); line-height: 1.8; word-break: keep-all; white-space: normal; }
-  @media (max-width: 380px) { .discord-text { font-size: 10px; } }
-  .time-group { white-space: nowrap; display: inline-block; vertical-align: middle; }
-  .discord-highlight { color: var(--accent); border: 1px solid var(--accent); border-radius: 100px; padding: 1px 6px; font-size: 10px; font-weight: 500; display: inline-block; background: rgba(200, 255, 0, 0.05); margin: 0 1px; line-height: 1.2; vertical-align: middle; }
-  
-  .discord-btn-group { display: flex; flex-direction: column; gap: 8px; width: 100%; }
-  .discord-btn { width: 100%; padding: 12px; background: var(--discord); color: #fff; border: none; border-radius: 12px; font-family: 'Noto Sans TC', sans-serif; font-size: 12px; font-weight: 500; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; text-decoration: none; transition: all 0.2s; }
-  .discord-btn-join { background: transparent; border: 1.5px solid var(--discord); color: #fff; }
+  .discord-title { font-size: 12px; font-weight: 500; color: #5865F2; display: flex; align-items: center; gap: 6px; }
+  .discord-text { font-size: 11px; color: var(--muted); line-height: 1.8; }
+  .discord-highlight { color: var(--accent); border: 1px solid var(--accent); border-radius: 100px; padding: 1px 6px; font-size: 10px; background: rgba(200, 255, 0, 0.05); }
+  .discord-btn-group { display: flex; flex-direction: column; gap: 8px; }
+  .discord-btn { width: 100%; padding: 12px; background: var(--discord); color: #fff; border: none; border-radius: 12px; font-size: 12px; font-weight: 500; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; text-decoration: none; }
+  .discord-btn-join { background: transparent; border: 1.5px solid var(--discord); }
   
   .notice { margin: 0 16px; padding: 10px 12px; background: rgba(0, 212, 255, 0.05); border: 1px solid rgba(0, 212, 255, 0.2); border-radius: 10px; font-size: 10px; color: var(--accent2); line-height: 1.7; }
   @keyframes blink { 0%,100%{opacity:0.2} 50%{opacity:1} }
@@ -94,10 +79,7 @@
     .discord-btn { flex: 1; }
     .chart-box { height: 420px; }
   }
-  @media (min-width: 1024px) {
-    .grid { grid-template-columns: repeat(3, 1fr); }
-  }
-
+  @media (min-width: 1024px) { .grid { grid-template-columns: repeat(3, 1fr); } }
   @media (min-width: 1200px) {
     body { max-width: 1400px; }
     .grid { gap: 16px; padding-bottom: 0px; }
@@ -133,7 +115,7 @@
 <div class="discord-box">
   <div class="discord-title"><span>🛡️</span> 24H 雲端自動推送已部署</div>
   <div class="discord-text">
-    無須開啟網頁，GitHub 雲端將於每日美股盤後 <span class="time-group"><span class="discord-highlight">05:30</span> 與晚間 <span class="discord-highlight">17:30</span></span> 自動精準推送至 Telegram 頻道
+    無須開啟網頁，GitHub 雲端將於每日美股盤後 <span class="discord-highlight">05:30</span> 與晚間 <span class="discord-highlight">17:30</span> 自動精準推送至 Telegram 頻道
   </div>
   <div class="discord-btn-group">
     <a class="discord-btn" href="https://discord.gg/vzVbybVvys" target="_blank">📱 進入我的美股精選情報室</a>
@@ -198,14 +180,12 @@ function updateClock() {
   document.getElementById('heroTime').innerHTML = `${pad(now.getHours())}<span>:</span>${pad(now.getMinutes())}`;
   document.getElementById('heroDate').textContent = `${now.getFullYear()}.${pad(now.getMonth()+1)}.${pad(now.getDate())} 週${['日','一','二','三','四','五','六'][now.getDay()]}`;
 }
-setInterval(updateClock, 1000); 
+setInterval(updateClock, 1000);
 updateClock();
 
-// 🛠️ 檢查新聞是否合法的核心防禦函式 (過濾"無新聞標題"髒資料)
 function isNewsValid(newsArray) {
   if (!newsArray || !Array.isArray(newsArray) || newsArray.length === 0) return false;
-  const filtered = newsArray.filter(i => i.headline && i.headline !== "無新聞標題" && i.headline.trim() !== "");
-  return filtered.length >= 3;
+  return newsArray.filter(i => i.headline && i.headline !== "無新聞標題" && i.headline.trim() !== "").length >= 3;
 }
 
 function buildGrid() {
@@ -213,10 +193,7 @@ function buildGrid() {
     <div class="card" id="card-${s.sym}" onclick="toggleCard('${s.sym}','${s.ex}', event)">
       <div class="card-top">
         <div>
-          <div class="card-sym-wrapper">
-            <div class="card-sym">${s.sym}</div>
-            <div class="market-badge" id="badge-${s.sym}">盤前</div>
-          </div>
+          <div class="card-sym-wrapper"><div class="card-sym">${s.sym}</div><div class="market-badge" id="badge-${s.sym}">盤前</div></div>
           <div class="card-name">${s.name}</div>
         </div>
         <div class="card-price">
@@ -224,9 +201,7 @@ function buildGrid() {
           <div class="card-price-chg neutral" id="chg-${s.sym}">--</div>
         </div>
       </div>
-      <div class="card-news" id="news-${s.sym}">
-        <div class="card-news-item">📡 正在接收即時中文市場資訊...</div>
-      </div>
+      <div class="card-news" id="news-${s.sym}"><div class="card-news-item">📡 正在接收即時中文市場資訊...</div></div>
       <div class="card-detail" id="detail-${s.sym}">
         <div class="chart-box"><iframe id="chart-${s.sym}" src="" allowtransparency="true"></iframe></div>
         <div class="detail-news" id="detail-news-${s.sym}"></div>
@@ -236,10 +211,9 @@ function buildGrid() {
 }
 
 function toggleCard(sym, ex, event) {
-  // ⚡ 點擊詳細新聞時，徹底阻斷外層卡片點擊，交給原生超連結跳轉
   if (event.target.closest('.detail-news-item')) {
     event.stopPropagation();
-    return; 
+    return;
   }
   
   const card = document.getElementById(`card-${sym}`);
@@ -260,17 +234,12 @@ function toggleCard(sym, ex, event) {
     card.classList.add('expanded');
     expandedSym = sym;
 
-    // ⚡ 絕不自作聰明使用任何 scrollTo，讓網頁原生機制在原地展開
-
     const iframe = document.getElementById(`chart-${sym}`);
-    if (iframe) {
-      iframe.src = `https://www.tradingview.com/widgetembed/?symbol=${ex}:${sym}&interval=D&hidesidetoolbar=1&theme=dark&style=1&timezone=Asia/Taipei&locale=zh_TW`;
-    }
+    if (iframe) iframe.src = `https://www.tradingview.com/widgetembed/?symbol=${ex}:${sym}&interval=D&hidesidetoolbar=1&theme=dark&style=1&timezone=Asia/Taipei&locale=zh_TW`;
     
     const box = document.getElementById('detail-news-' + sym);
     if (box) {
       const items = globalDataCache?.[sym]?.news;
-      
       if (isNewsValid(items)) {
         box.innerHTML = items.filter(i => i.headline && i.headline !== "無新聞標題" && i.headline.trim() !== "").slice(0, 3).map(item => {
           const d = new Date((item.datetime ?? Date.now() / 1000) * 1000);
@@ -296,7 +265,7 @@ function toggleCard(sym, ex, event) {
   }
 }
 
-window.addEventListener('popstate', function(event) {
+window.addEventListener('popstate', function() {
   if (expandedSym) {
     const card = document.getElementById(`card-${expandedSym}`);
     if (card) card.classList.remove('expanded');
@@ -334,27 +303,19 @@ async function loadCloudData() {
       if (d && d.c !== undefined && priceEl && chgEl) {
         const cls = d.d >= 0 ? 'up' : 'down';
         const sign = d.d >= 0 ? '+' : '';
-        
         priceEl.textContent = `$${d.c.toFixed(2)}`;
         priceEl.className = `card-price-num ${cls}`;
         chgEl.textContent = `${sign}${d.d.toFixed(2)} (${sign}${d.dp.toFixed(2)}%)`;
         chgEl.className = `card-price-chg ${cls}`;
-        
         if (badgeEl) {
-          if (phaseLabel) {
-            badgeEl.textContent = phaseLabel;
-            badgeEl.style.display = "inline-block";
-          } else {
-            badgeEl.style.display = "none";
-          }
+          badgeEl.textContent = phaseLabel;
+          badgeEl.style.display = phaseLabel ? "inline-block" : "none";
         }
       }
       
       const newsBox = document.getElementById(`news-${s.sym}`);
       if (newsBox) {
         const rawNews = sData.news ?? [];
-        
-        // ⚡ 終極修正：外層未展開卡片同步加入髒資料過濾機制
         if (isNewsValid(rawNews)) {
           newsBox.innerHTML = rawNews.filter(i => i.headline && i.headline !== "無新聞標題" && i.headline.trim() !== "").slice(0, 3).map(item => `
             <div class="card-news-item">
@@ -364,10 +325,7 @@ async function loadCloudData() {
           `).join('');
         } else {
           newsBox.innerHTML = FALLBACK_NEWS[s.sym].map(f => `
-            <div class="card-news-item">
-              • ${f.title}
-              <div class="news-time">今日即時 · ${f.src}</div>
-            </div>
+            <div class="card-news-item">• ${f.title}<div class="news-time">今日即時 · ${f.src}</div></div>
           `).join('');
         }
       }
@@ -375,8 +333,7 @@ async function loadCloudData() {
     
     if (statusEl) {
       const nowTime = new Date();
-      const pad = n => String(n).padStart(2, '0');
-      statusEl.textContent = `定時同步中 (${pad(nowTime.getHours())}:${pad(nowTime.getMinutes())})`;
+      statusEl.textContent = `定時同步中 (${String(nowTime.getHours()).padStart(2, '0')}:${String(nowTime.getMinutes()).padStart(2, '0')})`;
     }
   } catch(e) {
     console.error(e);
@@ -384,7 +341,6 @@ async function loadCloudData() {
   }
 }
 
-// ⚡ 終極防禦：嚴格規範時序流程，先畫格子再塞入資料，完美避免黑畫面死結
 function manualRefresh() { loadCloudData(); }
 buildGrid(); 
 loadCloudData();
