@@ -31,16 +31,61 @@
   .status-label { font-size: 10px; color: var(--accent); }
   .refresh-btn { background: rgba(0,212,255,0.1); border: 1px solid var(--accent2); border-radius: 100px; padding: 6px 14px; font-size: 11px; color: var(--accent2); cursor: pointer; transition: all 0.2s; -webkit-tap-highlight-color: transparent; }
   
-  /* Flexbox 佈局：平時靠左，有人展開時靠中對齊（讓電腦版最後一排落單的字卡完美平分置中） */
+  /* Flexbox 佈局：有人展開時靠中對齊（讓最後一排落單的卡片水平居中） */
   .grid { display: flex; flex-wrap: wrap; justify-content: flex-start; gap: 14px; padding: 0 12px 12px; width: 100%; transition: all 0.3s ease; }
   .grid.has-expanded { justify-content: center; }
   
-  /* ⚡ 手機版預設：全部卡片 100% 滿版，絕對不跑版 */
+  /* 手機版預設：全部卡片 100% 滿版，絕對安全 */
   .card { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 18px; cursor: pointer; transition: border-color 0.2s ease, width 0.3s cubic-bezier(0.25, 1, 0.5, 1), max-width 0.3s cubic-bezier(0.25, 1, 0.5, 1); min-height: 105px; display: flex; flex-direction: column; justify-content: space-between; -webkit-tap-highlight-color: transparent; width: 100%; overflow: hidden; order: 0; flex-grow: 0; flex-shrink: 0; }
   
-  /* 展開字卡：頂天立地獨佔首行 */
+  /* 展開卡片獨佔第一行，將其他卡片全數擠到下方 */
   .card.expanded { border-color: var(--accent2); cursor: default; width: 100% !important; max-width: 100% !important; order: -1; }
   
   .card-top { display: flex; justify-content: space-between; align-items: center; width: 100%; }
   .card-sym-wrapper { display: flex; align-items: center; gap: 8px; }
-  .card-sym { font-family
+  .card-sym { font-family: 'DM Mono', monospace !important; font-size: 22px !important; font-weight: 700 !important; color: var(--accent2) !important; line-height: 1.1; }
+  .market-badge { font-size: 9px; font-weight: 700; color: var(--accent); border: 1px solid var(--accent); padding: 2px 6px; border-radius: 4px; background: rgba(200, 255, 0, 0.08); display: none; }
+  
+  .card-name { font-size: 11px; color: var(--muted); margin-top: 4px; }
+  .card-price-num { font-family: 'DM Mono', monospace; font-size: 18px; font-weight: 700; }
+  .card-price-chg { font-size: 11px; margin-top: 2px; }
+  .up { color: var(--up) !important; } .down { color: var(--down) !important; } .neutral { color: var(--muted); }
+  
+  .card-news { border-top: 1px solid var(--border); padding-top: 8px; margin-top: 8px; pointer-events: none; width: 100%; }
+  .card.expanded .card-news { display: none; }
+  .card-news-item { font-size: 11px; color: var(--text); line-height: 1.6; padding: 5px 0; border-bottom: 1px solid rgba(255,255,255,0.04); text-overflow: ellipsis; overflow: hidden; white-space: nowrap; width: 100%; }
+  .card-news-item:last-child { border-bottom: none; }
+  
+  /* 展開細節面板 */
+  .card-detail { display: none; margin-top: 16px; border-top: 1px solid var(--border); padding-top: 16px; cursor: default; width: 100%; }
+  .card.expanded .card-detail { display: block; }
+  
+  /* 圖表外框 */
+  .chart-box { border-radius: 10px; overflow: hidden; border: 1px solid var(--border); height: 260px; margin-bottom: 16px; background: var(--bg); width: 100%; position: relative; cursor: pointer; }
+  
+  /* ⚡ 修正防線：預設完全穿透，點擊激活後才允許操作 */
+  .chart-box iframe { width: 100%; height: 100%; border: none; display: block; pointer-events: none; }
+  .chart-box.active iframe { pointer-events: auto; }
+  
+  /* 新聞超連結條目 */
+  .detail-news-item { background: var(--bg); border: 1px solid var(--border); border-radius: 8px; padding: 14px; margin-bottom: 10px; text-decoration: none; display: block; -webkit-tap-highlight-color: transparent; width: 100%; transition: border-color 0.2s; }
+  .detail-news-title { font-size: 13px; color: var(--text); line-height: 1.5; }
+  .detail-news-item:active, .detail-news-item:hover { border-color: var(--accent2); background: rgba(0, 212, 255, 0.04); }
+  
+  .discord-box { margin: 12px 12px; padding: 16px; background: rgba(88,101,242,0.03); border: 1px solid rgba(88,101,242,0.15); border-radius: 16px; display: flex; flex-direction: column; gap: 10px; }
+  .discord-title { font-size: 12px; font-weight: 500; color: #5865F2; display: flex; align-items: center; gap: 6px; }
+  .discord-text { font-size: 11px; color: var(--muted); line-height: 1.8; }
+  .discord-highlight { color: var(--accent); border: 1px solid var(--accent); border-radius: 100px; padding: 1px 6px; font-size: 10px; background: rgba(200, 255, 0, 0.05); }
+  .discord-btn-group { display: flex; flex-direction: column; gap: 8px; }
+  .discord-btn { width: 100%; padding: 12px; background: var(--discord); color: #fff; border: none; border-radius: 12px; font-size: 12px; font-weight: 500; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; text-decoration: none; }
+  .discord-btn-join { background: transparent; border: 1.5px solid var(--discord); }
+  
+  .notice { margin: 0 12px; padding: 10px 12px; background: rgba(0, 212, 255, 0.05); border: 1px solid rgba(0, 212, 255, 0.2); border-radius: 10px; font-size: 10px; color: var(--accent2); line-height: 1.7; }
+  @keyframes blink { 0%,100%{opacity:0.2} 50%{opacity:1} }
+
+  /* 平板雙欄 */
+  @media (min-width: 600px) {
+    header, .hero, .control-strip { padding: 16px 20px 0; }
+    .hero-time { font-size: 48px; }
+    .grid { padding: 0 20px 20px; gap: 14px; }
+    .card { width: calc(50% - 7px); max-width: calc(50% - 7px); }
