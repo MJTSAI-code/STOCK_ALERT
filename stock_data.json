@@ -1,143 +1,168 @@
-import json
-import time
-import os
-from datetime import datetime
-import pytz  # 如果環境沒有，請執行: pip install pytz
-import yfinance as yf
-
-# 定義你要監控的 6 檔美股代碼
-STOCKS = ['NOW', 'NVDA', 'LITE', 'ONDS', 'MRVL', 'GOOG']
-
-def is_news_catching_window():
-    """
-    🎯 時間閘門判斷：
-    只有在『台北時間早上 04:30 - 05:30』以及『台北時間晚上 16:30 - 17:30』這兩個黃金小時內，
-    才會回傳 True 允許去 Yahoo 抓新新聞。其餘時間回傳 False（沿用舊新聞）。
-    """
-    tz = pytz.timezone('Asia/Taipei')
-    now_local = datetime.now(tz)
-    current_time_str = now_local.strftime("%H:%M")
-    
-    is_morning_window = ("04:30" <= current_time_str <= "05:30")
-    is_evening_window = ("16:30" <= current_time_str <= "17:30")
-    
-    if is_morning_window or is_evening_window:
-        print(f"⏰ 當前台北時間 {current_time_str} 屬於【播放前黃金準備時段】，將更新即時新聞！")
-        return True
-    else:
-        print(f"🔒 當前台北時間 {current_time_str} 為非準備時段，將鎖定並沿用歷史抓取的新聞。")
-        return False
-
-def load_existing_news():
-    """
-    🎯 讀取現有的 stock_data.json，把上一次抓到的新聞完好無損地撈出來備用
-    """
-    existing_news_map = {symbol: [] for symbol in STOCKS}
-    filename = 'stock_data.json'
-    
-    if os.path.exists(filename):
-        try:
-            with open(filename, 'r', encoding='utf-8') as f:
-                old_data = json.load(f)
-                data_block = old_data.get('data', {})
-                for symbol in STOCKS:
-                    if symbol in data_block and 'news' in data_block[symbol]:
-                        existing_news_map[symbol] = data_block[symbol]['news']
-            print("💾 成功載入上一次歷史新聞紀錄，準備進行無縫繼承。")
-        except Exception as e:
-            print(f"⚠️ 讀取舊 JSON 失敗（可能首次執行或格式有誤）: {e}")
-    return existing_news_map
-
-def fetch_stock_data():
-    output_data = {}
-    
-    # 1. 先判斷當前是否要衝刺抓新新聞
-    allow_news_fetch = is_news_catching_window()
-    
-    # 2. 不管要不要抓，先去把硬碟裡舊的新聞檔案全部撈出來
-    history_news_map = load_existing_news()
-    
-    print(f"[{datetime.now().strftime('%Y-%m-%d %H:%M:%S')}] 開始執行美股數據同步（價格更新）...")
-    
-    for symbol in STOCKS:
-        print(f"正在同步 {symbol} 的即時數據...")
-        try:
-            ticker = yf.Ticker(symbol)
-            
-            # --- 價格部分：不管幾點，每次執行都要拿到最新報價 ---
-            info = ticker.info
-            current_price = info.get('regularMarketPrice') or info.get('currentPrice') or 0.0
-            dollar_change = info.get('regularMarketChange') or 0.0
-            percent_change = info.get('regularMarketChangePercent') or 0.0
-            
-            if current_price == 0.0:
-                hist = ticker.history(period="1d")
-                if not hist.empty:
-                    current_price = float(hist['Close'].iloc[-1])
-                    open_p = float(hist['Open'].iloc[-1])
-                    dollar_change = current_price - open_p
-                    percent_change = (dollar_change / open_p) * 100 if open_p != 0 else 0.0
-
-            # --- 新聞部分：實施時段防守策略 ---
-            processed_news = []
-            
-            if allow_news_fetch:
-                # 🌟 黃金時段內：衝刺去 Yahoo Finance 抓取最新真新聞
-                raw_news = ticker.news
-                if raw_news:
-                    for item in raw_news[:3]:
-                        headline = item.get('title') or item.get('headline') or ""
-                        news_url = item.get('link') or item.get('url') or ""
-                        news_time = item.get('providerPublishTime') or item.get('datetime')
-                        
-                        if headline and news_url and news_url != "#" and news_time:
-                            headline_str = headline.strip()
-                            if "無新聞標題" not in headline_str and "無最新新聞" not in headline_str:
-                                processed_news.append({
-                                    "headline": headline_str,
-                                    "datetime": int(news_time),
-                                    "source": item.get('publisher') or item.get('source') or "Yahoo Finance",
-                                    "url": news_url.strip()  # 真新聞網址，直達網頁
-                                })
-                
-                # 萬一黃金時段內 Yahoo 抽風沒吐新聞，保險起見先拿歷史新聞墊著，不讓畫面空白
-                if not processed_news:
-                    processed_news = history_news_map.get(symbol, [])
-            else:
-                # 🌟 非黃金時段：百分之百原封不動，沿用上一次抓到的歷史真新聞！
-                processed_news = history_news_map.get(symbol, [])
-            
-            # 3. 組合當前股票資料
-            output_data[symbol] = {
-                "quote": {
-                    "c": float(current_price),
-                    "d": float(dollar_change),
-                    "dp": float(percent_change)
-                },
-                "news": processed_news
-            }
-            
-            time.sleep(1.5)  # 溫柔延遲防鎖 IP
-            
-        except Exception as e:
-            print(f"❌ 處理 {symbol} 出現異常: {str(e)}")
-            # 異常發生時，價格歸零，但新聞依然試圖用歷史舊聞撐住
-            output_data[symbol] = {
-                "quote": {"c": 0.0, "d": 0.0, "dp": 0.0},
-                "news": history_news_map.get(symbol, [])
-            }
-
-    # 4. 包裝輸出並完整覆蓋 stock_data.json
-    final_json = {
-        "name": "美股盤前情報資料庫",
-        "updated_at": datetime.utcnow().isoformat() + "+00:00",
-        "data": output_data
+{
+  "name": "美股盤前情報資料庫",
+  "updated_at": "2026-06-02T22:28:59.644489+00:00",
+  "data": {
+    "NOW": {
+      "quote": {
+        "c": 127.6500015258789,
+        "d": -4.339998474121103,
+        "dp": -3.288126732419958
+      },
+      "news": [
+        {
+          "headline": "無新聞標題",
+          "datetime": 1780439336,
+          "source": "Yahoo Finance",
+          "url": "#"
+        },
+        {
+          "headline": "無新聞標題",
+          "datetime": 1780439336,
+          "source": "Yahoo Finance",
+          "url": "#"
+        },
+        {
+          "headline": "無新聞標題",
+          "datetime": 1780439336,
+          "source": "Yahoo Finance",
+          "url": "#"
+        }
+      ]
+    },
+    "NVDA": {
+      "quote": {
+        "c": 222.82000732421875,
+        "d": -1.0999926757812375,
+        "dp": -0.4912436029748292
+      },
+      "news": [
+        {
+          "headline": "無新聞標題",
+          "datetime": 1780439337,
+          "source": "Yahoo Finance",
+          "url": "#"
+        },
+        {
+          "headline": "無新聞標題",
+          "datetime": 1780439337,
+          "source": "Yahoo Finance",
+          "url": "#"
+        },
+        {
+          "headline": "無新聞標題",
+          "datetime": 1780439337,
+          "source": "Yahoo Finance",
+          "url": "#"
+        }
+      ]
+    },
+    "LITE": {
+      "quote": {
+        "c": 1029.1500244140625,
+        "d": 114.85002441406255,
+        "dp": 12.561525146457678
+      },
+      "news": [
+        {
+          "headline": "無新聞標題",
+          "datetime": 1780439337,
+          "source": "Yahoo Finance",
+          "url": "#"
+        },
+        {
+          "headline": "無新聞標題",
+          "datetime": 1780439337,
+          "source": "Yahoo Finance",
+          "url": "#"
+        },
+        {
+          "headline": "無新聞標題",
+          "datetime": 1780439337,
+          "source": "Yahoo Finance",
+          "url": "#"
+        }
+      ]
+    },
+    "ONDS": {
+      "quote": {
+        "c": 13.579999923706055,
+        "d": 0.1692999237060544,
+        "dp": 1.2624242113092858
+      },
+      "news": [
+        {
+          "headline": "無新聞標題",
+          "datetime": 1780439338,
+          "source": "Yahoo Finance",
+          "url": "#"
+        },
+        {
+          "headline": "無新聞標題",
+          "datetime": 1780439338,
+          "source": "Yahoo Finance",
+          "url": "#"
+        },
+        {
+          "headline": "無新聞標題",
+          "datetime": 1780439338,
+          "source": "Yahoo Finance",
+          "url": "#"
+        }
+      ]
+    },
+    "MRVL": {
+      "quote": {
+        "c": 290.7900085449219,
+        "d": 71.29700854492188,
+        "dp": 32.48258875905923
+      },
+      "news": [
+        {
+          "headline": "無新聞標題",
+          "datetime": 1780439338,
+          "source": "Yahoo Finance",
+          "url": "#"
+        },
+        {
+          "headline": "無新聞標題",
+          "datetime": 1780439338,
+          "source": "Yahoo Finance",
+          "url": "#"
+        },
+        {
+          "headline": "無新聞標題",
+          "datetime": 1780439338,
+          "source": "Yahoo Finance",
+          "url": "#"
+        }
+      ]
+    },
+    "GOOG": {
+      "quote": {
+        "c": 358.3900146484375,
+        "d": -11.6099853515625,
+        "dp": -3.1378338788006754
+      },
+      "news": [
+        {
+          "headline": "無新聞標題",
+          "datetime": 1780439339,
+          "source": "Yahoo Finance",
+          "url": "#"
+        },
+        {
+          "headline": "無新聞標題",
+          "datetime": 1780439339,
+          "source": "Yahoo Finance",
+          "url": "#"
+        },
+        {
+          "headline": "無新聞標題",
+          "datetime": 1780439339,
+          "source": "Yahoo Finance",
+          "url": "#"
+        }
+      ]
     }
-    
-    with open('stock_data.json', 'w', encoding='utf-8') as f:
-        json.dump(final_json, f, ensure_ascii=False, indent=2)
-        
-    print(f"🎉 成功！價格已全數翻新，非黃金時段的新聞也已安全繼承保留。")
-
-if __name__ == "__main__":
-    fetch_stock_data()
+  }
+}
