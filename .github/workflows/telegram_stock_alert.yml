@@ -1,34 +1,92 @@
-name: 美股精選情報室
+name: 美股數據更新與情報推送
 
 on:
   schedule:
-    - cron: '30 21 * * *'  # 台灣 05:30 (紐約夏令 17:30 / 冬令 16:30)
-    - cron: '30 22 * * *'  # 台灣 06:30 (紐約夏令 18:30 / 冬令 17:30)
-    - cron: '30 9 * * *'   # 台灣 17:30 (紐約夏令 05:30 / 冬令 04:30)
-    - cron: '30 10 * * *'  # 台灣 18:30 (紐約夏令 06:30 / 冬令 05:30)
+    - cron: '30 21 * * *'  # 台灣 05:30 (紐約夏令 17:30)
+    - cron: '30 22 * * *'  # 台灣 06:30 (紐約冬令 17:30)
+    - cron: '30 9 * * *'   # 台灣 17:30 (紐約夏令 05:30)
+    - cron: '30 10 * * *'  # 台灣 18:30 (紐約冬令 05:30)
   workflow_dispatch:       # 手動秒發
 
-permissions: write-all
+permissions:
+  contents: write         # 賦予腳本寫入檔案並 push 回倉庫的權限
 
 jobs:
-  send-push:
+  update-and-push:
     runs-on: ubuntu-latest
     steps:
-      - name: 依紐約收盤時間進行數學邏輯校正
+      - name: 檢查程式碼
+        uses: actions/checkout@v3
+
+      - name: 依紐約收盤時間進行時區校正
+        id: check_time
         run: |
           export TZ="America/New_York"
           NY_HOUR=$(date +%H)
-          echo "目前紐約時間: ${NY_HOUR} 點 (台灣時間: $(date -d '@'"$(date +%s)" -u +'%H:%M' --date='8 hours') )"
-
-          # 🎯 核心防線：非紐約 05 或 17 點則安全攔截
-          if [ "$NY_HOUR" != "05" ] && [ "$NY_HOUR" != "17" ]; then
+          echo "目前紐約時間: ${NY_HOUR} 點"
+          
+          # 手動觸發時跳過時間檢查
+          if [ "${{ github.event_name }}" != "workflow_dispatch" ] && [ "$NY_HOUR" != "05" ] && [ "$NY_HOUR" != "17" ]; then
             echo "非標準發射窗口（美東 05/17 點），安全攔截。"
+            echo "should_run=false" >> $GITHUB_ENV
             exit 0
           fi
+          echo "should_run=true" >> $GITHUB_ENV
 
-          echo "時區檢驗通過，開始發射通知！"
+      - name: 閹割與抓取 Finnhub 美股數據並生成 JSON
+        if: env.should_run == 'true'
+        run: |
+          echo "開始向 Finnhub 請求數據..."
+          # 建立一個暫存的 JSON 結構
+          echo '{"updated_at":"","stocks":{}}' > stock_data.json
+          
+          # 透過 Linux 內建的 curl 密謀抓取 6 檔股票，利用 Bash 組裝成靜態 JSON
+          # （為了保持 YML 簡潔，這裡做一個標準的數據包生成）
+          cat << 'EOF' > fetch_data.js
+          const fs = require('fs');
+          const stocks = ['NOW', 'NVDA', 'LITE', 'ONDS', 'MRVL', 'GOOG'];
+          const apiKey = process.env.FINNHUB_KEY;
+          
+          async function run() {
+            let result = { updated_at: new Date().toISOString(), data: {} };
+            for(let sym of stocks) {
+              try {
+                // 抓股價
+                const qRes = await fetch(`https://finnhub.io/api/v1/quote?symbol=${sym}&token=${apiKey}`);
+                const qData = await qRes.json();
+                // 抓新聞
+                const today = new Date();
+                const from = new Date(today - 7*24*60*60*1000).toISOString().split('T')[0];
+                const to = today.toISOString().split('T')[0];
+                const nRes = await fetch(`https://finnhub.io/api/v1/company-news?symbol=${sym}&from=${from}&to=${to}&token=${apiKey}`);
+                const nData = await nRes.json();
+                
+                result.data[sym] = { quote: qData, news: nData || [] };
+              } catch(e) { console.error(sym, e); }
+            }
+            fs.writeFileSync('stock_data.json', JSON.stringify(result, null, 2));
+          }
+          run();
+          EOF
+          
+          export FINNHUB_KEY="${{ secrets.FINNHUB_API_KEY }}"
+          node fetch_data.js
+          rm fetch_data.js
+
+      - name: 自動將數據更新存檔至 GitHub Pages
+        if: env.should_run == 'true'
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add stock_data.json
+          # 檢查是否有圖表數據變動，有變動才 commit
+          git diff --quiet && git diff --staged --quiet || (git commit -m "🤖 自動更新美股數據庫 [skip ci]" && git push)
+
+      - name: 發射 Telegram 推送
+        if: env.should_run == 'true'
+        run: |
+          echo "數據庫更新成功，開始發射 Telegram 通知！"
           TEXT="🛡️ 美股情報室數據已更新！%0A🚀 開啟儀表板：https://mjtsai-code.github.io/STOCK_ALERT/"
-
           curl -sS --fail -X POST "https://api.telegram.org/bot${{ secrets.TELEGRAM_TOKEN }}/sendMessage" \
             -d "chat_id=${{ secrets.TELEGRAM_CHAT_ID }}" \
             -d "text=${TEXT}" \
