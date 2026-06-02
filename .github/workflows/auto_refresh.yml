@@ -1,70 +1,71 @@
-name: 24H 雲端股票數據自動同步
+name: 美股數據更新與情報推送
+
 on:
-  push:
-    branches: [ main, master ]
-    paths-ignore:
-      - 'stock_data.json'
   schedule:
-    - cron: '18 21 * * *'
-    - cron: '18 9 * * *'
-    - cron: '42 * * * *'
+    - cron: '30 21 * * *'   # 目標台灣 05:30
+    - cron: '30 9 * * *'    # 目標台灣 17:30
+    - cron: '42 * * * *'    # 每小時背景靜默更新
   workflow_dispatch:
+
+permissions:
+  contents: write
+
 jobs:
-  refresh-data:
+  update-and-push:
     runs-on: ubuntu-latest
-    
-    permissions:
-      contents: write
-      
     steps:
-    - name: 複製專案代碼
-      uses: actions/checkout@v4
-    - name: 設定 Python 環境
-      uses: actions/setup-python@v5
-      with:
-        python-version: '3.10'
-    - name: 安裝極速依賴套件
-      run: |
-        pip install yfinance pytz
-    - name: 執行資料爬蟲
-      run: python update_stocks.py
-    - name: 將最新 stock_data.json 推送回 GitHub 倉庫
-      run: |
-        git config --local user.email "action@github.com"
-        git config --local user.name "GitHub Action"
-        git add stock_data.json
-        if ! git diff --quiet || ! git diff --staged --quiet; then
-          git commit -m "🔄 雲端自動同步：更新即時股價與新聞 [skip ci]"
-          git push
-        else
-          echo "數據無變動，跳過 Commit"
-        fi
-    - name: 檢查是否符合 Telegram 推播窗口
-      id: check_window
-      run: |
-        export TZ="Asia/Taipei"
-        TW_HOUR=$(date +%k | tr -d ' ')
-        echo "目前 GitHub 實際執行時的台灣時間: ${TW_HOUR} 點"
-        
-        if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
-          echo "手動強制觸發，放行 Telegram 播報！"
-          echo "send_alert=true" >> $GITHUB_ENV
-        elif [ "$TW_HOUR" -ge 5 ] && [ "$TW_HOUR" -le 8 ]; then
-          echo "✅ 符合早上播報窗口 (5~8點)，放行 Telegram！"
-          echo "send_alert=true" >> $GITHUB_ENV
-        elif [ "$TW_HOUR" -ge 17 ] && [ "$TW_HOUR" -le 20 ]; then
-          echo "✅ 符合晚上播報窗口 (17~20點)，放行 Telegram！"
-          echo "send_alert=true" >> $GITHUB_ENV
-        else
-          echo "🤫 當前為背景例行更新，保持安靜，不發送 Telegram。"
-          echo "send_alert=false" >> $GITHUB_ENV
-        fi
-    - name: 發射 Telegram 情報推送
-      if: env.send_alert == 'true'
-      run: |
-        echo "開始發射定時情報通知..."
-        TEXT="🛡️ 美股情報室數據已更新！%0A🚀 開啟儀表板：https://mjtsai-code.github.io/STOCK_ALERT/"
-        curl -sS --fail -X POST "https://api.telegram.org/bot${{ secrets.TELEGRAM_TOKEN }}/sendMessage" \
-          -d "chat_id=${{ secrets.TELEGRAM_CHAT_ID }}" \
-          -d "text=${TEXT}" \
-          -d "disable_web_page_preview=true"
+      - name: 複製專案代碼
+        uses: actions/checkout@v4
+
+      - name: 檢查台灣時間窗口
+        id: check_time
+        run: |
+          export TZ="Asia/Taipei"
+          TW_HOUR=$(date +%k | tr -d ' ')
+          echo "台灣時間: ${TW_HOUR} 點"
+
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            echo "手動觸發，強制放行"
+            echo "send_alert=true" >> $GITHUB_ENV
+          elif [ "$TW_HOUR" -ge 5 ] && [ "$TW_HOUR" -le 6 ]; then
+            echo "✅ 早上推播窗口 (05~06點)"
+            echo "send_alert=true" >> $GITHUB_ENV
+          elif [ "$TW_HOUR" -ge 17 ] && [ "$TW_HOUR" -le 18 ]; then
+            echo "✅ 晚上推播窗口 (17~18點)"
+            echo "send_alert=true" >> $GITHUB_ENV
+          else
+            echo "🤫 背景靜默更新，不發 Telegram"
+            echo "send_alert=false" >> $GITHUB_ENV
+          fi
+
+      - name: 設定 Python 環境
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+
+      - name: 安裝依賴
+        run: pip install yfinance pytz
+
+      - name: 執行資料爬蟲
+        run: python update_stocks.py
+
+      - name: 推送 stock_data.json 回倉庫
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add stock_data.json
+          if ! git diff --quiet || ! git diff --staged --quiet; then
+            git commit -m "🔄 自動更新股票數據 [skip ci]"
+            git push
+          else
+            echo "數據無變動，跳過 Commit"
+          fi
+
+      - name: 發射 Telegram 推送
+        if: env.send_alert == 'true'
+        run: |
+          TEXT="🛡️ 美股情報室數據已更新！%0A🚀 開啟儀表板：https://mjtsai-code.github.io/STOCK_ALERT/"
+          curl -sS --fail -X POST "https://api.telegram.org/bot${{ secrets.TELEGRAM_TOKEN }}/sendMessage" \
+            -d "chat_id=${{ secrets.TELEGRAM_CHAT_ID }}" \
+            -d "text=${TEXT}" \
+            -d "disable_web_page_preview=true"
