@@ -5,20 +5,20 @@ on:
     branches: [ main, master ]  # 兼容 main 或 master 分支
   schedule:
     # 🕒 避開整點塞車機制（轉換為台灣時間）：
-    # 1. 英國 UTC 21:18 = 台灣時間 早上 05:18（準備抓盤後，05:30 前完成發送）
-    # 2. 英國 UTC 09:18 = 台灣時間 晚上 17:18（準備抓盤前，17:30 前完成發送）
-    # 3. 另外維持每 1 小時的第 42 分鐘自動背景更新，確保網頁數據維持最新狀態
+    # 1. UTC 21:18 = 台灣時間 早上 05:18（準備抓盤後，預期 05:30 附近完成）
+    # 2. UTC 09:18 = 台灣時間 晚上 17:18（準備抓盤前，預期 17:30 附近完成）
+    # 3. 每 1 小時的第 42 分鐘自動背景更新，確保網頁數據維持最新狀態
     - cron: '18 21 * * *'
     - cron: '18 9 * * *'
     - cron: '42 * * * *'
+  workflow_dispatch:            # 保留手動秒發按鈕
 
 jobs:
   refresh-data:
     runs-on: ubuntu-latest
     
-    # ⚡ 關鍵修正：必須強制開啟寫入權限，否則 GitHub 會拒絕 Action 把 JSON 存回來！
     permissions:
-      contents: write
+      contents: write           # 強制開啟寫入權限
       
     steps:
     - name: 複製專案代碼
@@ -41,5 +41,43 @@ jobs:
         git config --local user.email "action@github.com"
         git config --local user.name "GitHub Action"
         git add stock_data.json
-        # ⚡ 防錯優化：確保有檔案變動才提交，避免噴錯卡住
-        git diff --quiet && git diff --staged --quiet || (git commit -m "🔄 雲端自動同步：更新即時股價與新聞" && git push)
+        if ! git diff --quiet || ! git diff --staged --quiet; then
+          git commit -m "🔄 雲端自動同步：更新即時股價與新聞 [skip ci]"
+          git push
+        else
+          echo "數據無變動，跳過 Commit"
+        fi
+
+    # 🎯 時間過濾核心：把小時轉換成純數字，容許 5~8 點、17~20 點
+    - name: 檢查是否符合 Telegram 推播窗口
+      id: check_window
+      run: |
+        export TZ="Asia/Taipei"
+        # 轉成純數字（去除前導0，例如 05 變成 5），避免 Bash 八進位判定錯誤
+        TW_HOUR=$(date +%k | tr -d ' ')
+        echo "目前 GitHub 實際執行時的台灣時間: ${TW_HOUR} 點"
+        
+        if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+          echo "手動強制觸發，放行 Telegram 播報！"
+          echo "send_alert=true" >> $GITHUB_ENV
+        elif [ "$TW_HOUR" -ge 5 ] && [ "$TW_HOUR" -le 8 ]; then
+          echo "✅ 符合早上播報窗口 (5~8點)，放行 Telegram！"
+          echo "send_alert=true" >> $GITHUB_ENV
+        elif [ "$TW_HOUR" -ge 17 ] && [ "$TW_HOUR" -le 20 ]; then
+          echo "✅ 符合晚上播報窗口 (17~20點)，放行 Telegram！"
+          echo "send_alert=true" >> $GITHUB_ENV
+        else
+          echo "🤫 當前為背景例行更新，保持安靜，不發送 Telegram。"
+          echo "send_alert=false" >> $GITHUB_ENV
+        fi
+
+    # 🚀 修正後的 Telegram 發射台（注意此處是 == 'true'）
+    - name: 發射 Telegram 情報推送
+      if: env.send_alert == 'true'
+      run: |
+        echo "開始發射定時情報通知..."
+        TEXT="🛡️ 美股情報室數據已更新！%0A🚀 開啟儀表板：https://mjtsai-code.github.io/STOCK_ALERT/"
+        curl -sS --fail -X POST "https://api.telegram.org/bot${{ secrets.TELEGRAM_TOKEN }}/sendMessage" \
+          -d "chat_id=${{ secrets.TELEGRAM_CHAT_ID }}" \
+          -d "text=${TEXT}" \
+          -d "disable_web_page_preview=true"
