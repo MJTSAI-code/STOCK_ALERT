@@ -162,15 +162,19 @@ function updateClock() {
   
   manageUpdateLifecycleByNY();
 }
+setInterval(updateClock, 1000);
+updateClock();
 
 function getNYMarketStatus() {
   const now = new Date();
-  const nyHour = Number(now.toLocaleTimeString('en-US', { timeZone: 'America/New_York', hour: '2-digit', hour12: false }));
-  const nyMin = Number(now.toLocaleTimeString('en-US', { timeZone: 'America/New_York', minute: '2-digit' }));
-  const nyDayStr = now.toLocaleDateString('en-US', { timeZone: 'America/New_York', weekday: 'short' }); 
-
+  const nyStr = now.toLocaleTimeString('en-US', { timeZone: 'America/New_York', hour12: false });
+  const nyDateStr = now.toLocaleDateString('en-US', { timeZone: 'America/New_York' });
+  
+  const [nyHour, nyMin, nySec] = nyStr.split(':').map(Number);
   const totalNyMinutes = nyHour * 60 + nyMin;
-  let isWeekend = (nyDayStr === 'Sat' || nyDayStr === 'Sun');
+  const nyDay = new Date(nyDateStr).getDay();
+
+  let isWeekend = (nyDay === 0 || nyDay === 6);
   let isRegularMarketOpen = false;
   let phaseLabel = "";
 
@@ -195,10 +199,8 @@ function manageUpdateLifecycleByNY() {
 
   if (isRegularMarketOpen) {
     if (dotEl) dotEl.className = "status-dot pulsing";
-    if (labelEl && (!liveIntervalId || labelEl.textContent.includes("休市") || labelEl.textContent.includes("失敗"))) {
-      labelEl.textContent = "美股盤中：即時更新中...";
-    }
     if (!liveIntervalId) {
+      if (labelEl) labelEl.textContent = "美股盤中：即時更新中...";
       liveIntervalId = setInterval(loadCloudData, 60000); 
     }
   } else {
@@ -348,7 +350,7 @@ window.addEventListener('hashchange', function() {
 });
 
 async function loadCloudData() {
-  let hasError = false;
+  let hasFetchError = false;
   try {
     const res = await fetch(`./stock_data.json?t=${Date.now()}`);
     const json = await res.json(); 
@@ -357,19 +359,17 @@ async function loadCloudData() {
     const { phaseLabel } = getNYMarketStatus();
 
     STOCKS.forEach(s => {
-      // 【單兵隔離艙的核心：每隻股票的渲染各自獨立，絕不連坐】
+      // 【單兵隔離艙：每隻股票解析各自獨立，保證不互相干擾卡死】
       try {
         const sData = globalDataCache[s.sym];
-        if (!sData) throw new Error(`Missing global data for ${s.sym}`);
+        if (!sData) return;
         
         const d = sData.quote || sData.price;
-        if (!d) throw new Error(`Missing price quote data for ${s.sym}`);
-        
         const priceEl = document.getElementById(`price-${s.sym}`);
         const chgEl = document.getElementById(`chg-${s.sym}`);
         const badgeEl = document.getElementById(`badge-${s.sym}`);
         
-        if (priceEl && chgEl) {
+        if (d && priceEl && chgEl) {
           const currentPrice = d.c !== undefined ? d.c : (d.price || 0);
           const change = d.d !== undefined ? d.d : (d.change || 0);
           const changePercent = d.dp !== undefined ? d.dp : (d.changePercent || 0);
@@ -406,23 +406,18 @@ async function loadCloudData() {
           renderDetailNews(s.sym);
         }
       } catch (innerError) {
-        console.error(`[單兵防禦降級] 股票 ${s.sym} 解析異常:`, innerError);
-        // 單兵死，只讓該卡片呈現 fallback，不干擾整個迴圈
-        const priceEl = document.getElementById(`price-${s.sym}`);
-        if (priceEl && priceEl.textContent === "$...") {
-          priceEl.textContent = "Data Error";
-        }
+        console.error(`[單兵解析跳過] 標的 ${s.sym} 資料不完整:`, innerError);
       }
     });
     
     isFirstLoad = false;
   } catch(e) {
-    console.error("Cloud data fetch failed:", e);
-    hasError = true;
+    console.error("Cloud data fetch error:", e);
+    hasFetchError = true;
     const labelEl = document.getElementById('update-status');
     if (labelEl) labelEl.textContent = "同步失敗，請點擊按鈕重試";
   } finally {
-    if (!hasError) {
+    if (!hasFetchError) {
       manageUpdateLifecycleByNY(); 
     }
   }
@@ -434,9 +429,7 @@ function manualRefresh() {
 }
 
 buildGrid(); 
-loadCloudData();
-setInterval(updateClock, 1000);
-updateClock();
+loadCloudData(); 
 </script>
 </body>
 </html>
