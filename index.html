@@ -10,16 +10,18 @@
 <link rel="apple-touch-icon" href="./icon-192.png">
 <link rel="manifest" href="./manifest.json">
 <title>盤前情報</title>
-<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Noto+Sans+TC:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500;700&family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
 <style>
   :root {
     --bg: #0a0a0f; --surface: #12121a; --border: #1e1e2e;
     --accent: #c8ff00; --accent2: #00d4ff; --text: #e8e8f0;
     --muted: #5a5a7a; --up: #39ff8a; --down: #ff4d6d; --discord: #5865F2;
   }
-  html, body { overflow-x: hidden; width: 100%; min-height: 100%; margin: 0; padding: 0; box-sizing: border-box; }
+  
+  html, body { overflow-x: hidden; width: 100%; min-height: 100%; margin: 0; padding: 0; box-sizing: border-box; -webkit-font-smoothing: antialiased; }
   * { box-sizing: inherit; }
-  body { background: var(--bg); color: var(--text); font-family: 'Noto Sans TC', sans-serif; font-weight: 300; padding-bottom: 20px; max-width: 1200px; margin: 0 auto; position: relative; }
+  body { background: var(--bg); color: var(--text); font-family: 'Noto Sans TC', sans-serif; font-weight: 300; padding-bottom: 24px; max-width: 1200px; margin: 0 auto; position: relative; }
+  
   header, .hero, .control-strip { padding: 16px 20px 0; display: flex; align-items: center; justify-content: space-between; width: 100%; }
   header { padding-top: 18px; }
   .logo { font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 0.15em; color: var(--muted); text-transform: uppercase; }
@@ -29,46 +31,53 @@
   .hero-time { font-family: 'DM Mono', monospace; font-size: 32px; font-weight: 500; line-height: 1; }
   .hero-time span { color: var(--accent); }
   .hero-sub { margin-top: 4px; }
+  
   .control-strip { padding-bottom: 14px; }
   .status-chip { background: var(--surface); border: 1px solid var(--border); border-radius: 100px; padding: 6px 12px; display: flex; align-items: center; gap: 6px; }
   .status-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 6px var(--accent); animation: blink 2s infinite; }
   .status-label { font-size: 10px; color: var(--accent); }
-  .refresh-btn { background: rgba(0,212,255,0.1); border: 1px solid var(--accent2); border-radius: 100px; padding: 6px 14px; font-size: 11px; color: var(--accent2); cursor: pointer; transition: all 0.2s; }
+  .refresh-btn { background: rgba(0,212,255,0.1); border: 1px solid var(--accent2); border-radius: 100px; padding: 6px 14px; font-size: 11px; color: var(--accent2); cursor: pointer; transition: all 0.2s; -webkit-tap-highlight-color: transparent; }
   .refresh-btn:active, .discord-btn:active { transform: scale(0.95); }
   
   .grid { display: grid; grid-template-columns: 1fr; gap: 12px; padding: 0 16px 12px; width: 100%; }
-  .card { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 16px; cursor: pointer; transition: border-color 0.2s, grid-column 0.2s; min-height: 105px; display: flex; flex-direction: column; justify-content: space-between; width: 100%; overflow: hidden; }
+  .card { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 16px; cursor: pointer; transition: border-color 0.2s cubic-bezier(0.4, 0, 0.2, 1), grid-column 0.2s; min-height: 105px; display: flex; flex-direction: column; justify-content: space-between; width: 100%; overflow: hidden; -webkit-tap-highlight-color: transparent; }
+  .card.expanded { border-color: var(--accent2); grid-column: 1 / -1; order: -1; cursor: default; }
   
-  /* ⚡ 點選時強行置頂於最左上角第一格，並展開滿版 */
-  .card.expanded { border-color: var(--accent2); grid-column: 1 / -1; order: -1; }
+  .card-top { display: flex; justify-content: space-between; align-items: center; width: 100%; }
+  .card-sym-wrapper { display: flex; align-items: center; gap: 8px; }
+  .card-sym { font-family: 'DM Mono', monospace; font-size: 20px; font-weight: 700; color: var(--accent2); letter-spacing: 0.02em; line-height: 1.1; }
   
-  .card-top { display: flex; justify-content: space-between; align-items: flex-start; width: 100%; }
-  .card-sym { font-family: 'DM Mono', monospace; font-size: 13px; font-weight: 500; color: var(--accent2); }
-  .card-name { font-size: 9px; color: var(--muted); margin-top: 1px; }
+  .market-badge { font-family: 'Noto Sans TC', sans-serif; font-size: 9px; font-weight: 700; color: var(--accent); border: 1px solid var(--accent); padding: 2px 6px; border-radius: 4px; background: rgba(200, 255, 0, 0.08); letter-spacing: 0.05em; display: none; text-shadow: 0 0 4px rgba(200, 255, 0, 0.2); }
+  
+  .card-name { font-size: 9px; color: var(--muted); margin-top: 3px; }
   .card-price { text-align: right; }
   .card-price-num { font-family: 'DM Mono', monospace; font-size: 17px; font-weight: 500; }
   .card-price-chg { font-size: 10px; margin-top: 1px; }
   .up { color: var(--up); } .down { color: var(--down); } .neutral { color: var(--muted); }
-  .card-news { border-top: 1px solid var(--border); padding-top: 8px; margin-top: 8px; width: 100%; }
-  .card.expanded .card-news { display: none; }
   
+  /* 收合狀態：完全阻斷指尖點擊穿透，強制執行卡片展開 */
+  .card-news { border-top: 1px solid var(--border); padding-top: 8px; margin-top: 8px; width: 100%; pointer-events: none; }
+  .card.expanded .card-news { display: none; }
   .card-news-item { font-size: 11px; color: var(--muted); line-height: 1.5; padding: 3px 0; border-bottom: 1px solid rgba(255,255,255,0.04); text-overflow: ellipsis; overflow: hidden; white-space: nowrap; width: 100%; }
   .card-news-item:last-child { border-bottom: none; }
-  .card-news-item a { color: var(--text); text-decoration: none; display: block; text-overflow: ellipsis; overflow: hidden; white-space: nowrap; width: 100%; }
-  .card-news-item .news-time { font-size: 9px; color: var(--muted); margin-top: 1px; }
+  
+  /* 展開狀態詳細面板 */
   .card-detail { display: none; margin-top: 12px; border-top: 1px solid var(--border); padding-top: 12px; width: 100%; }
   .card.expanded .card-detail { display: block; }
   
-  .chart-box { border-radius: 10px; overflow: hidden; border: 1px solid var(--border); height: 420px; margin-bottom: 12px; width: 100%; }
+  .chart-box { border-radius: 10px; overflow: hidden; border: 1px solid var(--border); height: 320px; margin-bottom: 14px; width: 100%; background: var(--bg); transform: translateZ(0); }
   .chart-box iframe { width: 100%; height: 100%; border: none; }
-  .detail-news-item { background: var(--bg); border: 1px solid var(--border); border-radius: 8px; padding: 10px 12px; margin-bottom: 6px; text-decoration: none; display: block; width: 100%; }
+  
+  /* 詳細新聞模組與高質感亮綠色選取反饋 */
+  .detail-news-item { background: var(--bg); border: 1px solid var(--border); border-radius: 8px; padding: 12px; margin-bottom: 8px; text-decoration: none; display: block; width: 100%; transition: border-color 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease; -webkit-tap-highlight-color: transparent; }
   .detail-news-title { font-size: 12px; color: var(--text); line-height: 1.5; }
-  .detail-news-meta { margin-top: 3px; display: block; font-size: 9px; color: var(--muted); }
+  .detail-news-meta { margin-top: 4px; display: block; font-size: 9px; color: var(--muted); }
+  
+  /* 精準匹配自動更新亮綠色 (#c8ff00) 提示外框 */
+  .detail-news-item:hover, .detail-news-item:active { border-color: var(--accent) !important; background: rgba(200, 255, 0, 0.04); box-shadow: 0 0 10px rgba(200, 255, 0, 0.12); }
   
   .discord-box { margin: 12px 16px; padding: 16px; background: rgba(88,101,242,0.03); border: 1px solid rgba(88,101,242,0.15); border-radius: 16px; display: flex; flex-direction: column; gap: 10px; }
   .discord-title { font-size: 12px; font-weight: 500; color: #5865F2; display: flex; align-items: center; gap: 6px; text-transform: uppercase; letter-spacing: 0.05em; }
-  
-  /* ⚡ 手機長文案強行同排鋼絲線 */
   .discord-text { font-size: 11px; color: var(--muted); line-height: 1.8; word-break: keep-all; white-space: normal; }
   @media (max-width: 380px) { .discord-text { font-size: 10px; } }
   .time-group { white-space: nowrap; display: inline-block; vertical-align: middle; }
@@ -89,15 +98,14 @@
     .discord-box, .notice { margin: 0 20px 12px; }
     .discord-btn-group { flex-direction: row; }
     .discord-btn { flex: 1; }
+    .chart-box { height: 420px; }
   }
   @media (min-width: 1024px) {
     .grid { grid-template-columns: repeat(3, 1fr); }
   }
 
-  /* ⚡ 智慧型桌面 1920 滿版與滾輪控制器 */
   @media (min-width: 1200px) {
     html, body { height: 100vh; max-height: 100vh; overflow: hidden; }
-    /* 核心精髓：一旦網頁內有卡片被點開，主動放開高度限制並長出滾輪，供用戶下拉看詳細新聞 */
     html:has(.card.expanded), body:has(.card.expanded) { height: auto !important; max-height: none !important; overflow-y: auto !important; }
     
     body { max-width: 1400px; display: flex; flex-direction: column; justify-content: space-between; padding-bottom: 15px; }
@@ -125,9 +133,9 @@
 <div class="control-strip">
   <div class="status-chip">
     <div class="status-dot"></div>
-    <div class="status-label" id="update-status">自動更新中 (60s)</div>
+    <div class="status-label" id="update-status">雲端數據庫同步中</div>
   </div>
-  <div class="refresh-btn" onclick="manualRefresh()">🔄 手動刷新</div>
+  <div class="refresh-btn" onclick="manualRefresh()">🔄 重新載入</div>
 </div>
 
 <div class="grid" id="grid"></div>
@@ -135,24 +143,19 @@
 <div class="discord-box">
   <div class="discord-title"><span>🛡️</span> 24H 雲端自動推送已部署</div>
   <div class="discord-text">
-    無須開啟網頁，GitHub雲端將於每日 <span class="time-group"><span class="discord-highlight">06:00</span> 與 <span class="discord-highlight">18:00</span></span> 自動抓取推送至 Discord
+    無須開啟網頁，GitHub 雲端將於每日美股盤後 <span class="time-group"><span class="discord-highlight">05:30 / 06:30</span> 與晚間 <span class="discord-highlight">17:30 / 18:30</span></span> 自動精準推送至 Telegram
   </div>
   <div class="discord-btn-group">
-    <a class="discord-btn" href="https://discord.gg/vzVbybVvys" target="_blank">
-      📱 進入我的美股精選情報室
-    </a>
-    <a class="discord-btn discord-btn-join" href="https://discord.gg/vzVbybVvys" target="_blank">
-      ⚡ 訂閱我的美股推送播報
-    </a>
+    <a class="discord-btn" href="https://discord.gg/vzVbybVvys" target="_blank">📱 進入我的美股精選情報室</a>
+    <a class="discord-btn discord-btn-join" href="https://discord.gg/vzVbybVvys" target="_blank">⚡ 訂閱我的美股推送播報</a>
   </div>
 </div>
 
 <div class="notice">
-  📌 提示：網頁已啟用 PWA 離線技術，每次點開皆會秒開並自動載入美股最新盤前數據。
+  📌 提示：網頁已啟用 PWA 離線技術，數據源已安全移至 GitHub Actions 雲端私密維護。
 </div>
 
 <script>
-const API_KEY = "d8e124pr01qhm4ai0etgd8e124pr01qhm4ai0eu0";
 const STOCKS = [
   { sym: 'NOW',  name: 'ServiceNow',   ex: 'NYSE' },
   { sym: 'NVDA', name: 'Nvidia',       ex: 'NASDAQ' },
@@ -162,22 +165,29 @@ const STOCKS = [
   { sym: 'GOOG', name: 'Google C',     ex: 'NASDAQ' },
 ];
 
-let expandedSym = null, newsCache = {}, refreshInterval = null;
+let expandedSym = null;
+let globalDataCache = null;
 
 function updateClock() {
-  const now = new Date(), pad = n => String(n).padStart(2,'0');
+  const now = new Date();
+  const pad = n => String(n).padStart(2, '0');
   document.getElementById('clock').textContent = `${pad(now.getHours())}:${pad(now.getMinutes())}:${pad(now.getSeconds())}`;
   document.getElementById('heroTime').innerHTML = `${pad(now.getHours())}<span>:</span>${pad(now.getMinutes())}`;
   document.getElementById('heroDate').textContent = `${now.getFullYear()}.${pad(now.getMonth()+1)}.${pad(now.getDate())} 週${['日','一','二','三','四','五','六'][now.getDay()]}`;
 }
-setInterval(updateClock, 1000); updateClock();
+setInterval(updateClock, 1000); 
+updateClock();
 
+// ⚡ 核心優化：DOM 樹結構只建立一次，後續更新只走微觀增量渲染，防止 DOM 銷毀與快取閃爍
 function buildGrid() {
   document.getElementById('grid').innerHTML = STOCKS.map(s => `
-    <div class="card" id="card-${s.sym}" onclick="toggleCard('${s.sym}','${s.ex}')">
+    <div class="card" id="card-${s.sym}" onclick="toggleCard('${s.sym}','${s.ex}', event)">
       <div class="card-top">
         <div>
-          <div class="card-sym">${s.sym}</div>
+          <div class="card-sym-wrapper">
+            <div class="card-sym">${s.sym}</div>
+            <div class="market-badge" id="badge-${s.sym}">盤前</div>
+          </div>
           <div class="card-name">${s.name}</div>
         </div>
         <div class="card-price">
@@ -194,69 +204,184 @@ function buildGrid() {
   `).join('');
 }
 
-function toggleCard(sym, ex) {
-  const card = document.getElementById(`card-${sym}`);
-  const isExp = card.classList.toggle('expanded');
-  if (expandedSym && expandedSym !== sym) document.getElementById(`card-${expandedSym}`)?.classList.remove('expanded');
-  expandedSym = isExp ? sym : null;
-  document.getElementById(`chart-${sym}`).src = isExp ? `https://www.tradingview.com/widgetembed/?symbol=${ex}:${sym}&interval=D&hidesidetoolbar=1&theme=dark&style=1&timezone=Asia/Taipei&locale=zh_TW` : '';
-  if (isExp && newsCache[sym]) renderDetailNews(sym, newsCache[sym]);
+function toggleCard(sym, ex, event) {
+  // ⚡ 防止展開狀態下，點擊詳細新聞或其他功能按鈕時意外關閉卡片
+  if (expandedSym === sym && event.target.closest('.detail-news-item')) {
+    return;
+  }
   
-  // ⚡ 點開的同時，畫面自動平滑對齊至卡片正上方
-  if (isExp) { window.scrollTo({ top: card.offsetTop - 20, behavior: 'smooth' }); }
+  const card = document.getElementById(`card-${sym}`);
+  if (!card) return;
+
+  const isExp = card.classList.contains('expanded');
+  
+  // 收合前一個已經打開的卡片
+  if (expandedSym && expandedSym !== sym) {
+    const prevCard = document.getElementById(`card-${expandedSym}`);
+    if (prevCard) {
+      prevCard.classList.remove('expanded');
+      const prevIframe = document.getElementById(`chart-${expandedSym}`);
+      if (prevIframe) prevIframe.src = '';
+    }
+  }
+
+  if (!isExp) {
+    card.classList.add('expanded');
+    expandedSym = sym;
+    window.location.hash = "expanded";
+    
+    // 預留渲染硬體加速緩衝時間
+    setTimeout(() => {
+      window.scrollTo({ top: card.offsetTop - 15, behavior: 'smooth' });
+    }, 60);
+
+    const iframe = document.getElementById(`chart-${sym}`);
+    if (iframe) {
+      iframe.src = `https://www.tradingview.com/widgetembed/?symbol=${ex}:${sym}&interval=D&hidesidetoolbar=1&theme=dark&style=1&timezone=Asia/Taipei&locale=zh_TW`;
+    }
+    
+    if (globalDataCache?.[sym]) {
+      renderDetailNews(sym, globalDataCache[sym].news);
+    }
+  } else {
+    card.classList.remove('expanded');
+    expandedSym = null;
+    const iframe = document.getElementById(`chart-${sym}`);
+    if (iframe) iframe.src = '';
+    
+    if (window.location.hash === "#expanded") {
+      history.replaceState(null, null, ' ');
+    }
+  }
+}
+
+window.addEventListener('popstate', function() {
+  if (expandedSym) {
+    closeExpandedCardSilent();
+  }
+});
+
+function closeExpandedCardSilent() {
+  if (expandedSym) {
+    const currentSym = expandedSym;
+    const card = document.getElementById(`card-${currentSym}`);
+    if (card) card.classList.remove('expanded');
+    const iframe = document.getElementById(`chart-${currentSym}`);
+    if (iframe) iframe.src = '';
+    expandedSym = null;
+  }
+  window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
 function renderDetailNews(sym, items) {
   const box = document.getElementById('detail-news-' + sym);
-  if (box) box.innerHTML = items.slice(0, 3).map(item => {
-    const d = new Date(item.datetime * 1000);
-    return `<a class="detail-news-item" href="${item.url}" target="_blank" onclick="event.stopPropagation();">
-      <div class="detail-news-title">${item.headline}</div>
-      <span class="detail-news-meta">${d.getMonth()+1}/${d.getDate()} ${String(d.getHours()).padStart(2,'0')}:${String(d.getMinutes()).padStart(2,'0')} · ${item.source}</span>
+  if (!box || !items) return;
+  
+  box.innerHTML = items.slice(0, 3).map(item => {
+    const d = new Date((item.datetime ?? Date.now() / 1000) * 1000);
+    return `<a class="detail-news-item" href="${item.url ?? '#'}" target="_blank" rel="noopener noreferrer">
+      <div class="detail-news-title">${item.headline ?? '未命名新聞情報'}</div>
+      <span class="detail-news-meta">${d.getMonth()+1}/${d.getDate()} ${String(d.getHours()).padStart(2,'0')}:${String(d.getMinutes()).padStart(2,'0')} · ${item.source ?? '未知來源'}</span>
     </a>`;
   }).join('');
 }
 
-async function fetchAll() {
-  document.getElementById('update-status').textContent = "正在更新資料...";
-  await Promise.all(STOCKS.map(s => fetchStock(s.sym)));
-  document.getElementById('update-status').textContent = "自動更新中 (60s)";
-}
-
-async function fetchStock(sym) {
+async function loadCloudData() {
+  const statusEl = document.getElementById('update-status');
+  if (statusEl) statusEl.textContent = "同步雲端數據中...";
+  
   try {
-    const res = await fetch(`https://finnhub.io/api/v1/quote?symbol=${sym}&token=${API_KEY}`), d = await res.json();
-    if (d.c) {
-      const cls = d.d >= 0 ? 'up' : 'down', sign = d.d >= 0 ? '+' : '';
-      document.getElementById(`price-${sym}`).textContent = `$${d.c.toFixed(2)}`;
-      document.getElementById(`price-${sym}`).className = `card-price-num ${cls}`;
-      document.getElementById(`chg-${sym}`).textContent = `${sign}${d.d.toFixed(2)} (${sign}${d.dp.toFixed(2)}%)`;
-      document.getElementById(`chg-${sym}`).className = `card-price-chg ${cls}`;
+    const res = await fetch(`./stock_data.json?t=${Date.now()}`);
+    const json = await res.json();
+    globalDataCache = json?.data ?? {};
+    
+    // ⚡ 轉換成美東時間時區進行精確判定
+    const dataTime = json?.updated_at ? new Date(json.updated_at) : new Date();
+    const nyTimeStr = dataTime.toLocaleTimeString('en-US', { timeZone: 'America/New_York', hour12: false });
+    const [nyHour, nyMin] = nyTimeStr.split(':').map(Number);
+    const totalNyMinutes = nyHour * 60 + nyMin;
+    
+    let phaseLabel = ""; 
+    if (totalNyMinutes >= 240 && totalNyMinutes < 570) {
+      phaseLabel = "盤前"; // 紐約 04:00 - 09:30
+    } else if (totalNyMinutes >= 960 && totalNyMinutes < 1200) {
+      phaseLabel = "盤後"; // 紐約 16:00 - 20:00
     }
-  } catch(e) { document.getElementById(`price-${sym}`).textContent = '--'; }
 
-  try {
-    const today = new Date(), from = new Date(today - 7 * 24 * 60 * 60 * 1000), fmt = d => d.toISOString().split('T')[0];
-    const res = await fetch(`https://finnhub.io/api/v1/company-news?symbol=${sym}&from=${fmt(from)}&to=${fmt(today)}&token=${API_KEY}`), items = await res.json();
-    newsCache[sym] = items;
-    const newsBox = document.getElementById(`news-${sym}`);
-    if (items?.length > 0) {
-      newsBox.innerHTML = items.slice(0, 2).map(item => `<div class="card-news-item" onclick="event.stopPropagation();">
-        <a href="${item.url}" target="_blank">${item.headline}</a>
-        <div class="news-time">${new Date(item.datetime*1000).getMonth()+1}/${new Date(item.datetime*1000).getDate()} · ${item.source}</div>
-      </div>`).join('');
-      if (expandedSym === sym) renderDetailNews(sym, items);
-    } else { newsBox.innerHTML = '<div class="card-news-item">暫無新聞</div>'; }
-  } catch(e) { document.getElementById(`news-${sym}`).innerHTML = '<div class="card-news-item">新聞載入失敗</div>'; }
+    STOCKS.forEach(s => {
+      const sData = globalDataCache[s.sym];
+      if (!sData) return;
+      
+      const d = sData.quote;
+      const priceEl = document.getElementById(`price-${s.sym}`);
+      const chgEl = document.getElementById(`chg-${s.sym}`);
+      const badgeEl = document.getElementById(`badge-${s.sym}`);
+      
+      if (d && d.c !== undefined && priceEl && chgEl) {
+        const cls = d.d >= 0 ? 'up' : 'down';
+        const sign = d.d >= 0 ? '+' : '';
+        
+        priceEl.textContent = `$${d.c.toFixed(2)}`;
+        priceEl.className = `card-price-num ${cls}`;
+        
+        chgEl.textContent = `${sign}${d.d.toFixed(2)} (${sign}${d.dp.toFixed(2)}%)`;
+        chgEl.className = `card-price-chg ${cls}`;
+        
+        if (badgeEl) {
+          if (phaseLabel) {
+            badgeEl.textContent = phaseLabel;
+            badgeEl.style.display = "inline-block";
+          } else {
+            badgeEl.style.display = "none";
+          }
+        }
+      }
+      
+      const items = sData.news;
+      const newsBox = document.getElementById(`news-${s.sym}`);
+      if (newsBox) {
+        if (items && items.length > 0) {
+          newsBox.innerHTML = items.slice(0, 2).map(item => `
+            <div class="card-news-item">
+              • ${item.headline ?? ''}
+              <div class="news-time">${new Date((item.datetime ?? Date.now()/1000)*1000).getMonth()+1}/${new Date((item.datetime ?? Date.now()/1000)*1000).getDate()} · ${item.source ?? ''}</div>
+            </div>
+          `).join('');
+        } else {
+          newsBox.innerHTML = '<div class="card-news-item">暫無新聞</div>';
+        }
+      }
+      
+      // 如果目前這張卡片剛好處於展開狀態，同步更新內部的詳細新聞數據，不破壞 Iframe
+      if (expandedSym === s.sym && items) {
+        renderDetailNews(s.sym, items);
+      }
+    });
+    
+    if (statusEl) {
+      const updateTime = new Date(json?.updated_at ?? Date.now());
+      statusEl.textContent = `雲端同步完畢 (${String(updateTime.getHours()).padStart(2,'0')}:${String(updateTime.getMinutes()).padStart(2,'0')}更新)`;
+    }
+  } catch(e) {
+    console.error("Data Synchronization Error: ", e);
+    if (statusEl) statusEl.textContent = "同步失敗，請手動刷新";
+  }
 }
 
-function manualRefresh() { fetchAll(); clearInterval(refreshInterval); startAutoRefresh(); }
-function startAutoRefresh() { refreshInterval = setInterval(fetchAll, 60000); }
+function manualRefresh() { 
+  loadCloudData(); 
+}
 
-buildGrid(); fetchAll(); startAutoRefresh();
+if (window.location.hash === "#expanded") {
+  history.replaceState(null, null, ' ');
+}
+
+// 嚴格依據生命週期排序執行
+buildGrid(); 
+loadCloudData();
 
 if ('serviceWorker' in navigator && (window.location.protocol === 'http:' || window.location.protocol === 'https:')) {
-  window.addEventListener('load', () => navigator.serviceWorker.register('./sw.js'));
+  window.addEventListener('load', () => navigator.serviceWorker.register('./sw.js').catch(() => {}));
 }
 </script>
 </body>
