@@ -351,34 +351,62 @@ window.addEventListener('hashchange', function() {
 
 async function loadCloudData() {
   let hasFetchError = false;
+  let errorMsg = "同步失敗，請點擊按鈕重試";
+  
   try {
     const res = await fetch(`./stock_data.json?t=${Date.now()}`);
+    if (!res.ok) throw new Error(`HTTP Error Status: ${res.status}`);
+    
     const json = await res.json(); 
-    globalDataCache = json?.data ?? {};
+    
+    // 【動態結構適應雷達】：通殺有無嵌套 .data 的兩種 JSON 根結構
+    if (json && json.data) {
+      globalDataCache = json.data;
+    } else if (json) {
+      globalDataCache = json;
+    } else {
+      throw new Error("JSON Body is null or empty");
+    }
     
     const { phaseLabel } = getNYMarketStatus();
 
     STOCKS.forEach(s => {
-      // 【單兵隔離艙：每隻股票解析各自獨立，保證不互相干擾卡死】
+      // 【單兵隔離艙】
       try {
         const sData = globalDataCache[s.sym];
-        if (!sData) return;
+        if (!sData) {
+          // 如果連這隻股票的名字都沒有，直接跳 fallback
+          throw new Error(`JSON 沒有包含標的 ${s.sym} 的資料欄位`);
+        }
         
-        const d = sData.quote || sData.price;
+        // 【動態欄位向下探索】：不管在外層、price 裡還是 quote 裡，只要抓得到資料全都要
+        const d = sData.quote || sData.price || sData;
+        
         const priceEl = document.getElementById(`price-${s.sym}`);
         const chgEl = document.getElementById(`chg-${s.sym}`);
         const badgeEl = document.getElementById(`badge-${s.sym}`);
         
-        if (d && priceEl && chgEl) {
-          const currentPrice = d.c !== undefined ? d.c : (d.price || 0);
-          const change = d.d !== undefined ? d.d : (d.change || 0);
-          const changePercent = d.dp !== undefined ? d.dp : (d.changePercent || 0);
-          const cls = change >= 0 ? 'up' : 'down';
-          const sign = change >= 0 ? '+' : '';
+        if (priceEl && chgEl) {
+          // 精準探測 c/price, d/change, dp/changePercent
+          const currentPrice = d.c !== undefined ? d.c : (d.price !== undefined ? d.price : null);
+          const change = d.d !== undefined ? d.d : (d.change !== undefined ? d.change : null);
+          const changePercent = d.dp !== undefined ? d.dp : (d.changePercent !== undefined ? d.changePercent : null);
+          
+          if (currentPrice === null) {
+            throw new Error(`${s.sym} 找不到任何可用的股價欄位(c/price)`);
+          }
+
+          const cls = (change || 0) >= 0 ? 'up' : 'down';
+          const sign = (change || 0) >= 0 ? '+' : '';
           
           priceEl.textContent = `$${Number(currentPrice).toFixed(2)}`;
           priceEl.className = `card-price-num ${cls}`;
-          chgEl.textContent = `${sign}${Number(change).toFixed(2)} (${sign}${Number(changePercent).toFixed(2)}%)`;
+          
+          if (change !== null && changePercent !== null) {
+            chgEl.textContent = `${sign}${Number(change).toFixed(2)} (${sign}${Number(changePercent).toFixed(2)}%)`;
+          } else {
+            chgEl.textContent = `--`;
+          }
           chgEl.className = `card-price-chg ${cls}`;
           
           if (badgeEl) {
@@ -387,18 +415,17 @@ async function loadCloudData() {
           }
         }
         
-        if (isFirstLoad) {
-          const newsBox = document.getElementById(`news-${s.sym}`);
-          if (newsBox) {
-            const cleanNews = parseJsonStockNews(sData, s.sym);
-            if (cleanNews.length > 0) {
-              newsBox.innerHTML = cleanNews.slice(0, 1).map(item => `
-                <div class="card-news-item">
-                  • ${item.title}
-                  <div class="news-time">${item.datetime.getMonth()+1}/${item.datetime.getDate()} · ${item.source}</div>
-                </div>
-              `).join('');
-            }
+        // 渲染新聞
+        const newsBox = document.getElementById(`news-${s.sym}`);
+        if (newsBox && (isFirstLoad || newsBox.textContent.includes("正在接收"))) {
+          const cleanNews = parseJsonStockNews(sData, s.sym);
+          if (cleanNews.length > 0) {
+            newsBox.innerHTML = cleanNews.slice(0, 1).map(item => `
+              <div class="card-news-item">
+                • ${item.title}
+                <div class="news-time">${item.datetime.getMonth()+1}/${item.datetime.getDate()} · ${item.source}</div>
+              </div>
+            `).join('');
           }
         }
         
@@ -406,16 +433,30 @@ async function loadCloudData() {
           renderDetailNews(s.sym);
         }
       } catch (innerError) {
-        console.error(`[單兵解析跳過] 標的 ${s.sym} 資料不完整:`, innerError);
+        console.error(`[單兵降級啟動] ${s.sym} 發生異常:`, innerError.message);
+        // 單兵陣亡時，強制塞入 Fallback 質感新聞，不給畫面開天窗
+        const newsBox = document.getElementById(`news-${s.sym}`);
+        if (newsBox && (isFirstLoad || newsBox.textContent.includes("正在接收"))) {
+          const fallback = FALLBACK_NEWS[s.sym]?.[0];
+          if (fallback) {
+            newsBox.innerHTML = `
+              <div class="card-news-item">
+                • ${fallback.title}
+                <div class="news-time">今日 · ${fallback.src}</div>
+              </div>
+            `;
+          }
+        }
       }
     });
     
     isFirstLoad = false;
   } catch(e) {
-    console.error("Cloud data fetch error:", e);
+    console.error("【終極防禦攔截】Fetch 或 JSON 解析完全崩潰:", e);
     hasFetchError = true;
+    errorMsg = `同步失敗 (${e.message})`;
     const labelEl = document.getElementById('update-status');
-    if (labelEl) labelEl.textContent = "同步失敗，請點擊按鈕重試";
+    if (labelEl) labelEl.textContent = errorMsg;
   } finally {
     if (!hasFetchError) {
       manageUpdateLifecycleByNY(); 
