@@ -1,94 +1,196 @@
 {
   "name": "美股盤前情報資料庫",
-  "updated_at": "2026-06-05T05:48:00.000000+00:00",
+  "updated_at": "2026-06-05T07:23:46.102685+08:00",
   "data": {
     "NOW": {
       "quote": {
-        "c": 119.36,
-        "d": 1.46,
-        "dp": 1.24
+        "c": 119.06,
+        "d": 1.16,
+        "dp": 0.9856,
+        "regular": 119.36,
+        "pre": null,
+        "post": 119.06,
+        "prev_close": 117.9,
+        "phase": "盤後"
       },
       "news": [
         {
-          "headline": "無新聞標題",
-          "datetime": 1780601942,
+          "headline": "1 Cash-Producing Stock with Impressive Fundamentals and 2 We Brush Off",
+          "datetime": 1780615424,
           "source": "Yahoo Finance",
-          "url": "#"
+          "url": "https://finance.yahoo.com/markets/stocks/articles/1-cash-producing-stock-impressive-220530524.html"
+        },
+        {
+          "headline": "UiPath Stock Slides 27% YTD: Is PATH a Buy, Hold, or Sell?",
+          "datetime": 1780615424,
+          "source": "Yahoo Finance",
+          "url": "https://finance.yahoo.com/markets/stocks/articles/uipath-stock-slides-27-ytd-173400125.html"
+        },
+        {
+          "headline": "Jack Henry (JKHY) Down 6.8% Since Last Earnings Report: Can It Rebound?",
+          "datetime": 1780615424,
+          "source": "Yahoo Finance",
+          "url": "https://finance.yahoo.com/markets/stocks/articles/jack-henry-jkhy-down-6-153018911.html"
         }
       ]
     },
     "NVDA": {
       "quote": {
-        "c": 218.66,
-        "d": 3.91,
-        "dp": 1.82
+        "c": 216.74,
+        "d": 1.99,
+        "dp": 0.9267,
+        "regular": 218.66,
+        "pre": null,
+        "post": 216.74,
+        "prev_close": 214.75,
+        "phase": "盤後"
       },
       "news": [
         {
-          "headline": "無新聞標題",
-          "datetime": 1780601942,
+          "headline": "Broadcom's sell-off just entered megacap history",
+          "datetime": 1780615424,
           "source": "Yahoo Finance",
-          "url": "#"
+          "url": "https://finance.yahoo.com/markets/stocks/article/broadcoms-sell-off-just-entered-megacap-history-163942663.html"
+        },
+        {
+          "headline": "Broadcom stock sinks. Are AI earnings expectations 'insatiable'?",
+          "datetime": 1780615424,
+          "source": "Yahoo Finance",
+          "url": "https://finance.yahoo.com/video/broadcom-stock-sinks-ai-earnings-135803533.html"
+        },
+        {
+          "headline": "Is OpenAI coming for Tesla's robotics business?",
+          "datetime": 1780615424,
+          "source": "Yahoo Finance",
+          "url": "https://finance.yahoo.com/video/openai-coming-teslas-robotics-business-120000710.html"
         }
       ]
     },
     "LITE": {
       "quote": {
-        "c": 945.08,
-        "d": 7.08,
-        "dp": 0.75
+        "c": 919.51,
+        "d": -18.49,
+        "dp": -1.9712,
+        "regular": 945.08,
+        "pre": null,
+        "post": 919.51,
+        "prev_close": 938.0,
+        "phase": "盤後"
       },
       "news": [
         {
-          "headline": "無新聞標題",
-          "datetime": 1780601942,
+          "headline": "Lumentum Holdings (LITE) Announces $650.4 Million Private Share Exchange Transaction",
+          "datetime": 1780615425,
           "source": "Yahoo Finance",
-          "url": "#"
+          "url": "https://finance.yahoo.com/markets/stocks/articles/lumentum-holdings-lite-announces-650-161120112.html"
+        },
+        {
+          "headline": "Why Is Lumentum (LITE) Down 0.7% Since Last Earnings Report?",
+          "datetime": 1780615425,
+          "source": "Yahoo Finance",
+          "url": "https://finance.yahoo.com/markets/stocks/articles/why-lumentum-lite-down-0-153020225.html"
+        },
+        {
+          "headline": "Is It Too Late To Consider Lumentum Holdings (LITE) After The US$2b Nvidia Investment?",
+          "datetime": 1780615425,
+          "source": "Yahoo Finance",
+          "url": "https://finance.yahoo.com/markets/stocks/articles/too-consider-lumentum-holdings-lite-010824686.html"
         }
       ]
     },
     "ONDS": {
       "quote": {
-        "c": 11.97,
-        "d": 0.36,
-        "dp": 3.10
+        "c": 11.87,
+        "d": 0.26,
+        "dp": 2.2394,
+        "regular": 11.97,
+        "pre": null,
+        "post": 11.87,
+        "prev_close": 11.61,
+        "phase": "盤後"
       },
       "news": [
         {
-          "headline": "無新聞標題",
-          "datetime": 1780601943,
+          "headline": "A Look At Ondas (ONDS) Valuation After A Sharp One Day Share Price Drop",
+          "datetime": 1780615425,
           "source": "Yahoo Finance",
-          "url": "#"
+          "url": "https://finance.yahoo.com/markets/stocks/articles/look-ondas-onds-valuation-sharp-180855714.html"
+        },
+        {
+          "headline": "Ondas (ONDS) Secures More Than $30M in New Orders During May",
+          "datetime": 1780615425,
+          "source": "Yahoo Finance",
+          "url": "https://finance.yahoo.com/markets/stocks/articles/ondas-onds-secures-more-30m-165009393.html"
+        },
+        {
+          "headline": "ONDS' Growing Active Opportunity Pipeline: Multi-Year Growth Secured?",
+          "datetime": 1780615425,
+          "source": "Yahoo Finance",
+          "url": "https://finance.yahoo.com/markets/stocks/articles/onds-growing-active-opportunity-pipeline-151300145.html"
         }
       ]
     },
     "MRVL": {
       "quote": {
-        "c": 316.43,
-        "d": 14.78,
-        "dp": 4.90
+        "c": 304.4,
+        "d": 2.75,
+        "dp": 0.9117,
+        "regular": 316.43,
+        "pre": null,
+        "post": 304.4,
+        "prev_close": 301.65,
+        "phase": "盤後"
       },
       "news": [
         {
-          "headline": "無新聞標題",
-          "datetime": 1780601943,
+          "headline": "Intel, AMD, Micron shares trim losses after Broadcom results spark semiconductor sector sell-off",
+          "datetime": 1780615425,
           "source": "Yahoo Finance",
-          "url": "#"
+          "url": "https://finance.yahoo.com/markets/stocks/article/intel-amd-micron-shares-trim-losses-after-broadcom-results-spark-semiconductor-sector-sell-off-130128361.html"
+        },
+        {
+          "headline": "This Chip Stock Made a Comeback After Broadcom Earnings",
+          "datetime": 1780615425,
+          "source": "Yahoo Finance",
+          "url": "https://www.wsj.com/livecoverage/stock-market-today-dow-sp-500-nasdaq-06-04-2026/card/chip-stocks-slide-after-broadcom-earnings-yIHjFm9DoKsa1MqIeBHS?siteid=yhoof2&yptr=yahoo"
+        },
+        {
+          "headline": "Quantinuum, Broadcom, UnitedHealth, and More Stocks That Explain Today’s Market",
+          "datetime": 1780615425,
+          "source": "Yahoo Finance",
+          "url": "https://www.barrons.com/articles/stock-movers-ee8a7eba?siteid=yhoof2&yptr=yahoo"
         }
       ]
     },
     "GOOG": {
       "quote": {
-        "c": 369.27,
-        "d": 13.59,
-        "dp": 3.82
+        "c": 367.98,
+        "d": 12.3,
+        "dp": 3.4586,
+        "regular": 369.27,
+        "pre": null,
+        "post": 367.98,
+        "prev_close": 355.68,
+        "phase": "盤後"
       },
       "news": [
         {
-          "headline": "無新聞標題",
-          "datetime": 1780601944,
+          "headline": "Broadcom stock sinks 12% as AI chip forecast disappoints",
+          "datetime": 1780615426,
           "source": "Yahoo Finance",
-          "url": "#"
+          "url": "https://finance.yahoo.com/markets/article/broadcom-stock-sinks-12-as-ai-chip-forecast-disappoints-165602082.html"
+        },
+        {
+          "headline": "Is OpenAI coming for Tesla's robotics business?",
+          "datetime": 1780615426,
+          "source": "Yahoo Finance",
+          "url": "https://finance.yahoo.com/video/openai-coming-teslas-robotics-business-120000710.html"
+        },
+        {
+          "headline": "Former School of Rock CEO's guide to overcoming midlife burnout",
+          "datetime": 1780615426,
+          "source": "Yahoo Finance",
+          "url": "https://finance.yahoo.com/video/former-school-rock-ceos-guide-100000889.html"
         }
       ]
     }
