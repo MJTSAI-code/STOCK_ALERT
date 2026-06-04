@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
 <meta name="theme-color" content="#0a0a0f">
-<title>美股情報監控儀表板 PRO</title>
+<title>盤前情報</title>
 <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500;700&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
   :root {
@@ -18,75 +18,72 @@
   
   header, .hero, .control-strip { padding: 16px 16px 0; display: flex; align-items: center; justify-content: space-between; }
   header { padding-top: 18px; }
-  .logo { font-size: 24px; font-weight: 700; color: var(--up); }
+  .logo { font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 0.15em; color: var(--muted); text-transform: uppercase; }
   .clock, .hero-sub, .status-label, .card-price-chg, .card-news-item .news-time, .detail-news-meta { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--muted); }
   .hero { padding-bottom: 10px; }
-  .hero-time { font-family: 'DM Mono', monospace; font-size: 52px; font-weight: 500; line-height: 1; }
-  .hero-time span { color: var(--text); }
-  .hero-sub { font-size: 13px; color: var(--muted); margin-top: 4px; }
+  .hero-time { font-family: 'DM Mono', monospace; font-size: 32px; font-weight: 500; line-height: 1; }
+  .hero-time span { color: var(--accent); }
+  .hero-sub { margin-top: 4px; }
   
   .control-strip { padding-bottom: 14px; }
   .status-chip { background: var(--surface); border: 1px solid var(--border); border-radius: 100px; padding: 6px 12px; display: flex; align-items: center; gap: 6px; }
   .status-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 6px var(--accent); animation: blink 2s infinite; }
-  .status-label { font-size: 14px; color: var(--up); font-family: 'Noto Sans TC', sans-serif; }
-  .refresh-btn { background: #00d4ff; border: none; border-radius: 8px; padding: 10px 18px; font-size: 14px; font-weight: 500; color: #fff; cursor: pointer; transition: all 0.2s; -webkit-tap-highlight-color: transparent; display: flex; align-items: center; gap: 6px; }
+  .status-label { font-size: 10px; color: var(--accent); }
+  .refresh-btn { background: rgba(0,212,255,0.1); border: 1px solid var(--accent2); border-radius: 100px; padding: 6px 14px; font-size: 11px; color: var(--accent2); cursor: pointer; transition: all 0.2s; -webkit-tap-highlight-color: transparent; }
   
   .grid { display: flex; flex-wrap: wrap; justify-content: flex-start; gap: 14px; padding: 0 12px 12px; width: 100%; transition: all 0.3s ease; }
   .grid.has-expanded { justify-content: center; }
   
   .card { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 18px; cursor: pointer; transition: border-color 0.2s ease, width 0.3s cubic-bezier(0.25, 1, 0.5, 1), max-width 0.3s cubic-bezier(0.25, 1, 0.5, 1); min-height: 105px; display: flex; flex-direction: column; justify-content: space-between; -webkit-tap-highlight-color: transparent; width: 100%; overflow: hidden; order: 0; flex-grow: 0; flex-shrink: 0; }
   
-  /* 手機單欄排版：展開的卡片原地放大撐開，order 維持 0 留在原地 */
-  .card.expanded { border-color: var(--accent2); cursor: default; width: 100% !important; max-width: 100% !important; order: 0; }
+  .card.expanded { border-color: var(--accent2); cursor: default; width: 100% !important; max-width: 100% !important; order: -1; }
   
   .card-top { display: flex; justify-content: space-between; align-items: center; width: 100%; }
   .card-sym-wrapper { display: flex; align-items: center; gap: 8px; }
-  .card-sym { font-family: 'DM Mono', monospace; font-size: 26px; font-weight: 700; color: var(--accent2); line-height: 1.1; }
-  .market-badge { font-size: 12px; font-weight: 700; color: #000; padding: 2px 6px; border-radius: 6px; background: var(--accent); display: inline-block; font-family: 'Noto Sans TC', sans-serif; }
+  .card-sym { font-family: 'DM Mono', monospace; font-size: 22px; font-weight: 700; color: var(--accent2); line-height: 1.1; }
+  .market-badge { font-size: 9px; font-weight: 700; color: var(--accent); border: 1px solid var(--accent); padding: 2px 6px; border-radius: 4px; background: rgba(200, 255, 0, 0.08); display: none; }
   
-  .card-name { font-size: 16px; color: var(--muted); margin-top: 4px; text-align: right; }
-  .card-price-num { font-family: 'DM Mono', monospace; font-size: 24px; font-weight: 700; color: var(--accent2); }
-  .card-price-chg { font-family: 'DM Mono', monospace; font-size: 16px; font-weight: 500; margin-top: 2px; text-align: right; }
+  .card-name { font-size: 11px; color: var(--muted); margin-top: 4px; }
+  .card-price-num { font-family: 'DM Mono', monospace; font-size: 18px; font-weight: 700; }
+  .card-price-chg { font-size: 11px; margin-top: 2px; }
   .up { color: var(--up) !important; } .down { color: var(--down) !important; } .neutral { color: var(--muted); }
   
   .card-news { border-top: 1px solid var(--border); padding-top: 8px; margin-top: 8px; pointer-events: none; width: 100%; }
   .card.expanded .card-news { display: none; }
-  .card-news-item { font-size: 14px; color: #00d4ff; line-height: 1.6; padding: 5px 0; border-bottom: 1px solid rgba(255,255,255,0.04); text-overflow: ellipsis; overflow: hidden; white-space: nowrap; width: 100%; }
+  .card-news-item { font-size: 11px; color: var(--text); line-height: 1.6; padding: 5px 0; border-bottom: 1px solid rgba(255,255,255,0.04); text-overflow: ellipsis; overflow: hidden; white-space: nowrap; width: 100%; }
   .card-news-item:last-child { border-bottom: none; }
-  .news-time-label { font-size: 12px; color: var(--muted); margin-top: 4px; }
   
   .card-detail { display: none; margin-top: 16px; border-top: 1px solid var(--border); padding-top: 16px; cursor: default; width: 100%; }
   .card.expanded .card-detail { display: block; }
   
   .chart-box { border-radius: 10px; overflow: hidden; border: 1px solid var(--border); height: 260px; margin-bottom: 16px; background: var(--bg); width: 100%; position: relative; cursor: pointer; }
+  
   .chart-box iframe { width: 100%; height: 100%; border: none; display: block; pointer-events: none; }
   .chart-box.active iframe { pointer-events: auto; }
   
   .detail-news-item { background: var(--bg); border: 1px solid var(--border); border-radius: 8px; padding: 14px; margin-bottom: 10px; text-decoration: none; display: block; -webkit-tap-highlight-color: transparent; width: 100%; transition: border-color 0.2s; }
-  .detail-news-title { font-size: 14px; color: #00d4ff; line-height: 1.5; }
+  .detail-news-title { font-size: 13px; color: var(--text); line-height: 1.5; }
   .detail-news-item:active, .detail-news-item:hover { border-color: var(--accent2); background: rgba(0, 212, 255, 0.04); }
   
-  .discord-box { margin: 12px 12px; padding: 18px; background: var(--surface); border: 1px solid var(--border); border-radius: 16px; display: flex; flex-direction: column; gap: 10px; }
-  .discord-box .discord-title { font-size: 20px; font-weight: 700; color: #fff; }
-  .discord-tag { background: var(--accent); color: #000; border-radius: 20px; padding: 4px 10px; font-size: 14px; font-weight: 700; display: inline-block; margin-top: 4px; width: fit-content; }
-  .discord-btn { background: #5865F2; color: #fff; border: none; border-radius: 8px; padding: 10px 18px; font-size: 16px; font-weight: 700; text-decoration: none; display: flex; align-items: center; justify-content: center; gap: 8px; width: fit-content; min-width: 120px; cursor: pointer; transition: background-color 0.2s; }
-  .discord-btn:hover { background-color: #4752C4; }
+  .discord-box { margin: 12px 12px; padding: 16px; background: rgba(88,101,242,0.03); border: 1px solid rgba(88,101,242,0.15); border-radius: 16px; display: flex; flex-direction: column; gap: 10px; }
+  .discord-title { font-size: 12px; font-weight: 500; color: #5865F2; display: flex; align-items: center; gap: 6px; }
+  .discord-text { font-size: 11px; color: var(--muted); line-height: 1.8; }
+  .discord-highlight { color: var(--accent); border: 1px solid var(--accent); border-radius: 100px; padding: 1px 6px; font-size: 10px; background: rgba(200, 255, 0, 0.05); }
+  .discord-btn-group { display: flex; flex-direction: column; gap: 8px; }
+  .discord-btn { width: 100%; padding: 12px; background: var(--discord); color: #fff; border: none; border-radius: 12px; font-size: 12px; font-weight: 500; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; text-decoration: none; }
+  .discord-btn-join { background: transparent; border: 1.5px solid var(--discord); }
   
-  .notice { margin: 12px 12px; padding: 18px; background: var(--surface); border: 1px solid var(--border); border-radius: 16px; display: flex; flex-direction: column; gap: 10px; }
-  .notice .notice-title { font-size: 20px; font-weight: 700; color: #fff; }
-  .notice-tag { background: var(--accent); color: #000; border-radius: 20px; padding: 4px 10px; font-size: 14px; font-weight: 700; display: inline-block; margin-top: 4px; width: fit-content; }
-  .notice-text { font-size: 14px; color: var(--muted); line-height: 1.6; }
-
+  .notice { margin: 0 12px; padding: 10px 12px; background: rgba(0, 212, 255, 0.05); border: 1px solid rgba(0, 212, 255, 0.2); border-radius: 10px; font-size: 10px; color: var(--accent2); line-height: 1.7; }
   @keyframes blink { 0%,100%{opacity:0.2} 50%{opacity:1} }
 
   @media (min-width: 600px) {
     header, .hero, .control-strip { padding: 16px 20px 0; }
-    .hero-time { font-size: 52px; }
+    .hero-time { font-size: 48px; }
     .grid { padding: 0 20px 20px; gap: 14px; }
     .card { width: calc(50% - 7px); max-width: calc(50% - 7px); }
-    /* 網頁寬螢幕版：保留點擊字卡飛到最前方置頂的 order: -1 特權 */
-    .card.expanded { order: -1; }
-    .discord-box, .notice { margin: 12px 20px; }
+    .discord-box, .notice { margin: 0 20px 12px; }
+    .discord-btn-group { flex-direction: row; }
+    .discord-btn { flex: 1; }
     .chart-box { height: 380px; }
   }
   
@@ -106,21 +103,21 @@
 <body>
 
 <header>
-  <div class="logo">美股情報監控儀表板 PRO</div>
-  <div class="clock" id="clock">06:14:00</div>
+  <div class="logo">盤前情報 · PRO</div>
+  <div class="clock" id="clock">--:--:--</div>
 </header>
 
 <div class="hero">
   <div>
-    <div class="hero-time" id="heroTime">06<span>:</span>14</div>
-    <div class="hero-sub" id="heroDate">2024.11.23 週六<br><span style="font-size:11px;color:#5a5a7a;">美股情報監控儀表板</span></div>
+    <div class="hero-time" id="heroTime">--<span>:</span>--</div>
+    <div class="hero-sub" id="heroDate">載入中...</div>
   </div>
 </div>
 
 <div class="control-strip">
   <div class="status-chip">
     <div class="status-dot"></div>
-    <div class="status-label" id="update-status">正在同步雲端即時數據...</div>
+    <div class="status-label" id="update-status">定時同步中</div>
   </div>
   <div class="refresh-btn" onclick="manualRefresh()">🔄 重新載入</div>
 </div>
@@ -128,15 +125,18 @@
 <div class="grid" id="grid"></div>
 
 <div class="discord-box">
-  <div class="discord-title">Discord</div>
-  <div><span class="discord-tag">Lime 觀察美股情報監控儀表板！</span></div>
-  <a class="discord-btn" href="https://discord.gg/vzVbybVvys" target="_blank" rel="noopener noreferrer">🍇 Discord</a>
+  <div class="discord-title"><span>🛡️</span> 24H 雲端自動推送已部署</div>
+  <div class="discord-text">
+    無須開啟網頁，GitHub 雲端將於每日美股盤後 <span class="discord-highlight">05:30</span> 與晚間 <span class="discord-highlight">17:30</span> 自動精準推送至 Telegram 頻道
+  </div>
+  <div class="discord-btn-group">
+    <a class="discord-btn" href="https://discord.gg/vzVbybVvys" target="_blank">📱 進入我的美股精選情報室</a>
+    <a class="discord-btn discord-btn-join" href="https://discord.gg/vzVbybVvys" target="_blank">⚡ 訂閱我的美股推送播報</a>
+  </div>
 </div>
 
 <div class="notice">
-  <div class="notice-title">Notice</div>
-  <div><span class="notice-tag">【美股情報監控儀表板PRO】</span></div>
-  <div class="notice-text">這排日貌提在日按數的不會更新一種，邊訊有通知分享下躢，請於是打造更新的方案。</div>
+  📌 提示：網頁已啟用 PWA 離線技術，數據源已安全移至 GitHub Actions 雲端維護。
 </div>
 
 <script>
@@ -150,12 +150,12 @@ const STOCKS = [
 ];
 
 const FALLBACK_NEWS = {
-  NOW: [{ title: "ServiceNow 雲端工作流拓展：機構上調目標價與大型企業續約率觀察", src: "財經編譯", url: "https://tw.stock.yahoo.com/us" }],
-  NVDA: [{ title: "輝達晶片供應鏈產能與出貨大追蹤：多頭排列均線支撐力道強勁", src: "科技半導體", url: "https://tw.stock.yahoo.com/us" }],
-  LITE: [{ title: "Lumentum 光通訊模組需求看漲：追蹤高速網路元件最新拉貨潮", src: "光通訊專欄", url: "https://tw.stock.yahoo.com/us" }],
-  ONDS: [{ title: "Ondas 無人機防禦與軍工訂單追蹤：多空量能與核心均線變動", src: "特種工業", url: "https://tw.stock.yahoo.com/us" }],
-  MRVL: [{ title: "Marvell 客製化晶片與 ASIC 訂單火熱：網通板塊技術突破", src: "半導體情報", url: "https://tw.stock.yahoo.com/us" }],
-  GOOG: [{ title: "Google 核心搜尋與 AI 廣告整合成效：流量變現與用戶黏著度", src: "網路巨頭", url: "https://tw.stock.yahoo.com/us" }]
+  NOW:  [{ title: "ServiceNow 雲端工作流拓展：機構上調目標價與大型企業續約率觀察", src: "財經編譯", url: "https://finance.yahoo.com/quote/NOW/news/" }],
+  NVDA: [{ title: "輝達晶片供應鏈產能與出貨大追蹤：多頭排列均線支撐力道強勁", src: "科技半導體", url: "https://finance.yahoo.com/quote/NVDA/news/" }],
+  LITE: [{ title: "Lumentum 光通訊模組需求看漲：追蹤高速網路元件最新拉貨潮", src: "光通訊專欄", url: "https://finance.yahoo.com/quote/LITE/news/" }],
+  ONDS: [{ title: "Ondas 無人機防禦與軍工訂單追蹤：多空量能與核心均線變動", src: "特種工業", url: "https://finance.yahoo.com/quote/ONDS/news/" }],
+  MRVL: [{ title: "Marvell 客製化晶片與 ASIC 訂單火熱：網通板塊技術突破", src: "半導體情報", url: "https://finance.yahoo.com/quote/MRVL/news/" }],
+  GOOG: [{ title: "Google 核心搜尋與 AI 廣告整合成效：流量變現與用戶黏著度", src: "網路巨頭", url: "https://finance.yahoo.com/quote/GOOG/news/" }]
 };
 
 let expandedSym = null;
@@ -166,16 +166,38 @@ function updateClock() {
   const pad = n => String(n).padStart(2, '0');
   document.getElementById('clock').textContent = `${pad(now.getHours())}:${pad(now.getMinutes())}:${pad(now.getSeconds())}`;
   document.getElementById('heroTime').innerHTML = `${pad(now.getHours())}<span>:</span>${pad(now.getMinutes())}`;
-  document.getElementById('heroDate').innerHTML = `${now.getFullYear()}.${pad(now.getMonth()+1)}.${pad(now.getDate())} 週${['日','一','二','三','四','五','六'][now.getDay()]}<br><span style="font-size:11px;color:#5a5a7a;">美股情報監控儀表板</span>`;
+  document.getElementById('heroDate').textContent = `${now.getFullYear()}.${pad(now.getMonth()+1)}.${pad(now.getDate())} 週${['日','一','二','三','四','五','六'][now.getDay()]}`;
 }
 setInterval(updateClock, 1000);
 updateClock();
 
+// ✅ 相容新舊兩種 yfinance 格式取出新聞欄位
+function extractNewsFields(item) {
+  const content = item.content || {};
+  const title = content.title || item.title || item.headline || '';
+  const url =
+    (content.canonicalUrl && content.canonicalUrl.url) ||
+    (content.clickThroughUrl && content.clickThroughUrl.url) ||
+    item.link || item.url || '';
+  const source =
+    (content.provider && content.provider.displayName) ||
+    item.publisher || item.source || 'Yahoo Finance';
+  let ts = item.providerPublishTime || item.datetime;
+  if (!ts && content.pubDate) {
+    try { ts = Math.floor(new Date(content.pubDate).getTime() / 1000); } catch(e) {}
+  }
+  if (!ts) ts = Math.floor(Date.now() / 1000);
+  return { title, url, source, ts };
+}
+
 function getCleanValidNews(newsArray) {
   if (!newsArray || !Array.isArray(newsArray)) return [];
   return newsArray.filter(i => {
-    const txt = i.headline || i.title || "";
-    return txt && txt.trim() !== "" && !txt.includes("無新聞標題") && !txt.includes("無最新新聞");
+    const txt = i.headline || i.title || '';
+    const url = i.url || i.link || '';
+    return txt && txt.trim() !== '' &&
+           !txt.includes('無新聞標題') && !txt.includes('無最新新聞') &&
+           url && url !== '#';
   });
 }
 
@@ -184,13 +206,13 @@ function buildGrid() {
     <div class="card" id="card-${s.sym}" onclick="toggleCard('${s.sym}','${s.ex}', event)">
       <div class="card-top">
         <div>
-          <div class="card-sym-wrapper"><div class="card-sym">${s.sym}</div><div class="market-badge" id="badge-${s.sym}">盤後</div></div>
+          <div class="card-sym-wrapper"><div class="card-sym">${s.sym}</div><div class="market-badge" id="badge-${s.sym}">盤前</div></div>
+          <div class="card-name">${s.name}</div>
         </div>
-        <div class="card-name">${s.name}</div>
-      </div>
-      <div>
-        <div class="card-price-num" id="price-${s.sym}">$...</div>
-        <div class="card-price-chg neutral" id="chg-${s.sym}">--</div>
+        <div class="card-price">
+          <div class="card-price-num neutral" id="price-${s.sym}">$...</div>
+          <div class="card-price-chg neutral" id="chg-${s.sym}">--</div>
+        </div>
       </div>
       <div class="card-news" id="news-${s.sym}"><div class="card-news-item">📡 正在接收即時中文市場資訊...</div></div>
       <div class="card-detail" id="detail-${s.sym}">
@@ -232,7 +254,7 @@ function toggleCard(sym, ex, event) {
   }
 
   if (!isExp) {
-    window.location.hash = "expanded-" + sym;
+    window.location.hash = 'expanded-' + sym;
     grid.classList.add('has-expanded'); 
     card.classList.add('expanded');
     expandedSym = sym;
@@ -247,45 +269,42 @@ function toggleCard(sym, ex, event) {
       const rawItems = globalDataCache?.[sym]?.news;
       const cleanItems = getCleanValidNews(rawItems);
       const now = new Date();
-      const mStr = String(now.getMonth()+1).padStart(2,'0');
-      const dStr = String(now.getDate()).padStart(2,'0');
-      const hrStr = String(now.getHours()).padStart(2,'0');
-      const minStr = String(now.getMinutes()).padStart(2,'0');
       
       if (cleanItems.length > 0) {
         box.innerHTML = cleanItems.slice(0, 1).map(item => {
-          const tSec = item.datetime || item.providerPublishTime || (Date.now() / 1000);
+          const tSec = item.datetime || item.providerPublishTime || Math.floor(Date.now() / 1000);
           const d = new Date(tSec * 1000);
-          const realUrl = item.url || item.link || "https://tw.stock.yahoo.com/us";
+          // ✅ 優先用真實 url，絕不用 #
+          const realUrl = item.url || item.link || `https://finance.yahoo.com/quote/${sym}/news/`;
           return `<a class="detail-news-item" href="${realUrl}" target="_blank" rel="noopener noreferrer">
             <div class="detail-news-title">📰 ${item.headline || item.title}</div>
             <span class="detail-news-meta">${d.getMonth()+1}/${d.getDate()} ${String(d.getHours()).padStart(2,'0')}:${String(d.getMinutes()).padStart(2,'0')} · ${item.source || '即時財經'}</span>
           </a>`;
         }).join('');
       } else {
-        const fallbackObj = FALLBACK_NEWS[sym] || FALLBACK_NEWS['NVDA'];
-        box.innerHTML = fallbackObj.slice(0, 1).map(f => `
+        const fb = (FALLBACK_NEWS[sym] || FALLBACK_NEWS['NVDA']).slice(0, 1);
+        box.innerHTML = fb.map(f => `
           <a class="detail-news-item" href="${f.url}" target="_blank" rel="noopener noreferrer">
             <div class="detail-news-title">📰 [精選觀察] ${f.title}</div>
-            <span class="detail-news-meta">${mStr}/${dStr} ${hrStr}:${minStr} · ${f.src}</span>
+            <span class="detail-news-meta">${now.getMonth()+1}/${now.getDate()} · ${f.src}</span>
           </a>
         `).join('');
       }
     }
     
-    // 🎯 核心滾動修正：從 block: 'start' 改成 block: 'nearest'，杜絕手機版瞬移亂跳最頂端
-    setTimeout(() => { 
-      card.scrollIntoView({ behavior: 'smooth', block: 'nearest' }); 
-    }, 150);
-    
+    // ✅ 修正：block: 'nearest' 讓手機原地展開，不強制跳頂部
+    setTimeout(() => { card.scrollIntoView({ behavior: 'smooth', block: 'nearest' }); }, 120);
+
   } else {
     card.classList.remove('expanded');
     grid.classList.remove('has-expanded');
     expandedSym = null;
+    
     const iframe = document.getElementById(`chart-${sym}`);
     if (iframe) iframe.src = '';
-    if (window.location.hash.includes("expanded")) {
-      history.replaceState("", document.title, window.location.pathname + window.location.search);
+    
+    if (window.location.hash.includes('expanded')) {
+      history.replaceState('', document.title, window.location.pathname + window.location.search);
     }
     setTimeout(() => { card.scrollIntoView({ behavior: 'smooth', block: 'nearest' }); }, 50);
   }
@@ -299,6 +318,7 @@ window.addEventListener('hashchange', function() {
     if (grid) grid.classList.remove('has-expanded');
     const iframe = document.getElementById(`chart-${expandedSym}`);
     if (iframe) iframe.src = '';
+    setTimeout(() => { if (card) card.scrollIntoView({ behavior: 'smooth', block: 'nearest' }); }, 50);
     expandedSym = null;
   }
 });
@@ -312,9 +332,9 @@ async function loadCloudData() {
     
     const nowLocal = new Date();
     const localHour = nowLocal.getHours();
-    let phaseLabel = "盤後"; 
-    if (localHour >= 16 && localHour < 22) phaseLabel = "盤前";
-    else if (localHour >= 4 && localHour < 9) phaseLabel = "盤後";
+    let phaseLabel = '';
+    if (localHour >= 16 && localHour < 22) phaseLabel = '盤前';
+    else if (localHour >= 4 && localHour < 9) phaseLabel = '盤後';
 
     STOCKS.forEach(s => {
       const sData = globalDataCache[s.sym];
@@ -329,18 +349,17 @@ async function loadCloudData() {
         const currentPrice = Number(d.c) || 0;
         const dollarChange = Number(d.d) || 0;
         const percentChange = Number(d.dp) || 0;
-
         const cls = dollarChange >= 0 ? 'up' : 'down';
         const sign = dollarChange >= 0 ? '+' : '';
-        
         priceEl.textContent = `$${currentPrice.toFixed(2)}`;
         priceEl.className = `card-price-num ${cls}`;
         chgEl.textContent = `${sign}${dollarChange.toFixed(2)} (${sign}${percentChange.toFixed(2)}%)`;
         chgEl.className = `card-price-chg ${cls}`;
-        
         if (badgeEl) {
-          badgeEl.textContent = phaseLabel;
-          badgeEl.style.display = "inline-block";
+          // ✅ 優先用 Python 傳回的 phase 欄位
+          const phase = d.phase || phaseLabel;
+          badgeEl.textContent = phase;
+          badgeEl.style.display = phase ? 'inline-block' : 'none';
         }
       }
       
@@ -349,37 +368,34 @@ async function loadCloudData() {
         const rawNews = sData.news ?? [];
         const cleanNews = getCleanValidNews(rawNews);
         const now = new Date();
-        const mStr = String(now.getMonth()+1).padStart(2,'0');
-        const dStr = String(now.getDate()).padStart(2,'0');
-        const hrStr = String(now.getHours()).padStart(2,'0');
-        const minStr = String(now.getMinutes()).padStart(2,'0');
         
         if (cleanNews.length > 0) {
           newsBox.innerHTML = cleanNews.slice(0, 1).map(item => {
-            const tSec = item.datetime || item.providerPublishTime || (Date.now() / 1000);
+            const tSec = item.datetime || item.providerPublishTime || Math.floor(Date.now() / 1000);
             const dObj = new Date(tSec * 1000);
-            const mm = String(dObj.getMonth()+1).padStart(2,'0');
-            const dd = String(dObj.getDate()).padStart(2,'0');
             return `
-              <div class="card-news-item">• ${item.headline || item.title}</div>
-              <div class="news-time-label">${mm}/${dd} ${String(dObj.getHours()).padStart(2,'0')}:${String(dObj.getMinutes()).padStart(2,'0')} · ${item.source || '即時財經'}</div>
+              <div class="card-news-item">
+                • ${item.headline || item.title}
+                <div class="news-time">${dObj.getMonth()+1}/${dObj.getDate()} · ${item.source || '即時財經'}</div>
+              </div>
             `;
           }).join('');
         } else {
-          const targetFallback = FALLBACK_NEWS[s.sym] || FALLBACK_NEWS['NVDA'];
-          newsBox.innerHTML = targetFallback.slice(0, 1).map(f => `
-            <div class="card-news-item">• [精選觀察] ${f.title}</div>
-            <div class="notice-time-label" style="font-size:12px;color:var(--muted);margin-top:4px;">${mStr}/${dStr} ${hrStr}:${minStr} · ${f.src}</div>
+          const fb = FALLBACK_NEWS[s.sym] || FALLBACK_NEWS['NVDA'];
+          newsBox.innerHTML = fb.slice(0, 1).map(f => `
+            <div class="card-news-item">• ${f.title}<div class="news-time">${now.getMonth()+1}/${now.getDate()} · ${f.src}</div></div>
           `).join('');
         }
       }
     });
     
     if (statusEl) {
-      statusEl.textContent = "正在同步雲端即時數據...";
+      const nowTime = new Date();
+      statusEl.textContent = `雲端同步完畢 (${String(nowTime.getHours()).padStart(2,'0')}:${String(nowTime.getMinutes()).padStart(2,'0')}更新)`;
     }
   } catch(e) {
     console.error(e);
+    if (statusEl) statusEl.textContent = '同步失敗，請手動刷新';
   }
 }
 
