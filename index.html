@@ -13,6 +13,7 @@
     --accent: #ff6600;
     --up: #00ff99;
     --down: #ff3366;
+    --border: #3d2a1f;
   }
   *{box-sizing:border-box;margin:0;padding:0;}
   body{
@@ -23,7 +24,6 @@
     padding-bottom:40px;
   }
 
-  /* 復古大時鐘 */
   .flip-clock {
     font-family: 'Press Start 2P', monospace;
     font-size: 82px;
@@ -31,18 +31,19 @@
     color: var(--digit);
     background: #1a140f;
     padding: 10px 30px;
-    border: 8px solid #3d2a1f;
+    border: 8px solid var(--border);
     border-radius: 12px;
     box-shadow: 0 12px 0 #000, inset 0 8px 20px rgba(0,0,0,0.95);
     text-shadow: 0 0 15px var(--accent);
     letter-spacing: 6px;
+    cursor: default;
   }
 
   .topbar {
     text-align:center;
     padding:20px 10px 15px;
     background:#1a140f;
-    border-bottom:6px solid #3d2a1f;
+    border-bottom:6px solid var(--border);
   }
   .logo {
     font-family:'Press Start 2P', monospace;
@@ -63,11 +64,18 @@
 
   .card {
     background:var(--card); 
-    border:6px solid #3d2a1f;
+    border:6px solid var(--border);
     border-radius:12px; 
     padding:18px; 
     position:relative;
     box-shadow:0 12px 0 #111;
+    cursor: pointer;
+    transition: all 0.3s;
+  }
+  .card:hover { transform: translateY(-6px); }
+  .card.expanded {
+    cursor: default;
+    grid-column: 1 / -1;
   }
 
   .phase-badge {
@@ -85,9 +93,7 @@
     gap:5px;
     box-shadow:0 3px 0 #000;
   }
-  .phase-badge.show {
-    display:flex;
-  }
+  .phase-badge.show { display:flex; }
 
   .card-sym { 
     font-size:23px; 
@@ -125,6 +131,20 @@
     margin-top:4px;
   }
 
+  /* TradingView 展開區域 */
+  .chart-container {
+    display:none;
+    margin-top:16px;
+    border:4px solid var(--border);
+    border-radius:8px;
+    overflow:hidden;
+    height:420px;
+    background:#000;
+  }
+  .card.expanded .chart-container {
+    display:block;
+  }
+
   @keyframes flip {
     0% { transform: rotateX(0); }
     50% { transform: rotateX(85deg); }
@@ -143,7 +163,7 @@
 <div class="grid" id="grid"></div>
 
 <div style="text-align:center; margin:30px 0; font-size:10px; color:#555;">
-  📌 YAHOO FINANCE • 復古翻頁鬧鐘風格
+  📌 YAHOO FINANCE • 點擊卡片展開 TradingView 圖表
 </div>
 
 <script>
@@ -156,6 +176,8 @@ const STOCKS = [
   {sym:'GOOG',name:'Google C', ex:'NASDAQ'}
 ];
 
+let expandedSym = null;
+
 function updateClock(){
   const now = new Date();
   const pad = n => String(n).padStart(2, '0');
@@ -166,7 +188,7 @@ updateClock();
 
 function buildGrid(){
   document.getElementById('grid').innerHTML = STOCKS.map(s => `
-    <div class="card" id="card-${s.sym}">
+    <div class="card" id="card-${s.sym}" onclick="toggleCard('${s.sym}', '${s.ex}')">
       <div class="phase-badge" id="badge-${s.sym}">
         🌙 盤後
       </div>
@@ -179,8 +201,33 @@ function buildGrid(){
       <div class="label">🌙 盤後</div>
       <div class="price-box" id="post-${s.sym}">$000.00</div>
       <div class="change" id="chg-${s.sym}"></div>
+
+      <div class="chart-container" id="chart-container-${s.sym}">
+        <iframe id="chart-${s.sym}" width="100%" height="100%" frameborder="0" allowfullscreen></iframe>
+      </div>
     </div>
   `).join('');
+}
+
+function toggleCard(sym, ex){
+  const card = document.getElementById(`card-${sym}`);
+  const isExpanded = card.classList.contains('expanded');
+
+  if(expandedSym && expandedSym !== sym){
+    document.getElementById(`card-${expandedSym}`).classList.remove('expanded');
+    document.getElementById(`chart-${expandedSym}`).src = '';
+  }
+
+  if(!isExpanded){
+    card.classList.add('expanded');
+    expandedSym = sym;
+    const iframe = document.getElementById(`chart-${sym}`);
+    iframe.src = `https://www.tradingview.com/widgetembed/?symbol=${ex}:${sym}&interval=D&hidesidetoolbar=1&theme=dark&style=1&timezone=Asia/Taipei&locale=zh_TW`;
+  } else {
+    card.classList.remove('expanded');
+    expandedSym = null;
+    document.getElementById(`chart-${sym}`).src = '';
+  }
 }
 
 function renderPrice(sym, q){
@@ -194,7 +241,7 @@ function renderPrice(sym, q){
   const postPct = regular ? (postChange / regular * 100) : 0;
 
   const badge = document.getElementById(`badge-${sym}`);
-  const isPost = q.phase === "盤後" || (post !== regular && post > 0);
+  const isPost = q.phase === "盤後" || (Math.abs(post - regular) > 0.01);
 
   if(isPost){
     badge.classList.add('show');
@@ -208,7 +255,10 @@ function renderPrice(sym, q){
 
   regEl.classList.add('flipping');
   postEl.classList.add('flipping');
-  setTimeout(() => { regEl.classList.remove('flipping'); postEl.classList.remove('flipping'); }, 800);
+  setTimeout(() => { 
+    regEl.classList.remove('flipping'); 
+    postEl.classList.remove('flipping'); 
+  }, 800);
 
   regEl.textContent = `$${regular.toFixed(2)}`;
   postEl.textContent = `$${post.toFixed(2)}`;
