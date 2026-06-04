@@ -3,406 +3,308 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
-<meta name="theme-color" content="#0a0a0f">
+<meta name="theme-color" content="#080810">
 <title>盤前情報</title>
-<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500;700&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
   :root {
-    --bg: #0a0a0f; --surface: #12121a; --border: #1e1e2e;
-    --accent: #c8ff00; --accent2: #00d4ff; --text: #e8e8f0;
-    --muted: #5a5a7a; --up: #39ff8a; --down: #ff4d6d; --discord: #5865F2;
+    --bg:#080810; --surface:#0f0f1a; --surface2:#141424;
+    --border:#1c1c30; --border2:#252540;
+    --accent:#c8ff00; --accent2:#00d4ff;
+    --text:#e8e8f0; --muted:#4a4a6a; --muted2:#6a6a8a;
+    --up:#00e87a; --up-bg:rgba(0,232,122,0.09); --up-border:rgba(0,232,122,0.22);
+    --down:#ff3d5a; --down-bg:rgba(255,61,90,0.09); --down-border:rgba(255,61,90,0.22);
+    --discord:#5865F2;
   }
-  html, body { overflow-x: hidden; width: 100%; min-height: 100%; margin: 0; padding: 0; box-sizing: border-box; -webkit-font-smoothing: antialiased; background: var(--bg); color: var(--text); font-family: 'Noto Sans TC', sans-serif; scroll-behavior: smooth; }
-  * { box-sizing: inherit; }
-  body { padding-bottom: 24px; max-width: 1200px; margin: 0 auto; }
-  
-  header, .hero, .control-strip { padding: 16px 16px 0; display: flex; align-items: center; justify-content: space-between; }
-  header { padding-top: 18px; }
-  .logo { font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 0.15em; color: var(--muted); text-transform: uppercase; }
-  .clock, .hero-sub, .status-label, .card-price-chg, .card-news-item .news-time, .detail-news-meta { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--muted); }
-  .hero { padding-bottom: 10px; }
-  .hero-time { font-family: 'DM Mono', monospace; font-size: 32px; font-weight: 500; line-height: 1; }
-  .hero-time span { color: var(--accent); }
-  .hero-sub { margin-top: 4px; }
-  
-  .control-strip { padding-bottom: 14px; }
-  .status-chip { background: var(--surface); border: 1px solid var(--border); border-radius: 100px; padding: 6px 12px; display: flex; align-items: center; gap: 6px; }
-  .status-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 6px var(--accent); animation: blink 2s infinite; }
-  .status-label { font-size: 10px; color: var(--accent); }
-  .refresh-btn { background: rgba(0,212,255,0.1); border: 1px solid var(--accent2); border-radius: 100px; padding: 6px 14px; font-size: 11px; color: var(--accent2); cursor: pointer; transition: all 0.2s; -webkit-tap-highlight-color: transparent; }
-  
-  .grid { display: flex; flex-wrap: wrap; justify-content: flex-start; gap: 14px; padding: 0 12px 12px; width: 100%; transition: all 0.3s ease; }
-  .grid.has-expanded { justify-content: center; }
-  
-  .card { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 18px; cursor: pointer; transition: border-color 0.2s ease, width 0.3s cubic-bezier(0.25, 1, 0.5, 1), max-width 0.3s cubic-bezier(0.25, 1, 0.5, 1); min-height: 105px; display: flex; flex-direction: column; justify-content: space-between; -webkit-tap-highlight-color: transparent; width: 100%; overflow: hidden; order: 0; flex-grow: 0; flex-shrink: 0; }
-  
-  .card.expanded { border-color: var(--accent2); cursor: default; width: 100% !important; max-width: 100% !important; order: -1; }
-  
-  .card-top { display: flex; justify-content: space-between; align-items: center; width: 100%; }
-  .card-sym-wrapper { display: flex; align-items: center; gap: 8px; }
-  .card-sym { font-family: 'DM Mono', monospace; font-size: 22px; font-weight: 700; color: var(--accent2); line-height: 1.1; }
-  .market-badge { font-size: 9px; font-weight: 700; color: var(--accent); border: 1px solid var(--accent); padding: 2px 6px; border-radius: 4px; background: rgba(200, 255, 0, 0.08); display: none; }
-  
-  .card-name { font-size: 11px; color: var(--muted); margin-top: 4px; }
-  .card-price-num { font-family: 'DM Mono', monospace; font-size: 18px; font-weight: 700; }
-  .card-price-chg { font-size: 11px; margin-top: 2px; }
-  .up { color: var(--up) !important; } .down { color: var(--down) !important; } .neutral { color: var(--muted); }
-  
-  .card-news { border-top: 1px solid var(--border); padding-top: 8px; margin-top: 8px; pointer-events: none; width: 100%; }
-  .card.expanded .card-news { display: none; }
-  .card-news-item { font-size: 11px; color: var(--text); line-height: 1.6; padding: 5px 0; border-bottom: 1px solid rgba(255,255,255,0.04); text-overflow: ellipsis; overflow: hidden; white-space: nowrap; width: 100%; }
-  .card-news-item:last-child { border-bottom: none; }
-  
-  .card-detail { display: none; margin-top: 16px; border-top: 1px solid var(--border); padding-top: 16px; cursor: default; width: 100%; }
-  .card.expanded .card-detail { display: block; }
-  
-  .chart-box { border-radius: 10px; overflow: hidden; border: 1px solid var(--border); height: 260px; margin-bottom: 16px; background: var(--bg); width: 100%; position: relative; cursor: pointer; }
-  
-  .chart-box iframe { width: 100%; height: 100%; border: none; display: block; pointer-events: none; }
-  .chart-box.active iframe { pointer-events: auto; }
-  
-  .detail-news-item { background: var(--bg); border: 1px solid var(--border); border-radius: 8px; padding: 14px; margin-bottom: 10px; text-decoration: none; display: block; -webkit-tap-highlight-color: transparent; width: 100%; transition: border-color 0.2s; }
-  .detail-news-title { font-size: 13px; color: var(--text); line-height: 1.5; }
-  .detail-news-item:active, .detail-news-item:hover { border-color: var(--accent2); background: rgba(0, 212, 255, 0.04); }
-  
-  .discord-box { margin: 12px 12px; padding: 16px; background: rgba(88,101,242,0.03); border: 1px solid rgba(88,101,242,0.15); border-radius: 16px; display: flex; flex-direction: column; gap: 10px; }
-  .discord-title { font-size: 12px; font-weight: 500; color: #5865F2; display: flex; align-items: center; gap: 6px; }
-  .discord-text { font-size: 11px; color: var(--muted); line-height: 1.8; }
-  .discord-highlight { color: var(--accent); border: 1px solid var(--accent); border-radius: 100px; padding: 1px 6px; font-size: 10px; background: rgba(200, 255, 0, 0.05); }
-  .discord-btn-group { display: flex; flex-direction: column; gap: 8px; }
-  .discord-btn { width: 100%; padding: 12px; background: var(--discord); color: #fff; border: none; border-radius: 12px; font-size: 12px; font-weight: 500; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; text-decoration: none; }
-  .discord-btn-join { background: transparent; border: 1.5px solid var(--discord); }
-  
-  .notice { margin: 0 12px; padding: 10px 12px; background: rgba(0, 212, 255, 0.05); border: 1px solid rgba(0, 212, 255, 0.2); border-radius: 10px; font-size: 10px; color: var(--accent2); line-height: 1.7; }
-  @keyframes blink { 0%,100%{opacity:0.2} 50%{opacity:1} }
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+  html,body{overflow-x:hidden;width:100%;min-height:100%;-webkit-font-smoothing:antialiased;background:var(--bg);color:var(--text);font-family:'Noto Sans TC',sans-serif;}
+  body{padding-bottom:40px;max-width:1300px;margin:0 auto;}
 
-  @media (min-width: 600px) {
-    header, .hero, .control-strip { padding: 16px 20px 0; }
-    .hero-time { font-size: 48px; }
-    .grid { padding: 0 20px 20px; gap: 14px; }
-    .card { width: calc(50% - 7px); max-width: calc(50% - 7px); }
-    .discord-box, .notice { margin: 0 20px 12px; }
-    .discord-btn-group { flex-direction: row; }
-    .discord-btn { flex: 1; }
-    .chart-box { height: 380px; }
+  header{display:flex;align-items:center;justify-content:space-between;padding:20px 18px 0;}
+  .logo{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.2em;color:var(--muted2);text-transform:uppercase;}
+  .logo em{color:var(--accent);font-style:normal;}
+  .clock{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--muted2);background:var(--surface);border:1px solid var(--border);padding:4px 10px;border-radius:6px;}
+
+  .hero{padding:24px 18px 0;}
+  .hero-time{font-family:'JetBrains Mono',monospace;font-size:52px;font-weight:700;line-height:1;letter-spacing:-0.02em;}
+  .hero-time em{color:var(--accent);font-style:normal;}
+  .hero-date{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--muted2);margin-top:6px;letter-spacing:0.08em;}
+
+  .control-strip{display:flex;align-items:center;justify-content:space-between;padding:16px 18px 0;}
+  .status-chip{display:flex;align-items:center;gap:7px;background:var(--surface);border:1px solid var(--border);border-radius:100px;padding:6px 12px;}
+  .status-dot{width:6px;height:6px;border-radius:50%;background:var(--accent);box-shadow:0 0 8px var(--accent);animation:blink 2s infinite;}
+  .status-label{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--accent);letter-spacing:0.05em;}
+  .refresh-btn{background:transparent;border:1px solid var(--border2);border-radius:100px;padding:6px 14px;font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--muted2);cursor:pointer;-webkit-tap-highlight-color:transparent;}
+  .refresh-btn:active{border-color:var(--accent2);color:var(--accent2);}
+
+  .grid{display:grid;grid-template-columns:1fr;gap:12px;padding:18px 12px 0;}
+
+  .card{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:20px;cursor:pointer;transition:border-color 0.25s,transform 0.15s;-webkit-tap-highlight-color:transparent;position:relative;overflow:hidden;}
+  .card::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.06),transparent);}
+  .card:active{transform:scale(0.988);}
+  .card.up-card{border-color:var(--up-border);}
+  .card.down-card{border-color:var(--down-border);}
+  .card.expanded{border-color:var(--accent2)!important;box-shadow:0 0 0 1px rgba(0,212,255,0.12),0 20px 60px rgba(0,0,0,0.4);cursor:default;grid-column:1/-1;}
+
+  .card-top{display:flex;justify-content:space-between;align-items:flex-start;}
+  .card-left{display:flex;flex-direction:column;gap:3px;}
+  .card-sym-row{display:flex;align-items:center;gap:8px;}
+  .card-sym{font-family:'JetBrains Mono',monospace;font-size:20px;font-weight:700;color:var(--accent2);}
+  .phase-badge{font-family:'JetBrains Mono',monospace;font-size:9px;font-weight:700;padding:2px 7px;border-radius:4px;letter-spacing:0.06em;display:none;}
+  .phase-badge.pre{color:#ffd060;border:1px solid rgba(255,208,96,0.35);background:rgba(255,208,96,0.08);}
+  .phase-badge.post{color:#a78bfa;border:1px solid rgba(167,139,250,0.35);background:rgba(167,139,250,0.08);}
+  .phase-badge.live{color:var(--up);border:1px solid var(--up-border);background:var(--up-bg);}
+  .card-name{font-size:11px;color:var(--muted2);}
+
+  .card-right{display:flex;flex-direction:column;align-items:flex-end;gap:4px;}
+  .price-main{font-family:'JetBrains Mono',monospace;font-size:22px;font-weight:700;}
+  .price-chg{font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:600;padding:2px 8px;border-radius:5px;}
+
+  /* two-line block */
+  .price-block{display:flex;flex-direction:column;align-items:flex-end;gap:5px;}
+  .price-row-reg{display:flex;align-items:center;gap:5px;}
+  .rl{font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--muted2);letter-spacing:0.06em;}
+  .rv{font-family:'JetBrains Mono',monospace;font-size:13px;font-weight:600;}
+  .rp{font-family:'JetBrains Mono',monospace;font-size:9px;font-weight:600;}
+  .pdiv{width:100%;height:1px;background:var(--border2);margin:1px 0;}
+  .price-row-ext{display:flex;align-items:center;gap:7px;}
+  .ext-lbl{font-family:'JetBrains Mono',monospace;font-size:9px;font-weight:700;letter-spacing:0.06em;}
+  .ext-lbl.pre{color:#ffd060;}
+  .ext-lbl.post{color:#a78bfa;}
+  .ext-val{font-family:'JetBrains Mono',monospace;font-size:20px;font-weight:700;}
+  .ext-chg{font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:600;padding:2px 6px;border-radius:4px;}
+
+  .up{color:var(--up)!important;} .down{color:var(--down)!important;} .neutral{color:var(--muted2);}
+  .up-chip{background:var(--up-bg);color:var(--up)!important;} .down-chip{background:var(--down-bg);color:var(--down)!important;}
+
+  .card-divider{height:1px;background:var(--border);margin:16px 0;}
+  .card-detail{display:none;}
+  .card.expanded .card-detail{display:block;}
+
+  .chart-box{border-radius:10px;overflow:hidden;border:1px solid var(--border);height:260px;background:var(--bg);width:100%;position:relative;cursor:pointer;}
+  .chart-box iframe{width:100%;height:100%;border:none;display:block;pointer-events:none;}
+  .chart-box.active iframe{pointer-events:auto;}
+  .chart-hint{position:absolute;bottom:10px;right:12px;font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--muted2);background:rgba(8,8,16,0.75);padding:3px 8px;border-radius:4px;pointer-events:none;}
+  .chart-box.active .chart-hint{display:none;}
+
+  .stat-row{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px;}
+  .stat-item{background:var(--surface2);border:1px solid var(--border);border-radius:8px;padding:8px 12px;display:flex;flex-direction:column;gap:3px;flex:1;min-width:70px;}
+  .stat-lbl{font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--muted2);letter-spacing:0.06em;text-transform:uppercase;}
+  .stat-val{font-family:'JetBrains Mono',monospace;font-size:13px;font-weight:600;color:var(--text);}
+
+  .discord-box{margin:20px 12px 0;padding:18px;background:rgba(88,101,242,0.04);border:1px solid rgba(88,101,242,0.15);border-radius:16px;display:flex;flex-direction:column;gap:10px;}
+  .discord-title{font-size:12px;font-weight:600;color:#7c8bff;display:flex;align-items:center;gap:6px;}
+  .discord-text{font-size:11px;color:var(--muted2);line-height:1.8;}
+  .discord-hl{color:var(--accent);border:1px solid rgba(200,255,0,0.3);border-radius:100px;padding:1px 7px;font-size:10px;background:rgba(200,255,0,0.06);font-family:'JetBrains Mono',monospace;}
+  .discord-btn-group{display:flex;flex-direction:column;gap:8px;}
+  .discord-btn{width:100%;padding:12px;background:var(--discord);color:#fff;border:none;border-radius:10px;font-size:12px;font-weight:600;cursor:pointer;text-decoration:none;display:flex;align-items:center;justify-content:center;gap:8px;}
+  .discord-btn:active{opacity:0.8;}
+  .discord-btn-outline{background:transparent;border:1.5px solid var(--discord);color:#7c8bff;}
+
+  .notice{margin:12px 12px 0;padding:10px 14px;background:rgba(0,212,255,0.04);border:1px solid rgba(0,212,255,0.15);border-radius:10px;font-size:10px;color:var(--accent2);line-height:1.7;font-family:'JetBrains Mono',monospace;}
+
+  @keyframes blink{0%,100%{opacity:0.15}50%{opacity:1}}
+
+  @media(min-width:600px){
+    header,.hero,.control-strip{padding-left:22px;padding-right:22px;}
+    .hero-time{font-size:72px;}
+    .grid{grid-template-columns:repeat(2,1fr);padding:20px 20px 0;gap:14px;}
+    .discord-box,.notice{margin-left:20px;margin-right:20px;}
+    .discord-btn-group{flex-direction:row;}
+    .discord-btn{flex:1;}
+    .chart-box{height:380px;}
   }
-  
-  @media (min-width: 1024px) { 
-    .grid { gap: 16px; } 
-    .card { width: calc((100% - 32px) / 3); max-width: calc((100% - 32px) / 3); }
-    .chart-box { height: 460px; } 
-  }
-  
-  @media (min-width: 1200px) {
-    body { max-width: 1400px; }
-    .grid { gap: 18px; }
-    .card { width: calc((100% - 36px) / 3); max-width: calc((100% - 36px) / 3); }
+  @media(min-width:1024px){
+    .grid{grid-template-columns:repeat(3,1fr);gap:16px;}
+    .chart-box{height:460px;}
   }
 </style>
 </head>
 <body>
 
 <header>
-  <div class="logo">盤前情報 · PRO</div>
+  <div class="logo">盤前情報 <em>·</em> PRO</div>
   <div class="clock" id="clock">--:--:--</div>
 </header>
-
 <div class="hero">
-  <div>
-    <div class="hero-time" id="heroTime">--<span>:</span>--</div>
-    <div class="hero-sub" id="heroDate">載入中...</div>
-  </div>
+  <div class="hero-time" id="heroTime">--<em>:</em>--</div>
+  <div class="hero-date" id="heroDate">載入中...</div>
 </div>
-
 <div class="control-strip">
   <div class="status-chip">
     <div class="status-dot"></div>
     <div class="status-label" id="update-status">定時同步中</div>
   </div>
-  <div class="refresh-btn" onclick="manualRefresh()">🔄 重新載入</div>
+  <div class="refresh-btn" onclick="manualRefresh()">↻ 重新載入</div>
 </div>
-
 <div class="grid" id="grid"></div>
-
 <div class="discord-box">
-  <div class="discord-title"><span>🛡️</span> 24H 雲端自動推送已部署</div>
-  <div class="discord-text">
-    無須開啟網頁，GitHub 雲端將於每日美股盤後 <span class="discord-highlight">05:30</span> 與晚間 <span class="discord-highlight">17:30</span> 自動精準推送至 Telegram 頻道
-  </div>
+  <div class="discord-title">🛡️ 24H 雲端自動推送已部署</div>
+  <div class="discord-text">無須開啟網頁，GitHub 雲端將於每日美股盤後 <span class="discord-hl">05:30</span> 與晚間 <span class="discord-hl">17:30</span> 自動精準推送至 Telegram 頻道</div>
   <div class="discord-btn-group">
-    <a class="discord-btn" href="https://discord.gg/vzVbybVvys" target="_blank">📱 進入我的美股精選情報室</a>
-    <a class="discord-btn discord-btn-join" href="https://discord.gg/vzVbybVvys" target="_blank">⚡ 訂閱我的美股推送播報</a>
+    <a class="discord-btn" href="https://discord.gg/vzVbybVvys" target="_blank">📱 進入美股精選情報室</a>
+    <a class="discord-btn discord-btn-outline" href="https://discord.gg/vzVbybVvys" target="_blank">⚡ 訂閱推送播報</a>
   </div>
 </div>
-
-<div class="notice">
-  📌 提示：網頁已啟用 PWA 離線技術，數據源已安全移至 GitHub Actions 雲端維護。
-</div>
+<div class="notice">📌 數據源已安全移至 GitHub Actions 雲端維護，每小時自動同步</div>
 
 <script>
-const STOCKS = [
-  { sym: 'NOW',  name: 'ServiceNow',   ex: 'NYSE' },
-  { sym: 'NVDA', name: 'Nvidia',       ex: 'NASDAQ' },
-  { sym: 'LITE', name: 'Lumentum',     ex: 'NASDAQ' },
-  { sym: 'ONDS', name: 'Ondas 無人機', ex: 'NASDAQ' },
-  { sym: 'MRVL', name: 'Marvell',      ex: 'NASDAQ' },
-  { sym: 'GOOG', name: 'Google C',     ex: 'NASDAQ' },
+const STOCKS=[
+  {sym:'NOW', name:'ServiceNow', ex:'NYSE'},
+  {sym:'NVDA',name:'Nvidia',     ex:'NASDAQ'},
+  {sym:'LITE',name:'Lumentum',   ex:'NASDAQ'},
+  {sym:'ONDS',name:'Ondas',      ex:'NASDAQ'},
+  {sym:'MRVL',name:'Marvell',    ex:'NASDAQ'},
+  {sym:'GOOG',name:'Google C',   ex:'NASDAQ'},
 ];
+let expandedSym=null, globalDataCache=null;
 
-const FALLBACK_NEWS = {
-  NOW:  [{ title: "ServiceNow 雲端工作流拓展：機構上調目標價與大型企業續約率觀察", src: "財經編譯", url: "https://finance.yahoo.com/quote/NOW/news/" }],
-  NVDA: [{ title: "輝達晶片供應鏈產能與出貨大追蹤：多頭排列均線支撐力道強勁", src: "科技半導體", url: "https://finance.yahoo.com/quote/NVDA/news/" }],
-  LITE: [{ title: "Lumentum 光通訊模組需求看漲：追蹤高速網路元件最新拉貨潮", src: "光通訊專欄", url: "https://finance.yahoo.com/quote/LITE/news/" }],
-  ONDS: [{ title: "Ondas 無人機防禦與軍工訂單追蹤：多空量能與核心均線變動", src: "特種工業", url: "https://finance.yahoo.com/quote/ONDS/news/" }],
-  MRVL: [{ title: "Marvell 客製化晶片與 ASIC 訂單火熱：網通板塊技術突破", src: "半導體情報", url: "https://finance.yahoo.com/quote/MRVL/news/" }],
-  GOOG: [{ title: "Google 核心搜尋與 AI 廣告整合成效：流量變現與用戶黏著度", src: "網路巨頭", url: "https://finance.yahoo.com/quote/GOOG/news/" }]
-};
-
-let expandedSym = null;
-let globalDataCache = null;
-
-function updateClock() {
-  const now = new Date();
-  const pad = n => String(n).padStart(2, '0');
-  document.getElementById('clock').textContent = `${pad(now.getHours())}:${pad(now.getMinutes())}:${pad(now.getSeconds())}`;
-  document.getElementById('heroTime').innerHTML = `${pad(now.getHours())}<span>:</span>${pad(now.getMinutes())}`;
-  document.getElementById('heroDate').textContent = `${now.getFullYear()}.${pad(now.getMonth()+1)}.${pad(now.getDate())} 週${['日','一','二','三','四','五','六'][now.getDay()]}`;
+function updateClock(){
+  const now=new Date(),pad=n=>String(n).padStart(2,'0');
+  document.getElementById('clock').textContent=`${pad(now.getHours())}:${pad(now.getMinutes())}:${pad(now.getSeconds())}`;
+  document.getElementById('heroTime').innerHTML=`${pad(now.getHours())}<em>:</em>${pad(now.getMinutes())}`;
+  document.getElementById('heroDate').textContent=`${now.getFullYear()}.${pad(now.getMonth()+1)}.${pad(now.getDate())}  週${'日一二三四五六'[now.getDay()]}`;
 }
-setInterval(updateClock, 1000);
-updateClock();
+setInterval(updateClock,1000); updateClock();
 
-// ✅ 相容新舊兩種 yfinance 格式取出新聞欄位
-function extractNewsFields(item) {
-  const content = item.content || {};
-  const title = content.title || item.title || item.headline || '';
-  const url =
-    (content.canonicalUrl && content.canonicalUrl.url) ||
-    (content.clickThroughUrl && content.clickThroughUrl.url) ||
-    item.link || item.url || '';
-  const source =
-    (content.provider && content.provider.displayName) ||
-    item.publisher || item.source || 'Yahoo Finance';
-  let ts = item.providerPublishTime || item.datetime;
-  if (!ts && content.pubDate) {
-    try { ts = Math.floor(new Date(content.pubDate).getTime() / 1000); } catch(e) {}
-  }
-  if (!ts) ts = Math.floor(Date.now() / 1000);
-  return { title, url, source, ts };
-}
-
-function getCleanValidNews(newsArray) {
-  if (!newsArray || !Array.isArray(newsArray)) return [];
-  return newsArray.filter(i => {
-    const txt = i.headline || i.title || '';
-    const url = i.url || i.link || '';
-    return txt && txt.trim() !== '' &&
-           !txt.includes('無新聞標題') && !txt.includes('無最新新聞') &&
-           url && url !== '#';
-  });
-}
-
-function buildGrid() {
-  document.getElementById('grid').innerHTML = STOCKS.map(s => `
-    <div class="card" id="card-${s.sym}" onclick="toggleCard('${s.sym}','${s.ex}', event)">
+function buildGrid(){
+  document.getElementById('grid').innerHTML=STOCKS.map(s=>`
+    <div class="card" id="card-${s.sym}" onclick="toggleCard('${s.sym}','${s.ex}',event)">
       <div class="card-top">
-        <div>
-          <div class="card-sym-wrapper"><div class="card-sym">${s.sym}</div><div class="market-badge" id="badge-${s.sym}">盤前</div></div>
+        <div class="card-left">
+          <div class="card-sym-row">
+            <div class="card-sym">${s.sym}</div>
+            <div class="phase-badge" id="badge-${s.sym}"></div>
+          </div>
           <div class="card-name">${s.name}</div>
         </div>
-        <div class="card-price">
-          <div class="card-price-num neutral" id="price-${s.sym}">$...</div>
-          <div class="card-price-chg neutral" id="chg-${s.sym}">--</div>
+        <div class="card-right" id="pb-${s.sym}">
+          <div class="price-main neutral">$—</div>
+          <div class="price-chg neutral">載入中</div>
         </div>
       </div>
-      <div class="card-news" id="news-${s.sym}"><div class="card-news-item">📡 正在接收即時中文市場資訊...</div></div>
       <div class="card-detail" id="detail-${s.sym}">
-        <div class="chart-box" onclick="activateChart(this, event)">
+        <div class="card-divider"></div>
+        <div class="chart-box" onclick="activateChart(this,event)">
           <iframe id="chart-${s.sym}" src="" allowtransparency="true"></iframe>
+          <div class="chart-hint">點擊啟用互動</div>
         </div>
-        <div class="detail-news" id="detail-news-${s.sym}"></div>
+        <div class="stat-row" id="stat-${s.sym}"></div>
       </div>
-    </div>
-  `).join('');
+    </div>`).join('');
 }
 
-function activateChart(boxEl, event) {
-  event.stopPropagation(); 
-  boxEl.classList.add('active');
-}
+const fmt=(n,d=2)=>(n>=0?'+':'')+n.toFixed(d);
+const cls=n=>n>=0?'up':'down';
+const chip=n=>n>=0?'up-chip':'down-chip';
 
-document.addEventListener('click', function(e) {
-  if (!e.target.closest('.chart-box')) {
-    document.querySelectorAll('.chart-box.active').forEach(b => b.classList.remove('active'));
-  }
-});
+function renderPrice(sym,q){
+  const pb=document.getElementById('pb-'+sym);
+  const badge=document.getElementById('badge-'+sym);
+  const card=document.getElementById('card-'+sym);
+  if(!pb||!q) return;
 
-function toggleCard(sym, ex, event) {
-  if (event.target.closest('.card-detail')) return; 
-  
-  const card = document.getElementById(`card-${sym}`);
-  const grid = document.getElementById('grid');
-  if (!card) return;
-  const isExp = card.classList.contains('expanded');
-  
-  if (expandedSym && expandedSym !== sym) {
-    const prevCard = document.getElementById(`card-${expandedSym}`);
-    if (prevCard) {
-      prevCard.classList.remove('expanded');
-      const prevIframe = document.getElementById(`chart-${expandedSym}`);
-      if (prevIframe) prevIframe.src = '';
-    }
-  }
+  const phase=q.phase||'';
+  const regular=q.regular!=null?q.regular:(q.c||0);
+  const prevClose=q.prev_close||0;
+  const pre=q.pre!=null?q.pre:null;
+  const post=q.post!=null?q.post:null;
 
-  if (!isExp) {
-    window.location.hash = 'expanded-' + sym;
-    grid.classList.add('has-expanded'); 
-    card.classList.add('expanded');
-    expandedSym = sym;
+  badge.className='phase-badge'; badge.style.display='none';
+  card.classList.remove('up-card','down-card');
 
-    const iframe = document.getElementById(`chart-${sym}`);
-    if (iframe) {
-      iframe.src = `https://www.tradingview.com/widgetembed/?symbol=${ex}:${sym}&interval=D&hidesidetoolbar=1&theme=dark&style=1&timezone=Asia/Taipei&locale=zh_TW`;
-    }
-    
-    const box = document.getElementById('detail-news-' + sym);
-    if (box) {
-      const rawItems = globalDataCache?.[sym]?.news;
-      const cleanItems = getCleanValidNews(rawItems);
-      const now = new Date();
-      
-      if (cleanItems.length > 0) {
-        box.innerHTML = cleanItems.slice(0, 1).map(item => {
-          const tSec = item.datetime || item.providerPublishTime || Math.floor(Date.now() / 1000);
-          const d = new Date(tSec * 1000);
-          // ✅ 優先用真實 url，絕不用 #
-          const realUrl = item.url || item.link || `https://finance.yahoo.com/quote/${sym}/news/`;
-          return `<a class="detail-news-item" href="${realUrl}" target="_blank" rel="noopener noreferrer">
-            <div class="detail-news-title">📰 ${item.headline || item.title}</div>
-            <span class="detail-news-meta">${d.getMonth()+1}/${d.getDate()} ${String(d.getHours()).padStart(2,'0')}:${String(d.getMinutes()).padStart(2,'0')} · ${item.source || '即時財經'}</span>
-          </a>`;
-        }).join('');
-      } else {
-        const fb = (FALLBACK_NEWS[sym] || FALLBACK_NEWS['NVDA']).slice(0, 1);
-        box.innerHTML = fb.map(f => `
-          <a class="detail-news-item" href="${f.url}" target="_blank" rel="noopener noreferrer">
-            <div class="detail-news-title">📰 [精選觀察] ${f.title}</div>
-            <span class="detail-news-meta">${now.getMonth()+1}/${now.getDate()} · ${f.src}</span>
-          </a>
-        `).join('');
-      }
-    }
-    
-    // ✅ 修正：block: 'nearest' 讓手機原地展開，不強制跳頂部
-    setTimeout(() => { card.scrollIntoView({ behavior: 'smooth', block: 'nearest' }); }, 120);
+  if(phase==='盤前'&&pre!=null){
+    const d=pre-prevClose, dp=prevClose?d/prevClose*100:0;
+    card.classList.add(d>=0?'up-card':'down-card');
+    badge.className='phase-badge pre'; badge.textContent='盤前'; badge.style.display='';
+    pb.innerHTML=`<div class="price-block">
+      <div class="price-row-reg"><span class="rl">昨收</span><span class="rv neutral">$${prevClose.toFixed(2)}</span></div>
+      <div class="pdiv"></div>
+      <div class="price-row-ext">
+        <span class="ext-lbl pre">PRE</span>
+        <span class="ext-val ${cls(d)}">$${pre.toFixed(2)}</span>
+        <span class="ext-chg ${chip(d)}">${fmt(d)} ${fmt(dp)}%</span>
+      </div></div>`;
+
+  } else if(phase==='盤後'&&post!=null){
+    const regD=regular-prevClose, regDp=prevClose?regD/prevClose*100:0;
+    const d=post-regular, dp=regular?d/regular*100:0;
+    card.classList.add(d>=0?'up-card':'down-card');
+    badge.className='phase-badge post'; badge.textContent='盤後'; badge.style.display='';
+    pb.innerHTML=`<div class="price-block">
+      <div class="price-row-reg">
+        <span class="rl">收盤</span>
+        <span class="rv ${cls(regD)}">$${regular.toFixed(2)}</span>
+        <span class="rp ${cls(regD)}">${fmt(regDp)}%</span>
+      </div>
+      <div class="pdiv"></div>
+      <div class="price-row-ext">
+        <span class="ext-lbl post">POST</span>
+        <span class="ext-val ${cls(d)}">$${post.toFixed(2)}</span>
+        <span class="ext-chg ${chip(d)}">${fmt(d)} ${fmt(dp)}%</span>
+      </div></div>`;
 
   } else {
-    card.classList.remove('expanded');
-    grid.classList.remove('has-expanded');
-    expandedSym = null;
-    
-    const iframe = document.getElementById(`chart-${sym}`);
-    if (iframe) iframe.src = '';
-    
-    if (window.location.hash.includes('expanded')) {
-      history.replaceState('', document.title, window.location.pathname + window.location.search);
-    }
-    setTimeout(() => { card.scrollIntoView({ behavior: 'smooth', block: 'nearest' }); }, 50);
+    const c=q.c||0, d=q.d||0, dp=q.dp||0;
+    card.classList.add(d>=0?'up-card':'down-card');
+    if(phase==='正式盤'){badge.className='phase-badge live';badge.textContent='盤中';badge.style.display='';}
+    pb.innerHTML=`<div style="display:flex;flex-direction:column;align-items:flex-end;gap:4px;">
+      <div class="price-main ${cls(d)}">$${c.toFixed(2)}</div>
+      <div class="price-chg ${chip(d)}">${fmt(d)} ${fmt(dp)}%</div></div>`;
   }
 }
 
-window.addEventListener('hashchange', function() {
-  if (!window.location.hash && expandedSym) {
-    const card = document.getElementById(`card-${expandedSym}`);
-    const grid = document.getElementById('grid');
-    if (card) card.classList.remove('expanded');
-    if (grid) grid.classList.remove('has-expanded');
-    const iframe = document.getElementById(`chart-${expandedSym}`);
-    if (iframe) iframe.src = '';
-    setTimeout(() => { if (card) card.scrollIntoView({ behavior: 'smooth', block: 'nearest' }); }, 50);
-    expandedSym = null;
+function renderStat(sym,q){
+  const row=document.getElementById('stat-'+sym);
+  if(!row||!q) return;
+  const items=[];
+  if(q.regular&&q.regular!==0) items.push({l:'收盤價',v:'$'+Number(q.regular).toFixed(2)});
+  if(q.prev_close&&q.prev_close!==0) items.push({l:'前收盤',v:'$'+Number(q.prev_close).toFixed(2)});
+  if(q.pre!=null) items.push({l:'盤前',v:'$'+Number(q.pre).toFixed(2)});
+  if(q.post!=null) items.push({l:'盤後',v:'$'+Number(q.post).toFixed(2)});
+  row.innerHTML=items.map(i=>`<div class="stat-item"><div class="stat-lbl">${i.l}</div><div class="stat-val">${i.v}</div></div>`).join('');
+}
+
+function toggleCard(sym,ex,event){
+  if(event.target.closest('.card-detail')) return;
+  const card=document.getElementById('card-'+sym);
+  if(!card) return;
+  const isExp=card.classList.contains('expanded');
+  if(expandedSym&&expandedSym!==sym){
+    const prev=document.getElementById('card-'+expandedSym);
+    if(prev){prev.classList.remove('expanded');const pi=document.getElementById('chart-'+expandedSym);if(pi)pi.src='';}
   }
-});
-
-async function loadCloudData() {
-  const statusEl = document.getElementById('update-status');
-  try {
-    const res = await fetch(`./stock_data.json?t=${Date.now()}`);
-    const json = await res.json();
-    globalDataCache = json?.data ?? {};
-    
-    const nowLocal = new Date();
-    const localHour = nowLocal.getHours();
-    let phaseLabel = '';
-    if (localHour >= 16 && localHour < 22) phaseLabel = '盤前';
-    else if (localHour >= 4 && localHour < 9) phaseLabel = '盤後';
-
-    STOCKS.forEach(s => {
-      const sData = globalDataCache[s.sym];
-      if (!sData) return;
-      
-      const d = sData.quote;
-      const priceEl = document.getElementById(`price-${s.sym}`);
-      const chgEl = document.getElementById(`chg-${s.sym}`);
-      const badgeEl = document.getElementById(`badge-${s.sym}`);
-      
-      if (d && d.c !== undefined && priceEl && chgEl) {
-        const currentPrice = Number(d.c) || 0;
-        const dollarChange = Number(d.d) || 0;
-        const percentChange = Number(d.dp) || 0;
-        const cls = dollarChange >= 0 ? 'up' : 'down';
-        const sign = dollarChange >= 0 ? '+' : '';
-        priceEl.textContent = `$${currentPrice.toFixed(2)}`;
-        priceEl.className = `card-price-num ${cls}`;
-        chgEl.textContent = `${sign}${dollarChange.toFixed(2)} (${sign}${percentChange.toFixed(2)}%)`;
-        chgEl.className = `card-price-chg ${cls}`;
-        if (badgeEl) {
-          // ✅ 優先用 Python 傳回的 phase 欄位
-          const phase = d.phase || phaseLabel;
-          badgeEl.textContent = phase;
-          badgeEl.style.display = phase ? 'inline-block' : 'none';
-        }
-      }
-      
-      const newsBox = document.getElementById(`news-${s.sym}`);
-      if (newsBox) {
-        const rawNews = sData.news ?? [];
-        const cleanNews = getCleanValidNews(rawNews);
-        const now = new Date();
-        
-        if (cleanNews.length > 0) {
-          newsBox.innerHTML = cleanNews.slice(0, 1).map(item => {
-            const tSec = item.datetime || item.providerPublishTime || Math.floor(Date.now() / 1000);
-            const dObj = new Date(tSec * 1000);
-            return `
-              <div class="card-news-item">
-                • ${item.headline || item.title}
-                <div class="news-time">${dObj.getMonth()+1}/${dObj.getDate()} · ${item.source || '即時財經'}</div>
-              </div>
-            `;
-          }).join('');
-        } else {
-          const fb = FALLBACK_NEWS[s.sym] || FALLBACK_NEWS['NVDA'];
-          newsBox.innerHTML = fb.slice(0, 1).map(f => `
-            <div class="card-news-item">• ${f.title}<div class="news-time">${now.getMonth()+1}/${now.getDate()} · ${f.src}</div></div>
-          `).join('');
-        }
-      }
-    });
-    
-    if (statusEl) {
-      const nowTime = new Date();
-      statusEl.textContent = `雲端同步完畢 (${String(nowTime.getHours()).padStart(2,'0')}:${String(nowTime.getMinutes()).padStart(2,'0')}更新)`;
-    }
-  } catch(e) {
-    console.error(e);
-    if (statusEl) statusEl.textContent = '同步失敗，請手動刷新';
+  if(!isExp){
+    card.classList.add('expanded'); expandedSym=sym;
+    const iframe=document.getElementById('chart-'+sym);
+    if(iframe) iframe.src=`https://www.tradingview.com/widgetembed/?symbol=${ex}:${sym}&interval=D&hidesidetoolbar=1&theme=dark&style=1&timezone=Asia/Taipei&locale=zh_TW`;
+    renderStat(sym,globalDataCache?.[sym]?.quote);
+    setTimeout(()=>card.scrollIntoView({behavior:'smooth',block:'nearest'}),120);
+  } else {
+    card.classList.remove('expanded'); expandedSym=null;
+    const iframe=document.getElementById('chart-'+sym);
+    if(iframe) iframe.src='';
+    setTimeout(()=>card.scrollIntoView({behavior:'smooth',block:'nearest'}),50);
   }
 }
 
-function manualRefresh() { loadCloudData(); }
-buildGrid(); 
-loadCloudData();
-setInterval(loadCloudData, 60000); 
+function activateChart(boxEl,event){event.stopPropagation();boxEl.classList.add('active');}
+document.addEventListener('click',e=>{if(!e.target.closest('.chart-box'))document.querySelectorAll('.chart-box.active').forEach(b=>b.classList.remove('active'));});
+
+async function loadCloudData(){
+  const s=document.getElementById('update-status');
+  try{
+    const res=await fetch('./stock_data.json?t='+Date.now());
+    const json=await res.json();
+    globalDataCache=json?.data??{};
+    STOCKS.forEach(st=>{const d=globalDataCache[st.sym];if(d)renderPrice(st.sym,d.quote);});
+    const n=new Date(),pad=x=>String(x).padStart(2,'0');
+    if(s) s.textContent=`同步完畢 ${pad(n.getHours())}:${pad(n.getMinutes())}`;
+  }catch(e){console.error(e);if(s)s.textContent='同步失敗，請手動刷新';}
+}
+function manualRefresh(){loadCloudData();}
+buildGrid(); loadCloudData();
+setInterval(loadCloudData,60000);
 </script>
 </body>
 </html>
