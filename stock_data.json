@@ -1,130 +1,130 @@
 {
   "name": "美股盤前情報資料庫",
-  "updated_at": "2026-06-05T20:21:36.741311+08:00",
+  "updated_at": "2026-06-06T01:26:02.152807+08:00",
   "data": {
     "NOW": {
       "quote": {
-        "c": 119.99,
-        "d": 2.09,
-        "dp": 1.7723,
-        "regular": 119.36,
-        "pre": 119.99,
+        "c": 113.49,
+        "d": -5.87,
+        "dp": -4.9179,
+        "regular": 113.49,
+        "pre": null,
         "post": null,
-        "prev_close": 117.9,
-        "phase": "盤前"
+        "prev_close": 119.36,
+        "phase": "正式盤"
       },
       "news": [
         {
+          "headline": "ServiceNow Stock Plunges 30% in 6 Months: Hold Tight or Book Profits?",
+          "datetime": 1780680360,
+          "source": "Yahoo Finance",
+          "url": "https://finance.yahoo.com/markets/stocks/articles/servicenow-stock-plunges-30-6-124500486.html"
+        },
+        {
+          "headline": "Cloud AI Update - Devenex Launches Governance Infrastructure for Enterprise AI Agents",
+          "datetime": 1780680360,
+          "source": "Yahoo Finance",
+          "url": "https://finance.yahoo.com/sectors/technology/articles/cloud-ai-devenex-launches-governance-123801310.html"
+        },
+        {
           "headline": "Cognizant Tie Up Puts ServiceNow At Center Of AI Governance Story",
-          "datetime": 1780662095,
+          "datetime": 1780680360,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/markets/stocks/articles/cognizant-tie-puts-servicenow-center-100948532.html"
-        },
-        {
-          "headline": "1 Cash-Producing Stock with Impressive Fundamentals and 2 We Brush Off",
-          "datetime": 1780662095,
-          "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/markets/stocks/articles/1-cash-producing-stock-impressive-220530524.html"
-        },
-        {
-          "headline": "UiPath Stock Slides 27% YTD: Is PATH a Buy, Hold, or Sell?",
-          "datetime": 1780662095,
-          "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/markets/stocks/articles/uipath-stock-slides-27-ytd-173400125.html"
         }
       ]
     },
     "NVDA": {
       "quote": {
-        "c": 215.44,
-        "d": 0.69,
-        "dp": 0.3213,
-        "regular": 218.66,
-        "pre": 215.44,
+        "c": 207.39,
+        "d": -11.27,
+        "dp": -5.1541,
+        "regular": 207.39,
+        "pre": null,
         "post": null,
-        "prev_close": 214.75,
-        "phase": "盤前"
+        "prev_close": 218.66,
+        "phase": "正式盤"
       },
       "news": [
         {
+          "headline": "The stock market's scorching run means the rich will keep getting richer: Chart",
+          "datetime": 1780680360,
+          "source": "Yahoo Finance",
+          "url": "https://finance.yahoo.com/markets/article/the-stock-markets-scorching-run-means-the-rich-will-keep-getting-richer-chart-135939239.html"
+        },
+        {
           "headline": "Broadcom's sell-off just entered megacap history",
-          "datetime": 1780662095,
+          "datetime": 1780680360,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/markets/stocks/article/broadcoms-sell-off-just-entered-megacap-history-163942663.html"
         },
         {
-          "headline": "Broadcom stock sinks. Are AI earnings expectations 'insatiable'?",
-          "datetime": 1780662095,
+          "headline": "Nvidia Shares Sink After Strong U.S. Jobs Data Sparks Tech Selloff",
+          "datetime": 1780680360,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/video/broadcom-stock-sinks-ai-earnings-135803533.html"
-        },
-        {
-          "headline": "Cem Karsan Warns The S&P 500 Lost 40% in Real Terms Over 14 Years – And It Could Happen Again",
-          "datetime": 1780662095,
-          "source": "Yahoo Finance",
-          "url": "https://247wallst.com/investing/2026/06/05/cem-karsan-warns-the-sp-500-lost-40-in-real-terms-over-14-years-and-it-could-happen-again/"
+          "url": "https://finance.yahoo.com/markets/stocks/articles/nvidia-shares-sink-strong-u-172315309.html"
         }
       ]
     },
     "LITE": {
       "quote": {
-        "c": 905.0,
-        "d": -33.0,
-        "dp": -3.5181,
-        "regular": 945.08,
-        "pre": 905.0,
+        "c": 875.16,
+        "d": -69.92,
+        "dp": -7.3978,
+        "regular": 875.16,
+        "pre": null,
         "post": null,
-        "prev_close": 938.0,
-        "phase": "盤前"
+        "prev_close": 945.08,
+        "phase": "正式盤"
       },
       "news": [
         {
+          "headline": "Ciena's Mountain Of Orders Is Starting To Look A Little Scary",
+          "datetime": 1780680361,
+          "source": "Yahoo Finance",
+          "url": "https://www.trefis.com/articles/601621/cienas-mountain-of-orders-is-starting-to-look-a-little-scary/2026-06-05"
+        },
+        {
           "headline": "Stocks to Watch: Lululemon, Broadcom, Lumentum Holdings",
-          "datetime": 1780662095,
+          "datetime": 1780680361,
           "source": "Yahoo Finance",
           "url": "https://www.wsj.com/livecoverage/may-jobs-report-stock-market-06-05-2026/card/stocks-to-watch-lululemon-broadcom-lumentum-holdings-JNe0Igf0hcn4NHX9cbZn?siteid=yhoof2&yptr=yahoo"
         },
         {
           "headline": "Applied Optoelectronics (AAOI) Soars 10% as Exec Highlights Growing Optics Technology Role",
-          "datetime": 1780662095,
+          "datetime": 1780680361,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/markets/stocks/articles/applied-optoelectronics-aaoi-soars-10-012106039.html"
-        },
-        {
-          "headline": "Lumentum Holdings (LITE) Announces $650.4 Million Private Share Exchange Transaction",
-          "datetime": 1780662095,
-          "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/markets/stocks/articles/lumentum-holdings-lite-announces-650-161120112.html"
         }
       ]
     },
     "ONDS": {
       "quote": {
-        "c": 11.79,
-        "d": 0.18,
-        "dp": 1.5495,
-        "regular": 11.97,
-        "pre": 11.79,
+        "c": 10.63,
+        "d": -1.34,
+        "dp": -11.1947,
+        "regular": 10.63,
+        "pre": null,
         "post": null,
-        "prev_close": 11.61,
-        "phase": "盤前"
+        "prev_close": 11.97,
+        "phase": "正式盤"
       },
       "news": [
         {
           "headline": "A Look At Ondas (ONDS) Valuation After A Sharp One Day Share Price Drop",
-          "datetime": 1780662096,
+          "datetime": 1780680361,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/markets/stocks/articles/look-ondas-onds-valuation-sharp-180855714.html"
         },
         {
           "headline": "Ondas (ONDS) Secures More Than $30M in New Orders During May",
-          "datetime": 1780662096,
+          "datetime": 1780680361,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/markets/stocks/articles/ondas-onds-secures-more-30m-165009393.html"
         },
         {
           "headline": "ONDS' Growing Active Opportunity Pipeline: Multi-Year Growth Secured?",
-          "datetime": 1780662096,
+          "datetime": 1780680361,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/markets/stocks/articles/onds-growing-active-opportunity-pipeline-151300145.html"
         }
@@ -132,65 +132,65 @@
     },
     "MRVL": {
       "quote": {
-        "c": 304.75,
-        "d": 3.1,
-        "dp": 1.0287,
-        "regular": 316.43,
-        "pre": 304.75,
+        "c": 281.66,
+        "d": -34.77,
+        "dp": -10.9882,
+        "regular": 281.66,
+        "pre": null,
         "post": null,
-        "prev_close": 301.65,
-        "phase": "盤前"
+        "prev_close": 316.43,
+        "phase": "正式盤"
       },
       "news": [
         {
           "headline": "Intel, AMD, Micron shares trim losses after Broadcom results spark semiconductor sector sell-off",
-          "datetime": 1780662096,
+          "datetime": 1780680361,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/markets/stocks/article/intel-amd-micron-shares-trim-losses-after-broadcom-results-spark-semiconductor-sector-sell-off-130128361.html"
         },
         {
-          "headline": "Broadcom and Intel Stocks Drop. The Chip Selloff Has Legs.",
-          "datetime": 1780662096,
+          "headline": "Raymond James Raises its Price Target on Marvell (MRVL) to $235 from $105",
+          "datetime": 1780680361,
           "source": "Yahoo Finance",
-          "url": "https://www.barrons.com/articles/broadcom-intel-stocks-chip-selloff-2882e2ad?siteid=yhoof2&yptr=yahoo"
+          "url": "https://finance.yahoo.com/markets/stocks/articles/raymond-james-raises-price-target-164257105.html"
         },
         {
-          "headline": "Social Buzz: Wallstreetbets Stocks Mostly Lower Pre-Bell Friday; Lululemon Athletica, Micron Technology to Decline",
-          "datetime": 1780662096,
+          "headline": "Broadcom and Intel Stocks Drop. The Chip Selloff Isn’t Done Yet.",
+          "datetime": 1780680361,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/markets/stocks/articles/social-buzz-wallstreetbets-stocks-mostly-103703388.html"
+          "url": "https://www.barrons.com/articles/broadcom-intel-stocks-chip-selloff-2882e2ad?siteid=yhoof2&yptr=yahoo"
         }
       ]
     },
     "GOOG": {
       "quote": {
-        "c": 366.3,
-        "d": 10.62,
-        "dp": 2.9856,
-        "regular": 369.27,
-        "pre": 366.3,
+        "c": 367.06,
+        "d": -2.2,
+        "dp": -0.5971,
+        "regular": 367.06,
+        "pre": null,
         "post": null,
-        "prev_close": 355.68,
-        "phase": "盤前"
+        "prev_close": 369.27,
+        "phase": "正式盤"
       },
       "news": [
         {
-          "headline": "Tech stocks today: Chip stocks remain pressured as Broadcom earnings spook AI investors",
-          "datetime": 1780662096,
+          "headline": "How skeptical should investors be of these mega-IPOs?",
+          "datetime": 1780680362,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/sectors/technology/live/tech-stocks-today-chip-stocks-remain-pressured-as-broadcom-earnings-spook-ai-investors-100000607.html"
+          "url": "https://finance.yahoo.com/video/skeptical-investors-mega-ipos-160000555.html"
         },
         {
-          "headline": "These major companies may owe you money. How to apply in Arizona",
-          "datetime": 1780662096,
+          "headline": "Alphabet Stock Slides After Report Reveals Cloud Division Layoffs",
+          "datetime": 1780680362,
           "source": "Yahoo Finance",
-          "url": "https://www.azcentral.com/story/money/business/consumers/2026/06/05/class-action-lawsuit-settlements-arizona/90406371007/"
+          "url": "https://finance.yahoo.com/markets/stocks/articles/alphabet-stock-slides-report-reveals-171649249.html"
         },
         {
-          "headline": "Dow Jones Futures Rise, Techs Fall As AI Trade Cools; Jobs Report Looms",
-          "datetime": 1780662096,
+          "headline": "Vanguard’s $223 Billion Growth ETF VUG Is Quietly Beating Most Large Cap Active Funds at One Tenth the Cost",
+          "datetime": 1780680362,
           "source": "Yahoo Finance",
-          "url": "https://www.investors.com/market-trend/stock-market-today/dow-jones-futures-ai-stocks-broadcom-ciena-jobs-report/?src=A00220&yptr=yahoo"
+          "url": "https://247wallst.com/investing/2026/06/05/vanguards-223-billion-growth-etf-vug-is-quietly-beating-most-large-cap-active-funds-at-one-tenth-the-cost/"
         }
       ]
     }
