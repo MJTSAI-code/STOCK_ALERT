@@ -1,66 +1,66 @@
 {
   "name": "美股盤前情報資料庫",
-  "updated_at": "2026-06-05T07:49:36.762079+08:00",
+  "updated_at": "2026-06-05T18:58:15.047409+08:00",
   "data": {
     "NOW": {
       "quote": {
-        "c": 119.45,
-        "d": 1.55,
-        "dp": 1.3147,
+        "c": 120.52,
+        "d": 2.62,
+        "dp": 2.2222,
         "regular": 119.36,
-        "pre": null,
-        "post": 119.45,
+        "pre": 120.52,
+        "post": null,
         "prev_close": 117.9,
-        "phase": "盤後"
+        "phase": "盤前"
       },
       "news": [
         {
+          "headline": "Cognizant Tie Up Puts ServiceNow At Center Of AI Governance Story",
+          "datetime": 1780657093,
+          "source": "Yahoo Finance",
+          "url": "https://finance.yahoo.com/markets/stocks/articles/cognizant-tie-puts-servicenow-center-100948532.html"
+        },
+        {
           "headline": "1 Cash-Producing Stock with Impressive Fundamentals and 2 We Brush Off",
-          "datetime": 1780616975,
+          "datetime": 1780657093,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/markets/stocks/articles/1-cash-producing-stock-impressive-220530524.html"
         },
         {
           "headline": "UiPath Stock Slides 27% YTD: Is PATH a Buy, Hold, or Sell?",
-          "datetime": 1780616975,
+          "datetime": 1780657093,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/markets/stocks/articles/uipath-stock-slides-27-ytd-173400125.html"
-        },
-        {
-          "headline": "Jack Henry (JKHY) Down 6.8% Since Last Earnings Report: Can It Rebound?",
-          "datetime": 1780616975,
-          "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/markets/stocks/articles/jack-henry-jkhy-down-6-153018911.html"
         }
       ]
     },
     "NVDA": {
       "quote": {
-        "c": 216.38,
-        "d": 1.63,
-        "dp": 0.7576,
+        "c": 215.94,
+        "d": 1.19,
+        "dp": 0.5541,
         "regular": 218.66,
-        "pre": null,
-        "post": 216.38,
+        "pre": 215.94,
+        "post": null,
         "prev_close": 214.75,
-        "phase": "盤後"
+        "phase": "盤前"
       },
       "news": [
         {
           "headline": "Broadcom's sell-off just entered megacap history",
-          "datetime": 1780616976,
+          "datetime": 1780657093,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/markets/stocks/article/broadcoms-sell-off-just-entered-megacap-history-163942663.html"
         },
         {
           "headline": "Broadcom stock sinks. Are AI earnings expectations 'insatiable'?",
-          "datetime": 1780616976,
+          "datetime": 1780657093,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/video/broadcom-stock-sinks-ai-earnings-135803533.html"
         },
         {
           "headline": "Is OpenAI coming for Tesla's robotics business?",
-          "datetime": 1780616976,
+          "datetime": 1780657093,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/video/openai-coming-teslas-robotics-business-120000710.html"
         }
@@ -68,33 +68,33 @@
     },
     "LITE": {
       "quote": {
-        "c": 917.3,
-        "d": -20.7,
-        "dp": -2.2068,
+        "c": 910.12,
+        "d": -27.88,
+        "dp": -2.9723,
         "regular": 945.08,
-        "pre": null,
-        "post": 917.3,
+        "pre": 910.12,
+        "post": null,
         "prev_close": 938.0,
-        "phase": "盤後"
+        "phase": "盤前"
       },
       "news": [
         {
+          "headline": "Stocks to Watch: Lululemon, Broadcom, Lumentum Holdings",
+          "datetime": 1780657093,
+          "source": "Yahoo Finance",
+          "url": "https://www.wsj.com/livecoverage/may-jobs-report-stock-market-06-05-2026/card/stocks-to-watch-lululemon-broadcom-lumentum-holdings-JNe0Igf0hcn4NHX9cbZn?siteid=yhoof2&yptr=yahoo"
+        },
+        {
+          "headline": "Applied Optoelectronics (AAOI) Soars 10% as Exec Highlights Growing Optics Technology Role",
+          "datetime": 1780657093,
+          "source": "Yahoo Finance",
+          "url": "https://finance.yahoo.com/markets/stocks/articles/applied-optoelectronics-aaoi-soars-10-012106039.html"
+        },
+        {
           "headline": "Lumentum Holdings (LITE) Announces $650.4 Million Private Share Exchange Transaction",
-          "datetime": 1780616976,
+          "datetime": 1780657093,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/markets/stocks/articles/lumentum-holdings-lite-announces-650-161120112.html"
-        },
-        {
-          "headline": "Why Is Lumentum (LITE) Down 0.7% Since Last Earnings Report?",
-          "datetime": 1780616976,
-          "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/markets/stocks/articles/why-lumentum-lite-down-0-153020225.html"
-        },
-        {
-          "headline": "Is It Too Late To Consider Lumentum Holdings (LITE) After The US$2b Nvidia Investment?",
-          "datetime": 1780616976,
-          "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/markets/stocks/articles/too-consider-lumentum-holdings-lite-010824686.html"
         }
       ]
     },
@@ -104,27 +104,27 @@
         "d": 0.22,
         "dp": 1.8949,
         "regular": 11.97,
-        "pre": null,
-        "post": 11.83,
+        "pre": 11.83,
+        "post": null,
         "prev_close": 11.61,
-        "phase": "盤後"
+        "phase": "盤前"
       },
       "news": [
         {
           "headline": "A Look At Ondas (ONDS) Valuation After A Sharp One Day Share Price Drop",
-          "datetime": 1780616976,
+          "datetime": 1780657094,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/markets/stocks/articles/look-ondas-onds-valuation-sharp-180855714.html"
         },
         {
           "headline": "Ondas (ONDS) Secures More Than $30M in New Orders During May",
-          "datetime": 1780616976,
+          "datetime": 1780657094,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/markets/stocks/articles/ondas-onds-secures-more-30m-165009393.html"
         },
         {
           "headline": "ONDS' Growing Active Opportunity Pipeline: Multi-Year Growth Secured?",
-          "datetime": 1780616976,
+          "datetime": 1780657094,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/markets/stocks/articles/onds-growing-active-opportunity-pipeline-151300145.html"
         }
@@ -132,65 +132,65 @@
     },
     "MRVL": {
       "quote": {
-        "c": 303.56,
-        "d": 1.91,
-        "dp": 0.632,
+        "c": 308.75,
+        "d": 7.1,
+        "dp": 2.3537,
         "regular": 316.43,
-        "pre": null,
-        "post": 303.56,
+        "pre": 308.75,
+        "post": null,
         "prev_close": 301.65,
-        "phase": "盤後"
+        "phase": "盤前"
       },
       "news": [
         {
           "headline": "Intel, AMD, Micron shares trim losses after Broadcom results spark semiconductor sector sell-off",
-          "datetime": 1780616976,
+          "datetime": 1780657094,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/markets/stocks/article/intel-amd-micron-shares-trim-losses-after-broadcom-results-spark-semiconductor-sector-sell-off-130128361.html"
         },
         {
-          "headline": "This Chip Stock Made a Comeback After Broadcom Earnings",
-          "datetime": 1780616976,
+          "headline": "Social Buzz: Wallstreetbets Stocks Mostly Lower Pre-Bell Friday; Lululemon Athletica, Micron Technology to Decline",
+          "datetime": 1780657094,
           "source": "Yahoo Finance",
-          "url": "https://www.wsj.com/livecoverage/stock-market-today-dow-sp-500-nasdaq-06-04-2026/card/chip-stocks-slide-after-broadcom-earnings-yIHjFm9DoKsa1MqIeBHS?siteid=yhoof2&yptr=yahoo"
+          "url": "https://finance.yahoo.com/markets/stocks/articles/social-buzz-wallstreetbets-stocks-mostly-103703388.html"
         },
         {
-          "headline": "Quantinuum, Broadcom, UnitedHealth, and More Stocks That Explain Today’s Market",
-          "datetime": 1780616976,
+          "headline": "Stocks to Watch: Lululemon, Broadcom, Lumentum Holdings",
+          "datetime": 1780657094,
           "source": "Yahoo Finance",
-          "url": "https://www.barrons.com/articles/stock-movers-ee8a7eba?siteid=yhoof2&yptr=yahoo"
+          "url": "https://www.wsj.com/livecoverage/may-jobs-report-stock-market-06-05-2026/card/stocks-to-watch-lululemon-broadcom-lumentum-holdings-JNe0Igf0hcn4NHX9cbZn?siteid=yhoof2&yptr=yahoo"
         }
       ]
     },
     "GOOG": {
       "quote": {
-        "c": 367.5,
-        "d": 11.82,
-        "dp": 3.3232,
+        "c": 368.21,
+        "d": 12.53,
+        "dp": 3.5241,
         "regular": 369.27,
-        "pre": null,
-        "post": 367.5,
+        "pre": 368.21,
+        "post": null,
         "prev_close": 355.68,
-        "phase": "盤後"
+        "phase": "盤前"
       },
       "news": [
         {
           "headline": "Broadcom stock sinks 12% as AI chip forecast disappoints",
-          "datetime": 1780616976,
+          "datetime": 1780657095,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/markets/article/broadcom-stock-sinks-12-as-ai-chip-forecast-disappoints-165602082.html"
         },
         {
           "headline": "Is OpenAI coming for Tesla's robotics business?",
-          "datetime": 1780616976,
+          "datetime": 1780657095,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/video/openai-coming-teslas-robotics-business-120000710.html"
         },
         {
-          "headline": "Former School of Rock CEO's guide to overcoming midlife burnout",
-          "datetime": 1780616976,
+          "headline": "Dow Jones Futures Rise, Techs Fall After Shrugging Off Broadcom, Ciena; Jobs Report Looms",
+          "datetime": 1780657095,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/video/former-school-rock-ceos-guide-100000889.html"
+          "url": "https://www.investors.com/market-trend/stock-market-today/dow-jones-futures-ai-stocks-broadcom-ciena-jobs-report/?src=A00220&yptr=yahoo"
         }
       ]
     }
