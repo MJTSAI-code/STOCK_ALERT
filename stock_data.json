@@ -1,34 +1,34 @@
 {
   "name": "美股盤前情報資料庫",
-  "updated_at": "2026-06-06T03:23:00.316978+08:00",
+  "updated_at": "2026-06-06T07:49:30.044285+08:00",
   "data": {
     "NOW": {
       "quote": {
-        "c": 111.93,
-        "d": -7.43,
-        "dp": -6.2249,
-        "regular": 111.93,
+        "c": 110.91,
+        "d": -8.45,
+        "dp": -7.0794,
+        "regular": 112.45,
         "pre": null,
-        "post": null,
+        "post": 110.91,
         "prev_close": 119.36,
-        "phase": "正式盤"
+        "phase": "盤後"
       },
       "news": [
         {
           "headline": "ServiceNow Stock Plunges 30% in 6 Months: Hold Tight or Book Profits?",
-          "datetime": 1780687378,
+          "datetime": 1780703368,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/markets/stocks/articles/servicenow-stock-plunges-30-6-124500486.html"
         },
         {
           "headline": "Cloud AI Update - Devenex Launches Governance Infrastructure for Enterprise AI Agents",
-          "datetime": 1780687378,
+          "datetime": 1780703368,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/sectors/technology/articles/cloud-ai-devenex-launches-governance-123801310.html"
         },
         {
           "headline": "Cognizant Tie Up Puts ServiceNow At Center Of AI Governance Story",
-          "datetime": 1780687378,
+          "datetime": 1780703368,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/markets/stocks/articles/cognizant-tie-puts-servicenow-center-100948532.html"
         }
@@ -36,95 +36,95 @@
     },
     "NVDA": {
       "quote": {
-        "c": 205.0,
-        "d": -13.66,
-        "dp": -6.2471,
-        "regular": 205.0,
+        "c": 204.12,
+        "d": -14.54,
+        "dp": -6.6496,
+        "regular": 205.1,
         "pre": null,
-        "post": null,
+        "post": 204.12,
         "prev_close": 218.66,
-        "phase": "正式盤"
+        "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Stock market today: Nasdaq plunges, Dow and S&P 500 sink as jobs report fuels Fed hike bets, chip stocks sell off",
-          "datetime": 1780687379,
+          "headline": "Chip sell-off rattles markets",
+          "datetime": 1780703368,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/markets/live/stock-market-today-dow-sp-500-nasdaq-sink-as-jobs-report-fuels-fed-hike-bets-chip-stocks-sell-off-230134285.html"
+          "url": "https://finance.yahoo.com/video/chip-sell-off-rattles-markets-210216273.html"
         },
         {
-          "headline": "Why Ondas Stock Zoomed 32% Higher in May",
-          "datetime": 1780687379,
+          "headline": "SpaceX to rent AI capacity to Google for $920 million per month",
+          "datetime": 1780703368,
           "source": "Yahoo Finance",
-          "url": "https://www.fool.com/investing/2026/06/05/why-ondas-stock-zoomed-32-higher-in-may/"
+          "url": "https://finance.yahoo.com/sectors/technology/article/spacex-to-rent-ai-capacity-to-google-for-920-million-per-month-200639544.html"
         },
         {
-          "headline": "AI Layoffs Already Have Surpassed Last Year’s Total. Tech Workers Are Being Cut First.",
-          "datetime": 1780687379,
+          "headline": "The stock market's scorching run means the rich will keep getting richer: Chart",
+          "datetime": 1780703368,
           "source": "Yahoo Finance",
-          "url": "https://247wallst.com/investing/2026/06/05/ai-layoffs-already-have-surpassed-last-years-total-tech-workers-are-being-cut-first/"
+          "url": "https://finance.yahoo.com/markets/article/the-stock-markets-scorching-run-means-the-rich-will-keep-getting-richer-chart-135939239.html"
         }
       ]
     },
     "LITE": {
       "quote": {
-        "c": 865.01,
-        "d": -80.07,
-        "dp": -8.4718,
-        "regular": 865.01,
+        "c": 846.99,
+        "d": -98.09,
+        "dp": -10.379,
+        "regular": 863.66,
         "pre": null,
-        "post": null,
+        "post": 846.99,
         "prev_close": 945.08,
-        "phase": "正式盤"
+        "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Stocks to Watch: Lululemon, Broadcom, Lumentum Holdings",
-          "datetime": 1780687379,
+          "headline": "Stocks to Watch Recap: Lululemon, Broadcom, Lumentum Holdings",
+          "datetime": 1780703369,
           "source": "Yahoo Finance",
           "url": "https://www.wsj.com/livecoverage/may-jobs-report-stock-market-06-05-2026/card/stocks-to-watch-lululemon-broadcom-lumentum-holdings-JNe0Igf0hcn4NHX9cbZn?siteid=yhoof2&yptr=yahoo"
         },
         {
-          "headline": "Ciena's Mountain Of Orders Is Starting To Look A Little Scary",
-          "datetime": 1780687379,
+          "headline": "Why Lumentum Holdings (LITE) Is Up 9.8% After Major Note Swap, AI Boost And U.S. Expansion",
+          "datetime": 1780703369,
           "source": "Yahoo Finance",
-          "url": "https://www.trefis.com/articles/601621/cienas-mountain-of-orders-is-starting-to-look-a-little-scary/2026-06-05"
+          "url": "https://finance.yahoo.com/markets/stocks/articles/why-lumentum-holdings-lite-9-211725818.html"
         },
         {
-          "headline": "Applied Optoelectronics (AAOI) Soars 10% as Exec Highlights Growing Optics Technology Role",
-          "datetime": 1780687379,
+          "headline": "Ciena's Mountain Of Orders Is Starting To Look A Little Scary",
+          "datetime": 1780703369,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/markets/stocks/articles/applied-optoelectronics-aaoi-soars-10-012106039.html"
+          "url": "https://www.trefis.com/articles/601621/cienas-mountain-of-orders-is-starting-to-look-a-little-scary/2026-06-05"
         }
       ]
     },
     "ONDS": {
       "quote": {
-        "c": 10.44,
-        "d": -1.54,
-        "dp": -12.8237,
-        "regular": 10.44,
+        "c": 10.23,
+        "d": -1.74,
+        "dp": -14.5363,
+        "regular": 10.43,
         "pre": null,
-        "post": null,
+        "post": 10.23,
         "prev_close": 11.97,
-        "phase": "正式盤"
+        "phase": "盤後"
       },
       "news": [
         {
           "headline": "Why Ondas Stock Zoomed 32% Higher in May",
-          "datetime": 1780687379,
+          "datetime": 1780703369,
           "source": "Yahoo Finance",
           "url": "https://www.fool.com/investing/2026/06/05/why-ondas-stock-zoomed-32-higher-in-may/"
         },
         {
           "headline": "A Look At Ondas (ONDS) Valuation After A Sharp One Day Share Price Drop",
-          "datetime": 1780687379,
+          "datetime": 1780703369,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/markets/stocks/articles/look-ondas-onds-valuation-sharp-180855714.html"
         },
         {
           "headline": "Ondas (ONDS) Secures More Than $30M in New Orders During May",
-          "datetime": 1780687379,
+          "datetime": 1780703369,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/markets/stocks/articles/ondas-onds-secures-more-30m-165009393.html"
         }
@@ -132,65 +132,65 @@
     },
     "MRVL": {
       "quote": {
-        "c": 273.05,
-        "d": -43.38,
-        "dp": -13.7092,
-        "regular": 273.05,
+        "c": 274.1,
+        "d": -42.33,
+        "dp": -13.3774,
+        "regular": 263.47,
         "pre": null,
-        "post": null,
+        "post": 274.1,
         "prev_close": 316.43,
-        "phase": "正式盤"
+        "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Intel, AMD, Micron shares trim losses after Broadcom results spark semiconductor sector sell-off",
-          "datetime": 1780687379,
+          "headline": "MRVL Stock Jumps After-Hours On S&P 500 Inclusion",
+          "datetime": 1780703369,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/markets/stocks/article/intel-amd-micron-shares-trim-losses-after-broadcom-results-spark-semiconductor-sector-sell-off-130128361.html"
+          "url": "https://stocktwits.com/news-articles/markets/equity/mrvl-stock-jumps-after-hours-on-s-and-p-500-inclusion/cZ0FzyeReCD"
         },
         {
-          "headline": "After Months of Watching AI Innovation ETFs Run These 3 Active Funds Stand Out and the Revolution Has Barely Started",
-          "datetime": 1780687379,
+          "headline": "Marvell stock pops after S&P 500 inclusion announcement",
+          "datetime": 1780703369,
           "source": "Yahoo Finance",
-          "url": "https://247wallst.com/investing/2026/06/05/after-months-of-watching-ai-innovation-etfs-run-these-3-active-funds-stand-out-and-the-revolution-has-barely-started/"
+          "url": "https://finance.yahoo.com/markets/stocks/articles/marvell-stock-pops-p-500-221524366.html"
         },
         {
-          "headline": "Marvell Technology Stock And The Forecast That Keeps Getting Bigger",
-          "datetime": 1780687379,
+          "headline": "Marvell Technology, Flex To Join S&P 500 Index In Quarterly Rebalance",
+          "datetime": 1780703369,
           "source": "Yahoo Finance",
-          "url": "https://www.trefis.com/articles/601607/marvell-technology-stock-and-the-forecast-that-keeps-getting-bigger/2026-06-05"
+          "url": "https://www.investors.com/news/sp-500-marvell-technology-flex-to-join-index-roku-quarterly-rebalance/?src=A00220&yptr=yahoo"
         }
       ]
     },
     "GOOG": {
       "quote": {
-        "c": 362.03,
-        "d": -7.24,
-        "dp": -1.9606,
-        "regular": 362.03,
+        "c": 361.4,
+        "d": -7.87,
+        "dp": -2.1312,
+        "regular": 365.76,
         "pre": null,
-        "post": null,
+        "post": 361.4,
         "prev_close": 369.27,
-        "phase": "正式盤"
+        "phase": "盤後"
       },
       "news": [
         {
           "headline": "Tech stocks today: Nvidia stock drops 6% in ugly day for chip stocks",
-          "datetime": 1780687380,
+          "datetime": 1780703370,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/sectors/technology/live/tech-stocks-today-nvidia-stock-drops-6-in-ugly-day-for-chip-stocks-100000734.html"
         },
         {
-          "headline": "Market Chatter: Meta Weighing Tens of Billions in Stock Offering to Fund AI Ambitions",
-          "datetime": 1780687380,
+          "headline": "SpaceX to rent AI capacity to Google for $920 million per month",
+          "datetime": 1780703370,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/markets/stocks/articles/market-chatter-meta-weighing-tens-185601599.html"
+          "url": "https://finance.yahoo.com/sectors/technology/article/spacex-to-rent-ai-capacity-to-google-for-920-million-per-month-200639544.html"
         },
         {
-          "headline": "SpaceX signs cloud deal with Google",
-          "datetime": 1780687380,
+          "headline": "Berkshire Hathaway Just Agreed to Put $10 Billion Into Alphabet's AI Build-Out. Should Investors Follow?",
+          "datetime": 1780703370,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/sectors/technology/articles/spacex-signs-cloud-deal-google-185448763.html"
+          "url": "https://www.fool.com/investing/2026/06/05/berkshire-hathaway-just-put-10-billion-into-alphab/"
         }
       ]
     }
