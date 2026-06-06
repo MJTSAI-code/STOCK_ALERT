@@ -1,66 +1,66 @@
 {
   "name": "美股盤前情報資料庫",
-  "updated_at": "2026-06-06T07:49:30.044285+08:00",
+  "updated_at": "2026-06-06T16:04:03.094067+08:00",
   "data": {
     "NOW": {
       "quote": {
-        "c": 110.91,
-        "d": -8.45,
-        "dp": -7.0794,
+        "c": 110.9,
+        "d": -8.46,
+        "dp": -7.0878,
         "regular": 112.45,
         "pre": null,
-        "post": 110.91,
+        "post": 110.9,
         "prev_close": 119.36,
         "phase": "盤後"
       },
       "news": [
         {
+          "headline": "Why ServiceNow (NOW) Shares Are Falling Today",
+          "datetime": 1780733041,
+          "source": "Yahoo Finance",
+          "url": "https://finance.yahoo.com/markets/stocks/articles/why-servicenow-now-shares-falling-024014947.html"
+        },
+        {
+          "headline": "Trump Loaded Up on ServiceNow Stock at the Peak of SaaS-pocalypse Fears. What Comes Next for Software Stocks.",
+          "datetime": 1780733041,
+          "source": "Yahoo Finance",
+          "url": "https://www.barchart.com/story/news/2331829/trump-loaded-up-on-servicenow-stock-at-the-peak-of-saas-pocalypse-fears-what-comes-next-for-software-stocks"
+        },
+        {
           "headline": "ServiceNow Stock Plunges 30% in 6 Months: Hold Tight or Book Profits?",
-          "datetime": 1780703368,
+          "datetime": 1780733041,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/markets/stocks/articles/servicenow-stock-plunges-30-6-124500486.html"
-        },
-        {
-          "headline": "Cloud AI Update - Devenex Launches Governance Infrastructure for Enterprise AI Agents",
-          "datetime": 1780703368,
-          "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/sectors/technology/articles/cloud-ai-devenex-launches-governance-123801310.html"
-        },
-        {
-          "headline": "Cognizant Tie Up Puts ServiceNow At Center Of AI Governance Story",
-          "datetime": 1780703368,
-          "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/markets/stocks/articles/cognizant-tie-puts-servicenow-center-100948532.html"
         }
       ]
     },
     "NVDA": {
       "quote": {
-        "c": 204.12,
-        "d": -14.54,
-        "dp": -6.6496,
+        "c": 204.04,
+        "d": -14.62,
+        "dp": -6.6872,
         "regular": 205.1,
         "pre": null,
-        "post": 204.12,
+        "post": 204.04,
         "prev_close": 218.66,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Chip sell-off rattles markets",
-          "datetime": 1780703368,
+          "datetime": 1780733042,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/video/chip-sell-off-rattles-markets-210216273.html"
         },
         {
           "headline": "SpaceX to rent AI capacity to Google for $920 million per month",
-          "datetime": 1780703368,
+          "datetime": 1780733042,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/sectors/technology/article/spacex-to-rent-ai-capacity-to-google-for-920-million-per-month-200639544.html"
         },
         {
           "headline": "The stock market's scorching run means the rich will keep getting richer: Chart",
-          "datetime": 1780703368,
+          "datetime": 1780733042,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/markets/article/the-stock-markets-scorching-run-means-the-rich-will-keep-getting-richer-chart-135939239.html"
         }
@@ -68,31 +68,31 @@
     },
     "LITE": {
       "quote": {
-        "c": 846.99,
-        "d": -98.09,
-        "dp": -10.379,
+        "c": 848.8,
+        "d": -96.28,
+        "dp": -10.1875,
         "regular": 863.66,
         "pre": null,
-        "post": 846.99,
+        "post": 848.8,
         "prev_close": 945.08,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Stocks to Watch Recap: Lululemon, Broadcom, Lumentum Holdings",
-          "datetime": 1780703369,
+          "datetime": 1780733042,
           "source": "Yahoo Finance",
           "url": "https://www.wsj.com/livecoverage/may-jobs-report-stock-market-06-05-2026/card/stocks-to-watch-lululemon-broadcom-lumentum-holdings-JNe0Igf0hcn4NHX9cbZn?siteid=yhoof2&yptr=yahoo"
         },
         {
           "headline": "Why Lumentum Holdings (LITE) Is Up 9.8% After Major Note Swap, AI Boost And U.S. Expansion",
-          "datetime": 1780703369,
+          "datetime": 1780733042,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/markets/stocks/articles/why-lumentum-holdings-lite-9-211725818.html"
         },
         {
           "headline": "Ciena's Mountain Of Orders Is Starting To Look A Little Scary",
-          "datetime": 1780703369,
+          "datetime": 1780733042,
           "source": "Yahoo Finance",
           "url": "https://www.trefis.com/articles/601621/cienas-mountain-of-orders-is-starting-to-look-a-little-scary/2026-06-05"
         }
@@ -100,31 +100,31 @@
     },
     "ONDS": {
       "quote": {
-        "c": 10.23,
-        "d": -1.74,
-        "dp": -14.5363,
+        "c": 10.24,
+        "d": -1.73,
+        "dp": -14.4528,
         "regular": 10.43,
         "pre": null,
-        "post": 10.23,
+        "post": 10.24,
         "prev_close": 11.97,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Why Ondas Stock Zoomed 32% Higher in May",
-          "datetime": 1780703369,
+          "datetime": 1780733042,
           "source": "Yahoo Finance",
           "url": "https://www.fool.com/investing/2026/06/05/why-ondas-stock-zoomed-32-higher-in-may/"
         },
         {
           "headline": "A Look At Ondas (ONDS) Valuation After A Sharp One Day Share Price Drop",
-          "datetime": 1780703369,
+          "datetime": 1780733042,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/markets/stocks/articles/look-ondas-onds-valuation-sharp-180855714.html"
         },
         {
           "headline": "Ondas (ONDS) Secures More Than $30M in New Orders During May",
-          "datetime": 1780703369,
+          "datetime": 1780733042,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/markets/stocks/articles/ondas-onds-secures-more-30m-165009393.html"
         }
@@ -132,65 +132,65 @@
     },
     "MRVL": {
       "quote": {
-        "c": 274.1,
-        "d": -42.33,
-        "dp": -13.3774,
+        "c": 272.88,
+        "d": -43.55,
+        "dp": -13.7629,
         "regular": 263.47,
         "pre": null,
-        "post": 274.1,
+        "post": 272.88,
         "prev_close": 316.43,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "MRVL Stock Jumps After-Hours On S&P 500 Inclusion",
-          "datetime": 1780703369,
+          "headline": "Marvell Joins S&P 500 As AI Data Center Story Gains Traction",
+          "datetime": 1780733042,
           "source": "Yahoo Finance",
-          "url": "https://stocktwits.com/news-articles/markets/equity/mrvl-stock-jumps-after-hours-on-s-and-p-500-inclusion/cZ0FzyeReCD"
-        },
-        {
-          "headline": "Marvell stock pops after S&P 500 inclusion announcement",
-          "datetime": 1780703369,
-          "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/markets/stocks/articles/marvell-stock-pops-p-500-221524366.html"
+          "url": "https://finance.yahoo.com/markets/stocks/articles/marvell-joins-p-500-ai-031211444.html"
         },
         {
           "headline": "Marvell Technology, Flex To Join S&P 500 Index In Quarterly Rebalance",
-          "datetime": 1780703369,
+          "datetime": 1780733042,
           "source": "Yahoo Finance",
           "url": "https://www.investors.com/news/sp-500-marvell-technology-flex-to-join-index-roku-quarterly-rebalance/?src=A00220&yptr=yahoo"
+        },
+        {
+          "headline": "Jensen Huang Just Said This AI Chip Stock Could Be the Next $1 Trillion Company (Hint: It's Not AMD or Sandisk)",
+          "datetime": 1780733042,
+          "source": "Yahoo Finance",
+          "url": "https://www.fool.com/investing/2026/06/05/jensen-huang-suggests-next-trillion-dollar-stock/"
         }
       ]
     },
     "GOOG": {
       "quote": {
-        "c": 361.4,
-        "d": -7.87,
-        "dp": -2.1312,
+        "c": 361.61,
+        "d": -7.66,
+        "dp": -2.0744,
         "regular": 365.76,
         "pre": null,
-        "post": 361.4,
+        "post": 361.61,
         "prev_close": 369.27,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Tech stocks today: Nvidia stock drops 6% in ugly day for chip stocks",
-          "datetime": 1780703370,
+          "datetime": 1780733043,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/sectors/technology/live/tech-stocks-today-nvidia-stock-drops-6-in-ugly-day-for-chip-stocks-100000734.html"
         },
         {
           "headline": "SpaceX to rent AI capacity to Google for $920 million per month",
-          "datetime": 1780703370,
+          "datetime": 1780733043,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/sectors/technology/article/spacex-to-rent-ai-capacity-to-google-for-920-million-per-month-200639544.html"
         },
         {
-          "headline": "Berkshire Hathaway Just Agreed to Put $10 Billion Into Alphabet's AI Build-Out. Should Investors Follow?",
-          "datetime": 1780703370,
+          "headline": "Is Wall Street’s AI boom spreading to main Street?",
+          "datetime": 1780733043,
           "source": "Yahoo Finance",
-          "url": "https://www.fool.com/investing/2026/06/05/berkshire-hathaway-just-put-10-billion-into-alphab/"
+          "url": "https://finance.yahoo.com/economy/articles/wall-street-ai-boom-spreading-055622891.html"
         }
       ]
     }
