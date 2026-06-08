@@ -1,196 +1,196 @@
 {
   "name": "美股盤前情報資料庫",
-  "updated_at": "2026-06-08T21:16:35.263914+08:00",
+  "updated_at": "2026-06-09T02:35:34.540418+08:00",
   "data": {
     "NOW": {
       "quote": {
-        "c": 112.7,
-        "d": -6.66,
-        "dp": -5.5798,
-        "regular": 112.45,
-        "pre": 112.7,
+        "c": 114.69,
+        "d": 2.24,
+        "dp": 1.9964,
+        "regular": 114.69,
+        "pre": null,
         "post": null,
-        "prev_close": 119.36,
-        "phase": "盤前"
+        "prev_close": 112.45,
+        "phase": "正式盤"
       },
       "news": [
         {
+          "headline": "DELL's Strong Partner Network Drives ISG Growth: What's Ahead?",
+          "datetime": 1780943733,
+          "source": "Yahoo Finance",
+          "url": "https://finance.yahoo.com/markets/stocks/articles/dells-strong-partner-network-drives-160000558.html"
+        },
+        {
+          "headline": "Can Atlassian's Cloud Momentum Sustain Strong Revenue Growth?",
+          "datetime": 1780943733,
+          "source": "Yahoo Finance",
+          "url": "https://finance.yahoo.com/markets/stocks/articles/atlassians-cloud-momentum-sustain-strong-152000881.html"
+        },
+        {
           "headline": "2 Mooning  Stocks with Promising Prospects and 1 We Brush Off",
-          "datetime": 1780924593,
+          "datetime": 1780943733,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/markets/stocks/articles/2-mooning-stocks-promising-prospects-094950039.html"
-        },
-        {
-          "headline": "AI stock mania is taking over the markets in 2026",
-          "datetime": 1780924593,
-          "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/markets/article/ai-stock-mania-is-taking-over-the-markets-in-2026-123000964.html"
-        },
-        {
-          "headline": "Is Salesforce or ServiceNow a Better Stock to Buy Right Now?",
-          "datetime": 1780924593,
-          "source": "Yahoo Finance",
-          "url": "https://www.fool.com/investing/2026/06/06/is-salesforce-or-servicenow-a-better-stock-to-buy/"
         }
       ]
     },
     "NVDA": {
       "quote": {
-        "c": 210.72,
-        "d": -7.94,
-        "dp": -3.6312,
-        "regular": 205.1,
-        "pre": 210.72,
+        "c": 209.15,
+        "d": 4.05,
+        "dp": 1.9746,
+        "regular": 209.15,
+        "pre": null,
         "post": null,
-        "prev_close": 218.66,
-        "phase": "盤前"
+        "prev_close": 205.1,
+        "phase": "正式盤"
       },
       "news": [
         {
-          "headline": "Micron stock rebounds along with chip sector following broader market rout",
-          "datetime": 1780924594,
+          "headline": "Synopsys CEO on AI outlook, Nvidia partnership",
+          "datetime": 1780943733,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/markets/article/micron-stock-rebounds-along-with-chip-sector-following-broader-market-rout-131211286.html"
+          "url": "https://finance.yahoo.com/video/synopsys-ceo-on-ai-outlook-nvidia-partnership-160121768.html"
         },
         {
-          "headline": "Marvell stock surges on S&P 500 inclusion",
-          "datetime": 1780924594,
+          "headline": "Tech stocks today: Chip stocks rebound after Nvidia's Jensen Huang says investors should be 'very happy'",
+          "datetime": 1780943733,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/markets/stocks/article/marvell-stock-surges-on-sp-500-inclusion-121242713.html"
+          "url": "https://finance.yahoo.com/sectors/technology/live/tech-stocks-today-chip-stocks-rebound-after-nvidias-jensen-huang-says-investors-should-be-very-happy-120420037.html"
         },
         {
-          "headline": "Market Correction: Why This S&P 500 ETF Becomes a No-Brainer Buy at a Discount",
-          "datetime": 1780924594,
+          "headline": "Equities Mostly Rise Intraday as Tech Jumps, Markets Monitor Middle East Developments",
+          "datetime": 1780943733,
           "source": "Yahoo Finance",
-          "url": "https://www.fool.com/investing/2026/06/08/market-correction-why-sp-500-etf-no-brainer-spym/"
+          "url": "https://finance.yahoo.com/markets/stocks/articles/equities-mostly-rise-intraday-tech-182425284.html"
         }
       ]
     },
     "LITE": {
       "quote": {
-        "c": 896.3,
-        "d": -48.78,
-        "dp": -5.1615,
-        "regular": 863.66,
-        "pre": 896.3,
+        "c": 904.55,
+        "d": 40.89,
+        "dp": 4.7351,
+        "regular": 904.55,
+        "pre": null,
         "post": null,
-        "prev_close": 945.08,
-        "phase": "盤前"
+        "prev_close": 863.66,
+        "phase": "正式盤"
       },
       "news": [
         {
-          "headline": "Stocks to Watch Recap: Lululemon, Broadcom, Lumentum Holdings",
-          "datetime": 1780924594,
+          "headline": "Why Applied Optoelectronics Sank 13%",
+          "datetime": 1780943733,
           "source": "Yahoo Finance",
-          "url": "https://www.wsj.com/livecoverage/may-jobs-report-stock-market-06-05-2026/card/stocks-to-watch-lululemon-broadcom-lumentum-holdings-JNe0Igf0hcn4NHX9cbZn?siteid=yhoof2&yptr=yahoo"
+          "url": "https://www.trefis.com/articles/601841/why-applied-optoelectronics-sank-13/2026-06-08"
         },
         {
-          "headline": "Why Lumentum Holdings (LITE) Is Up 9.8% After Major Note Swap, AI Boost And U.S. Expansion",
-          "datetime": 1780924594,
+          "headline": "Corning Stock Rises. Glassmaker Scores Multibillion-Dollar Deal With Amazon",
+          "datetime": 1780943733,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/markets/stocks/articles/why-lumentum-holdings-lite-9-211725818.html"
+          "url": "https://www.barrons.com/articles/corning-stock-amazon-c9d2db36?siteid=yhoof2&yptr=yahoo"
         },
         {
-          "headline": "Ciena's Mountain Of Orders Is Starting To Look A Little Scary",
-          "datetime": 1780924594,
+          "headline": "Is Surging AI Demand Driving Lumentum's Stronger Q4 Guidance?",
+          "datetime": 1780943733,
           "source": "Yahoo Finance",
-          "url": "https://www.trefis.com/articles/601621/cienas-mountain-of-orders-is-starting-to-look-a-little-scary/2026-06-05"
+          "url": "https://finance.yahoo.com/sectors/technology/articles/surging-ai-demand-driving-lumentums-153100034.html"
         }
       ]
     },
     "ONDS": {
       "quote": {
-        "c": 10.91,
-        "d": -1.06,
-        "dp": -8.8555,
-        "regular": 10.43,
-        "pre": 10.91,
+        "c": 10.42,
+        "d": -0.01,
+        "dp": -0.0959,
+        "regular": 10.42,
+        "pre": null,
         "post": null,
-        "prev_close": 11.97,
-        "phase": "盤前"
+        "prev_close": 10.43,
+        "phase": "正式盤"
       },
       "news": [
         {
+          "headline": "Ondas Inc (ONDS) Short Float Exceeds 30%, Should You Buy or Short?",
+          "datetime": 1780943733,
+          "source": "Yahoo Finance",
+          "url": "https://finance.yahoo.com/markets/stocks/articles/ondas-inc-onds-short-float-161506224.html"
+        },
+        {
           "headline": "Look At Ondas Inc (ONDS) Stock After Record Q1 Results",
-          "datetime": 1780924594,
+          "datetime": 1780943733,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/markets/stocks/articles/look-ondas-inc-onds-stock-115947710.html"
         },
         {
           "headline": "Why Ondas Stock Zoomed 32% Higher in May",
-          "datetime": 1780924594,
+          "datetime": 1780943733,
           "source": "Yahoo Finance",
           "url": "https://www.fool.com/investing/2026/06/05/why-ondas-stock-zoomed-32-higher-in-may/"
-        },
-        {
-          "headline": "A Look At Ondas (ONDS) Valuation After A Sharp One Day Share Price Drop",
-          "datetime": 1780924594,
-          "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/markets/stocks/articles/look-ondas-onds-valuation-sharp-180855714.html"
         }
       ]
     },
     "MRVL": {
       "quote": {
-        "c": 286.7,
-        "d": -29.73,
-        "dp": -9.3954,
-        "regular": 263.47,
-        "pre": 286.7,
+        "c": 299.3,
+        "d": 35.83,
+        "dp": 13.5993,
+        "regular": 299.3,
+        "pre": null,
         "post": null,
-        "prev_close": 316.43,
-        "phase": "盤前"
+        "prev_close": 263.47,
+        "phase": "正式盤"
       },
       "news": [
         {
-          "headline": "Marvell stock surges on S&P 500 inclusion",
-          "datetime": 1780924594,
+          "headline": "Marvell is joining the S&P 500 — but history says the early bump comes with a big catch: Chart of the Day",
+          "datetime": 1780943734,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/markets/stocks/article/marvell-stock-surges-on-sp-500-inclusion-121242713.html"
+          "url": "https://finance.yahoo.com/markets/article/marvell-is-joining-the-sp-500--but-history-says-the-early-bump-comes-with-a-big-catch-chart-of-the-day-174839173.html"
         },
         {
-          "headline": "Stock Market Today: Dow Rises On Trump, Iran Comments; Marvell Surges On S&P 500 Addition (Live Coverage)",
-          "datetime": 1780924594,
+          "headline": "Stock Market Today: Nasdaq Rises In Recovery Bid; This Cancer Biotech Soars 50% (Live Coverage)",
+          "datetime": 1780943734,
           "source": "Yahoo Finance",
           "url": "https://www.investors.com/market-trend/stock-market-today/dow-jones-sp500-nasdaq-trump-iran-marvell-stock-mrvl/?src=A00220&yptr=yahoo"
         },
         {
-          "headline": "Stifel Raises Marvell (MRVL) Price Target on AI Data Center Opportunity",
-          "datetime": 1780924594,
+          "headline": "Marvell Stock Is Surging. It’s About More Than the Chip Rebound.",
+          "datetime": 1780943734,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/markets/stocks/articles/stifel-raises-marvell-mrvl-price-125036186.html"
+          "url": "https://www.barrons.com/articles/marvell-stock-sp-500-join-chip-rebound-504d3fdb?siteid=yhoof2&yptr=yahoo"
         }
       ]
     },
     "GOOG": {
       "quote": {
-        "c": 366.32,
-        "d": -2.95,
-        "dp": -0.799,
-        "regular": 365.76,
-        "pre": 366.32,
+        "c": 361.93,
+        "d": -3.83,
+        "dp": -1.0481,
+        "regular": 361.93,
+        "pre": null,
         "post": null,
-        "prev_close": 369.27,
-        "phase": "盤前"
+        "prev_close": 365.76,
+        "phase": "正式盤"
       },
       "news": [
         {
-          "headline": "HSBC Raises Broadcom (AVGO) Price Target on AI ASIC Growth Outlook",
-          "datetime": 1780924595,
+          "headline": "Apple debuts Siri AI, improved Apple Intelligence as it races to catch rivals",
+          "datetime": 1780943734,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/markets/stocks/articles/hsbc-raises-broadcom-avgo-price-124943102.html"
+          "url": "https://finance.yahoo.com/news/apple-debuts-siri-ai-improved-apple-intelligence-as-it-races-to-catch-rivals-183339837.html"
         },
         {
-          "headline": "Alphabet (GOOGL) Gets Buy Rating as BofA Points to AI Capex Demand",
-          "datetime": 1780924595,
+          "headline": "AI is 'not existential' to Apple as it is for rest of Silicon Valley",
+          "datetime": 1780943734,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/markets/stocks/articles/alphabet-googl-gets-buy-rating-124923014.html"
+          "url": "https://finance.yahoo.com/video/ai-not-existential-apple-rest-153000063.html"
         },
         {
-          "headline": "Should You Buy SpaceX Stock This Week?",
-          "datetime": 1780924595,
+          "headline": "Equities Mostly Rise Intraday as Tech Jumps, Markets Monitor Middle East Developments",
+          "datetime": 1780943734,
           "source": "Yahoo Finance",
-          "url": "https://www.barrons.com/articles/spacex-ipo-buy-stock-680b998a?siteid=yhoof2&yptr=yahoo"
+          "url": "https://finance.yahoo.com/markets/stocks/articles/equities-mostly-rise-intraday-tech-182425284.html"
         }
       ]
     }
