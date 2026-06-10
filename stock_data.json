@@ -1,34 +1,34 @@
 {
   "name": "美股盤前情報資料庫",
-  "updated_at": "2026-06-10T03:34:24.565461+08:00",
+  "updated_at": "2026-06-10T08:01:30.618104+08:00",
   "data": {
     "NOW": {
       "quote": {
-        "c": 106.32,
-        "d": -7.87,
-        "dp": -6.892,
-        "regular": 106.32,
+        "c": 106.25,
+        "d": -7.94,
+        "dp": -6.9533,
+        "regular": 106.97,
         "pre": null,
-        "post": null,
+        "post": 106.25,
         "prev_close": 114.19,
-        "phase": "正式盤"
+        "phase": "盤後"
       },
       "news": [
         {
           "headline": "There's a new 'wave' of AI-driven cybersecurity threats: SailPoint CEO",
-          "datetime": 1781033663,
+          "datetime": 1781049689,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/video/theres-a-new-wave-of-ai-driven-cybersecurity-threats-sailpoint-ceo-151836436.html"
         },
         {
           "headline": "Nasdaq Slides as Chip Stocks Reverse Course",
-          "datetime": 1781033663,
+          "datetime": 1781049689,
           "source": "Yahoo Finance",
           "url": "https://www.barrons.com/livecoverage/stock-market-news-today-060926/card/nasdaq-s-p-500-turn-lower-as-chip-stocks-reverse-course-YU1PogwnnNIMlpQtberM?siteid=yhoof2&yptr=yahoo"
         },
         {
           "headline": "EXLS vs. NOW: Which Stock Is the Better Value Option?",
-          "datetime": 1781033663,
+          "datetime": 1781049689,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/markets/stocks/articles/exls-vs-now-stock-better-154003741.html"
         }
@@ -36,63 +36,63 @@
     },
     "NVDA": {
       "quote": {
-        "c": 206.25,
-        "d": -2.39,
-        "dp": -1.1479,
-        "regular": 206.25,
+        "c": 206.43,
+        "d": -2.21,
+        "dp": -1.0605,
+        "regular": 208.19,
         "pre": null,
-        "post": null,
+        "post": 206.43,
         "prev_close": 208.64,
-        "phase": "正式盤"
+        "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Wall Street sees AI trade bearing fruit with MANGOS ahead of IPOs",
-          "datetime": 1781033663,
+          "headline": "There's more 'adoption of options' among retail traders: Schwab",
+          "datetime": 1781049689,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/video/wall-street-sees-ai-trade-bearing-fruit-with-mangos-ahead-of-ipos-140455578.html"
+          "url": "https://finance.yahoo.com/video/theres-more-adoption-of-options-among-retail-traders-schwab-205207901.html"
         },
         {
-          "headline": "Micron stock rebounds along with chip sector following broader market rout",
-          "datetime": 1781033663,
+          "headline": "Dow Jones Futures Fall On Iran News After Market Whipsaws; CPI Inflation On Tap",
+          "datetime": 1781049689,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/markets/article/micron-stock-rebounds-along-with-chip-sector-following-broader-market-rout-131211286.html"
+          "url": "https://www.investors.com/market-trend/stock-market-today/dow-jones-futures-whipsaws-ai-fears-trump-iran-comments-cpi-inflation/?src=A00220&yptr=yahoo"
         },
         {
-          "headline": "Marvell stock surges on S&P 500 inclusion",
-          "datetime": 1781033663,
+          "headline": "Tesla's China Sales Just Snapped a 2-Month Slump With a 22% Jump. Is the Turnaround Real?",
+          "datetime": 1781049689,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/markets/stocks/article/marvell-stock-surges-on-sp-500-inclusion-121242713.html"
+          "url": "https://www.fool.com/investing/2026/06/09/teslas-china-sales-just-snapped-a-2-month-slump-wi/"
         }
       ]
     },
     "LITE": {
       "quote": {
-        "c": 808.92,
-        "d": -86.48,
-        "dp": -9.6583,
-        "regular": 808.92,
+        "c": 819.61,
+        "d": -75.79,
+        "dp": -8.4644,
+        "regular": 821.76,
         "pre": null,
-        "post": null,
+        "post": 819.61,
         "prev_close": 895.4,
-        "phase": "正式盤"
+        "phase": "盤後"
       },
       "news": [
         {
           "headline": "Here’s What Analysts Are Saying About Lumentum Holdings (LITE)",
-          "datetime": 1781033663,
+          "datetime": 1781049689,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/markets/stocks/articles/analysts-saying-lumentum-holdings-lite-172440086.html"
         },
         {
           "headline": "Lumentum Stock Falls 15% in a Month: Is This Dip a Buying Opportunity?",
-          "datetime": 1781033663,
+          "datetime": 1781049689,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/markets/stocks/articles/lumentum-stock-falls-15-month-142200069.html"
         },
         {
           "headline": "Corning Stock Rises. Glassmaker Scores Multibillion-Dollar Deal With Amazon",
-          "datetime": 1781033663,
+          "datetime": 1781049689,
           "source": "Yahoo Finance",
           "url": "https://www.barrons.com/articles/corning-stock-amazon-c9d2db36?siteid=yhoof2&yptr=yahoo"
         }
@@ -100,31 +100,31 @@
     },
     "ONDS": {
       "quote": {
-        "c": 9.6,
-        "d": -0.71,
-        "dp": -6.8447,
-        "regular": 9.6,
+        "c": 9.64,
+        "d": -0.66,
+        "dp": -6.4078,
+        "regular": 9.65,
         "pre": null,
-        "post": null,
+        "post": 9.64,
         "prev_close": 10.3,
-        "phase": "正式盤"
+        "phase": "盤後"
       },
       "news": [
         {
           "headline": "ONDS Stock Up 24% in 6 Months: Will 2H'26 Unlock Further Upside?",
-          "datetime": 1781033663,
+          "datetime": 1781049690,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/markets/stocks/articles/onds-stock-24-6-months-144200271.html"
         },
         {
           "headline": "Ondas Inc (ONDS) Short Float Exceeds 30%, Should You Buy or Short?",
-          "datetime": 1781033663,
+          "datetime": 1781049690,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/markets/stocks/articles/ondas-inc-onds-short-float-161506224.html"
         },
         {
           "headline": "Look At Ondas Inc (ONDS) Stock After Record Q1 Results",
-          "datetime": 1781033663,
+          "datetime": 1781049690,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/markets/stocks/articles/look-ondas-inc-onds-stock-115947710.html"
         }
@@ -132,65 +132,65 @@
     },
     "MRVL": {
       "quote": {
-        "c": 260.9,
-        "d": -27.95,
-        "dp": -9.6763,
-        "regular": 260.9,
+        "c": 263.96,
+        "d": -24.89,
+        "dp": -8.6162,
+        "regular": 266.88,
         "pre": null,
-        "post": null,
+        "post": 263.96,
         "prev_close": 288.85,
-        "phase": "正式盤"
+        "phase": "盤後"
       },
       "news": [
         {
           "headline": "Micron, Marvell lead chip stocks lower in AI trade reversal",
-          "datetime": 1781033664,
+          "datetime": 1781049690,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/markets/article/micron-marvell-lead-chip-stocks-lower-in-ai-trade-reversal-131519798.html"
         },
         {
-          "headline": "Marvell stock surges on S&P 500 inclusion",
-          "datetime": 1781033664,
+          "headline": "Wall Street sees AI trade bearing fruit with MANGOS ahead of IPOs",
+          "datetime": 1781049690,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/markets/stocks/article/marvell-stock-surges-on-sp-500-inclusion-121242713.html"
+          "url": "https://finance.yahoo.com/video/wall-street-sees-ai-trade-bearing-fruit-with-mangos-ahead-of-ipos-140455578.html"
         },
         {
-          "headline": "What history tells us about Marvell's upcoming S&P 500 inclusion",
-          "datetime": 1781033664,
+          "headline": "Will This Jensen Huang-Endorsed AI Chip Stock Be the Next Trillion-Dollar Company?",
+          "datetime": 1781049690,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/video/what-history-tells-us-about-marvells-upcoming-sp-500-inclusion-195049400.html"
+          "url": "https://www.fool.com/investing/2026/06/09/will-this-jensen-huang-endorsed-stock-be-the-next/"
         }
       ]
     },
     "GOOG": {
       "quote": {
-        "c": 361.77,
-        "d": 0.6,
-        "dp": 0.1661,
-        "regular": 361.77,
+        "c": 361.66,
+        "d": 0.49,
+        "dp": 0.1357,
+        "regular": 362.29,
         "pre": null,
-        "post": null,
+        "post": 361.66,
         "prev_close": 361.17,
-        "phase": "正式盤"
+        "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Does SpaceX have the wherewithal to put AI data centers in space?",
-          "datetime": 1781033664,
+          "headline": "What massive SpaceX-Alphabet compute deal means ahead of IPO",
+          "datetime": 1781049690,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/video/does-spacex-wherewithal-put-ai-173000124.html"
+          "url": "https://finance.yahoo.com/video/massive-spacex-alphabet-compute-deal-201700907.html"
         },
         {
-          "headline": "SpaceX, Google compute deal raises eyebrows ahead of IPO",
-          "datetime": 1781033664,
+          "headline": "Anthropic launches Mythos-class Claude Fable 5 model, available to the public",
+          "datetime": 1781049690,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/markets/stocks/article/spacex-google-compute-deal-raises-eyebrows-ahead-of-ipo-120522033.html"
+          "url": "https://finance.yahoo.com/sectors/technology/article/anthropic-launches-mythos-class-claude-fable-5-model-available-to-the-public-170000267.html"
         },
         {
-          "headline": "AAL Stock Pops As Google Deal And Falling Oil Prices Lift Airlines",
-          "datetime": 1781033664,
+          "headline": "How SpaceX's pre-IPO demand is rocket fuel ahead of public launch",
+          "datetime": 1781049690,
           "source": "Yahoo Finance",
-          "url": "https://stocktwits.com/news-articles/markets/equity/aal-stock-pops-as-google-deal-and-falling-oil-prices-lift-airlines/cZ0UNAVR7RN"
+          "url": "https://finance.yahoo.com/video/spacexs-pre-ipo-demand-rocket-120000131.html"
         }
       ]
     }
