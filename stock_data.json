@@ -1,196 +1,196 @@
 {
   "name": "美股盤前情報資料庫",
-  "updated_at": "2026-06-10T20:45:30.525934+08:00",
+  "updated_at": "2026-06-11T02:45:13.015186+08:00",
   "data": {
     "NOW": {
       "quote": {
-        "c": 105.0,
-        "d": -9.19,
-        "dp": -8.048,
-        "regular": 106.97,
-        "pre": 105.0,
+        "c": 107.33,
+        "d": 0.36,
+        "dp": 0.3365,
+        "regular": 107.33,
+        "pre": null,
         "post": null,
-        "prev_close": 114.19,
-        "phase": "盤前"
+        "prev_close": 106.97,
+        "phase": "正式盤"
       },
       "news": [
         {
-          "headline": "There's a new 'wave' of AI-driven cybersecurity threats: SailPoint CEO",
-          "datetime": 1781095528,
+          "headline": "The Hidden Flywheel That Could Reignite Salesforce Stock",
+          "datetime": 1781117110,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/video/theres-a-new-wave-of-ai-driven-cybersecurity-threats-sailpoint-ceo-151836436.html"
+          "url": "https://www.trefis.com/articles/602274/the-hidden-flywheel-that-could-reignite-salesforce-stock/2026-06-10"
         },
         {
-          "headline": "ServiceNow NICE AI Alliance Links Customer Engagement To Core Workflows",
-          "datetime": 1781095528,
+          "headline": "Jim Cramer on ServiceNow: “It’s Expensive, That’s the Problem”",
+          "datetime": 1781117110,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/markets/stocks/articles/servicenow-nice-ai-alliance-links-021217496.html"
+          "url": "https://finance.yahoo.com/markets/stocks/articles/jim-cramer-servicenow-expensive-problem-153856912.html"
         },
         {
-          "headline": "Broader Market Settles Lower as Chip Stocks Sink",
-          "datetime": 1781095528,
+          "headline": "Salesforce Trades Near 52-Week Low: Time to Hold the Stock or Exit?",
+          "datetime": 1781117110,
           "source": "Yahoo Finance",
-          "url": "https://www.barchart.com/story/news/2387060/broader-market-pressured-as-chip-stocks-sink"
+          "url": "https://finance.yahoo.com/markets/stocks/articles/salesforce-trades-near-52-week-131300905.html"
         }
       ]
     },
     "NVDA": {
       "quote": {
-        "c": 205.37,
-        "d": -3.27,
-        "dp": -1.5682,
-        "regular": 208.19,
-        "pre": 205.37,
+        "c": 201.72,
+        "d": -6.47,
+        "dp": -3.1058,
+        "regular": 201.72,
+        "pre": null,
         "post": null,
-        "prev_close": 208.64,
-        "phase": "盤前"
+        "prev_close": 208.19,
+        "phase": "正式盤"
       },
       "news": [
         {
+          "headline": "Why Super Micro stock is plunging & Cracker Barrel stock is surging",
+          "datetime": 1781117110,
+          "source": "Yahoo Finance",
+          "url": "https://finance.yahoo.com/video/why-super-micro-stock-is-plunging--cracker-barrel-stock-is-surging-150815558.html"
+        },
+        {
           "headline": "There's more 'adoption of options' among retail traders: Schwab",
-          "datetime": 1781095529,
+          "datetime": 1781117110,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/video/theres-more-adoption-of-options-among-retail-traders-schwab-205207901.html"
         },
         {
-          "headline": "Wall Street sees AI trade bearing fruit with MANGOS ahead of IPOs",
-          "datetime": 1781095529,
+          "headline": "The SpaceX IPO Is Closer Than You Think. These Are the Stocks That Win When It Happens.",
+          "datetime": 1781117110,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/video/wall-street-sees-ai-trade-bearing-fruit-with-mangos-ahead-of-ipos-140455578.html"
-        },
-        {
-          "headline": "SpaceX just got a superchip ahead of its June 12th IPO — but no one’s talking about it. 3 red-hot stocks to watch now",
-          "datetime": 1781095529,
-          "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/markets/stocks/articles/spacex-just-got-superchip-ahead-123000304.html"
+          "url": "https://www.fool.com/investing/2026/06/10/the-spacex-ipo-is-closer-than-you-think-these-are/"
         }
       ]
     },
     "LITE": {
       "quote": {
-        "c": 814.0,
-        "d": -81.4,
-        "dp": -9.0909,
-        "regular": 821.76,
-        "pre": 814.0,
+        "c": 863.55,
+        "d": 41.79,
+        "dp": 5.0854,
+        "regular": 863.55,
+        "pre": null,
         "post": null,
-        "prev_close": 895.4,
-        "phase": "盤前"
+        "prev_close": 821.76,
+        "phase": "正式盤"
       },
       "news": [
         {
+          "headline": "Applied Optoelectronics Jumps 7%, Lumentum Climbs 5%, Coherent Rises 2% as Optics Stocks Ride the AI Boom",
+          "datetime": 1781117111,
+          "source": "Yahoo Finance",
+          "url": "https://247wallst.com/investing/2026/06/10/applied-optoelectronics-jumps-7-lumentum-climbs-5-coherent-rises-2-as-optics-stocks-ride-the-ai-boom/"
+        },
+        {
           "headline": "Wall Street dumped nearly $1 trillion in tech stocks by midday—then clawed it back and bought peanut butter and paint",
-          "datetime": 1781095529,
+          "datetime": 1781117111,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/markets/stocks/articles/wall-street-dumped-nearly-1-214320003.html"
         },
         {
           "headline": "Here’s What Analysts Are Saying About Lumentum Holdings (LITE)",
-          "datetime": 1781095529,
+          "datetime": 1781117111,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/markets/stocks/articles/analysts-saying-lumentum-holdings-lite-172440086.html"
-        },
-        {
-          "headline": "Lumentum Stock Falls 15% in a Month: Is This Dip a Buying Opportunity?",
-          "datetime": 1781095529,
-          "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/markets/stocks/articles/lumentum-stock-falls-15-month-142200069.html"
         }
       ]
     },
     "ONDS": {
       "quote": {
-        "c": 9.66,
-        "d": -0.64,
-        "dp": -6.2136,
-        "regular": 9.65,
-        "pre": 9.66,
+        "c": 9.5,
+        "d": -0.15,
+        "dp": -1.5544,
+        "regular": 9.5,
+        "pre": null,
         "post": null,
-        "prev_close": 10.3,
-        "phase": "盤前"
+        "prev_close": 9.65,
+        "phase": "正式盤"
       },
       "news": [
         {
+          "headline": "Cramer Calls Red-Hot Drone Stock a “Meme Stock” That Could “Rip Your Lungs Out”",
+          "datetime": 1781117112,
+          "source": "Yahoo Finance",
+          "url": "https://247wallst.com/investing/2026/06/10/cramer-calls-red-hot-drone-stock-a-meme-stock-that-could-rip-your-lungs-out/"
+        },
+        {
           "headline": "Why Is ONDS Stock Falling Premarket? Omnisys-Related Share Resale, Cramer’s ‘Meme Stock’ Jab Weigh",
-          "datetime": 1781095529,
+          "datetime": 1781117112,
           "source": "Yahoo Finance",
           "url": "https://stocktwits.com/news-articles/markets/equity/onds-stock-falling-premarket-omnisys-share-resale-cramer-meme-stock-jab-weigh/cZ06X5JR7Ti"
         },
         {
           "headline": "Ondas World View Deal Spotlights Push Into Defense ISR Growth",
-          "datetime": 1781095529,
+          "datetime": 1781117112,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/sectors/technology/articles/ondas-world-view-deal-spotlights-001801801.html"
-        },
-        {
-          "headline": "ONDS Stock Up 24% in 6 Months: Will 2H'26 Unlock Further Upside?",
-          "datetime": 1781095529,
-          "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/markets/stocks/articles/onds-stock-24-6-months-144200271.html"
         }
       ]
     },
     "MRVL": {
       "quote": {
-        "c": 263.0,
-        "d": -25.85,
-        "dp": -8.9493,
-        "regular": 266.88,
-        "pre": 263.0,
+        "c": 257.02,
+        "d": -9.86,
+        "dp": -3.6927,
+        "regular": 257.02,
+        "pre": null,
         "post": null,
-        "prev_close": 288.85,
-        "phase": "盤前"
+        "prev_close": 266.88,
+        "phase": "正式盤"
       },
       "news": [
         {
           "headline": "SpaceX fever is testing the chip trade: Chart of the Day",
-          "datetime": 1781095530,
+          "datetime": 1781117112,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/markets/article/spacex-fever-is-testing-the-chip-trade-chart-of-the-day-100000045.html"
         },
         {
-          "headline": "Will This Jensen Huang-Endorsed AI Chip Stock Be the Next Trillion-Dollar Company?",
-          "datetime": 1781095530,
+          "headline": "ALAB Rides on Strong AI Infrastructure Demand: A Sign for More Upside?",
+          "datetime": 1781117112,
           "source": "Yahoo Finance",
-          "url": "https://www.fool.com/investing/2026/06/09/will-this-jensen-huang-endorsed-stock-be-the-next/"
+          "url": "https://finance.yahoo.com/sectors/technology/articles/alab-rides-strong-ai-infrastructure-171500478.html"
         },
         {
-          "headline": "Wall Street dumped nearly $1 trillion in tech stocks by midday—then clawed it back and bought peanut butter and paint",
-          "datetime": 1781095530,
+          "headline": "Investors Are Ditching the Magnificent 7 For a New Group of Stocks: The MANGOS",
+          "datetime": 1781117112,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/markets/stocks/articles/wall-street-dumped-nearly-1-214320003.html"
+          "url": "https://247wallst.com/investing/2026/06/10/investors-are-ditching-the-magnificent-7-for-a-new-group-of-stocks-the-mangos/"
         }
       ]
     },
     "GOOG": {
       "quote": {
-        "c": 359.85,
-        "d": -1.32,
-        "dp": -0.3644,
-        "regular": 362.29,
-        "pre": 359.85,
+        "c": 354.35,
+        "d": -7.94,
+        "dp": -2.1916,
+        "regular": 354.35,
+        "pre": null,
         "post": null,
-        "prev_close": 361.17,
-        "phase": "盤前"
+        "prev_close": 362.29,
+        "phase": "正式盤"
       },
       "news": [
         {
-          "headline": "Super Micro Computer stock sinks on $7 billion equity raise",
-          "datetime": 1781095530,
+          "headline": "Supermicro Computer stock sinks on $7 billion equity raise",
+          "datetime": 1781117113,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/markets/article/super-micro-computer-stock-sinks-on-7-billion-equity-raise-124041196.html"
+          "url": "https://finance.yahoo.com/markets/stocks/article/supermicro-computer-stock-sinks-on-7-billion-equity-raise-124041144.html"
         },
         {
-          "headline": "Does SpaceX have the wherewithal to put AI data centers in space?",
-          "datetime": 1781095530,
+          "headline": "Veteran Analyst Firm Resets Alphabet Forecast for 2027",
+          "datetime": 1781117113,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/video/does-spacex-wherewithal-put-ai-173000124.html"
+          "url": "https://finance.yahoo.com/markets/stocks/articles/veteran-analyst-firm-resets-alphabet-182906397.html"
         },
         {
-          "headline": "Kalshi rolls out employer disclosure, risk scoring to fight insider trading",
-          "datetime": 1781095530,
+          "headline": "Update: Market Chatter: Google, Meta Platforms Denied New Trial in Youth Social Media Addiction Case by California Judge",
+          "datetime": 1781117113,
           "source": "Yahoo Finance",
-          "url": "https://qz.com/kalshi-employer-disclosure-insider-trading-risk-scoring-061026"
+          "url": "https://finance.yahoo.com/markets/stocks/articles/market-chatter-google-meta-platforms-182606566.html"
         }
       ]
     }
