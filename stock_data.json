@@ -1,98 +1,98 @@
 {
   "name": "美股盤前情報資料庫",
-  "updated_at": "2026-06-13T03:34:37.631081+08:00",
+  "updated_at": "2026-06-13T16:31:28.206239+08:00",
   "data": {
     "NOW": {
       "quote": {
-        "c": 101.98,
-        "d": -1.09,
-        "dp": -1.0623,
-        "regular": 101.98,
+        "c": 102.88,
+        "d": -0.2,
+        "dp": -0.194,
+        "regular": 102.15,
         "pre": null,
-        "post": null,
+        "post": 102.88,
         "prev_close": 103.08,
-        "phase": "正式盤"
+        "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Can Strong Demand in Now Assist Boost ServiceNow's AI Revenue Growth?",
-          "datetime": 1781292875,
+          "headline": "Zscaler, ServiceNow, and Three More Stocks Get Analyst Attention",
+          "datetime": 1781339486,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/markets/stocks/articles/strong-demand-now-assist-boost-131600943.html"
+          "url": "https://www.barrons.com/articles/zscaler-servicenow-applovin-stock-research-reports-92ecb72c?siteid=yhoof2&yptr=yahoo"
         },
         {
-          "headline": "Update: US Equity Futures Rise Pre-Bell on Middle East Peace Deal Optimism",
-          "datetime": 1781292875,
+          "headline": "Stocks See Support from Hopes for a Near-term US-Iran Agreement",
+          "datetime": 1781339486,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/markets/stocks/articles/us-equity-futures-rise-pre-130051096.html"
+          "url": "https://www.barchart.com/story/news/2442017/stocks-see-support-from-hopes-for-a-near-term-us-iran-agreement"
         },
         {
-          "headline": "Latest News In Cloud AI - Akamai Strengthens Cloud Security With Microsoft Partnership",
-          "datetime": 1781292875,
+          "headline": "Stocks See Downward Pressure Despite Hopes for a Near-term US-Iran Agreement",
+          "datetime": 1781339486,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/sectors/technology/articles/latest-news-cloud-ai-akamai-123754134.html"
+          "url": "https://www.barchart.com/story/news/2441757/stocks-see-downward-pressure-despite-hopes-for-a-near-term-us-iran-agreement"
         }
       ]
     },
     "NVDA": {
       "quote": {
-        "c": 204.03,
-        "d": -0.84,
-        "dp": -0.41,
-        "regular": 204.03,
+        "c": 205.42,
+        "d": 0.55,
+        "dp": 0.2703,
+        "regular": 205.19,
         "pre": null,
-        "post": null,
+        "post": 205.42,
         "prev_close": 204.87,
-        "phase": "正式盤"
+        "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Expect 'robust capability' from this KKR-backed AI venture: CEO",
-          "datetime": 1781292876,
+          "headline": "AI trade is 'fantastic right now' and 'something you have to be in': Analyst",
+          "datetime": 1781339487,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/video/expect-robust-capability-from-this-kkr-backed-ai-venture-ceo-211742674.html"
+          "url": "https://finance.yahoo.com/video/ai-trade-fantastic-now-something-211500020.html"
         },
         {
-          "headline": "Wall Street Has 18 Buy Ratings on ConocoPhillips and Zero Sells. Our Price Target Says They Are All Wrong",
-          "datetime": 1781292876,
+          "headline": "SpaceX stock gains, space companies fall, chips mixed on IPO news",
+          "datetime": 1781339487,
           "source": "Yahoo Finance",
-          "url": "https://247wallst.com/investing/2026/06/12/wall-street-has-18-buy-ratings-on-conocophillips-and-zero-sells-our-price-target-says-they-are-all-wrong/"
+          "url": "https://finance.yahoo.com/video/spacex-stock-gains-space-companies-fall-chips-mixed-on-ipo-news-195735942.html"
         },
         {
-          "headline": "SpaceX IPO: Here's How to Buy SPCX Stock Right Now",
-          "datetime": 1781292876,
+          "headline": "If Gas Prices Stay High, Costco Stock Could Be a Better Buy Than Walmart",
+          "datetime": 1781339487,
           "source": "Yahoo Finance",
-          "url": "https://www.fool.com/investing/2026/06/12/how-to-buy-spacex-stock-spcx-ipo-guide/"
+          "url": "https://www.fool.com/investing/2026/06/13/if-gas-prices-stay-high-costco-stock-could-be-a-be/"
         }
       ]
     },
     "LITE": {
       "quote": {
-        "c": 922.61,
-        "d": 33.01,
-        "dp": 3.7113,
-        "regular": 922.61,
+        "c": 921.0,
+        "d": 31.41,
+        "dp": 3.5308,
+        "regular": 921.56,
         "pre": null,
-        "post": null,
+        "post": 921.0,
         "prev_close": 889.59,
-        "phase": "正式盤"
+        "phase": "盤後"
       },
       "news": [
         {
           "headline": "Lumentum Strengthens Liquidity Position: Is Long-Term Growth Safer?",
-          "datetime": 1781292876,
+          "datetime": 1781339487,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/markets/stocks/articles/lumentum-strengthens-liquidity-position-long-130600132.html"
         },
         {
           "headline": "How AAOI Is Defying The Market Slump",
-          "datetime": 1781292876,
+          "datetime": 1781339487,
           "source": "Yahoo Finance",
           "url": "https://www.trefis.com/articles/602481/how-aaoi-is-defying-the-market-slump/2026-06-11"
         },
         {
           "headline": "These Nvidia-Backed Optical Stocks Have Slipped Lately. JPMorgan Analysts Recommend Buying The Dip",
-          "datetime": 1781292876,
+          "datetime": 1781339487,
           "source": "Yahoo Finance",
           "url": "https://www.investopedia.com/these-nvidia-backed-optical-stocks-have-slipped-lately-jpmorgan-analysts-recommend-buying-the-dip-lite-cohr-11995940"
         }
@@ -100,31 +100,31 @@
     },
     "ONDS": {
       "quote": {
-        "c": 9.32,
-        "d": -0.51,
-        "dp": -5.1373,
-        "regular": 9.32,
+        "c": 9.44,
+        "d": -0.39,
+        "dp": -3.9705,
+        "regular": 9.33,
         "pre": null,
-        "post": null,
+        "post": 9.44,
         "prev_close": 9.83,
-        "phase": "正式盤"
+        "phase": "盤後"
       },
       "news": [
         {
           "headline": "Jim Cramer on Ondas: “I Can’t Get Behind a Meme Stock”",
-          "datetime": 1781292877,
+          "datetime": 1781339487,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/markets/stocks/articles/jim-cramer-ondas-t-behind-144520793.html"
         },
         {
           "headline": "Ondas Unifies Defense Platform As Sentrycs Wins 2026 World Cup Security Role",
-          "datetime": 1781292877,
+          "datetime": 1781339487,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/markets/stocks/articles/ondas-unifies-defense-platform-sentrycs-042844285.html"
         },
         {
           "headline": "Ondas Unveils LADOS Defense Platform Ahead of Eurosatory 2026 Launch",
-          "datetime": 1781292877,
+          "datetime": 1781339487,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/sectors/technology/articles/ondas-unveils-lados-defense-platform-174326636.html"
         }
@@ -132,65 +132,65 @@
     },
     "MRVL": {
       "quote": {
-        "c": 283.67,
-        "d": 2.96,
-        "dp": 1.0527,
-        "regular": 283.67,
+        "c": 281.2,
+        "d": 0.49,
+        "dp": 0.1746,
+        "regular": 279.7,
         "pre": null,
-        "post": null,
+        "post": 281.2,
         "prev_close": 280.71,
-        "phase": "正式盤"
+        "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Adobe stock sinks as CFO departs for Marvell",
-          "datetime": 1781292877,
-          "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/markets/stocks/article/adobe-stock-sinks-as-cfo-departs-for-marvell-131428894.html"
-        },
-        {
           "headline": "Investing.com’s stocks of the week",
-          "datetime": 1781292877,
+          "datetime": 1781339487,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/markets/stocks/articles/investing-com-stocks-week-182822822.html"
         },
         {
           "headline": "Adobe CFO Heads to a Chip Firm. It’s All You Need to Know About Software’s Downfall.",
-          "datetime": 1781292877,
+          "datetime": 1781339487,
           "source": "Yahoo Finance",
           "url": "https://www.barrons.com/articles/adobe-earnings-stock-price-f259c4e5?siteid=yhoof2&yptr=yahoo"
+        },
+        {
+          "headline": "Adobe trades revenue for reach as AI monetization stays elusive",
+          "datetime": 1781339487,
+          "source": "Yahoo Finance",
+          "url": "https://www.proactiveinvestors.com/companies/news/1093846/adobe-trades-revenue-for-reach-as-ai-monetization-stays-elusive-1093846.html"
         }
       ]
     },
     "GOOG": {
       "quote": {
-        "c": 358.24,
-        "d": 1.68,
-        "dp": 0.4712,
-        "regular": 358.24,
+        "c": 359.12,
+        "d": 2.56,
+        "dp": 0.7175,
+        "regular": 358.16,
         "pre": null,
-        "post": null,
+        "post": 359.12,
         "prev_close": 356.56,
-        "phase": "正式盤"
+        "phase": "盤後"
       },
       "news": [
         {
           "headline": "Strategy now holds 845k bitcoin or 4% of total supply",
-          "datetime": 1781292877,
+          "datetime": 1781339488,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/video/strategy-now-holds-845k-bitcoin-or-4-of-total-supply-174254410.html"
         },
         {
-          "headline": "Siri upgrades show promise, but questions remain",
-          "datetime": 1781292877,
+          "headline": "Alphabet’s US$80 Billion AI Build‑Out Funding Might Change The Case For Investing In Alphabet (GOOGL)",
+          "datetime": 1781339488,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/video/siri-upgrades-show-promise-but-questions-remain-195225562.html"
+          "url": "https://finance.yahoo.com/markets/stocks/articles/alphabet-us-80-billion-ai-071812155.html"
         },
         {
-          "headline": "Elon Musk's trillionaire leap carries big stakes for Nashville, Memphis",
-          "datetime": 1781292877,
+          "headline": "Mark Zuckerberg admits Meta has 'made mistakes' as AI overhaul reshapes 20% of its workforce: report",
+          "datetime": 1781339488,
           "source": "Yahoo Finance",
-          "url": "https://www.tennessean.com/story/money/2026/06/12/elon-musk-trillionaire-musk-tied-projects-impact-tennessee/90527177007/"
+          "url": "https://www.foxbusiness.com/technology/mark-zuckerberg-admits-meta-made-mistakes-ai-overhaul-reshapes-workforce"
         }
       ]
     }
