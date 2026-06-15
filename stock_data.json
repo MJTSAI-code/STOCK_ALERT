@@ -1,130 +1,130 @@
 {
   "name": "美股盤前情報資料庫",
-  "updated_at": "2026-06-16T00:32:42.500454+08:00",
+  "updated_at": "2026-06-16T04:40:25.832187+08:00",
   "data": {
     "NOW": {
       "quote": {
-        "c": 106.66,
-        "d": 4.51,
-        "dp": 4.4151,
-        "regular": 106.66,
+        "c": 104.32,
+        "d": 2.17,
+        "dp": 2.1263,
+        "regular": 104.15,
         "pre": null,
-        "post": null,
+        "post": 104.32,
         "prev_close": 102.15,
-        "phase": "正式盤"
+        "phase": "盤後"
       },
       "news": [
         {
+          "headline": "1 Software Stock with Exciting Potential and 2 Facing Headwinds",
+          "datetime": 1781556023,
+          "source": "Yahoo Finance",
+          "url": "https://finance.yahoo.com/markets/stocks/articles/1-software-stock-exciting-potential-190807626.html"
+        },
+        {
           "headline": "ServiceNow vs. Salesforce: Which Cloud Software Stock Has an Edge Now?",
-          "datetime": 1781541160,
+          "datetime": 1781556023,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/markets/stocks/articles/servicenow-vs-salesforce-cloud-software-150000491.html"
         },
         {
           "headline": "Can IBM's Extended ServiceNow Deal Accelerate Enterprise AI Adoption?",
-          "datetime": 1781541160,
+          "datetime": 1781556023,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/sectors/technology/articles/ibms-extended-servicenow-deal-accelerate-144800228.html"
-        },
-        {
-          "headline": "Cognizant Ties Physical AI Platform To Partnerships And Undervalued Shares",
-          "datetime": 1781541160,
-          "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/markets/stocks/articles/cognizant-ties-physical-ai-platform-051019639.html"
         }
       ]
     },
     "NVDA": {
       "quote": {
-        "c": 212.35,
-        "d": 7.16,
-        "dp": 3.4899,
-        "regular": 212.35,
+        "c": 212.16,
+        "d": 6.97,
+        "dp": 3.3993,
+        "regular": 212.45,
         "pre": null,
-        "post": null,
+        "post": 212.16,
         "prev_close": 205.19,
-        "phase": "正式盤"
+        "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Nvidia joins Wall Street's AI funding wave",
-          "datetime": 1781541161,
+          "headline": "Nvidia joins the AI funding wave as it plans a $20B bond sale: A closer look",
+          "datetime": 1781556024,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/markets/article/nvidia-joins-wall-streets-ai-funding-wave-163231887.html"
+          "url": "https://finance.yahoo.com/video/nvidia-joins-the-ai-funding-wave-as-it-plans-a-20b-bond-sale-a-closer-look-200021807.html"
         },
         {
-          "headline": "If You Put $500 a Month into This Tech ETF Since 2016, You Could Retire Tomorrow",
-          "datetime": 1781541161,
+          "headline": "1 Top Wall Street Analyst Thinks CVS Health Could Jump Another 13%. Should You Load Up on the Stock?",
+          "datetime": 1781556024,
           "source": "Yahoo Finance",
-          "url": "https://247wallst.com/investing/2026/06/15/if-you-put-500-a-month-into-this-tech-etf-since-2016-you-could-retire-tomorrow/"
+          "url": "https://www.fool.com/investing/2026/06/15/1-top-wall-street-analyst-thinks-cvs-health-could/"
         },
         {
-          "headline": "AMD Jumps 8% to a Record High, NVIDIA Climbs 4%, Intel Rises 3% in a Risk-On Chip Surge",
-          "datetime": 1781541161,
+          "headline": "This analyst sees Intel reaching a $5 trillion valuation",
+          "datetime": 1781556024,
           "source": "Yahoo Finance",
-          "url": "https://247wallst.com/investing/2026/06/15/amd-jumps-7-to-a-record-high-nvidia-climbs-4-intel-rises-3-in-a-risk-on-chip-surge/"
+          "url": "https://finance.yahoo.com/markets/stocks/articles/analyst-sees-intel-reaching-5-203019632.html"
         }
       ]
     },
     "LITE": {
       "quote": {
-        "c": 947.54,
-        "d": 25.98,
-        "dp": 2.8191,
-        "regular": 947.54,
+        "c": 952.9,
+        "d": 31.34,
+        "dp": 3.4008,
+        "regular": 957.24,
         "pre": null,
-        "post": null,
+        "post": 952.9,
         "prev_close": 921.56,
-        "phase": "正式盤"
+        "phase": "盤後"
       },
       "news": [
         {
+          "headline": "Top Stock Picks for Week of June 15, 2026",
+          "datetime": 1781556024,
+          "source": "Yahoo Finance",
+          "url": "https://finance.yahoo.com/markets/stocks/articles/top-stock-picks-week-june-185000747.html"
+        },
+        {
           "headline": "LITE vs. AVGO: Which AI Infrastructure Stock Is the Better Pick Now?",
-          "datetime": 1781541161,
+          "datetime": 1781556024,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/markets/stocks/articles/lite-vs-avgo-ai-infrastructure-143600328.html"
         },
         {
           "headline": "Lumentum (LITE): JPMorgan Pushback Helps Keep the AI Optical Networking Case Intact",
-          "datetime": 1781541161,
+          "datetime": 1781556024,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/markets/stocks/articles/lumentum-lite-jpmorgan-pushback-helps-193000476.html"
-        },
-        {
-          "headline": "Lumentum Nvidia Deal Highlights AI Optics Growth And Valuation Opportunity",
-          "datetime": 1781541161,
-          "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/markets/stocks/articles/lumentum-nvidia-deal-highlights-ai-111244938.html"
         }
       ]
     },
     "ONDS": {
       "quote": {
-        "c": 9.54,
-        "d": 0.21,
-        "dp": 2.1972,
-        "regular": 9.54,
+        "c": 9.53,
+        "d": 0.2,
+        "dp": 2.1436,
+        "regular": 9.51,
         "pre": null,
-        "post": null,
+        "post": 9.53,
         "prev_close": 9.33,
-        "phase": "正式盤"
+        "phase": "盤後"
       },
       "news": [
         {
           "headline": "Jim Cramer on Ondas: “I Can’t Get Behind a Meme Stock”",
-          "datetime": 1781541161,
+          "datetime": 1781556024,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/markets/stocks/articles/jim-cramer-ondas-t-behind-144520793.html"
         },
         {
           "headline": "Ondas Unifies Defense Platform As Sentrycs Wins 2026 World Cup Security Role",
-          "datetime": 1781541161,
+          "datetime": 1781556024,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/markets/stocks/articles/ondas-unifies-defense-platform-sentrycs-042844285.html"
         },
         {
           "headline": "Ondas Unveils LADOS Defense Platform Ahead of Eurosatory 2026 Launch",
-          "datetime": 1781541161,
+          "datetime": 1781556024,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/sectors/technology/articles/ondas-unveils-lados-defense-platform-174326636.html"
         }
@@ -132,65 +132,65 @@
     },
     "MRVL": {
       "quote": {
-        "c": 299.41,
-        "d": 19.71,
-        "dp": 7.0468,
-        "regular": 299.41,
+        "c": 306.45,
+        "d": 26.75,
+        "dp": 9.5638,
+        "regular": 308.88,
         "pre": null,
-        "post": null,
+        "post": 306.45,
         "prev_close": 279.7,
-        "phase": "正式盤"
+        "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Jensen Huang Says Marvell Technology Is the Next Trillion-Dollar Company. How Quickly Can It Get There?",
-          "datetime": 1781541162,
+          "headline": "How Marvell Broke The Law Of Large Numbers",
+          "datetime": 1781556025,
           "source": "Yahoo Finance",
-          "url": "https://www.fool.com/investing/2026/06/15/jensen-huang-says-marvell-technology-is-the-next-t/"
+          "url": "https://www.trefis.com/articles/602900/how-marvell-broke-the-law-of-large-numbers/2026-06-15"
         },
         {
-          "headline": "Marvell Technology CEO Matt Murphy Believes This Is The 'Most Beautiful Thing' One Person Can Do For Another And It Can 'Change Their Life'",
-          "datetime": 1781541162,
+          "headline": "Stocks to Watch: SpaceX, Micron Technology, Remy Cointreau",
+          "datetime": 1781556025,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/sectors/technology/articles/marvell-technology-ceo-matt-murphy-150024465.html"
+          "url": "https://www.wsj.com/livecoverage/stock-market-today-dow-sp-500-nasdaq-06-15-2026/card/stocks-to-watch-spacex-micron-technology-remy-cointreau-I52ZlHTefBMgyZlLA2cF?siteid=yhoof2&yptr=yahoo"
         },
         {
-          "headline": "Nvidia, Micron, Intel Lead Chip Stock Rally After Breakthrough U.S.-Iran Agreement",
-          "datetime": 1781541162,
+          "headline": "The Console Cycle That Could Test Advanced Micro Stock",
+          "datetime": 1781556025,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/sectors/technology/articles/nvidia-micron-intel-lead-chip-141246902.html"
+          "url": "https://www.trefis.com/articles/602915/the-console-cycle-that-could-test-advanced-micro-stock/2026-06-15"
         }
       ]
     },
     "GOOG": {
       "quote": {
-        "c": 368.9,
-        "d": 10.74,
-        "dp": 3.0001,
-        "regular": 368.9,
+        "c": 367.09,
+        "d": 8.93,
+        "dp": 2.4933,
+        "regular": 367.11,
         "pre": null,
-        "post": null,
+        "post": 367.09,
         "prev_close": 358.16,
-        "phase": "正式盤"
+        "phase": "盤後"
       },
       "news": [
         {
-          "headline": "If You Put $500 a Month into This Tech ETF Since 2016, You Could Retire Tomorrow",
-          "datetime": 1781541162,
+          "headline": "Nvidia joins the AI funding wave as it plans a $20B bond sale: A closer look",
+          "datetime": 1781556025,
           "source": "Yahoo Finance",
-          "url": "https://247wallst.com/investing/2026/06/15/if-you-put-500-a-month-into-this-tech-etf-since-2016-you-could-retire-tomorrow/"
+          "url": "https://finance.yahoo.com/video/nvidia-joins-the-ai-funding-wave-as-it-plans-a-20b-bond-sale-a-closer-look-200021807.html"
         },
         {
-          "headline": "Down 53%, Can Zillow Make a Comeback?",
-          "datetime": 1781541162,
+          "headline": "Nvidia joins Wall Street's AI funding wave",
+          "datetime": 1781556025,
           "source": "Yahoo Finance",
-          "url": "https://www.fool.com/investing/2026/06/15/down-53-can-zillow-make-a-comeback/"
+          "url": "https://finance.yahoo.com/markets/article/nvidia-joins-wall-streets-ai-funding-wave-163231887.html"
         },
         {
-          "headline": "Move Over, NVIDIA. Meta’s Chip Ambitions May Yet to Be Priced Into the Stock",
-          "datetime": 1781541162,
+          "headline": "Are You Pricing Amazon Stock For The Past Or The Future?",
+          "datetime": 1781556025,
           "source": "Yahoo Finance",
-          "url": "https://247wallst.com/investing/2026/06/15/move-over-nvidia-metas-chip-ambitions-may-yet-to-be-priced-into-the-stock/"
+          "url": "https://www.trefis.com/articles/602919/are-you-pricing-amazon-stock-for-the-past-or-the-future/2026-06-15"
         }
       ]
     }
