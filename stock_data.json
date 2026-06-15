@@ -1,130 +1,130 @@
 {
   "name": "美股盤前情報資料庫",
-  "updated_at": "2026-06-15T04:51:06.962178+08:00",
+  "updated_at": "2026-06-16T00:31:35.012878+08:00",
   "data": {
     "NOW": {
       "quote": {
-        "c": 102.88,
-        "d": -0.2,
-        "dp": -0.194,
-        "regular": 102.15,
+        "c": 106.79,
+        "d": 4.64,
+        "dp": 4.5423,
+        "regular": 106.79,
         "pre": null,
-        "post": 102.88,
-        "prev_close": 103.08,
-        "phase": "盤後"
+        "post": null,
+        "prev_close": 102.15,
+        "phase": "正式盤"
       },
       "news": [
         {
+          "headline": "ServiceNow vs. Salesforce: Which Cloud Software Stock Has an Edge Now?",
+          "datetime": 1781541093,
+          "source": "Yahoo Finance",
+          "url": "https://finance.yahoo.com/markets/stocks/articles/servicenow-vs-salesforce-cloud-software-150000491.html"
+        },
+        {
+          "headline": "Can IBM's Extended ServiceNow Deal Accelerate Enterprise AI Adoption?",
+          "datetime": 1781541093,
+          "source": "Yahoo Finance",
+          "url": "https://finance.yahoo.com/sectors/technology/articles/ibms-extended-servicenow-deal-accelerate-144800228.html"
+        },
+        {
           "headline": "Cognizant Ties Physical AI Platform To Partnerships And Undervalued Shares",
-          "datetime": 1781470265,
+          "datetime": 1781541093,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/markets/stocks/articles/cognizant-ties-physical-ai-platform-051019639.html"
-        },
-        {
-          "headline": "Is ServiceNow, Inc. (NOW) A Good Stock To Buy Now?",
-          "datetime": 1781470265,
-          "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/markets/stocks/articles/servicenow-inc-now-good-stock-165611597.html"
-        },
-        {
-          "headline": "Is Fair Isaac Stock Underperforming the Nasdaq?",
-          "datetime": 1781470265,
-          "source": "Yahoo Finance",
-          "url": "https://www.barchart.com/story/news/2454677/is-fair-isaac-stock-underperforming-the-nasdaq"
         }
       ]
     },
     "NVDA": {
       "quote": {
-        "c": 205.42,
-        "d": 0.55,
-        "dp": 0.2703,
-        "regular": 205.19,
+        "c": 212.39,
+        "d": 7.2,
+        "dp": 3.5089,
+        "regular": 212.39,
         "pre": null,
-        "post": 205.42,
-        "prev_close": 204.87,
-        "phase": "盤後"
+        "post": null,
+        "prev_close": 205.19,
+        "phase": "正式盤"
       },
       "news": [
         {
-          "headline": "Here's How to Snag a 20% Dividend Yield",
-          "datetime": 1781470265,
+          "headline": "SpaceX just took Palantir's top spot with one of the most excessive valuation multiples in megacap tech",
+          "datetime": 1781541093,
           "source": "Yahoo Finance",
-          "url": "https://www.fool.com/investing/2026/06/14/heres-how-to-snag-a-20-dividend-yield/"
+          "url": "https://finance.yahoo.com/markets/article/spacex-just-took-palantirs-top-spot-with-one-of-the-most-excessive-valuation-multiples-in-megacap-tech-155303264.html"
         },
         {
-          "headline": "The Invisible Layer Protecting the World's Biggest Companies",
-          "datetime": 1781470265,
+          "headline": "Why the biggest \"Magnificent 7\" stocks have one giant headwind coming right at them",
+          "datetime": 1781541093,
           "source": "Yahoo Finance",
-          "url": "https://www.fool.com/investing/2026/06/14/the-invisible-layer-protecting-the-worlds-biggest-companies/"
+          "url": "https://finance.yahoo.com/markets/article/why-the-biggest-magnificent-7-stocks-have-one-giant-headwind-coming-right-at-them-142228430.html"
         },
         {
-          "headline": "Oracle Stock Dips Despite Continued Strong Backlog Growth. Should Investors Buy the Stock on the Dip?",
-          "datetime": 1781470265,
+          "headline": "Down 53%, Can Zillow Make a Comeback?",
+          "datetime": 1781541093,
           "source": "Yahoo Finance",
-          "url": "https://www.fool.com/investing/2026/06/14/oracle-stock-dips-despite-continued-strong-backlog/"
+          "url": "https://www.fool.com/investing/2026/06/15/down-53-can-zillow-make-a-comeback/"
         }
       ]
     },
     "LITE": {
       "quote": {
-        "c": 921.0,
-        "d": 31.41,
-        "dp": 3.5308,
-        "regular": 921.56,
+        "c": 948.4,
+        "d": 26.84,
+        "dp": 2.9125,
+        "regular": 948.4,
         "pre": null,
-        "post": 921.0,
-        "prev_close": 889.59,
-        "phase": "盤後"
+        "post": null,
+        "prev_close": 921.56,
+        "phase": "正式盤"
       },
       "news": [
         {
+          "headline": "LITE vs. AVGO: Which AI Infrastructure Stock Is the Better Pick Now?",
+          "datetime": 1781541093,
+          "source": "Yahoo Finance",
+          "url": "https://finance.yahoo.com/markets/stocks/articles/lite-vs-avgo-ai-infrastructure-143600328.html"
+        },
+        {
           "headline": "Lumentum (LITE): JPMorgan Pushback Helps Keep the AI Optical Networking Case Intact",
-          "datetime": 1781470266,
+          "datetime": 1781541093,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/markets/stocks/articles/lumentum-lite-jpmorgan-pushback-helps-193000476.html"
         },
         {
           "headline": "Lumentum Nvidia Deal Highlights AI Optics Growth And Valuation Opportunity",
-          "datetime": 1781470266,
+          "datetime": 1781541093,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/markets/stocks/articles/lumentum-nvidia-deal-highlights-ai-111244938.html"
-        },
-        {
-          "headline": "Is Now The Time To Look At Buying Lumentum Holdings Inc. (NASDAQ:LITE)?",
-          "datetime": 1781470266,
-          "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/markets/stocks/articles/now-time-look-buying-lumentum-110010901.html"
         }
       ]
     },
     "ONDS": {
       "quote": {
-        "c": 9.44,
-        "d": -0.39,
-        "dp": -3.9705,
-        "regular": 9.33,
+        "c": 9.54,
+        "d": 0.21,
+        "dp": 2.2508,
+        "regular": 9.54,
         "pre": null,
-        "post": 9.44,
-        "prev_close": 9.83,
-        "phase": "盤後"
+        "post": null,
+        "prev_close": 9.33,
+        "phase": "正式盤"
       },
       "news": [
         {
           "headline": "Jim Cramer on Ondas: “I Can’t Get Behind a Meme Stock”",
-          "datetime": 1781470266,
+          "datetime": 1781541094,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/markets/stocks/articles/jim-cramer-ondas-t-behind-144520793.html"
         },
         {
           "headline": "Ondas Unifies Defense Platform As Sentrycs Wins 2026 World Cup Security Role",
-          "datetime": 1781470266,
+          "datetime": 1781541094,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/markets/stocks/articles/ondas-unifies-defense-platform-sentrycs-042844285.html"
         },
         {
           "headline": "Ondas Unveils LADOS Defense Platform Ahead of Eurosatory 2026 Launch",
-          "datetime": 1781470266,
+          "datetime": 1781541094,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/sectors/technology/articles/ondas-unveils-lados-defense-platform-174326636.html"
         }
@@ -132,65 +132,65 @@
     },
     "MRVL": {
       "quote": {
-        "c": 281.2,
-        "d": 0.49,
-        "dp": 0.1746,
-        "regular": 279.7,
+        "c": 299.67,
+        "d": 19.97,
+        "dp": 7.1395,
+        "regular": 299.67,
         "pre": null,
-        "post": 281.2,
-        "prev_close": 280.71,
-        "phase": "盤後"
+        "post": null,
+        "prev_close": 279.7,
+        "phase": "正式盤"
       },
       "news": [
         {
-          "headline": "Prediction: This Will Be the Next $1 Trillion Artificial Intelligence (AI) Chip Stock, According to Jensen Huang",
-          "datetime": 1781470266,
+          "headline": "Jensen Huang Says Marvell Technology Is the Next Trillion-Dollar Company. How Quickly Can It Get There?",
+          "datetime": 1781541094,
           "source": "Yahoo Finance",
-          "url": "https://www.fool.com/investing/2026/06/14/prediction-this-will-be-the-next-1-trillion-artifi/"
+          "url": "https://www.fool.com/investing/2026/06/15/jensen-huang-says-marvell-technology-is-the-next-t/"
         },
         {
-          "headline": "Why Marvell Technology Stock Surged This Week",
-          "datetime": 1781470266,
+          "headline": "Marvell Technology CEO Matt Murphy Believes This Is The 'Most Beautiful Thing' One Person Can Do For Another And It Can 'Change Their Life'",
+          "datetime": 1781541094,
           "source": "Yahoo Finance",
-          "url": "https://www.fool.com/investing/2026/06/14/why-marvell-technology-stock-surged-this-week/"
+          "url": "https://finance.yahoo.com/sectors/technology/articles/marvell-technology-ceo-matt-murphy-150024465.html"
         },
         {
-          "headline": "Adobe's CFO Jumps Ship To Marvell For 'Once-In-A-Generation' AI Expansion",
-          "datetime": 1781470266,
+          "headline": "Nvidia, Micron, Intel Lead Chip Stock Rally After Breakthrough U.S.-Iran Agreement",
+          "datetime": 1781541094,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/markets/stocks/articles/adobes-cfo-jumps-ship-marvell-213152665.html"
+          "url": "https://finance.yahoo.com/sectors/technology/articles/nvidia-micron-intel-lead-chip-141246902.html"
         }
       ]
     },
     "GOOG": {
       "quote": {
-        "c": 359.12,
-        "d": 2.56,
-        "dp": 0.7175,
-        "regular": 358.16,
+        "c": 369.0,
+        "d": 10.84,
+        "dp": 3.0266,
+        "regular": 369.0,
         "pre": null,
-        "post": 359.12,
-        "prev_close": 356.56,
-        "phase": "盤後"
+        "post": null,
+        "prev_close": 358.16,
+        "phase": "正式盤"
       },
       "news": [
         {
-          "headline": "This market is at 'a 10': Wall Street weighs record SpaceX IPO amid AI-driven stock market",
-          "datetime": 1781470266,
+          "headline": "If You Put $500 a Month into This Tech ETF Since 2016, You Could Retire Tomorrow",
+          "datetime": 1781541095,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/markets/article/this-market-is-at-a-10-wall-street-weighs-record-spacex-ipo-amid-ai-driven-stock-market-113207472.html"
+          "url": "https://247wallst.com/investing/2026/06/15/if-you-put-500-a-month-into-this-tech-etf-since-2016-you-could-retire-tomorrow/"
         },
         {
-          "headline": "SMH vs. SOXX vs. SOXQ: Which Semiconductor ETF Is the Best Buy Right Now?",
-          "datetime": 1781470266,
+          "headline": "Down 53%, Can Zillow Make a Comeback?",
+          "datetime": 1781541095,
           "source": "Yahoo Finance",
-          "url": "https://www.fool.com/investing/2026/06/14/smh-vs-soxx-vs-soxq-which-semiconductor-etf-best/"
+          "url": "https://www.fool.com/investing/2026/06/15/down-53-can-zillow-make-a-comeback/"
         },
         {
-          "headline": "Anthropic Turns To Google To Back Massive Data Center Push",
-          "datetime": 1781470266,
+          "headline": "Move Over, NVIDIA. Meta’s Chip Ambitions May Yet to Be Priced Into the Stock",
+          "datetime": 1781541095,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/sectors/technology/articles/anthropic-turns-google-back-massive-193024074.html"
+          "url": "https://247wallst.com/investing/2026/06/15/move-over-nvidia-metas-chip-ambitions-may-yet-to-be-priced-into-the-stock/"
         }
       ]
     }
