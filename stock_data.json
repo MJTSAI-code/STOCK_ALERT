@@ -1,98 +1,98 @@
 {
   "name": "美股盤前情報資料庫",
-  "updated_at": "2026-06-16T04:40:25.832187+08:00",
+  "updated_at": "2026-06-16T07:21:48.190265+08:00",
   "data": {
     "NOW": {
       "quote": {
-        "c": 104.32,
-        "d": 2.17,
-        "dp": 2.1263,
+        "c": 104.1,
+        "d": 1.95,
+        "dp": 1.909,
         "regular": 104.15,
         "pre": null,
-        "post": 104.32,
+        "post": 104.1,
         "prev_close": 102.15,
         "phase": "盤後"
       },
       "news": [
         {
+          "headline": "ServiceNow (NOW) Beats Stock Market Upswing: What Investors Need to Know",
+          "datetime": 1781565706,
+          "source": "Yahoo Finance",
+          "url": "https://finance.yahoo.com/markets/stocks/articles/servicenow-now-beats-stock-market-214503550.html"
+        },
+        {
           "headline": "1 Software Stock with Exciting Potential and 2 Facing Headwinds",
-          "datetime": 1781556023,
+          "datetime": 1781565706,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/markets/stocks/articles/1-software-stock-exciting-potential-190807626.html"
         },
         {
           "headline": "ServiceNow vs. Salesforce: Which Cloud Software Stock Has an Edge Now?",
-          "datetime": 1781556023,
+          "datetime": 1781565706,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/markets/stocks/articles/servicenow-vs-salesforce-cloud-software-150000491.html"
-        },
-        {
-          "headline": "Can IBM's Extended ServiceNow Deal Accelerate Enterprise AI Adoption?",
-          "datetime": 1781556023,
-          "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/sectors/technology/articles/ibms-extended-servicenow-deal-accelerate-144800228.html"
         }
       ]
     },
     "NVDA": {
       "quote": {
-        "c": 212.16,
-        "d": 6.97,
-        "dp": 3.3993,
+        "c": 211.41,
+        "d": 6.22,
+        "dp": 3.0313,
         "regular": 212.45,
         "pre": null,
-        "post": 212.16,
+        "post": 211.41,
         "prev_close": 205.19,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Nvidia joins the AI funding wave as it plans a $20B bond sale: A closer look",
-          "datetime": 1781556024,
+          "headline": "How SpaceX's IPO made millions for JPMorgan, Goldman Sachs, & other big banks",
+          "datetime": 1781565706,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/video/nvidia-joins-the-ai-funding-wave-as-it-plans-a-20b-bond-sale-a-closer-look-200021807.html"
+          "url": "https://finance.yahoo.com/video/how-spacexs-ipo-made-millions-for-jpmorgan-goldman-sachs--other-big-banks-204553215.html"
         },
         {
-          "headline": "1 Top Wall Street Analyst Thinks CVS Health Could Jump Another 13%. Should You Load Up on the Stock?",
-          "datetime": 1781556024,
+          "headline": "Why the biggest \"Magnificent 7\" stocks have one giant headwind coming right at them",
+          "datetime": 1781565706,
           "source": "Yahoo Finance",
-          "url": "https://www.fool.com/investing/2026/06/15/1-top-wall-street-analyst-thinks-cvs-health-could/"
+          "url": "https://finance.yahoo.com/markets/article/why-the-biggest-magnificent-7-stocks-have-one-giant-headwind-coming-right-at-them-142228430.html"
         },
         {
-          "headline": "This analyst sees Intel reaching a $5 trillion valuation",
-          "datetime": 1781556024,
+          "headline": "Oil Falls Back Near $80 as the Iran Standoff Cools. 3 Tech Stocks That Could Benefit the Most.",
+          "datetime": 1781565706,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/markets/stocks/articles/analyst-sees-intel-reaching-5-203019632.html"
+          "url": "https://www.fool.com/investing/2026/06/15/oil-falls-back-near-80-as-the-iran-standoff-cools/"
         }
       ]
     },
     "LITE": {
       "quote": {
-        "c": 952.9,
-        "d": 31.34,
-        "dp": 3.4008,
+        "c": 951.0,
+        "d": 29.44,
+        "dp": 3.1946,
         "regular": 957.24,
         "pre": null,
-        "post": 952.9,
+        "post": 951.0,
         "prev_close": 921.56,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Top Stock Picks for Week of June 15, 2026",
-          "datetime": 1781556024,
+          "datetime": 1781565707,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/markets/stocks/articles/top-stock-picks-week-june-185000747.html"
         },
         {
           "headline": "LITE vs. AVGO: Which AI Infrastructure Stock Is the Better Pick Now?",
-          "datetime": 1781556024,
+          "datetime": 1781565707,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/markets/stocks/articles/lite-vs-avgo-ai-infrastructure-143600328.html"
         },
         {
           "headline": "Lumentum (LITE): JPMorgan Pushback Helps Keep the AI Optical Networking Case Intact",
-          "datetime": 1781556024,
+          "datetime": 1781565707,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/markets/stocks/articles/lumentum-lite-jpmorgan-pushback-helps-193000476.html"
         }
@@ -112,19 +112,19 @@
       "news": [
         {
           "headline": "Jim Cramer on Ondas: “I Can’t Get Behind a Meme Stock”",
-          "datetime": 1781556024,
+          "datetime": 1781565707,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/markets/stocks/articles/jim-cramer-ondas-t-behind-144520793.html"
         },
         {
           "headline": "Ondas Unifies Defense Platform As Sentrycs Wins 2026 World Cup Security Role",
-          "datetime": 1781556024,
+          "datetime": 1781565707,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/markets/stocks/articles/ondas-unifies-defense-platform-sentrycs-042844285.html"
         },
         {
           "headline": "Ondas Unveils LADOS Defense Platform Ahead of Eurosatory 2026 Launch",
-          "datetime": 1781556024,
+          "datetime": 1781565707,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/sectors/technology/articles/ondas-unveils-lados-defense-platform-174326636.html"
         }
@@ -132,65 +132,65 @@
     },
     "MRVL": {
       "quote": {
-        "c": 306.45,
-        "d": 26.75,
-        "dp": 9.5638,
+        "c": 303.44,
+        "d": 23.74,
+        "dp": 8.4877,
         "regular": 308.88,
         "pre": null,
-        "post": 306.45,
+        "post": 303.44,
         "prev_close": 279.7,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "How Marvell Broke The Law Of Large Numbers",
-          "datetime": 1781556025,
-          "source": "Yahoo Finance",
-          "url": "https://www.trefis.com/articles/602900/how-marvell-broke-the-law-of-large-numbers/2026-06-15"
-        },
-        {
-          "headline": "Stocks to Watch: SpaceX, Micron Technology, Remy Cointreau",
-          "datetime": 1781556025,
+          "headline": "Stocks to Watch Recap: SpaceX, Micron Technology, Remy Cointreau",
+          "datetime": 1781565707,
           "source": "Yahoo Finance",
           "url": "https://www.wsj.com/livecoverage/stock-market-today-dow-sp-500-nasdaq-06-15-2026/card/stocks-to-watch-spacex-micron-technology-remy-cointreau-I52ZlHTefBMgyZlLA2cF?siteid=yhoof2&yptr=yahoo"
         },
         {
-          "headline": "The Console Cycle That Could Test Advanced Micro Stock",
-          "datetime": 1781556025,
+          "headline": "Stock Market Today: Dow Pops On Trump-Iran Deal; Elon Musk's SpaceX Rockets, Tesla Does This",
+          "datetime": 1781565707,
           "source": "Yahoo Finance",
-          "url": "https://www.trefis.com/articles/602915/the-console-cycle-that-could-test-advanced-micro-stock/2026-06-15"
+          "url": "https://www.investors.com/market-trend/stock-market-today/dow-jones-sp500-nasdaq-us-iran-deal-oil-prices/?src=A00220&yptr=yahoo"
+        },
+        {
+          "headline": "How Marvell Broke The Law Of Large Numbers",
+          "datetime": 1781565707,
+          "source": "Yahoo Finance",
+          "url": "https://www.trefis.com/articles/602900/how-marvell-broke-the-law-of-large-numbers/2026-06-15"
         }
       ]
     },
     "GOOG": {
       "quote": {
-        "c": 367.09,
-        "d": 8.93,
-        "dp": 2.4933,
+        "c": 367.07,
+        "d": 8.91,
+        "dp": 2.4877,
         "regular": 367.11,
         "pre": null,
-        "post": 367.09,
+        "post": 367.07,
         "prev_close": 358.16,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Nvidia joins the AI funding wave as it plans a $20B bond sale: A closer look",
-          "datetime": 1781556025,
+          "datetime": 1781565708,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/video/nvidia-joins-the-ai-funding-wave-as-it-plans-a-20b-bond-sale-a-closer-look-200021807.html"
         },
         {
           "headline": "Nvidia joins Wall Street's AI funding wave",
-          "datetime": 1781556025,
+          "datetime": 1781565708,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/markets/article/nvidia-joins-wall-streets-ai-funding-wave-163231887.html"
         },
         {
-          "headline": "Are You Pricing Amazon Stock For The Past Or The Future?",
-          "datetime": 1781556025,
+          "headline": "With Roku Stock Near Highs, Is It Worth It?",
+          "datetime": 1781565708,
           "source": "Yahoo Finance",
-          "url": "https://www.trefis.com/articles/602919/are-you-pricing-amazon-stock-for-the-past-or-the-future/2026-06-15"
+          "url": "https://www.trefis.com/articles/602897/with-roku-stock-near-highs-is-its-platform-power-worth-the-hardware-headaches/2026-06-15"
         }
       ]
     }
