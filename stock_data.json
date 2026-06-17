@@ -1,34 +1,34 @@
 {
   "name": "美股盤前情報資料庫",
-  "updated_at": "2026-06-17T04:30:01.679582+08:00",
+  "updated_at": "2026-06-17T08:00:47.439342+08:00",
   "data": {
     "NOW": {
       "quote": {
-        "c": 101.3,
-        "d": -2.85,
-        "dp": -2.7364,
+        "c": 101.99,
+        "d": -2.16,
+        "dp": -2.0739,
         "regular": 101.33,
         "pre": null,
-        "post": 101.3,
+        "post": 101.99,
         "prev_close": 104.15,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "ServiceNow (NOW): A Wipro Partnership to Close the Gap Between AI Pilots and Full Enterprise Deployment",
-          "datetime": 1781641799,
+          "datetime": 1781654445,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/technology/ai/articles/servicenow-now-wipro-partnership-close-190001095.html"
         },
         {
           "headline": "ServiceNow Inc (NOW) Teams Up With Cognizant on AI Governance",
-          "datetime": 1781641799,
+          "datetime": 1781654445,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/technology/ai/articles/servicenow-inc-now-teams-cognizant-185848584.html"
         },
         {
           "headline": "ServiceNow (NOW) Slid Amid Growing Adoption of AI-Native Solutions",
-          "datetime": 1781641799,
+          "datetime": 1781654445,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/news/servicenow-now-slid-amid-growing-154022220.html"
         }
@@ -36,95 +36,95 @@
     },
     "NVDA": {
       "quote": {
-        "c": 207.22,
-        "d": -5.23,
-        "dp": -2.4618,
+        "c": 207.55,
+        "d": -4.9,
+        "dp": -2.3068,
         "regular": 207.41,
         "pre": null,
-        "post": 207.22,
+        "post": 207.55,
         "prev_close": 212.45,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "How SpaceX mania made Musk more money in 1 day than 'Bill Gates' entire net worth'",
-          "datetime": 1781641800,
+          "headline": "SpaceX closes in on Amazon in sprint toward $3 trillion",
+          "datetime": 1781654446,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/video/spacex-mania-made-musk-more-162000041.html"
+          "url": "https://finance.yahoo.com/markets/article/spacex-closes-in-on-amazon-in-sprint-toward-3-trillion-164918333.html"
         },
         {
-          "headline": "Nvidia Latest Big Borrower: AI Data Centers, Suppliers Racking Up Debt",
-          "datetime": 1781641800,
+          "headline": "SpaceX becomes retail's biggest IPO trade: Chart of the Day",
+          "datetime": 1781654446,
           "source": "Yahoo Finance",
-          "url": "https://www.investors.com/news/technology/ai-data-centers-suppliers-nvidia-debt/?src=A00220&yptr=yahoo"
+          "url": "https://finance.yahoo.com/markets/article/spacex-becomes-retails-biggest-ipo-trade-chart-of-the-day-100000991.html"
         },
         {
-          "headline": "The AI Stock Flying Under Every Analyst's Radar -- Until Now",
-          "datetime": 1781641800,
+          "headline": "Why Newmont Stock Bumped Higher Today",
+          "datetime": 1781654446,
           "source": "Yahoo Finance",
-          "url": "https://www.fool.com/investing/2026/06/16/the-ai-stock-flying-under-every-analysts-radar/"
+          "url": "https://www.fool.com/investing/2026/06/16/why-newmont-stock-bumped-higher-today/"
         }
       ]
     },
     "LITE": {
       "quote": {
-        "c": 874.9,
-        "d": -82.34,
-        "dp": -8.6018,
+        "c": 880.0,
+        "d": -77.24,
+        "dp": -8.069,
         "regular": 875.36,
         "pre": null,
-        "post": 874.9,
+        "post": 880.0,
         "prev_close": 957.24,
         "phase": "盤後"
       },
       "news": [
         {
+          "headline": "Dow Jones Hits High, SpaceX Keeps Rising, But AI Stocks Skid; Warsh's Fed Debut On Tap",
+          "datetime": 1781654446,
+          "source": "Yahoo Finance",
+          "url": "https://www.investors.com/market-trend/stock-market-today/dow-jones-futures-spacex-ai-stocks-warsh-fed-debut/?src=A00220&yptr=yahoo"
+        },
+        {
+          "headline": "Stock Market Today: Dow Ends Shy Of 52,000; SpaceX Slashes Its Gain; Lumentum Tumbles",
+          "datetime": 1781654446,
+          "source": "Yahoo Finance",
+          "url": "https://www.investors.com/market-trend/stock-market-today/dow-jones-sp500-nasdaq-fed-meeting-spacex-stock-spcx/?src=A00220&yptr=yahoo"
+        },
+        {
           "headline": "Here’s What Boosted Lumentum Holdings (LITE) in Q1",
-          "datetime": 1781641800,
+          "datetime": 1781654446,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/markets/stocks/articles/p-500-inclusion-boosted-lumentum-145024414.html"
-        },
-        {
-          "headline": "Top Stock Picks for Week of June 15, 2026",
-          "datetime": 1781641800,
-          "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/markets/stocks/articles/top-stock-picks-week-june-185000747.html"
-        },
-        {
-          "headline": "LITE vs. AVGO: Which AI Infrastructure Stock Is the Better Pick Now?",
-          "datetime": 1781641800,
-          "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/markets/stocks/articles/lite-vs-avgo-ai-infrastructure-143600328.html"
         }
       ]
     },
     "ONDS": {
       "quote": {
-        "c": 9.22,
-        "d": -0.29,
-        "dp": -3.0494,
+        "c": 9.25,
+        "d": -0.26,
+        "dp": -2.734,
         "regular": 9.21,
         "pre": null,
-        "post": 9.22,
+        "post": 9.25,
         "prev_close": 9.51,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Jim Cramer on Ondas: “I Can’t Get Behind a Meme Stock”",
-          "datetime": 1781641801,
+          "datetime": 1781654446,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/markets/stocks/articles/jim-cramer-ondas-t-behind-144520793.html"
         },
         {
           "headline": "Ondas Unifies Defense Platform As Sentrycs Wins 2026 World Cup Security Role",
-          "datetime": 1781641801,
+          "datetime": 1781654446,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/markets/stocks/articles/ondas-unifies-defense-platform-sentrycs-042844285.html"
         },
         {
           "headline": "Ondas Unveils LADOS Defense Platform Ahead of Eurosatory 2026 Launch",
-          "datetime": 1781641801,
+          "datetime": 1781654446,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/sectors/technology/articles/ondas-unveils-lados-defense-platform-174326636.html"
         }
@@ -132,65 +132,65 @@
     },
     "MRVL": {
       "quote": {
-        "c": 280.74,
-        "d": -28.14,
-        "dp": -9.109,
+        "c": 282.49,
+        "d": -26.39,
+        "dp": -8.5438,
         "regular": 278.67,
         "pre": null,
-        "post": 280.74,
+        "post": 282.49,
         "prev_close": 308.88,
         "phase": "盤後"
       },
       "news": [
         {
+          "headline": "Marvell Technology, Nova, and KLA Corporation Stocks Trade Down, What You Need To Know",
+          "datetime": 1781654447,
+          "source": "Yahoo Finance",
+          "url": "https://finance.yahoo.com/markets/stocks/articles/marvell-technology-nova-kla-corporation-232904649.html"
+        },
+        {
           "headline": "US Equity Markets End Mixed as Dow Hits Record High Amid Lower Crude Oil Prices, Tech Stock Sell-Off",
-          "datetime": 1781641801,
+          "datetime": 1781654447,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/markets/stocks/articles/us-equity-markets-end-mixed-201643360.html"
         },
         {
           "headline": "Sector Update: Tech Stocks Fall Late Afternoon",
-          "datetime": 1781641801,
+          "datetime": 1781654447,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/markets/stocks/articles/sector-tech-stocks-fall-afternoon-194407031.html"
-        },
-        {
-          "headline": "Marvell's 265% Surge Faces $1 Trillion Test",
-          "datetime": 1781641801,
-          "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/markets/stocks/articles/marvells-265-surge-faces-1-192002807.html"
         }
       ]
     },
     "GOOG": {
       "quote": {
-        "c": 369.87,
-        "d": 2.76,
-        "dp": 0.7518,
+        "c": 369.51,
+        "d": 2.4,
+        "dp": 0.6531,
         "regular": 371.1,
         "pre": null,
-        "post": 369.87,
+        "post": 369.51,
         "prev_close": 367.11,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "SpaceX rockets past Amazon, eyes Microsoft in sprint toward $3 trillion",
-          "datetime": 1781641801,
+          "headline": "SpaceX closes in on Amazon in sprint toward $3 trillion",
+          "datetime": 1781654447,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/markets/article/spacex-rockets-past-amazon-eyes-microsoft-in-sprint-toward-3-trillion-164918333.html"
+          "url": "https://finance.yahoo.com/markets/article/spacex-closes-in-on-amazon-in-sprint-toward-3-trillion-164918333.html"
         },
         {
-          "headline": "Nvidia Latest Big Borrower: AI Data Centers, Suppliers Racking Up Debt",
-          "datetime": 1781641801,
+          "headline": "Dow Jones Hits High, SpaceX Keeps Rising, But AI Stocks Skid; Warsh's Fed Debut On Tap",
+          "datetime": 1781654447,
           "source": "Yahoo Finance",
-          "url": "https://www.investors.com/news/technology/ai-data-centers-suppliers-nvidia-debt/?src=A00220&yptr=yahoo"
+          "url": "https://www.investors.com/market-trend/stock-market-today/dow-jones-futures-spacex-ai-stocks-warsh-fed-debut/?src=A00220&yptr=yahoo"
         },
         {
-          "headline": "SpaceX valuation balloons to $2.6T, briefly passes Amazon",
-          "datetime": 1781641801,
+          "headline": "HSBC partners with Google Cloud to expand AI usage",
+          "datetime": 1781654447,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/markets/stocks/articles/spacex-passes-amazon-valuation-balloons-134837575.html"
+          "url": "https://finance.yahoo.com/technology/ai/articles/hsbc-partners-google-cloud-expand-230425539.html"
         }
       ]
     }
