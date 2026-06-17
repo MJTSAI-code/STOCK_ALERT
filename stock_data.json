@@ -1,13 +1,13 @@
 {
   "name": "美股盤前情報資料庫",
-  "updated_at": "2026-06-17T22:20:21.730338+08:00",
+  "updated_at": "2026-06-18T02:06:25.892856+08:00",
   "data": {
     "NOW": {
       "quote": {
-        "c": 102.04,
-        "d": 0.71,
-        "dp": 0.7007,
-        "regular": 102.04,
+        "c": 99.13,
+        "d": -2.2,
+        "dp": -2.1711,
+        "regular": 99.13,
         "pre": null,
         "post": null,
         "prev_close": 101.33,
@@ -15,31 +15,31 @@
       },
       "news": [
         {
+          "headline": "Snubbing Nvidia for Adobe Costs Florida Stock-Picker $50 Billion",
+          "datetime": 1781719584,
+          "source": "Yahoo Finance",
+          "url": "https://finance.yahoo.com/markets/stocks/articles/wrong-way-ai-trade-costs-131500352.html"
+        },
+        {
           "headline": "Stocks Indexes Finish Mostly Lower as Chipmakers Retreat",
-          "datetime": 1781706019,
+          "datetime": 1781719584,
           "source": "Yahoo Finance",
           "url": "https://www.barchart.com/story/news/2502375/stocks-indexes-finish-mostly-lower-as-chipmakers-retreat"
         },
         {
           "headline": "ServiceNow (NOW): A Wipro Partnership to Close the Gap Between AI Pilots and Full Enterprise Deployment",
-          "datetime": 1781706019,
+          "datetime": 1781719584,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/technology/ai/articles/servicenow-now-wipro-partnership-close-190001095.html"
-        },
-        {
-          "headline": "ServiceNow Inc (NOW) Teams Up With Cognizant on AI Governance",
-          "datetime": 1781706019,
-          "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/technology/ai/articles/servicenow-inc-now-teams-cognizant-185848584.html"
         }
       ]
     },
     "NVDA": {
       "quote": {
-        "c": 207.51,
-        "d": 0.1,
-        "dp": 0.0482,
-        "regular": 207.51,
+        "c": 205.96,
+        "d": -1.45,
+        "dp": -0.7015,
+        "regular": 205.96,
         "pre": null,
         "post": null,
         "prev_close": 207.41,
@@ -47,31 +47,31 @@
       },
       "news": [
         {
-          "headline": "SpaceX's near $3 trillion rally comes with one big catch: Chart of the Day",
-          "datetime": 1781706019,
+          "headline": "How SpaceX and 'MANGOS' are fueling the latest ETF trends",
+          "datetime": 1781719584,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/markets/article/spacexs-near-3-trillion-rally-comes-with-one-big-catch-chart-of-the-day-122114608.html"
+          "url": "https://finance.yahoo.com/video/how-spacex-and-mangos-are-fueling-the-latest-etf-trends-161839932.html"
         },
         {
-          "headline": "SpaceX closes in on Amazon in sprint toward $3 trillion",
-          "datetime": 1781706019,
+          "headline": "5 stunning stats about the world's most valuable stocks",
+          "datetime": 1781719584,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/markets/article/spacex-closes-in-on-amazon-in-sprint-toward-3-trillion-164918333.html"
+          "url": "https://finance.yahoo.com/markets/article/5-stunning-stats-about-the-worlds-most-valuable-stocks-121515219.html"
         },
         {
-          "headline": "How SpaceX mania made Musk more money in 1 day than 'Bill Gates' entire net worth'",
-          "datetime": 1781706019,
+          "headline": "What investors should know before hopping on SpaceX options trades",
+          "datetime": 1781719584,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/video/spacex-mania-made-musk-more-162000041.html"
+          "url": "https://finance.yahoo.com/video/what-investors-should-know-before-hopping-on-spacex-options-trades-203526285.html"
         }
       ]
     },
     "LITE": {
       "quote": {
-        "c": 880.24,
-        "d": 4.88,
-        "dp": 0.5575,
-        "regular": 880.24,
+        "c": 863.98,
+        "d": -11.38,
+        "dp": -1.3,
+        "regular": 863.98,
         "pre": null,
         "post": null,
         "prev_close": 875.36,
@@ -80,19 +80,19 @@
       "news": [
         {
           "headline": "Dow Jones Futures: Techs Rebound, SpaceX Rises Despite Trump's Iran Threat; Warsh's Fed Debut Due",
-          "datetime": 1781706020,
+          "datetime": 1781719584,
           "source": "Yahoo Finance",
           "url": "https://www.investors.com/market-trend/stock-market-today/dow-jones-futures-spacex-ai-stocks-warsh-fed-debut/?src=A00220&yptr=yahoo"
         },
         {
           "headline": "AAOI, LITE, COHR, MRVL Stocks Bounce Back Overnight: Why AI Photonics Stocks Drew Attention Today",
-          "datetime": 1781706020,
+          "datetime": 1781719584,
           "source": "Yahoo Finance",
           "url": "https://stocktwits.com/news-articles/markets/equity/aaoi-lite-cohr-mrvl-stocks-bounce-back-overnight-why-ai-photonics-stocks-drew-attention-today/cZK0jLIR7IR"
         },
         {
           "headline": "Stock Market Today: Dow Ends Shy Of 52,000; SpaceX Slashes Its Gain; Lumentum Tumbles",
-          "datetime": 1781706020,
+          "datetime": 1781719584,
           "source": "Yahoo Finance",
           "url": "https://www.investors.com/market-trend/stock-market-today/dow-jones-sp500-nasdaq-fed-meeting-spacex-stock-spcx/?src=A00220&yptr=yahoo"
         }
@@ -100,10 +100,10 @@
     },
     "ONDS": {
       "quote": {
-        "c": 9.28,
-        "d": 0.07,
-        "dp": 0.7752,
-        "regular": 9.28,
+        "c": 9.2,
+        "d": -0.02,
+        "dp": -0.1629,
+        "regular": 9.2,
         "pre": null,
         "post": null,
         "prev_close": 9.21,
@@ -111,31 +111,31 @@
       },
       "news": [
         {
+          "headline": "ONDS vs. RCAT: Which Drone Tech Stock Is the Better Pick Now?",
+          "datetime": 1781719585,
+          "source": "Yahoo Finance",
+          "url": "https://finance.yahoo.com/markets/stocks/articles/onds-vs-rcat-drone-tech-141400848.html"
+        },
+        {
           "headline": "Jim Cramer on Ondas: “I Can’t Get Behind a Meme Stock”",
-          "datetime": 1781706020,
+          "datetime": 1781719585,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/markets/stocks/articles/jim-cramer-ondas-t-behind-144520793.html"
         },
         {
           "headline": "Ondas Unifies Defense Platform As Sentrycs Wins 2026 World Cup Security Role",
-          "datetime": 1781706020,
+          "datetime": 1781719585,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/markets/stocks/articles/ondas-unifies-defense-platform-sentrycs-042844285.html"
-        },
-        {
-          "headline": "Ondas Unveils LADOS Defense Platform Ahead of Eurosatory 2026 Launch",
-          "datetime": 1781706020,
-          "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/sectors/technology/articles/ondas-unveils-lados-defense-platform-174326636.html"
         }
       ]
     },
     "MRVL": {
       "quote": {
-        "c": 290.26,
-        "d": 11.59,
-        "dp": 4.159,
-        "regular": 290.26,
+        "c": 291.63,
+        "d": 12.96,
+        "dp": 4.6507,
+        "regular": 291.63,
         "pre": null,
         "post": null,
         "prev_close": 278.67,
@@ -143,31 +143,31 @@
       },
       "news": [
         {
-          "headline": "Semiconductor Stocks Climb in Premarket Trade Following Intel Manufacturing Milestone",
-          "datetime": 1781706021,
+          "headline": "Marvell Gains Attention After Nvidia Backing",
+          "datetime": 1781719585,
           "source": "Yahoo Finance",
-          "url": "https://investorshub.advfn.com/market-news/article/30588/semiconductor-stocks-climb-in-premarket-trade-following-intel-manufacturing-milestone"
+          "url": "https://finance.yahoo.com/technology/ai/articles/marvell-gains-attention-nvidia-backing-165413870.html"
         },
         {
-          "headline": "Chip stocks rebound premarket as Intel manufacturing update lifts sector",
-          "datetime": 1781706021,
+          "headline": "Jim Cramer on Adobe: “I Don’t Want You in It”",
+          "datetime": 1781719585,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/technology/articles/chip-stocks-rebound-premarket-intel-112701439.html"
+          "url": "https://finance.yahoo.com/markets/stocks/articles/jim-cramer-adobe-don-t-165358452.html"
         },
         {
-          "headline": "AMD, Marvell, SpaceX, and More Stocks That Explain Today’s Market",
-          "datetime": 1781706021,
+          "headline": "The Real Engine for Advanced Micro Devices Stock Might Not Be What You Think",
+          "datetime": 1781719585,
           "source": "Yahoo Finance",
-          "url": "https://www.barrons.com/articles/stock-movers-d7fc8668?siteid=yhoof2&yptr=yahoo"
+          "url": "https://www.trefis.com/articles/603344/the-real-engine-for-advanced-micro-devices-stock-might-not-be-what-you-think/2026-06-17"
         }
       ]
     },
     "GOOG": {
       "quote": {
-        "c": 365.74,
-        "d": -5.36,
-        "dp": -1.4444,
-        "regular": 365.74,
+        "c": 362.9,
+        "d": -8.2,
+        "dp": -2.2083,
+        "regular": 362.9,
         "pre": null,
         "post": null,
         "prev_close": 371.1,
@@ -175,22 +175,22 @@
       },
       "news": [
         {
+          "headline": "How SpaceX and 'MANGOS' are fueling the latest ETF trends",
+          "datetime": 1781719585,
+          "source": "Yahoo Finance",
+          "url": "https://finance.yahoo.com/video/how-spacex-and-mangos-are-fueling-the-latest-etf-trends-161839932.html"
+        },
+        {
           "headline": "SpaceX's near $3 trillion rally comes with one big catch: Chart of the Day",
-          "datetime": 1781706021,
+          "datetime": 1781719585,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/markets/article/spacexs-near-3-trillion-rally-comes-with-one-big-catch-chart-of-the-day-122114608.html"
         },
         {
           "headline": "SpaceX extends historic rally, rockets to No. 4 by market value",
-          "datetime": 1781706021,
+          "datetime": 1781719585,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/video/spacex-extends-historic-rally-rockets-to-no-4-by-market-value-195230760.html"
-        },
-        {
-          "headline": "Startups building orbital data centers before Big Tech",
-          "datetime": 1781706021,
-          "source": "Yahoo Finance",
-          "url": "https://qz.com/orbital-data-center-startups-competitive-landscape-061526"
         }
       ]
     }
