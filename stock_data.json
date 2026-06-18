@@ -1,130 +1,111 @@
 {
   "name": "美股盤前情報資料庫",
-  "updated_at": "2026-06-18T06:14:47.663925+08:00",
+  "updated_at": "2026-06-18T19:58:02.505985+08:00",
   "data": {
     "NOW": {
       "quote": {
-        "c": 96.72,
-        "d": -4.61,
-        "dp": -4.5495,
-        "regular": 95.48,
+        "c": 0.0,
+        "d": 0.0,
+        "dp": 0.0,
+        "regular": 0.0,
         "pre": null,
-        "post": 96.72,
-        "prev_close": 101.33,
-        "phase": "盤後"
+        "post": null,
+        "prev_close": 0.0,
+        "phase": "錯誤"
       },
-      "news": [
-        {
-          "headline": "Snubbing Nvidia for Adobe Costs Florida Stock-Picker $50 Billion",
-          "datetime": 1781734486,
-          "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/markets/stocks/articles/wrong-way-ai-trade-costs-131500352.html"
-        },
-        {
-          "headline": "Nasdaq Futures Climb as Chip Stocks Rebound Ahead of First Fed Decision Under Warsh",
-          "datetime": 1781734486,
-          "source": "Yahoo Finance",
-          "url": "https://www.barchart.com/story/news/2510564/s-p-futures-gain-ahead-of-first-fed-decision-under-warsh"
-        },
-        {
-          "headline": "Stocks Indexes Finish Mostly Lower as Chipmakers Retreat",
-          "datetime": 1781734486,
-          "source": "Yahoo Finance",
-          "url": "https://www.barchart.com/story/news/2502375/stocks-indexes-finish-mostly-lower-as-chipmakers-retreat"
-        }
-      ]
+      "news": []
     },
     "NVDA": {
       "quote": {
-        "c": 205.45,
-        "d": -1.96,
-        "dp": -0.947,
+        "c": 206.94,
+        "d": -0.47,
+        "dp": -0.2266,
         "regular": 204.65,
-        "pre": null,
-        "post": 205.45,
+        "pre": 206.94,
+        "post": null,
         "prev_close": 207.41,
-        "phase": "盤後"
+        "phase": "盤前"
       },
       "news": [
         {
           "headline": "How SpaceX and 'MANGOS' are fueling the latest ETF trends",
-          "datetime": 1781734486,
+          "datetime": 1781783881,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/video/how-spacex-and-mangos-are-fueling-the-latest-etf-trends-161839932.html"
         },
         {
           "headline": "5 stunning stats about the world's most valuable stocks",
-          "datetime": 1781734486,
+          "datetime": 1781783881,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/markets/article/5-stunning-stats-about-the-worlds-most-valuable-stocks-121515219.html"
         },
         {
-          "headline": "AI vs. inflation: why Wall Street is ignoring soaring rates",
-          "datetime": 1781734486,
+          "headline": "Intel Stock Jumps 10% on Apple Partnership",
+          "datetime": 1781783881,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/video/ai-vs-inflation-why-wall-100000624.html"
+          "url": "https://finance.yahoo.com/markets/stocks/articles/intel-stock-jumps-10-apple-113846041.html"
         }
       ]
     },
     "LITE": {
       "quote": {
-        "c": 873.26,
-        "d": -2.1,
-        "dp": -0.2397,
+        "c": 887.95,
+        "d": 12.59,
+        "dp": 1.4383,
         "regular": 869.98,
-        "pre": null,
-        "post": 873.26,
+        "pre": 887.95,
+        "post": null,
         "prev_close": 875.36,
-        "phase": "盤後"
+        "phase": "盤前"
       },
       "news": [
         {
+          "headline": "Lumentum Holdings Stock: Is LITE Outperforming the Technology Sector?",
+          "datetime": 1781783881,
+          "source": "Yahoo Finance",
+          "url": "https://www.barchart.com/story/news/2527605/lumentum-holdings-stock-is-lite-outperforming-the-technology-sector"
+        },
+        {
+          "headline": "Coherent's Good News Gets A Cold Shoulder",
+          "datetime": 1781783881,
+          "source": "Yahoo Finance",
+          "url": "https://www.trefis.com/articles/603340/coherents-good-news-gets-a-cold-shoulder/2026-06-17"
+        },
+        {
           "headline": "Dow Jones Futures: Techs Rebound, SpaceX Rises Despite Trump's Iran Threat; Warsh's Fed Debut Due",
-          "datetime": 1781734486,
+          "datetime": 1781783881,
           "source": "Yahoo Finance",
           "url": "https://www.investors.com/market-trend/stock-market-today/dow-jones-futures-spacex-ai-stocks-warsh-fed-debut/?src=A00220&yptr=yahoo"
-        },
-        {
-          "headline": "AAOI, LITE, COHR, MRVL Stocks Bounce Back Overnight: Why AI Photonics Stocks Drew Attention Today",
-          "datetime": 1781734486,
-          "source": "Yahoo Finance",
-          "url": "https://stocktwits.com/news-articles/markets/equity/aaoi-lite-cohr-mrvl-stocks-bounce-back-overnight-why-ai-photonics-stocks-drew-attention-today/cZK0jLIR7IR"
-        },
-        {
-          "headline": "Stock Market Today: Dow Ends Shy Of 52,000; SpaceX Slashes Its Gain; Lumentum Tumbles",
-          "datetime": 1781734486,
-          "source": "Yahoo Finance",
-          "url": "https://www.investors.com/market-trend/stock-market-today/dow-jones-sp500-nasdaq-fed-meeting-spacex-stock-spcx/?src=A00220&yptr=yahoo"
         }
       ]
     },
     "ONDS": {
       "quote": {
-        "c": 9.2,
-        "d": -0.01,
-        "dp": -0.1118,
+        "c": 9.3,
+        "d": 0.09,
+        "dp": 0.9913,
         "regular": 9.12,
-        "pre": null,
-        "post": 9.2,
+        "pre": 9.3,
+        "post": null,
         "prev_close": 9.21,
-        "phase": "盤後"
+        "phase": "盤前"
       },
       "news": [
         {
           "headline": "ONDS vs. RCAT: Which Drone Tech Stock Is the Better Pick Now?",
-          "datetime": 1781734487,
+          "datetime": 1781783881,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/markets/stocks/articles/onds-vs-rcat-drone-tech-141400848.html"
         },
         {
           "headline": "Jim Cramer on Ondas: “I Can’t Get Behind a Meme Stock”",
-          "datetime": 1781734487,
+          "datetime": 1781783881,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/markets/stocks/articles/jim-cramer-ondas-t-behind-144520793.html"
         },
         {
           "headline": "Ondas Unifies Defense Platform As Sentrycs Wins 2026 World Cup Security Role",
-          "datetime": 1781734487,
+          "datetime": 1781783881,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/markets/stocks/articles/ondas-unifies-defense-platform-sentrycs-042844285.html"
         }
@@ -132,65 +113,65 @@
     },
     "MRVL": {
       "quote": {
-        "c": 296.19,
-        "d": 17.52,
-        "dp": 6.287,
+        "c": 307.55,
+        "d": 28.88,
+        "dp": 10.3635,
         "regular": 289.54,
-        "pre": null,
-        "post": 296.19,
+        "pre": 307.55,
+        "post": null,
         "prev_close": 278.67,
-        "phase": "盤後"
+        "phase": "盤前"
       },
       "news": [
         {
-          "headline": "What A Patient Holder Is Really Paying For Broadcom Stock",
-          "datetime": 1781734487,
+          "headline": "Is Tech Heading for a Correction? Intel and Marvell Technology Are Expensive – Could Lahontan Gold Be a Rotation Winner?",
+          "datetime": 1781783882,
           "source": "Yahoo Finance",
-          "url": "https://www.trefis.com/articles/603361/what-a-patient-holder-is-really-paying-for-broadcom-stock/2026-06-17"
+          "url": "https://investorshub.advfn.com/market-news/article/30681/is-tech-heading-for-a-correction-intel-and-marvell-technology-are-expensive-could-lahontan-gold-be-a-rotation-winner"
         },
         {
-          "headline": "Marvell Gains Attention After Nvidia Backing",
-          "datetime": 1781734487,
+          "headline": "MRVL Stock Rises Premarket: Marvell Ships Over 5M Photonic Chips Ahead Of S&P 500 Entry",
+          "datetime": 1781783882,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/technology/ai/articles/marvell-gains-attention-nvidia-backing-165413870.html"
+          "url": "https://stocktwits.com/news-articles/markets/equity/mrvl-stock-rises-premarket-marvell-ships-over-5-m-photonic-chips-ahead-of-s-and-p-500-entry/cZKkGguR7e6"
         },
         {
-          "headline": "Jim Cramer on Adobe: “I Don’t Want You in It”",
-          "datetime": 1781734487,
+          "headline": "US chip stocks gain after Apple-Intel partnership",
+          "datetime": 1781783882,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/markets/stocks/articles/jim-cramer-adobe-don-t-165358452.html"
+          "url": "https://finance.yahoo.com/technology/articles/us-chip-stocks-gain-apple-103032930.html"
         }
       ]
     },
     "GOOG": {
       "quote": {
-        "c": 362.69,
-        "d": -8.41,
-        "dp": -2.2662,
+        "c": 360.47,
+        "d": -10.63,
+        "dp": -2.8643,
         "regular": 362.1,
-        "pre": null,
-        "post": 362.69,
+        "pre": 360.47,
+        "post": null,
         "prev_close": 371.1,
-        "phase": "盤後"
+        "phase": "盤前"
       },
       "news": [
         {
           "headline": "How SpaceX and 'MANGOS' are fueling the latest ETF trends",
-          "datetime": 1781734487,
+          "datetime": 1781783882,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/video/how-spacex-and-mangos-are-fueling-the-latest-etf-trends-161839932.html"
         },
         {
           "headline": "SpaceX's near $3 trillion rally comes with one big catch: Chart of the Day",
-          "datetime": 1781734487,
+          "datetime": 1781783882,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/markets/article/spacexs-near-3-trillion-rally-comes-with-one-big-catch-chart-of-the-day-122114608.html"
         },
         {
-          "headline": "Big Tech-backed coalition for carbon removal increases funding by $915 million, adds Anthropic",
-          "datetime": 1781734487,
+          "headline": "Google Gemini Co-Lead Leaves for OpenAI",
+          "datetime": 1781783882,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/technology/ai/articles/big-tech-backed-coalition-carbon-120338720.html"
+          "url": "https://finance.yahoo.com/technology/ai/articles/google-gemini-co-lead-leaves-114856049.html"
         }
       ]
     }
