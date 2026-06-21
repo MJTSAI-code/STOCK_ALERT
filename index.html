@@ -83,30 +83,8 @@
     .grid > .card { grid-column: span 2; }
   }
 
-  /* ── 最後一行卡片補滿邏輯 ──
-     問題：grid 是 3 欄（6 細欄，每卡 span 2），卡片總數不一定能被 3 整除時，
-     最後一行可能只剩 1 張或 2 張，會孤零零卡在角落或大小不一致。
-     解法：用「倒數第 N 張」+「該位置是否為某一行開頭(3n+1)」組合判斷，
-     這個公式不受卡片總數變動影響（加減股票都不用重算）：
-       - 最後剩 1 張 → 它是 :last-child 且剛好是 nth-child(3n+1)（行首）→ 撐滿整行 span 6
-       - 最後剩 2 張 → 倒數第2張剛好是 nth-child(3n+1)（行首）→ 它和最後一張各佔 span 3，平分
-       - 整除 → 兩條規則都不會命中，維持預設 span 2，不受影響
-  */
-  @media(min-width: 640px) {
-    /* 2 欄版面（4 細欄，每卡 span 2）：最後剩 1 張 → 撐滿 span 4 */
-    .grid:not(.has-expanded) > .card:nth-child(2n+1):last-child {
-      grid-column: span 4;
-    }
-  }
-  @media(min-width: 1000px) {
-    .grid:not(.has-expanded) > .card:nth-child(3n+1):last-child {
-      grid-column: span 6; /* 最後剩 1 張，撐滿整行 */
-    }
-    .grid:not(.has-expanded) > .card:nth-last-child(2):nth-child(3n+1),
-    .grid:not(.has-expanded) > .card:nth-last-child(2):nth-child(3n+1) ~ .card:last-child {
-      grid-column: span 3; /* 最後剩 2 張，各佔一半 */
-    }
-  }
+  /* ── 【修正一：移除最後一行補滿拉長邏輯，維持所有卡片尺寸嚴格一致】 ── */
+  /* 已將原本會自動將最後 1 或 2 張卡片展開成 span 4、span 6、span 3 的 CSS 規則全數拔除 */
 
   /* ── CARD ── */
   .card {
@@ -133,7 +111,7 @@
   }
   .card.expanded {
     cursor: default;
-    grid-column: 1 / -1;
+    grid-column: 1 / -1 !important; /* 展開時依然要佔滿整行 */
     border-color: #e8ddc8;
   }
 
@@ -356,13 +334,13 @@
 <script>
 const STOCKS = [
   {sym:'NOW',  name:'ServiceNow', ex:'NYSE'},
-  {sym:'NVDA', name:'Nvidia',     ex:'NASDAQ'},
+  {sym:'NVDA', name:'Nvidia',      ex:'NASDAQ'},
   {sym:'LITE', name:'Lumentum',   ex:'NASDAQ'},
-  {sym:'ONDS', name:'Ondas',      ex:'NASDAQ'},
-  {sym:'MRVL', name:'Marvell',    ex:'NASDAQ'},
+  {sym:'ONDS', name:'Ondas',       ex:'NASDAQ'},
+  {sym:'MRVL', name:'Marvell',     ex:'NASDAQ'},
   {sym:'GOOG', name:'Google C',   ex:'NASDAQ'},
-  {sym:'SPCX', name:'SpaceX',     ex:'NASDAQ'},
-  {sym:'TSM',  name:'TSMC',       ex:'NYSE'}
+  {sym:'SPCX', name:'SpaceX',      ex:'NASDAQ'},
+  {sym:'TSM',  name:'TSMC',        ex:'NYSE'}
 ];
 
 let expandedSym = null;
@@ -415,7 +393,7 @@ function buildGrid() {
   `).join('');
 }
 
-/* ── TOGGLE CHART ── */
+/* ── 【修正二：調整時序，改為先置中畫面整理，再跑字卡翻轉動畫】 ── */
 function toggleCard(sym, ex) {
   const card = document.getElementById(`card-${sym}`);
   const grid = document.getElementById('grid');
@@ -425,6 +403,7 @@ function toggleCard(sym, ex) {
   const newsContainer = document.getElementById(`news-container-${sym}`);
   const mainValueEl = document.getElementById(`main-${sym}`);
 
+  // 收起上一個被展開的卡片（這部分維持原樣迅速收回）
   if (expandedSym && expandedSym !== sym) {
     const prevCard = document.getElementById(`card-${expandedSym}`);
     prevCard.classList.remove('expanded');
@@ -434,40 +413,50 @@ function toggleCard(sym, ex) {
   }
 
   if (!isExpanded) {
-    card.classList.add('expanded'); // 觸發價格螢幕翻轉（CSS: .card.expanded .price-section）
+    // 1. 先記錄狀態並通知 grid 佈局有卡片要變動了
     grid.classList.add('has-expanded');
     expandedSym = sym;
 
+    // 定義精準移到中央的滾動函式
     const scrollCardToTop = () => {
       const rect = card.getBoundingClientRect();
       const cardTop = rect.top + window.scrollY;
       const targetScroll = cardTop - 12;
       window.scrollTo({ top: Math.max(0, targetScroll), behavior: 'smooth' });
     };
-    requestAnimationFrame(() => {
-      requestAnimationFrame(() => { scrollCardToTop(); });
-    });
 
-    // 時序：價格螢幕翻轉(420ms) → 數字跳動更新(280ms) → 新聞翻轉跳出(450ms) → 圖表下拉展開(500ms)
-    setTimeout(() => {
-      mainValueEl.classList.add('tick');
-      setTimeout(() => mainValueEl.classList.remove('tick'), 300);
-    }, 420);
+    // 2. 優先執行畫面置中整理
+    scrollCardToTop();
 
+    // 3. 延遲 350ms（等待 smooth 滾動完成定位後），才加入 .expanded 觸發價格面板的 rotateX 翻轉與圖表加載
     setTimeout(() => {
-      newsContainer.classList.add('show-news');
-    }, 720); // 420 翻轉 + 280 跳動 + 一點緩衝
-    // 等新聞翻轉動畫(450ms)真正播完，卡片高度才會穩定，這時才校正捲動位置
-    setTimeout(scrollCardToTop, 720 + 450 + 30);
+      card.classList.add('expanded');
 
-    setTimeout(() => {
-      chartEl.src =
-        `https://www.tradingview.com/widgetembed/?symbol=${ex}:${sym}&interval=D&hidesidetoolbar=1&theme=dark&style=1&timezone=Asia/Taipei&locale=zh_TW`;
-      chartContainer.classList.add('show-chart');
-    }, 1200); // 新聞翻轉播完後才下拉圖表
-    // 等圖表 height 過渡動畫(500ms)真正播完，再做最終一次捲動校正
-    setTimeout(scrollCardToTop, 1200 + 500 + 30);
+      // 時序：價格螢幕翻轉(420ms) → 數字跳動更新(280ms) → 新聞翻轉跳出(450ms) → 圖表下拉展開(500ms)
+      setTimeout(() => {
+        mainValueEl.classList.add('tick');
+        setTimeout(() => mainValueEl.classList.remove('tick'), 300);
+      }, 420);
+
+      setTimeout(() => {
+        newsContainer.classList.add('show-news');
+      }, 720); // 420 翻轉 + 280 跳動 + 一點緩衝
+
+      // 等新聞翻轉動畫真正播完，卡片高度穩定時，再微調一次校正捲動位置
+      setTimeout(scrollCardToTop, 720 + 450 + 30);
+
+      setTimeout(() => {
+        chartEl.src =
+          `https://www.tradingview.com/widgetembed/?symbol=${ex}:${sym}&interval=D&hidesidetoolbar=1&theme=dark&style=1&timezone=Asia/Taipei&locale=zh_TW`;
+        chartContainer.classList.add('show-chart');
+      }, 1200); // 新聞翻轉播完後才下拉圖表
+
+      // 等圖表 height 過渡動畫真正播完，做最終一次微調捲動校正
+      setTimeout(scrollCardToTop, 1200 + 500 + 30);
+    }, 350); // 350ms 的延遲能完美確保「先置中、再翻轉動畫」
+
   } else {
+    // 關閉邏輯維持原樣
     card.classList.remove('expanded');
     grid.classList.remove('has-expanded');
     expandedSym = null;
@@ -508,8 +497,6 @@ function renderPrice(sym, q) {
   }
 
   // 附屬行：盤前/盤後才顯示參考價；盤中時完全隱藏，不湊行數
-  // 盤後：今天已經收盤，參考基準是「今日收盤」
-  // 盤前：還沒有「今天的收盤」，參考基準是「昨收」
   const subRow   = document.getElementById(`sub-row-${sym}`);
   const subLabel = document.getElementById(`sub-label-${sym}`);
   const subEl    = document.getElementById(`sub-${sym}`);
