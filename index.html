@@ -130,7 +130,7 @@
     position: fixed;
     top: 50%;
     left: 50%;
-    width: min(680px, calc(100vw - 32px));
+    width: min(1040px, calc(100vw - 32px));
     max-height: calc(100vh - 32px);
     overflow-y: auto;
     transform: translate(-50%, -50%);
@@ -141,6 +141,57 @@
       0 20px 0 rgba(0,0,0,0.5),
       0 30px 60px rgba(0,0,0,0.6);
     animation: doorFlipOpen 0.5s cubic-bezier(0.4, 0, 0.3, 1);
+  }
+  /* 展開後內部改成左右兩頁的橫向佈局：左邊圖表、右邊股票資訊+新聞，
+     呼應復古鬧鐘左右兩片數字頁的版面感。手機版寬度不夠時改回上下堆疊。 */
+  .card.expanded .card-body-split {
+    display: flex;
+    align-items: stretch;
+    position: relative;
+    gap: 0;
+  }
+  .card.expanded .split-left {
+    flex: 1.3;
+    min-width: 0;
+    padding-right: 14px;
+  }
+  .card.expanded .split-right {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding-left: 14px;
+  }
+  /* 機身中軸接縫：模擬翻頁鐘左右兩個窗格中間那條機械分隔線，
+     不是留白間距，是同一個外殼上的一道凹槽 */
+  .card.expanded .card-body-split::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 4px;
+    bottom: 4px;
+    width: 3px;
+    transform: translateX(-50%);
+    background: linear-gradient(180deg, transparent, rgba(0,0,0,0.5) 15%, rgba(0,0,0,0.5) 85%, transparent);
+    box-shadow: 1px 0 0 rgba(255,255,255,0.06), -1px 0 0 rgba(0,0,0,0.3);
+  }
+  @media(max-width: 720px) {
+    .card.expanded {
+      width: calc(100vw - 24px);
+    }
+    .card.expanded .card-body-split {
+      flex-direction: column;
+    }
+    .card.expanded .split-left { padding-right: 0; padding-bottom: 14px; }
+    .card.expanded .split-right { padding-left: 0; }
+    /* 手機改上下堆疊時，接縫線跟著轉成水平 */
+    .card.expanded .card-body-split::before {
+      left: 4px; right: 4px; top: 50%; bottom: auto; width: auto; height: 3px;
+      transform: translateY(-50%);
+      background: linear-gradient(90deg, transparent, rgba(0,0,0,0.5) 15%, rgba(0,0,0,0.5) 85%, transparent);
+      box-shadow: 0 1px 0 rgba(255,255,255,0.06), 0 -1px 0 rgba(0,0,0,0.3);
+    }
   }
   /* 翻頁鐘啟動感：卡片原地繞水平中軸翻轉「開門」，
      45%~55% 翻到接近側面時短暫變暗（模擬看到卡片邊緣的瞬間），
@@ -306,13 +357,14 @@
   /* ── CHART ── */
   .chart-container {
     margin-top: 0;
-    border: 1px solid var(--card-frame);
+    border: 3px solid var(--card-frame);
     border-radius: 10px;
     overflow: hidden;
     height: 0;
     max-height: 0;
     background: #000;
     opacity: 0;
+    box-shadow: inset 0 2px 10px rgba(0,0,0,0.6);
     transition: height 0.5s cubic-bezier(0.25, 0.1, 0.25, 1),
                 margin-top 0.5s cubic-bezier(0.25, 0.1, 0.25, 1),
                 opacity 0.4s ease;
@@ -436,24 +488,29 @@ function buildGrid() {
         <span class="tag tag-post" id="badge-${s.sym}">盤後</span>
       </div>
 
-      <div class="price-section">
-        <span class="phase-corner-label" id="phase-label-${s.sym}">現價</span>
-        <span class="price-value" id="main-${s.sym}">—</span>
-        <div class="main-change" id="main-chg-${s.sym}"></div>
-        <div class="ref-price" id="sub-row-${s.sym}" style="display:none;">
-          <span class="ref-tag" id="sub-label-${s.sym}">收盤</span>
-          <span class="ref-value" id="sub-${s.sym}">—</span>
-          <span class="ref-change" id="sub-chg-${s.sym}"></span>
+      <div class="card-body-split">
+        <div class="split-left">
+          <div class="chart-container">
+            <iframe id="chart-${s.sym}" width="100%" height="100%" frameborder="0" allowfullscreen></iframe>
+          </div>
         </div>
-      </div>
+        <div class="split-right">
+          <div class="price-section">
+            <span class="phase-corner-label" id="phase-label-${s.sym}">現價</span>
+            <span class="price-value" id="main-${s.sym}">—</span>
+            <div class="main-change" id="main-chg-${s.sym}"></div>
+            <div class="ref-price" id="sub-row-${s.sym}" style="display:none;">
+              <span class="ref-tag" id="sub-label-${s.sym}">收盤</span>
+              <span class="ref-value" id="sub-${s.sym}">—</span>
+              <span class="ref-change" id="sub-chg-${s.sym}"></span>
+            </div>
+          </div>
 
-      <div class="chart-container">
-        <iframe id="chart-${s.sym}" width="100%" height="100%" frameborder="0" allowfullscreen></iframe>
-      </div>
-
-      <div class="news-container" id="news-container-${s.sym}">
-        <div class="news-header">📰 最新消息</div>
-        <div class="news-list" id="news-list-${s.sym}"></div>
+          <div class="news-container" id="news-container-${s.sym}">
+            <div class="news-header">📰 最新消息</div>
+            <div class="news-list" id="news-list-${s.sym}"></div>
+          </div>
+        </div>
       </div>
     </div>
   `).join('');
