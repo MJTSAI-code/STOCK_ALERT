@@ -140,52 +140,67 @@
   }
   .tag-post.show { display: inline-block; }
 
-  /* price section — warm amber LCD screen, matching retro flip-clock display */
+  /* price section — square LCD digit block, centered, label as corner badge */
   .price-section {
+    position: relative;
     display: flex;
     flex-direction: column;
+    align-items: center;
+    justify-content: center;
     background: linear-gradient(180deg, #5a4422 0%, #3d2e16 100%);
     border: 1px solid rgba(0,0,0,0.35);
     border-radius: 10px;
     box-shadow: inset 0 2px 10px rgba(0,0,0,0.5), inset 0 0 30px rgba(240,180,90,0.12);
-    overflow: hidden;
+    padding: 18px 14px 14px;
+    text-align: center;
   }
-  .price-row {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 11px 14px;
-  }
-  .price-label {
-    font-size: 10px;
+  .phase-corner-label {
+    position: absolute;
+    top: 8px;
+    left: 10px;
+    font-size: 9px;
+    font-weight: 700;
     color: #d9b87a;
-    letter-spacing: 0.5px;
+    letter-spacing: 1px;
+    opacity: 0.75;
   }
   .price-value {
     font-family: 'DM Mono', monospace;
-    font-size: 24px;
+    font-size: 32px;
     font-weight: 500;
     color: #ffd98a;
     letter-spacing: 1px;
     text-shadow: 0 0 14px rgba(255, 200, 110, 0.55);
+    line-height: 1;
   }
-  .change-pill {
-    font-size: 11px;
+  .main-change {
+    font-size: 12px;
     font-weight: 700;
-    padding: 3px 8px;
-    border-radius: 4px;
     margin-top: 6px;
-    display: inline-block;
   }
-  .row-change {
+  .ref-price {
+    margin-top: 10px;
+    padding-top: 8px;
+    border-top: 1px solid rgba(255,255,255,0.08);
+    width: 100%;
     font-size: 11px;
-    font-weight: 700;
-    margin-top: 3px;
+    color: #c9b48a;
+    display: flex;
+    justify-content: center;
+    gap: 6px;
+    align-items: baseline;
   }
-  .row-change.muted {
-    color: rgba(255,255,255,0.35);
-    font-weight: 400;
-    font-style: italic;
+  .ref-price .ref-tag {
+    opacity: 0.6;
+    font-size: 10px;
+  }
+  .ref-price .ref-value {
+    font-family: 'DM Mono', monospace;
+    color: #e8d4a8;
+  }
+  .ref-price .ref-change {
+    font-size: 10px;
+    font-weight: 700;
   }
   .up   { color: var(--up);   background: #00e67615; border: 1px solid #00e67630; }
   .down { color: var(--down); background: #ff174415; border: 1px solid #ff174430; }
@@ -270,20 +285,13 @@ function buildGrid() {
       </div>
 
       <div class="price-section">
-        <div class="price-row">
-          <span class="price-label">收盤</span>
-          <div style="text-align:right;">
-            <span class="price-value" id="reg-${s.sym}">—</span>
-            <div class="row-change" id="reg-chg-${s.sym}"></div>
-          </div>
-        </div>
-        <hr class="divider">
-        <div class="price-row">
-          <span class="price-label">盤後</span>
-          <div style="text-align:right;">
-            <span class="price-value" id="post-${s.sym}">—</span>
-            <div class="row-change" id="post-chg-${s.sym}"></div>
-          </div>
+        <span class="phase-corner-label" id="phase-label-${s.sym}">現價</span>
+        <span class="price-value" id="main-${s.sym}">—</span>
+        <div class="main-change" id="main-chg-${s.sym}"></div>
+        <div class="ref-price" id="sub-row-${s.sym}" style="display:none;">
+          <span class="ref-tag" id="sub-label-${s.sym}">收盤</span>
+          <span class="ref-value" id="sub-${s.sym}">—</span>
+          <span class="ref-change" id="sub-chg-${s.sym}"></span>
         </div>
       </div>
 
@@ -334,39 +342,58 @@ function toggleCard(sym, ex) {
 /* ── RENDER PRICE ── */
 function renderPrice(sym, q) {
   if (!q) return;
+  const current    = parseFloat(q.c ?? q.regular ?? 0);
   const regular    = parseFloat(q.regular ?? q.c ?? 0);
   const prevClose  = parseFloat(q.prev_close ?? regular);
-  const hasPost    = q.post !== null && q.post !== undefined;
-  const post       = hasPost ? parseFloat(q.post) : null;
+  const phase      = q.phase || '正式盤';
 
-  // 收盤漲跌：相對昨日收盤（沿用後端算好的 d / dp，TradingView 邏輯）
-  const regChange = q.d  !== undefined ? parseFloat(q.d)  : (regular - prevClose);
-  const regPct    = q.dp !== undefined ? parseFloat(q.dp) : (prevClose ? (regChange / prevClose * 100) : 0);
+  // 主行：永遠顯示「目前最新成交價」，標籤跟著 phase 走（跟 TradingView 一致）
+  const phaseLabelMap = { '盤前': '盤前', '盤後': '盤後', '正式盤': '現價', '錯誤': '—' };
+  document.getElementById(`phase-label-${sym}`).textContent = phaseLabelMap[phase] || '現價';
+  document.getElementById(`main-${sym}`).textContent = `$${current.toFixed(2)}`;
 
-  document.getElementById(`reg-${sym}`).textContent = `$${regular.toFixed(2)}`;
-  const regDir  = regChange >= 0 ? 'up' : 'down';
-  const regSign = regChange >= 0 ? '▲' : '▼';
-  document.getElementById(`reg-chg-${sym}`).innerHTML =
-    `<span class="${regDir}">${regSign} ${Math.abs(regChange).toFixed(2)} (${Math.abs(regPct).toFixed(2)}%)</span>`;
+  // 主行漲跌：永遠相對「昨日收盤」（沿用後端算好的 d / dp）
+  const mainChange = q.d  !== undefined ? parseFloat(q.d)  : (current - prevClose);
+  const mainPct    = q.dp !== undefined ? parseFloat(q.dp) : (prevClose ? (mainChange / prevClose * 100) : 0);
+  const mainDir  = mainChange >= 0 ? 'up' : 'down';
+  const mainSign = mainChange >= 0 ? '▲' : '▼';
+  document.getElementById(`main-chg-${sym}`).innerHTML =
+    `<span class="${mainDir}">${mainSign} ${Math.abs(mainChange).toFixed(2)} (${Math.abs(mainPct).toFixed(2)}%)</span>`;
 
-  // 盤後：相對收盤價，獨立計算；沒有盤後資料就明確標示，不假裝成 0
+  // badge：跟主行標籤一致，盤前/盤後才顯示徽章；盤中不顯示
   const badge = document.getElementById(`badge-${sym}`);
-  const postEl = document.getElementById(`post-${sym}`);
-  const postChgEl = document.getElementById(`post-chg-${sym}`);
-
-  if (hasPost) {
-    const postChange = post - regular;
-    const postPct = regular ? (postChange / regular * 100) : 0;
+  if (phase === '盤前' || phase === '盤後') {
+    badge.textContent = phase;
     badge.classList.add('show');
-    postEl.textContent = `$${post.toFixed(2)}`;
-    const dir  = postChange >= 0 ? 'up' : 'down';
-    const sign = postChange >= 0 ? '▲' : '▼';
-    postChgEl.innerHTML =
-      `<span class="${dir}">${sign} ${Math.abs(postChange).toFixed(2)} (${Math.abs(postPct).toFixed(2)}%)</span>`;
   } else {
     badge.classList.remove('show');
-    postEl.textContent = '—';
-    postChgEl.innerHTML = `<span class="row-change muted">無盤後資料</span>`;
+  }
+
+  // 附屬行：盤前/盤後才顯示參考價；盤中時完全隱藏，不湊行數
+  // 盤後：今天已經收盤，參考基準是「今日收盤」
+  // 盤前：還沒有「今天的收盤」，參考基準是「昨收」
+  const subRow   = document.getElementById(`sub-row-${sym}`);
+  const subLabel = document.getElementById(`sub-label-${sym}`);
+  const subEl    = document.getElementById(`sub-${sym}`);
+  const subChgEl = document.getElementById(`sub-chg-${sym}`);
+
+  if (phase === '盤後') {
+    subRow.style.display = 'flex';
+    subLabel.textContent = '收盤';
+    subEl.textContent = `$${regular.toFixed(2)}`;
+    const regChange = regular - prevClose;
+    const regPct = prevClose ? (regChange / prevClose * 100) : 0;
+    const dir  = regChange >= 0 ? 'up' : 'down';
+    const sign = regChange >= 0 ? '▲' : '▼';
+    subChgEl.innerHTML =
+      `<span class="${dir}">${sign} ${Math.abs(regChange).toFixed(2)} (${Math.abs(regPct).toFixed(2)}%)</span>`;
+  } else if (phase === '盤前') {
+    subRow.style.display = 'flex';
+    subLabel.textContent = '昨收';
+    subEl.textContent = `$${prevClose.toFixed(2)}`;
+    subChgEl.innerHTML = '';
+  } else {
+    subRow.style.display = 'none';
   }
 }
 
