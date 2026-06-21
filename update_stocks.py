@@ -5,7 +5,7 @@ import pytz
 import yfinance as yf
 
 # 要追蹤的股票
-STOCKS = ['NOW', 'NVDA', 'LITE', 'ONDS', 'MRVL', 'GOOG', 'SPCX', 'TSM']
+STOCKS = ['NOW', 'NVDA', 'LITE', 'ONDS', 'MRVL', 'GOOG', 'SPCX', 'TSM', 'MU', 'SNDK']
 
 # 是否要在這次執行中重新抓取新聞（由 .yml 透過環境變數控制，只有盤前那班會設為 true）
 UPDATE_NEWS = os.environ.get('UPDATE_NEWS', 'false').lower() == 'true'
