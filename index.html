@@ -91,13 +91,13 @@
      才能保證不管展開哪一張、收合幾次，最後一行永遠正確平分。
      詳細規則見 fixLastRowLayout() 內的註解。
   */
-  .grid.last-row-1 > .card:not(.expanded):last-child {
+  .grid.last-row-1 > .card:last-child {
     grid-column: 3 / 5; /* 6 欄制下置中：從第3欄到第5欄，左右各空1欄，卡片維持原本 span 2 大小 */
   }
-  .grid.last-row-2 > .card:not(.expanded):nth-last-child(2) {
+  .grid.last-row-2 > .card:nth-last-child(2) {
     grid-column: 2 / 4; /* 兩張各佔原本大小(span 2)，整體置中：左空1欄 */
   }
-  .grid.last-row-2 > .card:not(.expanded):last-child {
+  .grid.last-row-2 > .card:last-child {
     grid-column: 4 / 6; /* 緊接著第一張，右空1欄，兩張對稱置中 */
   }
 
@@ -126,8 +126,33 @@
   }
   .card.expanded {
     cursor: default;
-    grid-column: 1 / -1;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: min(680px, calc(100vw - 32px));
+    max-height: calc(100vh - 32px);
+    overflow-y: auto;
+    transform: translate(-50%, -50%);
     border-color: #e8ddc8;
+    z-index: 1001;
+    box-shadow:
+      0 20px 0 rgba(0,0,0,0.5),
+      0 30px 60px rgba(0,0,0,0.6);
+  }
+
+  /* 展開時背後的半透明遮罩，蓋住其餘卡片，點擊可收合 */
+  .card-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.65);
+    z-index: 1000;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  .card-overlay.show {
+    display: block;
+    opacity: 1;
   }
 
   /* header row */
@@ -343,6 +368,7 @@
   </div>
 </div>
 
+<div class="card-overlay" id="cardOverlay" onclick="if(expandedSym) toggleCard(expandedSym, '')"></div>
 <div class="grid" id="grid"></div>
 
 <div class="footer">YAHOO FINANCE · 點擊卡片展開圖表</div>
@@ -356,7 +382,9 @@ const STOCKS = [
   {sym:'MRVL', name:'Marvell',    ex:'NASDAQ'},
   {sym:'GOOG', name:'Google C',   ex:'NASDAQ'},
   {sym:'SPCX', name:'SpaceX',     ex:'NASDAQ'},
-  {sym:'TSM',  name:'TSMC',       ex:'NYSE'}
+  {sym:'TSM',  name:'TSMC',       ex:'NYSE'},
+  {sym:'MU',   name:'Micron',     ex:'NASDAQ'},
+  {sym:'SNDK', name:'SanDisk',    ex:'NASDAQ'}
 ];
 
 let expandedSym = null;
@@ -411,10 +439,10 @@ function buildGrid() {
 }
 
 /* ── 最後一行排版修正 ──
-   不依賴 CSS nth-child（DOM 順序會因卡片展開搬動而改變，導致算錯）。
-   改成每次卡片順序變動後，直接讀「目前實際排列」算出最後一行有幾張，
+   展開的卡片現在是 position:fixed 浮層，不再參與 grid 排版、不會搬動 DOM 順序，
+   所以這裡不需要在展開/收合時重算，只需要在初始建立 grid、或視窗縮放時計算一次。
    用 class 套用「整體置中、大小不變」的排版（不是撐大）。
-   呼叫時機：buildGrid() 初始建立時、moveCardToFront()/restoreCardPosition() 排序變動後。
+   呼叫時機：buildGrid() 初始建立時、視窗 resize 時。
 */
 function fixLastRowLayout() {
   const grid = document.getElementById('grid');
@@ -436,121 +464,132 @@ function fixLastRowLayout() {
 }
 window.addEventListener('resize', fixLastRowLayout); // 視窗大小改變（例如轉橫向）時重新計算
 
-/* ── TOGGLE CHART ── */
-function toggleCard(sym, ex) {
+/* ── TOGGLE CHART ──
+   架構說明：展開的卡片改用 position:fixed 變成蓋在最上層的浮層（不再是 grid 的一份子）。
+   這個改變一次解決了好幾個過去個別修補的問題：
+     - 「上面還有其他卡片」：fixed 定位是相對視窗，浮在所有東西最上層，背後用半透明遮罩蓋住，
+       不需要把卡片搬到 DOM 最前面、不需要把其他卡片推到下面。
+     - 「最後一行落單/大小不一」：展開的卡片離開了 grid 的排版邏輯，其餘卡片完全不受影響、
+       不需要重新排序，原本的 last-row-1/last-row-2 規則永遠對應「真實排列」，不會算錯。
+     - 「畫面跳動」：不需要 scrollTo()，因為 fixed 定位直接置中於目前的視窗，不管使用者捲到哪都一樣。
+     - 「快速切換卡片造成圖卡疊加」：沒有 DOM 搬移、沒有排序競爭，只剩單純的「誰在 .expanded 狀態」。
+*/
+let pendingAnimTimers = []; // 記錄目前這輪展開動畫排定的所有 setTimeout，切換卡片時要全部取消
+
+function collapseCard(sym) {
   const card = document.getElementById(`card-${sym}`);
-  const grid = document.getElementById('grid');
+  if (!card) return;
+  const chartEl = document.getElementById(`chart-${sym}`);
+  const overlay = document.getElementById('cardOverlay');
+
+  // FLIP 收合：從目前 fixed 置中的位置，動畫飛回 grid 裡原本的格子
+  const lastRect = card.getBoundingClientRect();
+  card.classList.remove('expanded');
+  card.style.position = '';
+  card.style.top = '';
+  card.style.left = '';
+  card.style.width = '';
+  card.style.maxHeight = '';
+  card.style.zIndex = '';
+  const firstRect = card.getBoundingClientRect(); // 拿掉 fixed 後，瀏覽器算出它在 grid 裡真實該在的位置
+
+  const deltaX = lastRect.left - firstRect.left;
+  const deltaY = lastRect.top - firstRect.top;
+  const scaleX = lastRect.width / firstRect.width;
+  const scaleY = lastRect.height / firstRect.height;
+
+  card.style.transformOrigin = 'top left';
+  card.style.transition = 'none';
+  card.style.transform = `translate(${deltaX}px, ${deltaY}px) scale(${scaleX}, ${scaleY})`;
+  requestAnimationFrame(() => {
+    card.style.transition = 'transform 0.4s cubic-bezier(0.25, 0.1, 0.25, 1)';
+    card.style.transform = 'translate(0, 0) scale(1, 1)';
+  });
+  pendingAnimTimers.push(setTimeout(() => {
+    card.style.transition = '';
+    card.style.transform = '';
+    card.style.transformOrigin = '';
+  }, 420));
+
+  overlay.classList.remove('show');
+  chartEl.src = '';
+  chartEl.closest('.chart-container').classList.remove('show-chart');
+  document.getElementById(`news-container-${sym}`).classList.remove('show-news');
+  expandedSym = null;
+}
+
+function toggleCard(sym, ex) {
+  // 取消上一輪還沒跑完的動畫計時器，避免「快速切換卡片」時，
+  // 舊卡片過期的 setTimeout 還是會在背景觸發，把新聞/圖表狀態套到錯的卡片上
+  pendingAnimTimers.forEach(id => clearTimeout(id));
+  pendingAnimTimers = [];
+
+  const card = document.getElementById(`card-${sym}`);
   const isExpanded = card.classList.contains('expanded');
   const chartEl = document.getElementById(`chart-${sym}`);
   const chartContainer = chartEl.closest('.chart-container');
   const newsContainer = document.getElementById(`news-container-${sym}`);
   const mainValueEl = document.getElementById(`main-${sym}`);
+  const overlay = document.getElementById('cardOverlay');
 
   if (expandedSym && expandedSym !== sym) {
-    const prevCard = document.getElementById(`card-${expandedSym}`);
-    prevCard.classList.remove('expanded');
-    prevCard.style.transition = '';
-    prevCard.style.transform = '';
-    document.getElementById(`chart-${expandedSym}`).src = '';
-    document.getElementById(`chart-${expandedSym}`).closest('.chart-container').classList.remove('show-chart');
-    document.getElementById(`news-container-${expandedSym}`).classList.remove('show-news');
-    restoreCardPosition(expandedSym);
-    fixLastRowLayout();
+    collapseCard(expandedSym); // 切換到別張卡片前，先讓前一張正常收合歸位
   }
 
   if (!isExpanded) {
-    // FLIP 動畫法：先記下卡片目前在畫面上的位置(First)，
-    // 搬到 DOM 最前面後位置會瞬間改變(Last)，
-    // 用 transform 把它瞬間「拉回」原本看起來的位置(Invert)，
-    // 再讓 transform 歸零並加上 transition，瀏覽器就會自動補完中間的平滑移動畫面(Play)。
-    // 這樣「搬到最前面、上面卡片讓開」這件事會變成一個連續滑動，不是瞬間跳動。
+    // FLIP 展開：記下卡片在 grid 裡的原始位置/尺寸(First)，
+    // 切到 fixed 置中狀態後位置會瞬間改變(Last)，
+    // 用 transform 把它瞬間「拉回」看起來像沒動過的原始矩形(Invert)，
+    // 再讓 transform 歸零並開放 transition，瀏覽器自動補完中間的放大移動畫面(Play)。
     const firstRect = card.getBoundingClientRect();
 
-    moveCardToFront(sym, grid, card);
-    card.classList.add('expanded'); // 觸發價格螢幕翻轉（CSS: .card.expanded .price-section）
-    grid.classList.add('has-expanded');
+    card.classList.add('expanded'); // 觸發 CSS：position:fixed + 置中 + 觸發價格螢幕翻轉動畫
     expandedSym = sym;
     history.pushState({ expanded: sym }, '');
+    overlay.classList.add('show');
 
-    const lastRect = card.getBoundingClientRect();
+    const lastRect = card.getBoundingClientRect(); // fixed 置中後的目標矩形
     const deltaX = firstRect.left - lastRect.left;
     const deltaY = firstRect.top - lastRect.top;
+    const scaleX = firstRect.width / lastRect.width;
+    const scaleY = firstRect.height / lastRect.height;
 
+    card.style.transformOrigin = 'top left';
     card.style.transition = 'none';
-    card.style.transform = `translate(${deltaX}px, ${deltaY}px)`;
+    card.style.transform = `translate(${deltaX}px, ${deltaY}px) scale(${scaleX}, ${scaleY})`;
     requestAnimationFrame(() => {
       card.style.transition = 'transform 0.45s cubic-bezier(0.25, 0.1, 0.25, 1)';
-      card.style.transform = 'translate(0, 0)';
+      card.style.transform = 'translate(0, 0) scale(1, 1)';
     });
 
-    // 捲動跟上面的移動動畫同步播放，畫面捲到卡片新位置（頂端）
-    const scrollCardToTop = () => {
-      const rect = card.getBoundingClientRect();
-      const cardTop = rect.top + window.scrollY;
-      const targetScroll = cardTop - 12;
-      window.scrollTo({ top: Math.max(0, targetScroll), behavior: 'smooth' });
-    };
-    scrollCardToTop();
-
-    // 等移動動畫(450ms)播完，清掉行內樣式，避免殘留影響之後的排版
-    setTimeout(() => {
+    // 等放大移動動畫(450ms)播完，清掉行內樣式，避免殘留影響後續的 fixed 置中定位
+    pendingAnimTimers.push(setTimeout(() => {
       card.style.transition = '';
       card.style.transform = '';
-    }, 480);
+      card.style.transformOrigin = '';
+    }, 480));
 
-    // 時序：移動到位(450ms) → 價格螢幕翻轉(420ms) → 數字跳動更新(280ms) → 新聞翻轉跳出(450ms) → 圖表下拉展開(500ms)
-    setTimeout(() => {
+    // 時序：放大移動到位(450ms) → 價格螢幕翻轉(420ms) → 數字跳動更新(280ms) → 新聞翻轉跳出(450ms) → 圖表下拉展開(500ms)
+    pendingAnimTimers.push(setTimeout(() => {
       mainValueEl.classList.add('tick');
-      setTimeout(() => mainValueEl.classList.remove('tick'), 300);
-    }, 450 + 420);
+      pendingAnimTimers.push(setTimeout(() => mainValueEl.classList.remove('tick'), 300));
+    }, 450 + 420));
 
-    setTimeout(() => {
+    pendingAnimTimers.push(setTimeout(() => {
       newsContainer.classList.add('show-news');
-    }, 450 + 420 + 280 + 20);
-    // 等新聞翻轉動畫(450ms)真正播完，卡片高度才會穩定，這時才校正捲動位置
-    setTimeout(scrollCardToTop, 450 + 420 + 280 + 20 + 450 + 30);
+    }, 450 + 420 + 280 + 20));
 
-    setTimeout(() => {
+    pendingAnimTimers.push(setTimeout(() => {
       chartEl.src =
         `https://www.tradingview.com/widgetembed/?symbol=${ex}:${sym}&interval=D&hidesidetoolbar=1&theme=dark&style=1&timezone=Asia/Taipei&locale=zh_TW`;
       chartContainer.classList.add('show-chart');
-    }, 450 + 420 + 280 + 20 + 450); // 新聞翻轉播完後才下拉圖表
-    // 等圖表 height 過渡動畫(500ms)真正播完，再做最終一次捲動校正
-    setTimeout(scrollCardToTop, 450 + 420 + 280 + 20 + 450 + 500 + 30);
+    }, 450 + 420 + 280 + 20 + 450)); // 新聞翻轉播完後才下拉圖表
   } else {
-    card.classList.remove('expanded');
-    grid.classList.remove('has-expanded');
-    expandedSym = null;
-    chartEl.src = '';
-    chartContainer.classList.remove('show-chart');
-    newsContainer.classList.remove('show-news');
-    restoreCardPosition(sym);
-    fixLastRowLayout();
+    collapseCard(sym);
     // 手動點擊收合（不是按返回鍵）時，主動清掉之前推入的瀏覽紀錄，避免堆疊殘留
     if (!collapsingViaBack && history.state && history.state.expanded === sym) {
       history.back();
     }
-  }
-}
-
-/* ── 卡片排序輔助：展開時搬到最前面，收合時用佔位標記放回原位。
-   搭配 FLIP 動畫使用，搬移本身在 toggleCard 內已用 transform 過渡，
-   這裡只負責「搬去哪裡」「怎麼放回去」的 DOM 操作。 ── */
-function moveCardToFront(sym, grid, card) {
-  if (card.dataset.moved === 'true') return;
-  const placeholder = document.createElement('span');
-  placeholder.id = `placeholder-${sym}`;
-  placeholder.style.display = 'none';
-  card.after(placeholder);
-  grid.prepend(card);
-  card.dataset.moved = 'true';
-}
-function restoreCardPosition(sym) {
-  const card = document.getElementById(`card-${sym}`);
-  const placeholder = document.getElementById(`placeholder-${sym}`);
-  if (card && placeholder) {
-    placeholder.replaceWith(card);
-    card.dataset.moved = 'false';
   }
 }
 
