@@ -22,9 +22,6 @@
     --down: #ff1744;
     --accent: #d9cdb8;
     --knob: #8a6240;
-    --badge-bg: #1a2a1a;
-    --tag-green: #00c853;
-    --tag-purple: #9c27b0;
   }
   * { box-sizing: border-box; margin: 0; padding: 0; }
   body {
@@ -44,52 +41,31 @@
     background: #0d0d0d;
     border-bottom: 1px solid var(--card-frame);
   }
-  .logo {
-    font-size: 13px;
-    font-weight: 700;
-    color: var(--accent);
-    letter-spacing: 2px;
-    text-transform: uppercase;
-  }
-  .hero-time {
-    font-family: 'DM Mono', monospace;
-    font-size: 36px;
-    font-weight: 500;
-    color: var(--digit);
-    letter-spacing: 2px;
-    line-height: 1;
-    text-shadow: 0 0 12px rgba(240, 201, 135, 0.25);
-  }
-  .hero-date {
-    font-size: 11px;
-    color: var(--muted);
-    text-align: right;
-    margin-top: 2px;
-  }
+  .logo { font-size: 13px; font-weight: 700; color: var(--accent); letter-spacing: 2px; text-transform: uppercase; }
+  .hero-time { font-family: 'DM Mono', monospace; font-size: 36px; font-weight: 500; color: var(--digit); letter-spacing: 2px; line-height: 1; }
+  .hero-date { font-size: 11px; color: var(--muted); text-align: right; margin-top: 2px; }
 
-  /* ── 💡 GRID 修正：改用 12 欄位系統，確保尾排完美均分且尺寸高度完全一致 ── */
+  /* ── GRID SYSTEM ── */
   .grid {
     display: grid;
-    grid-template-columns: repeat(12, 1fr);
+    grid-template-columns: repeat(6, 1fr);
     gap: 12px;
     margin: 16px;
   }
   .grid > .card {
-    grid-column: span 12; /* 手機版一整行 */
+    grid-column: span 2; /* 預設一排放 3 張 */
   }
-  @media(min-width: 640px)  {
-    .grid > .card { grid-column: span 6; } /* 平板一排兩張 */
+
+  /* 💡 均分關鍵：當沒有任何卡片展開時，最後兩張卡片 (SPCX, TSM) 各佔 3 欄 (即各佔 1/2 寬度)，大小外觀完全一致 */
+  .grid:not(.has-expanded) .card:nth-last-child(2):nth-child(3n+1),
+  .grid:not(.has-expanded) .card:nth-last-child(1):nth-child(3n+2) {
+    grid-column: span 3 !important;
   }
-  @media(min-width: 1000px) {
-    /* 正常未展開狀態：前 6 張每張佔 4 欄 (一排 3 張) */
-    .grid > .card { 
-      grid-column: span 4; 
-    }
-    /* 完美均分關鍵：當最後一排剩 2 張時，自動變成每張佔 6 欄 (一排 2 張各佔一半)，大小外觀高度完全一致 */
-    .grid:not(.has-expanded) .card:nth-last-child(2):nth-child(3n+1),
-    .grid:not(.has-expanded) .card:nth-last-child(1):nth-child(3n+2) {
-      grid-column: span 6;
-    }
+
+  /* 手機版 RWD 斷點：一排一張，完全不影響操作 */
+  @media(max-width: 639px) {
+    .grid { grid-template-columns: 1fr; }
+    .grid > .card { grid-column: span 1 !important; }
   }
 
   /* ── CARD ── */
@@ -99,61 +75,21 @@
     border-radius: 18px;
     padding: 16px;
     cursor: pointer;
-    transition: transform 0.15s, box-shadow 0.2s, border-color 0.2s;
+    transition: transform 0.15s, box-shadow 0.2s;
     position: relative;
-    perspective: 500px;
-    box-shadow:
-      0 6px 0 rgba(0,0,0,0.5),
-      0 10px 22px rgba(0,0,0,0.45),
-      inset 0 2px 6px rgba(0,0,0,0.3);
-  }
-  .card:hover {
-    transform: translateY(-3px);
-    border-color: #e8ddc8;
-    box-shadow:
-      0 8px 0 rgba(0,0,0,0.5),
-      0 16px 26px rgba(0,0,0,0.5),
-      inset 0 2px 6px rgba(0,0,0,0.3);
+    perspective: 1000px;
+    box-shadow: 0 6px 0 rgba(0,0,0,0.5), 0 10px 22px rgba(0,0,0,0.45);
   }
   .card.expanded {
     cursor: default;
-    grid-column: 1 / -1 !important; /* 展開時強制佔滿整行，排擠其他卡片往下推 */
-    border-color: #e8ddc8;
+    grid-column: 1 / -1 !important; /* 展開時拿到完整整行寬度 */
   }
 
-  /* header row */
-  .card-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    margin-bottom: 14px;
-  }
-  .card-sym {
-    font-size: 20px;
-    font-weight: 700;
-    color: var(--digit);
-    letter-spacing: 1px;
-  }
-  .card-name {
-    font-size: 10px;
-    color: #aab09a;
-    margin-top: 2px;
-  }
-
-  /* badges */
-  .tag {
-    font-size: 10px;
-    font-weight: 700;
-    padding: 3px 8px;
-    border-radius: 4px;
-    letter-spacing: 0.5px;
-  }
-  .tag-post {
-    background: #3a2a18;
-    color: #e0b97d;
-    border: 1px solid var(--knob);
-    display: none;
-  }
+  .card-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 14px; }
+  .card-sym { font-size: 20px; font-weight: 700; color: var(--digit); }
+  .card-name { font-size: 10px; color: #aab09a; margin-top: 2px; }
+  .tag { font-size: 10px; font-weight: 700; padding: 3px 8px; border-radius: 4px; }
+  .tag-post { background: #3a2a18; color: #e0b97d; border: 1px solid var(--knob); display: none; }
   .tag-post.show { display: inline-block; }
 
   /* price section */
@@ -166,159 +102,50 @@
     background: linear-gradient(180deg, #5a4422 0%, #3d2e16 100%);
     border: 1px solid rgba(0,0,0,0.35);
     border-radius: 10px;
-    box-shadow: inset 0 2px 10px rgba(0,0,0,0.5), inset 0 0 30px rgba(240,180,90,0.12);
     padding: 18px 14px 14px;
-    text-align: center;
     transform-origin: center center;
     backface-visibility: hidden;
   }
   
-  /* 💡 翻卡動畫：只有在 active-flap 類別被加入後，才跑 rotateX 動畫 */
-  .card.expanded.active-flap .price-section {
+  /* 💡 僅在定位完、加入 active-flap 時才播放 3D 翻轉動畫 */
+  .card.active-flap .price-section {
     animation: flapDown 0.42s cubic-bezier(0.45, 0, 0.55, 1);
   }
   @keyframes flapDown {
     0%   { transform: rotateX(0deg); }
     45%  { transform: rotateX(-92deg); filter: brightness(0.55); }
     46%  { transform: rotateX(88deg);  filter: brightness(0.55); }
-    75%  { transform: rotateX(8deg);   filter: brightness(1); }
     100% { transform: rotateX(0deg);   filter: brightness(1); }
   }
-  .phase-corner-label {
-    position: absolute;
-    top: 8px;
-    left: 10px;
-    font-size: 9px;
-    font-weight: 700;
-    color: #d9b87a;
-    letter-spacing: 1px;
-    opacity: 0.75;
-  }
-  .price-value {
-    font-family: 'DM Mono', monospace;
-    font-size: 32px;
-    font-weight: 500;
-    color: #ffd98a;
-    letter-spacing: 1px;
-    text-shadow: 0 0 14px rgba(255, 200, 110, 0.55);
-    line-height: 1;
-    display: inline-block;
-  }
-  .price-value.tick {
-    animation: digitTick 0.28s cubic-bezier(0.34, 1.56, 0.64, 1);
-  }
-  @keyframes digitTick {
-    0%   { transform: translateY(-6px); opacity: 0.4; filter: brightness(1.8); }
-    60%  { transform: translateY(1px);  opacity: 1;   filter: brightness(1.2); }
-    100% { transform: translateY(0);    opacity: 1;   filter: brightness(1); }
-  }
-  .main-change {
-    font-size: 12px;
-    font-weight: 700;
-    margin-top: 6px;
-  }
-  .ref-price {
-    margin-top: 10px;
-    padding-top: 8px;
-    border-top: 1px solid rgba(255,255,255,0.08);
-    width: 100%;
-    font-size: 11px;
-    color: #c9b48a;
-    display: flex;
-    justify-content: center;
-    gap: 6px;
-    align-items: baseline;
-  }
-  .ref-price .ref-tag {
-    opacity: 0.6;
-    font-size: 10px;
-  }
-  .ref-price .ref-value {
-    font-family: 'DM Mono', monospace;
-    color: #e8d4a8;
-  }
-  .ref-price .ref-change {
-    font-size: 10px;
-    font-weight: 700;
-  }
-  .up   { color: var(--up);   background: #00e67615; border: 1px solid #00e67630; }
-  .down { color: var(--down); background: #ff174415; border: 1px solid #ff174430; }
 
-  .divider { display: none; }
+  .phase-corner-label { position: absolute; top: 8px; left: 10px; font-size: 9px; font-weight: 700; color: #d9b87a; opacity: 0.75; }
+  .price-value { font-family: 'DM Mono', monospace; font-size: 32px; font-weight: 500; color: #ffd98a; text-shadow: 0 0 14px rgba(255, 200, 110, 0.55); }
+  .main-change { font-size: 12px; font-weight: 700; margin-top: 6px; }
+  
+  .ref-price {
+    margin-top: 10px; padding-top: 8px; border-top: 1px solid rgba(255,255,255,0.08);
+    width: 100%; font-size: 11px; color: #c9b48a; display: flex; justify-content: center; gap: 6px;
+  }
+  .up { color: var(--up); background: #00e67615; border: 1px solid #00e67630; }
+  .down { color: var(--down); background: #ff174415; border: 1px solid #ff174430; }
 
   /* ── CHART ── */
   .chart-container {
-    margin-top: 0;
-    border: 1px solid var(--card-frame);
-    border-radius: 10px;
-    overflow: hidden;
-    height: 0;
-    max-height: 0;
-    background: #000;
-    opacity: 0;
-    transition: height 0.5s cubic-bezier(0.25, 0.1, 0.25, 1),
-                margin-top 0.5s cubic-bezier(0.25, 0.1, 0.25, 1),
-                opacity 0.4s ease;
+    margin-top: 0; border: 1px solid var(--card-frame); border-radius: 10px;
+    overflow: hidden; height: 0; opacity: 0;
+    transition: height 0.4s ease, margin-top 0.4s ease, opacity 0.3s ease;
   }
-  .chart-container.show-chart {
-    height: 420px;
-    max-height: 420px;
-    margin-top: 14px;
-    opacity: 1;
-  }
+  .chart-container.show-chart { height: 420px; margin-top: 14px; opacity: 1; }
 
   /* ── NEWS ── */
-  .news-container {
-    display: none;
-    margin-top: 14px;
-    border: 1px solid var(--card-frame);
-    border-radius: 10px;
-    background: var(--card-bg);
-    padding: 14px;
-    transform-origin: top center;
-    backface-visibility: hidden;
-  }
-  .news-container.show-news {
-    display: block;
-    animation: flapDown 0.45s cubic-bezier(0.45, 0, 0.55, 1);
-  }
-  .news-header {
-    font-size: 12px;
-    font-weight: 700;
-    color: var(--card-frame);
-    letter-spacing: 1px;
-    margin-bottom: 10px;
-  }
+  .news-container { display: none; margin-top: 14px; border: 1px solid var(--card-frame); border-radius: 10px; background: var(--card-bg); padding: 14px; }
+  .news-container.show-news { display: block; }
+  .news-header { font-size: 12px; font-weight: 700; color: var(--card-frame); margin-bottom: 10px; }
   .news-list { display: flex; flex-direction: column; gap: 8px; }
-  .news-item {
-    display: block;
-    padding: 10px 12px;
-    background: rgba(255,255,255,0.03);
-    border: 1px solid rgba(255,255,255,0.06);
-    border-radius: 6px;
-    text-decoration: none;
-    transition: background 0.15s;
-  }
-  .news-item:hover { background: rgba(255,255,255,0.07); }
-  .news-headline {
-    font-size: 12px;
-    color: var(--text);
-    line-height: 1.5;
-  }
-  .news-source {
-    font-size: 10px;
-    color: var(--muted);
-    margin-top: 4px;
-  }
-
-  /* ── FOOTER ── */
-  .footer {
-    text-align: center;
-    margin-top: 24px;
-    font-size: 10px;
-    color: var(--muted);
-    letter-spacing: 1px;
-  }
+  .news-item { display: block; padding: 10px 12px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06); border-radius: 6px; text-decoration: none; }
+  .news-headline { font-size: 12px; color: var(--text); line-height: 1.5; }
+  .news-source { font-size: 10px; color: var(--muted); margin-top: 4px; }
+  .footer { text-align: center; margin-top: 24px; font-size: 10px; color: var(--muted); }
 </style>
 </head>
 <body>
@@ -332,7 +159,6 @@
 </div>
 
 <div class="grid" id="grid"></div>
-
 <div class="footer">YAHOO FINANCE · 點擊卡片展開圖表</div>
 
 <script>
@@ -348,23 +174,21 @@ const STOCKS = [
 ];
 
 let expandedSym = null;
+let savedOrder = []; // 記憶初始網格乾淨排版順序
 
-/* ── CLOCK ── */
 function updateClock() {
   const now = new Date();
   const pad = n => String(n).padStart(2,'0');
-  document.getElementById('heroTime').textContent =
-    `${pad(now.getHours())}:${pad(now.getMinutes())}`;
+  document.getElementById('heroTime').textContent = `${pad(now.getHours())}:${pad(now.getMinutes())}`;
   const days = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
-  document.getElementById('heroDate').textContent =
-    `${now.getFullYear()}/${pad(now.getMonth()+1)}/${pad(now.getDate())} ${days[now.getDay()]}`;
+  document.getElementById('heroDate').textContent = `${now.getFullYear()}/${pad(now.getMonth()+1)}/${pad(now.getDate())} ${days[now.getDay()]}`;
 }
 setInterval(updateClock, 1000);
 updateClock();
 
-/* ── BUILD GRID ── */
 function buildGrid() {
-  document.getElementById('grid').innerHTML = STOCKS.map(s => `
+  const grid = document.getElementById('grid');
+  grid.innerHTML = STOCKS.map(s => `
     <div class="card" id="card-${s.sym}" onclick="toggleCard('${s.sym}','${s.ex}')">
       <div class="card-header">
         <div>
@@ -373,7 +197,6 @@ function buildGrid() {
         </div>
         <span class="tag tag-post" id="badge-${s.sym}">盤後</span>
       </div>
-
       <div class="price-section">
         <span class="phase-corner-label" id="phase-label-${s.sym}">現價</span>
         <span class="price-value" id="main-${s.sym}">—</span>
@@ -384,136 +207,131 @@ function buildGrid() {
           <span class="ref-change" id="sub-chg-${s.sym}"></span>
         </div>
       </div>
-
       <div class="chart-container">
-        <iframe id="chart-${s.sym}" width="100%" height="100%" frameborder="0" allowfullscreen></iframe>
+        <iframe id="chart-${s.sym}" width="100%" height="100%" frameborder="0"></iframe>
       </div>
-
       <div class="news-container" id="news-container-${s.sym}">
         <div class="news-header">📰 最新消息</div>
         <div class="news-list" id="news-list-${s.sym}"></div>
       </div>
     </div>
   `).join('');
+  
+  savedOrder = Array.from(grid.children);
 }
 
-/* ── 💡 核心修正：先卡片佔滿最上面推擠其他股票 → 置頂定位 → 再跑動畫 ── */
 function toggleCard(sym, ex) {
-  const card = document.getElementById(`card-${sym}`);
   const grid = document.getElementById('grid');
+  const card = document.getElementById(`card-${sym}`);
   const isExpanded = card.classList.contains('expanded');
   const chartEl = document.getElementById(`chart-${sym}`);
   const chartContainer = chartEl.closest('.chart-container');
   const newsContainer = document.getElementById(`news-container-${sym}`);
-  const mainValueEl = document.getElementById(`main-${sym}`);
 
-  // 定義強制置頂滾動（不留任何天空，卡片頂部與視窗最上方貼齊）
-  const scrollCardToTop = () => {
-    const rect = card.getBoundingClientRect();
-    const targetScroll = rect.top + window.scrollY;
-    window.scrollTo({ top: targetScroll, behavior: 'smooth' });
-  };
-
-  // 迅速收起上一個被展開的卡片，並移除動畫狀態
-  if (expandedSym && expandedSym !== sym) {
-    const prevCard = document.getElementById(`card-${expandedSym}`);
-    prevCard.classList.remove('expanded', 'active-flap');
-    document.getElementById(`chart-${expandedSym}`).src = '';
-    document.getElementById(`chart-${expandedSym}`).closest('.chart-container').classList.remove('show-chart');
-    document.getElementById(`news-container-${expandedSym}`).classList.remove('show-news');
-  }
-
-  if (!isExpanded) {
-    // 1. 瞬間加入 expanded 和 grid 變更，使其佔滿整行，強行把所有其他股票「全數排擠到最下面」
-    grid.classList.add('has-expanded');
-    card.classList.add('expanded');
-    
-    // 2. 骨架到位後，立刻執行平滑置頂捲動，確保此時這張大卡片完美固定在最頂端
-    scrollCardToTop();
-
-    // 3. 定位完成後（等待滾動大致就位 350ms），才精準灌入 active-flap 觸發 LCD 卡片翻轉動畫 (420ms)
-    setTimeout(() => {
-      card.classList.add('active-flap');
-      scrollCardToTop(); // 二次滾動微調校正
-
-      // 4. 當翻卡動畫播完 (420ms)，數字面板才觸發跳動 tick 動畫 (280ms)
-      setTimeout(() => {
-        mainValueEl.classList.add('tick');
-        setTimeout(() => mainValueEl.classList.remove('tick'), 300);
-      }, 420);
-
-      // 5. 新聞模組在翻完卡、跳動後 (720ms) 接力展開滑出
-      setTimeout(() => {
-        newsContainer.classList.add('show-news');
-        setTimeout(scrollCardToTop, 50);
-      }, 720);
-
-      // 6. 圖表在所有字卡動效播放完毕後 (1200ms) 壓軸下拉展開
-      setTimeout(() => {
-        chartEl.src = `https://www.tradingview.com/widgetembed/?symbol=${ex}:${sym}&interval=D&hidesidetoolbar=1&theme=dark&style=1&timezone=Asia/Taipei&locale=zh_TW`;
-        chartContainer.classList.add('show-chart');
-        
-        // 圖表展開時，即時維持最上方置頂對齊
-        const chartInterval = setInterval(scrollCardToTop, 50);
-        setTimeout(() => clearInterval(chartInterval), 550);
-      }, 1200);
-
-    }, 350);
-
-  } else {
-    // 關閉還原
-    card.classList.remove('expanded', 'active-flap');
+  const closeAll = () => {
+    STOCKS.forEach(s => {
+      const c = document.getElementById(`card-${s.sym}`);
+      c.classList.remove('expanded', 'active-flap');
+      document.getElementById(`chart-${s.sym}`).src = '';
+      document.getElementById(`chart-${s.sym}`).closest('.chart-container').classList.remove('show-chart');
+      document.getElementById(`news-container-${s.sym}`).classList.remove('show-news');
+    });
+    savedOrder.forEach(node => grid.appendChild(node)); // 還原 DOM 原本排序
     grid.classList.remove('has-expanded');
     expandedSym = null;
-    chartEl.src = '';
-    chartContainer.classList.remove('show-chart');
-    newsContainer.classList.remove('show-news');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  if (isExpanded) {
+    closeAll();
+    return;
   }
+
+  if (expandedSym) {
+    closeAll();
+  }
+
+  expandedSym = sym;
+  grid.classList.add('has-expanded');
+
+  // ── 💡 絕對置頂核心時序控制 ──
+  
+  // 1. 瞬間把當前字卡拔起來抽到 Grid 的最上面（第一個子節點），並展開全寬
+  grid.insertBefore(card, grid.firstChild);
+  card.classList.add('expanded');
+
+  // 2. 骨架換軌完成，立刻強制視窗捲動對齊到最上方（其他所有卡片百分之百被推去最下面）
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+
+  // 3. 等待滾動與置頂定位完成（300ms），才精準准許加入翻卡動效類別跑 LCD 翻轉
+  setTimeout(() => {
+    card.classList.add('active-flap');
+
+    // 4. 翻卡期間或完成後，依序將新聞與 TradingView 圖表拉開
+    setTimeout(() => {
+      newsContainer.classList.add('show-news');
+    }, 400);
+
+    setTimeout(() => {
+      chartEl.src = `https://www.tradingview.com/widgetembed/?symbol=${ex}:${sym}&interval=D&hidesidetoolbar=1&theme=dark&style=1&timezone=Asia/Taipei&locale=zh_TW`;
+      chartContainer.classList.add('show-chart');
+    }, 600);
+
+  }, 300);
 }
 
-/* ── RENDER PRICE ── */
+/* ── 💡 強化相容性數據解析 ── */
 function renderPrice(sym, q) {
   if (!q) return;
-  const current    = parseFloat(q.c ?? q.regular ?? 0);
-  const regular    = parseFloat(q.regular ?? q.c ?? 0);
-  const prevClose  = parseFloat(q.prev_close ?? regular);
-  const phase      = q.phase || '正式盤';
+  // 全面覆蓋可能出現的 json 欄位名稱組合，確保一定有數據不漏接
+  const current = parseFloat(q.regularMarketPrice ?? q.c ?? q.price ?? q.regular ?? q.currentPrice ?? 0);
+  const prevClose = parseFloat(q.regularMarketPreviousClose ?? q.prev_close ?? q.previousClose ?? q.regular ?? current);
+  const phase = q.marketState || q.phase || '正式盤';
 
-  const phaseLabelMap = { '盤前': '盤前', '盤後': '盤後', '正式盤': '現價', '錯誤': '—' };
+  if (current === 0) return;
+
+  const phaseLabelMap = { 'PRE': '盤前', 'POST': '盤後', '盤前': '盤前', '盤後': '盤後', 'REGULAR': '現價', '正式盤': '現價', 'CLOSED': '收盤' };
   document.getElementById(`phase-label-${sym}`).textContent = phaseLabelMap[phase] || '現價';
   document.getElementById(`main-${sym}`).textContent = `$${current.toFixed(2)}`;
 
-  const mainChange = q.d  !== undefined ? parseFloat(q.d)  : (current - prevClose);
-  const mainPct    = q.dp !== undefined ? parseFloat(q.dp) : (prevClose ? (mainChange / prevClose * 100) : 0);
-  const mainDir  = mainChange >= 0 ? 'up' : 'down';
+  let mainChange = q.regularMarketChange ?? q.d ?? q.change;
+  let mainPct = q.regularMarketChangePercent ?? q.dp ?? q.changePercent;
+  
+  if (mainChange === undefined || mainChange === null) mainChange = current - prevClose;
+  if (mainPct === undefined || mainPct === null) mainPct = prevClose ? (mainChange / prevClose * 100) : 0;
+
+  mainChange = parseFloat(mainChange);
+  mainPct = parseFloat(mainPct);
+
+  const mainDir = mainChange >= 0 ? 'up' : 'down';
   const mainSign = mainChange >= 0 ? '▲' : '▼';
   document.getElementById(`main-chg-${sym}`).innerHTML =
     `<span class="${mainDir}">${mainSign} ${Math.abs(mainChange).toFixed(2)} (${Math.abs(mainPct).toFixed(2)}%)</span>`;
 
   const badge = document.getElementById(`badge-${sym}`);
-  if (phase === '盤前' || phase === '盤後') {
-    badge.textContent = phase;
+  if (phase === 'PRE' || phase === 'POST' || phase === '盤前' || phase === '盤後') {
+    badge.textContent = (phase === 'PRE' || phase === '盤前') ? '盤前' : '盤後';
     badge.classList.add('show');
   } else {
     badge.classList.remove('show');
   }
 
-  const subRow   = document.getElementById(`sub-row-${sym}`);
+  const subRow = document.getElementById(`sub-row-${sym}`);
   const subLabel = document.getElementById(`sub-label-${sym}`);
-  const subEl    = document.getElementById(`sub-${sym}`);
+  const subEl = document.getElementById(`sub-${sym}`);
   const subChgEl = document.getElementById(`sub-chg-${sym}`);
 
-  if (phase === '盤後') {
+  if (phase === 'POST' || phase === '盤後') {
     subRow.style.display = 'flex';
     subLabel.textContent = '收盤';
-    subEl.textContent = `$${regular.toFixed(2)}`;
-    const regChange = regular - prevClose;
+    const regularPrice = parseFloat(q.regularMarketPrice ?? prevClose);
+    subEl.textContent = `$${regularPrice.toFixed(2)}`;
+    const regChange = regularPrice - prevClose;
     const regPct = prevClose ? (regChange / prevClose * 100) : 0;
-    const dir  = regChange >= 0 ? 'up' : 'down';
+    const dir = regChange >= 0 ? 'up' : 'down';
     const sign = regChange >= 0 ? '▲' : '▼';
-    subChgEl.innerHTML =
-      `<span class="${dir}">${sign} ${Math.abs(regChange).toFixed(2)} (${Math.abs(regPct).toFixed(2)}%)</span>`;
-  } else if (phase === '盤前') {
+    subChgEl.innerHTML = `<span class="${dir}">${sign} ${Math.abs(regChange).toFixed(2)} (${Math.abs(regPct).toFixed(2)}%)</span>`;
+  } else if (phase === 'PRE' || phase === '盤前') {
     subRow.style.display = 'flex';
     subLabel.textContent = '昨收';
     subEl.textContent = `$${prevClose.toFixed(2)}`;
@@ -523,38 +341,43 @@ function renderPrice(sym, q) {
   }
 }
 
-/* ── LOAD DATA ── */
 async function loadData() {
   try {
-    const res  = await fetch('./stock_data.json?t=' + Date.now());
+    const res = await fetch('./stock_data.json?t=' + Date.now());
     const json = await res.json();
     STOCKS.forEach(s => {
-      const data = json.data?.[s.sym];
-      if (data && data.quote) renderPrice(s.sym, data.quote);
-      if (data && data.news) renderNews(s.sym, data.news);
+      const data = json.data?.[s.sym] || json[s.sym];
+      if (data) {
+        const quote = data.quote || data;
+        renderPrice(s.sym, quote);
+        if (data.news) renderNews(s.sym, data.news);
+      }
     });
-  } catch(e) { console.error(e); }
+  } catch(e) { console.error("數據載入錯誤：", e); }
 }
 
-/* ── RENDER NEWS ── */
+/* ── 💡 嚴格限制：只渲染「一條」新聞 ── */
 function renderNews(sym, newsList) {
   const el = document.getElementById(`news-list-${sym}`);
   if (!el) return;
-  if (!newsList.length) {
+  if (!newsList || !newsList.length) {
     el.innerHTML = `<div class="news-source">暫無相關新聞</div>`;
     return;
   }
-  el.innerHTML = newsList.map(n => `
-    <a class="news-item" href="${n.url}" target="_blank" rel="noopener noreferrer">
-      <div class="news-headline">${n.headline}</div>
-      <div class="news-source">${n.source}</div>
+  
+  // 💡 精準只拿第一則項目項目
+  const n = newsList[0];
+  el.innerHTML = `
+    <a class="news-item" href="${n.url || n.link || '#'}" target="_blank" rel="noopener noreferrer">
+      <div class="news-headline">${n.headline || n.title}</div>
+      <div class="news-source">${n.source || ''}</div>
     </a>
-  `).join('');
+  `;
 }
 
 buildGrid();
 loadData();
-setInterval(loadData, 60000);
+setInterval(loadData, 30000);
 </script>
 </body>
 </html>
