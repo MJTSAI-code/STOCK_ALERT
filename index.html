@@ -67,24 +67,30 @@
     margin-top: 2px;
   }
 
-  /* ── GRID ── */
+  /* ── 💡 GRID 修正：改用 12 欄位系統，確保尾排完美均分且尺寸高度完全一致 ── */
   .grid {
     display: grid;
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(12, 1fr);
     gap: 12px;
     margin: 16px;
   }
+  .grid > .card {
+    grid-column: span 12; /* 手機版一整行 */
+  }
   @media(min-width: 640px)  {
-    .grid { grid-template-columns: repeat(4, 1fr); }
-    .grid > .card { grid-column: span 2; }
+    .grid > .card { grid-column: span 6; } /* 平板一排兩張 */
   }
   @media(min-width: 1000px) {
-    .grid { grid-template-columns: repeat(6, 1fr); }
-    .grid > .card { grid-column: span 2; }
+    /* 正常未展開狀態：前 6 張每張佔 4 欄 (一排 3 張) */
+    .grid > .card { 
+      grid-column: span 4; 
+    }
+    /* 完美均分關鍵：當最後一排剩 2 張時，自動變成每張佔 6 欄 (一排 2 張各佔一半)，大小外觀高度完全一致 */
+    .grid:not(.has-expanded) .card:nth-last-child(2):nth-child(3n+1),
+    .grid:not(.has-expanded) .card:nth-last-child(1):nth-child(3n+2) {
+      grid-column: span 6;
+    }
   }
-
-  /* ── 【修正一：移除最後一行補滿拉長邏輯，維持所有卡片尺寸嚴格一致】 ── */
-  /* 已將原本會自動將最後 1 或 2 張卡片展開成 span 4、span 6、span 3 的 CSS 規則全數拔除 */
 
   /* ── CARD ── */
   .card {
@@ -111,7 +117,7 @@
   }
   .card.expanded {
     cursor: default;
-    grid-column: 1 / -1 !important; /* 展開時依然要佔滿整行 */
+    grid-column: 1 / -1 !important; /* 展開時強制佔滿整行，排擠其他卡片往下推 */
     border-color: #e8ddc8;
   }
 
@@ -150,7 +156,7 @@
   }
   .tag-post.show { display: inline-block; }
 
-  /* price section — square LCD digit block, centered, label as corner badge */
+  /* price section */
   .price-section {
     position: relative;
     display: flex;
@@ -166,7 +172,9 @@
     transform-origin: center center;
     backface-visibility: hidden;
   }
-  .card.expanded .price-section {
+  
+  /* 💡 翻卡動畫：只有在 active-flap 類別被加入後，才跑 rotateX 動畫 */
+  .card.expanded.active-flap .price-section {
     animation: flapDown 0.42s cubic-bezier(0.45, 0, 0.55, 1);
   }
   @keyframes flapDown {
@@ -236,10 +244,7 @@
   .up   { color: var(--up);   background: #00e67615; border: 1px solid #00e67630; }
   .down { color: var(--down); background: #ff174415; border: 1px solid #ff174430; }
 
-  /* divider — superseded by price-row seam, hidden but kept in DOM */
-  .divider {
-    display: none;
-  }
+  .divider { display: none; }
 
   /* ── CHART ── */
   .chart-container {
@@ -314,7 +319,6 @@
     color: var(--muted);
     letter-spacing: 1px;
   }
-
 </style>
 </head>
 <body>
@@ -393,7 +397,7 @@ function buildGrid() {
   `).join('');
 }
 
-/* ── 【修正二：調整時序，改為先置中畫面整理，再跑字卡翻轉動畫】 ── */
+/* ── 💡 核心修正：先卡片佔滿最上面推擠其他股票 → 置頂定位 → 再跑動畫 ── */
 function toggleCard(sym, ex) {
   const card = document.getElementById(`card-${sym}`);
   const grid = document.getElementById('grid');
@@ -403,61 +407,62 @@ function toggleCard(sym, ex) {
   const newsContainer = document.getElementById(`news-container-${sym}`);
   const mainValueEl = document.getElementById(`main-${sym}`);
 
-  // 收起上一個被展開的卡片（這部分維持原樣迅速收回）
+  // 定義強制置頂滾動（不留任何天空，卡片頂部與視窗最上方貼齊）
+  const scrollCardToTop = () => {
+    const rect = card.getBoundingClientRect();
+    const targetScroll = rect.top + window.scrollY;
+    window.scrollTo({ top: targetScroll, behavior: 'smooth' });
+  };
+
+  // 迅速收起上一個被展開的卡片，並移除動畫狀態
   if (expandedSym && expandedSym !== sym) {
     const prevCard = document.getElementById(`card-${expandedSym}`);
-    prevCard.classList.remove('expanded');
+    prevCard.classList.remove('expanded', 'active-flap');
     document.getElementById(`chart-${expandedSym}`).src = '';
     document.getElementById(`chart-${expandedSym}`).closest('.chart-container').classList.remove('show-chart');
     document.getElementById(`news-container-${expandedSym}`).classList.remove('show-news');
   }
 
   if (!isExpanded) {
-    // 1. 先記錄狀態並通知 grid 佈局有卡片要變動了
+    // 1. 瞬間加入 expanded 和 grid 變更，使其佔滿整行，強行把所有其他股票「全數排擠到最下面」
     grid.classList.add('has-expanded');
-    expandedSym = sym;
-
-    // 定義精準移到中央的滾動函式
-    const scrollCardToTop = () => {
-      const rect = card.getBoundingClientRect();
-      const cardTop = rect.top + window.scrollY;
-      const targetScroll = cardTop - 12;
-      window.scrollTo({ top: Math.max(0, targetScroll), behavior: 'smooth' });
-    };
-
-    // 2. 優先執行畫面置中整理
+    card.classList.add('expanded');
+    
+    // 2. 骨架到位後，立刻執行平滑置頂捲動，確保此時這張大卡片完美固定在最頂端
     scrollCardToTop();
 
-    // 3. 延遲 350ms（等待 smooth 滾動完成定位後），才加入 .expanded 觸發價格面板的 rotateX 翻轉與圖表加載
+    // 3. 定位完成後（等待滾動大致就位 350ms），才精準灌入 active-flap 觸發 LCD 卡片翻轉動畫 (420ms)
     setTimeout(() => {
-      card.classList.add('expanded');
+      card.classList.add('active-flap');
+      scrollCardToTop(); // 二次滾動微調校正
 
-      // 時序：價格螢幕翻轉(420ms) → 數字跳動更新(280ms) → 新聞翻轉跳出(450ms) → 圖表下拉展開(500ms)
+      // 4. 當翻卡動畫播完 (420ms)，數字面板才觸發跳動 tick 動畫 (280ms)
       setTimeout(() => {
         mainValueEl.classList.add('tick');
         setTimeout(() => mainValueEl.classList.remove('tick'), 300);
       }, 420);
 
+      // 5. 新聞模組在翻完卡、跳動後 (720ms) 接力展開滑出
       setTimeout(() => {
         newsContainer.classList.add('show-news');
-      }, 720); // 420 翻轉 + 280 跳動 + 一點緩衝
+        setTimeout(scrollCardToTop, 50);
+      }, 720);
 
-      // 等新聞翻轉動畫真正播完，卡片高度穩定時，再微調一次校正捲動位置
-      setTimeout(scrollCardToTop, 720 + 450 + 30);
-
+      // 6. 圖表在所有字卡動效播放完毕後 (1200ms) 壓軸下拉展開
       setTimeout(() => {
-        chartEl.src =
-          `https://www.tradingview.com/widgetembed/?symbol=${ex}:${sym}&interval=D&hidesidetoolbar=1&theme=dark&style=1&timezone=Asia/Taipei&locale=zh_TW`;
+        chartEl.src = `https://www.tradingview.com/widgetembed/?symbol=${ex}:${sym}&interval=D&hidesidetoolbar=1&theme=dark&style=1&timezone=Asia/Taipei&locale=zh_TW`;
         chartContainer.classList.add('show-chart');
-      }, 1200); // 新聞翻轉播完後才下拉圖表
+        
+        // 圖表展開時，即時維持最上方置頂對齊
+        const chartInterval = setInterval(scrollCardToTop, 50);
+        setTimeout(() => clearInterval(chartInterval), 550);
+      }, 1200);
 
-      // 等圖表 height 過渡動畫真正播完，做最終一次微調捲動校正
-      setTimeout(scrollCardToTop, 1200 + 500 + 30);
-    }, 350); // 350ms 的延遲能完美確保「先置中、再翻轉動畫」
+    }, 350);
 
   } else {
-    // 關閉邏輯維持原樣
-    card.classList.remove('expanded');
+    // 關閉還原
+    card.classList.remove('expanded', 'active-flap');
     grid.classList.remove('has-expanded');
     expandedSym = null;
     chartEl.src = '';
@@ -474,12 +479,10 @@ function renderPrice(sym, q) {
   const prevClose  = parseFloat(q.prev_close ?? regular);
   const phase      = q.phase || '正式盤';
 
-  // 主行：永遠顯示「目前最新成交價」，標籤跟著 phase 走（跟 TradingView 一致）
   const phaseLabelMap = { '盤前': '盤前', '盤後': '盤後', '正式盤': '現價', '錯誤': '—' };
   document.getElementById(`phase-label-${sym}`).textContent = phaseLabelMap[phase] || '現價';
   document.getElementById(`main-${sym}`).textContent = `$${current.toFixed(2)}`;
 
-  // 主行漲跌：永遠相對「昨日收盤」（沿用後端算好的 d / dp）
   const mainChange = q.d  !== undefined ? parseFloat(q.d)  : (current - prevClose);
   const mainPct    = q.dp !== undefined ? parseFloat(q.dp) : (prevClose ? (mainChange / prevClose * 100) : 0);
   const mainDir  = mainChange >= 0 ? 'up' : 'down';
@@ -487,7 +490,6 @@ function renderPrice(sym, q) {
   document.getElementById(`main-chg-${sym}`).innerHTML =
     `<span class="${mainDir}">${mainSign} ${Math.abs(mainChange).toFixed(2)} (${Math.abs(mainPct).toFixed(2)}%)</span>`;
 
-  // badge：跟主行標籤一致，盤前/盤後才顯示徽章；盤中不顯示
   const badge = document.getElementById(`badge-${sym}`);
   if (phase === '盤前' || phase === '盤後') {
     badge.textContent = phase;
@@ -496,7 +498,6 @@ function renderPrice(sym, q) {
     badge.classList.remove('show');
   }
 
-  // 附屬行：盤前/盤後才顯示參考價；盤中時完全隱藏，不湊行數
   const subRow   = document.getElementById(`sub-row-${sym}`);
   const subLabel = document.getElementById(`sub-label-${sym}`);
   const subEl    = document.getElementById(`sub-${sym}`);
