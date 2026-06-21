@@ -179,6 +179,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    min-height: 92px; /* 確保沒有附屬參考行（如尚無資料的股票）時，卡片高度仍跟其他卡片一致 */
     background: linear-gradient(180deg, #5a4422 0%, #3d2e16 100%);
     border: 1px solid rgba(0,0,0,0.35);
     border-radius: 10px;
@@ -428,45 +429,73 @@ function toggleCard(sym, ex) {
   if (expandedSym && expandedSym !== sym) {
     const prevCard = document.getElementById(`card-${expandedSym}`);
     prevCard.classList.remove('expanded');
+    prevCard.style.transition = '';
+    prevCard.style.transform = '';
     document.getElementById(`chart-${expandedSym}`).src = '';
     document.getElementById(`chart-${expandedSym}`).closest('.chart-container').classList.remove('show-chart');
     document.getElementById(`news-container-${expandedSym}`).classList.remove('show-news');
+    restoreCardPosition(expandedSym);
   }
 
   if (!isExpanded) {
+    // FLIP 動畫法：先記下卡片目前在畫面上的位置(First)，
+    // 搬到 DOM 最前面後位置會瞬間改變(Last)，
+    // 用 transform 把它瞬間「拉回」原本看起來的位置(Invert)，
+    // 再讓 transform 歸零並加上 transition，瀏覽器就會自動補完中間的平滑移動畫面(Play)。
+    // 這樣「搬到最前面、上面卡片讓開」這件事會變成一個連續滑動，不是瞬間跳動。
+    const firstRect = card.getBoundingClientRect();
+
+    moveCardToFront(sym, grid, card);
     card.classList.add('expanded'); // 觸發價格螢幕翻轉（CSS: .card.expanded .price-section）
     grid.classList.add('has-expanded');
     expandedSym = sym;
+    history.pushState({ expanded: sym }, '');
 
+    const lastRect = card.getBoundingClientRect();
+    const deltaX = firstRect.left - lastRect.left;
+    const deltaY = firstRect.top - lastRect.top;
+
+    card.style.transition = 'none';
+    card.style.transform = `translate(${deltaX}px, ${deltaY}px)`;
+    requestAnimationFrame(() => {
+      card.style.transition = 'transform 0.45s cubic-bezier(0.25, 0.1, 0.25, 1)';
+      card.style.transform = 'translate(0, 0)';
+    });
+
+    // 捲動跟上面的移動動畫同步播放，畫面捲到卡片新位置（頂端）
     const scrollCardToTop = () => {
       const rect = card.getBoundingClientRect();
       const cardTop = rect.top + window.scrollY;
       const targetScroll = cardTop - 12;
       window.scrollTo({ top: Math.max(0, targetScroll), behavior: 'smooth' });
     };
-    requestAnimationFrame(() => {
-      requestAnimationFrame(() => { scrollCardToTop(); });
-    });
+    scrollCardToTop();
 
-    // 時序：價格螢幕翻轉(420ms) → 數字跳動更新(280ms) → 新聞翻轉跳出(450ms) → 圖表下拉展開(500ms)
+    // 等移動動畫(450ms)播完，清掉行內樣式，避免殘留影響之後的排版
+    setTimeout(() => {
+      card.style.transition = '';
+      card.style.transform = '';
+    }, 480);
+
+    // 時序：移動到位(450ms) → 價格螢幕翻轉(420ms) → 數字跳動更新(280ms) → 新聞翻轉跳出(450ms) → 圖表下拉展開(500ms)
     setTimeout(() => {
       mainValueEl.classList.add('tick');
       setTimeout(() => mainValueEl.classList.remove('tick'), 300);
-    }, 420);
+    }, 450 + 420);
 
     setTimeout(() => {
       newsContainer.classList.add('show-news');
-    }, 720); // 420 翻轉 + 280 跳動 + 一點緩衝
+    }, 450 + 420 + 280 + 20);
     // 等新聞翻轉動畫(450ms)真正播完，卡片高度才會穩定，這時才校正捲動位置
-    setTimeout(scrollCardToTop, 720 + 450 + 30);
+    setTimeout(scrollCardToTop, 450 + 420 + 280 + 20 + 450 + 30);
 
     setTimeout(() => {
       chartEl.src =
         `https://www.tradingview.com/widgetembed/?symbol=${ex}:${sym}&interval=D&hidesidetoolbar=1&theme=dark&style=1&timezone=Asia/Taipei&locale=zh_TW`;
       chartContainer.classList.add('show-chart');
-    }, 1200); // 新聞翻轉播完後才下拉圖表
+    }, 450 + 420 + 280 + 20 + 450); // 新聞翻轉播完後才下拉圖表
     // 等圖表 height 過渡動畫(500ms)真正播完，再做最終一次捲動校正
-    setTimeout(scrollCardToTop, 1200 + 500 + 30);
+    setTimeout(scrollCardToTop, 450 + 420 + 280 + 20 + 450 + 500 + 30);
   } else {
     card.classList.remove('expanded');
     grid.classList.remove('has-expanded');
@@ -474,6 +503,32 @@ function toggleCard(sym, ex) {
     chartEl.src = '';
     chartContainer.classList.remove('show-chart');
     newsContainer.classList.remove('show-news');
+    restoreCardPosition(sym);
+    // 手動點擊收合（不是按返回鍵）時，主動清掉之前推入的瀏覽紀錄，避免堆疊殘留
+    if (!collapsingViaBack && history.state && history.state.expanded === sym) {
+      history.back();
+    }
+  }
+}
+
+/* ── 卡片排序輔助：展開時搬到最前面，收合時用佔位標記放回原位。
+   搭配 FLIP 動畫使用，搬移本身在 toggleCard 內已用 transform 過渡，
+   這裡只負責「搬去哪裡」「怎麼放回去」的 DOM 操作。 ── */
+function moveCardToFront(sym, grid, card) {
+  if (card.dataset.moved === 'true') return;
+  const placeholder = document.createElement('span');
+  placeholder.id = `placeholder-${sym}`;
+  placeholder.style.display = 'none';
+  card.after(placeholder);
+  grid.prepend(card);
+  card.dataset.moved = 'true';
+}
+function restoreCardPosition(sym) {
+  const card = document.getElementById(`card-${sym}`);
+  const placeholder = document.getElementById(`placeholder-${sym}`);
+  if (card && placeholder) {
+    placeholder.replaceWith(card);
+    card.dataset.moved = 'false';
   }
 }
 
@@ -563,6 +618,17 @@ function renderNews(sym, newsList) {
     </a>
   `).join('');
 }
+
+/* ── 手機返回鍵收合展開的卡片 ──
+   展開卡片時推一筆瀏覽紀錄，按返回鍵時攔截，改成收合卡片而不是離開頁面 */
+let collapsingViaBack = false;
+window.addEventListener('popstate', () => {
+  if (expandedSym) {
+    collapsingViaBack = true;
+    toggleCard(expandedSym, '');
+    collapsingViaBack = false;
+  }
+});
 
 buildGrid();
 loadData();
