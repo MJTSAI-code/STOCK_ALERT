@@ -51,8 +51,12 @@ jobs:
             echo "🤫 背景靜默更新，不發 Telegram"
             echo "send_alert=false" >> $GITHUB_ENV
           fi
-          # 新聞只在盤前班次（05~06點）更新一次，其他時段沿用舊新聞
-          if [ "$TW_HOUR" -ge 5 ] && [ "$TW_HOUR" -le 6 ]; then
+          # 新聞只在盤前班次（05~06點）更新一次，其他時段沿用舊新聞；
+          # 手動觸發（workflow_dispatch）視同強制放行，也一併更新新聞，方便立即驗證
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            echo "📰 手動觸發，強制更新新聞"
+            echo "UPDATE_NEWS=true" >> $GITHUB_ENV
+          elif [ "$TW_HOUR" -ge 5 ] && [ "$TW_HOUR" -le 6 ]; then
             echo "📰 盤前班次，本次會更新新聞"
             echo "UPDATE_NEWS=true" >> $GITHUB_ENV
           else
