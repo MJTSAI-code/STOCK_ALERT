@@ -1,6 +1,6 @@
 {
   "name": "美股盤前情報資料庫",
-  "updated_at": "2026-06-21T18:57:23.565177+08:00",
+  "updated_at": "2026-06-21T19:49:17.889250+08:00",
   "data": {
     "NOW": {
       "quote": {
@@ -229,6 +229,66 @@
         {
           "headline": "暫無最新新聞",
           "datetime": 1782039443,
+          "source": "Yahoo Finance",
+          "url": "#"
+        }
+      ]
+    },
+    "MU": {
+      "quote": {
+        "c": 1151.95,
+        "d": 108.76,
+        "dp": 10.4257,
+        "regular": 1133.99,
+        "pre": null,
+        "post": 1151.95,
+        "prev_close": 1043.19,
+        "phase": "盤後"
+      },
+      "news": [
+        {
+          "headline": "暫無最新新聞",
+          "datetime": 1782042556,
+          "source": "Yahoo Finance",
+          "url": "#"
+        }
+      ]
+    },
+    "SNDK": {
+      "quote": {
+        "c": 2209.28,
+        "d": 250.48,
+        "dp": 12.7874,
+        "regular": 2184.75,
+        "pre": null,
+        "post": 2209.28,
+        "prev_close": 1958.8,
+        "phase": "盤後"
+      },
+      "news": [
+        {
+          "headline": "暫無最新新聞",
+          "datetime": 1782042557,
+          "source": "Yahoo Finance",
+          "url": "#"
+        }
+      ]
+    },
+    "TSLA": {
+      "quote": {
+        "c": 398.73,
+        "d": 2.35,
+        "dp": 0.5929,
+        "regular": 400.49,
+        "pre": null,
+        "post": 398.73,
+        "prev_close": 396.38,
+        "phase": "盤後"
+      },
+      "news": [
+        {
+          "headline": "暫無最新新聞",
+          "datetime": 1782042557,
           "source": "Yahoo Finance",
           "url": "#"
         }
