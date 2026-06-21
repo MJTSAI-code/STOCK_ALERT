@@ -33,6 +33,7 @@
     font-family: 'Roboto Mono', monospace;
     min-height: 100vh;
     padding-bottom: 40px;
+    perspective: 1200px; /* 讓展開卡片的 rotateX 翻頁動畫有立體深度 */
   }
 
   /* ── TOP BAR ── */
@@ -133,11 +134,31 @@
     max-height: calc(100vh - 32px);
     overflow-y: auto;
     transform: translate(-50%, -50%);
+    transform-origin: center center;
     border-color: #e8ddc8;
     z-index: 1001;
     box-shadow:
       0 20px 0 rgba(0,0,0,0.5),
       0 30px 60px rgba(0,0,0,0.6);
+    animation: doorFlipOpen 0.5s cubic-bezier(0.4, 0, 0.3, 1);
+  }
+  /* 翻頁鐘啟動感：卡片原地繞水平中軸翻轉「開門」，
+     45%~55% 翻到接近側面時短暫變暗（模擬看到卡片邊緣的瞬間），
+     翻過去後落下定格，帶一點點回彈，不是位移/拉伸，是原地翻轉 */
+  @keyframes doorFlipOpen {
+    0%   { transform: translate(-50%, -50%) rotateX(0deg);   filter: brightness(1); }
+    45%  { transform: translate(-50%, -50%) rotateX(-92deg); filter: brightness(0.5); }
+    55%  { transform: translate(-50%, -50%) rotateX(88deg);  filter: brightness(0.5); }
+    80%  { transform: translate(-50%, -50%) rotateX(-6deg);  filter: brightness(1); }
+    100% { transform: translate(-50%, -50%) rotateX(0deg);   filter: brightness(1); }
+  }
+  .card.expanded.closing {
+    animation: doorFlipClose 0.36s cubic-bezier(0.4, 0, 0.3, 1) forwards;
+  }
+  @keyframes doorFlipClose {
+    0%   { transform: translate(-50%, -50%) rotateX(0deg);   filter: brightness(1);   opacity: 1; }
+    60%  { transform: translate(-50%, -50%) rotateX(90deg);  filter: brightness(0.5); opacity: 1; }
+    100% { transform: translate(-50%, -50%) rotateX(0deg);   filter: brightness(1);   opacity: 0; }
   }
 
   /* 展開時背後的半透明遮罩，蓋住其餘卡片，點擊可收合 */
@@ -384,7 +405,8 @@ const STOCKS = [
   {sym:'SPCX', name:'SpaceX',     ex:'NASDAQ'},
   {sym:'TSM',  name:'TSMC',       ex:'NYSE'},
   {sym:'MU',   name:'Micron',     ex:'NASDAQ'},
-  {sym:'SNDK', name:'SanDisk',    ex:'NASDAQ'}
+  {sym:'SNDK', name:'SanDisk',    ex:'NASDAQ'},
+  {sym:'TSLA', name:'Tesla',      ex:'NASDAQ'}
 ];
 
 let expandedSym = null;
@@ -482,34 +504,11 @@ function collapseCard(sym) {
   const chartEl = document.getElementById(`chart-${sym}`);
   const overlay = document.getElementById('cardOverlay');
 
-  // FLIP 收合：從目前 fixed 置中的位置，動畫飛回 grid 裡原本的格子
-  const lastRect = card.getBoundingClientRect();
-  card.classList.remove('expanded');
-  card.style.position = '';
-  card.style.top = '';
-  card.style.left = '';
-  card.style.width = '';
-  card.style.maxHeight = '';
-  card.style.zIndex = '';
-  const firstRect = card.getBoundingClientRect(); // 拿掉 fixed 後，瀏覽器算出它在 grid 裡真實該在的位置
-
-  const deltaX = lastRect.left - firstRect.left;
-  const deltaY = lastRect.top - firstRect.top;
-  const scaleX = lastRect.width / firstRect.width;
-  const scaleY = lastRect.height / firstRect.height;
-
-  card.style.transformOrigin = 'top left';
-  card.style.transition = 'none';
-  card.style.transform = `translate(${deltaX}px, ${deltaY}px) scale(${scaleX}, ${scaleY})`;
-  requestAnimationFrame(() => {
-    card.style.transition = 'transform 0.4s cubic-bezier(0.25, 0.1, 0.25, 1)';
-    card.style.transform = 'translate(0, 0) scale(1, 1)';
-  });
+  // 收合：原地播放「翻頁關門」動畫，播完才真正移除 expanded（讓它退回 grid 排版）
+  card.classList.add('closing');
   pendingAnimTimers.push(setTimeout(() => {
-    card.style.transition = '';
-    card.style.transform = '';
-    card.style.transformOrigin = '';
-  }, 420));
+    card.classList.remove('expanded', 'closing');
+  }, 360));
 
   overlay.classList.remove('show');
   chartEl.src = '';
@@ -537,53 +536,28 @@ function toggleCard(sym, ex) {
   }
 
   if (!isExpanded) {
-    // FLIP 展開：記下卡片在 grid 裡的原始位置/尺寸(First)，
-    // 切到 fixed 置中狀態後位置會瞬間改變(Last)，
-    // 用 transform 把它瞬間「拉回」看起來像沒動過的原始矩形(Invert)，
-    // 再讓 transform 歸零並開放 transition，瀏覽器自動補完中間的放大移動畫面(Play)。
-    const firstRect = card.getBoundingClientRect();
-
-    card.classList.add('expanded'); // 觸發 CSS：position:fixed + 置中 + 觸發價格螢幕翻轉動畫
+    // 展開：直接切換 class，CSS 的 doorFlipOpen 動畫會自己處理「原地翻頁開門 → 淡入定格於視窗中央」，
+    // 不需要 JS 算位移/縮放，卡片本來就是 position:fixed，瀏覽器會直接把它放到該在的位置。
+    card.classList.add('expanded');
     expandedSym = sym;
     history.pushState({ expanded: sym }, '');
     overlay.classList.add('show');
 
-    const lastRect = card.getBoundingClientRect(); // fixed 置中後的目標矩形
-    const deltaX = firstRect.left - lastRect.left;
-    const deltaY = firstRect.top - lastRect.top;
-    const scaleX = firstRect.width / lastRect.width;
-    const scaleY = firstRect.height / lastRect.height;
-
-    card.style.transformOrigin = 'top left';
-    card.style.transition = 'none';
-    card.style.transform = `translate(${deltaX}px, ${deltaY}px) scale(${scaleX}, ${scaleY})`;
-    requestAnimationFrame(() => {
-      card.style.transition = 'transform 0.45s cubic-bezier(0.25, 0.1, 0.25, 1)';
-      card.style.transform = 'translate(0, 0) scale(1, 1)';
-    });
-
-    // 等放大移動動畫(450ms)播完，清掉行內樣式，避免殘留影響後續的 fixed 置中定位
-    pendingAnimTimers.push(setTimeout(() => {
-      card.style.transition = '';
-      card.style.transform = '';
-      card.style.transformOrigin = '';
-    }, 480));
-
-    // 時序：放大移動到位(450ms) → 價格螢幕翻轉(420ms) → 數字跳動更新(280ms) → 新聞翻轉跳出(450ms) → 圖表下拉展開(500ms)
+    // 時序：翻頁開門動畫(500ms) → 數字跳動更新(280ms) → 新聞翻轉跳出(450ms) → 圖表下拉展開
     pendingAnimTimers.push(setTimeout(() => {
       mainValueEl.classList.add('tick');
       pendingAnimTimers.push(setTimeout(() => mainValueEl.classList.remove('tick'), 300));
-    }, 450 + 420));
+    }, 500));
 
     pendingAnimTimers.push(setTimeout(() => {
       newsContainer.classList.add('show-news');
-    }, 450 + 420 + 280 + 20));
+    }, 500 + 280 + 20));
 
     pendingAnimTimers.push(setTimeout(() => {
       chartEl.src =
         `https://www.tradingview.com/widgetembed/?symbol=${ex}:${sym}&interval=D&hidesidetoolbar=1&theme=dark&style=1&timezone=Asia/Taipei&locale=zh_TW`;
       chartContainer.classList.add('show-chart');
-    }, 450 + 420 + 280 + 20 + 450)); // 新聞翻轉播完後才下拉圖表
+    }, 500 + 280 + 20 + 450)); // 新聞翻轉播完後才下拉圖表
   } else {
     collapseCard(sym);
     // 手動點擊收合（不是按返回鍵）時，主動清掉之前推入的瀏覽紀錄，避免堆疊殘留
