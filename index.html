@@ -177,6 +177,16 @@
     margin-top: 6px;
     display: inline-block;
   }
+  .row-change {
+    font-size: 11px;
+    font-weight: 700;
+    margin-top: 3px;
+  }
+  .row-change.muted {
+    color: rgba(255,255,255,0.35);
+    font-weight: 400;
+    font-style: italic;
+  }
   .up   { color: var(--up);   background: #00e67615; border: 1px solid #00e67630; }
   .down { color: var(--down); background: #ff174415; border: 1px solid #ff174430; }
 
@@ -262,14 +272,19 @@ function buildGrid() {
       <div class="price-section">
         <div class="price-row">
           <span class="price-label">收盤</span>
-          <span class="price-value" id="reg-${s.sym}">—</span>
+          <div style="text-align:right;">
+            <span class="price-value" id="reg-${s.sym}">—</span>
+            <div class="row-change" id="reg-chg-${s.sym}"></div>
+          </div>
         </div>
         <hr class="divider">
         <div class="price-row">
           <span class="price-label">盤後</span>
-          <span class="price-value" id="post-${s.sym}">—</span>
+          <div style="text-align:right;">
+            <span class="price-value" id="post-${s.sym}">—</span>
+            <div class="row-change" id="post-chg-${s.sym}"></div>
+          </div>
         </div>
-        <div id="chg-${s.sym}"></div>
       </div>
 
       <div class="chart-container">
@@ -294,12 +309,21 @@ function toggleCard(sym, ex) {
     expandedSym = sym;
     document.getElementById(`chart-${sym}`).src =
       `https://www.tradingview.com/widgetembed/?symbol=${ex}:${sym}&interval=D&hidesidetoolbar=1&theme=dark&style=1&timezone=Asia/Taipei&locale=zh_TW`;
-    setTimeout(() => {
+
+    const centerCard = () => {
       const rect = card.getBoundingClientRect();
       const cardCenter = rect.top + window.scrollY + rect.height / 2;
       const targetScroll = cardCenter - window.innerHeight / 2;
       window.scrollTo({ top: Math.max(0, targetScroll), behavior: 'smooth' });
-    }, 50);
+    };
+    // 等瀏覽器真正完成展開後的版面重排（雙 rAF 確保 layout 已套用），
+    // 再延遲一次補抓動畫期間的高度變化，手機與桌機都適用
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        centerCard();
+        setTimeout(centerCard, 300);
+      });
+    });
   } else {
     card.classList.remove('expanded');
     expandedSym = null;
@@ -310,20 +334,40 @@ function toggleCard(sym, ex) {
 /* ── RENDER PRICE ── */
 function renderPrice(sym, q) {
   if (!q) return;
-  const regular  = parseFloat(q.regular || q.c || 0);
-  const post     = parseFloat(q.post || regular);
-  const change   = post - regular;
-  const pct      = regular ? (change / regular * 100) : 0;
-  const isPost   = Math.abs(change) > 0.01;
+  const regular    = parseFloat(q.regular ?? q.c ?? 0);
+  const prevClose  = parseFloat(q.prev_close ?? regular);
+  const hasPost    = q.post !== null && q.post !== undefined;
+  const post       = hasPost ? parseFloat(q.post) : null;
 
-  document.getElementById(`badge-${sym}`).classList.toggle('show', isPost);
-  document.getElementById(`reg-${sym}`).textContent  = `$${regular.toFixed(2)}`;
-  document.getElementById(`post-${sym}`).textContent = `$${post.toFixed(2)}`;
+  // 收盤漲跌：相對昨日收盤（沿用後端算好的 d / dp，TradingView 邏輯）
+  const regChange = q.d  !== undefined ? parseFloat(q.d)  : (regular - prevClose);
+  const regPct    = q.dp !== undefined ? parseFloat(q.dp) : (prevClose ? (regChange / prevClose * 100) : 0);
 
-  const dir  = change >= 0 ? 'up' : 'down';
-  const sign = change >= 0 ? '▲' : '▼';
-  document.getElementById(`chg-${sym}`).innerHTML =
-    `<span class="change-pill ${dir}">${sign} ${Math.abs(change).toFixed(2)} (${Math.abs(pct).toFixed(2)}%)</span>`;
+  document.getElementById(`reg-${sym}`).textContent = `$${regular.toFixed(2)}`;
+  const regDir  = regChange >= 0 ? 'up' : 'down';
+  const regSign = regChange >= 0 ? '▲' : '▼';
+  document.getElementById(`reg-chg-${sym}`).innerHTML =
+    `<span class="${regDir}">${regSign} ${Math.abs(regChange).toFixed(2)} (${Math.abs(regPct).toFixed(2)}%)</span>`;
+
+  // 盤後：相對收盤價，獨立計算；沒有盤後資料就明確標示，不假裝成 0
+  const badge = document.getElementById(`badge-${sym}`);
+  const postEl = document.getElementById(`post-${sym}`);
+  const postChgEl = document.getElementById(`post-chg-${sym}`);
+
+  if (hasPost) {
+    const postChange = post - regular;
+    const postPct = regular ? (postChange / regular * 100) : 0;
+    badge.classList.add('show');
+    postEl.textContent = `$${post.toFixed(2)}`;
+    const dir  = postChange >= 0 ? 'up' : 'down';
+    const sign = postChange >= 0 ? '▲' : '▼';
+    postChgEl.innerHTML =
+      `<span class="${dir}">${sign} ${Math.abs(postChange).toFixed(2)} (${Math.abs(postPct).toFixed(2)}%)</span>`;
+  } else {
+    badge.classList.remove('show');
+    postEl.textContent = '—';
+    postChgEl.innerHTML = `<span class="row-change muted">無盤後資料</span>`;
+  }
 }
 
 /* ── LOAD DATA ── */
