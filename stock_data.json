@@ -1,6 +1,6 @@
 {
   "name": "美股盤前情報資料庫",
-  "updated_at": "2026-06-21T04:56:37.163033+08:00",
+  "updated_at": "2026-06-21T18:57:23.565177+08:00",
   "data": {
     "NOW": {
       "quote": {
@@ -133,7 +133,7 @@
     "MRVL": {
       "quote": {
         "c": 313.5,
-        "d": 23.96,
+        "d": 23.97,
         "dp": 8.2769,
         "regular": 310.58,
         "pre": null,
@@ -191,6 +191,46 @@
           "datetime": 1781988997,
           "source": "Yahoo Finance",
           "url": "https://www.fool.com/investing/2026/06/20/this-metric-from-google-cloud-proves-its-185-billi/"
+        }
+      ]
+    },
+    "SPCX": {
+      "quote": {
+        "c": 181.69,
+        "d": -10.13,
+        "dp": -5.281,
+        "regular": 185.0,
+        "pre": null,
+        "post": 181.69,
+        "prev_close": 191.82,
+        "phase": "盤後"
+      },
+      "news": [
+        {
+          "headline": "暫無最新新聞",
+          "datetime": 1782039443,
+          "source": "Yahoo Finance",
+          "url": "#"
+        }
+      ]
+    },
+    "TSM": {
+      "quote": {
+        "c": 462.34,
+        "d": 30.19,
+        "dp": 6.986,
+        "regular": 462.12,
+        "pre": null,
+        "post": 462.34,
+        "prev_close": 432.15,
+        "phase": "盤後"
+      },
+      "news": [
+        {
+          "headline": "暫無最新新聞",
+          "datetime": 1782039443,
+          "source": "Yahoo Finance",
+          "url": "#"
         }
       ]
     }
