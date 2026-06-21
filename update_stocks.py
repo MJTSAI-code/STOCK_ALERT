@@ -36,15 +36,44 @@ def fetch_stock_data():
         try:
             print(f"正在抓取 {sym}...")
             ticker = yf.Ticker(sym)
-            info = ticker.info
+            
+            # --- 💡 強效安全防禦：優先從穩定的 fast_info 與 history 提取基礎價格 ---
+            try:
+                f_info = ticker.fast_info
+                regular_price = f_info.get('last_price') or 0.0
+                previous_close = f_info.get('previous_close') or 0.0
+            except:
+                regular_price = 0.0
+                previous_close = 0.0
 
-            # 價格資訊
-            regular_price = info.get('regularMarketPrice') or info.get('currentPrice') or 0.0
-            previous_close = info.get('regularMarketPreviousClose') or info.get('previousClose') or 0.0
-            pre_price = info.get('preMarketPrice')
-            post_price = info.get('postMarketPrice')
+            # 如果連 fast_info 都拿不到，用 history 做極限補救
+            if regular_price == 0.0:
+                try:
+                    hist = ticker.history(period="2d")
+                    if not hist.empty:
+                        regular_price = hist['Close'].iloc[-1]
+                        previous_close = hist['Close'].iloc[-2] if len(hist) >= 2 else hist['Open'].iloc[-1]
+                except:
+                    pass
 
-            # 決定目前階段與顯示價格
+            # --- 💡 處理盤前、盤後欄位（避開 info 完全掛掉的風險） ---
+            pre_price = None
+            post_price = None
+            phase = "正式盤"
+            
+            try:
+                info = ticker.info or {}
+                # 如果 info 能讀，就用 info 更新價格
+                regular_price = info.get('regularMarketPrice') or info.get('currentPrice') or regular_price
+                previous_close = info.get('regularMarketPreviousClose') or info.get('previousClose') or previous_close
+                pre_price = info.get('preMarketPrice')
+                post_price = info.get('postMarketPrice')
+            except Exception as info_err:
+                # 即使 info 掛了，上面 fast_info 抓到的 regular_price 還在，程式不會崩潰
+                print(f"  ⚠️ {sym} info 接口受限，啟用內建價格盾牌。")
+                info = {}
+
+            # 依據抓到的即時欄位決定市場階段
             if pre_price is not None:
                 current_price = pre_price
                 phase = "盤前"
@@ -55,10 +84,11 @@ def fetch_stock_data():
                 current_price = regular_price
                 phase = "正式盤"
 
+            # 計算漲跌
             dollar_change = current_price - previous_close
             percent_change = (dollar_change / previous_close * 100) if previous_close != 0 else 0
 
-            # 新聞處理：只有 UPDATE_NEWS=true（盤前班次）才重新抓取，否則沿用舊資料
+            # 新聞處理：只有 UPDATE_NEWS=true 才重新抓取
             if UPDATE_NEWS:
                 news_list = []
                 try:
@@ -87,7 +117,6 @@ def fetch_stock_data():
                     print(f"  {sym} 新聞抓取失敗: {ne}")
 
                 if not news_list:
-                    # 這次抓不到，退回舊資料而不是顯示「暫無新聞」，避免覆蓋掉本來有效的新聞
                     news_list = existing_news.get(sym, []) or [
                         {
                             "headline": "暫無最新新聞",
@@ -97,7 +126,6 @@ def fetch_stock_data():
                         }
                     ]
             else:
-                # 非盤前班次，直接沿用舊新聞，不呼叫 yfinance news
                 news_list = existing_news.get(sym, []) or [
                     {
                         "headline": "暫無最新新聞",
@@ -107,7 +135,7 @@ def fetch_stock_data():
                     }
                 ]
 
-            # 寫入資料
+            # 寫入資料（結構與你原本一模一樣，100% 完美對接前端）
             output_data[sym] = {
                 "quote": {
                     "c": round(float(current_price), 2),
@@ -125,7 +153,8 @@ def fetch_stock_data():
             print(f" ✅ {sym} [{phase}] ${current_price:.2f} ({dollar_change:+.2f} / {percent_change:+.2f}%)")
 
         except Exception as e:
-            print(f" ❌ {sym} 抓取失敗: {e}")
+            # 這是最外層的防線，如果單一股票遭遇不可抗力崩潰，不影響其他股票
+            print(f" ❌ {sym} 嚴重抓取失敗: {e}")
             output_data[sym] = {
                 "quote": {
                     "c": 0.0, "d": 0.0, "dp": 0.0,
