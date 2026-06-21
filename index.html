@@ -33,7 +33,9 @@
     font-family: 'Roboto Mono', monospace;
     min-height: 100vh;
     padding-bottom: 40px;
-    perspective: 1200px; /* 讓展開卡片的 rotateX 翻頁動畫有立體深度 */
+  }
+  body.scroll-locked {
+    overflow: hidden; /* 卡片展開期間鎖住背景捲動，避免看到後面其他卡片跟著捲動 */
   }
 
   /* ── TOP BAR ── */
@@ -112,6 +114,8 @@
     transition: transform 0.15s, box-shadow 0.2s, border-color 0.2s;
     position: relative;
     perspective: 500px;
+    display: flex;
+    flex-direction: column;
     box-shadow:
       0 6px 0 rgba(0,0,0,0.5),
       0 10px 22px rgba(0,0,0,0.45),
@@ -125,6 +129,16 @@
       0 16px 26px rgba(0,0,0,0.5),
       inset 0 2px 6px rgba(0,0,0,0.3);
   }
+  /* 收合狀態：card-body-split / split-left / split-right 都不產生自己的排版容器，
+     讓裡面的元素（header、圖表、價格區、新聞）直接攤平表現得像 .card 的直接子元素一樣，
+     這樣收合卡片的排版跟以前完全一致。card-header 雖然在 HTML 結構上現在位於
+     split-right 內部（方便展開時排版），但用 order 讓它在收合時視覺上排到最前面。 */
+  .card-body-split, .split-left, .split-right {
+    display: contents;
+  }
+  .card-header { order: -2; }
+  .price-section { order: -1; }
+
   .card.expanded {
     cursor: default;
     position: fixed;
@@ -135,81 +149,87 @@
     overflow-y: auto;
     transform: translate(-50%, -50%);
     transform-origin: center center;
-    border-color: #e8ddc8;
     z-index: 1001;
-    box-shadow:
-      0 20px 0 rgba(0,0,0,0.5),
-      0 30px 60px rgba(0,0,0,0.6);
-    animation: doorFlipOpen 0.5s cubic-bezier(0.4, 0, 0.3, 1);
+    /* 展開後外層只是定位容器，不再自己當一個外殼 —— 視覺上的卡片感交給左右兩張各自獨立的子卡片 */
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    padding: 0;
+    animation: cardQuietAppear 0.3s ease-out forwards;
   }
-  /* 展開後內部改成左右兩頁的橫向佈局：左邊圖表、右邊股票資訊+新聞，
-     呼應復古鬧鐘左右兩片數字頁的版面感。手機版寬度不夠時改回上下堆疊。 */
+  /* 卡片本體安靜出現，不搶焦點 —— 真正的「翻頁」動作交給左右兩張獨立卡片各自表演 */
+  @keyframes cardQuietAppear {
+    0%   { transform: translate(-50%, -50%) scale(0.96); opacity: 0; }
+    100% { transform: translate(-50%, -50%) scale(1);    opacity: 1; }
+  }
+  /* 展開後改成左右兩張完全獨立的卡片：左邊圖表卡、右邊股票資訊+新聞卡，
+     各自有自己的邊框/底色/陰影，中間留明顯間距 —— 像兩台獨立裝置並排放在一起，
+     不是包在同一個外殼裡切兩半。手機版寬度不夠時改回上下堆疊。 */
   .card.expanded .card-body-split {
-    display: flex;
-    align-items: stretch;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+    perspective: 1000px;
+  }
+  .card.expanded .split-left,
+  .card.expanded .split-right {
+    background:
+      linear-gradient(180deg, rgba(255,255,255,0.5) 0%, transparent 8%),
+      radial-gradient(120% 100% at 50% 0%, #ffffff 0%, #faf5e8 55%, #f2e9d4 100%);
+    border: 2px solid #d9cdb3;
+    border-radius: 10px;
+    padding: 18px;
+    color: #3a3024;
     position: relative;
-    gap: 0;
+    box-shadow:
+      0 3px 0 rgba(180,160,120,0.4),
+      0 6px 14px rgba(0,0,0,0.25),
+      inset 0 1px 0 rgba(255,255,255,0.9),
+      inset 0 -3px 6px rgba(120,100,60,0.06); /* 模擬機身底緣的陰影，增加實體厚度感 */
   }
   .card.expanded .split-left {
-    flex: 1.3;
     min-width: 0;
-    padding-right: 14px;
+    height: 460px;
   }
   .card.expanded .split-right {
-    flex: 1;
     min-width: 0;
+    height: 460px;
     display: flex;
     flex-direction: column;
     gap: 12px;
-    padding-left: 14px;
-  }
-  /* 機身中軸接縫：模擬翻頁鐘左右兩個窗格中間那條機械分隔線，
-     不是留白間距，是同一個外殼上的一道凹槽 */
-  .card.expanded .card-body-split::before {
-    content: '';
-    position: absolute;
-    left: 50%;
-    top: 4px;
-    bottom: 4px;
-    width: 3px;
-    transform: translateX(-50%);
-    background: linear-gradient(180deg, transparent, rgba(0,0,0,0.5) 15%, rgba(0,0,0,0.5) 85%, transparent);
-    box-shadow: 1px 0 0 rgba(255,255,255,0.06), -1px 0 0 rgba(0,0,0,0.3);
+    overflow-y: auto;
   }
   @media(max-width: 720px) {
     .card.expanded {
       width: calc(100vw - 24px);
     }
     .card.expanded .card-body-split {
-      flex-direction: column;
-    }
-    .card.expanded .split-left { padding-right: 0; padding-bottom: 14px; }
-    .card.expanded .split-right { padding-left: 0; }
-    /* 手機改上下堆疊時，接縫線跟著轉成水平 */
-    .card.expanded .card-body-split::before {
-      left: 4px; right: 4px; top: 50%; bottom: auto; width: auto; height: 3px;
-      transform: translateY(-50%);
-      background: linear-gradient(90deg, transparent, rgba(0,0,0,0.5) 15%, rgba(0,0,0,0.5) 85%, transparent);
-      box-shadow: 0 1px 0 rgba(255,255,255,0.06), 0 -1px 0 rgba(0,0,0,0.3);
+      grid-template-columns: 1fr;
     }
   }
-  /* 翻頁鐘啟動感：卡片原地繞水平中軸翻轉「開門」，
-     45%~55% 翻到接近側面時短暫變暗（模擬看到卡片邊緣的瞬間），
-     翻過去後落下定格，帶一點點回彈，不是位移/拉伸，是原地翻轉 */
-  @keyframes doorFlipOpen {
-    0%   { transform: translate(-50%, -50%) rotateX(0deg);   filter: brightness(1); }
-    45%  { transform: translate(-50%, -50%) rotateX(-92deg); filter: brightness(0.5); }
-    55%  { transform: translate(-50%, -50%) rotateX(88deg);  filter: brightness(0.5); }
-    80%  { transform: translate(-50%, -50%) rotateX(-6deg);  filter: brightness(1); }
-    100% { transform: translate(-50%, -50%) rotateX(0deg);   filter: brightness(1); }
-  }
+  /* 收合：卡片安靜淡出，呼應展開時的安靜進場 */
   .card.expanded.closing {
-    animation: doorFlipClose 0.36s cubic-bezier(0.4, 0, 0.3, 1) forwards;
+    animation: cardQuietDisappear 0.28s ease-in forwards;
   }
-  @keyframes doorFlipClose {
-    0%   { transform: translate(-50%, -50%) rotateX(0deg);   filter: brightness(1);   opacity: 1; }
-    60%  { transform: translate(-50%, -50%) rotateX(90deg);  filter: brightness(0.5); opacity: 1; }
-    100% { transform: translate(-50%, -50%) rotateX(0deg);   filter: brightness(1);   opacity: 0; }
+  @keyframes cardQuietDisappear {
+    0%   { transform: translate(-50%, -50%) scale(1);    opacity: 1; }
+    100% { transform: translate(-50%, -50%) scale(0.96); opacity: 0; }
+  }
+
+  /* ── 兩頁式翻頁動畫：左右兩張獨立卡片各自「翻下定位」，左先右後，差出時間差 ──
+     這才是辨識度的來源：不是單一外殼轉一次，是兩張卡各自從上緣往下蓋，
+     模擬翻頁鐘裡兩個獨立裝置依序到位的機械感。 */
+  .split-left, .split-right {
+    transform-origin: top center;
+    backface-visibility: hidden;
+  }
+  .split-left.panel-flap, .split-right.panel-flap {
+    animation: panelFlapDown 0.4s cubic-bezier(0.34, 0.86, 0.4, 1) forwards;
+  }
+  @keyframes panelFlapDown {
+    0%   { transform: rotateX(-85deg); opacity: 0;   filter: brightness(0.75); }
+    60%  { transform: rotateX(8deg);   opacity: 1;   filter: brightness(1.05); }
+    100% { transform: rotateX(0deg);   opacity: 1;   filter: brightness(1); }
   }
 
   /* 展開時背後的半透明遮罩，蓋住其餘卡片，點擊可收合 */
@@ -234,6 +254,10 @@
     align-items: flex-start;
     margin-bottom: 14px;
   }
+  .card.expanded .card-header {
+    border-bottom: 2px solid #e0d4b8;
+    padding-bottom: 12px;
+  }
   .card-sym {
     font-size: 20px;
     font-weight: 700;
@@ -245,7 +269,8 @@
     color: #aab09a;
     margin-top: 2px;
   }
-
+  .card.expanded .card-sym { color: #3a3024; }
+  .card.expanded .card-name { color: #8a7550; }
   /* badges */
   .tag {
     font-size: 10px;
@@ -280,14 +305,32 @@
     backface-visibility: hidden;
   }
   .card.expanded .price-section {
-    animation: flapDown 0.42s cubic-bezier(0.45, 0, 0.55, 1);
+    /* 跟參考圖一致：沒有黑色窗口，數字直接印在白色卡片上，是整張卡的視覺主角 */
+    background: none;
+    border: none;
+    box-shadow: none;
+    min-height: 0;
+    padding: 0;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
   }
-  @keyframes flapDown {
-    0%   { transform: rotateX(0deg); }
-    45%  { transform: rotateX(-92deg); filter: brightness(0.55); }
-    46%  { transform: rotateX(88deg);  filter: brightness(0.55); }
-    75%  { transform: rotateX(8deg);   filter: brightness(1); }
-    100% { transform: rotateX(0deg);   filter: brightness(1); }
+  .card.expanded .phase-corner-label {
+    color: #9a8a6a;
+    opacity: 0.9;
+    position: absolute;
+    top: 18px;
+    left: 18px;
+  }
+  .card.expanded .price-value {
+    font-size: 56px;
+    color: #1a1410;
+    text-shadow: none;
+  }
+  .card.expanded .price-value.tick {
+    animation: digitTick 0.28s cubic-bezier(0.34, 1.56, 0.64, 1);
   }
   .phase-corner-label {
     position: absolute;
@@ -357,7 +400,7 @@
   /* ── CHART ── */
   .chart-container {
     margin-top: 0;
-    border: 3px solid var(--card-frame);
+    border: 2px solid #d9cdb3;
     border-radius: 10px;
     overflow: hidden;
     height: 0;
@@ -375,6 +418,12 @@
     margin-top: 14px;
     opacity: 1;
   }
+  /* 展開狀態：左欄是固定高度的卡片，圖表要填滿卡片內部空間，不是自己決定父層高度 */
+  .card.expanded .chart-container.show-chart {
+    height: 100%;
+    max-height: none;
+    margin-top: 0;
+  }
 
   /* ── NEWS ── */
   .news-container {
@@ -387,9 +436,28 @@
     transform-origin: top center;
     backface-visibility: hidden;
   }
+  .card.expanded .news-container {
+    background: rgba(255,255,255,0.45);
+    border: 2px solid #d9cdb3;
+  }
+  .card.expanded .news-header {
+    color: #7a6435;
+  }
+  .card.expanded .news-item {
+    background: rgba(255,255,255,0.6);
+    border-color: rgba(180, 160, 120, 0.35);
+  }
+  .card.expanded .news-item:hover {
+    background: rgba(255,255,255,0.95);
+  }
+  .card.expanded .news-headline {
+    color: #3a3024;
+  }
+  .card.expanded .news-source {
+    color: #8a7550;
+  }
   .news-container.show-news {
     display: block;
-    animation: flapDown 0.45s cubic-bezier(0.45, 0, 0.55, 1);
   }
   .news-header {
     font-size: 12px;
@@ -480,14 +548,6 @@ updateClock();
 function buildGrid() {
   document.getElementById('grid').innerHTML = STOCKS.map(s => `
     <div class="card" id="card-${s.sym}" onclick="toggleCard('${s.sym}','${s.ex}')">
-      <div class="card-header">
-        <div>
-          <div class="card-sym">${s.sym}</div>
-          <div class="card-name">${s.name}</div>
-        </div>
-        <span class="tag tag-post" id="badge-${s.sym}">盤後</span>
-      </div>
-
       <div class="card-body-split">
         <div class="split-left">
           <div class="chart-container">
@@ -495,6 +555,13 @@ function buildGrid() {
           </div>
         </div>
         <div class="split-right">
+          <div class="card-header">
+            <div>
+              <div class="card-sym">${s.sym}</div>
+              <div class="card-name">${s.name}</div>
+            </div>
+            <span class="tag tag-post" id="badge-${s.sym}">盤後</span>
+          </div>
           <div class="price-section">
             <span class="phase-corner-label" id="phase-label-${s.sym}">現價</span>
             <span class="price-value" id="main-${s.sym}">—</span>
@@ -574,10 +641,13 @@ function collapseCard(sym) {
   card.classList.add('closing');
   pendingAnimTimers.push(setTimeout(() => {
     card.classList.remove('expanded', 'closing');
+    card.querySelector('.split-left')?.classList.remove('panel-flap');
+    card.querySelector('.split-right')?.classList.remove('panel-flap');
     fixLastRowLayout(); // 卡片重新加入 grid 排版流了，剩下的卡片要重新計算補位/置中
   }, 360));
 
   overlay.classList.remove('show');
+  document.body.classList.remove('scroll-locked');
   chartEl.src = '';
   chartEl.closest('.chart-container').classList.remove('show-chart');
   document.getElementById(`news-container-${sym}`).classList.remove('show-news');
@@ -609,23 +679,30 @@ function toggleCard(sym, ex) {
     expandedSym = sym;
     history.pushState({ expanded: sym }, '');
     overlay.classList.add('show');
+    document.body.classList.add('scroll-locked'); // 展開期間鎖住背景捲動
     fixLastRowLayout(); // 這張卡片離開 grid 排版流了，剩下的卡片要重新計算補位/置中
 
-    // 時序：翻頁開門動畫(500ms) → 數字跳動更新(280ms) → 新聞翻轉跳出(450ms) → 圖表下拉展開
-    pendingAnimTimers.push(setTimeout(() => {
-      mainValueEl.classList.add('tick');
-      pendingAnimTimers.push(setTimeout(() => mainValueEl.classList.remove('tick'), 300));
-    }, 500));
-
-    pendingAnimTimers.push(setTimeout(() => {
-      newsContainer.classList.add('show-news');
-    }, 500 + 280 + 20));
+    // 時序：卡片安靜出現(300ms) → 左欄(圖表)翻下定位 → 短暫差時後右欄(資訊+新聞)翻下定位
+    const splitLeft = card.querySelector('.split-left');
+    const splitRight = card.querySelector('.split-right');
+    const STAGGER = 60; // 兩片翻下的時間差，極短，模擬同一台鐘左右機構幾乎同步聯動的真實機械感
 
     pendingAnimTimers.push(setTimeout(() => {
       chartEl.src =
         `https://www.tradingview.com/widgetembed/?symbol=${ex}:${sym}&interval=D&hidesidetoolbar=1&theme=dark&style=1&timezone=Asia/Taipei&locale=zh_TW`;
+      splitLeft.classList.add('panel-flap');
+    }, 300));
+
+    pendingAnimTimers.push(setTimeout(() => {
+      splitRight.classList.add('panel-flap');
+      newsContainer.classList.add('show-news');
+      mainValueEl.classList.add('tick');
+      pendingAnimTimers.push(setTimeout(() => mainValueEl.classList.remove('tick'), 300));
+    }, 300 + STAGGER));
+
+    pendingAnimTimers.push(setTimeout(() => {
       chartContainer.classList.add('show-chart');
-    }, 500 + 280 + 20 + 450)); // 新聞翻轉播完後才下拉圖表
+    }, 300 + 40)); // 圖表展開跟左欄翻下幾乎同步，差一點點讓翻轉動作先被看到
   } else {
     collapseCard(sym);
     // 手動點擊收合（不是按返回鍵）時，主動清掉之前推入的瀏覽紀錄，避免堆疊殘留
