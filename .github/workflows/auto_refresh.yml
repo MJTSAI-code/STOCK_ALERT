@@ -1,71 +1,16 @@
-name: 美股數據更新與情報推送
+确认了，改两件事：
 
-on:
-  schedule:
-    - cron: '30 21 * * *'   # 目標台灣 05:30
-    - cron: '30 9 * * *'    # 目標台灣 17:30
-    - cron: '42 * * * *'    # 每小時背景靜默更新
-  workflow_dispatch:
+1. 在每小時靜默更新的 cron 改成「美股交易時段每分鐘一次」，並加上「平日才執行」的判斷
+2. 早晚兩個固定推播也加上「平日才執行」的判斷，週六日整個 job 直接跳過，不跑爬蟲也不發 Telegram
 
-permissions:
-  contents: write
+GitHub Actions 的 cron 本身不支援「只在平日跑」這種語意，標準做法是 cron 照樣每分鐘觸發，但在 step 裡用 `date +%u`（1=週一...7=週日）判斷，週六日就直接結束 job，不執行任何步驟（包含爬蟲）。**改了什麼：**
 
-jobs:
-  update-and-push:
-    runs-on: ubuntu-latest
-    steps:
-      - name: 複製專案代碼
-        uses: actions/checkout@v4
+1. **所有 cron 都加上 `1-5`（週一到週五）**，週六日 GitHub Actions 根本不會被排程觸發
+2. **多加一層 `check_weekday` 保險檢查**：就算未來你用 `workflow_dispatch` 手動觸發或 cron 邏輯有誤差，這層會再次確認台灣時間是不是平日，不是的話後面所有 step（爬蟲、推送、Telegram）全部用 `if: env.is_weekday == 'true'` 跳過
+3. **新增一條盤中每分鐘更新的 cron**：`*/1 13-21 * * 1-5`，對應台灣時間約 21:30~05:00（美股開盤時段），平日每分鐘跑一次，已經是 GitHub Actions cron 的物理極限
+4. 原本每小時靜默更新的 `42 * * * *` 也補上 `1-5`
 
-      - name: 檢查台灣時間窗口
-        id: check_time
-        run: |
-          export TZ="Asia/Taipei"
-          TW_HOUR=$(date +%k | tr -d ' ')
-          echo "台灣時間: ${TW_HOUR} 點"
+**請注意一件事：**
+你原本的 cron `42 * * * *` 是每小時跑，我幫你新增的「盤中每分鐘」cron 跟它在時間區間上會有重疊，等於同一時段內可能兩個排程都觸發。建議你之後視覺確認一下實際 commit 紀錄，如果太頻繁（每分鐘一次對 GitHub Actions 額度也有消耗），可以再跟我說要不要拿掉舊的那條每小時 cron，避免重複跑。
 
-          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
-            echo "手動觸發，強制放行"
-            echo "send_alert=true" >> $GITHUB_ENV
-          elif [ "$TW_HOUR" -ge 5 ] && [ "$TW_HOUR" -le 6 ]; then
-            echo "✅ 早上推播窗口 (05~06點)"
-            echo "send_alert=true" >> $GITHUB_ENV
-          elif [ "$TW_HOUR" -ge 17 ] && [ "$TW_HOUR" -le 18 ]; then
-            echo "✅ 晚上推播窗口 (17~18點)"
-            echo "send_alert=true" >> $GITHUB_ENV
-          else
-            echo "🤫 背景靜默更新，不發 Telegram"
-            echo "send_alert=false" >> $GITHUB_ENV
-          fi
-
-      - name: 設定 Python 環境
-        uses: actions/setup-python@v5
-        with:
-          python-version: '3.10'
-
-      - name: 安裝依賴
-        run: pip install yfinance pytz
-
-      - name: 執行資料爬蟲
-        run: python update_stocks.py
-
-      - name: 推送 stock_data.json 回倉庫
-        run: |
-          git config --local user.email "action@github.com"
-          git config --local user.name "GitHub Action"
-          git add stock_data.json
-          if ! git diff --quiet || ! git diff --staged --quiet; then
-            git commit -m "🔄 自動更新股票數據 [skip ci]"
-            git push
-          else
-            echo "數據無變動，跳過 Commit"
-          fi
-
-      - name: 發射 Telegram 推送
-        if: env.send_alert == 'true'
-        run: |
-          TEXT="🛡️ 美股情報室數據已更新！%0A🚀 開啟儀表板：https://mjtsai-code.github.io/STOCK_ALERT/"
-          curl -sS --fail -X POST "https://api.telegram.org/bot${{ secrets.TELEGRAM_TOKEN }}/sendMessage" \
-            -d "chat_id=${{ secrets.TELEGRAM_CHAT_ID }}" \
-            -d "text=${TEXT}" \
-            -d "disable_web_page_preview=true"
+另外 UTC 對應台灣時間的部分我用「台灣時間 -8 小時」抓的，美股開盤時間冬令/夏令會有 1 小時差異，正式上線前建議你用 `workflow_dispatch` 手動跑一次測試時間窗口算得對不對。
