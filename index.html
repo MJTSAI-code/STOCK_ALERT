@@ -30,6 +30,8 @@
     font-family: 'Roboto Mono', monospace;
     min-height: 100vh;
     padding-bottom: 40px;
+    /* 讓滾動更絲滑 */
+    scroll-behavior: smooth; 
   }
 
   /* ── TOP BAR ── */
@@ -45,23 +47,26 @@
   .hero-time { font-family: 'DM Mono', monospace; font-size: 36px; font-weight: 500; color: var(--digit); letter-spacing: 2px; line-height: 1; }
   .hero-date { font-size: 11px; color: var(--muted); text-align: right; margin-top: 2px; }
 
-  /* ── GRID SYSTEM (修正：絕對嚴格等寬、不自作聰明跨欄) ── */
+  /* ── 網格系統 ── */
   .grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr); /* 電腦與平板固定一排 3 張，尺寸百分之百完全一致 */
-    gap: 12px;
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 12px !important;
     margin: 16px;
   }
   .grid > .card {
-    grid-column: auto !important; /* 確保所有字卡規格完全統一，不放大、不變形 */
+    grid-column: auto !important;
+    width: 100% !important;
+    max-width: 100% !important;
   }
-  .card.expanded {
-    grid-column: 1 / -1 !important; /* 只有在點擊展開時，才強制拿滿整行寬度 */
+  /* 當卡片展開時，在原本的排序位置直接橫跨整排 */
+  .grid > .card.expanded {
+    grid-column: 1 / -1 !important;
+    width: 100% !important;
   }
 
-  /* 手機版 RWD 斷點 */
   @media(max-width: 768px) {
-    .grid { grid-template-columns: 1fr; }
+    .grid { grid-template-columns: 1fr !important; }
   }
 
   /* ── CARD 基底 ── */
@@ -76,9 +81,7 @@
     perspective: 1000px;
     box-shadow: 0 6px 0 rgba(0,0,0,0.5), 0 10px 22px rgba(0,0,0,0.45);
   }
-  .card.expanded {
-    cursor: default;
-  }
+  .card.expanded { cursor: default; }
 
   .card-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 14px; }
   .card-sym { font-size: 20px; font-weight: 700; color: var(--digit); }
@@ -87,7 +90,7 @@
   .tag-post { background: #3a2a18; color: #e0b97d; border: 1px solid var(--knob); display: none; }
   .tag-post.show { display: inline-block; }
 
-  /* 價格面板 */
+  /* 價格面板翻轉動畫 (原封不動保留) */
   .price-section {
     position: relative;
     display: flex;
@@ -101,8 +104,6 @@
     transform-origin: center center;
     backface-visibility: hidden;
   }
-  
-  /* 翻卡動效 */
   .card.active-flap .price-section {
     animation: flapDown 0.42s cubic-bezier(0.45, 0, 0.55, 1);
   }
@@ -114,7 +115,7 @@
   }
 
   .phase-corner-label { position: absolute; top: 8px; left: 10px; font-size: 9px; font-weight: 700; color: #d9b87a; opacity: 0.75; }
-  .price-value { font-family: 'DM Mono', monospace; font-size: 32px; font-weight: 500; color: #ffd98a; text-shadow: 0 0 14px rgba(255, 200, 110, 0.55); }
+  .price-value { font-family: 'DM Mono', monospace; font-size: 30px; font-weight: 500; color: #ffd98a; text-shadow: 0 0 14px rgba(255, 200, 110, 0.55); text-align: center; }
   .main-change { font-size: 12px; font-weight: 700; margin-top: 6px; }
   
   .ref-price {
@@ -124,7 +125,7 @@
   .up { color: var(--up); background: #00e67615; border: 1px solid #00e67630; }
   .down { color: var(--down); background: #ff174415; border: 1px solid #ff174430; }
 
-  /* ── CHART ── */
+  /* 圖表與新聞 (原封不動保留) */
   .chart-container {
     margin-top: 0; border: 1px solid var(--card-frame); border-radius: 10px;
     overflow: hidden; height: 0; opacity: 0;
@@ -132,7 +133,6 @@
   }
   .chart-container.show-chart { height: 420px; margin-top: 14px; opacity: 1; }
 
-  /* ── NEWS ── */
   .news-container { display: none; margin-top: 14px; border: 1px solid var(--card-frame); border-radius: 10px; background: var(--card-bg); padding: 14px; }
   .news-container.show-news { display: block; }
   .news-header { font-size: 12px; font-weight: 700; color: var(--card-frame); margin-bottom: 10px; }
@@ -169,7 +169,6 @@ const STOCKS = [
 ];
 
 let expandedSym = null;
-let savedOrder = [];
 
 function updateClock() {
   const now = new Date();
@@ -194,7 +193,7 @@ function buildGrid() {
       </div>
       <div class="price-section">
         <span class="phase-corner-label" id="phase-label-${s.sym}">現價</span>
-        <span class="price-value" id="main-${s.sym}">—</span>
+        <span class="price-value" id="main-${s.sym}" style="font-size:22px;">載入中...</span>
         <div class="main-change" id="main-chg-${s.sym}"></div>
         <div class="ref-price" id="sub-row-${s.sym}" style="display:none;">
           <span class="ref-tag" id="sub-label-${s.sym}">收盤</span>
@@ -211,12 +210,9 @@ function buildGrid() {
       </div>
     </div>
   `).join('');
-  
-  savedOrder = Array.from(grid.children);
 }
 
 function toggleCard(sym, ex) {
-  const grid = document.getElementById('grid');
   const card = document.getElementById(`card-${sym}`);
   const isExpanded = card.classList.contains('expanded');
   const chartEl = document.getElementById(`chart-${sym}`);
@@ -231,69 +227,78 @@ function toggleCard(sym, ex) {
       document.getElementById(`chart-${s.sym}`).closest('.chart-container').classList.remove('show-chart');
       document.getElementById(`news-container-${s.sym}`).classList.remove('show-news');
     });
-    savedOrder.forEach(node => grid.appendChild(node));
-    grid.classList.remove('has-expanded');
     expandedSym = null;
-    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   if (isExpanded) {
     closeAll();
+    // 關閉時，視窗順暢滾動回這張卡片的位置
+    card.scrollIntoView({ behavior: 'smooth', block: 'center' });
     return;
   }
 
-  if (expandedSym) {
-    closeAll();
-  }
+  if (expandedSym) { closeAll(); }
 
   expandedSym = sym;
-  grid.classList.add('has-expanded');
-
-  // 1. 瞬間移動至最頂端並切換成全寬
-  grid.insertBefore(card, grid.firstChild);
+  
+  // 【關鍵修正】完全拔掉移位邏輯！直接在原地長大
   card.classList.add('expanded');
 
-  // 2. 視窗瞬間平滑置頂
-  window.scrollTo({ top: 0, behavior: 'smooth' });
+  // 【運鏡效果】讓視窗極其絲滑地「滾動聚焦」到這張正在長大的卡片頂端（預留一點點邊距）
+  setTimeout(() => {
+    card.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }, 20);
 
-  // 3. 定位完成後播放動畫
+  // 以下你原本精緻的時序動畫，通通原封不動保留
   setTimeout(() => {
     card.classList.add('active-flap');
-
-    setTimeout(() => {
-      newsContainer.classList.add('show-news');
-    }, 400);
-
+    setTimeout(() => { newsContainer.classList.add('show-news'); }, 400);
     setTimeout(() => {
       chartEl.src = `https://www.tradingview.com/widgetembed/?symbol=${ex}:${sym}&interval=D&hidesidetoolbar=1&theme=dark&style=1&timezone=Asia/Taipei&locale=zh_TW`;
       chartContainer.classList.add('show-chart');
     }, 600);
-
   }, 300);
 }
 
-/* ── 💡 徹底解決 TSM、SPCX 大小寫匹配與防當機解析 ── */
-function renderPrice(sym, q) {
-  if (!q) return;
-  
-  // 徹底覆蓋所有可能出錯的 API 欄位備案
-  const current = parseFloat(q.regularMarketPrice ?? q.c ?? q.price ?? q.regular ?? q.currentPrice ?? q.last ?? 0);
-  const prevClose = parseFloat(q.regularMarketPreviousClose ?? q.prev_close ?? q.previousClose ?? q.pc ?? current);
-
-  if (current === 0 || isNaN(current)) {
-    document.getElementById(`main-${sym}`).textContent = '—';
-    return;
+function findStockData(json, sym) {
+  const targetSym = sym.toLowerCase();
+  if (!json) return null;
+  if (Array.isArray(json)) {
+    return json.find(item => (item.symbol || item.sym || item.ticker || "").toLowerCase() === targetSym);
   }
+  if (typeof json === 'object') {
+    const nested = json.data || json.stocks || json.results;
+    if (Array.isArray(nested)) {
+      return nested.find(item => (item.symbol || item.sym || item.ticker || "").toLowerCase() === targetSym);
+    } else if (nested && typeof nested === 'object') {
+      const key = Object.keys(nested).find(k => k.toLowerCase() === targetSym);
+      if (key) return nested[key];
+    }
+    const key = Object.keys(json).find(k => k.toLowerCase() === targetSym);
+    if (key) return json[key];
+  }
+  return null;
+}
 
-  const phase = q.marketState || q.phase || '正式盤';
+function renderPrice(sym, data) {
+  const mainEl = document.getElementById(`main-${sym}`);
+  if (!data) { mainEl.style.fontSize = '15px'; mainEl.textContent = '無此代號資料'; return; }
+  
+  const quote = data.quote || data;
+  const current = parseFloat(quote.regularMarketPrice ?? quote.c ?? quote.price ?? quote.regular ?? quote.currentPrice ?? quote.last ?? quote.close ?? 0);
+  const prevClose = parseFloat(quote.regularMarketPreviousClose ?? quote.prev_close ?? quote.previousClose ?? quote.pc ?? current);
+
+  if (current === 0 || isNaN(current)) { mainEl.style.fontSize = '15px'; mainEl.textContent = '無價格欄位'; return; }
+
+  mainEl.style.fontSize = '30px';
+  mainEl.textContent = `$${current.toFixed(2)}`;
+
+  const phase = quote.marketState || quote.phase || '正式盤';
   const phaseLabelMap = { 'PRE': '盤前', 'POST': '盤後', '盤前': '盤前', '盤後': '盤後', 'REGULAR': '現價', '正式盤': '現價', 'CLOSED': '收盤' };
-  
   document.getElementById(`phase-label-${sym}`).textContent = phaseLabelMap[phase] || '現價';
-  document.getElementById(`main-${sym}`).textContent = `$${current.toFixed(2)}`;
 
-  let mainChange = q.regularMarketChange ?? q.d ?? q.change;
-  let mainPct = q.regularMarketChangePercent ?? q.dp ?? q.changePercent;
-  
+  let mainChange = quote.regularMarketChange ?? quote.d ?? quote.change;
+  let mainPct = quote.regularMarketChangePercent ?? quote.dp ?? quote.changePercent;
   if (mainChange === undefined || mainChange === null || isNaN(mainChange)) mainChange = current - prevClose;
   if (mainPct === undefined || mainPct === null || isNaN(mainPct)) mainPct = prevClose ? (mainChange / prevClose * 100) : 0;
 
@@ -302,8 +307,7 @@ function renderPrice(sym, q) {
 
   const mainDir = mainChange >= 0 ? 'up' : 'down';
   const mainSign = mainChange >= 0 ? '▲' : '▼';
-  document.getElementById(`main-chg-${sym}`).innerHTML =
-    `<span class="${mainDir}">${mainSign} ${Math.abs(mainChange).toFixed(2)} (${Math.abs(mainPct).toFixed(2)}%)</span>`;
+  document.getElementById(`main-chg-${sym}`).innerHTML = `<span class="${mainDir}">${mainSign} ${Math.abs(mainChange).toFixed(2)} (${Math.abs(mainPct).toFixed(2)}%)</span>`;
 
   const badge = document.getElementById(`badge-${sym}`);
   if (phase === 'PRE' || phase === 'POST' || phase === '盤前' || phase === '盤後') {
@@ -321,7 +325,7 @@ function renderPrice(sym, q) {
   if (phase === 'POST' || phase === '盤後') {
     subRow.style.display = 'flex';
     subLabel.textContent = '收盤';
-    const regularPrice = parseFloat(q.regularMarketPrice ?? prevClose);
+    const regularPrice = parseFloat(quote.regularMarketPrice ?? prevClose);
     subEl.textContent = `$${regularPrice.toFixed(2)}`;
     const regChange = regularPrice - prevClose;
     const regPct = prevClose ? (regChange / prevClose * 100) : 0;
@@ -342,33 +346,24 @@ async function loadData() {
   try {
     const res = await fetch('./stock_data.json?t=' + Date.now());
     const json = await res.json();
-    
     STOCKS.forEach(s => {
-      // 💡 隔離保護：確保某一檔股票格式出錯時，不會卡死其他檔股票的渲染
       try {
-        // 💡 模糊大小寫匹配：不管後端給 TSM 還是 tsm，通通找得到
-        const matchedKey = Object.keys(json).find(k => k.toLowerCase() === s.sym.toLowerCase()) || 
-                            (json.data ? Object.keys(json.data).find(k => k.toLowerCase() === s.sym.toLowerCase()) : null);
-        
-        const data = json[matchedKey] || (json.data ? json.data[matchedKey] : null);
-        
-        if (data) {
-          const quote = data.quote || data;
-          renderPrice(s.sym, quote);
-          if (data.news) renderNews(s.sym, data.news);
-        }
+        const data = findStockData(json, s.sym);
+        renderPrice(s.sym, data);
+        if (data && data.news) renderNews(s.sym, data.news);
       } catch(innerErr) {
-        console.error(`解析股票 ${s.sym} 資料時發生錯誤:`, innerErr);
+        document.getElementById(`main-${s.sym}`).textContent = '解析錯誤';
       }
     });
-  } catch(e) { console.error("資料庫載入失敗：", e); }
+  } catch(e) {
+    STOCKS.forEach(s => { document.getElementById(`main-${s.sym}`).textContent = '讀檔失敗'; });
+  }
 }
 
 function renderNews(sym, newsList) {
   const el = document.getElementById(`news-list-${sym}`);
   if (!el || !newsList || !newsList.length) return;
-  
-  const n = newsList[0]; // 嚴格鎖死只顯示一條新聞
+  const n = newsList[0];
   el.innerHTML = `
     <a class="news-item" href="${n.url || n.link || '#'}" target="_blank" rel="noopener noreferrer">
       <div class="news-headline">${n.headline || n.title}</div>
