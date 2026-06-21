@@ -1,15 +1,37 @@
 import json
+import os
 import datetime
 import pytz
 import yfinance as yf
 
 # 要追蹤的股票
-STOCKS = ['NOW', 'NVDA', 'LITE', 'ONDS', 'MRVL', 'GOOG']
+STOCKS = ['NOW', 'NVDA', 'LITE', 'ONDS', 'MRVL', 'GOOG', 'SPCX', 'TSM']
+
+# 是否要在這次執行中重新抓取新聞（由 .yml 透過環境變數控制，只有盤前那班會設為 true）
+UPDATE_NEWS = os.environ.get('UPDATE_NEWS', 'false').lower() == 'true'
+
+def load_existing_news():
+    """讀取現有 stock_data.json，把每檔股票舊的新聞保留下來備用"""
+    existing_news = {}
+    try:
+        with open('stock_data.json', 'r', encoding='utf-8') as f:
+            old_data = json.load(f)
+            for sym, entry in old_data.get('data', {}).items():
+                existing_news[sym] = entry.get('news', [])
+    except (FileNotFoundError, json.JSONDecodeError):
+        pass
+    return existing_news
 
 def fetch_stock_data():
     output_data = {}
     tw_tz = pytz.timezone('Asia/Taipei')
-    
+    existing_news = load_existing_news()
+
+    if UPDATE_NEWS:
+        print("📰 本次執行會更新新聞（盤前班次）")
+    else:
+        print("🤫 本次不更新新聞，沿用既有資料")
+
     for sym in STOCKS:
         try:
             print(f"正在抓取 {sym}...")
@@ -36,32 +58,54 @@ def fetch_stock_data():
             dollar_change = current_price - previous_close
             percent_change = (dollar_change / previous_close * 100) if previous_close != 0 else 0
 
-            # 新聞處理（相容 yfinance 新舊格式）
-            news_list = []
-            try:
-                news_items = ticker.news or []
-                for item in news_items[:3]:
-                    title = (
-                        item.get('title') or 
-                        item.get('headline') or 
-                        (item.get('content', {}).get('title') if isinstance(item.get('content'), dict) else None)
-                    )
-                    link = (
-                        item.get('link') or 
-                        item.get('url') or 
-                        (item.get('content', {}).get('canonicalUrl', {}).get('url') if isinstance(item.get('content'), dict) else None)
-                    )
-                    source = item.get('publisher') or item.get('source') or "Yahoo Finance"
-                    
-                    if title and title.strip() and link:
-                        news_list.append({
-                            "headline": title.strip(),
+            # 新聞處理：只有 UPDATE_NEWS=true（盤前班次）才重新抓取，否則沿用舊資料
+            if UPDATE_NEWS:
+                news_list = []
+                try:
+                    news_items = ticker.news or []
+                    for item in news_items[:1]:
+                        title = (
+                            item.get('title') or 
+                            item.get('headline') or 
+                            (item.get('content', {}).get('title') if isinstance(item.get('content'), dict) else None)
+                        )
+                        link = (
+                            item.get('link') or 
+                            item.get('url') or 
+                            (item.get('content', {}).get('canonicalUrl', {}).get('url') if isinstance(item.get('content'), dict) else None)
+                        )
+                        source = item.get('publisher') or item.get('source') or "Yahoo Finance"
+                        
+                        if title and title.strip() and link:
+                            news_list.append({
+                                "headline": title.strip(),
+                                "datetime": int(datetime.datetime.now(tw_tz).timestamp()),
+                                "source": source,
+                                "url": link
+                            })
+                except Exception as ne:
+                    print(f"  {sym} 新聞抓取失敗: {ne}")
+
+                if not news_list:
+                    # 這次抓不到，退回舊資料而不是顯示「暫無新聞」，避免覆蓋掉本來有效的新聞
+                    news_list = existing_news.get(sym, []) or [
+                        {
+                            "headline": "暫無最新新聞",
                             "datetime": int(datetime.datetime.now(tw_tz).timestamp()),
-                            "source": source,
-                            "url": link
-                        })
-            except Exception as ne:
-                print(f"  {sym} 新聞抓取失敗: {ne}")
+                            "source": "Yahoo Finance",
+                            "url": "#"
+                        }
+                    ]
+            else:
+                # 非盤前班次，直接沿用舊新聞，不呼叫 yfinance news
+                news_list = existing_news.get(sym, []) or [
+                    {
+                        "headline": "暫無最新新聞",
+                        "datetime": int(datetime.datetime.now(tw_tz).timestamp()),
+                        "source": "Yahoo Finance",
+                        "url": "#"
+                    }
+                ]
 
             # 寫入資料
             output_data[sym] = {
@@ -75,14 +119,7 @@ def fetch_stock_data():
                     "prev_close": round(float(previous_close), 2),
                     "phase": phase
                 },
-                "news": news_list if news_list else [
-                    {
-                        "headline": "暫無最新新聞",
-                        "datetime": int(datetime.datetime.now(tw_tz).timestamp()),
-                        "source": "Yahoo Finance",
-                        "url": "#"
-                    }
-                ]
+                "news": news_list
             }
             
             print(f" ✅ {sym} [{phase}] ${current_price:.2f} ({dollar_change:+.2f} / {percent_change:+.2f}%)")
@@ -95,7 +132,7 @@ def fetch_stock_data():
                     "regular": 0.0, "pre": None, "post": None,
                     "prev_close": 0.0, "phase": "錯誤"
                 },
-                "news": []
+                "news": existing_news.get(sym, [])
             }
 
     # 最終輸出
