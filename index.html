@@ -84,28 +84,21 @@
   }
 
   /* ── 最後一行卡片補滿邏輯 ──
-     問題：grid 是 3 欄（6 細欄，每卡 span 2），卡片總數不一定能被 3 整除時，
-     最後一行可能只剩 1 張或 2 張，會孤零零卡在角落或大小不一致。
-     解法：用「倒數第 N 張」+「該位置是否為某一行開頭(3n+1)」組合判斷，
-     這個公式不受卡片總數變動影響（加減股票都不用重算）：
-       - 最後剩 1 張 → 它是 :last-child 且剛好是 nth-child(3n+1)（行首）→ 撐滿整行 span 6
-       - 最後剩 2 張 → 倒數第2張剛好是 nth-child(3n+1)（行首）→ 它和最後一張各佔 span 3，平分
-       - 整除 → 兩條規則都不會命中，維持預設 span 2，不受影響
+     改用 JS 動態計算（見 fixLastRowLayout() 函式），不再用 CSS nth-child。
+     原因：卡片展開時會被搬到 DOM 最前面（讓上面的卡片自然滑到下方），
+     這會讓所有卡片的 DOM 順序位移，CSS nth-child 算出來的「第幾張」會跟著錯亂，
+     導致平分公式套用到錯誤的卡片上。JS 在每次排序變動後即時重算「目前實際排列」，
+     才能保證不管展開哪一張、收合幾次，最後一行永遠正確平分。
+     詳細規則見 fixLastRowLayout() 內的註解。
   */
-  @media(min-width: 640px) {
-    /* 2 欄版面（4 細欄，每卡 span 2）：最後剩 1 張 → 撐滿 span 4 */
-    .grid:not(.has-expanded) > .card:nth-child(2n+1):last-child {
-      grid-column: span 4;
-    }
+  .grid.last-row-1 > .card:not(.expanded):last-child {
+    grid-column: 3 / 5; /* 6 欄制下置中：從第3欄到第5欄，左右各空1欄，卡片維持原本 span 2 大小 */
   }
-  @media(min-width: 1000px) {
-    .grid:not(.has-expanded) > .card:nth-child(3n+1):last-child {
-      grid-column: span 6; /* 最後剩 1 張，撐滿整行 */
-    }
-    .grid:not(.has-expanded) > .card:nth-last-child(2):nth-child(3n+1),
-    .grid:not(.has-expanded) > .card:nth-last-child(2):nth-child(3n+1) ~ .card:last-child {
-      grid-column: span 3; /* 最後剩 2 張，各佔一半 */
-    }
+  .grid.last-row-2 > .card:not(.expanded):nth-last-child(2) {
+    grid-column: 2 / 4; /* 兩張各佔原本大小(span 2)，整體置中：左空1欄 */
+  }
+  .grid.last-row-2 > .card:not(.expanded):last-child {
+    grid-column: 4 / 6; /* 緊接著第一張，右空1欄，兩張對稱置中 */
   }
 
   /* ── CARD ── */
@@ -414,7 +407,34 @@ function buildGrid() {
       </div>
     </div>
   `).join('');
+  fixLastRowLayout();
 }
+
+/* ── 最後一行排版修正 ──
+   不依賴 CSS nth-child（DOM 順序會因卡片展開搬動而改變，導致算錯）。
+   改成每次卡片順序變動後，直接讀「目前實際排列」算出最後一行有幾張，
+   用 class 套用「整體置中、大小不變」的排版（不是撐大）。
+   呼叫時機：buildGrid() 初始建立時、moveCardToFront()/restoreCardPosition() 排序變動後。
+*/
+function fixLastRowLayout() {
+  const grid = document.getElementById('grid');
+  if (!grid) return;
+  grid.classList.remove('last-row-1', 'last-row-2');
+
+  // 只有桌機 3 欄版面（>=1000px）才會出現「不能被 3 整除」的問題
+  // 2 欄、1 欄版面卡片數量目前不會卡出落單行，故只處理 3 欄情境
+  if (window.innerWidth < 1000) return;
+
+  const total = grid.querySelectorAll('.card').length;
+  const remainder = total % 3;
+  if (remainder === 1) {
+    grid.classList.add('last-row-1'); // 最後剩 1 張 → 置中
+  } else if (remainder === 2) {
+    grid.classList.add('last-row-2'); // 最後剩 2 張 → 整體置中、左右各留白
+  }
+  // remainder === 0：剛好整除，不用特殊處理
+}
+window.addEventListener('resize', fixLastRowLayout); // 視窗大小改變（例如轉橫向）時重新計算
 
 /* ── TOGGLE CHART ── */
 function toggleCard(sym, ex) {
@@ -435,6 +455,7 @@ function toggleCard(sym, ex) {
     document.getElementById(`chart-${expandedSym}`).closest('.chart-container').classList.remove('show-chart');
     document.getElementById(`news-container-${expandedSym}`).classList.remove('show-news');
     restoreCardPosition(expandedSym);
+    fixLastRowLayout();
   }
 
   if (!isExpanded) {
@@ -504,6 +525,7 @@ function toggleCard(sym, ex) {
     chartContainer.classList.remove('show-chart');
     newsContainer.classList.remove('show-news');
     restoreCardPosition(sym);
+    fixLastRowLayout();
     // 手動點擊收合（不是按返回鍵）時，主動清掉之前推入的瀏覽紀錄，避免堆疊殘留
     if (!collapsingViaBack && history.state && history.state.expanded === sym) {
       history.back();
