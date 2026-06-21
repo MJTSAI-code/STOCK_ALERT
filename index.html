@@ -74,21 +74,37 @@
     gap: 12px;
     margin: 16px;
   }
-  @media(min-width: 640px)  { .grid { grid-template-columns: repeat(2, 1fr); } }
-  @media(min-width: 1000px) { .grid { grid-template-columns: repeat(3, 1fr); } }
+  @media(min-width: 640px)  {
+    .grid { grid-template-columns: repeat(4, 1fr); }
+    .grid > .card { grid-column: span 2; }
+  }
+  @media(min-width: 1000px) {
+    .grid { grid-template-columns: repeat(6, 1fr); }
+    .grid > .card { grid-column: span 2; }
+  }
 
-  /* 卡片數量不是欄數整除時，讓最後一張卡片補滿整行剩餘空間，避免孤零零卡在角落 */
+  /* ── 最後一行卡片補滿邏輯 ──
+     問題：grid 是 3 欄（6 細欄，每卡 span 2），卡片總數不一定能被 3 整除時，
+     最後一行可能只剩 1 張或 2 張，會孤零零卡在角落或大小不一致。
+     解法：用「倒數第 N 張」+「該位置是否為某一行開頭(3n+1)」組合判斷，
+     這個公式不受卡片總數變動影響（加減股票都不用重算）：
+       - 最後剩 1 張 → 它是 :last-child 且剛好是 nth-child(3n+1)（行首）→ 撐滿整行 span 6
+       - 最後剩 2 張 → 倒數第2張剛好是 nth-child(3n+1)（行首）→ 它和最後一張各佔 span 3，平分
+       - 整除 → 兩條規則都不會命中，維持預設 span 2，不受影響
+  */
   @media(min-width: 640px) {
+    /* 2 欄版面（4 細欄，每卡 span 2）：最後剩 1 張 → 撐滿 span 4 */
     .grid:not(.has-expanded) > .card:nth-child(2n+1):last-child {
-      grid-column: span 2;
+      grid-column: span 4;
     }
   }
   @media(min-width: 1000px) {
     .grid:not(.has-expanded) > .card:nth-child(3n+1):last-child {
-      grid-column: span 3;
+      grid-column: span 6; /* 最後剩 1 張，撐滿整行 */
     }
-    .grid:not(.has-expanded) > .card:nth-child(3n+2):last-child {
-      grid-column: span 2;
+    .grid:not(.has-expanded) > .card:nth-last-child(2):nth-child(3n+1),
+    .grid:not(.has-expanded) > .card:nth-last-child(2):nth-child(3n+1) ~ .card:last-child {
+      grid-column: span 3; /* 最後剩 2 張，各佔一半 */
     }
   }
 
@@ -432,7 +448,7 @@ function toggleCard(sym, ex) {
       requestAnimationFrame(() => { scrollCardToTop(); });
     });
 
-    // 時序：價格螢幕翻轉(420ms) → 數字跳動更新(280ms) → 新聞翻轉跳出(450ms) → 圖表下拉展開
+    // 時序：價格螢幕翻轉(420ms) → 數字跳動更新(280ms) → 新聞翻轉跳出(450ms) → 圖表下拉展開(500ms)
     setTimeout(() => {
       mainValueEl.classList.add('tick');
       setTimeout(() => mainValueEl.classList.remove('tick'), 300);
@@ -440,15 +456,17 @@ function toggleCard(sym, ex) {
 
     setTimeout(() => {
       newsContainer.classList.add('show-news');
-      scrollCardToTop();
     }, 720); // 420 翻轉 + 280 跳動 + 一點緩衝
+    // 等新聞翻轉動畫(450ms)真正播完，卡片高度才會穩定，這時才校正捲動位置
+    setTimeout(scrollCardToTop, 720 + 450 + 30);
 
     setTimeout(() => {
       chartEl.src =
         `https://www.tradingview.com/widgetembed/?symbol=${ex}:${sym}&interval=D&hidesidetoolbar=1&theme=dark&style=1&timezone=Asia/Taipei&locale=zh_TW`;
       chartContainer.classList.add('show-chart');
-      scrollCardToTop();
-    }, 1200); // 新聞翻轉(450ms) 播完後才下拉圖表
+    }, 1200); // 新聞翻轉播完後才下拉圖表
+    // 等圖表 height 過渡動畫(500ms)真正播完，再做最終一次捲動校正
+    setTimeout(scrollCardToTop, 1200 + 500 + 30);
   } else {
     card.classList.remove('expanded');
     grid.classList.remove('has-expanded');
