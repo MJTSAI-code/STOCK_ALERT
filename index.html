@@ -92,13 +92,13 @@
      才能保證不管展開哪一張、收合幾次，最後一行永遠正確平分。
      詳細規則見 fixLastRowLayout() 內的註解。
   */
-  .grid.last-row-1 > .card:last-child {
+  .card.last-row-solo {
     grid-column: 3 / 5; /* 6 欄制下置中：從第3欄到第5欄，左右各空1欄，卡片維持原本 span 2 大小 */
   }
-  .grid.last-row-2 > .card:nth-last-child(2) {
+  .card.last-row-pair-1 {
     grid-column: 2 / 4; /* 兩張各佔原本大小(span 2)，整體置中：左空1欄 */
   }
-  .grid.last-row-2 > .card:last-child {
+  .card.last-row-pair-2 {
     grid-column: 4 / 6; /* 緊接著第一張，右空1欄，兩張對稱置中 */
   }
 
@@ -461,26 +461,35 @@ function buildGrid() {
 }
 
 /* ── 最後一行排版修正 ──
-   展開的卡片現在是 position:fixed 浮層，不再參與 grid 排版、不會搬動 DOM 順序，
-   所以這裡不需要在展開/收合時重算，只需要在初始建立 grid、或視窗縮放時計算一次。
+   注意：卡片展開時用 position:fixed 變成浮層，雖然還在 DOM 裡，但已經脫離 grid 的排版流，
+   等於「真正排在 grid 裡的卡片數」少了一張，跟原本「股票數量不能被3整除」是同一種情況，
+   沿用同一套補位邏輯即可，不需要另外設計：只要排除 .expanded 的卡片去算數量，
+   展開/收合時各呼叫一次，讓剩下的卡片自動重新平分/置中。
    用 class 套用「整體置中、大小不變」的排版（不是撐大）。
-   呼叫時機：buildGrid() 初始建立時、視窗 resize 時。
+   呼叫時機：buildGrid() 初始建立時、卡片展開/收合時、視窗 resize 時。
 */
 function fixLastRowLayout() {
   const grid = document.getElementById('grid');
   if (!grid) return;
-  grid.classList.remove('last-row-1', 'last-row-2');
+
+  // 先清掉所有卡片上次套用的補位 class，避免殘留
+  grid.querySelectorAll('.last-row-solo, .last-row-pair-1, .last-row-pair-2')
+    .forEach(el => el.classList.remove('last-row-solo', 'last-row-pair-1', 'last-row-pair-2'));
 
   // 只有桌機 3 欄版面（>=1000px）才會出現「不能被 3 整除」的問題
-  // 2 欄、1 欄版面卡片數量目前不會卡出落單行，故只處理 3 欄情境
   if (window.innerWidth < 1000) return;
 
-  const total = grid.querySelectorAll('.card').length;
+  // 排除展開中的卡片（position:fixed，已不在 grid 排版流裡），
+  // 取得「真正還排在格子裡」的卡片，順序就是目前的視覺排列順序
+  const cards = Array.from(grid.querySelectorAll('.card:not(.expanded)'));
+  const total = cards.length;
   const remainder = total % 3;
+
   if (remainder === 1) {
-    grid.classList.add('last-row-1'); // 最後剩 1 張 → 置中
+    cards[total - 1].classList.add('last-row-solo'); // 真正排在最後那張，置中
   } else if (remainder === 2) {
-    grid.classList.add('last-row-2'); // 最後剩 2 張 → 整體置中、左右各留白
+    cards[total - 2].classList.add('last-row-pair-1');
+    cards[total - 1].classList.add('last-row-pair-2');
   }
   // remainder === 0：剛好整除，不用特殊處理
 }
@@ -508,6 +517,7 @@ function collapseCard(sym) {
   card.classList.add('closing');
   pendingAnimTimers.push(setTimeout(() => {
     card.classList.remove('expanded', 'closing');
+    fixLastRowLayout(); // 卡片重新加入 grid 排版流了，剩下的卡片要重新計算補位/置中
   }, 360));
 
   overlay.classList.remove('show');
@@ -542,6 +552,7 @@ function toggleCard(sym, ex) {
     expandedSym = sym;
     history.pushState({ expanded: sym }, '');
     overlay.classList.add('show');
+    fixLastRowLayout(); // 這張卡片離開 grid 排版流了，剩下的卡片要重新計算補位/置中
 
     // 時序：翻頁開門動畫(500ms) → 數字跳動更新(280ms) → 新聞翻轉跳出(450ms) → 圖表下拉展開
     pendingAnimTimers.push(setTimeout(() => {
