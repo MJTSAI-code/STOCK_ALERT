@@ -36,42 +36,43 @@ def fetch_stock_data():
         try:
             print(f"正在抓取 {sym}...")
             ticker = yf.Ticker(sym)
-            
-            # --- 💡 強效安全防禦：優先從穩定的 fast_info 與 history 提取基礎價格 ---
+
+            # --- 💡 安全防禦第一層：fast_info（最穩定但欄位較少）---
+            # 注意：FastInfo 是物件不是字典，部分 yfinance 版本不支援 .get()，
+            # 改用 getattr 才能相容各版本，並印出實際錯誤方便排查
+            regular_price = 0.0
+            previous_close = 0.0
             try:
                 f_info = ticker.fast_info
-                regular_price = f_info.get('last_price') or 0.0
-                previous_close = f_info.get('previous_close') or 0.0
-            except:
-                regular_price = 0.0
-                previous_close = 0.0
+                regular_price = getattr(f_info, 'last_price', None) or 0.0
+                previous_close = getattr(f_info, 'previous_close', None) or 0.0
+            except Exception as fe:
+                print(f"  ⚠️ {sym} fast_info 讀取失敗: {fe}")
 
-            # 如果連 fast_info 都拿不到，用 history 做極限補救
+            # --- 💡 安全防禦第二層：history（fast_info 也失敗時的極限補救）---
             if regular_price == 0.0:
                 try:
                     hist = ticker.history(period="2d")
                     if not hist.empty:
-                        regular_price = hist['Close'].iloc[-1]
-                        previous_close = hist['Close'].iloc[-2] if len(hist) >= 2 else hist['Open'].iloc[-1]
-                except:
-                    pass
+                        regular_price = float(hist['Close'].iloc[-1])
+                        previous_close = float(hist['Close'].iloc[-2]) if len(hist) >= 2 else float(hist['Open'].iloc[-1])
+                except Exception as he:
+                    print(f"  ⚠️ {sym} history 補救失敗: {he}")
 
-            # --- 💡 處理盤前、盤後欄位（避開 info 完全掛掉的風險） ---
+            # --- 💡 處理盤前、盤後欄位（info 是最不穩定的來源，放最後當加值） ---
             pre_price = None
             post_price = None
-            phase = "正式盤"
-            
+
             try:
                 info = ticker.info or {}
-                # 如果 info 能讀，就用 info 更新價格
+                # info 能讀的話，用它的數字優先（通常比 fast_info 更新）
                 regular_price = info.get('regularMarketPrice') or info.get('currentPrice') or regular_price
                 previous_close = info.get('regularMarketPreviousClose') or info.get('previousClose') or previous_close
                 pre_price = info.get('preMarketPrice')
                 post_price = info.get('postMarketPrice')
             except Exception as info_err:
-                # 即使 info 掛了，上面 fast_info 抓到的 regular_price 還在，程式不會崩潰
-                print(f"  ⚠️ {sym} info 接口受限，啟用內建價格盾牌。")
-                info = {}
+                # 即使 info 掛了，前面 fast_info/history 抓到的價格還在，程式不會崩潰
+                print(f"  ⚠️ {sym} info 接口受限: {info_err}")
 
             # 依據抓到的即時欄位決定市場階段
             if pre_price is not None:
@@ -95,17 +96,17 @@ def fetch_stock_data():
                     news_items = ticker.news or []
                     for item in news_items[:1]:
                         title = (
-                            item.get('title') or 
-                            item.get('headline') or 
+                            item.get('title') or
+                            item.get('headline') or
                             (item.get('content', {}).get('title') if isinstance(item.get('content'), dict) else None)
                         )
                         link = (
-                            item.get('link') or 
-                            item.get('url') or 
+                            item.get('link') or
+                            item.get('url') or
                             (item.get('content', {}).get('canonicalUrl', {}).get('url') if isinstance(item.get('content'), dict) else None)
                         )
                         source = item.get('publisher') or item.get('source') or "Yahoo Finance"
-                        
+
                         if title and title.strip() and link:
                             news_list.append({
                                 "headline": title.strip(),
@@ -135,7 +136,7 @@ def fetch_stock_data():
                     }
                 ]
 
-            # 寫入資料（結構與你原本一模一樣，100% 完美對接前端）
+            # 寫入資料（結構維持不變，100% 對接前端）
             output_data[sym] = {
                 "quote": {
                     "c": round(float(current_price), 2),
@@ -149,11 +150,11 @@ def fetch_stock_data():
                 },
                 "news": news_list
             }
-            
+
             print(f" ✅ {sym} [{phase}] ${current_price:.2f} ({dollar_change:+.2f} / {percent_change:+.2f}%)")
 
         except Exception as e:
-            # 這是最外層的防線，如果單一股票遭遇不可抗力崩潰，不影響其他股票
+            # 最外層防線：單一股票遭遇不可預期的崩潰，不影響其他股票繼續跑
             print(f" ❌ {sym} 嚴重抓取失敗: {e}")
             output_data[sym] = {
                 "quote": {
