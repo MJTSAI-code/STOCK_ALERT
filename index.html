@@ -45,30 +45,26 @@
   .hero-time { font-family: 'DM Mono', monospace; font-size: 36px; font-weight: 500; color: var(--digit); letter-spacing: 2px; line-height: 1; }
   .hero-date { font-size: 11px; color: var(--muted); text-align: right; margin-top: 2px; }
 
-  /* ── GRID SYSTEM ── */
+  /* ── GRID SYSTEM (修正：絕對嚴格等寬、不自作聰明跨欄) ── */
   .grid {
     display: grid;
-    grid-template-columns: repeat(6, 1fr);
+    grid-template-columns: repeat(3, 1fr); /* 電腦與平板固定一排 3 張，尺寸百分之百完全一致 */
     gap: 12px;
     margin: 16px;
   }
   .grid > .card {
-    grid-column: span 2; /* 預設一排放 3 張 */
+    grid-column: auto !important; /* 確保所有字卡規格完全統一，不放大、不變形 */
+  }
+  .card.expanded {
+    grid-column: 1 / -1 !important; /* 只有在點擊展開時，才強制拿滿整行寬度 */
   }
 
-  /* 💡 均分關鍵：當沒有任何卡片展開時，最後兩張卡片 (SPCX, TSM) 各佔 3 欄 (即各佔 1/2 寬度)，大小外觀完全一致 */
-  .grid:not(.has-expanded) .card:nth-last-child(2):nth-child(3n+1),
-  .grid:not(.has-expanded) .card:nth-last-child(1):nth-child(3n+2) {
-    grid-column: span 3 !important;
-  }
-
-  /* 手機版 RWD 斷點：一排一張，完全不影響操作 */
-  @media(max-width: 639px) {
+  /* 手機版 RWD 斷點 */
+  @media(max-width: 768px) {
     .grid { grid-template-columns: 1fr; }
-    .grid > .card { grid-column: span 1 !important; }
   }
 
-  /* ── CARD ── */
+  /* ── CARD 基底 ── */
   .card {
     background: linear-gradient(180deg, var(--window) 0%, var(--window-edge) 100%);
     border: 3px solid var(--card-frame);
@@ -82,7 +78,6 @@
   }
   .card.expanded {
     cursor: default;
-    grid-column: 1 / -1 !important; /* 展開時拿到完整整行寬度 */
   }
 
   .card-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 14px; }
@@ -92,7 +87,7 @@
   .tag-post { background: #3a2a18; color: #e0b97d; border: 1px solid var(--knob); display: none; }
   .tag-post.show { display: inline-block; }
 
-  /* price section */
+  /* 價格面板 */
   .price-section {
     position: relative;
     display: flex;
@@ -107,7 +102,7 @@
     backface-visibility: hidden;
   }
   
-  /* 💡 僅在定位完、加入 active-flap 時才播放 3D 翻轉動畫 */
+  /* 翻卡動效 */
   .card.active-flap .price-section {
     animation: flapDown 0.42s cubic-bezier(0.45, 0, 0.55, 1);
   }
@@ -174,7 +169,7 @@ const STOCKS = [
 ];
 
 let expandedSym = null;
-let savedOrder = []; // 記憶初始網格乾淨排版順序
+let savedOrder = [];
 
 function updateClock() {
   const now = new Date();
@@ -236,7 +231,7 @@ function toggleCard(sym, ex) {
       document.getElementById(`chart-${s.sym}`).closest('.chart-container').classList.remove('show-chart');
       document.getElementById(`news-container-${s.sym}`).classList.remove('show-news');
     });
-    savedOrder.forEach(node => grid.appendChild(node)); // 還原 DOM 原本排序
+    savedOrder.forEach(node => grid.appendChild(node));
     grid.classList.remove('has-expanded');
     expandedSym = null;
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -254,20 +249,17 @@ function toggleCard(sym, ex) {
   expandedSym = sym;
   grid.classList.add('has-expanded');
 
-  // ── 💡 絕對置頂核心時序控制 ──
-  
-  // 1. 瞬間把當前字卡拔起來抽到 Grid 的最上面（第一個子節點），並展開全寬
+  // 1. 瞬間移動至最頂端並切換成全寬
   grid.insertBefore(card, grid.firstChild);
   card.classList.add('expanded');
 
-  // 2. 骨架換軌完成，立刻強制視窗捲動對齊到最上方（其他所有卡片百分之百被推去最下面）
+  // 2. 視窗瞬間平滑置頂
   window.scrollTo({ top: 0, behavior: 'smooth' });
 
-  // 3. 等待滾動與置頂定位完成（300ms），才精準准許加入翻卡動效類別跑 LCD 翻轉
+  // 3. 定位完成後播放動畫
   setTimeout(() => {
     card.classList.add('active-flap');
 
-    // 4. 翻卡期間或完成後，依序將新聞與 TradingView 圖表拉開
     setTimeout(() => {
       newsContainer.classList.add('show-news');
     }, 400);
@@ -280,25 +272,30 @@ function toggleCard(sym, ex) {
   }, 300);
 }
 
-/* ── 💡 強化相容性數據解析 ── */
+/* ── 💡 徹底解決 TSM、SPCX 大小寫匹配與防當機解析 ── */
 function renderPrice(sym, q) {
   if (!q) return;
-  // 全面覆蓋可能出現的 json 欄位名稱組合，確保一定有數據不漏接
-  const current = parseFloat(q.regularMarketPrice ?? q.c ?? q.price ?? q.regular ?? q.currentPrice ?? 0);
-  const prevClose = parseFloat(q.regularMarketPreviousClose ?? q.prev_close ?? q.previousClose ?? q.regular ?? current);
+  
+  // 徹底覆蓋所有可能出錯的 API 欄位備案
+  const current = parseFloat(q.regularMarketPrice ?? q.c ?? q.price ?? q.regular ?? q.currentPrice ?? q.last ?? 0);
+  const prevClose = parseFloat(q.regularMarketPreviousClose ?? q.prev_close ?? q.previousClose ?? q.pc ?? current);
+
+  if (current === 0 || isNaN(current)) {
+    document.getElementById(`main-${sym}`).textContent = '—';
+    return;
+  }
+
   const phase = q.marketState || q.phase || '正式盤';
-
-  if (current === 0) return;
-
   const phaseLabelMap = { 'PRE': '盤前', 'POST': '盤後', '盤前': '盤前', '盤後': '盤後', 'REGULAR': '現價', '正式盤': '現價', 'CLOSED': '收盤' };
+  
   document.getElementById(`phase-label-${sym}`).textContent = phaseLabelMap[phase] || '現價';
   document.getElementById(`main-${sym}`).textContent = `$${current.toFixed(2)}`;
 
   let mainChange = q.regularMarketChange ?? q.d ?? q.change;
   let mainPct = q.regularMarketChangePercent ?? q.dp ?? q.changePercent;
   
-  if (mainChange === undefined || mainChange === null) mainChange = current - prevClose;
-  if (mainPct === undefined || mainPct === null) mainPct = prevClose ? (mainChange / prevClose * 100) : 0;
+  if (mainChange === undefined || mainChange === null || isNaN(mainChange)) mainChange = current - prevClose;
+  if (mainPct === undefined || mainPct === null || isNaN(mainPct)) mainPct = prevClose ? (mainChange / prevClose * 100) : 0;
 
   mainChange = parseFloat(mainChange);
   mainPct = parseFloat(mainPct);
@@ -345,28 +342,33 @@ async function loadData() {
   try {
     const res = await fetch('./stock_data.json?t=' + Date.now());
     const json = await res.json();
+    
     STOCKS.forEach(s => {
-      const data = json.data?.[s.sym] || json[s.sym];
-      if (data) {
-        const quote = data.quote || data;
-        renderPrice(s.sym, quote);
-        if (data.news) renderNews(s.sym, data.news);
+      // 💡 隔離保護：確保某一檔股票格式出錯時，不會卡死其他檔股票的渲染
+      try {
+        // 💡 模糊大小寫匹配：不管後端給 TSM 還是 tsm，通通找得到
+        const matchedKey = Object.keys(json).find(k => k.toLowerCase() === s.sym.toLowerCase()) || 
+                            (json.data ? Object.keys(json.data).find(k => k.toLowerCase() === s.sym.toLowerCase()) : null);
+        
+        const data = json[matchedKey] || (json.data ? json.data[matchedKey] : null);
+        
+        if (data) {
+          const quote = data.quote || data;
+          renderPrice(s.sym, quote);
+          if (data.news) renderNews(s.sym, data.news);
+        }
+      } catch(innerErr) {
+        console.error(`解析股票 ${s.sym} 資料時發生錯誤:`, innerErr);
       }
     });
-  } catch(e) { console.error("數據載入錯誤：", e); }
+  } catch(e) { console.error("資料庫載入失敗：", e); }
 }
 
-/* ── 💡 嚴格限制：只渲染「一條」新聞 ── */
 function renderNews(sym, newsList) {
   const el = document.getElementById(`news-list-${sym}`);
-  if (!el) return;
-  if (!newsList || !newsList.length) {
-    el.innerHTML = `<div class="news-source">暫無相關新聞</div>`;
-    return;
-  }
+  if (!el || !newsList || !newsList.length) return;
   
-  // 💡 精準只拿第一則項目項目
-  const n = newsList[0];
+  const n = newsList[0]; // 嚴格鎖死只顯示一條新聞
   el.innerHTML = `
     <a class="news-item" href="${n.url || n.link || '#'}" target="_blank" rel="noopener noreferrer">
       <div class="news-headline">${n.headline || n.title}</div>
