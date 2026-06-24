@@ -315,6 +315,8 @@
     position: relative;
     height: 40px;
     width: 200px;
+    background: #14120d; /* 固定黑色底，遮罩翻走後底色保留 */
+    border-radius: 3px;
   }
   /* 數字層：完整顯示，不裁切 */
   .pf-half {
@@ -689,24 +691,24 @@ function flipPriceCard(sym, newVal) {
   const sbEl = document.getElementById(`pf-sb-${sym}`);
   const frEl = document.getElementById(`pf-fr-${sym}`);
   const bkEl = document.getElementById(`pf-bk-${sym}`);
-  if (!stEl) return;
+  if (!stEl || !frEl) return;
 
-  const oldVal = stEl.querySelector('span').textContent;
-  if (oldVal === newVal) return;
+  // 1. 遮罩蓋回來
+  frEl.classList.remove('flipping');
+  bkEl.classList.remove('flipping');
+  void frEl.offsetWidth; // reflow 重置動畫
 
-  // 先更新數字（在遮罩下面，看不見）
+  // 2. 在遮罩下換數字（看不到）
   stEl.querySelector('span').textContent = newVal;
   sbEl.querySelector('span').textContent = newVal;
 
-  // 遮罩復位後觸發翻走動畫
-  frEl.classList.remove('flipping');
-  bkEl.classList.remove('flipping');
-  void frEl.offsetWidth;
+  // 3. 遮罩翻走，露出新數字
   frEl.classList.add('flipping');
   bkEl.classList.add('flipping');
 }
 
 function setPriceDirect(sym, val) {
+  // 保留給需要直接設定但不觸發動畫的情況（目前沒用到，備用）
   const stEl = document.getElementById(`pf-st-${sym}`);
   const sbEl = document.getElementById(`pf-sb-${sym}`);
   if (!stEl) return;
@@ -735,33 +737,8 @@ function renderPrice(sym, q) {
   const stEl = document.getElementById(`pf-st-${sym}`);
   const phaseChanged = lastPhase[sym] !== undefined && lastPhase[sym] !== phase;
 
-  if (isFirstLoad || phaseChanged) {
-    // 第一次載入或 phase 切換：翻頁進場（不管數字是否相同）
-    setPriceDirect(sym, valStr); // 先設定靜態值作為目標
-    // 用舊值（或 —）當起始，做一次翻頁進場
-    const fromVal = stEl?.querySelector('span')?.textContent || '—';
-    const frEl = document.getElementById(`pf-fr-${sym}`);
-    const bkEl = document.getElementById(`pf-bk-${sym}`);
-    const sbEl = document.getElementById(`pf-sb-${sym}`);
-    if (frEl && bkEl) {
-      frEl.querySelector('span').textContent = fromVal;
-      sbEl.querySelector('span').textContent = fromVal;
-      stEl.querySelector('span').textContent = valStr;
-      bkEl.querySelector('span').textContent = valStr;
-      frEl.classList.remove('flipping');
-      bkEl.classList.remove('flipping');
-      void frEl.offsetWidth;
-      frEl.classList.add('flipping');
-      bkEl.classList.add('flipping');
-      setTimeout(() => { sbEl.querySelector('span').textContent = valStr; }, 620);
-    }
-  } else if (phase === '正式盤') {
-    // 正式盤期間：數字有變就翻頁
-    flipPriceCard(sym, valStr);
-  } else {
-    // 盤前/盤後：直接更新
-    setPriceDirect(sym, valStr);
-  }
+  // 每次資料更新都做翻頁動畫
+  flipPriceCard(sym, valStr);
 
   lastPhase[sym] = phase;
 
@@ -788,25 +765,13 @@ async function loadData() {
   try {
     const res = await fetch('./stock_data.json?t='+Date.now());
     const json = await res.json();
-    const staggerMs = 80;
     STOCKS.forEach((s, i) => {
       const data = json.data?.[s.sym];
-      if (data?.quote) {
-        if (isFirstLoad) {
-          setTimeout(() => renderPrice(s.sym, data.quote), i * staggerMs);
-        } else {
-          renderPrice(s.sym, data.quote);
-        }
-      }
-      if (data?.news) renderNews(s.sym, data.news);
-    });
-    // Bug 2 fix：等所有 stagger timeout 跑完後才設定 false
-    if (isFirstLoad) {
       setTimeout(() => {
-        sessionStorage.setItem('hasLoaded', '1');
-        isFirstLoad = false;
-      }, STOCKS.length * staggerMs + 100);
-    }
+        if (data?.quote) renderPrice(s.sym, data.quote);
+        if (data?.news)  renderNews(s.sym, data.news);
+      }, i * 75);
+    });
   } catch(e) { console.error(e); }
 }
 
