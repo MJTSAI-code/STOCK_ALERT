@@ -6,483 +6,388 @@
 <title>美股情報 PRO</title>
 <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
-/* ─── RESET ─────────────────────────────────── */
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --bg: #0a0a0a;
+    --card-bg: #1c1a16;
+    --card-frame: #d9cdb8;
+    --card-border: #3a352c;
+    --window: #4a5240;
+    --window-edge: #2e3328;
+    --digit: #f0c987;
+    --text: #f0e8d8;
+    --muted: #7a7468;
+    --label: #b8ad96;
+    --up: #00e676;
+    --down: #ff1744;
+    --accent: #d9cdb8;
+    --knob: #8a6240;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Roboto Mono', monospace;
+    min-height: 100vh;
+    padding-bottom: 40px;
+  }
+  body.scroll-locked { overflow: hidden; }
 
-/* ─── TOKENS ─────────────────────────────────── */
-:root {
-  --bg:          #0a0a0a;
-  --window:      #4a5240;
-  --window-edge: #2e3328;
-  --frame:       #d9cdb8;
-  --digit:       #f0c987;
-  --text:        #f0e8d8;
-  --muted:       #7a7468;
-  --up:          #00ff88;
-  --down:        #ff4466;
-  --accent:      #d9cdb8;
-  --knob:        #8a6240;
-  --lcd-bg:      #0e0c0a;
-}
+  /* ── TOP BAR ── */
+  .topbar {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 16px 20px; background: #0d0d0d;
+    border-bottom: 1px solid var(--card-frame);
+  }
+  .logo { font-size: 13px; font-weight: 700; color: var(--accent); letter-spacing: 2px; text-transform: uppercase; }
+  .hero-time { font-family: 'DM Mono', monospace; font-size: 36px; font-weight: 500; color: var(--digit); letter-spacing: 2px; line-height: 1; text-shadow: 0 0 12px rgba(240,201,135,0.25); }
+  .hero-date { font-size: 11px; color: var(--muted); text-align: right; margin-top: 2px; }
 
-/* ─── BASE ───────────────────────────────────── */
-body {
-  background: var(--bg);
-  color: var(--text);
-  font-family: 'Roboto Mono', monospace;
-  min-height: 100vh;
-  padding-bottom: 48px;
-  -webkit-tap-highlight-color: transparent;
-}
-body.scroll-locked { overflow: hidden; }
+  /* ── GRID ── */
+  .grid { display: grid; grid-template-columns: 1fr; gap: 12px; margin: 16px; }
+  @media(min-width: 640px)  { .grid { grid-template-columns: repeat(4,1fr); } .grid > .card { grid-column: span 2; } }
+  @media(min-width: 1000px) { .grid { grid-template-columns: repeat(6,1fr); } .grid > .card { grid-column: span 2; } }
+  .card.last-row-solo  { grid-column: 3/5; }
+  .card.last-row-pair-1 { grid-column: 2/4; }
+  .card.last-row-pair-2 { grid-column: 4/6; }
 
-/* ─── TOPBAR ─────────────────────────────────── */
-.topbar {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 14px 20px;
-  background: #0d0d0d;
-  border-bottom: 1px solid var(--frame);
-  position: sticky; top: 0; z-index: 10;
-}
-.logo {
-  font-size: 12px; font-weight: 700;
-  color: var(--accent); letter-spacing: 2px; text-transform: uppercase;
-}
-.topbar-right { text-align: right; }
-.hero-time {
-  font-family: 'DM Mono', monospace;
-  font-size: 32px; font-weight: 500;
-  color: var(--digit); letter-spacing: 2px; line-height: 1;
-}
-.hero-date { font-size: 10px; color: var(--muted); margin-top: 2px; }
+  /* ── CARD (收合狀態) ── */
+  .card {
+    background: linear-gradient(180deg, var(--window) 0%, var(--window-edge) 100%);
+    border: 3px solid var(--card-frame);
+    border-radius: 18px; padding: 16px; cursor: pointer;
+    transition: transform 0.15s, box-shadow 0.2s, border-color 0.2s;
+    position: relative; perspective: 500px;
+    display: flex; flex-direction: column;
+    box-shadow: 0 6px 0 rgba(0,0,0,0.5), 0 10px 22px rgba(0,0,0,0.45), inset 0 2px 6px rgba(0,0,0,0.3);
+  }
+  .card:hover {
+    transform: translateY(-3px); border-color: #e8ddc8;
+    box-shadow: 0 8px 0 rgba(0,0,0,0.5), 0 16px 26px rgba(0,0,0,0.5), inset 0 2px 6px rgba(0,0,0,0.3);
+  }
+  .card-body-split, .split-left, .split-right { display: contents; }
+  .card-header { order: -2; }
+  .price-section { order: -1; }
 
-/* ─── GRID ───────────────────────────────────── */
-.grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 10px;
-  margin: 12px;
-}
-@media (min-width: 640px) {
-  .grid { grid-template-columns: repeat(4, 1fr); gap: 12px; margin: 16px; }
-  .grid > .card { grid-column: span 2; }
-}
-@media (min-width: 1000px) {
-  .grid { grid-template-columns: repeat(6, 1fr); }
-  .grid > .card { grid-column: span 2; }
-}
-
-/* last-row centering (desktop only) */
-.card.last-row-solo  { grid-column: 3 / 5; }
-.card.last-row-pair-1 { grid-column: 2 / 4; }
-.card.last-row-pair-2 { grid-column: 4 / 6; }
-
-/* ─── CARD (COLLAPSED) ───────────────────────── */
-/* 收合時 split 容器透明化，讓內部元素直接參與 .card 的 flex 排版 */
-.card-body-split,
-.card .split-left,
-.card .split-right { display: contents; }
-
-.card {
-  background: linear-gradient(180deg, var(--window) 0%, var(--window-edge) 100%);
-  border: 2px solid var(--frame);
-  border-radius: 16px;
-  padding: 12px;
-  cursor: pointer;
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  box-shadow:
-    0 5px 0 rgba(0,0,0,0.5),
-    0 8px 20px rgba(0,0,0,0.45),
-    inset 0 1px 4px rgba(0,0,0,0.3);
-  transition: transform 0.15s, box-shadow 0.15s, border-color 0.15s;
-  -webkit-tap-highlight-color: transparent;
-}
-@media (min-width: 640px) {
-  .card { padding: 16px; }
-}
-.card:hover {
-  transform: translateY(-2px);
-  border-color: #e8ddc8;
-  box-shadow:
-    0 7px 0 rgba(0,0,0,0.5),
-    0 14px 24px rgba(0,0,0,0.5),
-    inset 0 1px 4px rgba(0,0,0,0.3);
-}
-.card:active { transform: translateY(0); }
-
-.card-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-}
-.card-sym { font-size: 15px; font-weight: 700; color: var(--digit); letter-spacing: 1px; }
-.card-name { font-size: 9px; color: var(--muted); margin-top: 2px; }
-@media (min-width: 640px) {
-  .card-sym { font-size: 20px; }
-  .card-name { font-size: 10px; }
-}
-
-.tag-post {
-  font-size: 8px; font-weight: 700;
-  padding: 2px 6px; border-radius: 4px;
-  background: #3a2a18; color: #e0b97d;
-  border: 1px solid var(--knob);
-  display: none; white-space: nowrap;
-}
-.tag-post.show { display: inline-block; }
-@media (min-width: 640px) {
-  .tag-post { font-size: 10px; padding: 3px 8px; }
-}
-
-/* ─── LCD PRICE SECTION ──────────────────────── */
-.price-section {
-  position: relative;
-  display: flex; flex-direction: column;
-  align-items: center; justify-content: center;
-  background: linear-gradient(180deg, #5a4422 0%, #3d2e16 100%);
-  border-radius: 8px;
-  padding: 3px;   /* 薄邊框：咖啡色只露 3px 邊框感 */
-  flex: 1;
-  text-align: center;
-}
-.phase-label {
-  position: absolute; top: 7px; left: 9px; z-index: 2;
-  font-size: 8px; font-weight: 700;
-  color: #a08060; letter-spacing: 1px;
-}
-.phase-label.hide { display: none; }
-
-/* 黑框填滿咖啡色內部，padding 給數字留夠的呼吸空間 */
-.lcd-frame {
-  background: var(--lcd-bg);
-  border-radius: 5px;
-  padding: 18px 12px 14px;
-  width: 100%;
-  box-shadow: inset 0 2px 12px rgba(0,0,0,0.8);
-  display: flex; flex-direction: column;
-  align-items: center; gap: 6px;
-}
-
-/* ─── SPLIT-FLAP DIGIT ───────────────────────── */
-.pf-wrap { perspective: 220px; display: flex; justify-content: center; }
-.pf-stack { position: relative; height: 32px; width: 140px; }
-@media (min-width: 640px) {
-  .pf-stack { height: 40px; width: 200px; }
-}
-.pf-half {
-  position: absolute; left: 0; right: 0; height: 50%;
-  overflow: hidden; display: flex; justify-content: center;
-  font-family: 'DM Mono', monospace; font-size: 24px; font-weight: 500;
-  color: #ffd98a;
-  background: transparent;
-}
-@media (min-width: 640px) { .pf-half { font-size: 32px; } }
-
-/* mask replaces seam line — 48% overlap ensures no visible gap */
-.pf-static-t {
-  top: 0; align-items: flex-end;
-  -webkit-mask-image: linear-gradient(180deg, black 48%, transparent 100%);
-  mask-image: linear-gradient(180deg, black 48%, transparent 100%);
-}
-.pf-static-t span { transform: translateY(50%); }
-.pf-static-b {
-  bottom: 0; align-items: flex-start;
-  -webkit-mask-image: linear-gradient(0deg, black 48%, transparent 100%);
-  mask-image: linear-gradient(0deg, black 48%, transparent 100%);
-}
-.pf-static-b span { transform: translateY(-50%); }
-
-.pf-front, .pf-back {
-  position: absolute; left: 0; right: 0; height: 50%;
-  overflow: hidden; display: flex; justify-content: center;
-  font-family: 'DM Mono', monospace; font-size: 24px; font-weight: 500;
-  color: #ffd98a; background: transparent;
-  backface-visibility: hidden;
-}
-@media (min-width: 640px) { .pf-front, .pf-back { font-size: 32px; } }
-
-.pf-front {
-  top: 0; align-items: flex-end; transform-origin: bottom center; z-index: 5;
-  -webkit-mask-image: linear-gradient(180deg, black 48%, transparent 100%);
-  mask-image: linear-gradient(180deg, black 48%, transparent 100%);
-}
-.pf-front span { transform: translateY(50%); }
-.pf-back {
-  bottom: 0; align-items: flex-start; transform-origin: top center;
-  transform: rotateX(90deg); z-index: 4;
-  -webkit-mask-image: linear-gradient(0deg, black 48%, transparent 100%);
-  mask-image: linear-gradient(0deg, black 48%, transparent 100%);
-}
-.pf-back span { transform: translateY(-50%); }
-.pf-seam { display: none; }
-
-/* colour classes */
-.pf-half.color-up,  .pf-front.color-up,  .pf-back.color-up   { color: var(--up);   text-shadow: 0 0 14px rgba(0,255,136,0.6); }
-.pf-half.color-down,.pf-front.color-down,.pf-back.color-down  { color: var(--down); text-shadow: 0 0 14px rgba(255,68,102,0.5); }
-
-/* flip animations */
-.pf-front.flipping { animation: pfFront 0.32s cubic-bezier(.5,0,.75,.3) forwards; }
-@keyframes pfFront {
-  0%   { transform: rotateX(0deg);   filter: brightness(1); }
-  100% { transform: rotateX(-90deg); filter: brightness(0.4); }
-}
-.pf-back.flipping { animation: pfBack 0.30s cubic-bezier(.2,1,.4,1) 0.28s forwards; }
-@keyframes pfBack {
-  0%   { transform: rotateX(90deg);  filter: brightness(0.4); }
-  65%  { transform: rotateX(-7deg);  filter: brightness(1.2); }
-  100% { transform: rotateX(0deg);   filter: brightness(1); }
-}
-
-.main-change { font-size: 11px; font-weight: 700; margin-top: 4px; }
-@media (min-width: 640px) { .main-change { font-size: 12px; } }
-
-.ref-price {
-  margin-top: 6px; padding-top: 6px;
-  border-top: 1px solid rgba(255,255,255,0.08);
-  width: 100%; font-size: 10px; color: #7a7060;
-  display: flex; justify-content: center; gap: 5px; align-items: baseline;
-  flex-wrap: wrap;
-}
-.ref-price .ref-tag { opacity: 0.7; font-size: 9px; }
-.ref-price .ref-value { font-family: 'DM Mono', monospace; color: #8a7a60; }
-
-/* up / down badge */
-.up   { color: var(--up);   background: rgba(0,255,136,0.08); border: 1px solid rgba(0,255,136,0.25); border-radius: 3px; padding: 1px 4px; }
-.down { color: var(--down); background: rgba(255,68,102,0.08); border: 1px solid rgba(255,68,102,0.25); border-radius: 3px; padding: 1px 4px; }
-
-/* ─── RECENTLY VIEWED ────────────────────────── */
-.card.recently-viewed {
-  border-color: rgba(240,201,135,0.65);
-  box-shadow:
-    0 5px 0 rgba(0,0,0,0.5),
-    0 8px 20px rgba(0,0,0,0.45),
-    inset 0 1px 4px rgba(0,0,0,0.3),
-    0 0 16px rgba(240,201,135,0.1);
-}
-.card.recently-viewed::after {
-  content: '◉';
-  position: absolute; top: 7px; right: 9px;
-  font-size: 7px; color: rgba(240,201,135,0.75);
-  text-shadow: 0 0 5px rgba(240,201,135,0.5);
-  animation: rvPulse 2.4s ease-in-out infinite;
-  pointer-events: none;
-}
-@keyframes rvPulse { 0%,100%{opacity:.8} 50%{opacity:.25} }
-
-/* ─── GHOST PLACEHOLDER ──────────────────────── */
-.card-ghost {
-  border-radius: 16px;
-  background: linear-gradient(180deg, var(--window) 0%, var(--window-edge) 100%);
-  border: 2px solid var(--frame);
-  opacity: 0.15;
-  filter: blur(0.5px);
-  pointer-events: none;
-}
-
-/* ─── OVERLAY ────────────────────────────────── */
-.card-overlay {
-  display: none; position: fixed; inset: 0;
-  background: rgba(0,0,0,0.7); z-index: 1000;
-  opacity: 0; transition: opacity 0.3s;
-}
-.card-overlay.show { display: block; opacity: 1; }
-
-/* ─── CARD EXPANDED ──────────────────────────── */
-.card.expanded {
-  cursor: default; position: fixed;
-  top: 50%; left: 50%;
-  width: min(1060px, calc(100vw - 20px));
-  max-height: calc(100dvh - 20px);
-  transform: translate(-50%, -50%);
-  z-index: 1001;
-  background: transparent; border: none; box-shadow: none; padding: 0;
-  overflow: visible;
-  animation: cardAppear 0.28s ease-out forwards;
-}
-@keyframes cardAppear {
-  from { opacity: 0; transform: translate(-50%,-50%) scale(0.96); }
-  to   { opacity: 1; transform: translate(-50%,-50%) scale(1); }
-}
-.card.expanded.closing { animation: cardDisappear 0.24s ease-in forwards; }
-@keyframes cardDisappear {
-  from { opacity: 1; transform: translate(-50%,-50%) scale(1); }
-  to   { opacity: 0; transform: translate(-50%,-50%) scale(0.96); }
-}
-
-/* desktop: side-by-side */
-.card.expanded .card-body-split {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 16px;
-  perspective: 1200px;
-}
-
-/* shared panel style */
-.card.expanded .split-left,
-.card.expanded .split-right {
-  background: linear-gradient(180deg, var(--window) 0%, var(--window-edge) 100%);
-  border: 2px solid var(--frame);
-  border-radius: 12px;
-  overflow: hidden;
-  position: relative;
-  height: 460px;
-  box-shadow: 0 6px 0 rgba(0,0,0,0.5), 0 12px 24px rgba(0,0,0,0.5);
-}
-.card.expanded .split-left  { display: flex; flex-direction: column; }
-.card.expanded .split-right { display: flex; flex-direction: column; }
-
-/* unroll animation */
-.card.expanded .split-left,
-.card.expanded .split-right {
-  clip-path: inset(0 0 99% 0 round 12px);
-  transform: scaleY(0.04);
-  transform-origin: top center;
-}
-.card.expanded .split-left.panel-flap,
-.card.expanded .split-right.panel-flap {
-  animation: unrollDown 0.52s cubic-bezier(0.77,0,0.175,1) forwards;
-}
-@keyframes unrollDown {
-  0%   { clip-path: inset(0 0 99% 0 round 12px); transform: scaleY(0.04); }
-  100% { clip-path: inset(0 0 0%  0 round 12px); transform: scaleY(1); }
-}
-
-/* ─── CHART PANEL ────────────────────────────── */
-.card.expanded .split-left .chart-container {
-  flex: 1;
-  height: auto !important; max-height: none !important;
-  margin: 10px;
-  border-radius: 6px; overflow: hidden;
-  border: 1px solid rgba(217,205,184,0.2);
-  background: #000;
-  opacity: 0;
-  transition: opacity 0.4s ease 0.25s;
-}
-.card.expanded .split-left .chart-container.show-chart { opacity: 1; }
-
-/* ─── INFO PANEL ─────────────────────────────── */
-.exp-header {
-  display: flex; justify-content: space-between; align-items: flex-start;
-  padding: 14px 16px 12px;
-  border-bottom: 1px solid rgba(217,205,184,0.15);
-  flex: none;
-}
-.exp-sym  { font-size: 22px; font-weight: 700; color: var(--digit); }
-.exp-name { font-size: 10px; color: var(--muted); margin-top: 2px; }
-
-/* sf-wrap reveal */
-.sf-wrap { position: relative; clip-path: inset(0 0 100% 0); }
-.sf-wrap.reveal { animation: sfReveal 0.42s cubic-bezier(0.77,0,0.175,1) forwards; }
-@keyframes sfReveal { to { clip-path: inset(0 0 0% 0); } }
-
-/* expanded price stage */
-.exp-price-stage {
-  margin: 10px 12px 0;
-  padding: 18px 14px 14px;
-  background: linear-gradient(180deg, #1f1a12 0%, var(--lcd-bg) 100%);
-  border-radius: 8px;
-  text-align: center; position: relative;
-  box-shadow: inset 0 2px 12px rgba(0,0,0,0.7);
-}
-.exp-phase-label {
-  position: absolute; top: 7px; left: 10px;
-  font-size: 8px; font-weight: 700; color: #6a6460; letter-spacing: 1px;
-}
-.exp-main-change { font-size: 13px; font-weight: 700; margin-top: 8px; }
-.exp-ref-row {
-  margin-top: 8px; padding-top: 7px;
-  border-top: 1px solid rgba(255,255,255,0.07);
-  font-size: 11px; color: var(--muted);
-  overflow: hidden; perspective: 280px;
-}
-.exp-ref-inner {
-  display: block;
-  transform-origin: top center;
-  transform: rotateX(-90deg);
-  backface-visibility: hidden;
-}
-.exp-ref-inner.playing { animation: singleFlip 0.34s cubic-bezier(.2,1,.4,1) forwards; }
-@keyframes singleFlip {
-  0%   { transform: rotateX(-90deg); filter: brightness(0.5); }
-  65%  { transform: rotateX(5deg);   filter: brightness(1.2); }
-  100% { transform: rotateX(0deg);   filter: brightness(1); }
-}
-
-.exp-news-wrap {
-  flex: 1; overflow-y: auto;
-  margin: 10px 12px 12px;
-  background: rgba(0,0,0,0.18);
-  border: 1px solid rgba(217,205,184,0.12);
-  border-radius: 6px;
-  padding: 12px;
-}
-.exp-news-title {
-  font-size: 10px; font-weight: 700; color: var(--frame);
-  letter-spacing: 1px; margin-bottom: 8px;
-}
-.exp-news-item {
-  display: block; padding: 8px 10px; margin-bottom: 6px;
-  background: rgba(255,255,255,0.03);
-  border: 1px solid rgba(255,255,255,0.05);
-  border-radius: 5px; text-decoration: none;
-  transition: background 0.12s;
-}
-.exp-news-item:hover { background: rgba(255,255,255,0.07); }
-.exp-news-headline { font-size: 11px; color: var(--text); line-height: 1.5; }
-.exp-news-source   { font-size: 9px;  color: var(--muted); margin-top: 3px; }
-
-/* ─── MOBILE EXPANDED (≤ 720px) ──────────────── */
-@media (max-width: 720px) {
+  /* ── CARD 展開狀態：外層容器 ── */
   .card.expanded {
-    width: calc(100vw - 14px);
-    max-height: calc(100dvh - 14px);
-    overflow-y: auto;
+    cursor: default; position: fixed;
+    top: 50%; left: 50%;
+    width: min(1040px, calc(100vw - 32px));
+    max-height: calc(100vh - 32px);
+    transform: translate(-50%, -50%);
+    z-index: 1001;
+    background: transparent; border: none; box-shadow: none; padding: 0;
+    overflow: visible;
+    animation: cardQuietAppear 0.3s ease-out forwards;
   }
+  @keyframes cardQuietAppear {
+    0%   { opacity: 0; transform: translate(-50%,-50%) scale(0.96); }
+    100% { opacity: 1; transform: translate(-50%,-50%) scale(1); }
+  }
+  .card.expanded.closing { animation: cardQuietDisappear 0.28s ease-in forwards; }
+  @keyframes cardQuietDisappear {
+    0%   { opacity: 1; transform: translate(-50%,-50%) scale(1); }
+    100% { opacity: 0; transform: translate(-50%,-50%) scale(0.96); }
+  }
+
+  /* ── 展開後左右兩張卡片排版 ── */
   .card.expanded .card-body-split {
-    grid-template-columns: 1fr;
-    gap: 10px;
-    perspective: none;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+    perspective: 1200px;
   }
-  /* order: info top, chart middle, (news is inside info) */
-  .card.expanded .split-right { order: -1; height: auto; min-height: 0; }
-  .card.expanded .split-left  { order:  0; height: 260px; }
+  @media(max-width: 720px) {
+    .card.expanded { width: calc(100vw - 24px); }
+    .card.expanded .card-body-split { grid-template-columns: 1fr; }
+  }
 
-  .card.expanded .split-left .chart-container { margin: 8px; }
-}
+  /* ── 展開後兩張卡片共用外觀 ── */
+  .card.expanded .split-left,
+  .card.expanded .split-right {
+    background: linear-gradient(180deg, var(--window) 0%, var(--window-edge) 100%);
+    border: 2px solid var(--card-frame);
+    border-radius: 10px;
+    box-shadow: 0 6px 0 rgba(0,0,0,0.5), 0 12px 24px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.06);
+    overflow: hidden;
+    position: relative;
+    height: 460px;
+  }
+  .card.expanded .split-left  { display: flex; flex-direction: column; }
+  .card.expanded .split-right { display: flex; flex-direction: column; }
 
-/* ─── FOOTER ─────────────────────────────────── */
-.footer {
-  text-align: center; margin-top: 28px;
-  font-size: 9px; color: var(--muted); letter-spacing: 1px;
-}
+  /* ── unroll-card：clip-path 往下展開 ── */
+  .card.expanded .split-left,
+  .card.expanded .split-right {
+    clip-path: inset(0 0 99% 0 round 10px);
+    transform: scaleY(0.04);
+    transform-origin: top center;
+    opacity: 1;
+  }
+  .card.expanded .split-left.panel-flap,
+  .card.expanded .split-right.panel-flap {
+    animation: unrollDown 0.52s cubic-bezier(0.77,0,0.175,1) forwards;
+  }
+  @keyframes unrollDown {
+    0%   { clip-path: inset(0 0 99% 0 round 10px); transform: scaleY(0.04); }
+    100% { clip-path: inset(0 0 0%  0 round 10px); transform: scaleY(1); }
+  }
 
-/* hidden by default – shown only when expanded */
-.chart-container { display: none; }
-.card.expanded .chart-container { display: block; }
-.news-container { display: none; }
+  /* ── 左邊：圖表卡 ── */
+  .card.expanded .split-left { perspective: none; }
+  .card.expanded .split-left .chart-container {
+    flex: 1;
+    margin: 12px;
+    border-radius: 6px;
+    overflow: hidden;
+    border: 1px solid rgba(217,205,184,0.25);
+    background: #000;
+    box-shadow: inset 0 2px 8px rgba(0,0,0,0.6);
+    /* height 不動，讓 flex:1 決定，只用 opacity 淡入 */
+    opacity: 0;
+    transition: opacity 0.4s ease 0.3s;
+  }
+  .card.expanded .split-left .chart-container.show-chart {
+    opacity: 1;
+  }
+
+  /* ── 右邊：資訊卡內部結構 ── */
+  .card.expanded .split-right .card-header {
+    order: unset; flex: none;
+    display: flex; justify-content: space-between; align-items: flex-start;
+    padding: 14px 16px;
+    border-bottom: 1px solid rgba(217,205,184,0.2);
+  }
+  .card.expanded .card-sym { font-size: 20px; font-weight: 700; color: var(--digit); letter-spacing: 1px; }
+  .card.expanded .card-name { font-size: 10px; color: #aab09a; margin-top: 2px; }
+
+  /* sf-wrap：clip-path 揭露 */
+  .sf-wrap { position: relative; clip-path: inset(0 0 100% 0); }
+  .sf-wrap.reveal-full { animation: sfRevealFull 0.44s cubic-bezier(0.77,0,0.175,1) forwards; }
+  @keyframes sfRevealFull { 0% { clip-path: inset(0 0 100% 0); } 100% { clip-path: inset(0 0 0% 0); } }
+
+  /* 收盤大數字區塊 */
+  .expanded-price-stage {
+    padding: 16px 14px 12px;
+    background: linear-gradient(180deg, #5a4422 0%, #3d2e16 100%);
+    border: 1px solid rgba(0,0,0,0.35);
+    border-radius: 8px;
+    margin: 10px 12px 0;
+    text-align: center;
+    box-shadow: inset 0 2px 10px rgba(0,0,0,0.5);
+    position: relative;
+  }
+  .expanded-phase-label {
+    position: absolute; top: 6px; left: 10px;
+    font-size: 9px; font-weight: 700; color: #d9b87a; opacity: 0.8; letter-spacing: 1px;
+  }
+  .expanded-price-value {
+    font-family: 'DM Mono', monospace;
+    font-size: 44px; font-weight: 500; color: #ffd98a;
+    letter-spacing: 1px; text-shadow: 0 0 14px rgba(255,200,110,0.55);
+    line-height: 1; display: block;
+  }
+  .expanded-main-change { font-size: 13px; font-weight: 700; margin-top: 8px; }
+  .expanded-ref-row {
+    margin-top: 8px; padding-top: 8px;
+    border-top: 1px solid rgba(255,255,255,0.08);
+    font-size: 11px; color: #c9b48a;
+    overflow: hidden; perspective: 300px;
+  }
+  .expanded-ref-row #flipFront {
+    transform-origin: top center;
+    transform: rotateX(-90deg);
+    backface-visibility: hidden;
+    display: block;
+  }
+  .expanded-ref-row #flipFront.playing {
+    animation: singleFlipIn 0.34s cubic-bezier(.2,1,.4,1) forwards;
+  }
+  @keyframes singleFlipIn {
+    0%   { transform: rotateX(-90deg); filter: brightness(0.5); }
+    65%  { transform: rotateX(6deg);   filter: brightness(1.2); }
+    100% { transform: rotateX(0deg);   filter: brightness(1); }
+  }
+
+  /* 新聞區塊 */
+  .expanded-news-wrap {
+    flex: 1; overflow-y: auto;
+    margin: 10px 12px 12px;
+    background: rgba(0,0,0,0.2);
+    border: 1px solid rgba(217,205,184,0.15);
+    border-radius: 6px;
+    padding: 12px;
+  }
+  .expanded-news-title { font-size: 11px; font-weight: 700; color: var(--card-frame); letter-spacing: 1px; margin-bottom: 8px; }
+  .expanded-news-item { padding: 8px 10px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06); border-radius: 5px; margin-bottom: 6px; text-decoration: none; display: block; transition: background 0.15s; }
+  .expanded-news-item:hover { background: rgba(255,255,255,0.07); }
+  .expanded-news-headline { font-size: 11px; color: var(--text); line-height: 1.5; }
+  .expanded-news-source { font-size: 9px; color: var(--muted); margin-top: 3px; }
+
+  /* ── 遮罩 ── */
+  .card-overlay {
+    display: none; position: fixed; inset: 0;
+    background: rgba(0,0,0,0.65); z-index: 1000;
+    opacity: 0; transition: opacity 0.3s ease;
+  }
+  .card-overlay.show { display: block; opacity: 1; }
+
+  /* ── 幽靈佔位符：原卡片的半透明殘影，讓 grid 排版不跳動 ── */
+  .card-ghost {
+    border-radius: 18px;
+    background: linear-gradient(180deg, var(--window) 0%, var(--window-edge) 100%);
+    border: 3px solid var(--card-frame);
+    box-shadow: 0 6px 0 rgba(0,0,0,0.3), 0 10px 22px rgba(0,0,0,0.25);
+    opacity: 0.18;
+    pointer-events: none;
+    filter: blur(0.5px);
+    transition: opacity 0.3s ease;
+  }
+  /* 收合後：「已檢視」標記——邊框高光 + 右上角小光點 */
+  .card.recently-viewed {
+    border-color: rgba(240,201,135,0.7);
+    box-shadow:
+      0 6px 0 rgba(0,0,0,0.5),
+      0 10px 22px rgba(0,0,0,0.45),
+      inset 0 2px 6px rgba(0,0,0,0.3),
+      0 0 0 1px rgba(240,201,135,0.25),
+      0 0 18px rgba(240,201,135,0.12);
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  }
+  /* 右上角小光點 */
+  .card.recently-viewed::before {
+    content: '◉';
+    position: absolute;
+    top: 6px; right: 10px;
+    font-size: 8px;
+    color: rgba(240,201,135,0.8);
+    text-shadow: 0 0 6px rgba(240,201,135,0.6);
+    animation: recentPulse 2s ease-in-out infinite;
+  }
+  @keyframes recentPulse {
+    0%, 100% { opacity: 0.8; }
+    50%       { opacity: 0.3; }
+  }
+
+  /* ── 收合狀態的卡片內部元素 ── */
+  .card-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 14px; }
+  .card-sym { font-size: 20px; font-weight: 700; color: var(--digit); letter-spacing: 1px; }
+  .card-name { font-size: 10px; color: #aab09a; margin-top: 2px; }
+  .tag { font-size: 10px; font-weight: 700; padding: 3px 8px; border-radius: 4px; letter-spacing: 0.5px; }
+  .tag-post { background: #3a2a18; color: #e0b97d; border: 1px solid var(--knob); display: none; }
+  .tag-post.show { display: inline-block; }
+  .price-section {
+    position: relative; display: flex; flex-direction: column;
+    align-items: center; justify-content: center; min-height: 92px;
+    background: linear-gradient(180deg, #5a4422 0%, #3d2e16 100%);
+    border: 1px solid rgba(0,0,0,0.35); border-radius: 10px;
+    box-shadow: inset 0 2px 10px rgba(0,0,0,0.5), inset 0 0 30px rgba(240,180,90,0.12);
+    padding: 18px 14px 14px; text-align: center;
+  }
+  .phase-corner-label { position: absolute; top: 8px; left: 10px; font-size: 9px; font-weight: 700; color: #d9b87a; letter-spacing: 1px; opacity: 0.75; }
+  .price-value { font-family: 'DM Mono', monospace; font-size: 32px; font-weight: 500; color: #ffd98a; letter-spacing: 1px; text-shadow: 0 0 14px rgba(255,200,110,0.55); line-height: 1; display: inline-block; }
+  .price-value.tick { animation: digitTick 0.28s cubic-bezier(0.34,1.56,0.64,1); }
+  @keyframes digitTick { 0% { transform: translateY(-6px); opacity: 0.4; } 60% { transform: translateY(1px); opacity: 1; } 100% { transform: translateY(0); opacity: 1; } }
+  .main-change { font-size: 12px; font-weight: 700; margin-top: 6px; }
+  .ref-price { margin-top: 10px; padding-top: 8px; border-top: 1px solid rgba(255,255,255,0.08); width: 100%; font-size: 11px; color: #c9b48a; display: flex; justify-content: center; gap: 6px; align-items: baseline; }
+  .ref-price .ref-tag { opacity: 0.6; font-size: 10px; }
+  .ref-price .ref-value { font-family: 'DM Mono', monospace; color: #e8d4a8; }
+  .up   { color: var(--up);   background: #00e67615; border: 1px solid #00e67630; }
+  .down { color: var(--down); background: #ff174415; border: 1px solid #ff174430; }
+  .divider { display: none; }
+
+  /* ── 收合卡片的 split-flap 數字翻頁結構 ──
+     正式盤期間，數字更新時用上下兩葉片翻頁呈現，而不是直接跳字。
+     結構跟 v15 demo 完全相同：
+     .pf-wrap     : perspective 容器
+     .pf-stack    : 固定高度的視窗
+     .pf-static-t : 靜態上半窗（永遠顯示最新值的上半部）
+     .pf-static-b : 靜態下半窗（永遠顯示最新值的下半部）
+     .pf-front    : 翻動層上半，顯示舊值上半，從 0deg 轉到 -90deg 消失
+     .pf-back     : 翻動層下半，顯示新值下半，從 90deg 轉回 0deg */
+  .pf-wrap {
+    perspective: 240px;
+    display: flex;
+    justify-content: center;
+  }
+  .pf-stack {
+    position: relative;
+    height: 40px;
+    width: 200px;
+  }
+  .pf-half {
+    position: absolute; left: 0; right: 0; height: 20px;
+    overflow: hidden; display: flex; justify-content: center;
+    font-family: 'DM Mono', monospace; font-size: 32px; font-weight: 500;
+    color: #ffd98a; text-shadow: 0 0 14px rgba(255,200,110,0.55);
+    background: #14120d; border-radius: 3px;
+  }
+  .pf-static-t { top: 0; align-items: flex-end; border-bottom: 1px solid #000; }
+  .pf-static-t span { transform: translateY(50%); }
+  .pf-static-b { bottom: 0; align-items: flex-start; }
+  .pf-static-b span { transform: translateY(-50%); }
+  .pf-front, .pf-back {
+    position: absolute; left: 0; right: 0; height: 20px;
+    overflow: hidden; display: flex; justify-content: center;
+    font-family: 'DM Mono', monospace; font-size: 32px; font-weight: 500;
+    color: #ffd98a; text-shadow: 0 0 14px rgba(255,200,110,0.55);
+    background: #1c1812; backface-visibility: hidden; border-radius: 3px;
+  }
+  .pf-front { top: 0; align-items: flex-end; transform-origin: bottom center; z-index: 5; border-bottom: 1px solid #000; }
+  .pf-front span { transform: translateY(50%); }
+  .pf-back  { bottom: 0; align-items: flex-start; transform-origin: top center; transform: rotateX(90deg); z-index: 4; }
+  .pf-back  span { transform: translateY(-50%); }
+  .pf-seam {
+    position: absolute; left: 2px; right: 2px; top: 50%; height: 2px;
+    transform: translateY(-1px);
+    background: linear-gradient(180deg, rgba(0,0,0,0.7), rgba(0,0,0,0.9));
+    z-index: 6; pointer-events: none;
+  }
+  .pf-front.flipping { animation: pfFrontDown 0.32s cubic-bezier(.5,0,.75,.3) forwards; }
+  @keyframes pfFrontDown {
+    0%   { transform: rotateX(0deg);   filter: brightness(1); }
+    100% { transform: rotateX(-90deg); filter: brightness(0.45); }
+  }
+  .pf-back.flipping  { animation: pfBackUp 0.30s cubic-bezier(.2,1,.4,1) 0.28s forwards; }
+  @keyframes pfBackUp {
+    0%   { transform: rotateX(90deg); filter: brightness(0.45); }
+    65%  { transform: rotateX(-8deg); filter: brightness(1.25); }
+    100% { transform: rotateX(0deg);  filter: brightness(1); }
+  }
+
+  /* 收合狀態的 chart-container */
+  .chart-container {
+    margin-top: 0; border: 2px solid #d9cdb3; border-radius: 10px;
+    overflow: hidden; height: 0; max-height: 0; background: #000; opacity: 0;
+    box-shadow: inset 0 2px 10px rgba(0,0,0,0.6);
+    transition: height 0.5s cubic-bezier(0.25,0.1,0.25,1), margin-top 0.5s cubic-bezier(0.25,0.1,0.25,1), opacity 0.4s ease;
+  }
+
+  .news-container { display: none; }
+  .news-header { font-size: 12px; font-weight: 700; color: var(--card-frame); letter-spacing: 1px; margin-bottom: 10px; }
+  .news-list { display: flex; flex-direction: column; gap: 8px; }
+  .news-item { display: block; padding: 10px 12px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06); border-radius: 6px; text-decoration: none; transition: background 0.15s; }
+  .news-item:hover { background: rgba(255,255,255,0.07); }
+  .news-headline { font-size: 12px; color: var(--text); line-height: 1.5; }
+  .news-source { font-size: 10px; color: var(--muted); margin-top: 4px; }
+  .footer { text-align: center; margin-top: 24px; font-size: 10px; color: var(--muted); letter-spacing: 1px; }
 </style>
 </head>
 <body>
 
 <div class="topbar">
   <div class="logo">美股情報 PRO</div>
-  <div class="topbar-right">
+  <div>
     <div class="hero-time" id="heroTime">00:00</div>
     <div class="hero-date" id="heroDate"></div>
   </div>
 </div>
 
-<div class="card-overlay" id="cardOverlay"></div>
+<div class="card-overlay" id="cardOverlay" onclick="if(expandedSym) toggleCard(expandedSym,'')"></div>
 <div class="grid" id="grid"></div>
 <div class="footer">YAHOO FINANCE · 點擊卡片展開圖表</div>
 
 <script>
-/* ─── DATA ───────────────────────────────────── */
 const STOCKS = [
   {sym:'NOW',  name:'ServiceNow', ex:'NYSE'},
   {sym:'NVDA', name:'Nvidia',     ex:'NASDAQ'},
@@ -494,32 +399,22 @@ const STOCKS = [
   {sym:'TSM',  name:'TSMC',       ex:'NYSE'},
   {sym:'MU',   name:'Micron',     ex:'NASDAQ'},
   {sym:'SNDK', name:'SanDisk',    ex:'NASDAQ'},
-  {sym:'TSLA', name:'Tesla',      ex:'NASDAQ'},
+  {sym:'TSLA', name:'Tesla',      ex:'NASDAQ'}
 ];
 
-/* ─── STATE ──────────────────────────────────── */
-let expandedSym      = null;
-let pendingTimers    = [];
-let collapsingViaBack = false;
+let expandedSym = null;
+let pendingAnimTimers = [];
 
-// Bug 2 fix: track first-load flag properly
-let isFirstLoad = !sessionStorage.getItem('hasLoaded');
-const lastPhase = {};
-
-/* ─── CLOCK ──────────────────────────────────── */
 function updateClock() {
   const now = new Date();
   const pad = n => String(n).padStart(2,'0');
-  document.getElementById('heroTime').textContent =
-    `${pad(now.getHours())}:${pad(now.getMinutes())}`;
+  document.getElementById('heroTime').textContent = `${pad(now.getHours())}:${pad(now.getMinutes())}`;
   const days = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
-  document.getElementById('heroDate').textContent =
-    `${now.getFullYear()}/${pad(now.getMonth()+1)}/${pad(now.getDate())} ${days[now.getDay()]}`;
+  document.getElementById('heroDate').textContent = `${now.getFullYear()}/${pad(now.getMonth()+1)}/${pad(now.getDate())} ${days[now.getDay()]}`;
 }
 setInterval(updateClock, 1000);
 updateClock();
 
-/* ─── BUILD GRID ─────────────────────────────── */
 function buildGrid() {
   document.getElementById('grid').innerHTML = STOCKS.map(s => `
     <div class="card" id="card-${s.sym}" onclick="toggleCard('${s.sym}','${s.ex}')">
@@ -535,402 +430,247 @@ function buildGrid() {
               <div class="card-sym">${s.sym}</div>
               <div class="card-name">${s.name}</div>
             </div>
-            <span class="tag-post" id="badge-${s.sym}">盤後</span>
+            <span class="tag tag-post" id="badge-${s.sym}">盤後</span>
           </div>
           <div class="price-section">
-            <span class="phase-label" id="phase-label-${s.sym}">現價</span>
-            <div class="lcd-frame">
-              <div class="pf-wrap">
-                <div class="pf-stack">
-                  <div class="pf-half pf-static-t" id="pf-st-${s.sym}"><span>—</span></div>
-                  <div class="pf-half pf-static-b" id="pf-sb-${s.sym}"><span>—</span></div>
-                  <div class="pf-half pf-front"    id="pf-fr-${s.sym}"><span>—</span></div>
-                  <div class="pf-half pf-back"     id="pf-bk-${s.sym}"><span>—</span></div>
-                </div>
-              </div>
-              <div class="main-change" id="main-chg-${s.sym}"></div>
-              <div class="ref-price" id="sub-row-${s.sym}" style="display:none;">
-                <span class="ref-tag" id="sub-label-${s.sym}">昨收</span>
-                <span class="ref-value" id="sub-${s.sym}">—</span>
-                <span id="sub-chg-${s.sym}"></span>
+            <span class="phase-corner-label" id="phase-label-${s.sym}">現價</span>
+            <div class="pf-wrap">
+              <div class="pf-stack">
+                <div class="pf-half pf-static-t" id="pf-st-${s.sym}"><span>—</span></div>
+                <div class="pf-half pf-static-b" id="pf-sb-${s.sym}"><span>—</span></div>
+                <div class="pf-half pf-front" id="pf-fr-${s.sym}"><span>—</span></div>
+                <div class="pf-half pf-back"  id="pf-bk-${s.sym}"><span>—</span></div>
               </div>
             </div>
+            <div class="main-change" id="main-chg-${s.sym}"></div>
+            <div class="ref-price" id="sub-row-${s.sym}" style="display:none;">
+              <span class="ref-tag" id="sub-label-${s.sym}">收盤</span>
+              <span class="ref-value" id="sub-${s.sym}">—</span>
+              <span class="ref-change" id="sub-chg-${s.sym}"></span>
+            </div>
           </div>
-          <div class="news-container" id="news-list-${s.sym}"></div>
+          <div class="news-container" id="news-container-${s.sym}">
+            <div class="news-header">📰 最新消息</div>
+            <div class="news-list" id="news-list-${s.sym}"></div>
+          </div>
         </div>
       </div>
     </div>
   `).join('');
-  fixLastRow();
+  fixLastRowLayout();
 }
 
-/* ─── LAYOUT ─────────────────────────────────── */
-function fixLastRow() {
+function fixLastRowLayout() {
   const grid = document.getElementById('grid');
   if (!grid) return;
-  grid.querySelectorAll('.last-row-solo,.last-row-pair-1,.last-row-pair-2')
+  grid.querySelectorAll('.last-row-solo, .last-row-pair-1, .last-row-pair-2')
     .forEach(el => el.classList.remove('last-row-solo','last-row-pair-1','last-row-pair-2'));
-  if (window.innerWidth < 1000) return; // desktop only
-  const items = Array.from(grid.querySelectorAll('.card:not(.expanded),.card-ghost'));
-  const r = items.length % 3;
-  if (r === 1) items[items.length-1].classList.add('last-row-solo');
-  else if (r === 2) {
-    items[items.length-2].classList.add('last-row-pair-1');
-    items[items.length-1].classList.add('last-row-pair-2');
-  }
+  if (window.innerWidth < 1000) return;
+  // 幽靈佔位符(.card-ghost)也算佔了一個格子，跟真正的卡片一起計算最後一行
+  const cards = Array.from(grid.querySelectorAll('.card:not(.expanded), .card-ghost'));
+  const total = cards.length;
+  const remainder = total % 3;
+  if (remainder === 1) cards[total-1].classList.add('last-row-solo');
+  else if (remainder === 2) { cards[total-2].classList.add('last-row-pair-1'); cards[total-1].classList.add('last-row-pair-2'); }
 }
-window.addEventListener('resize', fixLastRow);
+window.addEventListener('resize', fixLastRowLayout);
 
-/* ─── FLIP HELPERS ───────────────────────────── */
-function setColor(sym, isUp) {
-  const cls = isUp ? 'color-up' : 'color-down';
-  const rem = isUp ? 'color-down' : 'color-up';
-  ['pf-st','pf-sb','pf-fr','pf-bk'].forEach(id => {
-    const el = document.getElementById(`${id}-${sym}`);
-    if (el) { el.classList.remove(rem); el.classList.add(cls); }
-  });
-}
-
-function setDirect(sym, val) {
-  ['pf-st','pf-sb','pf-fr','pf-bk'].forEach(id => {
-    const el = document.getElementById(`${id}-${sym}`);
-    if (el) el.querySelector('span').textContent = val;
-  });
-}
-
-function flipDigit(sym, newVal) {
-  const st = document.getElementById(`pf-st-${sym}`);
-  const sb = document.getElementById(`pf-sb-${sym}`);
-  const fr = document.getElementById(`pf-fr-${sym}`);
-  const bk = document.getElementById(`pf-bk-${sym}`);
-  if (!st) return;
-  const oldVal = st.querySelector('span').textContent;
-  if (oldVal === newVal) return;
-  fr.querySelector('span').textContent = oldVal;
-  fr.classList.remove('flipping'); bk.classList.remove('flipping');
-  void fr.offsetWidth;
-  st.querySelector('span').textContent = newVal;
-  sb.querySelector('span').textContent = oldVal;
-  bk.querySelector('span').textContent = newVal;
-  fr.classList.add('flipping'); bk.classList.add('flipping');
-  setTimeout(() => { if (sb) sb.querySelector('span').textContent = newVal; }, 640);
-}
-
-/* ─── RENDER PRICE ───────────────────────────── */
-function renderPrice(sym, q) {
-  if (!q) return;
-
-  const c          = parseFloat(q.c ?? q.regular ?? 0);
-  const regular    = parseFloat(q.regular ?? q.c ?? 0);
-  const prevClose  = parseFloat(q.prev_close ?? regular);
-  const phase      = q.phase || '正式盤';
-  const valStr     = `$${c.toFixed(2)}`;
-
-  // phase label：只在正式盤顯示「現價」，盤前/盤後右上角 badge 已有標示，不重複
-  const phaseLabel = document.getElementById(`phase-label-${sym}`);
-  if (phaseLabel) {
-    if (phase === '正式盤') {
-      phaseLabel.textContent = '現價';
-      phaseLabel.classList.remove('hide');
-    } else {
-      phaseLabel.classList.add('hide');
-    }
-  }
-
-  // change (always relative to prev_close, use backend values)
-  const chgAmt = q.d  !== undefined ? parseFloat(q.d)  : (c - prevClose);
-  const chgPct = q.dp !== undefined ? parseFloat(q.dp) : (prevClose ? chgAmt/prevClose*100 : 0);
-  const isUp   = chgAmt >= 0;
-  const sign   = isUp ? '▲' : '▼';
-  const dir    = isUp ? 'up' : 'down';
-
-  setColor(sym, isUp);
-
-  const phaseChanged = lastPhase[sym] !== undefined && lastPhase[sym] !== phase;
-
-  if (phaseChanged) {
-    const old = document.getElementById(`pf-st-${sym}`)?.querySelector('span')?.textContent || '—';
-    setDirect(sym, valStr);
-    const fr = document.getElementById(`pf-fr-${sym}`);
-    const bk = document.getElementById(`pf-bk-${sym}`);
-    const sb = document.getElementById(`pf-sb-${sym}`);
-    if (fr && bk) {
-      fr.querySelector('span').textContent = old;
-      sb.querySelector('span').textContent = old;
-      document.getElementById(`pf-st-${sym}`).querySelector('span').textContent = valStr;
-      bk.querySelector('span').textContent = valStr;
-      fr.classList.remove('flipping'); bk.classList.remove('flipping');
-      void fr.offsetWidth;
-      fr.classList.add('flipping'); bk.classList.add('flipping');
-      setTimeout(() => { if (sb) sb.querySelector('span').textContent = valStr; }, 640);
-    }
-  } else if (phase === '正式盤') {
-    flipDigit(sym, valStr);
-  } else {
-    setDirect(sym, valStr);
-  }
-
-  lastPhase[sym] = phase;
-
-  // 主行漲跌：永遠相對昨收
-  document.getElementById(`main-chg-${sym}`).innerHTML =
-    `<span class="${dir}">${sign} ${Math.abs(chgAmt).toFixed(2)} (${Math.abs(chgPct).toFixed(2)}%)</span>`;
-
-  // badge：盤前/盤後才顯示
-  const badge = document.getElementById(`badge-${sym}`);
-  if (phase==='盤前'||phase==='盤後') { badge.textContent=phase; badge.classList.add('show'); }
-  else badge.classList.remove('show');
-
-  // 副行邏輯整理：
-  // 盤後：顯示「收盤 $xxx」，不帶%（%數已在主行顯示，重複顯示容易搞混）
-  // 盤前：顯示「昨收 $xxx」，不帶%（昨收是參考基準，不需要算漲跌）
-  // 正式盤：隱藏副行
-  const subRow   = document.getElementById(`sub-row-${sym}`);
-  const subLabel = document.getElementById(`sub-label-${sym}`);
-  const subEl    = document.getElementById(`sub-${sym}`);
-  const subChg   = document.getElementById(`sub-chg-${sym}`);
-
-  if (phase === '盤後') {
-    // 盤後：主行=盤後價+漲跌，副行=收盤+收盤漲跌（跟 TradingView 一致）
-    subRow.style.display = 'flex';
-    subLabel.textContent = '收盤';
-    subEl.textContent = `$${regular.toFixed(2)}`;
-    const rc = regular - prevClose;
-    const rp = prevClose ? rc/prevClose*100 : 0;
-    const rd = rc>=0?'up':'down', rs = rc>=0?'▲':'▼';
-    subChg.innerHTML = `<span class="${rd}">${rs} ${Math.abs(rc).toFixed(2)} (${Math.abs(rp).toFixed(2)}%)</span>`;
-  } else if (phase === '盤前') {
-    // 盤前：主行=盤前價+漲跌，副行=昨收（純參考基準，不帶%）
-    subRow.style.display = 'flex';
-    subLabel.textContent = '昨收';
-    subEl.textContent = `$${regular.toFixed(2)}`;
-    subChg.innerHTML = '';
-  } else {
-    subRow.style.display = 'none';
-  }
-}
-
-/* ─── RENDER NEWS ─────────────────────────────── */
-function renderNews(sym, list) {
-  const el = document.getElementById(`news-list-${sym}`);
-  if (!el) return;
-  el.innerHTML = list.length
-    ? list.map(n => `<a class="exp-news-item" href="${n.url}" target="_blank" rel="noopener noreferrer"><div class="exp-news-headline">${n.headline}</div><div class="exp-news-source">${n.source}</div></a>`).join('')
-    : '<div style="font-size:10px;color:#7a7468;">暫無相關新聞</div>';
-}
-
-/* ─── LOAD DATA ──────────────────────────────── */
-async function loadData() {
-  try {
-    const res  = await fetch('./stock_data.json?t=' + Date.now());
-    const json = await res.json();
-
-    const doRender = (s, data, delay) => {
-      setTimeout(() => {
-        if (data?.quote) renderPrice(s.sym, data.quote);
-        if (data?.news)  renderNews(s.sym, data.news);
-      }, delay);
-    };
-
-    if (isFirstLoad) {
-      // Bug 2 fix: mark done BEFORE stagger timeouts fire,
-      // but keep the isFirstLoad flag true until all cards processed
-      const staggerMs = 75;
-      STOCKS.forEach((s, i) => doRender(s, json.data?.[s.sym], i * staggerMs));
-      // Mark session done after last card's timeout
-      setTimeout(() => {
-        sessionStorage.setItem('hasLoaded','1');
-        isFirstLoad = false;
-      }, STOCKS.length * staggerMs + 100);
-    } else {
-      STOCKS.forEach(s => doRender(s, json.data?.[s.sym], 0));
-    }
-  } catch (e) { console.error(e); }
-}
-
-/* ─── COLLAPSE ───────────────────────────────── */
 function collapseCard(sym) {
   const card = document.getElementById(`card-${sym}`);
   if (!card) return;
-  document.getElementById('cardOverlay').classList.remove('show');
-  document.body.classList.remove('scroll-locked');
+  const overlay = document.getElementById('cardOverlay');
   card.classList.add('closing');
 
-  // stop chart
-  const iframe = document.getElementById(`chart-${sym}`);
-  if (iframe) iframe.src = '';
+  // 幽靈在收合動畫結束時（280ms）就立刻移除，避免空洞閃爍
+  pendingAnimTimers.push(setTimeout(() => {
+    const ghost = document.getElementById(`ghost-${sym}`);
+    if (ghost) ghost.remove();
+  }, 280));
 
-  // remove ghost early (matches close animation duration)
-  setTimeout(() => {
-    document.getElementById(`ghost-${sym}`)?.remove();
-  }, 240);
-
-  setTimeout(() => {
+  pendingAnimTimers.push(setTimeout(() => {
     card.classList.remove('expanded','closing');
-    // restore split-right original HTML
     const sr = card.querySelector('.split-right');
-    if (sr?.dataset.expanded) {
+    if (sr && sr.dataset.expanded) {
       sr.innerHTML = sr.dataset.originalHtml;
       delete sr.dataset.expanded;
       delete sr.dataset.originalHtml;
     }
-    card.querySelector('.split-left')?.classList.remove('panel-flap');
-    card.classList.add('recently-viewed');
-    fixLastRow();
-  }, 360);
+    const sl = card.querySelector('.split-left');
+    sl?.classList.remove('panel-flap');
 
+    // 加上「已檢視」標記
+    card.classList.add('recently-viewed');
+
+    fixLastRowLayout();
+  }, 360));
+  overlay.classList.remove('show');
+  document.body.classList.remove('scroll-locked');
+  const chartEl = document.getElementById(`chart-${sym}`);
+  if (chartEl) chartEl.src = '';
   expandedSym = null;
 }
 
-/* ─── TOGGLE ─────────────────────────────────── */
 function toggleCard(sym, ex) {
-  pendingTimers.forEach(clearTimeout);
-  pendingTimers = [];
+  pendingAnimTimers.forEach(id => clearTimeout(id));
+  pendingAnimTimers = [];
 
-  const card      = document.getElementById(`card-${sym}`);
-  const isExp     = card.classList.contains('expanded');
-  const overlay   = document.getElementById('cardOverlay');
+  const card = document.getElementById(`card-${sym}`);
+  const isExpanded = card.classList.contains('expanded');
+  const overlay = document.getElementById('cardOverlay');
 
   if (expandedSym && expandedSym !== sym) collapseCard(expandedSym);
 
-  if (!isExp) {
-    /* ── pre-expand ── */
-    // clear all recently-viewed marks
-    document.querySelectorAll('.card.recently-viewed')
-      .forEach(c => c.classList.remove('recently-viewed'));
+  if (!isExpanded) {
+    // Bug 8 fix：等 360ms 讓 collapseCard 的 recently-viewed 加上去後，再清掉
+    setTimeout(() => {
+      document.querySelectorAll('.card.recently-viewed').forEach(c => c.classList.remove('recently-viewed'));
+    }, 361);
 
-    // ghost placeholder
+    // 在原位插入幽靈佔位符，高度跟卡片一樣，讓 grid 不跳動
     const ghost = document.createElement('div');
-    ghost.id        = `ghost-${sym}`;
+    ghost.id = `ghost-${sym}`;
     ghost.className = 'card-ghost';
-    const cs        = window.getComputedStyle(card);
-    ghost.style.gridColumn = cs.gridColumn;
-    ghost.style.gridRow    = cs.gridRow;
-    ghost.style.height     = card.offsetHeight + 'px';
+    // 複製卡片的 grid-column 跟計算高度
+    const cardStyle = window.getComputedStyle(card);
+    ghost.style.gridColumn = cardStyle.gridColumn;
+    ghost.style.gridRow = cardStyle.gridRow;
+    ghost.style.height = card.offsetHeight + 'px';
     card.parentNode.insertBefore(ghost, card.nextSibling);
 
     card.classList.add('expanded');
     expandedSym = sym;
     history.pushState({ expanded: sym }, '');
     overlay.classList.add('show');
-    overlay.onclick = () => toggleCard(sym, ex); // click overlay to close
     document.body.classList.add('scroll-locked');
-    fixLastRow();
+    fixLastRowLayout();
 
-    const splitLeft  = card.querySelector('.split-left');
+    const splitLeft = card.querySelector('.split-left');
     const splitRight = card.querySelector('.split-right');
 
-    /* ── build right panel ── */
-    // read current display values from DOM
+    // 右欄：注入展開後的新內容（收盤大字 + sf-wrap 揭露 + 盤後翻頁）
+    // 先備份原本的 HTML 以便收合時還原
+    splitRight.dataset.originalHtml = splitRight.innerHTML;
+    splitRight.dataset.expanded = '1';
+
+    // 從現有資料取得目前的數字資訊
     const mainVal = document.getElementById(`pf-st-${sym}`)?.querySelector('span')?.textContent || '—';
     const mainChg = document.getElementById(`main-chg-${sym}`)?.innerHTML || '';
-    const phase   = document.getElementById(`phase-label-${sym}`)?.textContent || '現價';
-    const subVal  = document.getElementById(`sub-${sym}`)?.textContent || '';
-    const subChg  = document.getElementById(`sub-chg-${sym}`)?.innerHTML || '';
+    const subLabel = document.getElementById(`sub-label-${sym}`)?.textContent || '';
+    const subVal   = document.getElementById(`sub-${sym}`)?.textContent || '';
+    const subChg   = document.getElementById(`sub-chg-${sym}`)?.innerHTML || '';
+    const subRowDisplay = document.getElementById(`sub-row-${sym}`)?.style.display || 'none';
+    const phaseLabel = document.getElementById(`phase-label-${sym}`)?.textContent || '現價';
     const badgeEl = document.getElementById(`badge-${sym}`);
-    const badgeHtml = badgeEl?.classList.contains('show')
-      ? `<span class="tag-post show">${badgeEl.textContent}</span>` : '';
+    const badgeHtml = badgeEl?.classList.contains('show') ? `<span class="tag tag-post show">${badgeEl.textContent}</span>` : '';
 
-    const isPost = phase === '盤後';
-    const isPre  = phase === '盤前';
+    // Bug 3 fix：bigLabel 盤後顯示「盤後」不是「收盤」，跟實際數字對應
+    const isPost  = phaseLabel === '盤後';
+    const isPre   = phaseLabel === '盤前';
+    const bigLabel  = isPost ? '盤後' : (isPre ? '盤前' : '現價');
+    const bigVal    = mainVal;
+    const bigChg    = mainChg;
+    const refLabel  = isPost ? '收盤' : '';
+    const refVal    = isPost ? subVal : '';
+    const refChg    = isPost ? subChg : '';
+    const showRef   = isPost && refVal !== '—';
 
-    // Bug 3 fix: phase label matches actual displayed number
-    // always show current price (c) as big number
-    const bigLabel = isPre ? '盤前' : (isPost ? '盤後' : '現價');
-    const bigVal   = mainVal;
-    const bigChg   = mainChg;
-
-    // Bug 3 fix: ref row only for post-market
-    const showRef  = isPost;
-    const refText  = showRef ? `收盤 ${subVal}` : '';
-
-    const pfColor  = document.getElementById(`pf-st-${sym}`)?.classList.contains('color-up')
-      ? 'color-up' : 'color-down';
-
-    const newsEl   = document.getElementById(`news-list-${sym}`);
-    const newsHtml = newsEl?.innerHTML || '<div style="font-size:10px;color:#7a7468;">暫無相關新聞</div>';
-
-    splitRight.dataset.originalHtml = splitRight.innerHTML;
-    splitRight.dataset.expanded     = '1';
+    // 取得新聞列表
+    const newsList = document.getElementById(`news-list-${sym}`);
+    const newsHtml = newsList ? newsList.innerHTML : '';
 
     splitRight.innerHTML = `
-      <div class="exp-header">
+      <div class="card-header">
         <div>
-          <div class="exp-sym">${sym}</div>
-          <div class="exp-name">${STOCKS.find(s=>s.sym===sym)?.name||''}</div>
+          <div class="card-sym">${sym}</div>
+          <div class="card-name">${STOCKS.find(s=>s.sym===sym)?.name||''}</div>
         </div>
         ${badgeHtml}
       </div>
-      <div class="sf-wrap" id="exp-price-${sym}">
-        <div class="exp-price-stage">
-          <span class="exp-phase-label">${bigLabel}</span>
+      <div class="sf-wrap" id="exp-secPrice-${sym}">
+        <div class="expanded-price-stage">
+          <span class="expanded-phase-label">${bigLabel}</span>
           <div class="pf-wrap" style="margin:4px 0;">
-            <div class="pf-stack" style="width:260px;height:52px;">
-              <div class="pf-half pf-static-t ${pfColor}" id="epf-st-${sym}" style="height:26px;font-size:44px;"><span style="font-size:44px;">—</span></div>
-              <div class="pf-half pf-static-b ${pfColor}" id="epf-sb-${sym}" style="height:26px;font-size:44px;"><span style="font-size:44px;">—</span></div>
-              <div class="pf-half pf-front ${pfColor}"    id="epf-fr-${sym}" style="height:26px;font-size:44px;"><span style="font-size:44px;">—</span></div>
-              <div class="pf-half pf-back  ${pfColor}"    id="epf-bk-${sym}" style="height:26px;font-size:44px;"><span style="font-size:44px;">—</span></div>
+            <div class="pf-stack" style="width:240px; height:48px;">
+              <div class="pf-half pf-static-t" id="exp-pf-st-${sym}" style="height:24px; font-size:40px;"><span style="font-size:40px;">—</span></div>
+              <div class="pf-half pf-static-b" id="exp-pf-sb-${sym}" style="height:24px; font-size:40px;"><span style="font-size:40px;">—</span></div>
+              <div class="pf-half pf-front"    id="exp-pf-fr-${sym}" style="height:24px; font-size:40px;"><span style="font-size:40px;">—</span></div>
+              <div class="pf-half pf-back"     id="exp-pf-bk-${sym}" style="height:24px; font-size:40px;"><span style="font-size:40px;">—</span></div>
             </div>
           </div>
-          <div class="exp-main-change">${bigChg}</div>
-          ${showRef ? `<div class="exp-ref-row"><span class="exp-ref-inner" id="exp-ref-${sym}">${refText} ${subChg}</span></div>` : ''}
+          <div class="expanded-main-change">${bigChg}</div>
+          ${showRef ? `
+          <div class="expanded-ref-row">
+            <span id="exp-flipFront-${sym}" style="font-size:11px; color:#c9b48a;">${refLabel} ${refVal} ${refChg}</span>
+          </div>` : ''}
         </div>
       </div>
-      <div class="sf-wrap" id="exp-news-${sym}">
-        <div class="exp-news-wrap">
-          <div class="exp-news-title">📰 最新消息</div>
-          ${newsHtml}
+      <div class="sf-wrap" id="exp-secNews-${sym}">
+        <div class="expanded-news-wrap">
+          <div class="expanded-news-title">📰 最新消息</div>
+          ${newsHtml ? newsHtml.replace(/class="news-item"/g,'class="expanded-news-item"').replace(/class="news-headline"/g,'class="expanded-news-headline"').replace(/class="news-source"/g,'class="expanded-news-source"') : '<div style="font-size:11px;color:#7a7468;">暫無相關新聞</div>'}
         </div>
-      </div>`;
+      </div>
+    `;
 
-    /* ── animate ── */
-    // chart iframe
-    pendingTimers.push(setTimeout(() => {
-      document.getElementById(`chart-${sym}`).src =
-        `https://www.tradingview.com/widgetembed/?symbol=${ex}:${sym}&interval=D&hidesidetoolbar=1&theme=dark&style=1&timezone=Asia/Taipei&locale=zh_TW`;
+    // 左欄：載入圖表
+    const chartEl = document.getElementById(`chart-${sym}`);
+    pendingAnimTimers.push(setTimeout(() => {
+      chartEl.src = `https://www.tradingview.com/widgetembed/?symbol=${ex}:${sym}&interval=D&hidesidetoolbar=1&theme=dark&style=1&timezone=Asia/Taipei&locale=zh_TW`;
     }, 300));
 
-    // unroll left then right
-    pendingTimers.push(setTimeout(() => splitLeft.classList.add('panel-flap'),  60));
-    pendingTimers.push(setTimeout(() => splitRight.classList.add('panel-flap'), 130));
+    // 左右兩張卡依序 unroll 展開
+    pendingAnimTimers.push(setTimeout(() => splitLeft.classList.add('panel-flap'), 60));
+    pendingAnimTimers.push(setTimeout(() => splitRight.classList.add('panel-flap'), 120));
 
-    // chart fade-in
-    pendingTimers.push(setTimeout(() => {
-      splitLeft.querySelector('.chart-container')?.classList.add('show-chart');
-    }, 560));
+    // 左邊圖表 show-chart
+    pendingAnimTimers.push(setTimeout(() => {
+      const cc = splitLeft.querySelector('.chart-container');
+      if (cc) cc.classList.add('show-chart');
+    }, 580));
 
-    // Bug 4 fix: secPrice then flip, then secNews
-    pendingTimers.push(setTimeout(() => {
-      document.getElementById(`exp-price-${sym}`)?.classList.add('reveal');
-    }, 660));
+    // 右邊：secPrice 揭露
+    pendingAnimTimers.push(setTimeout(() => {
+      const sp = document.getElementById(`exp-secPrice-${sym}`);
+      if (sp) sp.classList.add('reveal-full');
+    }, 680));
 
-    // big digit flip
-    pendingTimers.push(setTimeout(() => {
-      const fr = document.getElementById(`epf-fr-${sym}`);
-      const bk = document.getElementById(`epf-bk-${sym}`);
-      const st = document.getElementById(`epf-st-${sym}`);
-      const sb = document.getElementById(`epf-sb-${sym}`);
-      if (!fr) return;
-      fr.querySelector('span').textContent = '—';
-      sb.querySelector('span').textContent = '—';
-      st.querySelector('span').textContent = bigVal;
-      bk.querySelector('span').textContent = bigVal;
-      fr.classList.remove('flipping'); bk.classList.remove('flipping');
-      void fr.offsetWidth;
-      fr.classList.add('flipping'); bk.classList.add('flipping');
-      setTimeout(() => { if (sb) sb.querySelector('span').textContent = bigVal; }, 640);
-    }, 1100));
+    // secPrice 揭露完成後，大數字翻頁進場
+    pendingAnimTimers.push(setTimeout(() => {
+      const stEl = document.getElementById(`exp-pf-st-${sym}`);
+      const sbEl = document.getElementById(`exp-pf-sb-${sym}`);
+      const frEl = document.getElementById(`exp-pf-fr-${sym}`);
+      const bkEl = document.getElementById(`exp-pf-bk-${sym}`);
+      if (!stEl) return;
+      frEl.querySelector('span').textContent = '—';
+      sbEl.querySelector('span').textContent = '—';
+      stEl.querySelector('span').textContent = bigVal;
+      bkEl.querySelector('span').textContent = bigVal;
+      frEl.classList.remove('flipping'); bkEl.classList.remove('flipping');
+      void frEl.offsetWidth;
+      frEl.classList.add('flipping');
+      bkEl.classList.add('flipping');
+      setTimeout(() => { if (sbEl) sbEl.querySelector('span').textContent = bigVal; }, 620);
+    }, 1120));
 
-    // news reveal (after price flip started)
-    pendingTimers.push(setTimeout(() => {
-      document.getElementById(`exp-news-${sym}`)?.classList.add('reveal');
-    }, 1160));
+    // Bug 4 fix：secNews 移到 1200ms，確保在數字翻頁（1120ms）之後
+    pendingAnimTimers.push(setTimeout(() => {
+      const sn = document.getElementById(`exp-secNews-${sym}`);
+      if (sn) sn.classList.add('reveal-full');
+    }, 1200));
 
-    // ref row single-flip (after news)
+    // 盤後翻頁（新聞揭露後）
     if (showRef) {
-      pendingTimers.push(setTimeout(() => {
-        document.getElementById(`exp-ref-${sym}`)?.classList.add('playing');
-      }, 1620));
+      pendingAnimTimers.push(setTimeout(() => {
+        const ff = document.getElementById(`exp-flipFront-${sym}`);
+        if (ff) {
+          ff.style.transformOrigin = 'top center';
+          ff.style.transform = 'rotateX(-90deg)';
+          ff.style.backfaceVisibility = 'hidden';
+          ff.style.display = 'block';
+          void ff.offsetWidth;
+          ff.classList.add('playing');
+        }
+      }, 1580));
     }
 
   } else {
@@ -939,22 +679,154 @@ function toggleCard(sym, ex) {
   }
 }
 
-/* ─── BACK BUTTON ────────────────────────────── */
-window.addEventListener('popstate', () => {
-  if (expandedSym) {
-    collapsingViaBack = true;
-    toggleCard(expandedSym, '');
-    collapsingViaBack = false;
-  }
-});
+function flipPriceCard(sym, newVal) {
+  const stEl = document.getElementById(`pf-st-${sym}`);
+  const sbEl = document.getElementById(`pf-sb-${sym}`);
+  const frEl = document.getElementById(`pf-fr-${sym}`);
+  const bkEl = document.getElementById(`pf-bk-${sym}`);
+  if (!stEl) return;
 
-/* ─── FIRST-LOAD STAGGER FIX ─────────────────── */
-// isFirstLoad is captured at renderPrice call time via closure,
-// handled inside renderPrice / loadData already.
+  const oldVal = stEl.querySelector('span').textContent;
+  if (oldVal === newVal) return;
+
+  frEl.querySelector('span').textContent = oldVal;
+  frEl.classList.remove('flipping');
+  bkEl.classList.remove('flipping');
+  void frEl.offsetWidth;
+
+  stEl.querySelector('span').textContent = newVal;
+  sbEl.querySelector('span').textContent = oldVal;
+  bkEl.querySelector('span').textContent = newVal;
+
+  frEl.classList.add('flipping');
+  bkEl.classList.add('flipping');
+
+  setTimeout(() => {
+    sbEl.querySelector('span').textContent = newVal;
+  }, 620);
+}
+
+function setPriceDirect(sym, val) {
+  const stEl = document.getElementById(`pf-st-${sym}`);
+  const sbEl = document.getElementById(`pf-sb-${sym}`);
+  const frEl = document.getElementById(`pf-fr-${sym}`);
+  const bkEl = document.getElementById(`pf-bk-${sym}`);
+  if (!stEl) return;
+  [stEl,sbEl,frEl,bkEl].forEach(el => { el.querySelector('span').textContent = val; });
+}
+
+/* ── phase 狀態記憶 ──
+   記住每張卡片上次的 phase，用於偵測切換時機。
+   isFirstLoad：用 sessionStorage 判斷是否為本次 session 第一次 loadData，
+   第一次時所有卡片一律做翻頁進場動畫（不管數字有沒有變）。 */
+const lastPhase = {}; // { sym: phase }
+let isFirstLoad = !sessionStorage.getItem('hasLoaded');
+
+function renderPrice(sym, q) {
+  if (!q) return;
+  const current   = parseFloat(q.c ?? q.regular ?? 0);
+  const regular   = parseFloat(q.regular ?? q.c ?? 0);
+  const prevClose = parseFloat(q.prev_close ?? regular);
+  const phase     = q.phase || '正式盤';
+  const valStr    = `$${current.toFixed(2)}`;
+
+  const phaseLabelMap = { '盤前':'盤前','盤後':'盤後','正式盤':'現價','錯誤':'—' };
+  document.getElementById(`phase-label-${sym}`).textContent = phaseLabelMap[phase]||'現價';
+
+  const stEl = document.getElementById(`pf-st-${sym}`);
+  const phaseChanged = lastPhase[sym] !== undefined && lastPhase[sym] !== phase;
+
+  if (isFirstLoad || phaseChanged) {
+    // 第一次載入或 phase 切換：翻頁進場（不管數字是否相同）
+    setPriceDirect(sym, valStr); // 先設定靜態值作為目標
+    // 用舊值（或 —）當起始，做一次翻頁進場
+    const fromVal = stEl?.querySelector('span')?.textContent || '—';
+    const frEl = document.getElementById(`pf-fr-${sym}`);
+    const bkEl = document.getElementById(`pf-bk-${sym}`);
+    const sbEl = document.getElementById(`pf-sb-${sym}`);
+    if (frEl && bkEl) {
+      frEl.querySelector('span').textContent = fromVal;
+      sbEl.querySelector('span').textContent = fromVal;
+      stEl.querySelector('span').textContent = valStr;
+      bkEl.querySelector('span').textContent = valStr;
+      frEl.classList.remove('flipping');
+      bkEl.classList.remove('flipping');
+      void frEl.offsetWidth;
+      frEl.classList.add('flipping');
+      bkEl.classList.add('flipping');
+      setTimeout(() => { sbEl.querySelector('span').textContent = valStr; }, 620);
+    }
+  } else if (phase === '正式盤') {
+    // 正式盤期間：數字有變就翻頁
+    flipPriceCard(sym, valStr);
+  } else {
+    // 盤前/盤後：直接更新
+    setPriceDirect(sym, valStr);
+  }
+
+  lastPhase[sym] = phase;
+
+  const mainChange = q.d!==undefined ? parseFloat(q.d) : (current-prevClose);
+  const mainPct   = q.dp!==undefined ? parseFloat(q.dp) : (prevClose?(mainChange/prevClose*100):0);
+  const mainDir = mainChange>=0?'up':'down', mainSign = mainChange>=0?'▲':'▼';
+  document.getElementById(`main-chg-${sym}`).innerHTML = `<span class="${mainDir}">${mainSign} ${Math.abs(mainChange).toFixed(2)} (${Math.abs(mainPct).toFixed(2)}%)</span>`;
+
+  const badge = document.getElementById(`badge-${sym}`);
+  if (phase==='盤前'||phase==='盤後') { badge.textContent=phase; badge.classList.add('show'); }
+  else badge.classList.remove('show');
+
+  const subRow=document.getElementById(`sub-row-${sym}`), subLabel=document.getElementById(`sub-label-${sym}`), subEl=document.getElementById(`sub-${sym}`), subChgEl=document.getElementById(`sub-chg-${sym}`);
+  if (phase==='盤後') {
+    subRow.style.display='flex'; subLabel.textContent='收盤'; subEl.textContent=`$${regular.toFixed(2)}`;
+    const rc=regular-prevClose, rp=prevClose?(rc/prevClose*100):0, d=rc>=0?'up':'down', sg=rc>=0?'▲':'▼';
+    subChgEl.innerHTML=`<span class="${d}">${sg} ${Math.abs(rc).toFixed(2)} (${Math.abs(rp).toFixed(2)}%)</span>`;
+  } else if (phase==='盤前') {
+    subRow.style.display='flex'; subLabel.textContent='昨收'; subEl.textContent=`$${prevClose.toFixed(2)}`; subChgEl.innerHTML='';
+  } else subRow.style.display='none';
+}
+
+async function loadData() {
+  try {
+    const res = await fetch('./stock_data.json?t='+Date.now());
+    const json = await res.json();
+    const staggerMs = 80;
+    STOCKS.forEach((s, i) => {
+      const data = json.data?.[s.sym];
+      if (data?.quote) {
+        if (isFirstLoad) {
+          setTimeout(() => renderPrice(s.sym, data.quote), i * staggerMs);
+        } else {
+          renderPrice(s.sym, data.quote);
+        }
+      }
+      if (data?.news) renderNews(s.sym, data.news);
+    });
+    // Bug 2 fix：等所有 stagger timeout 跑完後才設定 false
+    if (isFirstLoad) {
+      setTimeout(() => {
+        sessionStorage.setItem('hasLoaded', '1');
+        isFirstLoad = false;
+      }, STOCKS.length * staggerMs + 100);
+    }
+  } catch(e) { console.error(e); }
+}
+
+function renderNews(sym, newsList) {
+  const el = document.getElementById(`news-list-${sym}`);
+  if (!el) return;
+  el.innerHTML = newsList.length
+    ? newsList.map(n=>`<a class="news-item" href="${n.url}" target="_blank" rel="noopener noreferrer"><div class="news-headline">${n.headline}</div><div class="news-source">${n.source}</div></a>`).join('')
+    : `<div class="news-source">暫無相關新聞</div>`;
+}
+
+let collapsingViaBack = false;
+window.addEventListener('popstate', () => {
+  if (expandedSym) { collapsingViaBack=true; toggleCard(expandedSym,''); collapsingViaBack=false; }
+});
 
 buildGrid();
 loadData();
-setInterval(loadData, 60_000);
+setInterval(loadData, 60000);
 </script>
 </body>
 </html>
