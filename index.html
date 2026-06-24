@@ -315,48 +315,49 @@
     position: relative;
     height: 40px;
     width: 200px;
-    overflow: hidden; /* 讓 pf-stack 裁切翻頁超出的部分，不需要各半格自己 overflow:hidden */
   }
+  /* 數字層：完整顯示，不裁切 */
   .pf-half {
-    position: absolute; left: 0; right: 0; height: 20px;
-    display: flex; justify-content: center;
+    position: absolute; left: 0; right: 0; top: 0; bottom: 0;
+    display: flex; justify-content: center; align-items: center;
     font-family: 'DM Mono', monospace; font-size: 32px; font-weight: 500;
     color: #ffd98a; text-shadow: 0 0 14px rgba(255,200,110,0.55);
+    background: transparent;
+  }
+  /* static-t/b：永遠顯示最新值，完整顯示 */
+  .pf-static-t, .pf-static-b { z-index: 1; }
+
+  /* 遮罩層：跟黑框同色，蓋在數字上做翻頁 */
+  .pf-front {
+    position: absolute; left: 0; right: 0;
+    top: 0; height: 50%;
     background: #14120d;
-    /* 移除 overflow:hidden 讓數字不被裁切，改由 pf-stack 統一裁切 */
+    transform-origin: bottom center;
+    z-index: 5;
+    backface-visibility: hidden;
   }
-  .pf-static-t { top: 0; align-items: flex-end; }
-  .pf-static-t span { transform: translateY(50%); }
-  .pf-static-b { bottom: 0; align-items: flex-start; }
-  .pf-static-b span { transform: translateY(-50%); }
-  .pf-front, .pf-back {
-    position: absolute; left: 0; right: 0; height: 20px;
-    display: flex; justify-content: center;
-    font-family: 'DM Mono', monospace; font-size: 32px; font-weight: 500;
-    color: #ffd98a; text-shadow: 0 0 14px rgba(255,200,110,0.55);
-    background: #1c1812; backface-visibility: hidden;
-  }
-  .pf-front { top: 0; align-items: flex-end; transform-origin: bottom center; z-index: 5; }
-  .pf-front span { transform: translateY(50%); }
-  .pf-back  { bottom: 0; align-items: flex-start; transform-origin: top center; transform: rotateX(90deg); z-index: 4; }
-  .pf-back  span { transform: translateY(-50%); }
-  /* 接縫用一條細線取代，顏色跟黑框背景融合，視覺上不明顯 */
-  .pf-seam {
-    position: absolute; left: 0; right: 0; top: 50%;
-    height: 1px; transform: translateY(-0.5px);
+  .pf-back {
+    position: absolute; left: 0; right: 0;
+    bottom: 0; height: 50%;
     background: #14120d;
-    z-index: 6; pointer-events: none;
+    transform-origin: top center;
+    transform: rotateX(0deg);
+    z-index: 4;
+    backface-visibility: hidden;
   }
-  .pf-front.flipping { animation: pfFrontDown 0.32s cubic-bezier(.5,0,.75,.3) forwards; }
-  @keyframes pfFrontDown {
-    0%   { transform: rotateX(0deg);   filter: brightness(1); }
-    100% { transform: rotateX(-90deg); filter: brightness(0.45); }
+  .pf-seam { display: none; }
+
+  /* 翻頁動畫：上片往上翻走，下片往下翻走 */
+  .pf-front.flipping { animation: pfFrontUp 0.32s cubic-bezier(.5,0,.75,.3) forwards; }
+  @keyframes pfFrontUp {
+    0%   { transform: rotateX(0deg);   }
+    100% { transform: rotateX(-90deg); }
   }
-  .pf-back.flipping  { animation: pfBackUp 0.30s cubic-bezier(.2,1,.4,1) 0.28s forwards; }
-  @keyframes pfBackUp {
-    0%   { transform: rotateX(90deg); filter: brightness(0.45); }
-    65%  { transform: rotateX(-8deg); filter: brightness(1.25); }
-    100% { transform: rotateX(0deg);  filter: brightness(1); }
+  .pf-back.flipping { animation: pfBackDown 0.30s cubic-bezier(.2,1,.4,1) 0.28s forwards; }
+  @keyframes pfBackDown {
+    0%   { transform: rotateX(0deg);  }
+    65%  { transform: rotateX(6deg);  }
+    100% { transform: rotateX(90deg); }
   }
 
   /* 收合狀態的 chart-container */
@@ -442,9 +443,8 @@ function buildGrid() {
               <div class="pf-stack">
                 <div class="pf-half pf-static-t" id="pf-st-${s.sym}"><span>—</span></div>
                 <div class="pf-half pf-static-b" id="pf-sb-${s.sym}"><span>—</span></div>
-                <div class="pf-half pf-front" id="pf-fr-${s.sym}"><span>—</span></div>
-                <div class="pf-half pf-back"  id="pf-bk-${s.sym}"><span>—</span></div>
-                <div class="pf-seam"></div>
+                <div class="pf-front" id="pf-fr-${s.sym}"></div>
+                <div class="pf-back"  id="pf-bk-${s.sym}"></div>
               </div>
             </div>
             <div class="main-change" id="main-chg-${s.sym}"></div>
@@ -694,30 +694,24 @@ function flipPriceCard(sym, newVal) {
   const oldVal = stEl.querySelector('span').textContent;
   if (oldVal === newVal) return;
 
-  frEl.querySelector('span').textContent = oldVal;
+  // 先更新數字（在遮罩下面，看不見）
+  stEl.querySelector('span').textContent = newVal;
+  sbEl.querySelector('span').textContent = newVal;
+
+  // 遮罩復位後觸發翻走動畫
   frEl.classList.remove('flipping');
   bkEl.classList.remove('flipping');
   void frEl.offsetWidth;
-
-  stEl.querySelector('span').textContent = newVal;
-  sbEl.querySelector('span').textContent = oldVal;
-  bkEl.querySelector('span').textContent = newVal;
-
   frEl.classList.add('flipping');
   bkEl.classList.add('flipping');
-
-  setTimeout(() => {
-    sbEl.querySelector('span').textContent = newVal;
-  }, 620);
 }
 
 function setPriceDirect(sym, val) {
   const stEl = document.getElementById(`pf-st-${sym}`);
   const sbEl = document.getElementById(`pf-sb-${sym}`);
-  const frEl = document.getElementById(`pf-fr-${sym}`);
-  const bkEl = document.getElementById(`pf-bk-${sym}`);
   if (!stEl) return;
-  [stEl,sbEl,frEl,bkEl].forEach(el => { el.querySelector('span').textContent = val; });
+  stEl.querySelector('span').textContent = val;
+  sbEl.querySelector('span').textContent = val;
 }
 
 /* ── phase 狀態記憶 ──
