@@ -144,17 +144,28 @@ body.scroll-locked { overflow: hidden; }
   position: relative;
   display: flex; flex-direction: column;
   align-items: center; justify-content: center;
-  background: var(--lcd-bg);
+  background: linear-gradient(180deg, #5a4422 0%, #3d2e16 100%);
   border-radius: 8px;
-  padding: 16px 10px 12px;
+  padding: 3px;   /* 薄邊框：咖啡色只露 3px 邊框感 */
   flex: 1;
-  box-shadow: inset 0 2px 10px rgba(0,0,0,0.7);
   text-align: center;
 }
 .phase-label {
-  position: absolute; top: 6px; left: 8px;
+  position: absolute; top: 7px; left: 9px; z-index: 2;
   font-size: 8px; font-weight: 700;
-  color: #6a6460; letter-spacing: 1px;
+  color: #a08060; letter-spacing: 1px;
+}
+.phase-label.hide { display: none; }
+
+/* 黑框填滿咖啡色內部，padding 給數字留夠的呼吸空間 */
+.lcd-frame {
+  background: var(--lcd-bg);
+  border-radius: 5px;
+  padding: 18px 12px 14px;
+  width: 100%;
+  box-shadow: inset 0 2px 12px rgba(0,0,0,0.8);
+  display: flex; flex-direction: column;
+  align-items: center; gap: 6px;
 }
 
 /* ─── SPLIT-FLAP DIGIT ───────────────────────── */
@@ -172,17 +183,17 @@ body.scroll-locked { overflow: hidden; }
 }
 @media (min-width: 640px) { .pf-half { font-size: 32px; } }
 
-/* mask replaces seam line */
+/* mask replaces seam line — 48% overlap ensures no visible gap */
 .pf-static-t {
   top: 0; align-items: flex-end;
-  -webkit-mask-image: linear-gradient(180deg, black 55%, transparent 100%);
-  mask-image: linear-gradient(180deg, black 55%, transparent 100%);
+  -webkit-mask-image: linear-gradient(180deg, black 48%, transparent 100%);
+  mask-image: linear-gradient(180deg, black 48%, transparent 100%);
 }
 .pf-static-t span { transform: translateY(50%); }
 .pf-static-b {
   bottom: 0; align-items: flex-start;
-  -webkit-mask-image: linear-gradient(0deg, black 55%, transparent 100%);
-  mask-image: linear-gradient(0deg, black 55%, transparent 100%);
+  -webkit-mask-image: linear-gradient(0deg, black 48%, transparent 100%);
+  mask-image: linear-gradient(0deg, black 48%, transparent 100%);
 }
 .pf-static-b span { transform: translateY(-50%); }
 
@@ -197,15 +208,15 @@ body.scroll-locked { overflow: hidden; }
 
 .pf-front {
   top: 0; align-items: flex-end; transform-origin: bottom center; z-index: 5;
-  -webkit-mask-image: linear-gradient(180deg, black 55%, transparent 100%);
-  mask-image: linear-gradient(180deg, black 55%, transparent 100%);
+  -webkit-mask-image: linear-gradient(180deg, black 48%, transparent 100%);
+  mask-image: linear-gradient(180deg, black 48%, transparent 100%);
 }
 .pf-front span { transform: translateY(50%); }
 .pf-back {
   bottom: 0; align-items: flex-start; transform-origin: top center;
   transform: rotateX(90deg); z-index: 4;
-  -webkit-mask-image: linear-gradient(0deg, black 55%, transparent 100%);
-  mask-image: linear-gradient(0deg, black 55%, transparent 100%);
+  -webkit-mask-image: linear-gradient(0deg, black 48%, transparent 100%);
+  mask-image: linear-gradient(0deg, black 48%, transparent 100%);
 }
 .pf-back span { transform: translateY(-50%); }
 .pf-seam { display: none; }
@@ -227,17 +238,18 @@ body.scroll-locked { overflow: hidden; }
   100% { transform: rotateX(0deg);   filter: brightness(1); }
 }
 
-.main-change { font-size: 11px; font-weight: 700; margin-top: 6px; }
+.main-change { font-size: 11px; font-weight: 700; margin-top: 4px; }
 @media (min-width: 640px) { .main-change { font-size: 12px; } }
 
 .ref-price {
-  margin-top: 8px; padding-top: 6px;
-  border-top: 1px solid rgba(255,255,255,0.06);
-  width: 100%; font-size: 10px; color: var(--muted);
+  margin-top: 6px; padding-top: 6px;
+  border-top: 1px solid rgba(255,255,255,0.08);
+  width: 100%; font-size: 10px; color: #7a7060;
   display: flex; justify-content: center; gap: 5px; align-items: baseline;
+  flex-wrap: wrap;
 }
-.ref-price .ref-tag { opacity: 0.6; font-size: 9px; }
-.ref-price .ref-value { font-family: 'DM Mono', monospace; color: #9a8a70; }
+.ref-price .ref-tag { opacity: 0.7; font-size: 9px; }
+.ref-price .ref-value { font-family: 'DM Mono', monospace; color: #8a7a60; }
 
 /* up / down badge */
 .up   { color: var(--up);   background: rgba(0,255,136,0.08); border: 1px solid rgba(0,255,136,0.25); border-radius: 3px; padding: 1px 4px; }
@@ -527,19 +539,21 @@ function buildGrid() {
           </div>
           <div class="price-section">
             <span class="phase-label" id="phase-label-${s.sym}">現價</span>
-            <div class="pf-wrap">
-              <div class="pf-stack">
-                <div class="pf-half pf-static-t" id="pf-st-${s.sym}"><span>—</span></div>
-                <div class="pf-half pf-static-b" id="pf-sb-${s.sym}"><span>—</span></div>
-                <div class="pf-half pf-front"    id="pf-fr-${s.sym}"><span>—</span></div>
-                <div class="pf-half pf-back"     id="pf-bk-${s.sym}"><span>—</span></div>
+            <div class="lcd-frame">
+              <div class="pf-wrap">
+                <div class="pf-stack">
+                  <div class="pf-half pf-static-t" id="pf-st-${s.sym}"><span>—</span></div>
+                  <div class="pf-half pf-static-b" id="pf-sb-${s.sym}"><span>—</span></div>
+                  <div class="pf-half pf-front"    id="pf-fr-${s.sym}"><span>—</span></div>
+                  <div class="pf-half pf-back"     id="pf-bk-${s.sym}"><span>—</span></div>
+                </div>
               </div>
-            </div>
-            <div class="main-change" id="main-chg-${s.sym}"></div>
-            <div class="ref-price" id="sub-row-${s.sym}" style="display:none;">
-              <span class="ref-tag" id="sub-label-${s.sym}">昨收</span>
-              <span class="ref-value" id="sub-${s.sym}">—</span>
-              <span id="sub-chg-${s.sym}"></span>
+              <div class="main-change" id="main-chg-${s.sym}"></div>
+              <div class="ref-price" id="sub-row-${s.sym}" style="display:none;">
+                <span class="ref-tag" id="sub-label-${s.sym}">昨收</span>
+                <span class="ref-value" id="sub-${s.sym}">—</span>
+                <span id="sub-chg-${s.sym}"></span>
+              </div>
             </div>
           </div>
           <div class="news-container" id="news-list-${s.sym}"></div>
@@ -612,9 +626,16 @@ function renderPrice(sym, q) {
   const phase      = q.phase || '正式盤';
   const valStr     = `$${c.toFixed(2)}`;
 
-  // phase label
-  const phaseMap = { '盤前':'盤前', '盤後':'盤後', '正式盤':'現價', '錯誤':'—' };
-  document.getElementById(`phase-label-${sym}`).textContent = phaseMap[phase] || '現價';
+  // phase label：只在正式盤顯示「現價」，盤前/盤後右上角 badge 已有標示，不重複
+  const phaseLabel = document.getElementById(`phase-label-${sym}`);
+  if (phaseLabel) {
+    if (phase === '正式盤') {
+      phaseLabel.textContent = '現價';
+      phaseLabel.classList.remove('hide');
+    } else {
+      phaseLabel.classList.add('hide');
+    }
+  }
 
   // change (always relative to prev_close, use backend values)
   const chgAmt = q.d  !== undefined ? parseFloat(q.d)  : (c - prevClose);
@@ -628,7 +649,6 @@ function renderPrice(sym, q) {
   const phaseChanged = lastPhase[sym] !== undefined && lastPhase[sym] !== phase;
 
   if (phaseChanged) {
-    // phase transition: always animate
     const old = document.getElementById(`pf-st-${sym}`)?.querySelector('span')?.textContent || '—';
     setDirect(sym, valStr);
     const fr = document.getElementById(`pf-fr-${sym}`);
@@ -652,23 +672,26 @@ function renderPrice(sym, q) {
 
   lastPhase[sym] = phase;
 
-  // change display
+  // 主行漲跌：永遠相對昨收
   document.getElementById(`main-chg-${sym}`).innerHTML =
     `<span class="${dir}">${sign} ${Math.abs(chgAmt).toFixed(2)} (${Math.abs(chgPct).toFixed(2)}%)</span>`;
 
-  // badge
+  // badge：盤前/盤後才顯示
   const badge = document.getElementById(`badge-${sym}`);
   if (phase==='盤前'||phase==='盤後') { badge.textContent=phase; badge.classList.add('show'); }
   else badge.classList.remove('show');
 
-  // sub row
+  // 副行邏輯整理：
+  // 盤後：顯示「收盤 $xxx」，不帶%（%數已在主行顯示，重複顯示容易搞混）
+  // 盤前：顯示「昨收 $xxx」，不帶%（昨收是參考基準，不需要算漲跌）
+  // 正式盤：隱藏副行
   const subRow   = document.getElementById(`sub-row-${sym}`);
   const subLabel = document.getElementById(`sub-label-${sym}`);
   const subEl    = document.getElementById(`sub-${sym}`);
   const subChg   = document.getElementById(`sub-chg-${sym}`);
 
   if (phase === '盤後') {
-    // main = post-market price, sub = regular close + change vs prev_close
+    // 盤後：主行=盤後價+漲跌，副行=收盤+收盤漲跌（跟 TradingView 一致）
     subRow.style.display = 'flex';
     subLabel.textContent = '收盤';
     subEl.textContent = `$${regular.toFixed(2)}`;
@@ -677,7 +700,7 @@ function renderPrice(sym, q) {
     const rd = rc>=0?'up':'down', rs = rc>=0?'▲':'▼';
     subChg.innerHTML = `<span class="${rd}">${rs} ${Math.abs(rc).toFixed(2)} (${Math.abs(rp).toFixed(2)}%)</span>`;
   } else if (phase === '盤前') {
-    // main = pre-market price + change vs prev_close, sub = yesterday close (reference only)
+    // 盤前：主行=盤前價+漲跌，副行=昨收（純參考基準，不帶%）
     subRow.style.display = 'flex';
     subLabel.textContent = '昨收';
     subEl.textContent = `$${regular.toFixed(2)}`;
