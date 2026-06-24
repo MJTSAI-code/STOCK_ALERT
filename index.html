@@ -315,46 +315,38 @@
     position: relative;
     height: 40px;
     width: 200px;
+    overflow: hidden; /* 讓 pf-stack 裁切翻頁超出的部分，不需要各半格自己 overflow:hidden */
   }
   .pf-half {
     position: absolute; left: 0; right: 0; height: 20px;
-    overflow: hidden; display: flex; justify-content: center;
+    display: flex; justify-content: center;
     font-family: 'DM Mono', monospace; font-size: 32px; font-weight: 500;
     color: #ffd98a; text-shadow: 0 0 14px rgba(255,200,110,0.55);
-    background: #14120d; border-radius: 3px;
+    background: #14120d;
+    /* 移除 overflow:hidden 讓數字不被裁切，改由 pf-stack 統一裁切 */
   }
-  .pf-static-t {
-    top: 0; align-items: flex-end;
-    -webkit-mask-image: linear-gradient(180deg, black 48%, transparent 100%);
-    mask-image: linear-gradient(180deg, black 48%, transparent 100%);
-  }
+  .pf-static-t { top: 0; align-items: flex-end; }
   .pf-static-t span { transform: translateY(50%); }
-  .pf-static-b {
-    bottom: 0; align-items: flex-start;
-    -webkit-mask-image: linear-gradient(0deg, black 48%, transparent 100%);
-    mask-image: linear-gradient(0deg, black 48%, transparent 100%);
-  }
+  .pf-static-b { bottom: 0; align-items: flex-start; }
   .pf-static-b span { transform: translateY(-50%); }
   .pf-front, .pf-back {
     position: absolute; left: 0; right: 0; height: 20px;
-    overflow: hidden; display: flex; justify-content: center;
+    display: flex; justify-content: center;
     font-family: 'DM Mono', monospace; font-size: 32px; font-weight: 500;
     color: #ffd98a; text-shadow: 0 0 14px rgba(255,200,110,0.55);
-    background: #1c1812; backface-visibility: hidden; border-radius: 3px;
+    background: #1c1812; backface-visibility: hidden;
   }
-  .pf-front {
-    top: 0; align-items: flex-end; transform-origin: bottom center; z-index: 5;
-    -webkit-mask-image: linear-gradient(180deg, black 48%, transparent 100%);
-    mask-image: linear-gradient(180deg, black 48%, transparent 100%);
-  }
+  .pf-front { top: 0; align-items: flex-end; transform-origin: bottom center; z-index: 5; }
   .pf-front span { transform: translateY(50%); }
-  .pf-back  {
-    bottom: 0; align-items: flex-start; transform-origin: top center; transform: rotateX(90deg); z-index: 4;
-    -webkit-mask-image: linear-gradient(0deg, black 48%, transparent 100%);
-    mask-image: linear-gradient(0deg, black 48%, transparent 100%);
-  }
+  .pf-back  { bottom: 0; align-items: flex-start; transform-origin: top center; transform: rotateX(90deg); z-index: 4; }
   .pf-back  span { transform: translateY(-50%); }
-  .pf-seam { display: none; }
+  /* 接縫用一條細線取代，顏色跟黑框背景融合，視覺上不明顯 */
+  .pf-seam {
+    position: absolute; left: 0; right: 0; top: 50%;
+    height: 1px; transform: translateY(-0.5px);
+    background: #14120d;
+    z-index: 6; pointer-events: none;
+  }
   .pf-front.flipping { animation: pfFrontDown 0.32s cubic-bezier(.5,0,.75,.3) forwards; }
   @keyframes pfFrontDown {
     0%   { transform: rotateX(0deg);   filter: brightness(1); }
@@ -452,6 +444,7 @@ function buildGrid() {
                 <div class="pf-half pf-static-b" id="pf-sb-${s.sym}"><span>—</span></div>
                 <div class="pf-half pf-front" id="pf-fr-${s.sym}"><span>—</span></div>
                 <div class="pf-half pf-back"  id="pf-bk-${s.sym}"><span>—</span></div>
+                <div class="pf-seam"></div>
               </div>
             </div>
             <div class="main-change" id="main-chg-${s.sym}"></div>
