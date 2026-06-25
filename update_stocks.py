@@ -34,7 +34,7 @@ def fetch_stock_data():
             ticker = yf.Ticker(sym)
 
             regular_price = 0.0
-            prev_close = 0.0  # 前天收盤（regularMarketPreviousClose）
+            prev_close = 0.0  # 前收盤（regularMarketPreviousClose）
             try:
                 f_info = ticker.fast_info
                 regular_price = getattr(f_info, 'last_price', None) or 0.0
@@ -74,7 +74,7 @@ def fetch_stock_data():
                 current_price = regular_price
                 phase = "正式盤"
 
-            # 漲跌：現價 vs 昨收（regular_price）
+            # 漲跌：現價 vs 昨收
             dollar_change  = current_price - regular_price
             percent_change = (dollar_change / regular_price * 100) if regular_price != 0 else 0
 
@@ -128,11 +128,11 @@ def fetch_stock_data():
                     "d":          round(float(dollar_change), 2),
                     "dp":         round(float(percent_change), 4),
                     "regular":    round(float(regular_price), 2),   # 昨收（正式收盤）
-                    "reg_d":      round(float(reg_change), 2),      # ✅ 新增：昨收 vs 前收 金額
-                    "reg_dp":     round(float(reg_pct_change), 4),  # ✅ 新增：昨收 vs 前收 百分比
+                    "reg_d":      round(float(reg_change), 2),      # 昨收 vs 前收 金額
+                    "reg_dp":     round(float(reg_pct_change), 4),  # 昨收 vs 前收 百分比
                     "pre":        round(float(pre_price), 2) if pre_price is not None else None,
                     "post":       round(float(post_price), 2) if post_price is not None else None,
-                    "prev_close": round(float(regular_price), 2),   # 昨收（同 regular，前端用）
+                    "prev_close": round(float(prev_close), 2),      # ✅ 修正：前收（前天收盤，前端算漲跌用）
                     "phase":      phase
                 },
                 "news": news_list
