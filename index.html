@@ -299,21 +299,22 @@
   }
   .pf-upper { top: 0; border-bottom: 1px solid #000; }
   .pf-lower { bottom: 0; }
+  /* all tiles share base style */
   .pf-top, .pf-bot, .pf-front, .pf-back {
     position: absolute; left: 0; right: 0;
-    height: 200%;
     display: flex; justify-content: center; align-items: center;
     background: #14120d;
     font-family: inherit; font-size: inherit; font-weight: inherit;
     color: inherit; text-shadow: inherit;
-    will-change: transform;
   }
-  .pf-upper .pf-top, .pf-upper .pf-front { bottom: 0; top: auto; transform-origin: bottom center; }
-  .pf-lower .pf-bot, .pf-lower .pf-back  { top: 0; transform-origin: top center; }
-  .pf-top   { z-index: 1; }
-  .pf-bot   { z-index: 1; }
-  .pf-front { z-index: 2; }
-  .pf-back  { z-index: 2; transform: rotateX(-90deg); }
+  /* static tiles: fill the half-container, text centred → overflow clips the other half */
+  .pf-top, .pf-bot { height: 100%; z-index: 1; }
+  /* flap tiles: double height so the full digit is inside, transform-origin at the fold edge */
+  .pf-front, .pf-back { height: 200%; z-index: 2; will-change: transform; }
+  .pf-upper .pf-top   { top: 0; }
+  .pf-upper .pf-front { bottom: 0; top: auto; transform-origin: bottom center; }
+  .pf-lower .pf-bot   { top: 0; }
+  .pf-lower .pf-back  { top: 0; transform-origin: top center; transform: rotateX(-90deg); }
   .pf-front.flipping { animation: pfFrontUp 0.20s cubic-bezier(0.4,0,1,0.6) forwards; }
   @keyframes pfFrontUp {
     0%   { transform: rotateX(0deg); }
