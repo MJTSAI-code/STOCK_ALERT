@@ -665,14 +665,17 @@ function flipPriceCard(sym, newVal) {
   const maskEl = document.getElementById(`pf-mask-${sym}`);
   if (!valEl) return;
 
-  // 數字沒變就不動
   if (valEl.textContent === newVal) return;
 
-  // 換數字，遮罩從上往下掃過製造翻頁感
-  valEl.textContent = newVal;
+  // 1. 遮罩先從上蓋下來（0% → 42%，約 0.13s）
   maskEl.classList.remove('sweep');
   void maskEl.offsetWidth;
   maskEl.classList.add('sweep');
+
+  // 2. 遮罩蓋到中間時才換數字（在遮罩下面偷換，看不到）
+  setTimeout(() => {
+    valEl.textContent = newVal;
+  }, 135); // 對應 42% × 320ms ≈ 135ms
 }
 
 function setPriceDirect(sym, val) {
