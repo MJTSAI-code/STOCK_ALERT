@@ -281,7 +281,7 @@
   .divider { display: none; }
 
   .pf-wrap {
-    perspective: 240px;
+    perspective: 300px;
     display: flex;
     justify-content: center;
   }
@@ -289,45 +289,41 @@
     position: relative;
     height: 40px;
     width: 200px;
-    background: #14120d;
-    border-radius: 3px;
-  }
-  .pf-half {
-    position: absolute; left: 0; right: 0; top: 0; bottom: 0;
-    display: flex; justify-content: center; align-items: center;
-    font-family: 'DM Mono', monospace; font-size: 32px; font-weight: 500;
+    font-family: 'DM Mono', monospace;
+    font-size: 32px; font-weight: 500;
     color: #ffd98a; text-shadow: 0 0 14px rgba(255,200,110,0.55);
-    background: transparent;
   }
-  .pf-static-t, .pf-static-b { z-index: 1; }
-  .pf-front {
+  .pf-upper, .pf-lower {
+    position: absolute; left: 0; right: 0; height: 50%;
+    overflow: hidden;
+  }
+  .pf-upper { top: 0; border-bottom: 1px solid #000; }
+  .pf-lower { bottom: 0; }
+  .pf-top, .pf-bot, .pf-front, .pf-back {
     position: absolute; left: 0; right: 0;
-    top: 0; height: 50%;
+    height: 200%;
+    display: flex; justify-content: center; align-items: center;
     background: #14120d;
-    transform-origin: bottom center;
-    z-index: 5;
-    backface-visibility: hidden;
+    font-family: inherit; font-size: inherit; font-weight: inherit;
+    color: inherit; text-shadow: inherit;
+    will-change: transform;
   }
-  .pf-back {
-    position: absolute; left: 0; right: 0;
-    bottom: 0; height: 50%;
-    background: #14120d;
-    transform-origin: top center;
-    transform: rotateX(0deg);
-    z-index: 4;
-    backface-visibility: hidden;
-  }
-  .pf-seam { display: none; }
-  .pf-front.flipping { animation: pfFrontUp 0.32s cubic-bezier(.5,0,.75,.3) forwards; }
+  .pf-upper .pf-top, .pf-upper .pf-front { bottom: 0; top: auto; transform-origin: bottom center; }
+  .pf-lower .pf-bot, .pf-lower .pf-back  { top: 0; transform-origin: top center; }
+  .pf-top   { z-index: 1; }
+  .pf-bot   { z-index: 1; }
+  .pf-front { z-index: 2; }
+  .pf-back  { z-index: 2; transform: rotateX(-90deg); }
+  .pf-front.flipping { animation: pfFrontUp 0.20s cubic-bezier(0.4,0,1,0.6) forwards; }
   @keyframes pfFrontUp {
-    0%   { transform: rotateX(0deg);   }
+    0%   { transform: rotateX(0deg); }
     100% { transform: rotateX(-90deg); }
   }
-  .pf-back.flipping { animation: pfBackDown 0.30s cubic-bezier(.2,1,.4,1) 0.28s forwards; }
+  .pf-back.flipping { animation: pfBackDown 0.22s cubic-bezier(0,0.4,0.6,1) 0.18s forwards; }
   @keyframes pfBackDown {
-    0%   { transform: rotateX(0deg);  }
-    65%  { transform: rotateX(6deg);  }
-    100% { transform: rotateX(90deg); }
+    0%   { transform: rotateX(-90deg); }
+    90%  { transform: rotateX(3deg); }
+    100% { transform: rotateX(0deg); }
   }
 
   .chart-container {
@@ -410,10 +406,14 @@ function buildGrid() {
             <span class="phase-corner-label" id="phase-label-${s.sym}">現價</span>
             <div class="pf-wrap">
               <div class="pf-stack">
-                <div class="pf-half pf-static-t" id="pf-st-${s.sym}"><span>—</span></div>
-                <div class="pf-half pf-static-b" id="pf-sb-${s.sym}"><span>—</span></div>
-                <div class="pf-front" id="pf-fr-${s.sym}"></div>
-                <div class="pf-back"  id="pf-bk-${s.sym}"></div>
+                <div class="pf-upper">
+                  <div class="pf-top"   id="pf-st-${s.sym}"><span>—</span></div>
+                  <div class="pf-front" id="pf-fr-${s.sym}"><span>—</span></div>
+                </div>
+                <div class="pf-lower">
+                  <div class="pf-bot"   id="pf-sb-${s.sym}"><span>—</span></div>
+                  <div class="pf-back"  id="pf-bk-${s.sym}"><span>—</span></div>
+                </div>
               </div>
             </div>
             <div class="main-change" id="main-chg-${s.sym}"></div>
@@ -562,11 +562,15 @@ function toggleCard(sym, ex) {
         <div class="expanded-price-stage">
           <span class="expanded-phase-label">${bigLabel}</span>
           <div class="pf-wrap" style="margin:4px 0;">
-            <div class="pf-stack" style="width:240px; height:48px;">
-              <div class="pf-half pf-static-t" id="exp-pf-st-${sym}" style="font-size:40px;"><span>—</span></div>
-              <div class="pf-half pf-static-b" id="exp-pf-sb-${sym}" style="font-size:40px;"><span>—</span></div>
-              <div class="pf-front"             id="exp-pf-fr-${sym}"></div>
-              <div class="pf-back"              id="exp-pf-bk-${sym}"></div>
+            <div class="pf-stack" style="width:240px; height:48px; font-size:40px;">
+              <div class="pf-upper">
+                <div class="pf-top"   id="exp-pf-st-${sym}"><span>—</span></div>
+                <div class="pf-front" id="exp-pf-fr-${sym}"><span>—</span></div>
+              </div>
+              <div class="pf-lower">
+                <div class="pf-bot"   id="exp-pf-sb-${sym}"><span>—</span></div>
+                <div class="pf-back"  id="exp-pf-bk-${sym}"><span>—</span></div>
+              </div>
             </div>
           </div>
           <div class="expanded-main-change">${bigChg}</div>
@@ -603,20 +607,11 @@ function toggleCard(sym, ex) {
     }, 680));
 
     pendingAnimTimers.push(setTimeout(() => {
-      const stEl = document.getElementById(`exp-pf-st-${sym}`);
-      const sbEl = document.getElementById(`exp-pf-sb-${sym}`);
-      const frEl = document.getElementById(`exp-pf-fr-${sym}`);
-      const bkEl = document.getElementById(`exp-pf-bk-${sym}`);
-      if (!stEl) return;
-      frEl.querySelector('span').textContent = '—';
-      sbEl.querySelector('span').textContent = '—';
-      stEl.querySelector('span').textContent = bigVal;
-      bkEl.querySelector('span').textContent = bigVal;
-      frEl.classList.remove('flipping'); bkEl.classList.remove('flipping');
-      void frEl.offsetWidth;
-      frEl.classList.add('flipping');
-      bkEl.classList.add('flipping');
-      setTimeout(() => { if (sbEl) sbEl.querySelector('span').textContent = bigVal; }, 620);
+      ['exp-pf-st','exp-pf-sb','exp-pf-fr','exp-pf-bk'].forEach(id => {
+        const el = document.getElementById(`${id}-${sym}`);
+        if (el) el.querySelector('span').textContent = '—';
+      });
+      flipPriceCard(sym, bigVal, 'exp-');
     }, 1120));
 
     pendingAnimTimers.push(setTimeout(() => {
@@ -644,30 +639,32 @@ function toggleCard(sym, ex) {
   }
 }
 
-function flipPriceCard(sym, newVal) {
-  const stEl = document.getElementById(`pf-st-${sym}`);
-  const sbEl = document.getElementById(`pf-sb-${sym}`);
-  const frEl = document.getElementById(`pf-fr-${sym}`);
-  const bkEl = document.getElementById(`pf-bk-${sym}`);
-  if (!stEl || !frEl) return;
-
+function flipPriceCard(sym, newVal, prefix) {
+  const p = prefix || '';
+  const topEl = document.getElementById(`${p}pf-st-${sym}`);
+  const botEl = document.getElementById(`${p}pf-sb-${sym}`);
+  const frEl  = document.getElementById(`${p}pf-fr-${sym}`);
+  const bkEl  = document.getElementById(`${p}pf-bk-${sym}`);
+  if (!topEl || !frEl) return;
+  const oldVal = topEl.querySelector('span').textContent;
+  if (oldVal === newVal) return;
+  frEl.querySelector('span').textContent = oldVal;
+  bkEl.querySelector('span').textContent = newVal;
+  topEl.querySelector('span').textContent = newVal;
+  botEl.querySelector('span').textContent = oldVal;
   frEl.classList.remove('flipping');
   bkEl.classList.remove('flipping');
   void frEl.offsetWidth;
-
-  stEl.querySelector('span').textContent = newVal;
-  sbEl.querySelector('span').textContent = newVal;
-
   frEl.classList.add('flipping');
   bkEl.classList.add('flipping');
+  setTimeout(() => { botEl.querySelector('span').textContent = newVal; }, 450);
 }
 
 function setPriceDirect(sym, val) {
-  const stEl = document.getElementById(`pf-st-${sym}`);
-  const sbEl = document.getElementById(`pf-sb-${sym}`);
-  if (!stEl) return;
-  stEl.querySelector('span').textContent = val;
-  sbEl.querySelector('span').textContent = val;
+  ['pf-st','pf-sb','pf-fr','pf-bk'].forEach(id => {
+    const el = document.getElementById(`${id}-${sym}`);
+    if (el) el.querySelector('span').textContent = val;
+  });
 }
 
 const lastPhase = {};
