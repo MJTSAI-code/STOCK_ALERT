@@ -140,7 +140,7 @@ def fetch_stock_data():
                     "regular": round(float(regular_price), 2),
                     "pre": round(float(pre_price), 2) if pre_price is not None else None,
                     "post": round(float(post_price), 2) if post_price is not None else None,
-                    "prev_close": round(float(previous_close), 2),
+                    "prev_close": round(float(regular_price), 2),  # ✅ 昨天正式收盤 = regular_price
                     "phase": phase
                 },
                 "news": news_list
