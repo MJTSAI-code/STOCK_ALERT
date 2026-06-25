@@ -37,9 +37,6 @@ def fetch_stock_data():
             print(f"正在抓取 {sym}...")
             ticker = yf.Ticker(sym)
 
-            # --- 💡 安全防禦第一層：fast_info（最穩定但欄位較少）---
-            # 注意：FastInfo 是物件不是字典，部分 yfinance 版本不支援 .get()，
-            # 改用 getattr 才能相容各版本，並印出實際錯誤方便排查
             regular_price = 0.0
             previous_close = 0.0
             try:
@@ -49,7 +46,6 @@ def fetch_stock_data():
             except Exception as fe:
                 print(f"  ⚠️ {sym} fast_info 讀取失敗: {fe}")
 
-            # --- 💡 安全防禦第二層：history（fast_info 也失敗時的極限補救）---
             if regular_price == 0.0:
                 try:
                     hist = ticker.history(period="2d")
@@ -59,22 +55,19 @@ def fetch_stock_data():
                 except Exception as he:
                     print(f"  ⚠️ {sym} history 補救失敗: {he}")
 
-            # --- 💡 處理盤前、盤後欄位（info 是最不穩定的來源，放最後當加值） ---
             pre_price = None
             post_price = None
 
             try:
                 info = ticker.info or {}
-                # info 能讀的話，用它的數字優先（通常比 fast_info 更新）
                 regular_price = info.get('regularMarketPrice') or info.get('currentPrice') or regular_price
                 previous_close = info.get('regularMarketPreviousClose') or info.get('previousClose') or previous_close
                 pre_price = info.get('preMarketPrice')
                 post_price = info.get('postMarketPrice')
             except Exception as info_err:
-                # 即使 info 掛了，前面 fast_info/history 抓到的價格還在，程式不會崩潰
                 print(f"  ⚠️ {sym} info 接口受限: {info_err}")
 
-            # 依據抓到的即時欄位決定市場階段
+            # 決定市場階段
             if pre_price is not None:
                 current_price = pre_price
                 phase = "盤前"
@@ -85,11 +78,14 @@ def fetch_stock_data():
                 current_price = regular_price
                 phase = "正式盤"
 
-            # 計算漲跌
-            dollar_change = current_price - previous_close
-            percent_change = (dollar_change / previous_close * 100) if previous_close != 0 else 0
+            # ✅ 修正：漲跌基準統一用 regular_price（昨天正式收盤）
+            # 盤前：盤前價 vs 昨收盤  → 跟 TradingView 一致
+            # 盤後：盤後價 vs 昨收盤  → 跟 TradingView 一致
+            # 正式盤：現價 vs 昨收盤  → 本來就正確
+            dollar_change = current_price - regular_price
+            percent_change = (dollar_change / regular_price * 100) if regular_price != 0 else 0
 
-            # 新聞處理：只有 UPDATE_NEWS=true 才重新抓取
+            # 新聞處理
             if UPDATE_NEWS:
                 news_list = []
                 try:
@@ -136,7 +132,6 @@ def fetch_stock_data():
                     }
                 ]
 
-            # 寫入資料（結構維持不變，100% 對接前端）
             output_data[sym] = {
                 "quote": {
                     "c": round(float(current_price), 2),
@@ -154,7 +149,6 @@ def fetch_stock_data():
             print(f" ✅ {sym} [{phase}] ${current_price:.2f} ({dollar_change:+.2f} / {percent_change:+.2f}%)")
 
         except Exception as e:
-            # 最外層防線：單一股票遭遇不可預期的崩潰，不影響其他股票繼續跑
             print(f" ❌ {sym} 嚴重抓取失敗: {e}")
             output_data[sym] = {
                 "quote": {
@@ -165,7 +159,6 @@ def fetch_stock_data():
                 "news": existing_news.get(sym, [])
             }
 
-    # 最終輸出
     final_payload = {
         "name": "美股盤前情報資料庫",
         "updated_at": datetime.datetime.now(tw_tz).isoformat(),
