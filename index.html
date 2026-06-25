@@ -32,6 +32,7 @@
   }
   body.scroll-locked { overflow: hidden; }
 
+  /* ── TOP BAR ── */
   .topbar {
     display: flex; align-items: center; justify-content: space-between;
     padding: 16px 20px; background: #0d0d0d;
@@ -41,6 +42,7 @@
   .hero-time { font-family: 'DM Mono', monospace; font-size: 36px; font-weight: 500; color: var(--digit); letter-spacing: 2px; line-height: 1; text-shadow: 0 0 12px rgba(240,201,135,0.25); }
   .hero-date { font-size: 11px; color: var(--muted); text-align: right; margin-top: 2px; }
 
+  /* ── GRID ── */
   .grid { display: grid; grid-template-columns: 1fr; gap: 12px; margin: 16px; }
   @media(min-width: 640px)  { .grid { grid-template-columns: repeat(4,1fr); } .grid > .card { grid-column: span 2; } }
   @media(min-width: 1000px) { .grid { grid-template-columns: repeat(6,1fr); } .grid > .card { grid-column: span 2; } }
@@ -48,6 +50,7 @@
   .card.last-row-pair-1 { grid-column: 2/4; }
   .card.last-row-pair-2 { grid-column: 4/6; }
 
+  /* ── CARD (收合狀態) ── */
   .card {
     background: linear-gradient(180deg, var(--window) 0%, var(--window-edge) 100%);
     border: 3px solid var(--card-frame);
@@ -65,6 +68,7 @@
   .card-header { order: -2; }
   .price-section { order: -1; }
 
+  /* ── CARD 展開狀態：外層容器 ── */
   .card.expanded {
     cursor: default; position: fixed;
     top: 50%; left: 50%;
@@ -86,6 +90,7 @@
     100% { opacity: 0; transform: translate(-50%,-50%) scale(0.96); }
   }
 
+  /* ── 展開後左右兩張卡片排版 ── */
   .card.expanded .card-body-split {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -97,6 +102,7 @@
     .card.expanded .card-body-split { grid-template-columns: 1fr; }
   }
 
+  /* ── 展開後兩張卡片共用外觀 ── */
   .card.expanded .split-left,
   .card.expanded .split-right {
     background: linear-gradient(180deg, var(--window) 0%, var(--window-edge) 100%);
@@ -110,6 +116,7 @@
   .card.expanded .split-left  { display: flex; flex-direction: column; }
   .card.expanded .split-right { display: flex; flex-direction: column; }
 
+  /* ── unroll-card：clip-path 往下展開 ── */
   .card.expanded .split-left,
   .card.expanded .split-right {
     clip-path: inset(0 0 99% 0 round 10px);
@@ -126,6 +133,7 @@
     100% { clip-path: inset(0 0 0%  0 round 10px); transform: scaleY(1); }
   }
 
+  /* ── 左邊：圖表卡 ── */
   .card.expanded .split-left { perspective: none; }
   .card.expanded .split-left .chart-container {
     flex: 1;
@@ -144,6 +152,7 @@
     opacity: 1;
   }
 
+  /* ── 右邊：資訊卡內部結構 ── */
   .card.expanded .split-right .card-header {
     order: unset; flex: none;
     display: flex; justify-content: space-between; align-items: flex-start;
@@ -153,10 +162,12 @@
   .card.expanded .card-sym { font-size: 20px; font-weight: 700; color: var(--digit); letter-spacing: 1px; }
   .card.expanded .card-name { font-size: 10px; color: #aab09a; margin-top: 2px; }
 
+  /* sf-wrap：clip-path 揭露 */
   .sf-wrap { position: relative; clip-path: inset(0 0 100% 0); }
   .sf-wrap.reveal-full { animation: sfRevealFull 0.44s cubic-bezier(0.77,0,0.175,1) forwards; }
   @keyframes sfRevealFull { 0% { clip-path: inset(0 0 100% 0); } 100% { clip-path: inset(0 0 0% 0); } }
 
+  /* 收盤大數字區塊 */
   .expanded-price-stage {
     padding: 16px 14px 12px;
     background: linear-gradient(180deg, #5a4422 0%, #3d2e16 100%);
@@ -199,6 +210,7 @@
     100% { transform: rotateX(0deg);   filter: brightness(1); }
   }
 
+  /* 新聞區塊 */
   .expanded-news-wrap {
     flex: 1; overflow-y: auto;
     margin: 10px 12px 12px;
@@ -213,6 +225,7 @@
   .expanded-news-headline { font-size: 11px; color: var(--text); line-height: 1.5; }
   .expanded-news-source { font-size: 9px; color: var(--muted); margin-top: 3px; }
 
+  /* ── 遮罩 ── */
   .card-overlay {
     display: none; position: fixed; inset: 0;
     background: rgba(0,0,0,0.65); z-index: 1000;
@@ -220,6 +233,7 @@
   }
   .card-overlay.show { display: block; opacity: 1; }
 
+  /* ── 幽靈佔位符：原卡片的半透明殘影，讓 grid 排版不跳動 ── */
   .card-ghost {
     border-radius: 18px;
     background: linear-gradient(180deg, var(--window) 0%, var(--window-edge) 100%);
@@ -230,6 +244,7 @@
     filter: blur(0.5px);
     transition: opacity 0.3s ease;
   }
+  /* 收合後：「已檢視」標記——邊框高光 + 右上角小光點 */
   .card.recently-viewed {
     border-color: rgba(240,201,135,0.7);
     box-shadow:
@@ -240,6 +255,7 @@
       0 0 18px rgba(240,201,135,0.12);
     transition: border-color 0.3s ease, box-shadow 0.3s ease;
   }
+  /* 右上角小光點 */
   .card.recently-viewed::before {
     content: '◉';
     position: absolute;
@@ -254,6 +270,7 @@
     50%       { opacity: 0.3; }
   }
 
+  /* ── 收合狀態的卡片內部元素 ── */
   .card-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 14px; }
   .card-sym { font-size: 20px; font-weight: 700; color: var(--digit); letter-spacing: 1px; }
   .card-name { font-size: 10px; color: #aab09a; margin-top: 2px; }
@@ -280,6 +297,15 @@
   .down { color: var(--down); background: #ff174415; border: 1px solid #ff174430; }
   .divider { display: none; }
 
+  /* ── 收合卡片的 split-flap 數字翻頁結構 ──
+     正式盤期間，數字更新時用上下兩葉片翻頁呈現，而不是直接跳字。
+     結構跟 v15 demo 完全相同：
+     .pf-wrap     : perspective 容器
+     .pf-stack    : 固定高度的視窗
+     .pf-static-t : 靜態上半窗（永遠顯示最新值的上半部）
+     .pf-static-b : 靜態下半窗（永遠顯示最新值的下半部）
+     .pf-front    : 翻動層上半，顯示舊值上半，從 0deg 轉到 -90deg 消失
+     .pf-back     : 翻動層下半，顯示新值下半，從 90deg 轉回 0deg */
   .pf-wrap {
     perspective: 240px;
     display: flex;
@@ -289,47 +315,43 @@
     position: relative;
     height: 40px;
     width: 200px;
-    background: #14120d;
-    border-radius: 3px;
   }
   .pf-half {
-    position: absolute; left: 0; right: 0; top: 0; bottom: 0;
-    display: flex; justify-content: center; align-items: center;
+    position: absolute; left: 0; right: 0; height: 20px;
+    overflow: hidden; display: flex; justify-content: center;
     font-family: 'DM Mono', monospace; font-size: 32px; font-weight: 500;
     color: #ffd98a; text-shadow: 0 0 14px rgba(255,200,110,0.55);
-    background: transparent;
+    background: #14120d; border-radius: 3px;
   }
-  .pf-static-t, .pf-static-b { z-index: 1; }
-  .pf-front {
-    position: absolute; left: 0; right: 0;
-    top: 0; height: 50%;
-    background: #14120d;
-    transform-origin: bottom center;
-    z-index: 5;
-    backface-visibility: hidden;
+  .pf-static-t { top: 0; align-items: flex-end; border-bottom: 1px solid #14120d; }
+  .pf-static-t span { transform: translateY(50%); }
+  .pf-static-b { bottom: 0; align-items: flex-start; }
+  .pf-static-b span { transform: translateY(-50%); }
+  .pf-front, .pf-back {
+    position: absolute; left: 0; right: 0; height: 20px;
+    overflow: hidden; display: flex; justify-content: center;
+    font-family: 'DM Mono', monospace; font-size: 32px; font-weight: 500;
+    color: #ffd98a; text-shadow: 0 0 14px rgba(255,200,110,0.55);
+    background: #1c1812; backface-visibility: hidden; border-radius: 3px;
   }
-  .pf-back {
-    position: absolute; left: 0; right: 0;
-    bottom: 0; height: 50%;
-    background: #14120d;
-    transform-origin: top center;
-    transform: rotateX(0deg);
-    z-index: 4;
-    backface-visibility: hidden;
-  }
+  .pf-front { top: 0; align-items: flex-end; transform-origin: bottom center; z-index: 5; border-bottom: 1px solid #14120d; }
+  .pf-front span { transform: translateY(50%); }
+  .pf-back  { bottom: 0; align-items: flex-start; transform-origin: top center; transform: rotateX(90deg); z-index: 4; }
+  .pf-back  span { transform: translateY(-50%); }
   .pf-seam { display: none; }
-  .pf-front.flipping { animation: pfFrontUp 0.32s cubic-bezier(.5,0,.75,.3) forwards; }
-  @keyframes pfFrontUp {
-    0%   { transform: rotateX(0deg);   }
-    100% { transform: rotateX(-90deg); }
+  .pf-front.flipping { animation: pfFrontDown 0.32s cubic-bezier(.5,0,.75,.3) forwards; }
+  @keyframes pfFrontDown {
+    0%   { transform: rotateX(0deg);   filter: brightness(1); }
+    100% { transform: rotateX(-90deg); filter: brightness(0.45); }
   }
-  .pf-back.flipping { animation: pfBackDown 0.30s cubic-bezier(.2,1,.4,1) 0.28s forwards; }
-  @keyframes pfBackDown {
-    0%   { transform: rotateX(0deg);  }
-    65%  { transform: rotateX(6deg);  }
-    100% { transform: rotateX(90deg); }
+  .pf-back.flipping  { animation: pfBackUp 0.30s cubic-bezier(.2,1,.4,1) 0.28s forwards; }
+  @keyframes pfBackUp {
+    0%   { transform: rotateX(90deg); filter: brightness(0.45); }
+    65%  { transform: rotateX(-8deg); filter: brightness(1.25); }
+    100% { transform: rotateX(0deg);  filter: brightness(1); }
   }
 
+  /* 收合狀態的 chart-container */
   .chart-container {
     margin-top: 0; border: 2px solid #d9cdb3; border-radius: 10px;
     overflow: hidden; height: 0; max-height: 0; background: #000; opacity: 0;
@@ -412,8 +434,8 @@ function buildGrid() {
               <div class="pf-stack">
                 <div class="pf-half pf-static-t" id="pf-st-${s.sym}"><span>—</span></div>
                 <div class="pf-half pf-static-b" id="pf-sb-${s.sym}"><span>—</span></div>
-                <div class="pf-front" id="pf-fr-${s.sym}"></div>
-                <div class="pf-back"  id="pf-bk-${s.sym}"></div>
+                <div class="pf-half pf-front" id="pf-fr-${s.sym}"><span>—</span></div>
+                <div class="pf-half pf-back"  id="pf-bk-${s.sym}"><span>—</span></div>
               </div>
             </div>
             <div class="main-change" id="main-chg-${s.sym}"></div>
@@ -440,6 +462,7 @@ function fixLastRowLayout() {
   grid.querySelectorAll('.last-row-solo, .last-row-pair-1, .last-row-pair-2')
     .forEach(el => el.classList.remove('last-row-solo','last-row-pair-1','last-row-pair-2'));
   if (window.innerWidth < 1000) return;
+  // 幽靈佔位符(.card-ghost)也算佔了一個格子，跟真正的卡片一起計算最後一行
   const cards = Array.from(grid.querySelectorAll('.card:not(.expanded), .card-ghost'));
   const total = cards.length;
   const remainder = total % 3;
@@ -454,6 +477,7 @@ function collapseCard(sym) {
   const overlay = document.getElementById('cardOverlay');
   card.classList.add('closing');
 
+  // 幽靈在收合動畫結束時（280ms）就立刻移除，避免空洞閃爍
   pendingAnimTimers.push(setTimeout(() => {
     const ghost = document.getElementById(`ghost-${sym}`);
     if (ghost) ghost.remove();
@@ -470,6 +494,7 @@ function collapseCard(sym) {
     const sl = card.querySelector('.split-left');
     sl?.classList.remove('panel-flap');
 
+    // 加上「已檢視」標記
     card.classList.add('recently-viewed');
 
     fixLastRowLayout();
@@ -492,13 +517,16 @@ function toggleCard(sym, ex) {
   if (expandedSym && expandedSym !== sym) collapseCard(expandedSym);
 
   if (!isExpanded) {
+    // Bug 8 fix：等 360ms 讓 collapseCard 的 recently-viewed 加上去後，再清掉
     setTimeout(() => {
       document.querySelectorAll('.card.recently-viewed').forEach(c => c.classList.remove('recently-viewed'));
     }, 361);
 
+    // 在原位插入幽靈佔位符，高度跟卡片一樣，讓 grid 不跳動
     const ghost = document.createElement('div');
     ghost.id = `ghost-${sym}`;
     ghost.className = 'card-ghost';
+    // 複製卡片的 grid-column 跟計算高度
     const cardStyle = window.getComputedStyle(card);
     ghost.style.gridColumn = cardStyle.gridColumn;
     ghost.style.gridRow = cardStyle.gridRow;
@@ -515,9 +543,12 @@ function toggleCard(sym, ex) {
     const splitLeft = card.querySelector('.split-left');
     const splitRight = card.querySelector('.split-right');
 
+    // 右欄：注入展開後的新內容（收盤大字 + sf-wrap 揭露 + 盤後翻頁）
+    // 先備份原本的 HTML 以便收合時還原
     splitRight.dataset.originalHtml = splitRight.innerHTML;
     splitRight.dataset.expanded = '1';
 
+    // 從現有資料取得目前的數字資訊
     const mainVal = document.getElementById(`pf-st-${sym}`)?.querySelector('span')?.textContent || '—';
     const mainChg = document.getElementById(`main-chg-${sym}`)?.innerHTML || '';
     const subLabel = document.getElementById(`sub-label-${sym}`)?.textContent || '';
@@ -528,6 +559,7 @@ function toggleCard(sym, ex) {
     const badgeEl = document.getElementById(`badge-${sym}`);
     const badgeHtml = badgeEl?.classList.contains('show') ? `<span class="tag tag-post show">${badgeEl.textContent}</span>` : '';
 
+    // Bug 3 fix：bigLabel 盤後顯示「盤後」不是「收盤」，跟實際數字對應
     const isPost  = phaseLabel === '盤後';
     const isPre   = phaseLabel === '盤前';
     const bigLabel  = isPost ? '盤後' : (isPre ? '盤前' : '現價');
@@ -538,6 +570,7 @@ function toggleCard(sym, ex) {
     const refChg    = isPost ? subChg : '';
     const showRef   = isPost && refVal !== '—';
 
+    // 取得新聞列表
     const newsList = document.getElementById(`news-list-${sym}`);
     const newsHtml = newsList ? newsList.innerHTML : '';
 
@@ -575,24 +608,29 @@ function toggleCard(sym, ex) {
       </div>
     `;
 
+    // 左欄：載入圖表
     const chartEl = document.getElementById(`chart-${sym}`);
     pendingAnimTimers.push(setTimeout(() => {
       chartEl.src = `https://www.tradingview.com/widgetembed/?symbol=${ex}:${sym}&interval=D&hidesidetoolbar=1&theme=dark&style=1&timezone=Asia/Taipei&locale=zh_TW`;
     }, 300));
 
+    // 左右兩張卡依序 unroll 展開
     pendingAnimTimers.push(setTimeout(() => splitLeft.classList.add('panel-flap'), 60));
     pendingAnimTimers.push(setTimeout(() => splitRight.classList.add('panel-flap'), 120));
 
+    // 左邊圖表 show-chart
     pendingAnimTimers.push(setTimeout(() => {
       const cc = splitLeft.querySelector('.chart-container');
       if (cc) cc.classList.add('show-chart');
     }, 580));
 
+    // 右邊：secPrice 揭露
     pendingAnimTimers.push(setTimeout(() => {
       const sp = document.getElementById(`exp-secPrice-${sym}`);
       if (sp) sp.classList.add('reveal-full');
     }, 680));
 
+    // secPrice 揭露完成後，大數字翻頁進場
     pendingAnimTimers.push(setTimeout(() => {
       const stEl = document.getElementById(`exp-pf-st-${sym}`);
       const sbEl = document.getElementById(`exp-pf-sb-${sym}`);
@@ -610,11 +648,13 @@ function toggleCard(sym, ex) {
       setTimeout(() => { if (sbEl) sbEl.querySelector('span').textContent = bigVal; }, 620);
     }, 1120));
 
+    // Bug 4 fix：secNews 移到 1200ms，確保在數字翻頁（1120ms）之後
     pendingAnimTimers.push(setTimeout(() => {
       const sn = document.getElementById(`exp-secNews-${sym}`);
       if (sn) sn.classList.add('reveal-full');
     }, 1200));
 
+    // 盤後翻頁（新聞揭露後）
     if (showRef) {
       pendingAnimTimers.push(setTimeout(() => {
         const ff = document.getElementById(`exp-flipFront-${sym}`);
@@ -640,28 +680,42 @@ function flipPriceCard(sym, newVal) {
   const sbEl = document.getElementById(`pf-sb-${sym}`);
   const frEl = document.getElementById(`pf-fr-${sym}`);
   const bkEl = document.getElementById(`pf-bk-${sym}`);
-  if (!stEl || !frEl) return;
+  if (!stEl) return;
 
+  const oldVal = stEl.querySelector('span').textContent;
+  if (oldVal === newVal) return;
+
+  frEl.querySelector('span').textContent = oldVal;
   frEl.classList.remove('flipping');
   bkEl.classList.remove('flipping');
   void frEl.offsetWidth;
 
   stEl.querySelector('span').textContent = newVal;
-  sbEl.querySelector('span').textContent = newVal;
+  sbEl.querySelector('span').textContent = oldVal;
+  bkEl.querySelector('span').textContent = newVal;
 
   frEl.classList.add('flipping');
   bkEl.classList.add('flipping');
+
+  setTimeout(() => {
+    sbEl.querySelector('span').textContent = newVal;
+  }, 620);
 }
 
 function setPriceDirect(sym, val) {
   const stEl = document.getElementById(`pf-st-${sym}`);
   const sbEl = document.getElementById(`pf-sb-${sym}`);
+  const frEl = document.getElementById(`pf-fr-${sym}`);
+  const bkEl = document.getElementById(`pf-bk-${sym}`);
   if (!stEl) return;
-  stEl.querySelector('span').textContent = val;
-  sbEl.querySelector('span').textContent = val;
+  [stEl,sbEl,frEl,bkEl].forEach(el => { el.querySelector('span').textContent = val; });
 }
 
-const lastPhase = {};
+/* ── phase 狀態記憶 ──
+   記住每張卡片上次的 phase，用於偵測切換時機。
+   isFirstLoad：用 sessionStorage 判斷是否為本次 session 第一次 loadData，
+   第一次時所有卡片一律做翻頁進場動畫（不管數字有沒有變）。 */
+const lastPhase = {}; // { sym: phase }
 let isFirstLoad = !sessionStorage.getItem('hasLoaded');
 
 function renderPrice(sym, q) {
@@ -678,7 +732,33 @@ function renderPrice(sym, q) {
   const stEl = document.getElementById(`pf-st-${sym}`);
   const phaseChanged = lastPhase[sym] !== undefined && lastPhase[sym] !== phase;
 
-  flipPriceCard(sym, valStr);
+  if (isFirstLoad || phaseChanged) {
+    // 第一次載入或 phase 切換：翻頁進場（不管數字是否相同）
+    setPriceDirect(sym, valStr); // 先設定靜態值作為目標
+    // 用舊值（或 —）當起始，做一次翻頁進場
+    const fromVal = stEl?.querySelector('span')?.textContent || '—';
+    const frEl = document.getElementById(`pf-fr-${sym}`);
+    const bkEl = document.getElementById(`pf-bk-${sym}`);
+    const sbEl = document.getElementById(`pf-sb-${sym}`);
+    if (frEl && bkEl) {
+      frEl.querySelector('span').textContent = fromVal;
+      sbEl.querySelector('span').textContent = fromVal;
+      stEl.querySelector('span').textContent = valStr;
+      bkEl.querySelector('span').textContent = valStr;
+      frEl.classList.remove('flipping');
+      bkEl.classList.remove('flipping');
+      void frEl.offsetWidth;
+      frEl.classList.add('flipping');
+      bkEl.classList.add('flipping');
+      setTimeout(() => { sbEl.querySelector('span').textContent = valStr; }, 620);
+    }
+  } else if (phase === '正式盤') {
+    // 正式盤期間：數字有變就翻頁
+    flipPriceCard(sym, valStr);
+  } else {
+    // 盤前/盤後：直接更新
+    setPriceDirect(sym, valStr);
+  }
 
   lastPhase[sym] = phase;
 
@@ -705,13 +785,25 @@ async function loadData() {
   try {
     const res = await fetch('./stock_data.json?t='+Date.now());
     const json = await res.json();
+    const staggerMs = 80;
     STOCKS.forEach((s, i) => {
       const data = json.data?.[s.sym];
-      setTimeout(() => {
-        if (data?.quote) renderPrice(s.sym, data.quote);
-        if (data?.news)  renderNews(s.sym, data.news);
-      }, i * 75);
+      if (data?.quote) {
+        if (isFirstLoad) {
+          setTimeout(() => renderPrice(s.sym, data.quote), i * staggerMs);
+        } else {
+          renderPrice(s.sym, data.quote);
+        }
+      }
+      if (data?.news) renderNews(s.sym, data.news);
     });
+    // Bug 2 fix：等所有 stagger timeout 跑完後才設定 false
+    if (isFirstLoad) {
+      setTimeout(() => {
+        sessionStorage.setItem('hasLoaded', '1');
+        isFirstLoad = false;
+      }, STOCKS.length * staggerMs + 100);
+    }
   } catch(e) { console.error(e); }
 }
 
