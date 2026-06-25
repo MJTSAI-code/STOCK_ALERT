@@ -423,9 +423,6 @@ function buildGrid() {
               <span class="ref-value" id="sub-${s.sym}">—</span>
               <span class="ref-change" id="sub-chg-${s.sym}"></span>
             </div>
-            <div class="ref-price" id="sub-row2-${s.sym}" style="display:none;">
-              <span id="sub-chg2-${s.sym}"></span>
-            </div>
           </div>
           <div class="news-container" id="news-container-${s.sym}">
             <div class="news-header">📰 最新消息</div>
@@ -664,7 +661,7 @@ function flipPriceCard(sym, newVal) {
 
   if (valEl.textContent === newVal) return;
 
-  // 遮罩先蓋下來，掃到中間時才換數字（在遮罩下偷換）
+  // 遮罩先蓋下來，掃到中間時才換數字
   maskEl.classList.remove('sweep');
   void maskEl.offsetWidth;
   maskEl.classList.add('sweep');
@@ -710,32 +707,14 @@ function renderPrice(sym, q) {
   if (phase==='盤前'||phase==='盤後') { badge.textContent=phase; badge.classList.add('show'); }
   else badge.classList.remove('show');
 
-  const subRow   = document.getElementById(`sub-row-${sym}`);
-  const subLabel = document.getElementById(`sub-label-${sym}`);
-  const subEl    = document.getElementById(`sub-${sym}`);
-  const subChgEl = document.getElementById(`sub-chg-${sym}`);
-  const subRow2   = document.getElementById(`sub-row2-${sym}`);
-  const subChg2El = document.getElementById(`sub-chg2-${sym}`);
-
-  if (phase === '盤前' || phase === '盤後') {
-    // 第一行：盤前/盤後漲跌（現價 vs 昨收）
-    subRow.style.display = 'flex';
-    subLabel.textContent = phase === '盤前' ? '盤前' : '盤後';
-    subEl.textContent = '';
-    const d1 = mainChange>=0?'up':'down', s1 = mainChange>=0?'▲':'▼';
-    subChgEl.innerHTML = `<span class="${d1}">${s1} ${Math.abs(mainChange).toFixed(2)} (${Math.abs(mainPct).toFixed(2)}%)</span>`;
-    // 第二行：昨收 vs 前收
-    if (subRow2 && subChg2El) {
-      const rd  = q.reg_d  !== undefined ? parseFloat(q.reg_d)  : 0;
-      const rdp = q.reg_dp !== undefined ? parseFloat(q.reg_dp) : 0;
-      const d2  = rd>=0?'up':'down', s2 = rd>=0?'▲':'▼';
-      subRow2.style.display = 'flex';
-      subChg2El.innerHTML = `<span class="ref-tag">昨收</span>&nbsp;<span class="ref-value">$${regular.toFixed(2)}</span>&nbsp;<span class="${d2}">${s2} ${Math.abs(rd).toFixed(2)} (${Math.abs(rdp).toFixed(2)}%)</span>`;
-    }
-  } else {
-    subRow.style.display = 'none';
-    if (subRow2) subRow2.style.display = 'none';
-  }
+  const subRow=document.getElementById(`sub-row-${sym}`), subLabel=document.getElementById(`sub-label-${sym}`), subEl=document.getElementById(`sub-${sym}`), subChgEl=document.getElementById(`sub-chg-${sym}`);
+  if (phase==='盤後') {
+    subRow.style.display='flex'; subLabel.textContent='收盤'; subEl.textContent=`$${regular.toFixed(2)}`;
+    const rc=regular-prevClose, rp=prevClose?(rc/prevClose*100):0, d=rc>=0?'up':'down', sg=rc>=0?'▲':'▼';
+    subChgEl.innerHTML=`<span class="${d}">${sg} ${Math.abs(rc).toFixed(2)} (${Math.abs(rp).toFixed(2)}%)</span>`;
+  } else if (phase==='盤前') {
+    subRow.style.display='flex'; subLabel.textContent='昨收'; subEl.textContent=`$${prevClose.toFixed(2)}`; subChgEl.innerHTML='';
+  } else subRow.style.display='none';
 }
 
 async function loadData() {
