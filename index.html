@@ -46,17 +46,17 @@
   .grid { display: grid; grid-template-columns: 1fr; gap: 12px; margin: 16px; }
   @media(min-width: 640px)  { .grid { grid-template-columns: repeat(4,1fr); } .grid > .card { grid-column: span 2; } }
   @media(min-width: 1000px) { .grid { grid-template-columns: repeat(6,1fr); } .grid > .card { grid-column: span 2; } }
-  .card.last-row-solo  { grid-column: 3/5; }
+  .card.last-row-solo   { grid-column: 3/5; }
   .card.last-row-pair-1 { grid-column: 2/4; }
   .card.last-row-pair-2 { grid-column: 4/6; }
 
-  /* ── CARD (收合狀態) ── */
+  /* ── CARD 收合狀態 ── */
   .card {
     background: linear-gradient(180deg, var(--window) 0%, var(--window-edge) 100%);
     border: 3px solid var(--card-frame);
     border-radius: 18px; padding: 16px; cursor: pointer;
     transition: transform 0.15s, box-shadow 0.2s, border-color 0.2s;
-    position: relative; perspective: 500px;
+    position: relative;
     display: flex; flex-direction: column;
     box-shadow: 0 6px 0 rgba(0,0,0,0.5), 0 10px 22px rgba(0,0,0,0.45), inset 0 2px 6px rgba(0,0,0,0.3);
   }
@@ -68,7 +68,7 @@
   .card-header { order: -2; }
   .price-section { order: -1; }
 
-  /* ── CARD 展開狀態：外層容器 ── */
+  /* ── CARD 展開狀態 ── */
   .card.expanded {
     cursor: default; position: fixed;
     top: 50%; left: 50%;
@@ -90,19 +90,18 @@
     100% { opacity: 0; transform: translate(-50%,-50%) scale(0.96); }
   }
 
-  /* ── 展開後左右兩張卡片排版 ── */
+  /* 展開後左右排版 */
   .card.expanded .card-body-split {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 18px;
-    perspective: 1200px;
   }
   @media(max-width: 720px) {
     .card.expanded { width: calc(100vw - 24px); }
     .card.expanded .card-body-split { grid-template-columns: 1fr; }
   }
 
-  /* ── 展開後兩張卡片共用外觀 ── */
+  /* 展開後兩張子卡外觀 */
   .card.expanded .split-left,
   .card.expanded .split-right {
     background: linear-gradient(180deg, var(--window) 0%, var(--window-edge) 100%);
@@ -112,17 +111,16 @@
     overflow: hidden;
     position: relative;
     height: 460px;
+    display: flex;
+    flex-direction: column;
   }
-  .card.expanded .split-left  { display: flex; flex-direction: column; }
-  .card.expanded .split-right { display: flex; flex-direction: column; }
 
-  /* ── unroll-card：clip-path 往下展開 ── */
+  /* unroll 展開動畫 */
   .card.expanded .split-left,
   .card.expanded .split-right {
     clip-path: inset(0 0 99% 0 round 10px);
     transform: scaleY(0.04);
     transform-origin: top center;
-    opacity: 1;
   }
   .card.expanded .split-left.panel-flap,
   .card.expanded .split-right.panel-flap {
@@ -133,8 +131,7 @@
     100% { clip-path: inset(0 0 0%  0 round 10px); transform: scaleY(1); }
   }
 
-  /* ── 左邊：圖表卡 ── */
-  .card.expanded .split-left { perspective: none; }
+  /* 左欄：圖表 */
   .card.expanded .split-left .chart-container {
     flex: 1;
     height: auto !important;
@@ -148,26 +145,24 @@
     opacity: 0;
     transition: opacity 0.4s ease 0.3s;
   }
-  .card.expanded .split-left .chart-container.show-chart {
-    opacity: 1;
-  }
+  .card.expanded .split-left .chart-container.show-chart { opacity: 1; }
 
-  /* ── 右邊：資訊卡內部結構 ── */
+  /* 右欄：header */
   .card.expanded .split-right .card-header {
     order: unset; flex: none;
     display: flex; justify-content: space-between; align-items: flex-start;
     padding: 14px 16px;
     border-bottom: 1px solid rgba(217,205,184,0.2);
   }
-  .card.expanded .card-sym { font-size: 20px; font-weight: 700; color: var(--digit); letter-spacing: 1px; }
+  .card.expanded .card-sym  { font-size: 20px; font-weight: 700; color: var(--digit); letter-spacing: 1px; }
   .card.expanded .card-name { font-size: 10px; color: #aab09a; margin-top: 2px; }
 
-  /* sf-wrap：clip-path 揭露 */
+  /* sf-wrap 揭露 */
   .sf-wrap { position: relative; clip-path: inset(0 0 100% 0); }
   .sf-wrap.reveal-full { animation: sfRevealFull 0.44s cubic-bezier(0.77,0,0.175,1) forwards; }
   @keyframes sfRevealFull { 0% { clip-path: inset(0 0 100% 0); } 100% { clip-path: inset(0 0 0% 0); } }
 
-  /* 收盤大數字區塊 */
+  /* 展開：收盤大數字區塊 */
   .expanded-price-stage {
     padding: 16px 14px 12px;
     background: linear-gradient(180deg, #5a4422 0%, #3d2e16 100%);
@@ -177,37 +172,32 @@
     text-align: center;
     box-shadow: inset 0 2px 10px rgba(0,0,0,0.5);
     position: relative;
+    overflow: hidden; /* ← 防止數字浮出框外 */
   }
   .expanded-phase-label {
     position: absolute; top: 6px; left: 10px;
     font-size: 9px; font-weight: 700; color: #d9b87a; opacity: 0.8; letter-spacing: 1px;
   }
+  /* 展開大數字：純靜態文字，不用 pf-stack，進場時做拉霸滾入 */
   .expanded-price-value {
     font-family: 'DM Mono', monospace;
     font-size: 44px; font-weight: 500; color: #ffd98a;
     letter-spacing: 1px; text-shadow: 0 0 14px rgba(255,200,110,0.55);
     line-height: 1; display: block;
+    transform: translateY(20px); opacity: 0;
+  }
+  .expanded-price-value.slot-in {
+    animation: slotRollIn 0.38s cubic-bezier(0.22,1,0.36,1) forwards;
+  }
+  @keyframes slotRollIn {
+    0%   { transform: translateY(20px); opacity: 0; }
+    100% { transform: translateY(0);    opacity: 1; }
   }
   .expanded-main-change { font-size: 13px; font-weight: 700; margin-top: 8px; }
   .expanded-ref-row {
     margin-top: 8px; padding-top: 8px;
     border-top: 1px solid rgba(255,255,255,0.08);
     font-size: 11px; color: #c9b48a;
-    overflow: hidden; perspective: 300px;
-  }
-  .expanded-ref-row #flipFront {
-    transform-origin: top center;
-    transform: rotateX(-90deg);
-    backface-visibility: hidden;
-    display: block;
-  }
-  .expanded-ref-row #flipFront.playing {
-    animation: singleFlipIn 0.34s cubic-bezier(.2,1,.4,1) forwards;
-  }
-  @keyframes singleFlipIn {
-    0%   { transform: rotateX(-90deg); filter: brightness(0.5); }
-    65%  { transform: rotateX(6deg);   filter: brightness(1.2); }
-    100% { transform: rotateX(0deg);   filter: brightness(1); }
   }
 
   /* 新聞區塊 */
@@ -233,7 +223,7 @@
   }
   .card-overlay.show { display: block; opacity: 1; }
 
-  /* ── 幽靈佔位符：原卡片的半透明殘影，讓 grid 排版不跳動 ── */
+  /* ── 幽靈佔位符 ── */
   .card-ghost {
     border-radius: 18px;
     background: linear-gradient(180deg, var(--window) 0%, var(--window-edge) 100%);
@@ -242,9 +232,9 @@
     opacity: 0.18;
     pointer-events: none;
     filter: blur(0.5px);
-    transition: opacity 0.3s ease;
   }
-  /* 收合後：「已檢視」標記——邊框高光 + 右上角小光點 */
+
+  /* 已檢視標記 */
   .card.recently-viewed {
     border-color: rgba(240,201,135,0.7);
     box-shadow:
@@ -253,30 +243,24 @@
       inset 0 2px 6px rgba(0,0,0,0.3),
       0 0 0 1px rgba(240,201,135,0.25),
       0 0 18px rgba(240,201,135,0.12);
-    transition: border-color 0.3s ease, box-shadow 0.3s ease;
   }
-  /* 右上角小光點 */
   .card.recently-viewed::before {
     content: '◉';
-    position: absolute;
-    top: 6px; right: 10px;
-    font-size: 8px;
-    color: rgba(240,201,135,0.8);
+    position: absolute; top: 6px; right: 10px;
+    font-size: 8px; color: rgba(240,201,135,0.8);
     text-shadow: 0 0 6px rgba(240,201,135,0.6);
     animation: recentPulse 2s ease-in-out infinite;
   }
-  @keyframes recentPulse {
-    0%, 100% { opacity: 0.8; }
-    50%       { opacity: 0.3; }
-  }
+  @keyframes recentPulse { 0%,100%{opacity:.8} 50%{opacity:.3} }
 
-  /* ── 收合狀態的卡片內部元素 ── */
+  /* ── 收合卡片內部 ── */
   .card-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 14px; }
-  .card-sym { font-size: 20px; font-weight: 700; color: var(--digit); letter-spacing: 1px; }
+  .card-sym  { font-size: 20px; font-weight: 700; color: var(--digit); letter-spacing: 1px; }
   .card-name { font-size: 10px; color: #aab09a; margin-top: 2px; }
   .tag { font-size: 10px; font-weight: 700; padding: 3px 8px; border-radius: 4px; letter-spacing: 0.5px; }
   .tag-post { background: #3a2a18; color: #e0b97d; border: 1px solid var(--knob); display: none; }
   .tag-post.show { display: inline-block; }
+
   .price-section {
     position: relative; display: flex; flex-direction: column;
     align-items: center; justify-content: center; min-height: 92px;
@@ -284,99 +268,59 @@
     border: 1px solid rgba(0,0,0,0.35); border-radius: 10px;
     box-shadow: inset 0 2px 10px rgba(0,0,0,0.5), inset 0 0 30px rgba(240,180,90,0.12);
     padding: 18px 14px 14px; text-align: center;
+    overflow: hidden; /* ← 防溢出 */
   }
   .phase-corner-label { position: absolute; top: 8px; left: 10px; font-size: 9px; font-weight: 700; color: #d9b87a; letter-spacing: 1px; opacity: 0.75; }
-  .price-value { font-family: 'DM Mono', monospace; font-size: 32px; font-weight: 500; color: #ffd98a; letter-spacing: 1px; text-shadow: 0 0 14px rgba(255,200,110,0.55); line-height: 1; display: inline-block; }
-  .price-value.tick { animation: digitTick 0.28s cubic-bezier(0.34,1.56,0.64,1); }
-  @keyframes digitTick { 0% { transform: translateY(-6px); opacity: 0.4; } 60% { transform: translateY(1px); opacity: 1; } 100% { transform: translateY(0); opacity: 1; } }
+
+  /* ── 外層卡片數字：拉霸滾動容器 ── */
+  .slot-wrap {
+    position: relative;
+    height: 40px;
+    overflow: hidden;
+    display: flex; align-items: center; justify-content: center;
+    width: 100%;
+  }
+  .slot-digit {
+    font-family: 'DM Mono', monospace;
+    font-size: 32px; font-weight: 500;
+    color: #ffd98a; letter-spacing: 1px;
+    text-shadow: 0 0 14px rgba(255,200,110,0.55);
+    line-height: 1;
+    display: block;
+    will-change: transform, opacity;
+  }
+  /* 滾動進場：新數字從下往上滾入 */
+  .slot-digit.rolling-in {
+    animation: slotIn 0.22s cubic-bezier(0.22,1,0.36,1) forwards;
+  }
+  @keyframes slotIn {
+    0%   { transform: translateY(100%); opacity: 0; }
+    100% { transform: translateY(0);    opacity: 1; }
+  }
+
   .main-change { font-size: 12px; font-weight: 700; margin-top: 6px; }
-  .ref-price { margin-top: 10px; padding-top: 8px; border-top: 1px solid rgba(255,255,255,0.08); width: 100%; font-size: 11px; color: #c9b48a; display: flex; justify-content: center; gap: 6px; align-items: baseline; }
-  .ref-price .ref-tag { opacity: 0.6; font-size: 10px; }
+  .ref-price {
+    margin-top: 10px; padding-top: 8px;
+    border-top: 1px solid rgba(255,255,255,0.08);
+    width: 100%; font-size: 11px; color: #c9b48a;
+    display: flex; justify-content: center; gap: 6px; align-items: baseline;
+  }
+  .ref-price .ref-tag   { opacity: 0.6; font-size: 10px; }
   .ref-price .ref-value { font-family: 'DM Mono', monospace; color: #e8d4a8; }
   .up   { color: var(--up);   background: #00e67615; border: 1px solid #00e67630; }
   .down { color: var(--down); background: #ff174415; border: 1px solid #ff174430; }
-  .divider { display: none; }
 
-  /* ── 收合卡片的 split-flap 數字翻頁結構 ──
-     正式盤期間，數字更新時用上下兩葉片翻頁呈現，而不是直接跳字。
-     結構跟 v15 demo 完全相同：
-     .pf-wrap     : perspective 容器
-     .pf-stack    : 固定高度的視窗
-     .pf-static-t : 靜態上半窗（永遠顯示最新值的上半部）
-     .pf-static-b : 靜態下半窗（永遠顯示最新值的下半部）
-     .pf-front    : 翻動層上半，顯示舊值上半，從 0deg 轉到 -90deg 消失
-     .pf-back     : 翻動層下半，顯示新值下半，從 90deg 轉回 0deg */
-  .pf-wrap {
-    perspective: 240px;
-    display: flex;
-    justify-content: center;
-  }
-  .pf-stack {
-    position: relative;
-    height: 40px;
-    width: 200px;
-    background: #14120d; /* 固定黑色底，遮罩翻走後底色保留 */
-    border-radius: 3px;
-  }
-  /* 數字層：完整顯示，不裁切 */
-  .pf-half {
-    position: absolute; left: 0; right: 0; top: 0; bottom: 0;
-    display: flex; justify-content: center; align-items: center;
-    font-family: 'DM Mono', monospace; font-size: 32px; font-weight: 500;
-    color: #ffd98a; text-shadow: 0 0 14px rgba(255,200,110,0.55);
-    background: transparent;
-  }
-  /* static-t/b：永遠顯示最新值，完整顯示 */
-  .pf-static-t, .pf-static-b { z-index: 1; }
-
-  /* 遮罩層：跟黑框同色，蓋在數字上做翻頁 */
-  .pf-front {
-    position: absolute; left: 0; right: 0;
-    top: 0; height: 50%;
-    background: #14120d;
-    transform-origin: bottom center;
-    z-index: 5;
-    backface-visibility: hidden;
-  }
-  .pf-back {
-    position: absolute; left: 0; right: 0;
-    bottom: 0; height: 50%;
-    background: #14120d;
-    transform-origin: top center;
-    transform: rotateX(0deg);
-    z-index: 4;
-    backface-visibility: hidden;
-  }
-  .pf-seam { display: none; }
-
-  /* 翻頁動畫：上片往上翻走，下片往下翻走 */
-  .pf-front.flipping { animation: pfFrontUp 0.32s cubic-bezier(.5,0,.75,.3) forwards; }
-  @keyframes pfFrontUp {
-    0%   { transform: rotateX(0deg);   }
-    100% { transform: rotateX(-90deg); }
-  }
-  .pf-back.flipping { animation: pfBackDown 0.30s cubic-bezier(.2,1,.4,1) 0.28s forwards; }
-  @keyframes pfBackDown {
-    0%   { transform: rotateX(0deg);  }
-    65%  { transform: rotateX(6deg);  }
-    100% { transform: rotateX(90deg); }
-  }
-
-  /* 收合狀態的 chart-container */
+  /* 收合狀態圖表（隱藏） */
   .chart-container {
     margin-top: 0; border: 2px solid #d9cdb3; border-radius: 10px;
     overflow: hidden; height: 0; max-height: 0; background: #000; opacity: 0;
-    box-shadow: inset 0 2px 10px rgba(0,0,0,0.6);
-    transition: height 0.5s cubic-bezier(0.25,0.1,0.25,1), margin-top 0.5s cubic-bezier(0.25,0.1,0.25,1), opacity 0.4s ease;
   }
-
   .news-container { display: none; }
-  .news-header { font-size: 12px; font-weight: 700; color: var(--card-frame); letter-spacing: 1px; margin-bottom: 10px; }
   .news-list { display: flex; flex-direction: column; gap: 8px; }
   .news-item { display: block; padding: 10px 12px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06); border-radius: 6px; text-decoration: none; transition: background 0.15s; }
   .news-item:hover { background: rgba(255,255,255,0.07); }
   .news-headline { font-size: 12px; color: var(--text); line-height: 1.5; }
-  .news-source { font-size: 10px; color: var(--muted); margin-top: 4px; }
+  .news-source   { font-size: 10px; color: var(--muted); margin-top: 4px; }
   .footer { text-align: center; margin-top: 24px; font-size: 10px; color: var(--muted); letter-spacing: 1px; }
 </style>
 </head>
@@ -412,16 +356,19 @@ const STOCKS = [
 let expandedSym = null;
 let pendingAnimTimers = [];
 
+/* ── 時鐘 ── */
 function updateClock() {
   const now = new Date();
   const pad = n => String(n).padStart(2,'0');
   document.getElementById('heroTime').textContent = `${pad(now.getHours())}:${pad(now.getMinutes())}`;
   const days = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
-  document.getElementById('heroDate').textContent = `${now.getFullYear()}/${pad(now.getMonth()+1)}/${pad(now.getDate())} ${days[now.getDay()]}`;
+  document.getElementById('heroDate').textContent =
+    `${now.getFullYear()}/${pad(now.getMonth()+1)}/${pad(now.getDate())} ${days[now.getDay()]}`;
 }
 setInterval(updateClock, 1000);
 updateClock();
 
+/* ── 建立 grid ── */
 function buildGrid() {
   document.getElementById('grid').innerHTML = STOCKS.map(s => `
     <div class="card" id="card-${s.sym}" onclick="toggleCard('${s.sym}','${s.ex}')">
@@ -441,23 +388,17 @@ function buildGrid() {
           </div>
           <div class="price-section">
             <span class="phase-corner-label" id="phase-label-${s.sym}">現價</span>
-            <div class="pf-wrap">
-              <div class="pf-stack">
-                <div class="pf-half pf-static-t" id="pf-st-${s.sym}"><span>—</span></div>
-                <div class="pf-half pf-static-b" id="pf-sb-${s.sym}"><span>—</span></div>
-                <div class="pf-front" id="pf-fr-${s.sym}"></div>
-                <div class="pf-back"  id="pf-bk-${s.sym}"></div>
-              </div>
+            <div class="slot-wrap">
+              <span class="slot-digit" id="slot-${s.sym}">—</span>
             </div>
             <div class="main-change" id="main-chg-${s.sym}"></div>
             <div class="ref-price" id="sub-row-${s.sym}" style="display:none;">
-              <span class="ref-tag" id="sub-label-${s.sym}">收盤</span>
-              <span class="ref-value" id="sub-${s.sym}">—</span>
+              <span class="ref-tag"    id="sub-label-${s.sym}">收盤</span>
+              <span class="ref-value"  id="sub-${s.sym}">—</span>
               <span class="ref-change" id="sub-chg-${s.sym}"></span>
             </div>
           </div>
           <div class="news-container" id="news-container-${s.sym}">
-            <div class="news-header">📰 最新消息</div>
             <div class="news-list" id="news-list-${s.sym}"></div>
           </div>
         </div>
@@ -467,81 +408,102 @@ function buildGrid() {
   fixLastRowLayout();
 }
 
+/* ── 最後一行排版 ── */
 function fixLastRowLayout() {
   const grid = document.getElementById('grid');
   if (!grid) return;
-  grid.querySelectorAll('.last-row-solo, .last-row-pair-1, .last-row-pair-2')
-    .forEach(el => el.classList.remove('last-row-solo','last-row-pair-1','last-row-pair-2'));
+  grid.querySelectorAll('.last-row-solo,.last-row-pair-1,.last-row-pair-2')
+      .forEach(el => el.classList.remove('last-row-solo','last-row-pair-1','last-row-pair-2'));
   if (window.innerWidth < 1000) return;
-  // 幽靈佔位符(.card-ghost)也算佔了一個格子，跟真正的卡片一起計算最後一行
-  const cards = Array.from(grid.querySelectorAll('.card:not(.expanded), .card-ghost'));
-  const total = cards.length;
-  const remainder = total % 3;
-  if (remainder === 1) cards[total-1].classList.add('last-row-solo');
-  else if (remainder === 2) { cards[total-2].classList.add('last-row-pair-1'); cards[total-1].classList.add('last-row-pair-2'); }
+  const cards = Array.from(grid.querySelectorAll('.card:not(.expanded),.card-ghost'));
+  const total = cards.length, rem = total % 3;
+  if (rem === 1) cards[total-1].classList.add('last-row-solo');
+  else if (rem === 2) { cards[total-2].classList.add('last-row-pair-1'); cards[total-1].classList.add('last-row-pair-2'); }
 }
 window.addEventListener('resize', fixLastRowLayout);
 
+/* ── 外層拉霸滾動：只在數字變化時觸發 ── */
+const lastDisplayVal = {}; // 記住每張卡上次顯示的數字字串
+
+function slotRollTo(sym, newVal) {
+  const el = document.getElementById(`slot-${sym}`);
+  if (!el) return;
+  if (lastDisplayVal[sym] === newVal) return; // 數字沒變，不動畫
+  lastDisplayVal[sym] = newVal;
+
+  // 移除舊動畫 class，強制 reflow，再加回來
+  el.classList.remove('rolling-in');
+  void el.offsetWidth;
+  el.textContent = newVal;
+  el.classList.add('rolling-in');
+}
+
+/* ── 收合 ── */
 function collapseCard(sym) {
+  // 先清所有 pending timers，避免殘留動畫繼續跑
+  pendingAnimTimers.forEach(id => clearTimeout(id));
+  pendingAnimTimers = [];
+
   const card = document.getElementById(`card-${sym}`);
   if (!card) return;
   const overlay = document.getElementById('cardOverlay');
+
   card.classList.add('closing');
+  overlay.classList.remove('show');
+  document.body.classList.remove('scroll-locked');
 
-  // 幽靈在收合動畫結束時（280ms）就立刻移除，避免空洞閃爍
-  pendingAnimTimers.push(setTimeout(() => {
-    const ghost = document.getElementById(`ghost-${sym}`);
-    if (ghost) ghost.remove();
-  }, 280));
+  // 立刻把 iframe src 清掉，避免背景繼續載入
+  const chartEl = document.getElementById(`chart-${sym}`);
+  if (chartEl) chartEl.src = '';
 
-  pendingAnimTimers.push(setTimeout(() => {
+  // 360ms 後完成收合
+  const t1 = setTimeout(() => {
+    // 移除展開 class
     card.classList.remove('expanded','closing');
+
+    // 還原 split-right HTML
     const sr = card.querySelector('.split-right');
     if (sr && sr.dataset.expanded) {
       sr.innerHTML = sr.dataset.originalHtml;
       delete sr.dataset.expanded;
       delete sr.dataset.originalHtml;
     }
-    const sl = card.querySelector('.split-left');
-    sl?.classList.remove('panel-flap');
+    card.querySelector('.split-left')?.classList.remove('panel-flap');
 
-    // 加上「已檢視」標記
+    // 移除幽靈（跟收合同步，不提前）
+    document.getElementById(`ghost-${sym}`)?.remove();
+
     card.classList.add('recently-viewed');
-
     fixLastRowLayout();
-  }, 360));
-  overlay.classList.remove('show');
-  document.body.classList.remove('scroll-locked');
-  const chartEl = document.getElementById(`chart-${sym}`);
-  if (chartEl) chartEl.src = '';
+  }, 360);
+
+  pendingAnimTimers.push(t1);
   expandedSym = null;
 }
 
+/* ── 展開 ── */
 function toggleCard(sym, ex) {
-  pendingAnimTimers.forEach(id => clearTimeout(id));
-  pendingAnimTimers = [];
-
   const card = document.getElementById(`card-${sym}`);
   const isExpanded = card.classList.contains('expanded');
   const overlay = document.getElementById('cardOverlay');
 
+  // 如果有另一張展開中，先收合
   if (expandedSym && expandedSym !== sym) collapseCard(expandedSym);
 
   if (!isExpanded) {
-    // Bug 8 fix：等 360ms 讓 collapseCard 的 recently-viewed 加上去後，再清掉
+    // 清掉 recently-viewed（等 360ms 讓上一張先加完再清）
     setTimeout(() => {
       document.querySelectorAll('.card.recently-viewed').forEach(c => c.classList.remove('recently-viewed'));
     }, 361);
 
-    // 在原位插入幽靈佔位符，高度跟卡片一樣，讓 grid 不跳動
+    // 插入幽靈佔位符
     const ghost = document.createElement('div');
     ghost.id = `ghost-${sym}`;
     ghost.className = 'card-ghost';
-    // 複製卡片的 grid-column 跟計算高度
-    const cardStyle = window.getComputedStyle(card);
-    ghost.style.gridColumn = cardStyle.gridColumn;
-    ghost.style.gridRow = cardStyle.gridRow;
-    ghost.style.height = card.offsetHeight + 'px';
+    const cs = window.getComputedStyle(card);
+    ghost.style.gridColumn = cs.gridColumn;
+    ghost.style.gridRow    = cs.gridRow;
+    ghost.style.height     = card.offsetHeight + 'px';
     card.parentNode.insertBefore(ghost, card.nextSibling);
 
     card.classList.add('expanded');
@@ -551,40 +513,34 @@ function toggleCard(sym, ex) {
     document.body.classList.add('scroll-locked');
     fixLastRowLayout();
 
-    const splitLeft = card.querySelector('.split-left');
+    const splitLeft  = card.querySelector('.split-left');
     const splitRight = card.querySelector('.split-right');
 
-    // 右欄：注入展開後的新內容（收盤大字 + sf-wrap 揭露 + 盤後翻頁）
-    // 先備份原本的 HTML 以便收合時還原
+    // 備份原始 HTML 以便收合還原
     splitRight.dataset.originalHtml = splitRight.innerHTML;
     splitRight.dataset.expanded = '1';
 
-    // 從現有資料取得目前的數字資訊
-    const mainVal = document.getElementById(`pf-st-${sym}`)?.querySelector('span')?.textContent || '—';
-    const mainChg = document.getElementById(`main-chg-${sym}`)?.innerHTML || '';
-    const subLabel = document.getElementById(`sub-label-${sym}`)?.textContent || '';
-    const subVal   = document.getElementById(`sub-${sym}`)?.textContent || '';
-    const subChg   = document.getElementById(`sub-chg-${sym}`)?.innerHTML || '';
-    const subRowDisplay = document.getElementById(`sub-row-${sym}`)?.style.display || 'none';
+    // 讀取目前卡片上的數字資料
+    const slotEl     = document.getElementById(`slot-${sym}`);
+    const bigVal     = slotEl?.textContent || '—';
+    const mainChg    = document.getElementById(`main-chg-${sym}`)?.innerHTML || '';
     const phaseLabel = document.getElementById(`phase-label-${sym}`)?.textContent || '現價';
-    const badgeEl = document.getElementById(`badge-${sym}`);
-    const badgeHtml = badgeEl?.classList.contains('show') ? `<span class="tag tag-post show">${badgeEl.textContent}</span>` : '';
+    const badgeEl    = document.getElementById(`badge-${sym}`);
+    const badgeHtml  = badgeEl?.classList.contains('show')
+      ? `<span class="tag tag-post show">${badgeEl.textContent}</span>` : '';
 
-    // Bug 3 fix：bigLabel 盤後顯示「盤後」不是「收盤」，跟實際數字對應
-    const isPost  = phaseLabel === '盤後';
-    const isPre   = phaseLabel === '盤前';
-    const bigLabel  = isPost ? '盤後' : (isPre ? '盤前' : '現價');
-    const bigVal    = mainVal;
-    const bigChg    = mainChg;
-    const refLabel  = isPost ? '收盤' : '';
-    const refVal    = isPost ? subVal : '';
-    const refChg    = isPost ? subChg : '';
-    const showRef   = isPost && refVal !== '—';
+    const isPost = phaseLabel === '盤後';
+    const isPre  = phaseLabel === '盤前';
+    const bigLabel = isPost ? '盤後' : (isPre ? '盤前' : '現價');
 
-    // 取得新聞列表
+    const subVal = document.getElementById(`sub-${sym}`)?.textContent || '';
+    const subChg = document.getElementById(`sub-chg-${sym}`)?.innerHTML || '';
+    const showRef = isPost && subVal && subVal !== '—';
+
     const newsList = document.getElementById(`news-list-${sym}`);
     const newsHtml = newsList ? newsList.innerHTML : '';
 
+    // 注入展開後右欄 HTML
     splitRight.innerHTML = `
       <div class="card-header">
         <div>
@@ -596,89 +552,60 @@ function toggleCard(sym, ex) {
       <div class="sf-wrap" id="exp-secPrice-${sym}">
         <div class="expanded-price-stage">
           <span class="expanded-phase-label">${bigLabel}</span>
-          <div class="pf-wrap" style="margin:4px 0;">
-            <div class="pf-stack" style="width:240px; height:48px;">
-              <div class="pf-half pf-static-t" id="exp-pf-st-${sym}" style="height:24px; font-size:40px;"><span style="font-size:40px;">—</span></div>
-              <div class="pf-half pf-static-b" id="exp-pf-sb-${sym}" style="height:24px; font-size:40px;"><span style="font-size:40px;">—</span></div>
-              <div class="pf-half pf-front"    id="exp-pf-fr-${sym}" style="height:24px; font-size:40px;"><span style="font-size:40px;">—</span></div>
-              <div class="pf-half pf-back"     id="exp-pf-bk-${sym}" style="height:24px; font-size:40px;"><span style="font-size:40px;">—</span></div>
-            </div>
-          </div>
-          <div class="expanded-main-change">${bigChg}</div>
-          ${showRef ? `
-          <div class="expanded-ref-row">
-            <span id="exp-flipFront-${sym}" style="font-size:11px; color:#c9b48a;">${refLabel} ${refVal} ${refChg}</span>
-          </div>` : ''}
+          <span class="expanded-price-value" id="exp-val-${sym}">${bigVal}</span>
+          <div class="expanded-main-change">${mainChg}</div>
+          ${showRef ? `<div class="expanded-ref-row">收盤 ${subVal} ${subChg}</div>` : ''}
         </div>
       </div>
       <div class="sf-wrap" id="exp-secNews-${sym}">
         <div class="expanded-news-wrap">
           <div class="expanded-news-title">📰 最新消息</div>
-          ${newsHtml ? newsHtml.replace(/class="news-item"/g,'class="expanded-news-item"').replace(/class="news-headline"/g,'class="expanded-news-headline"').replace(/class="news-source"/g,'class="expanded-news-source"') : '<div style="font-size:11px;color:#7a7468;">暫無相關新聞</div>'}
+          ${newsHtml
+            ? newsHtml
+                .replace(/class="news-item"/g,     'class="expanded-news-item"')
+                .replace(/class="news-headline"/g,  'class="expanded-news-headline"')
+                .replace(/class="news-source"/g,    'class="expanded-news-source"')
+            : '<div style="font-size:11px;color:#7a7468;">暫無相關新聞</div>'}
         </div>
       </div>
     `;
 
-    // 左欄：載入圖表
-    const chartEl = document.getElementById(`chart-${sym}`);
-    pendingAnimTimers.push(setTimeout(() => {
-      chartEl.src = `https://www.tradingview.com/widgetembed/?symbol=${ex}:${sym}&interval=D&hidesidetoolbar=1&theme=dark&style=1&timezone=Asia/Taipei&locale=zh_TW`;
-    }, 300));
+    // ── 動畫序列 ──
 
-    // 左右兩張卡依序 unroll 展開
-    pendingAnimTimers.push(setTimeout(() => splitLeft.classList.add('panel-flap'), 60));
+    // 左右 unroll
+    pendingAnimTimers.push(setTimeout(() => splitLeft.classList.add('panel-flap'),  60));
     pendingAnimTimers.push(setTimeout(() => splitRight.classList.add('panel-flap'), 120));
 
-    // 左邊圖表 show-chart
+    // 載入圖表
     pendingAnimTimers.push(setTimeout(() => {
-      const cc = splitLeft.querySelector('.chart-container');
-      if (cc) cc.classList.add('show-chart');
+      document.getElementById(`chart-${sym}`).src =
+        `https://www.tradingview.com/widgetembed/?symbol=${ex}:${sym}&interval=D&hidesidetoolbar=1&theme=dark&style=1&timezone=Asia/Taipei&locale=zh_TW`;
+    }, 300));
+
+    // 圖表淡入
+    pendingAnimTimers.push(setTimeout(() => {
+      splitLeft.querySelector('.chart-container')?.classList.add('show-chart');
     }, 580));
 
-    // 右邊：secPrice 揭露
+    // 價格區塊揭露
     pendingAnimTimers.push(setTimeout(() => {
-      const sp = document.getElementById(`exp-secPrice-${sym}`);
-      if (sp) sp.classList.add('reveal-full');
+      document.getElementById(`exp-secPrice-${sym}`)?.classList.add('reveal-full');
     }, 680));
 
-    // secPrice 揭露完成後，大數字翻頁進場
+    // 大數字拉霸滾入
     pendingAnimTimers.push(setTimeout(() => {
-      const stEl = document.getElementById(`exp-pf-st-${sym}`);
-      const sbEl = document.getElementById(`exp-pf-sb-${sym}`);
-      const frEl = document.getElementById(`exp-pf-fr-${sym}`);
-      const bkEl = document.getElementById(`exp-pf-bk-${sym}`);
-      if (!stEl) return;
-      frEl.querySelector('span').textContent = '—';
-      sbEl.querySelector('span').textContent = '—';
-      stEl.querySelector('span').textContent = bigVal;
-      bkEl.querySelector('span').textContent = bigVal;
-      frEl.classList.remove('flipping'); bkEl.classList.remove('flipping');
-      void frEl.offsetWidth;
-      frEl.classList.add('flipping');
-      bkEl.classList.add('flipping');
-      setTimeout(() => { if (sbEl) sbEl.querySelector('span').textContent = bigVal; }, 620);
-    }, 1120));
+      const valEl = document.getElementById(`exp-val-${sym}`);
+      if (valEl) {
+        valEl.classList.remove('slot-in');
+        void valEl.offsetWidth;
+        valEl.classList.add('slot-in');
+      }
+    }, 900));
 
-    // Bug 4 fix：secNews 移到 1200ms，確保在數字翻頁（1120ms）之後
+    // 新聞揭露
     pendingAnimTimers.push(setTimeout(() => {
-      const sn = document.getElementById(`exp-secNews-${sym}`);
-      if (sn) sn.classList.add('reveal-full');
-    }, 1200));
-
-    // 盤後翻頁（新聞揭露後）
-    if (showRef) {
-      pendingAnimTimers.push(setTimeout(() => {
-        const ff = document.getElementById(`exp-flipFront-${sym}`);
-        if (ff) {
-          ff.style.transformOrigin = 'top center';
-          ff.style.transform = 'rotateX(-90deg)';
-          ff.style.backfaceVisibility = 'hidden';
-          ff.style.display = 'block';
-          void ff.offsetWidth;
-          ff.classList.add('playing');
-        }
-      }, 1580));
-    }
+      document.getElementById(`exp-secNews-${sym}`)?.classList.add('reveal-full');
+    }, 1100));
 
   } else {
     collapseCard(sym);
@@ -686,84 +613,84 @@ function toggleCard(sym, ex) {
   }
 }
 
-function flipPriceCard(sym, newVal) {
-  const stEl = document.getElementById(`pf-st-${sym}`);
-  const sbEl = document.getElementById(`pf-sb-${sym}`);
-  const frEl = document.getElementById(`pf-fr-${sym}`);
-  const bkEl = document.getElementById(`pf-bk-${sym}`);
-  if (!stEl || !frEl) return;
-
-  // 1. 遮罩蓋回來
-  frEl.classList.remove('flipping');
-  bkEl.classList.remove('flipping');
-  void frEl.offsetWidth; // reflow 重置動畫
-
-  // 2. 在遮罩下換數字（看不到）
-  stEl.querySelector('span').textContent = newVal;
-  sbEl.querySelector('span').textContent = newVal;
-
-  // 3. 遮罩翻走，露出新數字
-  frEl.classList.add('flipping');
-  bkEl.classList.add('flipping');
-}
-
-function setPriceDirect(sym, val) {
-  // 保留給需要直接設定但不觸發動畫的情況（目前沒用到，備用）
-  const stEl = document.getElementById(`pf-st-${sym}`);
-  const sbEl = document.getElementById(`pf-sb-${sym}`);
-  if (!stEl) return;
-  stEl.querySelector('span').textContent = val;
-  sbEl.querySelector('span').textContent = val;
-}
-
-/* ── phase 狀態記憶 ──
-   記住每張卡片上次的 phase，用於偵測切換時機。
-   isFirstLoad：用 sessionStorage 判斷是否為本次 session 第一次 loadData，
-   第一次時所有卡片一律做翻頁進場動畫（不管數字有沒有變）。 */
-const lastPhase = {}; // { sym: phase }
-let isFirstLoad = !sessionStorage.getItem('hasLoaded');
+/* ── renderPrice：欄位邏輯修正 ── */
+const lastPhase = {};
 
 function renderPrice(sym, q) {
   if (!q) return;
-  const current   = parseFloat(q.c ?? q.regular ?? 0);
-  const regular   = parseFloat(q.regular ?? q.c ?? 0);
-  const prevClose = parseFloat(q.prev_close ?? regular);
-  const phase     = q.phase || '正式盤';
-  const valStr    = `$${current.toFixed(2)}`;
+  const phase = q.phase || '正式盤';
 
-  const phaseLabelMap = { '盤前':'盤前','盤後':'盤後','正式盤':'現價','錯誤':'—' };
-  document.getElementById(`phase-label-${sym}`).textContent = phaseLabelMap[phase]||'現價';
+  // 根據 phase 決定「顯示價」和「參考價」
+  let displayPrice, refPrice, changeAmt, changePct;
 
-  const stEl = document.getElementById(`pf-st-${sym}`);
-  const phaseChanged = lastPhase[sym] !== undefined && lastPhase[sym] !== phase;
+  if (phase === '盤前') {
+    displayPrice = parseFloat(q.pre ?? q.c ?? 0);      // 盤前價
+    refPrice     = parseFloat(q.c   ?? 0);             // 正式盤收盤
+    changeAmt    = displayPrice - refPrice;
+    changePct    = refPrice ? (changeAmt / refPrice * 100) : 0;
+  } else if (phase === '盤後') {
+    displayPrice = parseFloat(q.post ?? q.c ?? 0);     // 盤後價
+    refPrice     = parseFloat(q.c    ?? 0);            // 正式盤收盤
+    changeAmt    = q.d  !== undefined ? parseFloat(q.d)  : (displayPrice - refPrice);
+    changePct    = q.dp !== undefined ? parseFloat(q.dp) : (refPrice ? changeAmt / refPrice * 100 : 0);
+  } else {
+    // 正式盤
+    displayPrice = parseFloat(q.c ?? q.regular ?? 0);
+    refPrice     = parseFloat(q.prev_close ?? 0);
+    changeAmt    = q.d  !== undefined ? parseFloat(q.d)  : (displayPrice - refPrice);
+    changePct    = q.dp !== undefined ? parseFloat(q.dp) : (refPrice ? changeAmt / refPrice * 100 : 0);
+  }
 
-  // 每次資料更新都做翻頁動畫
-  flipPriceCard(sym, valStr);
+  const valStr = `$${displayPrice.toFixed(2)}`;
 
+  // phase 標籤
+  const phaseLabelMap = { '盤前':'盤前', '盤後':'盤後', '正式盤':'現價', '錯誤':'—' };
+  document.getElementById(`phase-label-${sym}`).textContent = phaseLabelMap[phase] || '現價';
+
+  // 外層拉霸滾動（只在值變化時才動）
+  slotRollTo(sym, valStr);
   lastPhase[sym] = phase;
 
-  const mainChange = q.d!==undefined ? parseFloat(q.d) : (current-prevClose);
-  const mainPct   = q.dp!==undefined ? parseFloat(q.dp) : (prevClose?(mainChange/prevClose*100):0);
-  const mainDir = mainChange>=0?'up':'down', mainSign = mainChange>=0?'▲':'▼';
-  document.getElementById(`main-chg-${sym}`).innerHTML = `<span class="${mainDir}">${mainSign} ${Math.abs(mainChange).toFixed(2)} (${Math.abs(mainPct).toFixed(2)}%)</span>`;
+  // 漲跌
+  const dir  = changeAmt >= 0 ? 'up' : 'down';
+  const sign = changeAmt >= 0 ? '▲' : '▼';
+  document.getElementById(`main-chg-${sym}`).innerHTML =
+    `<span class="${dir}">${sign} ${Math.abs(changeAmt).toFixed(2)} (${Math.abs(changePct).toFixed(2)}%)</span>`;
 
+  // 盤前/盤後 badge
   const badge = document.getElementById(`badge-${sym}`);
-  if (phase==='盤前'||phase==='盤後') { badge.textContent=phase; badge.classList.add('show'); }
+  if (phase === '盤前' || phase === '盤後') { badge.textContent = phase; badge.classList.add('show'); }
   else badge.classList.remove('show');
 
-  const subRow=document.getElementById(`sub-row-${sym}`), subLabel=document.getElementById(`sub-label-${sym}`), subEl=document.getElementById(`sub-${sym}`), subChgEl=document.getElementById(`sub-chg-${sym}`);
-  if (phase==='盤後') {
-    subRow.style.display='flex'; subLabel.textContent='收盤'; subEl.textContent=`$${regular.toFixed(2)}`;
-    const rc=regular-prevClose, rp=prevClose?(rc/prevClose*100):0, d=rc>=0?'up':'down', sg=rc>=0?'▲':'▼';
-    subChgEl.innerHTML=`<span class="${d}">${sg} ${Math.abs(rc).toFixed(2)} (${Math.abs(rp).toFixed(2)}%)</span>`;
-  } else if (phase==='盤前') {
-    subRow.style.display='flex'; subLabel.textContent='昨收'; subEl.textContent=`$${prevClose.toFixed(2)}`; subChgEl.innerHTML='';
-  } else subRow.style.display='none';
+  // 參考價列
+  const subRow   = document.getElementById(`sub-row-${sym}`);
+  const subLabel = document.getElementById(`sub-label-${sym}`);
+  const subEl    = document.getElementById(`sub-${sym}`);
+  const subChgEl = document.getElementById(`sub-chg-${sym}`);
+
+  if (phase === '盤後') {
+    subRow.style.display = 'flex';
+    subLabel.textContent = '收盤';
+    subEl.textContent    = `$${refPrice.toFixed(2)}`;
+    // 收盤相對昨收的漲跌
+    const prevClose = parseFloat(q.prev_close ?? refPrice);
+    const rc = refPrice - prevClose, rp = prevClose ? rc/prevClose*100 : 0;
+    const d = rc>=0?'up':'down', sg = rc>=0?'▲':'▼';
+    subChgEl.innerHTML = `<span class="${d}">${sg} ${Math.abs(rc).toFixed(2)} (${Math.abs(rp).toFixed(2)}%)</span>`;
+  } else if (phase === '盤前') {
+    subRow.style.display = 'flex';
+    subLabel.textContent = '昨收';
+    subEl.textContent    = `$${refPrice.toFixed(2)}`;
+    subChgEl.innerHTML   = '';
+  } else {
+    subRow.style.display = 'none';
+  }
 }
 
+/* ── loadData ── */
 async function loadData() {
   try {
-    const res = await fetch('./stock_data.json?t='+Date.now());
+    const res  = await fetch('./stock_data.json?t=' + Date.now());
     const json = await res.json();
     STOCKS.forEach((s, i) => {
       const data = json.data?.[s.sym];
@@ -775,17 +702,22 @@ async function loadData() {
   } catch(e) { console.error(e); }
 }
 
-function renderNews(sym, newsList) {
+function renderNews(sym, list) {
   const el = document.getElementById(`news-list-${sym}`);
   if (!el) return;
-  el.innerHTML = newsList.length
-    ? newsList.map(n=>`<a class="news-item" href="${n.url}" target="_blank" rel="noopener noreferrer"><div class="news-headline">${n.headline}</div><div class="news-source">${n.source}</div></a>`).join('')
+  el.innerHTML = list.length
+    ? list.map(n => `
+        <a class="news-item" href="${n.url}" target="_blank" rel="noopener noreferrer">
+          <div class="news-headline">${n.headline}</div>
+          <div class="news-source">${n.source}</div>
+        </a>`).join('')
     : `<div class="news-source">暫無相關新聞</div>`;
 }
 
+/* ── 返回鍵收合 ── */
 let collapsingViaBack = false;
 window.addEventListener('popstate', () => {
-  if (expandedSym) { collapsingViaBack=true; toggleCard(expandedSym,''); collapsingViaBack=false; }
+  if (expandedSym) { collapsingViaBack = true; toggleCard(expandedSym,''); collapsingViaBack = false; }
 });
 
 buildGrid();
