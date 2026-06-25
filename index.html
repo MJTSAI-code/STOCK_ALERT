@@ -310,26 +310,25 @@
     user-select: none;
     z-index: 1;
   }
-  /* 遮罩層：平時隱藏在上方，翻頁時從上往下掃過 */
+  /* 遮罩層：平時藏在上方，翻頁時從上往下掃過
+     本體是純黑，下緣一條亮線模擬卡片接縫
+     平常完全不可見，動畫結束後自動消失      */
   .pf-mask {
     position: absolute; left: 0; right: 0;
-    top: 0; height: 100%;
-    background: linear-gradient(180deg,
-      #14120d 0%,
-      rgba(20,18,13,0.85) 40%,
-      rgba(20,18,13,0) 100%
-    );
+    top: 0; height: 50%; /* 半高，下緣就是接縫線 */
+    background: #14120d;
+    border-bottom: 2px solid rgba(0, 0, 0, 0.9); /* 接縫黑線 */
     z-index: 5;
-    transform: translateY(-100%);
+    transform: translateY(-110%); /* 初始藏在上方外面 */
     pointer-events: none;
   }
   .pf-mask.sweep {
-    animation: maskSweep 0.35s cubic-bezier(0.4,0,0.2,1) forwards;
+    animation: maskSweep 0.32s cubic-bezier(0.4,0,0.25,1) forwards;
   }
   @keyframes maskSweep {
-    0%   { transform: translateY(-100%); opacity: 1; }
-    45%  { transform: translateY(0%);    opacity: 1; }
-    100% { transform: translateY(100%);  opacity: 0; }
+    0%   { transform: translateY(-110%); }
+    42%  { transform: translateY(0%);    } /* 接縫線到達中間 */
+    100% { transform: translateY(110%);  } /* 往下掃出去消失 */
   }
   .expanded-price-stage .pf-stack {
     overflow: hidden;
