@@ -201,11 +201,6 @@
     100% { transform: rotateX(0deg);   filter: brightness(1); }
   }
 
-  .expanded-price-stage .pf-stack { height: 52px; width: 260px; }
-  .expanded-price-stage .pf-stack .pf-half { font-size: 42px; }
-  .expanded-price-stage .pf-stack .pf-front,
-  .expanded-price-stage .pf-stack .pf-back  { background: #14120d; }
-
   .expanded-news-wrap {
     flex: 1; overflow-y: auto;
     margin: 10px 12px 12px;
@@ -294,44 +289,34 @@
     position: relative;
     height: 40px;
     width: 200px;
-    background: #14120d;
     border-radius: 3px;
-  }
-  .pf-half {
-    position: absolute; left: 0; right: 0; top: 0; bottom: 0;
-    display: flex; justify-content: center; align-items: center;
-    font-family: 'DM Mono', monospace; font-size: 32px; font-weight: 500;
+    font-family: 'DM Mono', monospace;
+    font-size: 32px; font-weight: 500;
     color: #ffd98a; text-shadow: 0 0 14px rgba(255,200,110,0.55);
-    background: transparent;
   }
-  .pf-static-t, .pf-static-b { z-index: 1; }
-  .pf-front {
-    position: absolute; left: 0; right: 0;
-    top: 0; height: 50%;
+  /* 4 layers */
+  .pf-top, .pf-bot, .pf-front, .pf-back {
+    position: absolute; left: 0; right: 0; height: 100%;
+    display: flex; justify-content: center; align-items: center;
+    font-family: inherit; font-size: inherit; font-weight: inherit;
+    color: inherit; text-shadow: inherit;
     background: #14120d;
-    transform-origin: bottom center;
-    z-index: 5;
-    backface-visibility: hidden;
   }
-  .pf-back {
-    position: absolute; left: 0; right: 0;
-    bottom: 0; height: 50%;
-    background: #14120d;
-    transform-origin: top center;
-    transform: rotateX(0deg);
-    z-index: 4;
-    backface-visibility: hidden;
-  }
-  .pf-front.flipping { animation: pfFrontUp 0.32s cubic-bezier(.5,0,.75,.3) forwards; }
+  .pf-top   { clip-path: inset(0 0 50% 0); z-index: 2; }
+  .pf-bot   { clip-path: inset(50% 0 0 0); z-index: 1; }
+  .pf-front { clip-path: inset(0 0 50% 0); z-index: 4; transform-origin: center bottom; backface-visibility: hidden; }
+  .pf-back  { clip-path: inset(50% 0 0 0); z-index: 3; transform-origin: center top;    backface-visibility: hidden; transform: rotateX(-90deg); }
+
+  .pf-front.flipping { animation: pfFrontUp 0.22s cubic-bezier(0.55,0,1,0.45) forwards; }
   @keyframes pfFrontUp {
-    0%   { transform: rotateX(0deg);   }
+    0%   { transform: rotateX(0deg); }
     100% { transform: rotateX(-90deg); }
   }
-  .pf-back.flipping { animation: pfBackDown 0.30s cubic-bezier(.2,1,.4,1) 0.28s forwards; }
+  .pf-back.flipping { animation: pfBackDown 0.26s cubic-bezier(0,0.55,0.45,1) 0.20s forwards; }
   @keyframes pfBackDown {
-    0%   { transform: rotateX(0deg);  }
-    65%  { transform: rotateX(6deg);  }
-    100% { transform: rotateX(90deg); }
+    0%   { transform: rotateX(-90deg); }
+    85%  { transform: rotateX(5deg); }
+    100% { transform: rotateX(0deg); }
   }
 
   .chart-container {
@@ -414,10 +399,10 @@ function buildGrid() {
             <span class="phase-corner-label" id="phase-label-${s.sym}">現價</span>
             <div class="pf-wrap">
               <div class="pf-stack">
-                <div class="pf-half pf-static-t" id="pf-st-${s.sym}"><span>—</span></div>
-                <div class="pf-half pf-static-b" id="pf-sb-${s.sym}"><span>—</span></div>
-                <div class="pf-front" id="pf-fr-${s.sym}"></div>
-                <div class="pf-back"  id="pf-bk-${s.sym}"></div>
+                <div class="pf-top"   id="pf-st-${s.sym}"><span>—</span></div>
+                <div class="pf-bot"   id="pf-sb-${s.sym}"><span>—</span></div>
+                <div class="pf-front" id="pf-fr-${s.sym}"><span>—</span></div>
+                <div class="pf-back"  id="pf-bk-${s.sym}"><span>—</span></div>
               </div>
             </div>
             <div class="main-change" id="main-chg-${s.sym}"></div>
@@ -500,15 +485,11 @@ function toggleCard(sym, ex) {
       document.querySelectorAll('.card.recently-viewed').forEach(c => c.classList.remove('recently-viewed'));
     }, 361);
 
-    // measure card origin before expanding
     const rect = card.getBoundingClientRect();
     const vw = window.innerWidth, vh = window.innerHeight;
-    const cardCx = rect.left + rect.width / 2;
-    const cardCy = rect.top  + rect.height / 2;
-    const targetW = Math.min(1040, vw - 32);
-    const flyScale = rect.width / targetW;
-    const flyX = cardCx - vw / 2;
-    const flyY = cardCy - vh / 2;
+    const flyX = (rect.left + rect.width / 2) - vw / 2;
+    const flyY = (rect.top  + rect.height / 2) - vh / 2;
+    const flyScale = rect.width / Math.min(1040, vw - 32);
     card.style.setProperty('--fly-x', flyX + 'px');
     card.style.setProperty('--fly-y', flyY + 'px');
     card.style.setProperty('--fly-scale', flyScale);
@@ -570,11 +551,11 @@ function toggleCard(sym, ex) {
         <div class="expanded-price-stage">
           <span class="expanded-phase-label">${bigLabel}</span>
           <div class="pf-wrap" style="margin:4px 0;">
-            <div class="pf-stack" style="width:260px; height:52px;">
-              <div class="pf-half pf-static-t" id="exp-pf-st-${sym}"><span>—</span></div>
-              <div class="pf-half pf-static-b" id="exp-pf-sb-${sym}"><span>—</span></div>
-              <div class="pf-front" id="exp-pf-fr-${sym}"></div>
-              <div class="pf-back"  id="exp-pf-bk-${sym}"></div>
+            <div class="pf-stack" style="width:260px; height:52px; font-size:42px;">
+              <div class="pf-top"   id="exp-pf-st-${sym}"><span>—</span></div>
+              <div class="pf-bot"   id="exp-pf-sb-${sym}"><span>—</span></div>
+              <div class="pf-front" id="exp-pf-fr-${sym}"><span>—</span></div>
+              <div class="pf-back"  id="exp-pf-bk-${sym}"><span>—</span></div>
             </div>
           </div>
           <div class="expanded-main-change">${bigChg}</div>
@@ -611,11 +592,10 @@ function toggleCard(sym, ex) {
     }, 680));
 
     pendingAnimTimers.push(setTimeout(() => {
-      const stEl = document.getElementById(`exp-pf-st-${sym}`);
-      const sbEl = document.getElementById(`exp-pf-sb-${sym}`);
-      if (!stEl) return;
-      stEl.querySelector('span').textContent = '—';
-      sbEl.querySelector('span').textContent = '—';
+      ['exp-pf-st','exp-pf-sb','exp-pf-fr','exp-pf-bk'].forEach(id => {
+        const el = document.getElementById(`${id}-${sym}`);
+        if (el) el.querySelector('span').textContent = '—';
+      });
       flipPriceCard(sym, bigVal, 'exp-');
     }, 1120));
 
@@ -646,29 +626,41 @@ function toggleCard(sym, ex) {
 
 function flipPriceCard(sym, newVal, prefix) {
   const p = prefix || '';
-  const stEl = document.getElementById(`${p}pf-st-${sym}`);
-  const sbEl = document.getElementById(`${p}pf-sb-${sym}`);
-  const frEl = document.getElementById(`${p}pf-fr-${sym}`);
-  const bkEl = document.getElementById(`${p}pf-bk-${sym}`);
-  if (!stEl || !frEl) return;
+  const topEl = document.getElementById(`${p}pf-st-${sym}`);
+  const botEl = document.getElementById(`${p}pf-sb-${sym}`);
+  const frEl  = document.getElementById(`${p}pf-fr-${sym}`);
+  const bkEl  = document.getElementById(`${p}pf-bk-${sym}`);
+  if (!topEl || !frEl) return;
+
+  const oldVal = topEl.querySelector('span').textContent;
+  if (oldVal === newVal) return;
+
+  // front = old value upper half (flips away)
+  frEl.querySelector('span').textContent = oldVal;
+  // back = new value lower half (falls in)
+  bkEl.querySelector('span').textContent = newVal;
+  // top-static immediately shows new upper half
+  topEl.querySelector('span').textContent = newVal;
+  // bot-static still shows old lower half until back lands
+  botEl.querySelector('span').textContent = oldVal;
 
   frEl.classList.remove('flipping');
   bkEl.classList.remove('flipping');
   void frEl.offsetWidth;
-
-  stEl.querySelector('span').textContent = newVal;
-  sbEl.querySelector('span').textContent = newVal;
-
   frEl.classList.add('flipping');
   bkEl.classList.add('flipping');
+
+  // after back lands, update bot-static
+  setTimeout(() => {
+    botEl.querySelector('span').textContent = newVal;
+  }, 480);
 }
 
 function setPriceDirect(sym, val) {
-  const stEl = document.getElementById(`pf-st-${sym}`);
-  const sbEl = document.getElementById(`pf-sb-${sym}`);
-  if (!stEl) return;
-  stEl.querySelector('span').textContent = val;
-  sbEl.querySelector('span').textContent = val;
+  ['pf-st','pf-sb','pf-fr','pf-bk'].forEach(id => {
+    const el = document.getElementById(`${id}-${sym}`);
+    if (el) el.querySelector('span').textContent = val;
+  });
 }
 
 const lastPhase = {};
