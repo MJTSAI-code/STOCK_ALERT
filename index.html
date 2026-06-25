@@ -558,10 +558,10 @@ function toggleCard(sym, ex) {
     const bigLabel  = isPost ? '盤後' : (isPre ? '盤前' : '現價');
     const bigVal    = mainVal;
     const bigChg    = mainChg;
-    const refLabel  = isPost ? '收盤' : '';
-    const refVal    = isPost ? subVal : '';
+    const refLabel  = isPost ? '收盤' : (isPre ? '昨收' : '');
+    const refVal    = subVal || '—';
     const refChg    = isPost ? subChg : '';
-    const showRef   = isPost && refVal !== '—';
+    const showRef   = subRowDisplay !== 'none' && refVal !== '—' && refVal !== '';
 
     const newsList = document.getElementById(`news-list-${sym}`);
     const newsHtml = newsList ? newsList.innerHTML : '';
