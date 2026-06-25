@@ -74,16 +74,18 @@
     z-index: 1001;
     background: transparent; border: none; box-shadow: none; padding: 0;
     overflow: visible;
-    animation: cardQuietAppear 0.3s ease-out forwards;
+    animation: cardFlyIn 0.35s cubic-bezier(0.25,0.1,0.25,1) forwards;
   }
-  @keyframes cardQuietAppear {
-    0%   { opacity: 0; transform: translate(-50%,-50%) scale(0.96); }
-    100% { opacity: 1; transform: translate(-50%,-50%) scale(1); }
+  @keyframes cardFlyIn {
+    0%   { opacity: 0; transform: translate(calc(var(--fly-x) - 50%), calc(var(--fly-y) - 50%)) scale(var(--fly-scale)); }
+    100% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
   }
-  .card.expanded.closing { animation: cardQuietDisappear 0.28s ease-in forwards; }
-  @keyframes cardQuietDisappear {
-    0%   { opacity: 1; transform: translate(-50%,-50%) scale(1); }
-    100% { opacity: 0; transform: translate(-50%,-50%) scale(0.96); }
+  .card.expanded.closing {
+    animation: cardFlyOut 0.28s cubic-bezier(0.4,0,1,1) forwards;
+  }
+  @keyframes cardFlyOut {
+    0%   { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+    100% { opacity: 0; transform: translate(calc(var(--fly-x) - 50%), calc(var(--fly-y) - 50%)) scale(var(--fly-scale)); }
   }
 
   .card.expanded .card-body-split {
@@ -224,11 +226,9 @@
     border-radius: 18px;
     background: linear-gradient(180deg, var(--window) 0%, var(--window-edge) 100%);
     border: 3px solid var(--card-frame);
-    box-shadow: 0 6px 0 rgba(0,0,0,0.3), 0 10px 22px rgba(0,0,0,0.25);
-    opacity: 0.18;
+    box-shadow: 0 6px 0 rgba(0,0,0,0.5), 0 10px 22px rgba(0,0,0,0.45), inset 0 2px 6px rgba(0,0,0,0.3);
+    opacity: 1;
     pointer-events: none;
-    filter: blur(0.5px);
-    transition: opacity 0.3s ease;
   }
   .card.recently-viewed {
     border-color: rgba(240,201,135,0.7);
@@ -496,13 +496,26 @@ function toggleCard(sym, ex) {
       document.querySelectorAll('.card.recently-viewed').forEach(c => c.classList.remove('recently-viewed'));
     }, 361);
 
+    // measure card origin before expanding
+    const rect = card.getBoundingClientRect();
+    const vw = window.innerWidth, vh = window.innerHeight;
+    const cardCx = rect.left + rect.width / 2;
+    const cardCy = rect.top  + rect.height / 2;
+    const targetW = Math.min(1040, vw - 32);
+    const flyScale = rect.width / targetW;
+    const flyX = cardCx - vw / 2;
+    const flyY = cardCy - vh / 2;
+    card.style.setProperty('--fly-x', flyX + 'px');
+    card.style.setProperty('--fly-y', flyY + 'px');
+    card.style.setProperty('--fly-scale', flyScale);
+
     const ghost = document.createElement('div');
     ghost.id = `ghost-${sym}`;
     ghost.className = 'card-ghost';
     const cardStyle = window.getComputedStyle(card);
     ghost.style.gridColumn = cardStyle.gridColumn;
     ghost.style.gridRow = cardStyle.gridRow;
-    ghost.style.height = card.offsetHeight + 'px';
+    ghost.style.height = rect.height + 'px';
     card.parentNode.insertBefore(ghost, card.nextSibling);
 
     card.classList.add('expanded');
