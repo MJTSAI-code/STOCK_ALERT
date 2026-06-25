@@ -281,7 +281,7 @@
   .divider { display: none; }
 
   .pf-wrap {
-    perspective: 240px;
+    perspective: 300px;
     display: flex;
     justify-content: center;
   }
@@ -289,33 +289,56 @@
     position: relative;
     height: 40px;
     width: 200px;
-    border-radius: 3px;
     font-family: 'DM Mono', monospace;
     font-size: 32px; font-weight: 500;
     color: #ffd98a; text-shadow: 0 0 14px rgba(255,200,110,0.55);
   }
-  /* 4 layers */
+  /* upper/lower half containers — these do the clipping */
+  .pf-upper, .pf-lower {
+    position: absolute; left: 0; right: 0; height: 50%;
+    overflow: hidden;
+  }
+  .pf-upper { top: 0; }
+  .pf-lower { bottom: 0; }
+
+  /* text tiles — full height inside the half container */
   .pf-top, .pf-bot, .pf-front, .pf-back {
-    position: absolute; left: 0; right: 0; height: 100%;
+    position: absolute; left: 0; right: 0;
+    height: 200%; /* full digit height, half visible due to parent overflow:hidden */
     display: flex; justify-content: center; align-items: center;
+    background: #14120d;
     font-family: inherit; font-size: inherit; font-weight: inherit;
     color: inherit; text-shadow: inherit;
-    background: #14120d;
+    will-change: transform;
   }
-  .pf-top   { clip-path: inset(0 0 50% 0); z-index: 2; }
-  .pf-bot   { clip-path: inset(50% 0 0 0); z-index: 1; }
-  .pf-front { clip-path: inset(0 0 50% 0); z-index: 4; transform-origin: center bottom; backface-visibility: hidden; }
-  .pf-back  { clip-path: inset(50% 0 0 0); z-index: 3; transform-origin: center top;    backface-visibility: hidden; transform: rotateX(-90deg); }
+  /* upper container children: bottom-align so top half of digit shows */
+  .pf-upper .pf-top, .pf-upper .pf-front {
+    bottom: 0; top: auto;
+    transform-origin: bottom center;
+  }
+  /* lower container children: top-align so bottom half shows */
+  .pf-lower .pf-bot, .pf-lower .pf-back {
+    top: 0;
+    transform-origin: top center;
+  }
+  .pf-upper { border-bottom: 1px solid #000; }
 
-  .pf-front.flipping { animation: pfFrontUp 0.22s cubic-bezier(0.55,0,1,0.45) forwards; }
+  /* static layers */
+  .pf-top  { z-index: 1; }
+  .pf-bot  { z-index: 1; }
+  /* flap layers sit on top */
+  .pf-front { z-index: 2; }
+  .pf-back  { z-index: 2; transform: rotateX(-90deg); }
+
+  .pf-front.flipping { animation: pfFrontUp 0.20s cubic-bezier(0.4,0,1,0.6) forwards; }
   @keyframes pfFrontUp {
     0%   { transform: rotateX(0deg); }
     100% { transform: rotateX(-90deg); }
   }
-  .pf-back.flipping { animation: pfBackDown 0.26s cubic-bezier(0,0.55,0.45,1) 0.20s forwards; }
+  .pf-back.flipping { animation: pfBackDown 0.22s cubic-bezier(0,0.4,0.6,1) 0.18s forwards; }
   @keyframes pfBackDown {
     0%   { transform: rotateX(-90deg); }
-    85%  { transform: rotateX(5deg); }
+    90%  { transform: rotateX(3deg); }
     100% { transform: rotateX(0deg); }
   }
 
@@ -399,10 +422,14 @@ function buildGrid() {
             <span class="phase-corner-label" id="phase-label-${s.sym}">現價</span>
             <div class="pf-wrap">
               <div class="pf-stack">
-                <div class="pf-top"   id="pf-st-${s.sym}"><span>—</span></div>
-                <div class="pf-bot"   id="pf-sb-${s.sym}"><span>—</span></div>
-                <div class="pf-front" id="pf-fr-${s.sym}"><span>—</span></div>
-                <div class="pf-back"  id="pf-bk-${s.sym}"><span>—</span></div>
+                <div class="pf-upper">
+                  <div class="pf-top"   id="pf-st-${s.sym}"><span>—</span></div>
+                  <div class="pf-front" id="pf-fr-${s.sym}"><span>—</span></div>
+                </div>
+                <div class="pf-lower">
+                  <div class="pf-bot"   id="pf-sb-${s.sym}"><span>—</span></div>
+                  <div class="pf-back"  id="pf-bk-${s.sym}"><span>—</span></div>
+                </div>
               </div>
             </div>
             <div class="main-change" id="main-chg-${s.sym}"></div>
@@ -552,10 +579,14 @@ function toggleCard(sym, ex) {
           <span class="expanded-phase-label">${bigLabel}</span>
           <div class="pf-wrap" style="margin:4px 0;">
             <div class="pf-stack" style="width:260px; height:52px; font-size:42px;">
-              <div class="pf-top"   id="exp-pf-st-${sym}"><span>—</span></div>
-              <div class="pf-bot"   id="exp-pf-sb-${sym}"><span>—</span></div>
-              <div class="pf-front" id="exp-pf-fr-${sym}"><span>—</span></div>
-              <div class="pf-back"  id="exp-pf-bk-${sym}"><span>—</span></div>
+              <div class="pf-upper">
+                <div class="pf-top"   id="exp-pf-st-${sym}"><span>—</span></div>
+                <div class="pf-front" id="exp-pf-fr-${sym}"><span>—</span></div>
+              </div>
+              <div class="pf-lower">
+                <div class="pf-bot"   id="exp-pf-sb-${sym}"><span>—</span></div>
+                <div class="pf-back"  id="exp-pf-bk-${sym}"><span>—</span></div>
+              </div>
             </div>
           </div>
           <div class="expanded-main-change">${bigChg}</div>
