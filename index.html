@@ -310,24 +310,26 @@
     user-select: none;
     z-index: 1;
   }
-  /* 遮罩層：純黑上半片，從上往下掃過，邊緣銳利無漸層 */
+  /* 遮罩層：平時隱藏在上方，翻頁時從上往下掃過 */
   .pf-mask {
     position: absolute; left: 0; right: 0;
-    top: -50%; height: 50%;
-    background: #14120d;
-    border-bottom: 2px solid #000;
+    top: 0; height: 100%;
+    background: linear-gradient(180deg,
+      #14120d 0%,
+      rgba(20,18,13,0.85) 40%,
+      rgba(20,18,13,0) 100%
+    );
     z-index: 5;
-    pointer-events: none;
-    will-change: transform;
     transform: translateY(-100%);
+    pointer-events: none;
   }
   .pf-mask.sweep {
     animation: maskSweep 0.35s cubic-bezier(0.4,0,0.2,1) forwards;
   }
   @keyframes maskSweep {
-    0%   { transform: translateY(-100%); }
-    45%  { transform: translateY(200%);  }
-    100% { transform: translateY(400%);  }
+    0%   { transform: translateY(-100%); opacity: 1; }
+    45%  { transform: translateY(0%);    opacity: 1; }
+    100% { transform: translateY(100%);  opacity: 0; }
   }
   .expanded-price-stage .pf-stack {
     overflow: hidden;
@@ -659,15 +661,14 @@ function flipPriceCard(sym, newVal) {
   const maskEl = document.getElementById(`pf-mask-${sym}`);
   if (!valEl) return;
 
+  // 數字沒變就不動
   if (valEl.textContent === newVal) return;
 
-  // 遮罩先蓋下來，掃到中間時才換數字
+  // 換數字，遮罩從上往下掃過製造翻頁感
+  valEl.textContent = newVal;
   maskEl.classList.remove('sweep');
   void maskEl.offsetWidth;
   maskEl.classList.add('sweep');
-  setTimeout(() => {
-    valEl.textContent = newVal;
-  }, 157); // 45% × 350ms ≈ 157ms
 }
 
 function setPriceDirect(sym, val) {
