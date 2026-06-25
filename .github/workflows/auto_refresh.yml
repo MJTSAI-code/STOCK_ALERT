@@ -17,12 +17,16 @@ jobs:
         run: |
           export TZ="Asia/Taipei"
           TW_DOW=$(date +%u)   # 1=週一 ... 6=週六 7=週日
-          echo "台灣星期: ${TW_DOW}"
+          UTC_DOW=$(date -u +%u)
+          echo "台灣星期: ${TW_DOW} / UTC星期: ${UTC_DOW}"
           if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
             echo "手動觸發，強制放行"
             echo "is_weekday=true" >> $GITHUB_ENV
           elif [ "$TW_DOW" -ge 1 ] && [ "$TW_DOW" -le 5 ]; then
             echo "✅ 平日，繼續執行"
+            echo "is_weekday=true" >> $GITHUB_ENV
+          elif [ "$UTC_DOW" -ge 1 ] && [ "$UTC_DOW" -le 5 ]; then
+            echo "✅ 台灣週六但UTC仍平日（週五盤前05:30），放行"
             echo "is_weekday=true" >> $GITHUB_ENV
           else
             echo "🛌 週末，完全跳過（不爬蟲、不發送）"
@@ -51,8 +55,7 @@ jobs:
             echo "🤫 背景靜默更新，不發 Telegram"
             echo "send_alert=false" >> $GITHUB_ENV
           fi
-          # 新聞只在盤前班次（05~06點）更新一次，其他時段沿用舊新聞；
-          # 手動觸發（workflow_dispatch）視同強制放行，也一併更新新聞，方便立即驗證
+          # 新聞只在盤前班次（05~06點）更新一次
           if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
             echo "📰 手動觸發，強制更新新聞"
             echo "UPDATE_NEWS=true" >> $GITHUB_ENV
