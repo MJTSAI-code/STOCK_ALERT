@@ -310,26 +310,26 @@
     user-select: none;
     z-index: 1;
   }
-  /* 遮罩層：平時藏在上方，翻頁時從上往下掃過
-     本體是純黑，下緣一條亮線模擬卡片接縫
-     平常完全不可見，動畫結束後自動消失      */
+  /* 遮罩層：平時隱藏在上方，翻頁時從上往下掃過 */
   .pf-mask {
     position: absolute; left: 0; right: 0;
-    top: -50%; height: 50%; /* 上半片，初始藏在框外上方 */
-    background: #14120d;
-    border-bottom: 2px solid #000;
+    top: 0; height: 100%;
+    background: linear-gradient(180deg,
+      #14120d 0%,
+      rgba(20,18,13,0.85) 40%,
+      rgba(20,18,13,0) 100%
+    );
     z-index: 5;
+    transform: translateY(-100%);
     pointer-events: none;
-    will-change: transform; /* GPU加速，邊緣銳利 */
-    transform: translateY(-100%); /* 初始藏在框外 */
   }
   .pf-mask.sweep {
-    animation: maskSweep 0.32s cubic-bezier(0.4,0,0.25,1) forwards;
+    animation: maskSweep 0.35s cubic-bezier(0.4,0,0.2,1) forwards;
   }
   @keyframes maskSweep {
-    0%   { transform: translateY(-100%); } /* 藏在框外上方 */
-    40%  { transform: translateY(100%);  } /* 掃到中間（50% 位置） */
-    100% { transform: translateY(300%);  } /* 往下掃出框外消失 */
+    0%   { transform: translateY(-100%); opacity: 1; }
+    45%  { transform: translateY(0%);    opacity: 1; }
+    100% { transform: translateY(100%);  opacity: 0; }
   }
   .expanded-price-stage .pf-stack {
     overflow: hidden;
@@ -424,9 +424,6 @@ function buildGrid() {
               <span class="ref-tag" id="sub-label-${s.sym}">收盤</span>
               <span class="ref-value" id="sub-${s.sym}">—</span>
               <span class="ref-change" id="sub-chg-${s.sym}"></span>
-            </div>
-            <div class="ref-price" id="sub-row2-${s.sym}" style="display:none;">
-              <span id="sub-chg2-${s.sym}"></span>
             </div>
           </div>
           <div class="news-container" id="news-container-${s.sym}">
@@ -664,17 +661,14 @@ function flipPriceCard(sym, newVal) {
   const maskEl = document.getElementById(`pf-mask-${sym}`);
   if (!valEl) return;
 
+  // 數字沒變就不動
   if (valEl.textContent === newVal) return;
 
-  // 1. 遮罩先從上蓋下來（0% → 42%，約 0.13s）
+  // 換數字，遮罩從上往下掃過製造翻頁感
+  valEl.textContent = newVal;
   maskEl.classList.remove('sweep');
   void maskEl.offsetWidth;
   maskEl.classList.add('sweep');
-
-  // 2. 遮罩蓋到中間時才換數字（在遮罩下面偷換，看不到）
-  setTimeout(() => {
-    valEl.textContent = newVal;
-  }, 128); // 對應 40% × 320ms ≈ 128ms
 }
 
 function setPriceDirect(sym, val) {
@@ -714,47 +708,14 @@ function renderPrice(sym, q) {
   if (phase==='盤前'||phase==='盤後') { badge.textContent=phase; badge.classList.add('show'); }
   else badge.classList.remove('show');
 
-  const subRow   = document.getElementById(`sub-row-${sym}`);
-  const subLabel = document.getElementById(`sub-label-${sym}`);
-  const subEl    = document.getElementById(`sub-${sym}`);
-  const subChgEl = document.getElementById(`sub-chg-${sym}`);
-  const subRow2  = document.getElementById(`sub-row2-${sym}`);
-  const subChg2El= document.getElementById(`sub-chg2-${sym}`);
-
-  if (phase === '盤前') {
-    // 第一行：盤前漲跌（盤前 vs 昨收）
-    subRow.style.display = 'flex';
-    subLabel.textContent = '盤前';
-    subEl.textContent = '';
-    const d1 = mainChange>=0?'up':'down', s1 = mainChange>=0?'▲':'▼';
-    subChgEl.innerHTML = `<span class="${d1}">${s1} ${Math.abs(mainChange).toFixed(2)} (${Math.abs(mainPct).toFixed(2)}%)</span>`;
-
-    // 第二行：昨收漲跌（昨收 vs 前收）
-    if (subRow2) {
-      const rd  = q.reg_d  !== undefined ? parseFloat(q.reg_d)  : 0;
-      const rdp = q.reg_dp !== undefined ? parseFloat(q.reg_dp) : 0;
-      const d2  = rd>=0?'up':'down', s2 = rd>=0?'▲':'▼';
-      subRow2.style.display = 'flex';
-      subChg2El.innerHTML = `<span class="ref-tag">昨收</span>&nbsp;<span class="ref-value">$${regular.toFixed(2)}</span>&nbsp;<span class="${d2}">${s2} ${Math.abs(rd).toFixed(2)} (${Math.abs(rdp).toFixed(2)}%)</span>`;
-    }
-  } else if (phase === '盤後') {
-    subRow.style.display = 'flex';
-    subLabel.textContent = '盤後';
-    subEl.textContent = '';
-    const d1 = mainChange>=0?'up':'down', s1 = mainChange>=0?'▲':'▼';
-    subChgEl.innerHTML = `<span class="${d1}">${s1} ${Math.abs(mainChange).toFixed(2)} (${Math.abs(mainPct).toFixed(2)}%)</span>`;
-
-    if (subRow2) {
-      const rd  = q.reg_d  !== undefined ? parseFloat(q.reg_d)  : 0;
-      const rdp = q.reg_dp !== undefined ? parseFloat(q.reg_dp) : 0;
-      const d2  = rd>=0?'up':'down', s2 = rd>=0?'▲':'▼';
-      subRow2.style.display = 'flex';
-      subChg2El.innerHTML = `<span class="ref-tag">昨收</span>&nbsp;<span class="ref-value">$${regular.toFixed(2)}</span>&nbsp;<span class="${d2}">${s2} ${Math.abs(rd).toFixed(2)} (${Math.abs(rdp).toFixed(2)}%)</span>`;
-    }
-  } else {
-    subRow.style.display = 'none';
-    if (subRow2) subRow2.style.display = 'none';
-  }
+  const subRow=document.getElementById(`sub-row-${sym}`), subLabel=document.getElementById(`sub-label-${sym}`), subEl=document.getElementById(`sub-${sym}`), subChgEl=document.getElementById(`sub-chg-${sym}`);
+  if (phase==='盤後') {
+    subRow.style.display='flex'; subLabel.textContent='收盤'; subEl.textContent=`$${regular.toFixed(2)}`;
+    const rc=regular-prevClose, rp=prevClose?(rc/prevClose*100):0, d=rc>=0?'up':'down', sg=rc>=0?'▲':'▼';
+    subChgEl.innerHTML=`<span class="${d}">${sg} ${Math.abs(rc).toFixed(2)} (${Math.abs(rp).toFixed(2)}%)</span>`;
+  } else if (phase==='盤前') {
+    subRow.style.display='flex'; subLabel.textContent='昨收'; subEl.textContent=`$${prevClose.toFixed(2)}`; subChgEl.innerHTML='';
+  } else subRow.style.display='none';
 }
 
 async function loadData() {
