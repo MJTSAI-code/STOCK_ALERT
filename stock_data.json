@@ -1,68 +1,68 @@
 {
   "name": "美股盤前情報資料庫",
-  "updated_at": "2026-06-26T03:31:51.899392+08:00",
+  "updated_at": "2026-06-26T04:21:19.749169+08:00",
   "data": {
     "NOW": {
       "quote": {
-        "c": 89.66,
-        "d": 0.0,
-        "dp": 0.0,
-        "regular": 89.66,
-        "reg_d": -4.14,
-        "reg_dp": -4.4136,
+        "c": 90.0,
+        "d": 0.48,
+        "dp": 0.5362,
+        "regular": 89.52,
+        "reg_d": -4.28,
+        "reg_dp": -4.5629,
         "pre": null,
-        "post": null,
-        "prev_close": 89.66,
-        "phase": "正式盤"
+        "post": 90.0,
+        "prev_close": 93.8,
+        "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Salesforce vs. ServiceNow: What Do Their Revenue Trends Tell Investors?",
-          "datetime": 1782392816,
+          "headline": "ServiceNow: An Excellent Business Trading at a Discount",
+          "datetime": 1782418873,
           "source": "Yahoo Finance",
-          "url": "https://www.fool.com/coverage/charts/2026/06/25/salesforce-vs-servicenow-what-do-their-revenue-trends-tell-investors/"
+          "url": "https://www.fool.com/investing/2026/06/25/servicenow-excellent-business-trading-at-discount/"
         }
       ]
     },
     "NVDA": {
       "quote": {
-        "c": 193.95,
-        "d": 0.0,
-        "dp": 0.0,
-        "regular": 193.95,
-        "reg_d": -4.96,
-        "reg_dp": -2.4936,
+        "c": 196.08,
+        "d": 0.34,
+        "dp": 0.1737,
+        "regular": 195.74,
+        "reg_d": -3.17,
+        "reg_dp": -1.5937,
         "pre": null,
-        "post": null,
-        "prev_close": 193.95,
-        "phase": "正式盤"
+        "post": 196.08,
+        "prev_close": 198.91,
+        "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Tech stocks live: AI trade roars back after Micron earnings crush estimates",
-          "datetime": 1782392816,
+          "headline": "Sandisk, Western Digital, and others soar as Micron results  'justify elevated valuations'",
+          "datetime": 1782418874,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/technology/live/tech-stocks-live-ai-trade-roars-back-after-micron-earnings-crush-estimates-143422690.html"
+          "url": "https://finance.yahoo.com/markets/article/sandisk-western-digital-and-others-soar-as-micron-results-justify-elevated-valuations-140642825.html"
         }
       ]
     },
     "LITE": {
       "quote": {
-        "c": 856.12,
-        "d": 0.0,
-        "dp": 0.0,
-        "regular": 856.12,
-        "reg_d": 13.17,
-        "reg_dp": 1.5624,
+        "c": 861.99,
+        "d": 0.02,
+        "dp": 0.0023,
+        "regular": 861.97,
+        "reg_d": 19.02,
+        "reg_dp": 2.2564,
         "pre": null,
-        "post": null,
-        "prev_close": 856.12,
-        "phase": "正式盤"
+        "post": 861.99,
+        "prev_close": 842.95,
+        "phase": "盤後"
       },
       "news": [
         {
           "headline": "Why Lumentum’s (LITE) AI Optics Exposure Keeps Needham Bullish Despite Valuation Risk",
-          "datetime": 1782392817,
+          "datetime": 1782418875,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/technology/ai/articles/why-lumentum-lite-ai-optics-185254221.html"
         }
@@ -70,21 +70,21 @@
     },
     "ONDS": {
       "quote": {
-        "c": 7.68,
-        "d": 0.0,
-        "dp": 0.0,
-        "regular": 7.68,
-        "reg_d": 0.0,
-        "reg_dp": 0.0651,
+        "c": 7.76,
+        "d": 0.08,
+        "dp": 1.1075,
+        "regular": 7.67,
+        "reg_d": -0.0,
+        "reg_dp": -0.0651,
         "pre": null,
-        "post": null,
+        "post": 7.76,
         "prev_close": 7.68,
-        "phase": "正式盤"
+        "phase": "盤後"
       },
       "news": [
         {
           "headline": "Lockheed Martin (LMT) Lands $35 Billion THAAD Deal And Expands Counter Drone Ties",
-          "datetime": 1782392817,
+          "datetime": 1782418875,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/markets/stocks/articles/lockheed-martin-lmt-lands-35-042916354.html"
         }
@@ -92,153 +92,153 @@
     },
     "MRVL": {
       "quote": {
-        "c": 278.0,
-        "d": 0.0,
-        "dp": 0.0,
-        "regular": 278.0,
-        "reg_d": 1.31,
-        "reg_dp": 0.4716,
+        "c": 283.0,
+        "d": 1.74,
+        "dp": 0.6184,
+        "regular": 281.26,
+        "reg_d": 4.56,
+        "reg_dp": 1.6498,
         "pre": null,
-        "post": null,
-        "prev_close": 278.0,
-        "phase": "正式盤"
+        "post": 283.0,
+        "prev_close": 276.69,
+        "phase": "盤後"
       },
       "news": [
         {
-          "headline": "BofA Raises Marvell Technology (MRVL) Price Target to $365 from $240",
-          "datetime": 1782392818,
+          "headline": "Sandisk, Western Digital, and others soar as Micron results  'justify elevated valuations'",
+          "datetime": 1782418876,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/technology/ai/articles/bofa-raises-marvell-technology-mrvl-062412208.html"
+          "url": "https://finance.yahoo.com/markets/article/sandisk-western-digital-and-others-soar-as-micron-results-justify-elevated-valuations-140642825.html"
         }
       ]
     },
     "GOOG": {
       "quote": {
-        "c": 341.55,
-        "d": 0.0,
-        "dp": 0.0,
-        "regular": 341.55,
-        "reg_d": -3.47,
-        "reg_dp": -1.0072,
+        "c": 341.82,
+        "d": -0.37,
+        "dp": -0.1083,
+        "regular": 342.19,
+        "reg_d": -2.83,
+        "reg_dp": -0.8217,
         "pre": null,
-        "post": null,
-        "prev_close": 341.55,
-        "phase": "正式盤"
+        "post": 341.82,
+        "prev_close": 345.02,
+        "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Alphabet makes the Dow look more like the Nasdaq",
-          "datetime": 1782392818,
+          "headline": "Micron earnings beat fuels hopes for Tech rally rebound",
+          "datetime": 1782418876,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/markets/article/alphabet-makes-the-dow-look-more-like-the-nasdaq-155236659.html"
+          "url": "https://finance.yahoo.com/video/micron-earnings-beat-fuels-hopes-194500066.html"
         }
       ]
     },
     "SPCX": {
       "quote": {
-        "c": 152.24,
-        "d": 0.0,
-        "dp": 0.0,
-        "regular": 152.24,
-        "reg_d": -2.11,
-        "reg_dp": -1.367,
+        "c": 153.25,
+        "d": 0.25,
+        "dp": 0.1634,
+        "regular": 153.0,
+        "reg_d": -1.35,
+        "reg_dp": -0.8746,
         "pre": null,
-        "post": null,
-        "prev_close": 152.24,
-        "phase": "正式盤"
+        "post": 153.25,
+        "prev_close": 154.35,
+        "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Lunar Outpost CEO on the growing space economy and the race to the Moon",
-          "datetime": 1782392818,
+          "headline": "Is SpaceX's $25B debt sale raising bubble concerns on Wall Street?",
+          "datetime": 1782418877,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/video/lunar-outpost-ceo-growing-space-201700892.html"
+          "url": "https://finance.yahoo.com/video/spacexs-25b-debt-sale-raising-141000421.html"
         }
       ]
     },
     "TSM": {
       "quote": {
-        "c": 436.37,
-        "d": 0.0,
-        "dp": 0.0,
-        "regular": 436.37,
-        "reg_d": -4.46,
-        "reg_dp": -1.0117,
+        "c": 437.5,
+        "d": 2.51,
+        "dp": 0.577,
+        "regular": 434.99,
+        "reg_d": -5.84,
+        "reg_dp": -1.3248,
         "pre": null,
-        "post": null,
-        "prev_close": 436.37,
-        "phase": "正式盤"
+        "post": 437.5,
+        "prev_close": 440.83,
+        "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Breakout Watch: This Firm Helps Nvidia, TSM And Intel Bring AI Ideas To Market",
-          "datetime": 1782392819,
+          "headline": "Qualcomm raises data center outlook on AI demand",
+          "datetime": 1782418877,
           "source": "Yahoo Finance",
-          "url": "https://www.investors.com/research/ibd-stock-analysis/breakout-watch-this-firm-helps-nvidia-tsm-and-intel-bring-ai-ideas-to-market/?src=A00220&yptr=yahoo"
+          "url": "https://finance.yahoo.com/video/qualcomm-raises-data-center-outlook-165000920.html"
         }
       ]
     },
     "MU": {
       "quote": {
-        "c": 1200.87,
-        "d": 0.0,
-        "dp": 0.0,
-        "regular": 1200.87,
-        "reg_d": 152.94,
-        "reg_dp": 14.5951,
+        "c": 1219.35,
+        "d": 5.79,
+        "dp": 0.4771,
+        "regular": 1213.56,
+        "reg_d": 165.64,
+        "reg_dp": 15.8066,
         "pre": null,
-        "post": null,
-        "prev_close": 1200.87,
-        "phase": "正式盤"
+        "post": 1219.35,
+        "prev_close": 1047.92,
+        "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Stock market today: Dow, S&P 500, Nasdaq futures rise as Micron eases AI fears, PCE hits 3-year high",
-          "datetime": 1782392819,
+          "headline": "Sandisk, Western Digital, and others soar as Micron results  'justify elevated valuations'",
+          "datetime": 1782418878,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/markets/live/stock-market-today-dow-sp-500-nasdaq-futures-rise-as-micron-eases-ai-fears-pce-hits-3-year-high-232650645.html"
+          "url": "https://finance.yahoo.com/markets/article/sandisk-western-digital-and-others-soar-as-micron-results-justify-elevated-valuations-140642825.html"
         }
       ]
     },
     "SNDK": {
       "quote": {
-        "c": 2297.39,
-        "d": 0.0,
-        "dp": 0.0,
-        "regular": 2297.39,
-        "reg_d": 375.98,
-        "reg_dp": 19.5679,
+        "c": 2353.0,
+        "d": 18.0,
+        "dp": 0.7709,
+        "regular": 2335.0,
+        "reg_d": 413.59,
+        "reg_dp": 21.525,
         "pre": null,
-        "post": null,
-        "prev_close": 2297.39,
-        "phase": "正式盤"
+        "post": 2353.0,
+        "prev_close": 1921.41,
+        "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Micron Q3 earnings beat sends stock surging 18% premarket",
-          "datetime": 1782392820,
+          "headline": "Sandisk, Western Digital, and others soar as Micron results  'justify elevated valuations'",
+          "datetime": 1782418879,
           "source": "Yahoo Finance",
-          "url": "https://qz.com/micron-earnings-ai-memory-stock-surge-062526"
+          "url": "https://finance.yahoo.com/markets/article/sandisk-western-digital-and-others-soar-as-micron-results-justify-elevated-valuations-140642825.html"
         }
       ]
     },
     "TSLA": {
       "quote": {
-        "c": 373.1,
-        "d": 0.0,
-        "dp": 0.0,
-        "regular": 373.1,
-        "reg_d": -2.36,
-        "reg_dp": -0.6299,
+        "c": 375.7,
+        "d": 0.58,
+        "dp": 0.1543,
+        "regular": 375.12,
+        "reg_d": -0.34,
+        "reg_dp": -0.0919,
         "pre": null,
-        "post": null,
-        "prev_close": 373.1,
-        "phase": "正式盤"
+        "post": 375.7,
+        "prev_close": 375.46,
+        "phase": "盤後"
       },
       "news": [
         {
           "headline": "Alphabet makes the Dow look more like the Nasdaq",
-          "datetime": 1782392821,
+          "datetime": 1782418879,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/markets/article/alphabet-makes-the-dow-look-more-like-the-nasdaq-155236659.html"
         }
