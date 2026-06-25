@@ -44,7 +44,7 @@
   .grid { display: grid; grid-template-columns: 1fr; gap: 12px; margin: 16px; }
   @media(min-width: 640px)  { .grid { grid-template-columns: repeat(4,1fr); } .grid > .card { grid-column: span 2; } }
   @media(min-width: 1000px) { .grid { grid-template-columns: repeat(6,1fr); } .grid > .card { grid-column: span 2; } }
-  .card.last-row-solo  { grid-column: 3/5; }
+  .card.last-row-solo   { grid-column: 3/5; }
   .card.last-row-pair-1 { grid-column: 2/4; }
   .card.last-row-pair-2 { grid-column: 4/6; }
 
@@ -213,6 +213,18 @@
   .expanded-news-headline { font-size: 11px; color: var(--text); line-height: 1.5; }
   .expanded-news-source { font-size: 9px; color: var(--muted); margin-top: 3px; }
 
+  /* ── Expanded pf-stack size override ── */
+  .exp-pf-stack {
+    height: 52px;
+    width: 260px;
+  }
+  .exp-pf-stack .pf-top,
+  .exp-pf-stack .pf-bot,
+  .exp-pf-stack .pf-front,
+  .exp-pf-stack .pf-back {
+    font-size: 44px;
+  }
+
   .card-overlay {
     display: none; position: fixed; inset: 0;
     background: rgba(0,0,0,0.65); z-index: 1000;
@@ -280,54 +292,84 @@
   .down { color: var(--down); background: #ff174415; border: 1px solid #ff174430; }
   .divider { display: none; }
 
+  /* ── Split-flap core ── */
   .pf-wrap {
-    perspective: 240px;
     display: flex;
     justify-content: center;
   }
   .pf-stack {
     position: relative;
+    perspective: 300px;
     height: 40px;
     width: 200px;
-    background: #14120d;
     border-radius: 3px;
+    overflow: visible;
   }
-  .pf-half {
-    position: absolute; left: 0; right: 0; top: 0; bottom: 0;
-    display: flex; justify-content: center; align-items: center;
+
+  /* Shared half-tile base */
+  .pf-top, .pf-bot, .pf-front, .pf-back {
+    position: absolute; left: 0; right: 0;
+    overflow: hidden;
+    display: flex; justify-content: center;
     font-family: 'DM Mono', monospace; font-size: 32px; font-weight: 500;
     color: #ffd98a; text-shadow: 0 0 14px rgba(255,200,110,0.55);
-    background: transparent;
+    background: #1e1a11;
+    border-radius: 2px;
   }
-  .pf-static-t, .pf-static-b { z-index: 1; }
-  .pf-front {
-    position: absolute; left: 0; right: 0;
+
+  /* Upper static half — shows new value top */
+  .pf-top {
     top: 0; height: 50%;
-    background: #14120d;
+    align-items: flex-end;
+    padding-bottom: 1px;
+    z-index: 1;
+    border-bottom: 1px solid #0a0806;
+  }
+
+  /* Lower static half — shows new value bottom, revealed after flip */
+  .pf-bot {
+    top: 50%; height: 50%;
+    align-items: flex-start;
+    padding-top: 1px;
+    z-index: 1;
+  }
+
+  /* Front flap — upper half, holds OLD value, flips upward */
+  .pf-front {
+    top: 0; height: 50%;
+    align-items: flex-end;
+    padding-bottom: 1px;
     transform-origin: bottom center;
-    z-index: 5;
+    z-index: 3;
     backface-visibility: hidden;
+    border-bottom: 1px solid #0a0806;
   }
+
+  /* Back flap — lower half, holds NEW value, falls down */
   .pf-back {
-    position: absolute; left: 0; right: 0;
-    bottom: 0; height: 50%;
-    background: #14120d;
+    top: 50%; height: 50%;
+    align-items: flex-start;
+    padding-top: 1px;
     transform-origin: top center;
-    transform: rotateX(0deg);
-    z-index: 4;
+    transform: rotateX(-90deg);
+    z-index: 3;
     backface-visibility: hidden;
   }
-  .pf-seam { display: none; }
-  .pf-front.flipping { animation: pfFrontUp 0.32s cubic-bezier(.5,0,.75,.3) forwards; }
+
+  .pf-front.flip-out {
+    animation: pfFrontUp 0.22s cubic-bezier(0.55, 0, 1, 0.45) forwards;
+  }
   @keyframes pfFrontUp {
     0%   { transform: rotateX(0deg);   }
     100% { transform: rotateX(-90deg); }
   }
-  .pf-back.flipping { animation: pfBackDown 0.30s cubic-bezier(.2,1,.4,1) 0.28s forwards; }
+  .pf-back.flip-in {
+    animation: pfBackDown 0.24s cubic-bezier(0, 0.55, 0.45, 1) 0.20s forwards;
+  }
   @keyframes pfBackDown {
-    0%   { transform: rotateX(0deg);  }
-    65%  { transform: rotateX(6deg);  }
-    100% { transform: rotateX(90deg); }
+    0%   { transform: rotateX(-90deg); }
+    80%  { transform: rotateX(4deg);   }
+    100% { transform: rotateX(0deg);   }
   }
 
   .chart-container {
@@ -410,10 +452,10 @@ function buildGrid() {
             <span class="phase-corner-label" id="phase-label-${s.sym}">現價</span>
             <div class="pf-wrap">
               <div class="pf-stack">
-                <div class="pf-half pf-static-t" id="pf-st-${s.sym}"><span>—</span></div>
-                <div class="pf-half pf-static-b" id="pf-sb-${s.sym}"><span>—</span></div>
-                <div class="pf-front" id="pf-fr-${s.sym}"></div>
-                <div class="pf-back"  id="pf-bk-${s.sym}"></div>
+                <div class="pf-top"   id="pf-top-${s.sym}"><span>—</span></div>
+                <div class="pf-bot"   id="pf-bot-${s.sym}"><span>—</span></div>
+                <div class="pf-front" id="pf-fr-${s.sym}"><span>—</span></div>
+                <div class="pf-back"  id="pf-bk-${s.sym}"><span>—</span></div>
               </div>
             </div>
             <div class="main-change" id="main-chg-${s.sym}"></div>
@@ -512,21 +554,20 @@ function toggleCard(sym, ex) {
     document.body.classList.add('scroll-locked');
     fixLastRowLayout();
 
-    const splitLeft = card.querySelector('.split-left');
+    const splitLeft  = card.querySelector('.split-left');
     const splitRight = card.querySelector('.split-right');
 
     splitRight.dataset.originalHtml = splitRight.innerHTML;
     splitRight.dataset.expanded = '1';
 
-    const mainVal = document.getElementById(`pf-st-${sym}`)?.querySelector('span')?.textContent || '—';
-    const mainChg = document.getElementById(`main-chg-${sym}`)?.innerHTML || '';
-    const subLabel = document.getElementById(`sub-label-${sym}`)?.textContent || '';
-    const subVal   = document.getElementById(`sub-${sym}`)?.textContent || '';
-    const subChg   = document.getElementById(`sub-chg-${sym}`)?.innerHTML || '';
-    const subRowDisplay = document.getElementById(`sub-row-${sym}`)?.style.display || 'none';
+    const mainVal    = document.getElementById(`pf-top-${sym}`)?.querySelector('span')?.textContent || '—';
+    const mainChg    = document.getElementById(`main-chg-${sym}`)?.innerHTML || '';
+    const subLabel   = document.getElementById(`sub-label-${sym}`)?.textContent || '';
+    const subVal     = document.getElementById(`sub-${sym}`)?.textContent || '';
+    const subChg     = document.getElementById(`sub-chg-${sym}`)?.innerHTML || '';
     const phaseLabel = document.getElementById(`phase-label-${sym}`)?.textContent || '現價';
-    const badgeEl = document.getElementById(`badge-${sym}`);
-    const badgeHtml = badgeEl?.classList.contains('show') ? `<span class="tag tag-post show">${badgeEl.textContent}</span>` : '';
+    const badgeEl    = document.getElementById(`badge-${sym}`);
+    const badgeHtml  = badgeEl?.classList.contains('show') ? `<span class="tag tag-post show">${badgeEl.textContent}</span>` : '';
 
     const isPost  = phaseLabel === '盤後';
     const isPre   = phaseLabel === '盤前';
@@ -553,11 +594,11 @@ function toggleCard(sym, ex) {
         <div class="expanded-price-stage">
           <span class="expanded-phase-label">${bigLabel}</span>
           <div class="pf-wrap" style="margin:4px 0;">
-            <div class="pf-stack" style="width:240px; height:48px;">
-              <div class="pf-half pf-static-t" id="exp-pf-st-${sym}" style="height:24px; font-size:40px;"><span style="font-size:40px;">—</span></div>
-              <div class="pf-half pf-static-b" id="exp-pf-sb-${sym}" style="height:24px; font-size:40px;"><span style="font-size:40px;">—</span></div>
-              <div class="pf-half pf-front"    id="exp-pf-fr-${sym}" style="height:24px; font-size:40px;"><span style="font-size:40px;">—</span></div>
-              <div class="pf-half pf-back"     id="exp-pf-bk-${sym}" style="height:24px; font-size:40px;"><span style="font-size:40px;">—</span></div>
+            <div class="pf-stack exp-pf-stack">
+              <div class="pf-top"   id="exp-pf-top-${sym}"><span>—</span></div>
+              <div class="pf-bot"   id="exp-pf-bot-${sym}"><span>—</span></div>
+              <div class="pf-front" id="exp-pf-fr-${sym}"><span>—</span></div>
+              <div class="pf-back"  id="exp-pf-bk-${sym}"><span>—</span></div>
             </div>
           </div>
           <div class="expanded-main-change">${bigChg}</div>
@@ -570,7 +611,12 @@ function toggleCard(sym, ex) {
       <div class="sf-wrap" id="exp-secNews-${sym}">
         <div class="expanded-news-wrap">
           <div class="expanded-news-title">📰 最新消息</div>
-          ${newsHtml ? newsHtml.replace(/class="news-item"/g,'class="expanded-news-item"').replace(/class="news-headline"/g,'class="expanded-news-headline"').replace(/class="news-source"/g,'class="expanded-news-source"') : '<div style="font-size:11px;color:#7a7468;">暫無相關新聞</div>'}
+          ${newsHtml
+            ? newsHtml
+                .replace(/class="news-item"/g,     'class="expanded-news-item"')
+                .replace(/class="news-headline"/g, 'class="expanded-news-headline"')
+                .replace(/class="news-source"/g,   'class="expanded-news-source"')
+            : '<div style="font-size:11px;color:#7a7468;">暫無相關新聞</div>'}
         </div>
       </div>
     `;
@@ -580,7 +626,7 @@ function toggleCard(sym, ex) {
       chartEl.src = `https://www.tradingview.com/widgetembed/?symbol=${ex}:${sym}&interval=D&hidesidetoolbar=1&theme=dark&style=1&timezone=Asia/Taipei&locale=zh_TW`;
     }, 300));
 
-    pendingAnimTimers.push(setTimeout(() => splitLeft.classList.add('panel-flap'), 60));
+    pendingAnimTimers.push(setTimeout(() => splitLeft.classList.add('panel-flap'),  60));
     pendingAnimTimers.push(setTimeout(() => splitRight.classList.add('panel-flap'), 120));
 
     pendingAnimTimers.push(setTimeout(() => {
@@ -594,20 +640,9 @@ function toggleCard(sym, ex) {
     }, 680));
 
     pendingAnimTimers.push(setTimeout(() => {
-      const stEl = document.getElementById(`exp-pf-st-${sym}`);
-      const sbEl = document.getElementById(`exp-pf-sb-${sym}`);
-      const frEl = document.getElementById(`exp-pf-fr-${sym}`);
-      const bkEl = document.getElementById(`exp-pf-bk-${sym}`);
-      if (!stEl) return;
-      frEl.querySelector('span').textContent = '—';
-      sbEl.querySelector('span').textContent = '—';
-      stEl.querySelector('span').textContent = bigVal;
-      bkEl.querySelector('span').textContent = bigVal;
-      frEl.classList.remove('flipping'); bkEl.classList.remove('flipping');
-      void frEl.offsetWidth;
-      frEl.classList.add('flipping');
-      bkEl.classList.add('flipping');
-      setTimeout(() => { if (sbEl) sbEl.querySelector('span').textContent = bigVal; }, 620);
+      // Use setPriceDirect to set initial state, then flip in
+      setPriceDirect(sym, '—', 'exp-');
+      flipPriceCard(sym, bigVal, 'exp-');
     }, 1120));
 
     pendingAnimTimers.push(setTimeout(() => {
@@ -619,10 +654,10 @@ function toggleCard(sym, ex) {
       pendingAnimTimers.push(setTimeout(() => {
         const ff = document.getElementById(`exp-flipFront-${sym}`);
         if (ff) {
-          ff.style.transformOrigin = 'top center';
-          ff.style.transform = 'rotateX(-90deg)';
+          ff.style.transformOrigin   = 'top center';
+          ff.style.transform         = 'rotateX(-90deg)';
           ff.style.backfaceVisibility = 'hidden';
-          ff.style.display = 'block';
+          ff.style.display           = 'block';
           void ff.offsetWidth;
           ff.classList.add('playing');
         }
@@ -635,34 +670,55 @@ function toggleCard(sym, ex) {
   }
 }
 
-function flipPriceCard(sym, newVal) {
-  const stEl = document.getElementById(`pf-st-${sym}`);
-  const sbEl = document.getElementById(`pf-sb-${sym}`);
-  const frEl = document.getElementById(`pf-fr-${sym}`);
-  const bkEl = document.getElementById(`pf-bk-${sym}`);
-  if (!stEl || !frEl) return;
+function flipPriceCard(sym, newVal, prefix) {
+  prefix = prefix || '';
+  const topEl = document.getElementById(`${prefix}pf-top-${sym}`);
+  const botEl = document.getElementById(`${prefix}pf-bot-${sym}`);
+  const frEl  = document.getElementById(`${prefix}pf-fr-${sym}`);
+  const bkEl  = document.getElementById(`${prefix}pf-bk-${sym}`);
+  if (!topEl || !frEl) return;
 
-  frEl.classList.remove('flipping');
-  bkEl.classList.remove('flipping');
+  const oldVal = topEl.querySelector('span').textContent;
+  if (oldVal === newVal) return; // no change, skip
+
+  // 1. front flap carries OLD value (currently shown), will flip up
+  frEl.querySelector('span').textContent = oldVal;
+
+  // 2. back flap carries NEW value, will fall down
+  bkEl.querySelector('span').textContent = newVal;
+
+  // 3. upper static immediately shows new value (hidden behind front flap)
+  topEl.querySelector('span').textContent = newVal;
+
+  // 4. reset animation
+  frEl.classList.remove('flip-out');
+  bkEl.classList.remove('flip-in');
   void frEl.offsetWidth;
 
-  stEl.querySelector('span').textContent = newVal;
-  sbEl.querySelector('span').textContent = newVal;
+  // 5. trigger
+  frEl.classList.add('flip-out');
+  bkEl.classList.add('flip-in');
 
-  frEl.classList.add('flipping');
-  bkEl.classList.add('flipping');
+  // 6. after back flap lands, update lower static to new value
+  setTimeout(() => {
+    botEl.querySelector('span').textContent = newVal;
+  }, 460); // 200ms delay + 240ms anim + small buffer
 }
 
-function setPriceDirect(sym, val) {
-  const stEl = document.getElementById(`pf-st-${sym}`);
-  const sbEl = document.getElementById(`pf-sb-${sym}`);
-  if (!stEl) return;
-  stEl.querySelector('span').textContent = val;
-  sbEl.querySelector('span').textContent = val;
+function setPriceDirect(sym, val, prefix) {
+  prefix = prefix || '';
+  const topEl = document.getElementById(`${prefix}pf-top-${sym}`);
+  const botEl = document.getElementById(`${prefix}pf-bot-${sym}`);
+  const frEl  = document.getElementById(`${prefix}pf-fr-${sym}`);
+  const bkEl  = document.getElementById(`${prefix}pf-bk-${sym}`);
+  if (!topEl) return;
+  topEl.querySelector('span').textContent = val;
+  botEl.querySelector('span').textContent = val;
+  frEl.querySelector('span').textContent  = val;
+  bkEl.querySelector('span').textContent  = val;
 }
 
 const lastPhase = {};
-let isFirstLoad = !sessionStorage.getItem('hasLoaded');
 
 function renderPrice(sym, q) {
   if (!q) return;
@@ -675,35 +731,45 @@ function renderPrice(sym, q) {
   const phaseLabelMap = { '盤前':'盤前','盤後':'盤後','正式盤':'現價','錯誤':'—' };
   document.getElementById(`phase-label-${sym}`).textContent = phaseLabelMap[phase]||'現價';
 
-  const stEl = document.getElementById(`pf-st-${sym}`);
-  const phaseChanged = lastPhase[sym] !== undefined && lastPhase[sym] !== phase;
-
   flipPriceCard(sym, valStr);
-
   lastPhase[sym] = phase;
 
-  const mainChange = q.d!==undefined ? parseFloat(q.d) : (current-prevClose);
-  const mainPct   = q.dp!==undefined ? parseFloat(q.dp) : (prevClose?(mainChange/prevClose*100):0);
-  const mainDir = mainChange>=0?'up':'down', mainSign = mainChange>=0?'▲':'▼';
-  document.getElementById(`main-chg-${sym}`).innerHTML = `<span class="${mainDir}">${mainSign} ${Math.abs(mainChange).toFixed(2)} (${Math.abs(mainPct).toFixed(2)}%)</span>`;
+  const mainChange = q.d  !== undefined ? parseFloat(q.d)  : (current - prevClose);
+  const mainPct    = q.dp !== undefined ? parseFloat(q.dp) : (prevClose ? (mainChange / prevClose * 100) : 0);
+  const mainDir = mainChange >= 0 ? 'up' : 'down';
+  const mainSign = mainChange >= 0 ? '▲' : '▼';
+  document.getElementById(`main-chg-${sym}`).innerHTML =
+    `<span class="${mainDir}">${mainSign} ${Math.abs(mainChange).toFixed(2)} (${Math.abs(mainPct).toFixed(2)}%)</span>`;
 
   const badge = document.getElementById(`badge-${sym}`);
-  if (phase==='盤前'||phase==='盤後') { badge.textContent=phase; badge.classList.add('show'); }
+  if (phase === '盤前' || phase === '盤後') { badge.textContent = phase; badge.classList.add('show'); }
   else badge.classList.remove('show');
 
-  const subRow=document.getElementById(`sub-row-${sym}`), subLabel=document.getElementById(`sub-label-${sym}`), subEl=document.getElementById(`sub-${sym}`), subChgEl=document.getElementById(`sub-chg-${sym}`);
-  if (phase==='盤後') {
-    subRow.style.display='flex'; subLabel.textContent='收盤'; subEl.textContent=`$${regular.toFixed(2)}`;
-    const rc=regular-prevClose, rp=prevClose?(rc/prevClose*100):0, d=rc>=0?'up':'down', sg=rc>=0?'▲':'▼';
-    subChgEl.innerHTML=`<span class="${d}">${sg} ${Math.abs(rc).toFixed(2)} (${Math.abs(rp).toFixed(2)}%)</span>`;
-  } else if (phase==='盤前') {
-    subRow.style.display='flex'; subLabel.textContent='昨收'; subEl.textContent=`$${prevClose.toFixed(2)}`; subChgEl.innerHTML='';
-  } else subRow.style.display='none';
+  const subRow   = document.getElementById(`sub-row-${sym}`);
+  const subLabel = document.getElementById(`sub-label-${sym}`);
+  const subEl    = document.getElementById(`sub-${sym}`);
+  const subChgEl = document.getElementById(`sub-chg-${sym}`);
+
+  if (phase === '盤後') {
+    subRow.style.display = 'flex';
+    subLabel.textContent = '收盤';
+    subEl.textContent = `$${regular.toFixed(2)}`;
+    const rc = regular - prevClose, rp = prevClose ? (rc / prevClose * 100) : 0;
+    const d = rc >= 0 ? 'up' : 'down', sg = rc >= 0 ? '▲' : '▼';
+    subChgEl.innerHTML = `<span class="${d}">${sg} ${Math.abs(rc).toFixed(2)} (${Math.abs(rp).toFixed(2)}%)</span>`;
+  } else if (phase === '盤前') {
+    subRow.style.display = 'flex';
+    subLabel.textContent = '昨收';
+    subEl.textContent = `$${prevClose.toFixed(2)}`;
+    subChgEl.innerHTML = '';
+  } else {
+    subRow.style.display = 'none';
+  }
 }
 
 async function loadData() {
   try {
-    const res = await fetch('./stock_data.json?t='+Date.now());
+    const res  = await fetch('./stock_data.json?t=' + Date.now());
     const json = await res.json();
     STOCKS.forEach((s, i) => {
       const data = json.data?.[s.sym];
@@ -719,13 +785,17 @@ function renderNews(sym, newsList) {
   const el = document.getElementById(`news-list-${sym}`);
   if (!el) return;
   el.innerHTML = newsList.length
-    ? newsList.map(n=>`<a class="news-item" href="${n.url}" target="_blank" rel="noopener noreferrer"><div class="news-headline">${n.headline}</div><div class="news-source">${n.source}</div></a>`).join('')
+    ? newsList.map(n =>
+        `<a class="news-item" href="${n.url}" target="_blank" rel="noopener noreferrer">
+           <div class="news-headline">${n.headline}</div>
+           <div class="news-source">${n.source}</div>
+         </a>`).join('')
     : `<div class="news-source">暫無相關新聞</div>`;
 }
 
 let collapsingViaBack = false;
 window.addEventListener('popstate', () => {
-  if (expandedSym) { collapsingViaBack=true; toggleCard(expandedSym,''); collapsingViaBack=false; }
+  if (expandedSym) { collapsingViaBack = true; toggleCard(expandedSym, ''); collapsingViaBack = false; }
 });
 
 buildGrid();
