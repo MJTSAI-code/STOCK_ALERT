@@ -280,13 +280,10 @@
   .down { color: var(--down); background: #ff174415; border: 1px solid #ff174430; }
   .divider { display: none; }
 
-  /* ── 翻頁鐘：正確4葉片結構 ──
-     上靜態：顯示新值上半（永遠可見，clip到上半）
-     下靜態：顯示新值下半（永遠可見，clip到下半）
-     上翻片：顯示舊值上半，從0deg翻到-90deg往上消失
-     下翻片：顯示新值下半，從90deg落下到0deg出現    */
+  /* ── 翻頁效果：遮罩掃過動畫，無中線 ──
+     黑色底板保留，數字直接在原位更新
+     遮罩從上往下掃過，製造翻頁視覺感     */
   .pf-wrap {
-    perspective: 400px;
     display: flex;
     justify-content: center;
   }
@@ -294,10 +291,14 @@
     position: relative;
     height: 44px;
     width: 210px;
+    background: #14120d;
     border-radius: 4px;
     overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
-  /* 數字基底：全高，顯示完整數字 */
+  /* 數字層 */
   .pf-digit {
     position: absolute; inset: 0;
     display: flex; justify-content: center; align-items: center;
@@ -307,55 +308,28 @@
     background: #14120d;
     border-radius: 4px;
     user-select: none;
-  }
-  /* 上靜態：clip 上半，顯示新值 */
-  .pf-top {
-    clip-path: inset(0 0 50% 0);
     z-index: 1;
   }
-  /* 下靜態：clip 下半，顯示新值 */
-  .pf-bot {
-    clip-path: inset(50% 0 0 0);
-    z-index: 1;
-  }
-  /* 中線分隔 */
-  .pf-seam {
-    position: absolute; left: 0; right: 0; top: 50%;
-    height: 1px; background: #000; z-index: 10;
-    transform: translateY(-50%);
-  }
-  /* 上翻片：clip 上半，顯示舊值，從正面往上翻走 */
-  .pf-flap-top {
-    clip-path: inset(0 0 50% 0);
+  /* 遮罩層：平時隱藏在上方，翻頁時從上往下掃過 */
+  .pf-mask {
+    position: absolute; left: 0; right: 0;
+    top: 0; height: 100%;
+    background: linear-gradient(180deg,
+      #14120d 0%,
+      rgba(20,18,13,0.85) 40%,
+      rgba(20,18,13,0) 100%
+    );
     z-index: 5;
-    transform-origin: center bottom;
-    transform: rotateX(0deg);
-    backface-visibility: hidden;
+    transform: translateY(-100%);
+    pointer-events: none;
   }
-  /* 下翻片：clip 下半，顯示新值，從後面落下來 */
-  .pf-flap-bot {
-    clip-path: inset(50% 0 0 0);
-    z-index: 4;
-    transform-origin: center top;
-    transform: rotateX(90deg); /* 初始藏在後面 */
-    backface-visibility: hidden;
+  .pf-mask.sweep {
+    animation: maskSweep 0.35s cubic-bezier(0.4,0,0.2,1) forwards;
   }
-  /* 上翻片：快速往上翻走（像被彈開） */
-  .pf-flap-top.flip-go {
-    animation: flapTopUp 0.18s cubic-bezier(0.4,0,1,1) forwards;
-  }
-  @keyframes flapTopUp {
-    0%   { transform: rotateX(0deg);    filter: brightness(1);   }
-    100% { transform: rotateX(-90deg);  filter: brightness(0.4); }
-  }
-  /* 下翻片：從後方重力落下，略帶彈跳 */
-  .pf-flap-bot.flip-go {
-    animation: flapBotDown 0.22s cubic-bezier(0.2,1.1,0.4,1) 0.16s forwards;
-  }
-  @keyframes flapBotDown {
-    0%   { transform: rotateX(90deg);  filter: brightness(0.3); }
-    60%  { transform: rotateX(-6deg);  filter: brightness(1.2); }
-    100% { transform: rotateX(0deg);   filter: brightness(1);   }
+  @keyframes maskSweep {
+    0%   { transform: translateY(-100%); opacity: 1; }
+    45%  { transform: translateY(0%);    opacity: 1; }
+    100% { transform: translateY(100%);  opacity: 0; }
   }
   .expanded-price-stage .pf-stack {
     overflow: hidden;
@@ -441,11 +415,8 @@ function buildGrid() {
             <span class="phase-corner-label" id="phase-label-${s.sym}">現價</span>
             <div class="pf-wrap">
               <div class="pf-stack">
-                <div class="pf-digit pf-top"      id="pf-top-${s.sym}">—</div>
-                <div class="pf-digit pf-bot"      id="pf-bot-${s.sym}">—</div>
-                <div class="pf-digit pf-flap-top" id="pf-ft-${s.sym}">—</div>
-                <div class="pf-digit pf-flap-bot" id="pf-fb-${s.sym}">—</div>
-                <div class="pf-seam"></div>
+                <div class="pf-digit" id="pf-val-${s.sym}">—</div>
+                <div class="pf-mask"  id="pf-mask-${s.sym}"></div>
               </div>
             </div>
             <div class="main-change" id="main-chg-${s.sym}"></div>
@@ -577,7 +548,7 @@ function toggleCard(sym, ex) {
     splitRight.dataset.originalHtml = splitRight.innerHTML;
     splitRight.dataset.expanded = '1';
 
-    const mainVal = document.getElementById(`pf-top-${sym}`)?.textContent || '—';
+    const mainVal = document.getElementById(`pf-val-${sym}`)?.textContent || '—';
     const mainChg = document.getElementById(`main-chg-${sym}`)?.innerHTML || '';
     const subLabel = document.getElementById(`sub-label-${sym}`)?.textContent || '';
     const subVal   = document.getElementById(`sub-${sym}`)?.textContent || '';
@@ -612,11 +583,9 @@ function toggleCard(sym, ex) {
         <div class="expanded-price-stage">
           <span class="expanded-phase-label">${bigLabel}</span>
           <div class="pf-wrap" style="margin:4px 0;">
-            <div class="pf-stack" style="width:240px; height:48px;">
-              <div class="pf-half pf-static-t" id="exp-pf-st-${sym}" style="height:24px; font-size:40px;"><span style="font-size:40px;">—</span></div>
-              <div class="pf-half pf-static-b" id="exp-pf-sb-${sym}" style="height:24px; font-size:40px;"><span style="font-size:40px;">—</span></div>
-              <div class="pf-half pf-front"    id="exp-pf-fr-${sym}" style="height:24px; font-size:40px;"><span style="font-size:40px;">—</span></div>
-              <div class="pf-half pf-back"     id="exp-pf-bk-${sym}" style="height:24px; font-size:40px;"><span style="font-size:40px;">—</span></div>
+            <div class="pf-stack" style="width:240px; height:56px;">
+              <div class="pf-digit" id="exp-pf-val-${sym}" style="font-size:40px;">—</div>
+              <div class="pf-mask"  id="exp-pf-mask-${sym}"></div>
             </div>
           </div>
           <div class="expanded-main-change">${bigChg}</div>
@@ -653,20 +622,13 @@ function toggleCard(sym, ex) {
     }, 680));
 
     pendingAnimTimers.push(setTimeout(() => {
-      const stEl = document.getElementById(`exp-pf-st-${sym}`);
-      const sbEl = document.getElementById(`exp-pf-sb-${sym}`);
-      const frEl = document.getElementById(`exp-pf-fr-${sym}`);
-      const bkEl = document.getElementById(`exp-pf-bk-${sym}`);
-      if (!stEl) return;
-      frEl.querySelector('span').textContent = '—';
-      sbEl.querySelector('span').textContent = '—';
-      stEl.querySelector('span').textContent = bigVal;
-      bkEl.querySelector('span').textContent = bigVal;
-      frEl.classList.remove('flipping'); bkEl.classList.remove('flipping');
-      void frEl.offsetWidth;
-      frEl.classList.add('flipping');
-      bkEl.classList.add('flipping');
-      setTimeout(() => { if (sbEl) sbEl.querySelector('span').textContent = bigVal; }, 620);
+      const valEl  = document.getElementById(`exp-pf-val-${sym}`);
+      const maskEl = document.getElementById(`exp-pf-mask-${sym}`);
+      if (!valEl) return;
+      valEl.textContent = bigVal;
+      maskEl.classList.remove('sweep');
+      void maskEl.offsetWidth;
+      maskEl.classList.add('sweep');
     }, 1120));
 
     pendingAnimTimers.push(setTimeout(() => {
@@ -695,34 +657,18 @@ function toggleCard(sym, ex) {
 }
 
 function flipPriceCard(sym, newVal) {
-  const topEl = document.getElementById(`pf-top-${sym}`);   // 上靜態（新值）
-  const botEl = document.getElementById(`pf-bot-${sym}`);   // 下靜態（新值）
-  const ftEl  = document.getElementById(`pf-ft-${sym}`);    // 上翻片（舊值）
-  const fbEl  = document.getElementById(`pf-fb-${sym}`);    // 下翻片（新值）
-  if (!topEl || !ftEl) return;
+  const valEl  = document.getElementById(`pf-val-${sym}`);
+  const maskEl = document.getElementById(`pf-mask-${sym}`);
+  if (!valEl) return;
 
-  // 數字沒變就不觸發動畫
-  if (topEl.textContent === newVal) return;
+  // 數字沒變就不動
+  if (valEl.textContent === newVal) return;
 
-  // 1. 上翻片顯示「舊值」，重置動畫
-  ftEl.textContent = topEl.textContent;
-  fbEl.textContent = newVal;
-  ftEl.classList.remove('flip-go');
-  fbEl.classList.remove('flip-go');
-  // 重置下翻片到背面
-  fbEl.style.animation = 'none';
-  ftEl.style.animation = 'none';
-  void ftEl.offsetWidth; // reflow
-
-  // 2. 靜態層換成新值
-  topEl.textContent = newVal;
-  botEl.textContent = newVal;
-
-  // 3. 觸發翻頁動畫
-  ftEl.style.animation = '';
-  fbEl.style.animation = '';
-  ftEl.classList.add('flip-go');
-  fbEl.classList.add('flip-go');
+  // 換數字，遮罩從上往下掃過製造翻頁感
+  valEl.textContent = newVal;
+  maskEl.classList.remove('sweep');
+  void maskEl.offsetWidth;
+  maskEl.classList.add('sweep');
 }
 
 function setPriceDirect(sym, val) {
