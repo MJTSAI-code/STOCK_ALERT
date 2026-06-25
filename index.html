@@ -315,22 +315,21 @@
      平常完全不可見，動畫結束後自動消失      */
   .pf-mask {
     position: absolute; left: 0; right: 0;
-    top: 0; height: 50%; /* 半高，下緣就是接縫線 */
+    top: 0; bottom: 0;
     background: #14120d;
-    border-bottom: 2px solid #000; /* 接縫黑線 */
-    box-shadow: 0 2px 0 #000; /* 加強黑線厚度感 */
     z-index: 5;
-    transform: translateY(-110%); /* 初始藏在上方外面 */
     pointer-events: none;
+    /* 用 clip-path 控制顯示範圍，邊緣絕對銳利 */
+    clip-path: inset(0 0 100% 0); /* 初始完全隱藏 */
   }
   .pf-mask.sweep {
     animation: maskSweep 0.32s cubic-bezier(0.4,0,0.25,1) forwards;
   }
   @keyframes maskSweep {
-    0%   { transform: translateY(-110%); opacity: 1; }
-    42%  { transform: translateY(0%);    opacity: 1; }
-    99%  { transform: translateY(110%);  opacity: 1; }
-    100% { transform: translateY(110%);  opacity: 0; }
+    0%   { clip-path: inset(0    0 100% 0); } /* 從頂部開始，完全隱藏 */
+    42%  { clip-path: inset(0    0  50% 0); } /* 蓋到中間 */
+    99%  { clip-path: inset(0    0   0% 0); } /* 完全蓋住 */
+    100% { clip-path: inset(100% 0   0% 0); } /* 瞬間消失 */
   }
   .expanded-price-stage .pf-stack {
     overflow: hidden;
