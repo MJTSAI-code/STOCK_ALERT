@@ -310,26 +310,24 @@
     user-select: none;
     z-index: 1;
   }
-  /* 遮罩層：平時藏在上方，翻頁時從上往下掃過
-     本體是純黑，下緣一條亮線模擬卡片接縫
-     平常完全不可見，動畫結束後自動消失      */
+  /* 遮罩層：純黑上半片，從上往下掃過，邊緣銳利無漸層 */
   .pf-mask {
     position: absolute; left: 0; right: 0;
-    top: 0; bottom: 0;
+    top: -50%; height: 50%;
     background: #14120d;
+    border-bottom: 2px solid #000;
     z-index: 5;
     pointer-events: none;
-    /* 用 clip-path 控制顯示範圍，邊緣絕對銳利 */
-    clip-path: inset(0 0 100% 0); /* 初始完全隱藏 */
+    will-change: transform;
+    transform: translateY(-100%);
   }
   .pf-mask.sweep {
-    animation: maskSweep 0.32s cubic-bezier(0.4,0,0.25,1) forwards;
+    animation: maskSweep 0.35s cubic-bezier(0.4,0,0.2,1) forwards;
   }
   @keyframes maskSweep {
-    0%   { clip-path: inset(0    0 100% 0); } /* 從頂部開始，完全隱藏 */
-    42%  { clip-path: inset(0    0  50% 0); } /* 蓋到中間 */
-    99%  { clip-path: inset(0    0   0% 0); } /* 完全蓋住 */
-    100% { clip-path: inset(100% 0   0% 0); } /* 瞬間消失 */
+    0%   { transform: translateY(-100%); }
+    45%  { transform: translateY(200%);  }
+    100% { transform: translateY(400%);  }
   }
   .expanded-price-stage .pf-stack {
     overflow: hidden;
@@ -666,15 +664,13 @@ function flipPriceCard(sym, newVal) {
 
   if (valEl.textContent === newVal) return;
 
-  // 1. 遮罩先從上蓋下來（0% → 42%，約 0.13s）
+  // 遮罩先蓋下來，掃到中間時才換數字（在遮罩下偷換）
   maskEl.classList.remove('sweep');
   void maskEl.offsetWidth;
   maskEl.classList.add('sweep');
-
-  // 2. 遮罩蓋到中間時才換數字（在遮罩下面偷換，看不到）
   setTimeout(() => {
     valEl.textContent = newVal;
-  }, 135); // 對應 42% × 320ms ≈ 135ms
+  }, 157); // 45% × 350ms ≈ 157ms
 }
 
 function setPriceDirect(sym, val) {
@@ -718,33 +714,18 @@ function renderPrice(sym, q) {
   const subLabel = document.getElementById(`sub-label-${sym}`);
   const subEl    = document.getElementById(`sub-${sym}`);
   const subChgEl = document.getElementById(`sub-chg-${sym}`);
-  const subRow2  = document.getElementById(`sub-row2-${sym}`);
-  const subChg2El= document.getElementById(`sub-chg2-${sym}`);
+  const subRow2   = document.getElementById(`sub-row2-${sym}`);
+  const subChg2El = document.getElementById(`sub-chg2-${sym}`);
 
-  if (phase === '盤前') {
-    // 第一行：盤前漲跌（盤前 vs 昨收）
+  if (phase === '盤前' || phase === '盤後') {
+    // 第一行：盤前/盤後漲跌（現價 vs 昨收）
     subRow.style.display = 'flex';
-    subLabel.textContent = '盤前';
+    subLabel.textContent = phase === '盤前' ? '盤前' : '盤後';
     subEl.textContent = '';
     const d1 = mainChange>=0?'up':'down', s1 = mainChange>=0?'▲':'▼';
     subChgEl.innerHTML = `<span class="${d1}">${s1} ${Math.abs(mainChange).toFixed(2)} (${Math.abs(mainPct).toFixed(2)}%)</span>`;
-
-    // 第二行：昨收漲跌（昨收 vs 前收）
-    if (subRow2) {
-      const rd  = q.reg_d  !== undefined ? parseFloat(q.reg_d)  : 0;
-      const rdp = q.reg_dp !== undefined ? parseFloat(q.reg_dp) : 0;
-      const d2  = rd>=0?'up':'down', s2 = rd>=0?'▲':'▼';
-      subRow2.style.display = 'flex';
-      subChg2El.innerHTML = `<span class="ref-tag">昨收</span>&nbsp;<span class="ref-value">$${regular.toFixed(2)}</span>&nbsp;<span class="${d2}">${s2} ${Math.abs(rd).toFixed(2)} (${Math.abs(rdp).toFixed(2)}%)</span>`;
-    }
-  } else if (phase === '盤後') {
-    subRow.style.display = 'flex';
-    subLabel.textContent = '盤後';
-    subEl.textContent = '';
-    const d1 = mainChange>=0?'up':'down', s1 = mainChange>=0?'▲':'▼';
-    subChgEl.innerHTML = `<span class="${d1}">${s1} ${Math.abs(mainChange).toFixed(2)} (${Math.abs(mainPct).toFixed(2)}%)</span>`;
-
-    if (subRow2) {
+    // 第二行：昨收 vs 前收
+    if (subRow2 && subChg2El) {
       const rd  = q.reg_d  !== undefined ? parseFloat(q.reg_d)  : 0;
       const rdp = q.reg_dp !== undefined ? parseFloat(q.reg_dp) : 0;
       const d2  = rd>=0?'up':'down', s2 = rd>=0?'▲':'▼';
