@@ -280,56 +280,85 @@
   .down { color: var(--down); background: #ff174415; border: 1px solid #ff174430; }
   .divider { display: none; }
 
+  /* ── 翻頁鐘：正確4葉片結構 ──
+     上靜態：顯示新值上半（永遠可見，clip到上半）
+     下靜態：顯示新值下半（永遠可見，clip到下半）
+     上翻片：顯示舊值上半，從0deg翻到-90deg往上消失
+     下翻片：顯示新值下半，從90deg落下到0deg出現    */
   .pf-wrap {
-    perspective: 240px;
+    perspective: 400px;
     display: flex;
     justify-content: center;
   }
   .pf-stack {
     position: relative;
-    height: 40px;
-    width: 200px;
-    background: #14120d;
-    border-radius: 3px;
+    height: 44px;
+    width: 210px;
+    border-radius: 4px;
+    overflow: hidden;
   }
-  .pf-half {
-    position: absolute; left: 0; right: 0; top: 0; bottom: 0;
+  /* 數字基底：全高，顯示完整數字 */
+  .pf-digit {
+    position: absolute; inset: 0;
     display: flex; justify-content: center; align-items: center;
     font-family: 'DM Mono', monospace; font-size: 32px; font-weight: 500;
-    color: #ffd98a; text-shadow: 0 0 14px rgba(255,200,110,0.55);
-    background: transparent;
-  }
-  .pf-static-t, .pf-static-b { z-index: 1; }
-  .pf-front {
-    position: absolute; left: 0; right: 0;
-    top: 0; height: 50%;
+    color: #ffd98a; letter-spacing: 1px;
+    text-shadow: 0 0 14px rgba(255,200,110,0.55);
     background: #14120d;
-    transform-origin: bottom center;
+    border-radius: 4px;
+    user-select: none;
+  }
+  /* 上靜態：clip 上半，顯示新值 */
+  .pf-top {
+    clip-path: inset(0 0 50% 0);
+    z-index: 1;
+  }
+  /* 下靜態：clip 下半，顯示新值 */
+  .pf-bot {
+    clip-path: inset(50% 0 0 0);
+    z-index: 1;
+  }
+  /* 中線分隔 */
+  .pf-seam {
+    position: absolute; left: 0; right: 0; top: 50%;
+    height: 1px; background: #000; z-index: 10;
+    transform: translateY(-50%);
+  }
+  /* 上翻片：clip 上半，顯示舊值，從正面往上翻走 */
+  .pf-flap-top {
+    clip-path: inset(0 0 50% 0);
     z-index: 5;
+    transform-origin: center bottom;
+    transform: rotateX(0deg);
     backface-visibility: hidden;
   }
-  .pf-back {
-    position: absolute; left: 0; right: 0;
-    bottom: 0; height: 50%;
-    background: #14120d;
-    transform-origin: top center;
-    transform: rotateX(0deg);
+  /* 下翻片：clip 下半，顯示新值，從後面落下來 */
+  .pf-flap-bot {
+    clip-path: inset(50% 0 0 0);
     z-index: 4;
+    transform-origin: center top;
+    transform: rotateX(90deg); /* 初始藏在後面 */
     backface-visibility: hidden;
+  }
+  /* 上翻片：快速往上翻走（像被彈開） */
+  .pf-flap-top.flip-go {
+    animation: flapTopUp 0.18s cubic-bezier(0.4,0,1,1) forwards;
+  }
+  @keyframes flapTopUp {
+    0%   { transform: rotateX(0deg);    filter: brightness(1);   }
+    100% { transform: rotateX(-90deg);  filter: brightness(0.4); }
+  }
+  /* 下翻片：從後方重力落下，略帶彈跳 */
+  .pf-flap-bot.flip-go {
+    animation: flapBotDown 0.22s cubic-bezier(0.2,1.1,0.4,1) 0.16s forwards;
+  }
+  @keyframes flapBotDown {
+    0%   { transform: rotateX(90deg);  filter: brightness(0.3); }
+    60%  { transform: rotateX(-6deg);  filter: brightness(1.2); }
+    100% { transform: rotateX(0deg);   filter: brightness(1);   }
   }
   .expanded-price-stage .pf-stack {
-    overflow: hidden; /* 防止展開卡大數字浮出 */
-  }
-  .pf-front.flipping { animation: pfFrontUp 0.32s cubic-bezier(.5,0,.75,.3) forwards; }
-  @keyframes pfFrontUp {
-    0%   { transform: rotateX(0deg);   }
-    100% { transform: rotateX(-90deg); }
-  }
-  .pf-back.flipping { animation: pfBackDown 0.30s cubic-bezier(.2,1,.4,1) 0.28s forwards; }
-  @keyframes pfBackDown {
-    0%   { transform: rotateX(0deg);  }
-    65%  { transform: rotateX(6deg);  }
-    100% { transform: rotateX(90deg); }
+    overflow: hidden;
   }
 
   .chart-container {
@@ -412,10 +441,11 @@ function buildGrid() {
             <span class="phase-corner-label" id="phase-label-${s.sym}">現價</span>
             <div class="pf-wrap">
               <div class="pf-stack">
-                <div class="pf-half pf-static-t" id="pf-st-${s.sym}"><span>—</span></div>
-                <div class="pf-half pf-static-b" id="pf-sb-${s.sym}"><span>—</span></div>
-                <div class="pf-front" id="pf-fr-${s.sym}"></div>
-                <div class="pf-back"  id="pf-bk-${s.sym}"></div>
+                <div class="pf-digit pf-top"      id="pf-top-${s.sym}">—</div>
+                <div class="pf-digit pf-bot"      id="pf-bot-${s.sym}">—</div>
+                <div class="pf-digit pf-flap-top" id="pf-ft-${s.sym}">—</div>
+                <div class="pf-digit pf-flap-bot" id="pf-fb-${s.sym}">—</div>
+                <div class="pf-seam"></div>
               </div>
             </div>
             <div class="main-change" id="main-chg-${s.sym}"></div>
@@ -457,28 +487,24 @@ function collapseCard(sym) {
   const card = document.getElementById(`card-${sym}`);
   if (!card) return;
   const overlay = document.getElementById('cardOverlay');
+  const ghost = document.getElementById(`ghost-${sym}`);
 
   // 立刻清掉 iframe
   const chartEl = document.getElementById(`chart-${sym}`);
   if (chartEl) chartEl.src = '';
 
-  // 把展開卡的位置飛回幽靈原位
-  const ghost = document.getElementById(`ghost-${sym}`);
-  if (ghost) {
-    const gr = ghost.getBoundingClientRect();
-    card.style.top    = gr.top + 'px';
-    card.style.left   = gr.left + 'px';
-    card.style.width  = gr.width + 'px';
-    card.style.transform = 'none';
-  }
-  card.classList.add('closing');
+  // 展開卡直接淡出（不飛回去），ghost 繼續撐著原位，版型完全不晃
+  card.style.transition = 'opacity 0.22s ease';
+  card.style.opacity = '0';
   overlay.classList.remove('show');
   document.body.classList.remove('scroll-locked');
 
-  // 等 transition 結束後還原
+  // 淡出結束後還原，ghost 最後才移除
   pendingAnimTimers.push(setTimeout(() => {
-    card.classList.remove('expanded','closing');
+    card.classList.remove('expanded');
     card.style.top = card.style.left = card.style.width = card.style.transform = '';
+    card.style.transition = '';
+    card.style.opacity = '';
     const sr = card.querySelector('.split-right');
     if (sr && sr.dataset.expanded) {
       sr.innerHTML = sr.dataset.originalHtml;
@@ -489,7 +515,7 @@ function collapseCard(sym) {
     ghost?.remove();
     card.classList.add('recently-viewed');
     fixLastRowLayout();
-  }, 380));
+  }, 260));
 
   expandedSym = null;
 }
@@ -551,7 +577,7 @@ function toggleCard(sym, ex) {
     splitRight.dataset.originalHtml = splitRight.innerHTML;
     splitRight.dataset.expanded = '1';
 
-    const mainVal = document.getElementById(`pf-st-${sym}`)?.querySelector('span')?.textContent || '—';
+    const mainVal = document.getElementById(`pf-top-${sym}`)?.textContent || '—';
     const mainChg = document.getElementById(`main-chg-${sym}`)?.innerHTML || '';
     const subLabel = document.getElementById(`sub-label-${sym}`)?.textContent || '';
     const subVal   = document.getElementById(`sub-${sym}`)?.textContent || '';
@@ -669,25 +695,34 @@ function toggleCard(sym, ex) {
 }
 
 function flipPriceCard(sym, newVal) {
-  const stEl = document.getElementById(`pf-st-${sym}`);
-  const sbEl = document.getElementById(`pf-sb-${sym}`);
-  const frEl = document.getElementById(`pf-fr-${sym}`);
-  const bkEl = document.getElementById(`pf-bk-${sym}`);
-  if (!stEl || !frEl) return;
+  const topEl = document.getElementById(`pf-top-${sym}`);   // 上靜態（新值）
+  const botEl = document.getElementById(`pf-bot-${sym}`);   // 下靜態（新值）
+  const ftEl  = document.getElementById(`pf-ft-${sym}`);    // 上翻片（舊值）
+  const fbEl  = document.getElementById(`pf-fb-${sym}`);    // 下翻片（新值）
+  if (!topEl || !ftEl) return;
 
-  // 數字沒變就不觸發動畫，避免 60s reload 時全部卡片一起閃
-  const currentVal = stEl.querySelector('span').textContent;
-  if (currentVal === newVal) return;
+  // 數字沒變就不觸發動畫
+  if (topEl.textContent === newVal) return;
 
-  frEl.classList.remove('flipping');
-  bkEl.classList.remove('flipping');
-  void frEl.offsetWidth;
+  // 1. 上翻片顯示「舊值」，重置動畫
+  ftEl.textContent = topEl.textContent;
+  fbEl.textContent = newVal;
+  ftEl.classList.remove('flip-go');
+  fbEl.classList.remove('flip-go');
+  // 重置下翻片到背面
+  fbEl.style.animation = 'none';
+  ftEl.style.animation = 'none';
+  void ftEl.offsetWidth; // reflow
 
-  stEl.querySelector('span').textContent = newVal;
-  sbEl.querySelector('span').textContent = newVal;
+  // 2. 靜態層換成新值
+  topEl.textContent = newVal;
+  botEl.textContent = newVal;
 
-  frEl.classList.add('flipping');
-  bkEl.classList.add('flipping');
+  // 3. 觸發翻頁動畫
+  ftEl.style.animation = '';
+  fbEl.style.animation = '';
+  ftEl.classList.add('flip-go');
+  fbEl.classList.add('flip-go');
 }
 
 function setPriceDirect(sym, val) {
@@ -704,15 +739,14 @@ let isFirstLoad = !sessionStorage.getItem('hasLoaded');
 function renderPrice(sym, q) {
   if (!q) return;
   const current   = parseFloat(q.c ?? q.regular ?? 0);
-  const regular   = parseFloat(q.regular ?? q.c ?? 0);
-  const prevClose = parseFloat(q.prev_close ?? regular);
+  const regular   = parseFloat(q.regular ?? q.c ?? 0); // 昨天正式收盤
+  const prevClose = regular; // ✅ 昨收 = 正式收盤，跟 TradingView 一致
   const phase     = q.phase || '正式盤';
   const valStr    = `$${current.toFixed(2)}`;
 
   const phaseLabelMap = { '盤前':'盤前','盤後':'盤後','正式盤':'現價','錯誤':'—' };
   document.getElementById(`phase-label-${sym}`).textContent = phaseLabelMap[phase]||'現價';
 
-  const stEl = document.getElementById(`pf-st-${sym}`);
   const phaseChanged = lastPhase[sym] !== undefined && lastPhase[sym] !== phase;
 
   flipPriceCard(sym, valStr);
