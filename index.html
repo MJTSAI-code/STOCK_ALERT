@@ -67,21 +67,23 @@
 
   .card.expanded {
     cursor: default; position: fixed;
-    /* top/left/width 由 JS 動態設定 */
+    top: 50%; left: 50%;
+    width: min(1040px, calc(100vw - 32px));
+    max-height: calc(100vh - 32px);
+    transform: translate(-50%, -50%);
     z-index: 1001;
     background: transparent; border: none; box-shadow: none; padding: 0;
     overflow: visible;
-    transition: top 0.38s cubic-bezier(0.77,0,0.175,1),
-                left 0.38s cubic-bezier(0.77,0,0.175,1),
-                width 0.38s cubic-bezier(0.77,0,0.175,1),
-                opacity 0.38s ease;
+    animation: cardQuietAppear 0.3s ease-out forwards;
   }
-  .card.expanded.closing {
-    opacity: 0;
-    transition: top 0.32s cubic-bezier(0.77,0,0.175,1),
-                left 0.32s cubic-bezier(0.77,0,0.175,1),
-                width 0.32s cubic-bezier(0.77,0,0.175,1),
-                opacity 0.28s ease;
+  @keyframes cardQuietAppear {
+    0%   { opacity: 0; transform: translate(-50%,-50%) scale(0.96); }
+    100% { opacity: 1; transform: translate(-50%,-50%) scale(1); }
+  }
+  .card.expanded.closing { animation: cardQuietDisappear 0.28s ease-in forwards; }
+  @keyframes cardQuietDisappear {
+    0%   { opacity: 1; transform: translate(-50%,-50%) scale(1); }
+    100% { opacity: 0; transform: translate(-50%,-50%) scale(0.96); }
   }
 
   .card.expanded .card-body-split {
@@ -164,7 +166,6 @@
     text-align: center;
     box-shadow: inset 0 2px 10px rgba(0,0,0,0.5);
     position: relative;
-    overflow: hidden; /* 防止展開卡數字浮出框外 */
   }
   .expanded-phase-label {
     position: absolute; top: 6px; left: 10px;
@@ -266,7 +267,6 @@
     border: 1px solid rgba(0,0,0,0.35); border-radius: 10px;
     box-shadow: inset 0 2px 10px rgba(0,0,0,0.5), inset 0 0 30px rgba(240,180,90,0.12);
     padding: 18px 14px 14px; text-align: center;
-    overflow: hidden; /* 防止翻頁數字溢出 */
   }
   .phase-corner-label { position: absolute; top: 8px; left: 10px; font-size: 9px; font-weight: 700; color: #d9b87a; letter-spacing: 1px; opacity: 0.75; }
   .price-value { font-family: 'DM Mono', monospace; font-size: 32px; font-weight: 500; color: #ffd98a; letter-spacing: 1px; text-shadow: 0 0 14px rgba(255,200,110,0.55); line-height: 1; display: inline-block; }
@@ -280,59 +280,54 @@
   .down { color: var(--down); background: #ff174415; border: 1px solid #ff174430; }
   .divider { display: none; }
 
-  /* ── 翻頁效果：遮罩掃過動畫，無中線 ──
-     黑色底板保留，數字直接在原位更新
-     遮罩從上往下掃過，製造翻頁視覺感     */
   .pf-wrap {
+    perspective: 240px;
     display: flex;
     justify-content: center;
   }
   .pf-stack {
     position: relative;
-    height: 44px;
-    width: 210px;
+    height: 40px;
+    width: 200px;
     background: #14120d;
-    border-radius: 4px;
-    overflow: hidden;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    border-radius: 3px;
   }
-  /* 數字層 */
-  .pf-digit {
-    position: absolute; inset: 0;
+  .pf-half {
+    position: absolute; left: 0; right: 0; top: 0; bottom: 0;
     display: flex; justify-content: center; align-items: center;
     font-family: 'DM Mono', monospace; font-size: 32px; font-weight: 500;
-    color: #ffd98a; letter-spacing: 1px;
-    text-shadow: 0 0 14px rgba(255,200,110,0.55);
-    background: #14120d;
-    border-radius: 4px;
-    user-select: none;
-    z-index: 1;
+    color: #ffd98a; text-shadow: 0 0 14px rgba(255,200,110,0.55);
+    background: transparent;
   }
-  /* 遮罩層：平時隱藏在上方，翻頁時從上往下掃過 */
-  .pf-mask {
+  .pf-static-t, .pf-static-b { z-index: 1; }
+  .pf-front {
     position: absolute; left: 0; right: 0;
-    top: 0; height: 100%;
-    background: linear-gradient(180deg,
-      #14120d 0%,
-      rgba(20,18,13,0.85) 40%,
-      rgba(20,18,13,0) 100%
-    );
+    top: 0; height: 50%;
+    background: #14120d;
+    transform-origin: bottom center;
     z-index: 5;
-    transform: translateY(-100%);
-    pointer-events: none;
+    backface-visibility: hidden;
   }
-  .pf-mask.sweep {
-    animation: maskSweep 0.35s cubic-bezier(0.4,0,0.2,1) forwards;
+  .pf-back {
+    position: absolute; left: 0; right: 0;
+    bottom: 0; height: 50%;
+    background: #14120d;
+    transform-origin: top center;
+    transform: rotateX(0deg);
+    z-index: 4;
+    backface-visibility: hidden;
   }
-  @keyframes maskSweep {
-    0%   { transform: translateY(-100%); opacity: 1; }
-    45%  { transform: translateY(0%);    opacity: 1; }
-    100% { transform: translateY(100%);  opacity: 0; }
+  .pf-seam { display: none; }
+  .pf-front.flipping { animation: pfFrontUp 0.32s cubic-bezier(.5,0,.75,.3) forwards; }
+  @keyframes pfFrontUp {
+    0%   { transform: rotateX(0deg);   }
+    100% { transform: rotateX(-90deg); }
   }
-  .expanded-price-stage .pf-stack {
-    overflow: hidden;
+  .pf-back.flipping { animation: pfBackDown 0.30s cubic-bezier(.2,1,.4,1) 0.28s forwards; }
+  @keyframes pfBackDown {
+    0%   { transform: rotateX(0deg);  }
+    65%  { transform: rotateX(6deg);  }
+    100% { transform: rotateX(90deg); }
   }
 
   .chart-container {
@@ -415,8 +410,10 @@ function buildGrid() {
             <span class="phase-corner-label" id="phase-label-${s.sym}">現價</span>
             <div class="pf-wrap">
               <div class="pf-stack">
-                <div class="pf-digit" id="pf-val-${s.sym}">—</div>
-                <div class="pf-mask"  id="pf-mask-${s.sym}"></div>
+                <div class="pf-half pf-static-t" id="pf-st-${s.sym}"><span>—</span></div>
+                <div class="pf-half pf-static-b" id="pf-sb-${s.sym}"><span>—</span></div>
+                <div class="pf-front" id="pf-fr-${s.sym}"></div>
+                <div class="pf-back"  id="pf-bk-${s.sym}"></div>
               </div>
             </div>
             <div class="main-change" id="main-chg-${s.sym}"></div>
@@ -452,42 +449,35 @@ function fixLastRowLayout() {
 window.addEventListener('resize', fixLastRowLayout);
 
 function collapseCard(sym) {
-  pendingAnimTimers.forEach(id => clearTimeout(id));
-  pendingAnimTimers = [];
-
   const card = document.getElementById(`card-${sym}`);
   if (!card) return;
   const overlay = document.getElementById('cardOverlay');
-  const ghost = document.getElementById(`ghost-${sym}`);
+  card.classList.add('closing');
 
-  // 立刻清掉 iframe
-  const chartEl = document.getElementById(`chart-${sym}`);
-  if (chartEl) chartEl.src = '';
-
-  // 展開卡直接淡出（不飛回去），ghost 繼續撐著原位，版型完全不晃
-  card.style.transition = 'opacity 0.22s ease';
-  card.style.opacity = '0';
-  overlay.classList.remove('show');
-  document.body.classList.remove('scroll-locked');
-
-  // 淡出結束後還原，ghost 最後才移除
   pendingAnimTimers.push(setTimeout(() => {
-    card.classList.remove('expanded');
-    card.style.top = card.style.left = card.style.width = card.style.transform = '';
-    card.style.transition = '';
-    card.style.opacity = '';
+    const ghost = document.getElementById(`ghost-${sym}`);
+    if (ghost) ghost.remove();
+  }, 280));
+
+  pendingAnimTimers.push(setTimeout(() => {
+    card.classList.remove('expanded','closing');
     const sr = card.querySelector('.split-right');
     if (sr && sr.dataset.expanded) {
       sr.innerHTML = sr.dataset.originalHtml;
       delete sr.dataset.expanded;
       delete sr.dataset.originalHtml;
     }
-    card.querySelector('.split-left')?.classList.remove('panel-flap');
-    ghost?.remove();
-    card.classList.add('recently-viewed');
-    fixLastRowLayout();
-  }, 260));
+    const sl = card.querySelector('.split-left');
+    sl?.classList.remove('panel-flap');
 
+    card.classList.add('recently-viewed');
+
+    fixLastRowLayout();
+  }, 360));
+  overlay.classList.remove('show');
+  document.body.classList.remove('scroll-locked');
+  const chartEl = document.getElementById(`chart-${sym}`);
+  if (chartEl) chartEl.src = '';
   expandedSym = null;
 }
 
@@ -506,41 +496,21 @@ function toggleCard(sym, ex) {
       document.querySelectorAll('.card.recently-viewed').forEach(c => c.classList.remove('recently-viewed'));
     }, 361);
 
-    // 1. 記住卡片原始位置（展開前）
-    const origRect = card.getBoundingClientRect();
-
-    // 2. 插入不透明 clone 撐住 grid，讓版型完全不動
-    const ghost = card.cloneNode(true);
+    const ghost = document.createElement('div');
     ghost.id = `ghost-${sym}`;
-    ghost.style.pointerEvents = 'none';
-    ghost.style.opacity = '0.25';
-    ghost.style.filter = 'blur(0.5px)';
-    ghost.removeAttribute('onclick');
+    ghost.className = 'card-ghost';
+    const cardStyle = window.getComputedStyle(card);
+    ghost.style.gridColumn = cardStyle.gridColumn;
+    ghost.style.gridRow = cardStyle.gridRow;
+    ghost.style.height = card.offsetHeight + 'px';
     card.parentNode.insertBefore(ghost, card.nextSibling);
 
-    // 3. 展開卡先定位在原位（從原位飛出）
     card.classList.add('expanded');
-    card.style.top       = origRect.top + 'px';
-    card.style.left      = origRect.left + 'px';
-    card.style.width     = origRect.width + 'px';
-    card.style.transform = 'none';
-
     expandedSym = sym;
     history.pushState({ expanded: sym }, '');
     overlay.classList.add('show');
     document.body.classList.add('scroll-locked');
     fixLastRowLayout();
-
-    // 4. 下一幀才飛到螢幕中央，讓 transition 有起點
-    requestAnimationFrame(() => {
-      requestAnimationFrame(() => {
-        const targetW = Math.min(1040, window.innerWidth - 32);
-        card.style.width     = targetW + 'px';
-        card.style.left      = (window.innerWidth / 2 - targetW / 2) + 'px';
-        card.style.top       = (window.innerHeight / 2 - 230) + 'px'; // 230 ≈ 460/2
-        card.style.transform = 'none';
-      });
-    });
 
     const splitLeft = card.querySelector('.split-left');
     const splitRight = card.querySelector('.split-right');
@@ -548,7 +518,7 @@ function toggleCard(sym, ex) {
     splitRight.dataset.originalHtml = splitRight.innerHTML;
     splitRight.dataset.expanded = '1';
 
-    const mainVal = document.getElementById(`pf-val-${sym}`)?.textContent || '—';
+    const mainVal = document.getElementById(`pf-st-${sym}`)?.querySelector('span')?.textContent || '—';
     const mainChg = document.getElementById(`main-chg-${sym}`)?.innerHTML || '';
     const subLabel = document.getElementById(`sub-label-${sym}`)?.textContent || '';
     const subVal   = document.getElementById(`sub-${sym}`)?.textContent || '';
@@ -583,9 +553,11 @@ function toggleCard(sym, ex) {
         <div class="expanded-price-stage">
           <span class="expanded-phase-label">${bigLabel}</span>
           <div class="pf-wrap" style="margin:4px 0;">
-            <div class="pf-stack" style="width:240px; height:56px;">
-              <div class="pf-digit" id="exp-pf-val-${sym}" style="font-size:40px;">—</div>
-              <div class="pf-mask"  id="exp-pf-mask-${sym}"></div>
+            <div class="pf-stack" style="width:240px; height:48px;">
+              <div class="pf-half pf-static-t" id="exp-pf-st-${sym}" style="height:24px; font-size:40px;"><span style="font-size:40px;">—</span></div>
+              <div class="pf-half pf-static-b" id="exp-pf-sb-${sym}" style="height:24px; font-size:40px;"><span style="font-size:40px;">—</span></div>
+              <div class="pf-half pf-front"    id="exp-pf-fr-${sym}" style="height:24px; font-size:40px;"><span style="font-size:40px;">—</span></div>
+              <div class="pf-half pf-back"     id="exp-pf-bk-${sym}" style="height:24px; font-size:40px;"><span style="font-size:40px;">—</span></div>
             </div>
           </div>
           <div class="expanded-main-change">${bigChg}</div>
@@ -622,13 +594,20 @@ function toggleCard(sym, ex) {
     }, 680));
 
     pendingAnimTimers.push(setTimeout(() => {
-      const valEl  = document.getElementById(`exp-pf-val-${sym}`);
-      const maskEl = document.getElementById(`exp-pf-mask-${sym}`);
-      if (!valEl) return;
-      valEl.textContent = bigVal;
-      maskEl.classList.remove('sweep');
-      void maskEl.offsetWidth;
-      maskEl.classList.add('sweep');
+      const stEl = document.getElementById(`exp-pf-st-${sym}`);
+      const sbEl = document.getElementById(`exp-pf-sb-${sym}`);
+      const frEl = document.getElementById(`exp-pf-fr-${sym}`);
+      const bkEl = document.getElementById(`exp-pf-bk-${sym}`);
+      if (!stEl) return;
+      frEl.querySelector('span').textContent = '—';
+      sbEl.querySelector('span').textContent = '—';
+      stEl.querySelector('span').textContent = bigVal;
+      bkEl.querySelector('span').textContent = bigVal;
+      frEl.classList.remove('flipping'); bkEl.classList.remove('flipping');
+      void frEl.offsetWidth;
+      frEl.classList.add('flipping');
+      bkEl.classList.add('flipping');
+      setTimeout(() => { if (sbEl) sbEl.querySelector('span').textContent = bigVal; }, 620);
     }, 1120));
 
     pendingAnimTimers.push(setTimeout(() => {
@@ -657,18 +636,21 @@ function toggleCard(sym, ex) {
 }
 
 function flipPriceCard(sym, newVal) {
-  const valEl  = document.getElementById(`pf-val-${sym}`);
-  const maskEl = document.getElementById(`pf-mask-${sym}`);
-  if (!valEl) return;
+  const stEl = document.getElementById(`pf-st-${sym}`);
+  const sbEl = document.getElementById(`pf-sb-${sym}`);
+  const frEl = document.getElementById(`pf-fr-${sym}`);
+  const bkEl = document.getElementById(`pf-bk-${sym}`);
+  if (!stEl || !frEl) return;
 
-  // 數字沒變就不動
-  if (valEl.textContent === newVal) return;
+  frEl.classList.remove('flipping');
+  bkEl.classList.remove('flipping');
+  void frEl.offsetWidth;
 
-  // 換數字，遮罩從上往下掃過製造翻頁感
-  valEl.textContent = newVal;
-  maskEl.classList.remove('sweep');
-  void maskEl.offsetWidth;
-  maskEl.classList.add('sweep');
+  stEl.querySelector('span').textContent = newVal;
+  sbEl.querySelector('span').textContent = newVal;
+
+  frEl.classList.add('flipping');
+  bkEl.classList.add('flipping');
 }
 
 function setPriceDirect(sym, val) {
@@ -685,14 +667,15 @@ let isFirstLoad = !sessionStorage.getItem('hasLoaded');
 function renderPrice(sym, q) {
   if (!q) return;
   const current   = parseFloat(q.c ?? q.regular ?? 0);
-  const regular   = parseFloat(q.regular ?? q.c ?? 0); // 昨天正式收盤
-  const prevClose = regular; // ✅ 昨收 = 正式收盤，跟 TradingView 一致
+  const regular   = parseFloat(q.regular ?? q.c ?? 0);
+  const prevClose = parseFloat(q.prev_close ?? regular);
   const phase     = q.phase || '正式盤';
   const valStr    = `$${current.toFixed(2)}`;
 
   const phaseLabelMap = { '盤前':'盤前','盤後':'盤後','正式盤':'現價','錯誤':'—' };
   document.getElementById(`phase-label-${sym}`).textContent = phaseLabelMap[phase]||'現價';
 
+  const stEl = document.getElementById(`pf-st-${sym}`);
   const phaseChanged = lastPhase[sym] !== undefined && lastPhase[sym] !== phase;
 
   flipPriceCard(sym, valStr);
