@@ -4,14 +4,10 @@ import datetime
 import pytz
 import yfinance as yf
 
-# 要追蹤的股票
 STOCKS = ['NOW', 'NVDA', 'LITE', 'ONDS', 'MRVL', 'GOOG', 'SPCX', 'TSM', 'MU', 'SNDK', 'TSLA']
-
-# 是否要在這次執行中重新抓取新聞（由 .yml 透過環境變數控制，只有盤前那班會設為 true）
 UPDATE_NEWS = os.environ.get('UPDATE_NEWS', 'false').lower() == 'true'
 
 def load_existing_news():
-    """讀取現有 stock_data.json，把每檔股票舊的新聞保留下來備用"""
     existing_news = {}
     try:
         with open('stock_data.json', 'r', encoding='utf-8') as f:
@@ -38,11 +34,11 @@ def fetch_stock_data():
             ticker = yf.Ticker(sym)
 
             regular_price = 0.0
-            previous_close = 0.0
+            prev_close = 0.0  # 前天收盤（regularMarketPreviousClose）
             try:
                 f_info = ticker.fast_info
                 regular_price = getattr(f_info, 'last_price', None) or 0.0
-                previous_close = getattr(f_info, 'previous_close', None) or 0.0
+                prev_close = getattr(f_info, 'previous_close', None) or 0.0
             except Exception as fe:
                 print(f"  ⚠️ {sym} fast_info 讀取失敗: {fe}")
 
@@ -51,7 +47,7 @@ def fetch_stock_data():
                     hist = ticker.history(period="2d")
                     if not hist.empty:
                         regular_price = float(hist['Close'].iloc[-1])
-                        previous_close = float(hist['Close'].iloc[-2]) if len(hist) >= 2 else float(hist['Open'].iloc[-1])
+                        prev_close = float(hist['Close'].iloc[-2]) if len(hist) >= 2 else float(hist['Open'].iloc[-1])
                 except Exception as he:
                     print(f"  ⚠️ {sym} history 補救失敗: {he}")
 
@@ -61,8 +57,8 @@ def fetch_stock_data():
             try:
                 info = ticker.info or {}
                 regular_price = info.get('regularMarketPrice') or info.get('currentPrice') or regular_price
-                previous_close = info.get('regularMarketPreviousClose') or info.get('previousClose') or previous_close
-                pre_price = info.get('preMarketPrice')
+                prev_close     = info.get('regularMarketPreviousClose') or info.get('previousClose') or prev_close
+                pre_price  = info.get('preMarketPrice')
                 post_price = info.get('postMarketPrice')
             except Exception as info_err:
                 print(f"  ⚠️ {sym} info 接口受限: {info_err}")
@@ -78,12 +74,13 @@ def fetch_stock_data():
                 current_price = regular_price
                 phase = "正式盤"
 
-            # ✅ 修正：漲跌基準統一用 regular_price（昨天正式收盤）
-            # 盤前：盤前價 vs 昨收盤  → 跟 TradingView 一致
-            # 盤後：盤後價 vs 昨收盤  → 跟 TradingView 一致
-            # 正式盤：現價 vs 昨收盤  → 本來就正確
-            dollar_change = current_price - regular_price
+            # 漲跌：現價 vs 昨收（regular_price）
+            dollar_change  = current_price - regular_price
             percent_change = (dollar_change / regular_price * 100) if regular_price != 0 else 0
+
+            # 昨收 vs 前收漲跌
+            reg_change     = regular_price - prev_close
+            reg_pct_change = (reg_change / prev_close * 100) if prev_close != 0 else 0
 
             # 新聞處理
             if UPDATE_NEWS:
@@ -102,7 +99,6 @@ def fetch_stock_data():
                             (item.get('content', {}).get('canonicalUrl', {}).get('url') if isinstance(item.get('content'), dict) else None)
                         )
                         source = item.get('publisher') or item.get('source') or "Yahoo Finance"
-
                         if title and title.strip() and link:
                             news_list.append({
                                 "headline": title.strip(),
@@ -114,46 +110,43 @@ def fetch_stock_data():
                     print(f"  {sym} 新聞抓取失敗: {ne}")
 
                 if not news_list:
-                    news_list = existing_news.get(sym, []) or [
-                        {
-                            "headline": "暫無最新新聞",
-                            "datetime": int(datetime.datetime.now(tw_tz).timestamp()),
-                            "source": "Yahoo Finance",
-                            "url": "#"
-                        }
-                    ]
-            else:
-                news_list = existing_news.get(sym, []) or [
-                    {
+                    news_list = existing_news.get(sym, []) or [{
                         "headline": "暫無最新新聞",
                         "datetime": int(datetime.datetime.now(tw_tz).timestamp()),
-                        "source": "Yahoo Finance",
-                        "url": "#"
-                    }
-                ]
+                        "source": "Yahoo Finance", "url": "#"
+                    }]
+            else:
+                news_list = existing_news.get(sym, []) or [{
+                    "headline": "暫無最新新聞",
+                    "datetime": int(datetime.datetime.now(tw_tz).timestamp()),
+                    "source": "Yahoo Finance", "url": "#"
+                }]
 
             output_data[sym] = {
                 "quote": {
-                    "c": round(float(current_price), 2),
-                    "d": round(float(dollar_change), 2),
-                    "dp": round(float(percent_change), 4),
-                    "regular": round(float(regular_price), 2),
-                    "pre": round(float(pre_price), 2) if pre_price is not None else None,
-                    "post": round(float(post_price), 2) if post_price is not None else None,
-                    "prev_close": round(float(regular_price), 2),  # ✅ 昨天正式收盤 = regular_price
-                    "phase": phase
+                    "c":          round(float(current_price), 2),
+                    "d":          round(float(dollar_change), 2),
+                    "dp":         round(float(percent_change), 4),
+                    "regular":    round(float(regular_price), 2),   # 昨收（正式收盤）
+                    "reg_d":      round(float(reg_change), 2),      # ✅ 新增：昨收 vs 前收 金額
+                    "reg_dp":     round(float(reg_pct_change), 4),  # ✅ 新增：昨收 vs 前收 百分比
+                    "pre":        round(float(pre_price), 2) if pre_price is not None else None,
+                    "post":       round(float(post_price), 2) if post_price is not None else None,
+                    "prev_close": round(float(regular_price), 2),   # 昨收（同 regular，前端用）
+                    "phase":      phase
                 },
                 "news": news_list
             }
 
-            print(f" ✅ {sym} [{phase}] ${current_price:.2f} ({dollar_change:+.2f} / {percent_change:+.2f}%)")
+            print(f" ✅ {sym} [{phase}] ${current_price:.2f} ({dollar_change:+.2f} / {percent_change:+.2f}%) | 昨收${regular_price:.2f} vs 前收${prev_close:.2f} ({reg_change:+.2f} / {reg_pct_change:+.2f}%)")
 
         except Exception as e:
             print(f" ❌ {sym} 嚴重抓取失敗: {e}")
             output_data[sym] = {
                 "quote": {
                     "c": 0.0, "d": 0.0, "dp": 0.0,
-                    "regular": 0.0, "pre": None, "post": None,
+                    "regular": 0.0, "reg_d": 0.0, "reg_dp": 0.0,
+                    "pre": None, "post": None,
                     "prev_close": 0.0, "phase": "錯誤"
                 },
                 "news": existing_news.get(sym, [])
