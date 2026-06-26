@@ -1,10 +1,10 @@
 name: 美股數據更新與情報推送
 on:
   schedule:
-    - cron: '30 21 * * 1-5'   # 目標台灣 05:30（平日）
-    - cron: '30 9 * * 1-5'    # 目標台灣 17:30（平日）
-    - cron: '*/1 13-21 * * 1-5'   # 美股盤中每分鐘更新（台灣時間 21:30~05:00 對應 UTC 13:00~21:00，平日）
-    - cron: '*/30 * * * 1-5'    # 非盤中時段，每30分鐘背景靜默更新（平日）
+    - cron: '30 21 * * 1-5'
+    - cron: '30 9 * * 1-5'
+    - cron: '*/1 13-21 * * 1-5'
+    - cron: '*/30 * * * 1-5'
   workflow_dispatch:
 permissions:
   contents: write
@@ -16,7 +16,7 @@ jobs:
         id: check_weekday
         run: |
           export TZ="Asia/Taipei"
-          TW_DOW=$(date +%u)   # 1=週一 ... 6=週六 7=週日
+          TW_DOW=$(date +%u)
           UTC_DOW=$(date -u +%u)
           echo "台灣星期: ${TW_DOW} / UTC星期: ${UTC_DOW}"
           if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
@@ -29,7 +29,7 @@ jobs:
             echo "✅ 台灣週六但UTC仍平日（週五盤前05:30），放行"
             echo "is_weekday=true" >> $GITHUB_ENV
           else
-            echo "🛌 週末，完全跳過（不爬蟲、不發送）"
+            echo "🛌 週末，完全跳過"
             echo "is_weekday=false" >> $GITHUB_ENV
           fi
       - name: 複製專案代碼
@@ -56,10 +56,8 @@ jobs:
             echo "send_alert=false" >> $GITHUB_ENV
           fi
           if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
-            echo "📰 手動觸發，強制更新新聞"
             echo "UPDATE_NEWS=true" >> $GITHUB_ENV
           elif [ "$TW_HOUR" -ge 5 ] && [ "$TW_HOUR" -le 6 ]; then
-            echo "📰 盤前班次，本次會更新新聞"
             echo "UPDATE_NEWS=true" >> $GITHUB_ENV
           else
             echo "UPDATE_NEWS=false" >> $GITHUB_ENV
@@ -90,4 +88,7 @@ jobs:
       - name: 發射 Telegram 推送
         if: env.is_weekday == 'true' && env.send_alert == 'true'
         run: |
-          TEXT="🛡️ 美股情報室數據已更新！%0A🚀 開啟儀表板：https://mjtsai-code.github.io/STOC
+          curl -sS --fail -X POST "https://api.telegram.org/bot${{ secrets.TELEGRAM_TOKEN }}/sendMessage" \
+            -d "chat_id=${{ secrets.TELEGRAM_CHAT_ID }}" \
+            -d "text=🛡️ 美股情報室數據已更新！%0A🚀 開啟儀表板：https://mjtsai-code.github.io/STOCK_ALERT/" \
+            -d "disable_web_page_preview=true"
