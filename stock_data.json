@@ -1,46 +1,46 @@
 {
   "name": "美股盤前情報資料庫",
-  "updated_at": "2026-06-27T05:51:49.159115+08:00",
+  "updated_at": "2026-06-27T06:47:58.700799+08:00",
   "data": {
     "NOW": {
       "quote": {
-        "c": 98.45,
-        "d": 0.11,
-        "dp": 0.1119,
+        "c": 98.5,
+        "d": 0.16,
+        "dp": 0.1671,
         "regular": 98.34,
         "reg_d": 8.82,
         "reg_dp": 9.8525,
         "pre": null,
-        "post": 98.45,
+        "post": 98.5,
         "prev_close": 89.52,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "The Market Rotation Is On. ServiceNow, Workday, and AppLovin Rise as Software Tops Chips.",
-          "datetime": 1782510709,
+          "headline": "ServiceNow (NOW) Stock Trades Up, Here Is Why",
+          "datetime": 1782514078,
           "source": "Yahoo Finance",
-          "url": "https://www.barrons.com/articles/servicenow-applovin-software-chips-on-semiconductor-4496e4be?siteid=yhoof2&yptr=yahoo"
+          "url": "https://finance.yahoo.com/markets/stocks/articles/servicenow-now-stock-trades-why-224025914.html"
         }
       ]
     },
     "NVDA": {
       "quote": {
-        "c": 192.23,
-        "d": -0.3,
-        "dp": -0.1558,
+        "c": 192.76,
+        "d": 0.23,
+        "dp": 0.1184,
         "regular": 192.53,
         "reg_d": -3.21,
         "reg_dp": -1.6399,
         "pre": null,
-        "post": 192.23,
+        "post": 192.76,
         "prev_close": 195.74,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "What turning AI compute into a financial asset would look like",
-          "datetime": 1782510709,
+          "datetime": 1782514078,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/video/turning-ai-compute-financial-asset-151459284.html"
         }
@@ -48,21 +48,21 @@
     },
     "LITE": {
       "quote": {
-        "c": 808.5,
-        "d": -8.48,
-        "dp": -1.038,
+        "c": 810.0,
+        "d": -6.98,
+        "dp": -0.8544,
         "regular": 816.98,
         "reg_d": -44.99,
         "reg_dp": -5.2194,
         "pre": null,
-        "post": 808.5,
+        "post": 810.0,
         "prev_close": 861.97,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Nvidia, Micron, AMD Lead Chip Selloff on OpenAI IPO Delay Report Rattles Tech",
-          "datetime": 1782510709,
+          "datetime": 1782514078,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/technology/articles/nvidia-micron-amd-lead-chip-150833279.html"
         }
@@ -70,21 +70,21 @@
     },
     "ONDS": {
       "quote": {
-        "c": 7.82,
-        "d": -0.01,
-        "dp": -0.1111,
+        "c": 7.85,
+        "d": 0.02,
+        "dp": 0.2554,
         "regular": 7.83,
         "reg_d": 0.16,
         "reg_dp": 2.0195,
         "pre": null,
-        "post": 7.82,
+        "post": 7.85,
         "prev_close": 7.67,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Ondas Stock (ONDS) Gains Attention After New Autonomous Defense Systems Launch",
-          "datetime": 1782510709,
+          "datetime": 1782514078,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/technology/ai/articles/ondas-stock-onds-gains-attention-210627329.html"
         }
@@ -92,21 +92,21 @@
     },
     "MRVL": {
       "quote": {
-        "c": 264.94,
-        "d": -1.83,
-        "dp": -0.686,
+        "c": 265.25,
+        "d": -1.52,
+        "dp": -0.5698,
         "regular": 266.77,
         "reg_d": -14.49,
         "reg_dp": -5.1518,
         "pre": null,
-        "post": 264.94,
+        "post": 265.25,
         "prev_close": 281.26,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Semiconductor stocks retreat over worries about memory costs",
-          "datetime": 1782510709,
+          "datetime": 1782514078,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/markets/article/semiconductor-stocks-retreat-over-worries-about-memory-costs-131508185.html"
         }
@@ -114,21 +114,21 @@
     },
     "GOOG": {
       "quote": {
-        "c": 335.79,
-        "d": 1.1,
-        "dp": 0.3287,
+        "c": 336.64,
+        "d": 1.95,
+        "dp": 0.5826,
         "regular": 334.69,
         "reg_d": -7.5,
         "reg_dp": -2.1918,
         "pre": null,
-        "post": 335.79,
+        "post": 336.64,
         "prev_close": 342.19,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "The AI boom now has a price tag — and Micron just sent the bill: Chart of the Day",
-          "datetime": 1782510709,
+          "datetime": 1782514078,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/markets/article/the-ai-boom-now-has-a-price-tag--and-micron-just-sent-the-bill-chart-of-the-day-100000526.html"
         }
@@ -136,21 +136,21 @@
     },
     "SPCX": {
       "quote": {
-        "c": 152.21,
-        "d": -1.02,
-        "dp": -0.6657,
+        "c": 152.14,
+        "d": -1.09,
+        "dp": -0.7113,
         "regular": 153.23,
         "reg_d": 0.23,
         "reg_dp": 0.1503,
         "pre": null,
-        "post": 152.21,
+        "post": 152.14,
         "prev_close": 153.0,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Why SpaceX has yet to lift the space economy: Fundstrat",
-          "datetime": 1782510709,
+          "datetime": 1782514078,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/video/why-spacex-yet-lift-space-211500055.html"
         }
@@ -158,21 +158,21 @@
     },
     "TSM": {
       "quote": {
-        "c": 430.11,
-        "d": -2.24,
-        "dp": -0.5181,
+        "c": 430.66,
+        "d": -1.69,
+        "dp": -0.3909,
         "regular": 432.35,
         "reg_d": -2.64,
         "reg_dp": -0.6069,
         "pre": null,
-        "post": 430.11,
+        "post": 430.66,
         "prev_close": 434.99,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Why Tower Semiconductor Took a Dive Today",
-          "datetime": 1782510709,
+          "datetime": 1782514078,
           "source": "Yahoo Finance",
           "url": "https://www.fool.com/investing/2026/06/26/why-tower-semiconductor-took-a-dive-today/"
         }
@@ -180,21 +180,21 @@
     },
     "MU": {
       "quote": {
-        "c": 1127.92,
-        "d": -4.41,
-        "dp": -0.389,
+        "c": 1130.05,
+        "d": -2.28,
+        "dp": -0.2014,
         "regular": 1132.33,
         "reg_d": -81.23,
         "reg_dp": -6.6935,
         "pre": null,
-        "post": 1127.92,
+        "post": 1130.05,
         "prev_close": 1213.56,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Stock market today: S&P 500, Nasdaq snap 2-week win streak as AI jitters pressure tech",
-          "datetime": 1782510709,
+          "datetime": 1782514078,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/markets/live/stock-market-today-sp-500-nasdaq-snap-2-week-win-streak-as-ai-jitters-pressure-tech-231347821.html"
         }
@@ -202,21 +202,21 @@
     },
     "SNDK": {
       "quote": {
-        "c": 2086.0,
-        "d": -4.71,
-        "dp": -0.2253,
+        "c": 2099.0,
+        "d": 8.29,
+        "dp": 0.3965,
         "regular": 2090.71,
         "reg_d": -244.29,
         "reg_dp": -10.4621,
         "pre": null,
-        "post": 2086.0,
+        "post": 2099.0,
         "prev_close": 2335.0,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Semiconductor stocks retreat over worries about memory costs",
-          "datetime": 1782510709,
+          "datetime": 1782514078,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/markets/article/semiconductor-stocks-retreat-over-worries-about-memory-costs-131508185.html"
         }
@@ -224,21 +224,21 @@
     },
     "TSLA": {
       "quote": {
-        "c": 377.25,
-        "d": -2.46,
-        "dp": -0.6479,
+        "c": 377.97,
+        "d": -1.74,
+        "dp": -0.4582,
         "regular": 379.71,
         "reg_d": 4.59,
         "reg_dp": 1.2236,
         "pre": null,
-        "post": 377.25,
+        "post": 377.97,
         "prev_close": 375.12,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Dow Jones Futures: Market At Tipping Point, Here's What To Do. Eli Lilly Soars, Tesla On Tap.",
-          "datetime": 1782510709,
+          "datetime": 1782514078,
           "source": "Yahoo Finance",
           "url": "https://www.investors.com/market-trend/stock-market-today/dow-jones-futures-stock-market-tipping-point-eli-lilly-tesla/?src=A00220&yptr=yahoo"
         }
