@@ -696,14 +696,18 @@ function renderPrice(sym, q) {
     subRow.style.display = 'flex';
     subLabel.textContent = '收盤';
     subEl.textContent = `$${regular.toFixed(2)}`;
-    const rc = regular - prevClose, rp = prevClose ? (rc / prevClose * 100) : 0;
+    const rc = q.reg_d  !== undefined ? parseFloat(q.reg_d)  : (regular - prevClose);
+    const rp = q.reg_dp !== undefined ? parseFloat(q.reg_dp) : (prevClose ? (rc / prevClose * 100) : 0);
     const d = rc >= 0 ? 'up' : 'down', sg = rc >= 0 ? '▲' : '▼';
     subChgEl.innerHTML = `<span class="${d}">${sg} ${Math.abs(rc).toFixed(2)} (${Math.abs(rp).toFixed(2)}%)</span>`;
   } else if (phase === '盤前') {
     subRow.style.display = 'flex';
-    subLabel.textContent = '昨收';
-    subEl.textContent = `$${prevClose.toFixed(2)}`;
-    subChgEl.innerHTML = '';
+    subLabel.textContent = '收盤';
+    subEl.textContent = `$${regular.toFixed(2)}`;
+    const rc = q.reg_d  !== undefined ? parseFloat(q.reg_d)  : (regular - prevClose);
+    const rp = q.reg_dp !== undefined ? parseFloat(q.reg_dp) : (prevClose ? (rc / prevClose * 100) : 0);
+    const d = rc >= 0 ? 'up' : 'down', sg = rc >= 0 ? '▲' : '▼';
+    subChgEl.innerHTML = `<span class="${d}">${sg} ${Math.abs(rc).toFixed(2)} (${Math.abs(rp).toFixed(2)}%)</span>`;
   } else {
     subRow.style.display = 'none';
   }
