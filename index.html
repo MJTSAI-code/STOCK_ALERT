@@ -44,7 +44,7 @@
   .grid { display: grid; grid-template-columns: 1fr; gap: 12px; margin: 16px; }
   @media(min-width: 640px)  { .grid { grid-template-columns: repeat(4,1fr); } .grid > .card { grid-column: span 2; } }
   @media(min-width: 1000px) { .grid { grid-template-columns: repeat(6,1fr); } .grid > .card { grid-column: span 2; } }
-  .card.last-row-solo   { grid-column: 3/5; }
+  .card.last-row-solo  { grid-column: 3/5; }
   .card.last-row-pair-1 { grid-column: 2/4; }
   .card.last-row-pair-2 { grid-column: 4/6; }
 
@@ -171,12 +171,6 @@
     position: absolute; top: 6px; left: 10px;
     font-size: 9px; font-weight: 700; color: #d9b87a; opacity: 0.8; letter-spacing: 1px;
   }
-  .expanded-price-value {
-    font-family: 'DM Mono', monospace;
-    font-size: 44px; font-weight: 500; color: #ffd98a;
-    letter-spacing: 1px; text-shadow: 0 0 14px rgba(255,200,110,0.55);
-    line-height: 1; display: block;
-  }
   .expanded-main-change { font-size: 13px; font-weight: 700; margin-top: 8px; }
   .expanded-ref-row {
     margin-top: 8px; padding-top: 8px;
@@ -212,10 +206,6 @@
   .expanded-news-item:hover { background: rgba(255,255,255,0.07); }
   .expanded-news-headline { font-size: 11px; color: var(--text); line-height: 1.5; }
   .expanded-news-source { font-size: 9px; color: var(--muted); margin-top: 3px; }
-
-  /* ── Expanded pf-stack size override ── */
-  .exp-pf-stack { height: 60px; width: 270px; }
-  .exp-pf-stack .pf-digit { font-size: 44px; padding: 6px 18px; }
 
   .card-overlay {
     display: none; position: fixed; inset: 0;
@@ -273,9 +263,6 @@
     padding: 18px 14px 14px; text-align: center;
   }
   .phase-corner-label { position: absolute; top: 8px; left: 10px; font-size: 9px; font-weight: 700; color: #d9b87a; letter-spacing: 1px; opacity: 0.75; }
-  .price-value { font-family: 'DM Mono', monospace; font-size: 32px; font-weight: 500; color: #ffd98a; letter-spacing: 1px; text-shadow: 0 0 14px rgba(255,200,110,0.55); line-height: 1; display: inline-block; }
-  .price-value.tick { animation: digitTick 0.28s cubic-bezier(0.34,1.56,0.64,1); }
-  @keyframes digitTick { 0% { transform: translateY(-6px); opacity: 0.4; } 60% { transform: translateY(1px); opacity: 1; } 100% { transform: translateY(0); opacity: 1; } }
   .main-change { font-size: 12px; font-weight: 700; margin-top: 6px; }
   .ref-price { margin-top: 10px; padding-top: 8px; border-top: 1px solid rgba(255,255,255,0.08); width: 100%; font-size: 11px; color: #c9b48a; display: flex; justify-content: center; gap: 6px; align-items: baseline; }
   .ref-price .ref-tag { opacity: 0.6; font-size: 10px; }
@@ -284,42 +271,63 @@
   .down { color: var(--down); background: #ff174415; border: 1px solid #ff174430; }
   .divider { display: none; }
 
-  /* ── Flip display ── */
   .pf-wrap {
+    perspective: 240px;
     display: flex;
     justify-content: center;
   }
   .pf-stack {
     position: relative;
-    perspective: 400px;
-    height: 44px;
-    width: 210px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    height: 40px;
+    width: 200px;
+    background: #14120d;
+    border-radius: 3px;
   }
-  .pf-digit {
-    font-family: 'DM Mono', monospace;
-    font-size: 32px; font-weight: 500;
-    color: #ffd98a;
-    text-shadow: 0 0 14px rgba(255,200,110,0.55);
-    background: #1a1610;
-    border-radius: 5px;
-    padding: 4px 18px;
-    display: block;
-    width: 100%;
-    text-align: center;
-    transform-style: preserve-3d;
+  .pf-half {
+    position: absolute; left: 0; right: 0; top: 0; bottom: 0;
+    display: flex; justify-content: center; align-items: center;
+    font-family: 'DM Mono', monospace; font-size: 32px; font-weight: 500;
+    color: #ffd98a; text-shadow: 0 0 14px rgba(255,200,110,0.55);
+    background: transparent;
+  }
+  .pf-static-t, .pf-static-b { z-index: 1; }
+  .pf-front {
+    position: absolute; left: 0; right: 0;
+    top: 0; height: 50%;
+    background: #14120d;
+    transform-origin: bottom center;
+    z-index: 5;
     backface-visibility: hidden;
   }
-  .pf-digit.flip {
-    animation: digitFlip 0.36s cubic-bezier(0.4, 0, 0.2, 1);
+  .pf-back {
+    position: absolute; left: 0; right: 0;
+    bottom: 0; height: 50%;
+    background: #14120d;
+    transform-origin: top center;
+    transform: rotateX(0deg);
+    z-index: 4;
+    backface-visibility: hidden;
   }
-  @keyframes digitFlip {
-    0%   { transform: rotateX(0deg);    opacity: 1; }
-    35%  { transform: rotateX(-90deg);  opacity: 0.3; }
-    65%  { transform: rotateX(90deg);   opacity: 0.3; }
-    100% { transform: rotateX(0deg);    opacity: 1; }
+  .pf-seam { display: none; }
+  .pf-front.flipping { animation: pfFrontUp 0.32s cubic-bezier(.5,0,.75,.3) forwards; }
+  @keyframes pfFrontUp {
+    0%   { transform: rotateX(0deg);   }
+    100% { transform: rotateX(-90deg); }
+  }
+  .pf-back.flipping { animation: pfBackDown 0.30s cubic-bezier(.2,1,.4,1) 0.28s forwards; }
+  @keyframes pfBackDown {
+    0%   { transform: rotateX(0deg);  }
+    65%  { transform: rotateX(6deg);  }
+    100% { transform: rotateX(90deg); }
+  }
+
+  /* expanded pf-stack: same structure, larger size */
+  .exp-pf-stack {
+    height: 52px;
+    width: 260px;
+  }
+  .exp-pf-stack .pf-half {
+    font-size: 44px;
   }
 
   .chart-container {
@@ -402,7 +410,10 @@ function buildGrid() {
             <span class="phase-corner-label" id="phase-label-${s.sym}">現價</span>
             <div class="pf-wrap">
               <div class="pf-stack">
-                <span class="pf-digit" id="pf-digit-${s.sym}">—</span>
+                <div class="pf-half pf-static-t" id="pf-st-${s.sym}"><span>—</span></div>
+                <div class="pf-half pf-static-b" id="pf-sb-${s.sym}"><span>—</span></div>
+                <div class="pf-front" id="pf-fr-${s.sym}"></div>
+                <div class="pf-back"  id="pf-bk-${s.sym}"></div>
               </div>
             </div>
             <div class="main-change" id="main-chg-${s.sym}"></div>
@@ -458,9 +469,7 @@ function collapseCard(sym) {
     }
     const sl = card.querySelector('.split-left');
     sl?.classList.remove('panel-flap');
-
     card.classList.add('recently-viewed');
-
     fixLastRowLayout();
   }, 360));
   overlay.classList.remove('show');
@@ -507,7 +516,7 @@ function toggleCard(sym, ex) {
     splitRight.dataset.originalHtml = splitRight.innerHTML;
     splitRight.dataset.expanded = '1';
 
-    const mainVal    = document.getElementById(`pf-digit-${sym}`)?.textContent || '—';
+    const mainVal    = document.getElementById(`pf-st-${sym}`)?.querySelector('span')?.textContent || '—';
     const mainChg    = document.getElementById(`main-chg-${sym}`)?.innerHTML || '';
     const subLabel   = document.getElementById(`sub-label-${sym}`)?.textContent || '';
     const subVal     = document.getElementById(`sub-${sym}`)?.textContent || '';
@@ -542,7 +551,10 @@ function toggleCard(sym, ex) {
           <span class="expanded-phase-label">${bigLabel}</span>
           <div class="pf-wrap" style="margin:4px 0;">
             <div class="pf-stack exp-pf-stack">
-              <span class="pf-digit" id="exp-pf-digit-${sym}">—</span>
+              <div class="pf-half pf-static-t" id="exp-pf-st-${sym}"><span>—</span></div>
+              <div class="pf-half pf-static-b" id="exp-pf-sb-${sym}"><span>—</span></div>
+              <div class="pf-front"             id="exp-pf-fr-${sym}"></div>
+              <div class="pf-back"              id="exp-pf-bk-${sym}"></div>
             </div>
           </div>
           <div class="expanded-main-change">${bigChg}</div>
@@ -584,9 +596,17 @@ function toggleCard(sym, ex) {
     }, 680));
 
     pendingAnimTimers.push(setTimeout(() => {
-      // Use setPriceDirect to set initial state, then flip in
-      setPriceDirect(sym, '—', 'exp-');
-      flipPriceCard(sym, bigVal, 'exp-');
+      const stEl = document.getElementById(`exp-pf-st-${sym}`);
+      const sbEl = document.getElementById(`exp-pf-sb-${sym}`);
+      const frEl = document.getElementById(`exp-pf-fr-${sym}`);
+      const bkEl = document.getElementById(`exp-pf-bk-${sym}`);
+      if (!stEl) return;
+      frEl.classList.remove('flipping'); bkEl.classList.remove('flipping');
+      void frEl.offsetWidth;
+      stEl.querySelector('span').textContent = bigVal;
+      sbEl.querySelector('span').textContent = bigVal;
+      frEl.classList.add('flipping');
+      bkEl.classList.add('flipping');
     }, 1120));
 
     pendingAnimTimers.push(setTimeout(() => {
@@ -598,10 +618,10 @@ function toggleCard(sym, ex) {
       pendingAnimTimers.push(setTimeout(() => {
         const ff = document.getElementById(`exp-flipFront-${sym}`);
         if (ff) {
-          ff.style.transformOrigin   = 'top center';
-          ff.style.transform         = 'rotateX(-90deg)';
+          ff.style.transformOrigin    = 'top center';
+          ff.style.transform          = 'rotateX(-90deg)';
           ff.style.backfaceVisibility = 'hidden';
-          ff.style.display           = 'block';
+          ff.style.display            = 'block';
           void ff.offsetWidth;
           ff.classList.add('playing');
         }
@@ -614,23 +634,30 @@ function toggleCard(sym, ex) {
   }
 }
 
-function flipPriceCard(sym, newVal, prefix) {
-  prefix = prefix || '';
-  const el = document.getElementById(`${prefix}pf-digit-${sym}`);
-  if (!el) return;
-  if (el.textContent === newVal) return;
-  el.classList.remove('flip');
-  void el.offsetWidth;
-  el.classList.add('flip');
-  // update text at midpoint of animation (when rotated 90deg, invisible)
-  setTimeout(() => { el.textContent = newVal; }, 130);
+function flipPriceCard(sym, newVal) {
+  const stEl = document.getElementById(`pf-st-${sym}`);
+  const sbEl = document.getElementById(`pf-sb-${sym}`);
+  const frEl = document.getElementById(`pf-fr-${sym}`);
+  const bkEl = document.getElementById(`pf-bk-${sym}`);
+  if (!stEl || !frEl) return;
+
+  frEl.classList.remove('flipping');
+  bkEl.classList.remove('flipping');
+  void frEl.offsetWidth;
+
+  stEl.querySelector('span').textContent = newVal;
+  sbEl.querySelector('span').textContent = newVal;
+
+  frEl.classList.add('flipping');
+  bkEl.classList.add('flipping');
 }
 
-function setPriceDirect(sym, val, prefix) {
-  prefix = prefix || '';
-  const el = document.getElementById(`${prefix}pf-digit-${sym}`);
-  if (!el) return;
-  el.textContent = val;
+function setPriceDirect(sym, val) {
+  const stEl = document.getElementById(`pf-st-${sym}`);
+  const sbEl = document.getElementById(`pf-sb-${sym}`);
+  if (!stEl) return;
+  stEl.querySelector('span').textContent = val;
+  sbEl.querySelector('span').textContent = val;
 }
 
 const lastPhase = {};
@@ -651,7 +678,7 @@ function renderPrice(sym, q) {
 
   const mainChange = q.d  !== undefined ? parseFloat(q.d)  : (current - prevClose);
   const mainPct    = q.dp !== undefined ? parseFloat(q.dp) : (prevClose ? (mainChange / prevClose * 100) : 0);
-  const mainDir = mainChange >= 0 ? 'up' : 'down';
+  const mainDir  = mainChange >= 0 ? 'up' : 'down';
   const mainSign = mainChange >= 0 ? '▲' : '▼';
   document.getElementById(`main-chg-${sym}`).innerHTML =
     `<span class="${mainDir}">${mainSign} ${Math.abs(mainChange).toFixed(2)} (${Math.abs(mainPct).toFixed(2)}%)</span>`;
