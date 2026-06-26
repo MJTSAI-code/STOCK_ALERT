@@ -290,16 +290,17 @@
     overflow: hidden;
     display: flex; justify-content: center;
     font-family: 'DM Mono', monospace; font-size: 32px; font-weight: 500;
+    line-height: 40px;
     color: #ffd98a; text-shadow: 0 0 14px rgba(255,200,110,0.55);
     background: #14120d;
   }
-  /* 上半靜態：顯示新值上半，align-items:flex-end 讓文字貼底（只顯示上半） */
+  /* 上半靜態：align-items:flex-end 讓文字貼底，overflow裁掉下半 */
   .pf-top {
     top: 0; height: 50%;
     align-items: flex-end;
     z-index: 1;
   }
-  /* 下半靜態：顯示舊值下半，align-items:flex-start 讓文字貼頂（只顯示下半） */
+  /* 下半靜態：align-items:flex-start 讓文字貼頂，overflow裁掉上半 */
   .pf-bot {
     top: 50%; height: 50%;
     align-items: flex-start;
@@ -348,6 +349,7 @@
   .exp-pf-stack .pf-front,
   .exp-pf-stack .pf-back {
     font-size: 44px;
+    line-height: 52px;
   }
 
   .chart-container {
