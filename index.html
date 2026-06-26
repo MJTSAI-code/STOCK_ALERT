@@ -311,8 +311,8 @@
   @keyframes pfFrontFall { from { transform: rotateX(0deg); } to { transform: rotateX(-90deg); } }
   @keyframes pfBackRise  { from { transform: rotateX(90deg); } to { transform: rotateX(0deg); } }
 
-  .pf-front.go { animation: pfFrontFall 0.16s cubic-bezier(0.4,0,1,1) forwards; }
-  .pf-back.go  { animation: pfBackRise  0.16s cubic-bezier(0,0,0.6,1) forwards; animation-delay: 0.13s; }
+  .pf-front.go { animation: pfFrontFall 0.15s cubic-bezier(0.55,0,1,1)   forwards; }
+  .pf-back.go  { animation: pfBackRise  0.15s cubic-bezier(0,0,0.45,1)   forwards; animation-delay: 0.12s; }
 
   /* expanded 尺寸覆蓋 */
   .exp-pf-stack { width: 260px; height: 56px; }
@@ -644,16 +644,15 @@ function flipPriceCard(sym, newVal) {
   frontWrap.classList.add('go');
   backWrap.classList.add('go');
 
-  // 前翻蓋到 -90deg 時，下靜態換成新值（配合 0.16s frontFall）
-  setTimeout(() => { botEl.textContent = newVal; }, 160);
+  setTimeout(() => { botEl.textContent = newVal; }, 150);
 
-  // cleanup（front 0.16s + back delay 0.13s + back 0.16s = 0.29s，加緩衝）
+  // cleanup（0.15 + delay 0.12 + 0.15 = 0.42s，加緩衝）
   setTimeout(() => {
     frontWrap.classList.remove('go');
     backWrap.classList.remove('go');
     backWrap.style.transform = '';
     frontEl.textContent = newVal;
-  }, 350);
+  }, 320);
 }
 
 function setPriceDirect(sym, val) {
