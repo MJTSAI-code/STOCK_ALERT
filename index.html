@@ -271,8 +271,9 @@
   .down { color: var(--down); background: #ff174415; border: 1px solid #ff174430; }
   .divider { display: none; }
 
+  /* ── PRICE FLIP ── */
   .pf-wrap {
-    perspective: 240px;
+    perspective: 260px;
     display: flex;
     justify-content: center;
   }
@@ -295,15 +296,16 @@
     display: block;
     text-align: center;
     backface-visibility: hidden;
+    will-change: transform;
   }
   .pf-digit.flipping {
-    animation: pfFlip 0.35s ease-in-out;
+    animation: pfFlip 0.45s cubic-bezier(0.4,0,0.2,1);
   }
   @keyframes pfFlip {
-    0%   { transform: rotateX(0deg);   opacity: 1; }
-    40%  { transform: rotateX(-90deg); opacity: 0.2; }
-    60%  { transform: rotateX(90deg);  opacity: 0.2; }
-    100% { transform: rotateX(0deg);   opacity: 1; }
+    0%   { transform: rotateX(0deg);   opacity: 1;   }
+    40%  { transform: rotateX(-90deg); opacity: 0.3; }
+    60%  { transform: rotateX(90deg);  opacity: 0.3; }
+    100% { transform: rotateX(0deg);   opacity: 1;   }
   }
 
   /* expanded 尺寸覆蓋 */
@@ -599,15 +601,22 @@ function toggleCard(sym, ex) {
   }
 }
 
+// ── 改進的 flipPriceCard：perspective 在 pf-wrap，換字在動畫最窄處 ──
 function flipPriceCard(sym, newVal, prefix) {
   prefix = prefix || '';
   const el = document.getElementById(`${prefix}pf-digit-${sym}`);
   if (!el) return;
   if (el.textContent === newVal) return;
+
+  const DURATION = 450;
+  const SWAP_AT  = Math.round(DURATION * 0.47);
+
   el.classList.remove('flipping');
   void el.offsetWidth;
   el.classList.add('flipping');
-  setTimeout(() => { el.textContent = newVal; }, 140);
+
+  setTimeout(() => { el.textContent = newVal; }, SWAP_AT);
+  setTimeout(() => { el.classList.remove('flipping'); }, DURATION);
 }
 
 function setPriceDirect(sym, val, prefix) {
