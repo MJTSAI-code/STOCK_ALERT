@@ -214,16 +214,8 @@
   .expanded-news-source { font-size: 9px; color: var(--muted); margin-top: 3px; }
 
   /* ── Expanded pf-stack size override ── */
-  .exp-pf-stack {
-    height: 52px;
-    width: 260px;
-  }
-  .exp-pf-stack .pf-top,
-  .exp-pf-stack .pf-bot,
-  .exp-pf-stack .pf-front,
-  .exp-pf-stack .pf-back {
-    font-size: 44px;
-  }
+  .exp-pf-stack { height: 60px; width: 270px; }
+  .exp-pf-stack .pf-digit { font-size: 44px; padding: 6px 18px; }
 
   .card-overlay {
     display: none; position: fixed; inset: 0;
@@ -292,84 +284,42 @@
   .down { color: var(--down); background: #ff174415; border: 1px solid #ff174430; }
   .divider { display: none; }
 
-  /* ── Split-flap core ── */
+  /* ── Flip display ── */
   .pf-wrap {
     display: flex;
     justify-content: center;
   }
   .pf-stack {
     position: relative;
-    perspective: 300px;
-    height: 40px;
-    width: 200px;
-    border-radius: 3px;
-    overflow: visible;
+    perspective: 400px;
+    height: 44px;
+    width: 210px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
-
-  /* Shared half-tile base */
-  .pf-top, .pf-bot, .pf-front, .pf-back {
-    position: absolute; left: 0; right: 0;
-    overflow: hidden;
-    display: flex; justify-content: center;
-    font-family: 'DM Mono', monospace; font-size: 32px; font-weight: 500;
-    color: #ffd98a; text-shadow: 0 0 14px rgba(255,200,110,0.55);
-    background: #1e1a11;
-    border-radius: 2px;
-  }
-
-  /* Upper static half — shows new value top */
-  .pf-top {
-    top: 0; height: 50%;
-    align-items: flex-end;
-    padding-bottom: 1px;
-    z-index: 1;
-    border-bottom: 1px solid #0a0806;
-  }
-
-  /* Lower static half — shows new value bottom, revealed after flip */
-  .pf-bot {
-    top: 50%; height: 50%;
-    align-items: flex-start;
-    padding-top: 1px;
-    z-index: 1;
-  }
-
-  /* Front flap — upper half, holds OLD value, flips upward */
-  .pf-front {
-    top: 0; height: 50%;
-    align-items: flex-end;
-    padding-bottom: 1px;
-    transform-origin: bottom center;
-    z-index: 3;
-    backface-visibility: hidden;
-    border-bottom: 1px solid #0a0806;
-  }
-
-  /* Back flap — lower half, holds NEW value, falls down */
-  .pf-back {
-    top: 50%; height: 50%;
-    align-items: flex-start;
-    padding-top: 1px;
-    transform-origin: top center;
-    transform: rotateX(-90deg);
-    z-index: 3;
+  .pf-digit {
+    font-family: 'DM Mono', monospace;
+    font-size: 32px; font-weight: 500;
+    color: #ffd98a;
+    text-shadow: 0 0 14px rgba(255,200,110,0.55);
+    background: #1a1610;
+    border-radius: 5px;
+    padding: 4px 18px;
+    display: block;
+    width: 100%;
+    text-align: center;
+    transform-style: preserve-3d;
     backface-visibility: hidden;
   }
-
-  .pf-front.flip-out {
-    animation: pfFrontUp 0.22s cubic-bezier(0.55, 0, 1, 0.45) forwards;
+  .pf-digit.flip {
+    animation: digitFlip 0.36s cubic-bezier(0.4, 0, 0.2, 1);
   }
-  @keyframes pfFrontUp {
-    0%   { transform: rotateX(0deg);   }
-    100% { transform: rotateX(-90deg); }
-  }
-  .pf-back.flip-in {
-    animation: pfBackDown 0.24s cubic-bezier(0, 0.55, 0.45, 1) 0.20s forwards;
-  }
-  @keyframes pfBackDown {
-    0%   { transform: rotateX(-90deg); }
-    80%  { transform: rotateX(4deg);   }
-    100% { transform: rotateX(0deg);   }
+  @keyframes digitFlip {
+    0%   { transform: rotateX(0deg);    opacity: 1; }
+    35%  { transform: rotateX(-90deg);  opacity: 0.3; }
+    65%  { transform: rotateX(90deg);   opacity: 0.3; }
+    100% { transform: rotateX(0deg);    opacity: 1; }
   }
 
   .chart-container {
@@ -452,10 +402,7 @@ function buildGrid() {
             <span class="phase-corner-label" id="phase-label-${s.sym}">現價</span>
             <div class="pf-wrap">
               <div class="pf-stack">
-                <div class="pf-top"   id="pf-top-${s.sym}"><span>—</span></div>
-                <div class="pf-bot"   id="pf-bot-${s.sym}"><span>—</span></div>
-                <div class="pf-front" id="pf-fr-${s.sym}"><span>—</span></div>
-                <div class="pf-back"  id="pf-bk-${s.sym}"><span>—</span></div>
+                <span class="pf-digit" id="pf-digit-${s.sym}">—</span>
               </div>
             </div>
             <div class="main-change" id="main-chg-${s.sym}"></div>
@@ -560,7 +507,7 @@ function toggleCard(sym, ex) {
     splitRight.dataset.originalHtml = splitRight.innerHTML;
     splitRight.dataset.expanded = '1';
 
-    const mainVal    = document.getElementById(`pf-top-${sym}`)?.querySelector('span')?.textContent || '—';
+    const mainVal    = document.getElementById(`pf-digit-${sym}`)?.textContent || '—';
     const mainChg    = document.getElementById(`main-chg-${sym}`)?.innerHTML || '';
     const subLabel   = document.getElementById(`sub-label-${sym}`)?.textContent || '';
     const subVal     = document.getElementById(`sub-${sym}`)?.textContent || '';
@@ -595,10 +542,7 @@ function toggleCard(sym, ex) {
           <span class="expanded-phase-label">${bigLabel}</span>
           <div class="pf-wrap" style="margin:4px 0;">
             <div class="pf-stack exp-pf-stack">
-              <div class="pf-top"   id="exp-pf-top-${sym}"><span>—</span></div>
-              <div class="pf-bot"   id="exp-pf-bot-${sym}"><span>—</span></div>
-              <div class="pf-front" id="exp-pf-fr-${sym}"><span>—</span></div>
-              <div class="pf-back"  id="exp-pf-bk-${sym}"><span>—</span></div>
+              <span class="pf-digit" id="exp-pf-digit-${sym}">—</span>
             </div>
           </div>
           <div class="expanded-main-change">${bigChg}</div>
@@ -672,50 +616,21 @@ function toggleCard(sym, ex) {
 
 function flipPriceCard(sym, newVal, prefix) {
   prefix = prefix || '';
-  const topEl = document.getElementById(`${prefix}pf-top-${sym}`);
-  const botEl = document.getElementById(`${prefix}pf-bot-${sym}`);
-  const frEl  = document.getElementById(`${prefix}pf-fr-${sym}`);
-  const bkEl  = document.getElementById(`${prefix}pf-bk-${sym}`);
-  if (!topEl || !frEl) return;
-
-  const oldVal = topEl.querySelector('span').textContent;
-  if (oldVal === newVal) return; // no change, skip
-
-  // 1. front flap carries OLD value (currently shown), will flip up
-  frEl.querySelector('span').textContent = oldVal;
-
-  // 2. back flap carries NEW value, will fall down
-  bkEl.querySelector('span').textContent = newVal;
-
-  // 3. upper static immediately shows new value (hidden behind front flap)
-  topEl.querySelector('span').textContent = newVal;
-
-  // 4. reset animation
-  frEl.classList.remove('flip-out');
-  bkEl.classList.remove('flip-in');
-  void frEl.offsetWidth;
-
-  // 5. trigger
-  frEl.classList.add('flip-out');
-  bkEl.classList.add('flip-in');
-
-  // 6. after back flap lands, update lower static to new value
-  setTimeout(() => {
-    botEl.querySelector('span').textContent = newVal;
-  }, 460); // 200ms delay + 240ms anim + small buffer
+  const el = document.getElementById(`${prefix}pf-digit-${sym}`);
+  if (!el) return;
+  if (el.textContent === newVal) return;
+  el.classList.remove('flip');
+  void el.offsetWidth;
+  el.classList.add('flip');
+  // update text at midpoint of animation (when rotated 90deg, invisible)
+  setTimeout(() => { el.textContent = newVal; }, 130);
 }
 
 function setPriceDirect(sym, val, prefix) {
   prefix = prefix || '';
-  const topEl = document.getElementById(`${prefix}pf-top-${sym}`);
-  const botEl = document.getElementById(`${prefix}pf-bot-${sym}`);
-  const frEl  = document.getElementById(`${prefix}pf-fr-${sym}`);
-  const bkEl  = document.getElementById(`${prefix}pf-bk-${sym}`);
-  if (!topEl) return;
-  topEl.querySelector('span').textContent = val;
-  botEl.querySelector('span').textContent = val;
-  frEl.querySelector('span').textContent  = val;
-  bkEl.querySelector('span').textContent  = val;
+  const el = document.getElementById(`${prefix}pf-digit-${sym}`);
+  if (!el) return;
+  el.textContent = val;
 }
 
 const lastPhase = {};
