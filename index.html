@@ -245,7 +245,6 @@
 
   /* ── PRICE FLIP：四層結構 ── */
   .pf-wrap {
-    perspective: 300px;
     display: flex;
     justify-content: center;
   }
@@ -253,8 +252,9 @@
     position: relative;
     width: 210px;
     height: 44px;
+    perspective: 240px;
   }
-  /* 共用：上下靜態層 + 前後翻蓋 */
+  /* 共用基底 */
   .pf-top-static,
   .pf-bot-static,
   .pf-front,
@@ -262,10 +262,14 @@
     position: absolute;
     left: 0; right: 0;
     height: 22px;
-    overflow: hidden;
-    background: #14120d;
     border-radius: 2px;
   }
+  /* 靜態層 clip */
+  .pf-top-static,
+  .pf-bot-static { overflow: hidden; background: #14120d; }
+  /* 翻蓋層：上下明暗微差，模擬光影 */
+  .pf-front { overflow: hidden; background: #1a1812; }
+  .pf-back  { overflow: hidden; background: #111009; }
   /* 字體共用 */
   .pf-top-static span,
   .pf-bot-static span,
@@ -284,26 +288,20 @@
     user-select: none;
     backface-visibility: hidden;
   }
-  /* 上靜態：顯示新值上半，clip 上半 */
-  .pf-top-static { top: 0; border-radius: 2px 2px 0 0; }
+  .pf-top-static { top: 0;    border-radius: 2px 2px 0 0; }
   .pf-top-static span { margin-top: 0; }
-  /* 下靜態：顯示舊值下半，clip 下半 */
   .pf-bot-static { bottom: 0; border-radius: 0 0 2px 2px; }
   .pf-bot-static span { margin-top: -22px; }
-  /* 前翻蓋：覆蓋上靜態，顯示舊值上半，往下翻走 */
   .pf-front {
     top: 0; border-radius: 2px 2px 0 0;
     z-index: 10;
     transform-origin: bottom center;
-    transform-style: preserve-3d;
   }
   .pf-front span { margin-top: 0; }
-  /* 後翻蓋：覆蓋下靜態，顯示新值下半，從下翻上來 */
   .pf-back {
     bottom: 0; border-radius: 0 0 2px 2px;
     z-index: 10;
     transform-origin: top center;
-    transform-style: preserve-3d;
     transform: rotateX(90deg);
   }
   .pf-back span { margin-top: -22px; }
@@ -311,8 +309,8 @@
   @keyframes pfFrontFall { from { transform: rotateX(0deg); } to { transform: rotateX(-90deg); } }
   @keyframes pfBackRise  { from { transform: rotateX(90deg); } to { transform: rotateX(0deg); } }
 
-  .pf-front.go { animation: pfFrontFall 0.12s cubic-bezier(0.4,0,1,1)  forwards; }
-  .pf-back.go  { animation: pfBackRise  0.10s cubic-bezier(0,0,1,1)    forwards; animation-delay: 0.10s; }
+  .pf-front.go { animation: pfFrontFall 0.13s cubic-bezier(0.55,0,1,1)   forwards; }
+  .pf-back.go  { animation: pfBackRise  0.12s cubic-bezier(0,0,0.45,1)   forwards; animation-delay: 0.11s; }
 
   /* expanded 尺寸覆蓋 */
   .exp-pf-stack { width: 260px; height: 56px; }
@@ -644,15 +642,15 @@ function flipPriceCard(sym, newVal) {
   frontWrap.classList.add('go');
   backWrap.classList.add('go');
 
-  setTimeout(() => { botEl.textContent = newVal; }, 110);
+  setTimeout(() => { botEl.textContent = newVal; }, 130);
 
-  // cleanup（front 0.12s + delay 0.10s + back 0.10s = 0.32s）
+  // cleanup（0.13 + delay 0.11 + 0.12 = 0.36s + buffer）
   setTimeout(() => {
     frontWrap.classList.remove('go');
     backWrap.classList.remove('go');
     backWrap.style.transform = '';
     frontEl.textContent = newVal;
-  }, 260);
+  }, 280);
 }
 
 function setPriceDirect(sym, val) {
