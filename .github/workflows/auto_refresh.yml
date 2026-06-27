@@ -1,1014 +1,120 @@
-<!DOCTYPE html>
-<html lang="zh-TW">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>美股情報 PRO</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
-<style>
-  @font-face {
-    font-family: 'DM Mono Fallback';
-    src: local('Courier New'), local('Courier');
-    size-adjust: 96%;
-    ascent-override: 90%;
-  }
-  @font-face {
-    font-family: 'Roboto Mono Fallback';
-    src: local('Courier New'), local('Courier');
-    size-adjust: 98%;
-    ascent-override: 90%;
-  }
-</style>
-<style>
-  :root {
-    --bg: #0a0a0a;
-    --card-bg: #1c1a16;
-    --card-frame: #d9cdb8;
-    --card-border: #3a352c;
-    --window: #4a5240;
-    --window-edge: #2e3328;
-    --digit: #f0c987;
-    --text: #f0e8d8;
-    --muted: #7a7468;
-    --label: #b8ad96;
-    --up: #00e676;
-    --down: #ff1744;
-    --accent: #d9cdb8;
-    --knob: #8a6240;
-  }
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  body {
-    background: var(--bg);
-    color: var(--text);
-    font-family: 'Roboto Mono', 'Roboto Mono Fallback', monospace;
-    min-height: 100vh;
-    padding-bottom: 40px;
-  }
-  body.scroll-locked { overflow: hidden; }
-
-  .topbar {
-    display: flex; align-items: center; justify-content: space-between;
-    padding: 16px 20px; background: #0d0d0d;
-    border-bottom: 1px solid var(--card-frame);
-  }
-  .logo { font-size: 13px; font-weight: 700; color: var(--accent); letter-spacing: 2px; text-transform: uppercase; }
-  .hero-time { font-family: 'DM Mono', monospace; font-size: 36px; font-weight: 500; color: var(--digit); letter-spacing: 2px; line-height: 1; text-shadow: 0 0 12px rgba(240,201,135,0.25); }
-  .hero-date { font-size: 11px; color: var(--muted); text-align: right; margin-top: 2px; }
-
-  .grid { display: grid; grid-template-columns: 1fr; gap: 12px; margin: 16px; }
-  @media(min-width: 640px)  { .grid { grid-template-columns: repeat(4,1fr); } .grid > .card { grid-column: span 2; } }
-  @media(min-width: 1000px) { .grid { grid-template-columns: repeat(6,1fr); } .grid > .card { grid-column: span 2; } }
-  .card.last-row-solo   { grid-column: 3/5; }
-  .card.last-row-pair-1 { grid-column: 2/4; }
-  .card.last-row-pair-2 { grid-column: 4/6; }
-
-  .card {
-    background: linear-gradient(180deg, var(--window) 0%, var(--window-edge) 100%);
-    border: 3px solid var(--card-frame);
-    border-radius: 18px; padding: 16px; cursor: pointer;
-    transition: box-shadow 0.2s, border-color 0.2s, filter 0.25s;
-    position: relative; perspective: 500px;
-    display: flex; flex-direction: column;
-    min-height: 160px;
-    box-shadow: 0 6px 0 rgba(0,0,0,0.5), 0 10px 22px rgba(0,0,0,0.45), inset 0 2px 6px rgba(0,0,0,0.3);
-  }
-  .card:not(.expanded):hover {
-    border-color: #c8a96e;
-    filter: brightness(1.12);
-    box-shadow:
-      0 6px 0 rgba(0,0,0,0.5), 0 10px 22px rgba(0,0,0,0.45),
-      inset 0 2px 6px rgba(0,0,0,0.3),
-      inset 0 0 40px rgba(240,180,60,0.18),
-      0 0 0 1px rgba(200,169,110,0.4),
-      0 0 28px rgba(200,140,60,0.25);
-  }
-  .card-body-split, .split-left, .split-right { display: contents; }
-  .card-header { order: -2; }
-  .price-section { order: -1; }
-
-  .card.expanded {
-    cursor: default; position: fixed;
-    top: 50%; left: 50%;
-    width: min(1040px, calc(100vw - 32px));
-    max-height: calc(100vh - 32px);
-    transform: translate(-50%, -50%);
-    z-index: 1001;
-    background: transparent; border: none; box-shadow: none; padding: 0;
-    overflow: visible;
-    animation: cardQuietAppear 0.3s ease-out forwards;
-  }
-  @keyframes cardQuietAppear {
-    0%   { opacity: 0; transform: translate(-50%,-50%) scale(0.96); }
-    100% { opacity: 1; transform: translate(-50%,-50%) scale(1); }
-  }
-  .card.expanded.closing { animation: cardQuietDisappear 0.28s ease-in forwards; }
-  @keyframes cardQuietDisappear {
-    0%   { opacity: 1; transform: translate(-50%,-50%) scale(1); }
-    100% { opacity: 0; transform: translate(-50%,-50%) scale(0.96); }
-  }
-
-  .card.expanded .card-body-split {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 18px;
-    perspective: 1200px;
-  }
-  @media(max-width: 720px) {
-    .card.expanded { width: calc(100vw - 24px); }
-    .card.expanded .card-body-split { grid-template-columns: 1fr; }
-  }
-
-  .card.expanded .split-left,
-  .card.expanded .split-right {
-    background: linear-gradient(180deg, var(--window) 0%, var(--window-edge) 100%);
-    border: 2px solid var(--card-frame);
-    border-radius: 10px;
-    box-shadow: 0 6px 0 rgba(0,0,0,0.5), 0 12px 24px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.06);
-    overflow: hidden;
-    position: relative;
-    height: 460px;
-  }
-  .card.expanded .split-left  { display: flex; flex-direction: column; }
-  .card.expanded .split-right { display: flex; flex-direction: column; }
-
-  .card.expanded .split-left,
-  .card.expanded .split-right {
-    clip-path: inset(0 0 99% 0 round 10px);
-    transform: scaleY(0.04);
-    transform-origin: top center;
-    opacity: 0;
-  }
-  .card.expanded .split-left.panel-flap,
-  .card.expanded .split-right.panel-flap {
-    animation: unrollDown 0.52s cubic-bezier(0.77,0,0.175,1) forwards;
-  }
-  @keyframes unrollDown {
-    0%   { clip-path: inset(0 0 99% 0 round 10px); transform: scaleY(0.04); opacity: 0; }
-    100% { clip-path: inset(0 0 0%  0 round 10px); transform: scaleY(1);    opacity: 1; }
-  }
-  /* 展開過程底部漸層邊 */
-  .card.expanded .split-left::after,
-  .card.expanded .split-right::after {
-    content: '';
-    position: absolute;
-    bottom: 0; left: 0; right: 0;
-    height: 60px;
-    background: linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.45) 100%);
-    pointer-events: none;
-    z-index: 20;
-    opacity: 1;
-    transition: opacity 0.3s ease;
-  }
-  .card.expanded .split-left.panel-flap::after,
-  .card.expanded .split-right.panel-flap::after {
-    animation: fadeOutGradient 0.3s ease 0.4s forwards;
-  }
-  @keyframes fadeOutGradient {
-    0%   { opacity: 1; }
-    100% { opacity: 0; }
-  }
-
-  .card.expanded .split-left { perspective: none; }
-  .card.expanded .split-left .chart-container {
-    flex: 1; height: auto !important; max-height: none !important;
-    margin: 12px; border-radius: 6px; overflow: hidden;
-    border: 1px solid rgba(217,205,184,0.25); background: #000;
-    box-shadow: inset 0 2px 8px rgba(0,0,0,0.6);
-    clip-path: inset(0 0 100% 0 round 6px);
-    transition: clip-path 0.5s cubic-bezier(0.77,0,0.175,1) 0.35s;
-  }
-  .card.expanded .split-left .chart-container.show-chart {
-    clip-path: inset(0 0 0% 0 round 6px);
-  }
-
-  .card.expanded .split-right .card-header {
-    order: unset; flex: none;
-    display: flex; justify-content: space-between; align-items: flex-start;
-    padding: 14px 16px;
-    border-bottom: 1px solid rgba(217,205,184,0.2);
-  }
-  .card.expanded .card-sym { font-size: 20px; font-weight: 700; color: var(--digit); letter-spacing: 1px; }
-  .card.expanded .card-name { font-size: 10px; color: #aab09a; margin-top: 2px; }
-
-  .sf-wrap { position: relative; clip-path: inset(0 0 100% 0); }
-  .sf-wrap.reveal-full { animation: sfRevealFull 0.44s cubic-bezier(0.77,0,0.175,1) forwards; }
-  @keyframes sfRevealFull { 0% { clip-path: inset(0 0 100% 0); } 100% { clip-path: inset(0 0 0% 0); } }
-
-  .expanded-price-stage {
-    padding: 16px 14px 12px;
-    background: linear-gradient(180deg, #5a4422 0%, #3d2e16 100%);
-    border: 1px solid rgba(0,0,0,0.35); border-radius: 8px;
-    margin: 10px 12px 0; text-align: center;
-    box-shadow: inset 0 2px 10px rgba(0,0,0,0.5); position: relative;
-    transition: box-shadow 0.15s ease;
-  }
-  .expanded-price-stage.light-up {
-    box-shadow:
-      inset 0 2px 10px rgba(0,0,0,0.5),
-      inset 0 0 30px rgba(240,180,90,0.06),
-      inset 0 15px 50px rgba(38, 166, 154, 0.50),
-      inset 0 0 80px rgba(38, 166, 154, 0.22),
-      inset 0 0 120px rgba(38, 166, 154, 0.09);
-  }
-  .expanded-price-stage.light-down {
-    box-shadow:
-      inset 0 2px 10px rgba(0,0,0,0.5),
-      inset 0 0 30px rgba(240,180,90,0.06),
-      inset 0 15px 50px rgba(239, 83, 80, 0.50),
-      inset 0 0 80px rgba(239, 83, 80, 0.22),
-      inset 0 0 120px rgba(239, 83, 80, 0.09);
-  }
-  .expanded-phase-label {
-    position: absolute; top: 6px; left: 10px;
-    font-size: 9px; font-weight: 700; color: #d9b87a; opacity: 0.8; letter-spacing: 1px;
-  }
-  .expanded-main-change { font-size: 13px; font-weight: 700; margin-top: 8px; }
-  .expanded-ref-row {
-    margin-top: 8px; padding-top: 8px;
-    border-top: 1px solid rgba(255,255,255,0.08);
-    font-size: 11px; color: #c9b48a;
-    overflow: hidden; perspective: 300px;
-  }
-  .expanded-ref-row #flipFront {
-    display: block;
-  }
-
-  .expanded-news-wrap {
-    flex: 1; overflow-y: auto; margin: 10px 12px 12px;
-    background: rgba(0,0,0,0.2); border: 1px solid rgba(217,205,184,0.15);
-    border-radius: 6px; padding: 12px;
-  }
-  .expanded-news-title { font-size: 11px; font-weight: 700; color: var(--card-frame); letter-spacing: 1px; margin-bottom: 8px; }
-  .expanded-news-item { padding: 8px 10px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06); border-radius: 5px; margin-bottom: 6px; text-decoration: none; display: block; transition: background 0.15s; }
-  .expanded-news-item:hover { background: rgba(255,255,255,0.07); }
-  .expanded-news-headline { font-size: 11px; color: var(--text); line-height: 1.5; }
-  .expanded-news-source { font-size: 9px; color: var(--muted); margin-top: 3px; }
-
-  .card-overlay {
-    display: none; position: fixed; inset: 0;
-    background: rgba(0,0,0,0.65); z-index: 1000;
-    opacity: 0; transition: opacity 0.3s ease;
-  }
-  .card-overlay.show { display: block; opacity: 1; }
-
-  .card-ghost {
-    border-radius: 18px;
-    border: 2px dashed #2a2820;
-    background: #0e0c09;
-    position: relative;
-    overflow: hidden;
-    pointer-events: none;
-    transition: background 0.45s ease, border-color 0.45s ease,
-                border-style 0.45s ease, border-width 0.45s ease,
-                box-shadow 0.45s ease;
-  }
-  .card-ghost .ghost-axle {
-    position: absolute;
-    top: 50%; left: 12px; right: 12px; height: 2px;
-    background: linear-gradient(90deg, transparent, #2a2820 20%, #3a3528 50%, #2a2820 80%, transparent);
-    transform: translateY(-50%);
-    transition: opacity 0.3s ease;
-    z-index: 1;
-  }
-  .card-ghost .ghost-screw {
-    position: absolute; width: 10px; height: 10px;
-    border-radius: 50%;
-    background: radial-gradient(circle at 35% 35%, #4a4438, #1e1c16);
-    border: 1px solid #3a3528;
-    box-shadow: inset 0 1px 2px rgba(0,0,0,0.8);
-    transition: opacity 0.3s ease 0.1s;
-    z-index: 2;
-  }
-  .card-ghost .ghost-screw::before {
-    content: ''; position: absolute;
-    top: 50%; left: 15%; right: 15%; height: 1px;
-    background: #5a5040; transform: translateY(-50%);
-  }
-  .card-ghost .ghost-screw::after {
-    content: ''; position: absolute;
-    left: 50%; top: 15%; bottom: 15%; width: 1px;
-    background: #5a5040; transform: translateX(-50%);
-  }
-  .card-ghost .ghost-screw.tl { top: 10px; left: 10px; }
-  .card-ghost .ghost-screw.tr { top: 10px; right: 10px; }
-  .card-ghost .ghost-screw.bl { bottom: 10px; left: 10px; }
-  .card-ghost .ghost-screw.br { bottom: 10px; right: 10px; }
-  .card-ghost .ghost-content {
-    position: relative; z-index: 3;
-    opacity: 0; padding: 16px;
-    transition: opacity 0.35s ease 0.2s;
-  }
-  .card-ghost.reviving {
-    background: linear-gradient(180deg, var(--window) 0%, var(--window-edge) 100%);
-    border-color: var(--card-frame);
-    border-style: solid;
-    border-width: 3px;
-    box-shadow: 0 6px 0 rgba(0,0,0,0.5), 0 10px 22px rgba(0,0,0,0.45), inset 0 2px 6px rgba(0,0,0,0.3);
-  }
-  .card-ghost.reviving .ghost-axle  { opacity: 0; }
-  .card-ghost.reviving .ghost-screw { opacity: 0; }
-  .card-ghost.reviving .ghost-content { opacity: 1; }
-  .card.recently-viewed {
-    border-color: rgba(240,201,135,0.7);
-    box-shadow: 0 6px 0 rgba(0,0,0,0.5), 0 10px 22px rgba(0,0,0,0.45),
-      inset 0 2px 6px rgba(0,0,0,0.3), 0 0 0 1px rgba(240,201,135,0.25),
-      0 0 18px rgba(240,201,135,0.12);
-    transition: border-color 0.3s ease, box-shadow 0.3s ease;
-  }
-  .card.recently-viewed::before {
-    content: '◉'; position: absolute; top: 6px; right: 10px;
-    font-size: 8px; color: rgba(240,201,135,0.8);
-    text-shadow: 0 0 6px rgba(240,201,135,0.6);
-    animation: recentPulse 2s ease-in-out infinite;
-  }
-  @keyframes recentPulse { 0%, 100% { opacity: 0.8; } 50% { opacity: 0.3; } }
-
-  .card-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 14px; }
-  .card-sym { font-size: 20px; font-weight: 700; color: var(--digit); letter-spacing: 1px; }
-  .card-name { font-size: 10px; color: #aab09a; margin-top: 2px; }
-  .tag { font-size: 10px; font-weight: 700; padding: 3px 8px; border-radius: 4px; letter-spacing: 0.5px; }
-  .tag-post { background: #3a2a18; color: #e0b97d; border: 1px solid var(--knob); display: none; }
-  .tag-post.show { display: inline-block; }
-
-  .price-section {
-    position: relative; display: flex; flex-direction: column;
-    align-items: center; justify-content: center; min-height: 120px;
-    background: linear-gradient(180deg, #5a4422 0%, #3d2e16 100%);
-    border: 1px solid rgba(0,0,0,0.35); border-radius: 10px;
-    box-shadow: inset 0 2px 10px rgba(0,0,0,0.5), inset 0 0 30px rgba(240,180,90,0.12);
-    padding: 18px 14px 14px; text-align: center;
-    transition: box-shadow 0.15s ease;
-  }
-  .price-section.light-up {
-    box-shadow:
-      inset 0 2px 10px rgba(0,0,0,0.5),
-      inset 0 0 30px rgba(240,180,90,0.06),
-      inset 0 15px 50px rgba(38, 166, 154, 0.50),
-      inset 0 0 80px rgba(38, 166, 154, 0.22),
-      inset 0 0 120px rgba(38, 166, 154, 0.09);
-  }
-  .price-section.light-down {
-    box-shadow:
-      inset 0 2px 10px rgba(0,0,0,0.5),
-      inset 0 0 30px rgba(240,180,90,0.06),
-      inset 0 15px 50px rgba(239, 83, 80, 0.50),
-      inset 0 0 80px rgba(239, 83, 80, 0.22),
-      inset 0 0 120px rgba(239, 83, 80, 0.09);
-  }
-  .phase-corner-label { position: absolute; top: 8px; left: 10px; font-size: 9px; font-weight: 700; color: #d9b87a; letter-spacing: 1px; opacity: 0.75; }
-  .main-change { font-size: 12px; font-weight: 700; margin-top: 6px; }
-  .ref-price { margin-top: 10px; padding-top: 8px; border-top: 1px solid rgba(255,255,255,0.08); width: 100%; font-size: 11px; color: #c9b48a; display: flex; justify-content: center; gap: 6px; align-items: baseline; }
-  .ref-price .ref-tag { opacity: 0.6; font-size: 10px; }
-  .ref-price .ref-value { font-family: 'DM Mono', monospace; color: #e8d4a8; }
-  .up   { color: var(--up);   background: #00e67615; border: 1px solid #00e67630; }
-  .down { color: var(--down); background: #ff174415; border: 1px solid #ff174430; }
-  .divider { display: none; }
-
-  /* ── PRICE FLIP：四層結構 ── */
-  .pf-wrap {
-    display: flex;
-    justify-content: center;
-  }
-  .pf-stack {
-    position: relative;
-    width: 210px;
-    height: 44px;
-    perspective: 600px;
-  }
-  /* 共用基底 */
-  .pf-top-static,
-  .pf-bot-static,
-  .pf-front,
-  .pf-back {
-    position: absolute;
-    left: 0; right: 0;
-    height: 22px;
-    border-radius: 2px;
-  }
-  /* 靜態層 clip */
-  .pf-top-static,
-  .pf-bot-static { overflow: hidden; background: #14120d; }
-  /* 翻蓋層：上下明暗微差，模擬光影 */
-  .pf-front { overflow: hidden; background: #1a1812; }
-  .pf-back  { overflow: hidden; background: #111009; }
-  /* 字體共用 */
-  .pf-top-static span,
-  .pf-bot-static span,
-  .pf-front span,
-  .pf-back span {
-    display: block;
-    font-family: 'DM Mono', monospace;
-    font-size: 32px;
-    font-weight: 500;
-    color: #ffd98a;
-    text-shadow: 0 0 14px rgba(255,200,110,0.55);
-    text-align: center;
-    line-height: 44px;
-    height: 44px;
-    white-space: nowrap;
-    user-select: none;
-    backface-visibility: hidden;
-  }
-  .pf-top-static { top: 0;    border-radius: 2px 2px 0 0; }
-  .pf-top-static span { margin-top: 0; }
-  .pf-bot-static { bottom: 0; border-radius: 0 0 2px 2px; }
-  .pf-bot-static span { margin-top: -22px; }
-  .pf-front {
-    top: 0; border-radius: 2px 2px 0 0;
-    z-index: 10;
-    transform-origin: bottom center;
-  }
-  .pf-front span { margin-top: 0; }
-  .pf-back {
-    bottom: 0; border-radius: 0 0 2px 2px;
-    z-index: 10;
-    transform-origin: top center;
-    transform: rotateX(90deg);
-  }
-  .pf-back span { margin-top: -22px; }
-
-  @keyframes pfFrontFall { from { transform: rotateX(0deg); } to { transform: rotateX(-90deg); } }
-  @keyframes pfBackRise  { from { transform: rotateX(90deg); } to { transform: rotateX(0deg); } }
-
-  .pf-front.go { animation: pfFrontFall 0.13s cubic-bezier(0.55,0,1,1)   forwards; }
-  .pf-back.go  { animation: pfBackRise  0.12s cubic-bezier(0,0,0.45,1)   forwards; animation-delay: 0.11s; }
-
-  /* expanded 尺寸覆蓋 */
-  .exp-pf-stack { width: 260px; height: 56px; }
-  .exp-pf-stack .pf-top-static,
-  .exp-pf-stack .pf-bot-static,
-  .exp-pf-stack .pf-front,
-  .exp-pf-stack .pf-back { height: 28px; }
-  .exp-pf-stack .pf-top-static span,
-  .exp-pf-stack .pf-bot-static span,
-  .exp-pf-stack .pf-front span,
-  .exp-pf-stack .pf-back span { font-size: 44px; line-height: 56px; height: 56px; }
-  .exp-pf-stack .pf-bot-static span,
-  .exp-pf-stack .pf-back span { margin-top: -28px; }
-
-  .chart-container {
-    margin-top: 0; border: 2px solid #d9cdb3; border-radius: 10px;
-    overflow: hidden; height: 0; max-height: 0; background: #000; opacity: 0;
-    box-shadow: inset 0 2px 10px rgba(0,0,0,0.6);
-    transition: height 0.5s cubic-bezier(0.25,0.1,0.25,1), margin-top 0.5s cubic-bezier(0.25,0.1,0.25,1), opacity 0.4s ease;
-  }
-  .news-container { display: none; }
-  .news-header { font-size: 12px; font-weight: 700; color: var(--card-frame); letter-spacing: 1px; margin-bottom: 10px; }
-  .news-list { display: flex; flex-direction: column; gap: 8px; }
-  .news-item { display: block; padding: 10px 12px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06); border-radius: 6px; text-decoration: none; transition: background 0.15s; }
-  .news-item:hover { background: rgba(255,255,255,0.07); }
-  .news-headline { font-size: 12px; color: var(--text); line-height: 1.5; }
-  .news-source { font-size: 10px; color: var(--muted); margin-top: 4px; }
-  .footer { text-align: center; margin-top: 24px; font-size: 10px; color: var(--muted); letter-spacing: 1px; }
-</style>
-</head>
-<body>
-
-<div class="topbar">
-  <div class="logo">美股情報 PRO</div>
-  <div>
-    <div class="hero-time" id="heroTime">00:00</div>
-    <div class="hero-date" id="heroDate"></div>
-  </div>
-</div>
-
-<div class="card-overlay" id="cardOverlay" onclick="if(expandedSym) toggleCard(expandedSym,'')"></div>
-<div class="grid" id="grid"></div>
-<div class="footer">YAHOO FINANCE · 點擊卡片展開圖表</div>
-
-<script>
-const STOCKS = [
-  {sym:'NOW',  name:'ServiceNow', ex:'NYSE'},
-  {sym:'NVDA', name:'Nvidia',     ex:'NASDAQ'},
-  {sym:'LITE', name:'Lumentum',   ex:'NASDAQ'},
-  {sym:'ONDS', name:'Ondas',      ex:'NASDAQ'},
-  {sym:'MRVL', name:'Marvell',    ex:'NASDAQ'},
-  {sym:'GOOG', name:'Google C',   ex:'NASDAQ'},
-  {sym:'SPCX', name:'SpaceX',     ex:'NASDAQ'},
-  {sym:'TSM',  name:'TSMC',       ex:'NYSE'},
-  {sym:'MU',   name:'Micron',     ex:'NASDAQ'},
-  {sym:'SNDK', name:'SanDisk',    ex:'NASDAQ'},
-  {sym:'TSLA', name:'Tesla',      ex:'NASDAQ'}
-];
-
-let expandedSym = null;
-let pendingAnimTimers = [];
-// State machine: 'idle' | 'opening' | 'expanded' | 'closing'
-let cardState = 'idle';
-
-function updateClock() {
-  const now = new Date();
-  const pad = n => String(n).padStart(2,'0');
-  document.getElementById('heroTime').textContent = `${pad(now.getHours())}:${pad(now.getMinutes())}`;
-  const days = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
-  document.getElementById('heroDate').textContent = `${now.getFullYear()}/${pad(now.getMonth()+1)}/${pad(now.getDate())} ${days[now.getDay()]}`;
-}
-setInterval(updateClock, 1000);
-updateClock();
-
-function makePfStack(sym, extraClass, initVal) {
-  const cls = extraClass ? `pf-stack ${extraClass}` : 'pf-stack';
-  const v   = initVal || '—';
-  return `
-    <div class="${cls}" id="pf-stack-${sym}">
-      <div class="pf-top-static"><span id="pf-top-${sym}">${v}</span></div>
-      <div class="pf-bot-static"><span id="pf-bot-${sym}">${v}</span></div>
-      <div class="pf-front"     ><span id="pf-front-${sym}">${v}</span></div>
-      <div class="pf-back"      ><span id="pf-back-${sym}">${v}</span></div>
-    </div>`;
-}
-
-function buildGrid() {
-  document.getElementById('grid').innerHTML = STOCKS.map(s => `
-    <div class="card" id="card-${s.sym}" onclick="toggleCard('${s.sym}','${s.ex}')">
-      <div class="card-body-split">
-        <div class="split-left">
-          <div class="chart-container">
-            <iframe id="chart-${s.sym}" width="100%" height="100%" frameborder="0" allowfullscreen></iframe>
-          </div>
-        </div>
-        <div class="split-right">
-          <div class="card-header">
-            <div>
-              <div class="card-sym">${s.sym}</div>
-              <div class="card-name">${s.name}</div>
-            </div>
-            <span class="tag tag-post" id="badge-${s.sym}">盤後</span>
-          </div>
-          <div class="price-section">
-            <span class="phase-corner-label" id="phase-label-${s.sym}">現價</span>
-            <div class="pf-wrap">${makePfStack(s.sym, '')}</div>
-            <div class="main-change" id="main-chg-${s.sym}"></div>
-            <div class="ref-price" id="sub-row-${s.sym}" style="visibility:hidden;">
-              <span class="ref-tag"   id="sub-label-${s.sym}">收盤</span>
-              <span class="ref-value" id="sub-${s.sym}">—</span>
-              <span class="ref-change" id="sub-chg-${s.sym}"></span>
-            </div>
-          </div>
-          <div class="news-container" id="news-container-${s.sym}">
-            <div class="news-header">📰 最新消息</div>
-            <div class="news-list" id="news-list-${s.sym}"></div>
-          </div>
-        </div>
-      </div>
-    </div>
-  `).join('');
-  fixLastRowLayout();
-}
-
-function fixLastRowLayout() {
-  const grid = document.getElementById('grid');
-  if (!grid) return;
-  grid.querySelectorAll('.last-row-solo, .last-row-pair-1, .last-row-pair-2')
-    .forEach(el => el.classList.remove('last-row-solo','last-row-pair-1','last-row-pair-2'));
-  if (window.innerWidth < 1000) return;
-  const cards = Array.from(grid.querySelectorAll('.card:not(.expanded), .card-ghost'));
-  const total = cards.length;
-  const remainder = total % 3;
-  if (remainder === 1) cards[total-1].classList.add('last-row-solo');
-  else if (remainder === 2) { cards[total-2].classList.add('last-row-pair-1'); cards[total-1].classList.add('last-row-pair-2'); }
-}
-window.addEventListener('resize', fixLastRowLayout);
-
-function collapseCard(sym) {
-  const card  = document.getElementById(`card-${sym}`);
-  if (!card) return;
-  if (cardState === 'closing' || cardState === 'opening') return;
-  cardState = 'closing';
-
-  // 清掉所有展開動畫的殘留 timer
-  pendingAnimTimers.forEach(id => clearTimeout(id));
-  pendingAnimTimers = [];
-
-  // 保險：最多 1.5s 後強制解鎖
-  const _busyGuard = setTimeout(() => {
-    document.getElementById('grid').style.pointerEvents = '';
-    cardState = 'idle';
-  }, 1500);
-
-  const overlay = document.getElementById('cardOverlay');
-  const ghost   = document.getElementById(`ghost-${sym}`);
-  const stock   = STOCKS.find(s => s.sym === sym);
-
-  overlay.classList.remove('show');
-  document.body.classList.remove('scroll-locked');
-  document.body.style.paddingRight = '';
-  const chartEl = document.getElementById(`chart-${sym}`);
-  if (chartEl) chartEl.src = '';
-
-  card.animate(
-    [{ opacity:1, transform:'translate(-50%,-50%) scale(1)' },
-     { opacity:0, transform:'translate(-50%,-50%) scale(1)' }],
-    { duration:200, easing:'linear', fill:'forwards' }
-  ).onfinish = () => {
-    card.remove();
-    if (!ghost) {
-      expandedSym = null;
-      clearTimeout(_busyGuard);
-      document.getElementById('grid').style.pointerEvents = '';
-      cardState = 'idle';
-      return;
-    }
-    ghost.classList.add('reviving');
-    pendingAnimTimers.push(setTimeout(() => {
-      if (!ghost.parentNode) {
-        expandedSym = null;
-        clearTimeout(_busyGuard);
-        document.getElementById('grid').style.pointerEvents = '';
-        cardState = 'idle';
-        return;
-      }
-      const newCard = document.createElement('div');
-      newCard.className = 'card recently-viewed';
-      newCard.id        = `card-${sym}`;
-
-      // 先算好所有資料，填進 innerHTML，replaceChild 時直接是完整狀態
-      const _q = window._lastStockData?.[sym]?.quote;
-      const _current   = _q ? parseFloat(_q.c ?? _q.regular ?? 0) : 0;
-      const _regular   = _q ? parseFloat(_q.regular ?? _q.c ?? 0) : 0;
-      const _prevClose = _q ? parseFloat(_q.prev_close ?? _regular) : 0;
-      const _phase     = _q?.phase || '正式盤';
-      const _valStr    = _current ? `$${_current.toFixed(2)}` : '—';
-      const _phaseLabelMap = { '盤前':'盤前','盤後':'盤後','正式盤':'現價','錯誤':'—' };
-      const _phaseLabel = _phaseLabelMap[_phase] || '現價';
-      const _mc  = _q?.d !== undefined ? parseFloat(_q.d) : (_current - _prevClose);
-      const _mct = _q?.dp !== undefined ? parseFloat(_q.dp) : (_prevClose ? (_mc / _prevClose * 100) : 0);
-      const _dir = _mc >= 0 ? 'up' : 'down';
-      const _sg  = _mc >= 0 ? '▲' : '▼';
-      const _mainChgHtml = _q ? `<span class="${_dir}">${_sg} ${Math.abs(_mc).toFixed(2)} (${Math.abs(_mct).toFixed(2)}%)</span>` : '';
-
-      const _showSub = _phase === '盤後' || _phase === '盤前';
-      const _rc  = _q?.reg_d  !== undefined ? parseFloat(_q.reg_d)  : (_regular - _prevClose);
-      const _rp  = _q?.reg_dp !== undefined ? parseFloat(_q.reg_dp) : (_prevClose ? (_rc / _prevClose * 100) : 0);
-      const _rd  = _rc >= 0 ? 'up' : 'down';
-      const _rsg = _rc >= 0 ? '▲' : '▼';
-      const _subChgHtml = _q ? `<span class="${_rd}">${_rsg} ${Math.abs(_rc).toFixed(2)} (${Math.abs(_rp).toFixed(2)}%)</span>` : '';
-
-      const _lightClass = _mc > 0 ? 'light-up' : _mc < 0 ? 'light-down' : '';
-      const _badgeShow  = (_phase === '盤前' || _phase === '盤後') ? 'show' : '';
-
-      newCard.innerHTML = `
-        <div class="card-body-split">
-          <div class="split-left">
-            <div class="chart-container">
-              <iframe id="chart-${sym}" width="100%" height="100%" frameborder="0" allowfullscreen></iframe>
-            </div>
-          </div>
-          <div class="split-right">
-            <div class="card-header">
-              <div>
-                <div class="card-sym">${sym}</div>
-                <div class="card-name">${stock?.name || ''}</div>
-              </div>
-              <span class="tag tag-post ${_badgeShow}" id="badge-${sym}">${_phase === '盤前' || _phase === '盤後' ? _phase : '盤後'}</span>
-            </div>
-            <div class="price-section ${_lightClass}">
-              <span class="phase-corner-label" id="phase-label-${sym}">${_phaseLabel}</span>
-              <div class="pf-wrap">${makePfStack(sym, '', _valStr)}</div>
-              <div class="main-change" id="main-chg-${sym}">${_mainChgHtml}</div>
-              <div class="ref-price" id="sub-row-${sym}" style="${_showSub ? 'visibility:visible;display:flex;' : 'visibility:hidden;'}">
-                <span class="ref-tag" id="sub-label-${sym}">收盤</span>
-                <span class="ref-value" id="sub-${sym}">${_q ? `$${_regular.toFixed(2)}` : '—'}</span>
-                <span class="ref-change" id="sub-chg-${sym}">${_subChgHtml}</span>
-              </div>
-            </div>
-            <div class="news-container" id="news-container-${sym}">
-              <div class="news-header">📰 最新消息</div>
-              <div class="news-list" id="news-list-${sym}"></div>
-            </div>
-          </div>
-        </div>
-      `;
-      newCard.onclick = () => toggleCard(sym, stock?.ex || '');
-      ghost.parentNode.replaceChild(newCard, ghost);
-      fixLastRowLayout();
-      if (window._lastStockData?.[sym]?.news) renderNews(sym, window._lastStockData[sym].news);
-      pendingAnimTimers.push(setTimeout(() => newCard.classList.remove('recently-viewed'), 3000));
-      expandedSym = null;
-      clearTimeout(_busyGuard);
-      document.getElementById('grid').style.pointerEvents = '';
-      cardState = 'idle';
-    }, 520));
-  };
-}
-
-function toggleCard(sym, ex) {
-  if (cardState === 'opening' || cardState === 'closing') return;
-
-  const card = document.getElementById(`card-${sym}`);
-  const isExpanded = card.classList.contains('expanded');
-  const overlay = document.getElementById('cardOverlay');
-
-  if (expandedSym && expandedSym !== sym) collapseCard(expandedSym);
-
-  if (!isExpanded) {
-    if (cardState === 'expanded') return;
-    // 只有真正要展開新卡時才清 timer
-    pendingAnimTimers.forEach(id => clearTimeout(id));
-    pendingAnimTimers = [];
-
-    setTimeout(() => {
-      document.querySelectorAll('.card.recently-viewed').forEach(c => c.classList.remove('recently-viewed'));
-    }, 361);
-
-    const ghost = document.createElement('div');
-    ghost.id = `ghost-${sym}`;
-    ghost.className = 'card-ghost';
-    const cardStyle = window.getComputedStyle(card);
-    ghost.style.gridColumn = cardStyle.gridColumn;
-    ghost.style.gridRow    = cardStyle.gridRow;
-    ghost.style.height     = card.offsetHeight + 'px';
-    const _gPriceTxt  = document.getElementById(`pf-top-${sym}`)?.textContent || '—';
-    const _gMainChg   = document.getElementById(`main-chg-${sym}`)?.innerHTML || '';
-    const _gPhase     = document.getElementById(`phase-label-${sym}`)?.textContent || '現價';
-    const _gBadgeEl   = document.getElementById(`badge-${sym}`);
-    const _gBadgeHtml = _gBadgeEl?.classList.contains('show') ? `<span class="tag tag-post show">${_gBadgeEl.textContent}</span>` : '';
-    const _gName      = STOCKS.find(s => s.sym === sym)?.name || '';
-    ghost.innerHTML = `
-      <div class="ghost-screw tl"></div><div class="ghost-screw tr"></div>
-      <div class="ghost-screw bl"></div><div class="ghost-screw br"></div>
-      <div class="ghost-axle"></div>
-      <div class="ghost-content">
-        <div class="card-header">
-          <div><div class="card-sym">${sym}</div><div class="card-name">${_gName}</div></div>
-          ${_gBadgeHtml}
-        </div>
-        <div class="price-section">
-          <span class="phase-corner-label">${_gPhase}</span>
-          <div class="pf-wrap"><div class="pf-stack">
-            <div class="pf-top-static"><span>${_gPriceTxt}</span></div>
-            <div class="pf-bot-static"><span>${_gPriceTxt}</span></div>
-            <div class="pf-front"><span>${_gPriceTxt}</span></div>
-            <div class="pf-back"><span>${_gPriceTxt}</span></div>
-          </div></div>
-          <div class="main-change">${_gMainChg}</div>
-        </div>
-      </div>
-    `;
-    card.parentNode.insertBefore(ghost, card.nextSibling);
-
-    card.classList.add('expanded');
-    card.onclick = null;
-    cardState = 'opening';
-    document.getElementById('grid').style.pointerEvents = 'none';
-    
-    pendingAnimTimers.push(setTimeout(() => {
-      
-      document.getElementById('grid').style.pointerEvents = '';
-      cardState = 'expanded';
-    }, 700));
-    expandedSym = sym;
-    history.pushState({ expanded: sym }, '');
-    overlay.classList.add('show');
-    const scrollbarW = window.innerWidth - document.documentElement.clientWidth;
-    document.body.style.paddingRight = scrollbarW + 'px';
-    document.body.classList.add('scroll-locked');
-
-    const splitLeft  = card.querySelector('.split-left');
-    const splitRight = card.querySelector('.split-right');
-
-    splitRight.dataset.originalHtml = splitRight.innerHTML;
-    splitRight.dataset.expanded = '1';
-
-    const curVal     = document.getElementById(`pf-top-${sym}`)?.textContent || '—';
-    const mainChg    = document.getElementById(`main-chg-${sym}`)?.innerHTML || '';
-    const phaseLabel = document.getElementById(`phase-label-${sym}`)?.textContent || '現價';
-    const badgeEl    = document.getElementById(`badge-${sym}`);
-    const badgeHtml  = badgeEl?.classList.contains('show') ? `<span class="tag tag-post show">${badgeEl.textContent}</span>` : '';
-    // 抓現有燈光 class
-    const existingPS  = document.querySelector(`#card-${sym} .price-section`);
-    const lightClass  = existingPS?.classList.contains('light-up') ? 'light-up'
-                      : existingPS?.classList.contains('light-down') ? 'light-down' : '';
-
-    const isPost   = phaseLabel === '盤後';
-    const isPre    = phaseLabel === '盤前';
-    const bigLabel = isPost ? '盤後' : (isPre ? '盤前' : '現價');
-    const subVal   = document.getElementById(`sub-${sym}`)?.textContent || '—';
-    const subChg   = document.getElementById(`sub-chg-${sym}`)?.innerHTML || '';
-    const showRef  = isPost && subVal !== '—';
-
-    const newsList = document.getElementById(`news-list-${sym}`);
-    const newsHtml = newsList ? newsList.innerHTML : '';
-
-    splitRight.innerHTML = `
-      <div class="sf-wrap" id="exp-secHeader-${sym}">
-        <div class="card-header">
-          <div>
-            <div class="card-sym">${sym}</div>
-            <div class="card-name">${STOCKS.find(s=>s.sym===sym)?.name||''}</div>
-          </div>
-          ${badgeHtml}
-        </div>
-      </div>
-      <div class="sf-wrap" id="exp-secPrice-${sym}">
-        <div class="expanded-price-stage ${lightClass}">
-          <span class="expanded-phase-label">${bigLabel}</span>
-          <div class="pf-wrap" style="margin:4px 0;">
-            ${makePfStack('exp-'+sym, 'exp-pf-stack', curVal)}
-          </div>
-          <div class="expanded-main-change">${mainChg}</div>
-          ${showRef ? `
-          <div class="expanded-ref-row">
-            <span id="exp-flipFront-${sym}" style="font-size:11px;color:#c9b48a;">收盤 ${subVal} ${subChg}</span>
-          </div>` : ''}
-        </div>
-      </div>
-      <div class="sf-wrap" id="exp-secNews-${sym}">
-        <div class="expanded-news-wrap">
-          <div class="expanded-news-title">📰 最新消息</div>
-          ${newsHtml
-            ? newsHtml
-                .replace(/class="news-item"/g,     'class="expanded-news-item"')
-                .replace(/class="news-headline"/g, 'class="expanded-news-headline"')
-                .replace(/class="news-source"/g,   'class="expanded-news-source"')
-            : '<div style="font-size:11px;color:#7a7468;">暫無相關新聞</div>'}
-        </div>
-      </div>
-    `;
-
-    const chartEl = document.getElementById(`chart-${sym}`);
-    pendingAnimTimers.push(setTimeout(() => {
-      chartEl.src = `https://www.tradingview.com/widgetembed/?symbol=${ex}:${sym}&interval=D&hidesidetoolbar=1&theme=dark&style=1&timezone=Asia/Taipei&locale=zh_TW`;
-    }, 100));
-
-    pendingAnimTimers.push(setTimeout(() => splitLeft.classList.add('panel-flap'),  60));
-    pendingAnimTimers.push(setTimeout(() => splitRight.classList.add('panel-flap'), 120));
-
-    pendingAnimTimers.push(setTimeout(() => {
-      const cc = splitLeft.querySelector('.chart-container');
-      if (cc) cc.classList.add('show-chart');
-    }, 540));
-
-    pendingAnimTimers.push(setTimeout(() => {
-      const sh = document.getElementById(`exp-secHeader-${sym}`);
-      if (sh) sh.classList.add('reveal-full');
-    }, 540));
-
-    pendingAnimTimers.push(setTimeout(() => {
-      const sp = document.getElementById(`exp-secPrice-${sym}`);
-      if (sp) sp.classList.add('reveal-full');
-    }, 560));
-
-    pendingAnimTimers.push(setTimeout(() => {
-      flipPriceCard('exp-'+sym, curVal);
-    }, 700));
-
-    pendingAnimTimers.push(setTimeout(() => {
-      const sn = document.getElementById(`exp-secNews-${sym}`);
-      if (sn) sn.classList.add('reveal-full');
-    }, 720));
-
-
-
-  } else {
-    collapseCard(sym);
-    if (!collapsingViaBack && history.state?.expanded === sym) history.back();
-  }
-}
-
-// ── 四層翻頁邏輯 ──
-function flipPriceCard(sym, newVal) {
-  const topEl   = document.getElementById(`pf-top-${sym}`);
-  const botEl   = document.getElementById(`pf-bot-${sym}`);
-  const frontEl = document.getElementById(`pf-front-${sym}`);
-  const backEl  = document.getElementById(`pf-back-${sym}`);
-  const frontWrap = frontEl?.parentElement;
-  const backWrap  = backEl?.parentElement;
-  if (!topEl || !botEl || !frontEl || !backEl) return;
-
-  const curVal = topEl.textContent;
-  if (curVal === newVal) return;
-
-  // 上靜態換成新值（被前翻蓋蓋住，使用者看不到）
-  topEl.textContent = newVal;
-  // 下靜態維持舊值（被後翻蓋蓋住）
-  botEl.textContent = curVal;
-  // 前翻蓋顯示舊值上半 → 往下翻走
-  frontEl.textContent = curVal;
-  // 後翻蓋顯示新值下半 → 從下翻上來
-  backEl.textContent = newVal;
-
-  // reset
-  frontWrap.classList.remove('go');
-  backWrap.classList.remove('go');
-  backWrap.style.transform = 'rotateX(90deg)';
-  void frontWrap.offsetWidth;
-
-  // fire
-  frontWrap.classList.add('go');
-  backWrap.classList.add('go');
-
-  setTimeout(() => { botEl.textContent = newVal; }, 130);
-
-  // cleanup（0.13 + delay 0.11 + 0.12 = 0.36s + buffer）
-  setTimeout(() => {
-    frontWrap.classList.remove('go');
-    backWrap.classList.remove('go');
-    backWrap.style.transform = '';
-    frontEl.textContent = newVal;
-  }, 280);
-}
-
-function setPriceDirect(sym, val) {
-  const topEl   = document.getElementById(`pf-top-${sym}`);
-  const botEl   = document.getElementById(`pf-bot-${sym}`);
-  const frontEl = document.getElementById(`pf-front-${sym}`);
-  const backEl  = document.getElementById(`pf-back-${sym}`);
-  if (!topEl) return;
-  topEl.textContent   = val;
-  botEl.textContent   = val;
-  frontEl.textContent = val;
-  backEl.textContent  = val;
-}
-
-const lastPhase = {};
-
-function renderPrice(sym, q) {
-  if (!q) return;
-  const current   = parseFloat(q.c ?? q.regular ?? 0);
-  const regular   = parseFloat(q.regular ?? q.c ?? 0);
-  const prevClose = parseFloat(q.prev_close ?? regular);
-  const phase     = q.phase || '正式盤';
-  const valStr    = `$${current.toFixed(2)}`;
-
-  const phaseLabelMap = { '盤前':'盤前','盤後':'盤後','正式盤':'現價','錯誤':'—' };
-  document.getElementById(`phase-label-${sym}`).textContent = phaseLabelMap[phase]||'現價';
-
-  flipPriceCard(sym, valStr);
-  lastPhase[sym] = phase;
-
-  const mainChange = q.d  !== undefined ? parseFloat(q.d)  : (current - prevClose);
-  const mainPct    = q.dp !== undefined ? parseFloat(q.dp) : (prevClose ? (mainChange / prevClose * 100) : 0);
-  const mainDir  = mainChange >= 0 ? 'up' : 'down';
-  const mainSign = mainChange >= 0 ? '▲' : '▼';
-  document.getElementById(`main-chg-${sym}`).innerHTML =
-    `<span class="${mainDir}">${mainSign} ${Math.abs(mainChange).toFixed(2)} (${Math.abs(mainPct).toFixed(2)}%)</span>`;
-
-  // 燈光
-  const priceSection = document.querySelector(`#card-${sym} .price-section`);
-  if (priceSection) {
-    priceSection.classList.remove('light-up', 'light-down');
-    if (mainChange > 0) priceSection.classList.add('light-up');
-    else if (mainChange < 0) priceSection.classList.add('light-down');
-  }
-
-  const badge = document.getElementById(`badge-${sym}`);
-  if (phase === '盤前' || phase === '盤後') { badge.textContent = phase; badge.classList.add('show'); }
-  else badge.classList.remove('show');
-
-  const subRow   = document.getElementById(`sub-row-${sym}`);
-  const subLabel = document.getElementById(`sub-label-${sym}`);
-  const subEl    = document.getElementById(`sub-${sym}`);
-  const subChgEl = document.getElementById(`sub-chg-${sym}`);
-
-  if (phase === '盤後' || phase === '盤前') {
-    subRow.style.visibility = 'visible'; subRow.style.display = 'flex';
-    subLabel.textContent = '收盤';
-    subEl.textContent = `$${regular.toFixed(2)}`;
-    const rc = q.reg_d  !== undefined ? parseFloat(q.reg_d)  : (regular - prevClose);
-    const rp = q.reg_dp !== undefined ? parseFloat(q.reg_dp) : (prevClose ? (rc / prevClose * 100) : 0);
-    const d = rc >= 0 ? 'up' : 'down', sg = rc >= 0 ? '▲' : '▼';
-    subChgEl.innerHTML = `<span class="${d}">${sg} ${Math.abs(rc).toFixed(2)} (${Math.abs(rp).toFixed(2)}%)</span>`;
-  } else {
-    subRow.style.visibility = 'hidden'; subRow.style.display = '';
-  }
-}
-
-async function loadData() {
-  try {
-    const res  = await fetch('./stock_data.json?t=' + Date.now());
-    const json = await res.json();
-    window._lastStockData = json.data || {};
-    STOCKS.forEach((s) => {
-      const data = json.data?.[s.sym];
-      if (data?.quote) renderPrice(s.sym, data.quote);
-      if (data?.news)  renderNews(s.sym, data.news);
-    });
-  } catch(e) { console.error(e); }
-}
-
-function renderNews(sym, newsList) {
-  const el = document.getElementById(`news-list-${sym}`);
-  if (!el) return;
-  el.innerHTML = newsList.length
-    ? newsList.map(n =>
-        `<a class="news-item" href="${n.url}" target="_blank" rel="noopener noreferrer">
-           <div class="news-headline">${n.headline}</div>
-           <div class="news-source">${n.source}</div>
-         </a>`).join('')
-    : `<div class="news-source">暫無相關新聞</div>`;
-}
-
-let collapsingViaBack = false;
-window.addEventListener('popstate', () => {
-  if (expandedSym) { collapsingViaBack = true; toggleCard(expandedSym, ''); collapsingViaBack = false; }
-});
-
-buildGrid();
-loadData();
-setInterval(loadData, 60000);
-</script>
-</body>
-</html>
+name: 美股數據更新與情報推送
+on:
+  schedule:
+    - cron: '40 21 * * 0-4'   # 台灣週一到週五 05:40（UTC 週日到週四 21:40）
+    - cron: '40 9  * * 1-5'   # 台灣週一到週五 17:40（UTC 10:40）- 早到確保18:00前執行
+    - cron: '40 21 * * 5'     # 台灣週六 05:40（UTC 週五 21:40）
+    - cron: '*/1 13-21 * * 1-5'   # 盤中每分鐘更新
+    - cron: '*/30 * * * 1-5'      # 每30分鐘靜默更新
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  update-and-push:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 檢查是否為平日（週六日完全不執行）
+        id: check_weekday
+        run: |
+          export TZ="Asia/Taipei"
+          TW_DOW=$(date +%u)
+          UTC_DOW=$(date -u +%u)
+          echo "台灣星期: ${TW_DOW} / UTC星期: ${UTC_DOW}"
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            echo "手動觸發，強制放行"
+            echo "is_weekday=true" >> $GITHUB_ENV
+          elif [ "$TW_DOW" -ge 1 ] && [ "$TW_DOW" -le 5 ]; then
+            echo "✅ 平日，繼續執行"
+            echo "is_weekday=true" >> $GITHUB_ENV
+          elif [ "$UTC_DOW" -ge 1 ] && [ "$UTC_DOW" -le 5 ]; then
+            echo "✅ 台灣週六但UTC仍平日，放行"
+            echo "is_weekday=true" >> $GITHUB_ENV
+          else
+            echo "🛌 週末，完全跳過"
+            echo "is_weekday=false" >> $GITHUB_ENV
+          fi
+
+      - name: 複製專案代碼
+        if: env.is_weekday == 'true'
+        uses: actions/checkout@v4
+
+      - name: 設定 Python 環境
+        if: env.is_weekday == 'true'
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+
+      - name: 安裝依賴
+        if: env.is_weekday == 'true'
+        run: pip install yfinance pytz
+
+      - name: 執行資料爬蟲
+        if: env.is_weekday == 'true'
+        run: python update_stocks.py
+
+      - name: 判斷是否推播（Python 精準判斷台灣時間）
+        if: env.is_weekday == 'true'
+        run: |
+          python3 - <<'EOF'
+          import os
+          from datetime import datetime
+          import pytz
+
+          tw = pytz.timezone('Asia/Taipei')
+          now = datetime.now(tw)
+          hour = now.hour
+          minute = now.minute
+          weekday = now.weekday()  # 0=週一, 6=週日
+
+          print(f"台灣時間: {now.strftime('%Y-%m-%d %H:%M')} 週{weekday+1}")
+
+          # 推播窗口：±20分鐘緩衝
+          morning = (hour == 5 and minute >= 40) or (hour == 6 and minute <= 20)
+          evening = (hour == 17 and minute >= 40) or (hour == 18 and minute <= 20)
+
+          # 週日完全不推
+          if weekday == 6:
+              send = False
+              reason = "週日不推播"
+          # 週六只推早上
+          elif weekday == 5:
+              send = morning
+              reason = "週六早上推播" if send else "週六非推播時間"
+          # 週一到週五推早上和晚上
+          else:
+              send = morning or evening
+              if morning:
+                  reason = "平日早上推播"
+              elif evening:
+                  reason = "平日晚上推播"
+              else:
+                  reason = "非推播時間，靜默更新"
+
+          print(f"推播決定: {send} ({reason})")
+
+          with open(os.environ['GITHUB_ENV'], 'a') as f:
+              f.write(f"send_alert={'true' if send else 'false'}\n")
+          EOF
+
+      - name: 推送 stock_data.json 回倉庫
+        if: env.is_weekday == 'true'
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add stock_data.json
+          if ! git diff --quiet || ! git diff --staged --quiet; then
+            git commit -m "🔄 自動更新股票數據 [skip ci]"
+            git push
+          else
+            echo "數據無變動，跳過 Commit"
+          fi
+
+      - name: 發射 Telegram 推送
+        if: env.is_weekday == 'true' && env.send_alert == 'true'
+        run: |
+          curl -sS --fail -X POST "https://api.telegram.org/bot${{ secrets.TELEGRAM_TOKEN }}/sendMessage" \
+            -d "chat_id=${{ secrets.TELEGRAM_CHAT_ID }}" \
+            -d "text=🛡️ 美股情報室數據已更新！%0A🚀 開啟儀表板：https://mjtsai-code.github.io/STOCK_ALERT/" \
+            -d "disable_web_page_preview=true"
