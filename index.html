@@ -174,14 +174,7 @@
     overflow: hidden; perspective: 300px;
   }
   .expanded-ref-row #flipFront {
-    transform-origin: top center; transform: rotateX(-90deg);
-    backface-visibility: hidden; display: block;
-  }
-  .expanded-ref-row #flipFront.playing { animation: singleFlipIn 0.34s cubic-bezier(.2,1,.4,1) forwards; }
-  @keyframes singleFlipIn {
-    0%   { transform: rotateX(-90deg); filter: brightness(0.5); }
-    65%  { transform: rotateX(6deg);   filter: brightness(1.2); }
-    100% { transform: rotateX(0deg);   filter: brightness(1); }
+    display: block;
   }
 
   .expanded-news-wrap {
@@ -715,8 +708,7 @@ function toggleCard(sym, ex) {
     }, 680));
 
     pendingAnimTimers.push(setTimeout(() => {
-      setPriceDirect('exp-'+sym, '—');
-      setTimeout(() => flipPriceCard('exp-'+sym, curVal), 50);
+      flipPriceCard('exp-'+sym, curVal);
     }, 1120));
 
     pendingAnimTimers.push(setTimeout(() => {
@@ -724,19 +716,7 @@ function toggleCard(sym, ex) {
       if (sn) sn.classList.add('reveal-full');
     }, 1200));
 
-    if (showRef) {
-      pendingAnimTimers.push(setTimeout(() => {
-        const ff = document.getElementById(`exp-flipFront-${sym}`);
-        if (ff) {
-          ff.style.transformOrigin    = 'top center';
-          ff.style.transform          = 'rotateX(-90deg)';
-          ff.style.backfaceVisibility = 'hidden';
-          ff.style.display            = 'block';
-          void ff.offsetWidth;
-          ff.classList.add('playing');
-        }
-      }, 1580));
-    }
+
 
   } else {
     collapseCard(sym);
