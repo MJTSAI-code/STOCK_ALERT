@@ -121,16 +121,15 @@
     clip-path: inset(0 0 99% 0 round 10px);
     transform: scaleY(0.04);
     transform-origin: top center;
-    opacity: 1;
+    opacity: 0;
   }
   .card.expanded .split-left.panel-flap,
   .card.expanded .split-right.panel-flap {
     animation: unrollDown 0.52s cubic-bezier(0.77,0,0.175,1) forwards;
   }
   @keyframes unrollDown {
-    0%   { clip-path: inset(0 0 99% 0 round 10px); transform: scaleY(0.04); mask-image: linear-gradient(to bottom, transparent 0%, transparent 100%); }
-    60%  { clip-path: inset(0 0 20% 0 round 10px); transform: scaleY(1);    mask-image: linear-gradient(to bottom, transparent 0%, black 60%); }
-    100% { clip-path: inset(0 0 0%  0 round 10px); transform: scaleY(1);    mask-image: linear-gradient(to bottom, black 0%, black 100%); }
+    0%   { clip-path: inset(0 0 99% 0 round 10px); transform: scaleY(0.04); opacity: 0; }
+    100% { clip-path: inset(0 0 0%  0 round 10px); transform: scaleY(1);    opacity: 1; }
   }
 
   .card.expanded .split-left { perspective: none; }
@@ -686,10 +685,9 @@ function toggleCard(sym, ex) {
     card.classList.add('expanded');
     document.getElementById('grid').style.pointerEvents = 'none';
     window._expandingBusy = true;
-    // 展開動畫最長約 1.2s，結束後解鎖允許點擊其他卡
     pendingAnimTimers.push(setTimeout(() => {
       window._expandingBusy = false;
-    }, 1300));
+    }, 700));
     expandedSym = sym;
     history.pushState({ expanded: sym }, '');
     overlay.classList.add('show');
@@ -757,7 +755,7 @@ function toggleCard(sym, ex) {
     const chartEl = document.getElementById(`chart-${sym}`);
     pendingAnimTimers.push(setTimeout(() => {
       chartEl.src = `https://www.tradingview.com/widgetembed/?symbol=${ex}:${sym}&interval=D&hidesidetoolbar=1&theme=dark&style=1&timezone=Asia/Taipei&locale=zh_TW`;
-    }, 300));
+    }, 100));
 
     pendingAnimTimers.push(setTimeout(() => splitLeft.classList.add('panel-flap'),  60));
     pendingAnimTimers.push(setTimeout(() => splitRight.classList.add('panel-flap'), 120));
@@ -765,26 +763,26 @@ function toggleCard(sym, ex) {
     pendingAnimTimers.push(setTimeout(() => {
       const cc = splitLeft.querySelector('.chart-container');
       if (cc) cc.classList.add('show-chart');
-    }, 580));
+    }, 400));
 
     pendingAnimTimers.push(setTimeout(() => {
       const sh = document.getElementById(`exp-secHeader-${sym}`);
       if (sh) sh.classList.add('reveal-full');
-    }, 600));
+    }, 420));
 
     pendingAnimTimers.push(setTimeout(() => {
       const sp = document.getElementById(`exp-secPrice-${sym}`);
       if (sp) sp.classList.add('reveal-full');
-    }, 680));
+    }, 440));
 
     pendingAnimTimers.push(setTimeout(() => {
       flipPriceCard('exp-'+sym, curVal);
-    }, 1120));
+    }, 600));
 
     pendingAnimTimers.push(setTimeout(() => {
       const sn = document.getElementById(`exp-secNews-${sym}`);
       if (sn) sn.classList.add('reveal-full');
-    }, 1200));
+    }, 660));
 
 
 
