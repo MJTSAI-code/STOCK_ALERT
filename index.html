@@ -500,6 +500,8 @@ function collapseCard(sym) {
   if (!card) return;
   if (window._collapsingBusy) return;
   window._collapsingBusy = true;
+  // 保險：最多 1.5s 後強制解鎖，防止 onfinish 沒觸發導致永久卡住
+  const _busyGuard = setTimeout(() => { window._collapsingBusy = false; }, 1500);
 
   const overlay = document.getElementById('cardOverlay');
   const ghost   = document.getElementById(`ghost-${sym}`);
@@ -518,6 +520,7 @@ function collapseCard(sym) {
     card.remove();
     if (!ghost) {
       expandedSym = null;
+      clearTimeout(_busyGuard);
       window._collapsingBusy = false;
       return;
     }
@@ -525,6 +528,7 @@ function collapseCard(sym) {
     pendingAnimTimers.push(setTimeout(() => {
       if (!ghost.parentNode) {
         expandedSym = null;
+        clearTimeout(_busyGuard);
         window._collapsingBusy = false;
         return;
       }
@@ -567,10 +571,51 @@ function collapseCard(sym) {
       ghost.parentNode.replaceChild(newCard, ghost);
       fixLastRowLayout();
       const data = window._lastStockData?.[sym];
-      if (data?.quote) renderPrice(sym, data.quote);
-      if (data?.news)  renderNews(sym, data.news);
+      if (data?.quote) {
+        // 直接設值，不觸發翻頁動畫
+        const q = data.quote;
+        const current   = parseFloat(q.c ?? q.regular ?? 0);
+        const regular   = parseFloat(q.regular ?? q.c ?? 0);
+        const prevClose = parseFloat(q.prev_close ?? regular);
+        const phase     = q.phase || '正式盤';
+        const valStr    = `$${current.toFixed(2)}`;
+        const phaseLabelMap = { '盤前':'盤前','盤後':'盤後','正式盤':'現價','錯誤':'—' };
+        const phaseEl = document.getElementById(`phase-label-${sym}`);
+        if (phaseEl) phaseEl.textContent = phaseLabelMap[phase] || '現價';
+        setPriceDirect(sym, valStr);
+        const mainChange = q.d  !== undefined ? parseFloat(q.d)  : (current - prevClose);
+        const mainPct    = q.dp !== undefined ? parseFloat(q.dp) : (prevClose ? (mainChange / prevClose * 100) : 0);
+        const mainDir  = mainChange >= 0 ? 'up' : 'down';
+        const mainSign = mainChange >= 0 ? '▲' : '▼';
+        const mainChgEl = document.getElementById(`main-chg-${sym}`);
+        if (mainChgEl) mainChgEl.innerHTML = `<span class="${mainDir}">${mainSign} ${Math.abs(mainChange).toFixed(2)} (${Math.abs(mainPct).toFixed(2)}%)</span>`;
+        const badge = document.getElementById(`badge-${sym}`);
+        if (badge) {
+          if (phase === '盤前' || phase === '盤後') { badge.textContent = phase; badge.classList.add('show'); }
+          else badge.classList.remove('show');
+        }
+        const subRow   = document.getElementById(`sub-row-${sym}`);
+        const subLabel = document.getElementById(`sub-label-${sym}`);
+        const subEl    = document.getElementById(`sub-${sym}`);
+        const subChgEl = document.getElementById(`sub-chg-${sym}`);
+        if (subRow) {
+          if (phase === '盤後' || phase === '盤前') {
+            subRow.style.display = 'flex';
+            if (subLabel) subLabel.textContent = '收盤';
+            if (subEl) subEl.textContent = `$${regular.toFixed(2)}`;
+            const rc = q.reg_d  !== undefined ? parseFloat(q.reg_d)  : (regular - prevClose);
+            const rp = q.reg_dp !== undefined ? parseFloat(q.reg_dp) : (prevClose ? (rc / prevClose * 100) : 0);
+            const d = rc >= 0 ? 'up' : 'down', sg = rc >= 0 ? '▲' : '▼';
+            if (subChgEl) subChgEl.innerHTML = `<span class="${d}">${sg} ${Math.abs(rc).toFixed(2)} (${Math.abs(rp).toFixed(2)}%)</span>`;
+          } else {
+            subRow.style.display = 'none';
+          }
+        }
+      }
+      if (data?.news) renderNews(sym, data.news);
       pendingAnimTimers.push(setTimeout(() => newCard.classList.remove('recently-viewed'), 3000));
       expandedSym = null;
+      clearTimeout(_busyGuard);
       window._collapsingBusy = false;
     }, 520));
   };
