@@ -71,7 +71,7 @@
     transition: box-shadow 0.2s, border-color 0.2s, filter 0.25s;
     position: relative; perspective: 500px;
     display: flex; flex-direction: column;
-    min-height: 140px;
+    min-height: 160px;
     box-shadow: 0 6px 0 rgba(0,0,0,0.5), 0 10px 22px rgba(0,0,0,0.45), inset 0 2px 6px rgba(0,0,0,0.3);
   }
   .card:not(.expanded):hover {
@@ -139,17 +139,35 @@
     transform: scaleY(0.04);
     transform-origin: top center;
     opacity: 0;
-    mask-image: linear-gradient(to bottom, black 0%, transparent 100%);
-    mask-size: 100% 200%;
-    mask-position: 0% 0%;
   }
   .card.expanded .split-left.panel-flap,
   .card.expanded .split-right.panel-flap {
     animation: unrollDown 0.52s cubic-bezier(0.77,0,0.175,1) forwards;
   }
   @keyframes unrollDown {
-    0%   { clip-path: inset(0 0 99% 0 round 10px); transform: scaleY(0.04); opacity: 0; mask-position: 0% 0%; }
-    100% { clip-path: inset(0 0 0%  0 round 10px); transform: scaleY(1);    opacity: 1; mask-position: 0% 100%; }
+    0%   { clip-path: inset(0 0 99% 0 round 10px); transform: scaleY(0.04); opacity: 0; }
+    100% { clip-path: inset(0 0 0%  0 round 10px); transform: scaleY(1);    opacity: 1; }
+  }
+  /* 展開過程底部漸層邊 */
+  .card.expanded .split-left::after,
+  .card.expanded .split-right::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 60px;
+    background: linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.45) 100%);
+    pointer-events: none;
+    z-index: 20;
+    opacity: 1;
+    transition: opacity 0.3s ease;
+  }
+  .card.expanded .split-left.panel-flap::after,
+  .card.expanded .split-right.panel-flap::after {
+    animation: fadeOutGradient 0.3s ease 0.4s forwards;
+  }
+  @keyframes fadeOutGradient {
+    0%   { opacity: 1; }
+    100% { opacity: 0; }
   }
 
   .card.expanded .split-left { perspective: none; }
@@ -159,15 +177,9 @@
     border: 1px solid rgba(217,205,184,0.25); background: #000;
     box-shadow: inset 0 2px 8px rgba(0,0,0,0.6);
     opacity: 0;
-    mask-image: linear-gradient(to bottom, black 0%, transparent 100%);
-    mask-size: 100% 200%;
-    mask-position: 0% 0%;
-    transition: opacity 0.5s ease 0.35s, mask-position 0.5s ease 0.35s;
+    transition: opacity 0.5s ease 0.35s;
   }
-  .card.expanded .split-left .chart-container.show-chart {
-    opacity: 1;
-    mask-position: 0% 100%;
-  }
+  .card.expanded .split-left .chart-container.show-chart { opacity: 1; }
 
   .card.expanded .split-right .card-header {
     order: unset; flex: none;
