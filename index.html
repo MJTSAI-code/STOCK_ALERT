@@ -177,9 +177,20 @@
     border: 1px solid rgba(217,205,184,0.25); background: #000;
     box-shadow: inset 0 2px 8px rgba(0,0,0,0.6);
     opacity: 0;
+    position: relative;
     transition: opacity 0.5s ease 0.35s;
   }
   .card.expanded .split-left .chart-container.show-chart { opacity: 1; }
+  .card.expanded .split-left .chart-container.show-chart::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 80px;
+    background: linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.6) 100%);
+    pointer-events: none;
+    z-index: 10;
+    animation: fadeOutGradient 0.4s ease 0.3s forwards;
+  }
 
   .card.expanded .split-right .card-header {
     order: unset; flex: none;
@@ -332,7 +343,7 @@
 
   .price-section {
     position: relative; display: flex; flex-direction: column;
-    align-items: center; justify-content: center; min-height: 92px;
+    align-items: center; justify-content: center; min-height: 120px;
     background: linear-gradient(180deg, #5a4422 0%, #3d2e16 100%);
     border: 1px solid rgba(0,0,0,0.35); border-radius: 10px;
     box-shadow: inset 0 2px 10px rgba(0,0,0,0.5), inset 0 0 30px rgba(240,180,90,0.12);
@@ -1013,12 +1024,10 @@ async function loadData() {
     const res  = await fetch('./stock_data.json?t=' + Date.now());
     const json = await res.json();
     window._lastStockData = json.data || {};
-    STOCKS.forEach((s, i) => {
+    STOCKS.forEach((s) => {
       const data = json.data?.[s.sym];
-      setTimeout(() => {
-        if (data?.quote) renderPrice(s.sym, data.quote);
-        if (data?.news)  renderNews(s.sym, data.news);
-      }, i * 75);
+      if (data?.quote) renderPrice(s.sym, data.quote);
+      if (data?.news)  renderNews(s.sym, data.news);
     });
   } catch(e) { console.error(e); }
 }
