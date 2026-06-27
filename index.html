@@ -307,16 +307,18 @@
   .price-section.light-up {
     box-shadow:
       inset 0 2px 10px rgba(0,0,0,0.5),
-      inset 0 0 30px rgba(240,180,90,0.08),
-      inset 0 20px 50px rgba(0,255,140,0.22),
-      inset 0 0 100px rgba(0,255,140,0.06);
+      inset 0 0 30px rgba(240,180,90,0.06),
+      inset 0 15px 50px rgba(38, 166, 154, 0.50),
+      inset 0 0 80px rgba(38, 166, 154, 0.22),
+      inset 0 0 120px rgba(38, 166, 154, 0.09);
   }
   .price-section.light-down {
     box-shadow:
       inset 0 2px 10px rgba(0,0,0,0.5),
-      inset 0 0 30px rgba(240,180,90,0.08),
-      inset 0 20px 50px rgba(255,60,80,0.22),
-      inset 0 0 100px rgba(255,60,80,0.06);
+      inset 0 0 30px rgba(240,180,90,0.06),
+      inset 0 15px 50px rgba(239, 83, 80, 0.50),
+      inset 0 0 80px rgba(239, 83, 80, 0.22),
+      inset 0 0 120px rgba(239, 83, 80, 0.09);
   }
   .phase-corner-label { position: absolute; top: 8px; left: 10px; font-size: 9px; font-weight: 700; color: #d9b87a; letter-spacing: 1px; opacity: 0.75; }
   .main-change { font-size: 12px; font-weight: 700; margin-top: 6px; }
@@ -456,6 +458,8 @@ const STOCKS = [
 
 let expandedSym = null;
 let pendingAnimTimers = [];
+// State machine: 'idle' | 'opening' | 'expanded' | 'closing'
+let cardState = 'idle';
 
 function updateClock() {
   const now = new Date();
@@ -534,9 +538,8 @@ window.addEventListener('resize', fixLastRowLayout);
 function collapseCard(sym) {
   const card  = document.getElementById(`card-${sym}`);
   if (!card) return;
-  if (window._collapsingBusy) return;
-  window._collapsingBusy = true;
-  window._expandingBusy = false;
+  if (cardState === 'closing' || cardState === 'opening') return;
+  cardState = 'closing';
 
   // 清掉所有展開動畫的殘留 timer
   pendingAnimTimers.forEach(id => clearTimeout(id));
@@ -545,7 +548,7 @@ function collapseCard(sym) {
   // 保險：最多 1.5s 後強制解鎖
   const _busyGuard = setTimeout(() => {
     document.getElementById('grid').style.pointerEvents = '';
-    window._collapsingBusy = false;
+    cardState = 'idle';
   }, 1500);
 
   const overlay = document.getElementById('cardOverlay');
@@ -568,7 +571,7 @@ function collapseCard(sym) {
       expandedSym = null;
       clearTimeout(_busyGuard);
       document.getElementById('grid').style.pointerEvents = '';
-      window._collapsingBusy = false;
+      cardState = 'idle';
       return;
     }
     ghost.classList.add('reviving');
@@ -577,7 +580,7 @@ function collapseCard(sym) {
         expandedSym = null;
         clearTimeout(_busyGuard);
         document.getElementById('grid').style.pointerEvents = '';
-        window._collapsingBusy = false;
+        cardState = 'idle';
         return;
       }
       const newCard = document.createElement('div');
@@ -672,23 +675,22 @@ function collapseCard(sym) {
       expandedSym = null;
       clearTimeout(_busyGuard);
       document.getElementById('grid').style.pointerEvents = '';
-      window._collapsingBusy = false;
+      cardState = 'idle';
     }, 520));
   };
 }
 
 function toggleCard(sym, ex) {
-  if (window._collapsingBusy) return;
+  if (cardState === 'opening' || cardState === 'closing') return;
 
   const card = document.getElementById(`card-${sym}`);
   const isExpanded = card.classList.contains('expanded');
   const overlay = document.getElementById('cardOverlay');
 
-  if (!isExpanded && window._expandingBusy) return;
-
   if (expandedSym && expandedSym !== sym) collapseCard(expandedSym);
 
   if (!isExpanded) {
+    if (cardState === 'expanded') return;
     // 只有真正要展開新卡時才清 timer
     pendingAnimTimers.forEach(id => clearTimeout(id));
     pendingAnimTimers = [];
@@ -735,11 +737,13 @@ function toggleCard(sym, ex) {
 
     card.classList.add('expanded');
     card.onclick = null;
+    cardState = 'opening';
     document.getElementById('grid').style.pointerEvents = 'none';
-    window._expandingBusy = true;
+    
     pendingAnimTimers.push(setTimeout(() => {
-      window._expandingBusy = false;
+      
       document.getElementById('grid').style.pointerEvents = '';
+      cardState = 'expanded';
     }, 700));
     expandedSym = sym;
     history.pushState({ expanded: sym }, '');
