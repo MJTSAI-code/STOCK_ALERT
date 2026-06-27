@@ -4,6 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <title>美股情報 PRO</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
   :root {
@@ -636,17 +638,18 @@ function collapseCard(sym) {
 function toggleCard(sym, ex) {
   if (window._collapsingBusy) return;
 
-  pendingAnimTimers.forEach(id => clearTimeout(id));
-  pendingAnimTimers = [];
-
   const card = document.getElementById(`card-${sym}`);
   const isExpanded = card.classList.contains('expanded');
   const overlay = document.getElementById('cardOverlay');
 
+  if (!isExpanded && window._expandingBusy) return;
+
+  pendingAnimTimers.forEach(id => clearTimeout(id));
+  pendingAnimTimers = [];
+
   if (expandedSym && expandedSym !== sym) collapseCard(expandedSym);
 
   if (!isExpanded) {
-    if (window._expandingBusy) return;
     setTimeout(() => {
       document.querySelectorAll('.card.recently-viewed').forEach(c => c.classList.remove('recently-viewed'));
     }, 361);
@@ -698,7 +701,6 @@ function toggleCard(sym, ex) {
     history.pushState({ expanded: sym }, '');
     overlay.classList.add('show');
     document.body.classList.add('scroll-locked');
-    fixLastRowLayout();
 
     const splitLeft  = card.querySelector('.split-left');
     const splitRight = card.querySelector('.split-right');
