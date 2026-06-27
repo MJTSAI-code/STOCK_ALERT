@@ -431,14 +431,15 @@ function updateClock() {
 setInterval(updateClock, 1000);
 updateClock();
 
-function makePfStack(sym, extraClass) {
+function makePfStack(sym, extraClass, initVal) {
   const cls = extraClass ? `pf-stack ${extraClass}` : 'pf-stack';
+  const v   = initVal || '—';
   return `
     <div class="${cls}" id="pf-stack-${sym}">
-      <div class="pf-top-static"><span id="pf-top-${sym}">—</span></div>
-      <div class="pf-bot-static"><span id="pf-bot-${sym}">—</span></div>
-      <div class="pf-front"     ><span id="pf-front-${sym}">—</span></div>
-      <div class="pf-back"      ><span id="pf-back-${sym}">—</span></div>
+      <div class="pf-top-static"><span id="pf-top-${sym}">${v}</span></div>
+      <div class="pf-bot-static"><span id="pf-bot-${sym}">${v}</span></div>
+      <div class="pf-front"     ><span id="pf-front-${sym}">${v}</span></div>
+      <div class="pf-back"      ><span id="pf-back-${sym}">${v}</span></div>
     </div>`;
 }
 
@@ -667,7 +668,7 @@ function toggleCard(sym, ex) {
         <div class="expanded-price-stage">
           <span class="expanded-phase-label">${bigLabel}</span>
           <div class="pf-wrap" style="margin:4px 0;">
-            ${makePfStack('exp-'+sym, 'exp-pf-stack')}
+            ${makePfStack('exp-'+sym, 'exp-pf-stack', curVal)}
           </div>
           <div class="expanded-main-change">${mainChg}</div>
           ${showRef ? `
