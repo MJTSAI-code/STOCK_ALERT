@@ -121,15 +121,20 @@
     clip-path: inset(0 0 99% 0 round 10px);
     transform: scaleY(0.04);
     transform-origin: top center;
-    opacity: 0;
+    opacity: 1;
   }
   .card.expanded .split-left.panel-flap,
   .card.expanded .split-right.panel-flap {
-    animation: unrollDown 0.52s cubic-bezier(0.77,0,0.175,1) forwards;
+    animation: unrollDown 0.52s cubic-bezier(0.77,0,0.175,1) forwards,
+               unrollMask  0.52s cubic-bezier(0.77,0,0.175,1) forwards;
   }
   @keyframes unrollDown {
-    0%   { clip-path: inset(0 0 99% 0 round 10px); transform: scaleY(0.04); opacity: 0; }
-    100% { clip-path: inset(0 0 0%  0 round 10px); transform: scaleY(1);    opacity: 1; }
+    0%   { clip-path: inset(0 0 99% 0 round 10px); transform: scaleY(0.04); }
+    100% { clip-path: inset(0 0 0%  0 round 10px); transform: scaleY(1); }
+  }
+  @keyframes unrollMask {
+    0%   { mask-image: linear-gradient(to bottom, black 0%, transparent 0%);   mask-size: 100% 100%; }
+    100% { mask-image: linear-gradient(to bottom, black 100%, transparent 100%); mask-size: 100% 100%; }
   }
 
   .card.expanded .split-left { perspective: none; }
@@ -687,6 +692,7 @@ function toggleCard(sym, ex) {
     window._expandingBusy = true;
     pendingAnimTimers.push(setTimeout(() => {
       window._expandingBusy = false;
+      document.getElementById('grid').style.pointerEvents = '';
     }, 700));
     expandedSym = sym;
     history.pushState({ expanded: sym }, '');
@@ -763,26 +769,26 @@ function toggleCard(sym, ex) {
     pendingAnimTimers.push(setTimeout(() => {
       const cc = splitLeft.querySelector('.chart-container');
       if (cc) cc.classList.add('show-chart');
-    }, 400));
+    }, 540));
 
     pendingAnimTimers.push(setTimeout(() => {
       const sh = document.getElementById(`exp-secHeader-${sym}`);
       if (sh) sh.classList.add('reveal-full');
-    }, 420));
+    }, 540));
 
     pendingAnimTimers.push(setTimeout(() => {
       const sp = document.getElementById(`exp-secPrice-${sym}`);
       if (sp) sp.classList.add('reveal-full');
-    }, 440));
+    }, 560));
 
     pendingAnimTimers.push(setTimeout(() => {
       flipPriceCard('exp-'+sym, curVal);
-    }, 600));
+    }, 700));
 
     pendingAnimTimers.push(setTimeout(() => {
       const sn = document.getElementById(`exp-secNews-${sym}`);
       if (sn) sn.classList.add('reveal-full');
-    }, 660));
+    }, 720));
 
 
 
