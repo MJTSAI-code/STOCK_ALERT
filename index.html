@@ -52,14 +52,20 @@
     background: linear-gradient(180deg, var(--window) 0%, var(--window-edge) 100%);
     border: 3px solid var(--card-frame);
     border-radius: 18px; padding: 16px; cursor: pointer;
-    transition: transform 0.15s, box-shadow 0.2s, border-color 0.2s;
+    transition: box-shadow 0.2s, border-color 0.2s, filter 0.25s;
     position: relative; perspective: 500px;
     display: flex; flex-direction: column;
     box-shadow: 0 6px 0 rgba(0,0,0,0.5), 0 10px 22px rgba(0,0,0,0.45), inset 0 2px 6px rgba(0,0,0,0.3);
   }
   .card:hover {
-    transform: translateY(-3px); border-color: #e8ddc8;
-    box-shadow: 0 8px 0 rgba(0,0,0,0.5), 0 16px 26px rgba(0,0,0,0.5), inset 0 2px 6px rgba(0,0,0,0.3);
+    border-color: #c8a96e;
+    filter: brightness(1.12);
+    box-shadow:
+      0 6px 0 rgba(0,0,0,0.5), 0 10px 22px rgba(0,0,0,0.45),
+      inset 0 2px 6px rgba(0,0,0,0.3),
+      inset 0 0 40px rgba(240,180,60,0.18),
+      0 0 0 1px rgba(200,169,110,0.4),
+      0 0 28px rgba(200,140,60,0.25);
   }
   .card-body-split, .split-left, .split-right { display: contents; }
   .card-header { order: -2; }
@@ -299,7 +305,8 @@
   }
   .pf-stack {
     position: relative;
-    width: 210px;
+    width: 100%;
+    max-width: 210px;
     height: 44px;
     perspective: 600px;
   }
@@ -498,14 +505,17 @@ window.addEventListener('resize', fixLastRowLayout);
 function collapseCard(sym) {
   const card  = document.getElementById(`card-${sym}`);
   if (!card) return;
+  if (window._collapsingBusy) return;
+  window._collapsingBusy = true;
+
   const overlay = document.getElementById('cardOverlay');
   const ghost   = document.getElementById(`ghost-${sym}`);
+  const stock   = STOCKS.find(s => s.sym === sym);
 
   overlay.classList.remove('show');
   document.body.classList.remove('scroll-locked');
   const chartEl = document.getElementById(`chart-${sym}`);
   if (chartEl) chartEl.src = '';
-  expandedSym = null;
 
   // 展開卡 fade out
   card.animate(
@@ -514,22 +524,73 @@ function collapseCard(sym) {
     { duration:200, easing:'linear', fill:'forwards' }
   ).onfinish = () => {
     card.remove();
-    if (!ghost) return;
+    if (!ghost) {
+      expandedSym = null;
+      window._collapsingBusy = false;
+      return;
+    }
 
     // ghost 亮回來
     ghost.classList.add('reviving');
 
-    // 亮完後換成真正的卡片
     pendingAnimTimers.push(setTimeout(() => {
-      if (!ghost.parentNode) return;
-      const _stock   = STOCKS.find(s => s.sym === sym);
-      const newCard  = document.createElement('div');
-      newCard.className = 'card';
+      if (!ghost.parentNode) {
+        expandedSym = null;
+        window._collapsingBusy = false;
+        return;
+      }
+      // 換成完整結構的真卡片
+      const newCard = document.createElement('div');
+      newCard.className = 'card recently-viewed';
       newCard.id        = `card-${sym}`;
-      newCard.innerHTML = ghost.querySelector('.ghost-content').innerHTML;
-      newCard.onclick   = () => toggleCard(sym, _stock?.ex || '');
+      newCard.innerHTML = `
+        <div class="card-body-split">
+          <div class="split-left">
+            <div class="chart-container">
+              <iframe id="chart-${sym}" width="100%" height="100%" frameborder="0" allowfullscreen></iframe>
+            </div>
+          </div>
+          <div class="split-right">
+            <div class="card-header">
+              <div>
+                <div class="card-sym">${sym}</div>
+                <div class="card-name">${stock?.name || ''}</div>
+              </div>
+              <span class="tag tag-post" id="badge-${sym}">盤後</span>
+            </div>
+            <div class="price-section">
+              <span class="phase-corner-label" id="phase-label-${sym}">現價</span>
+              <div class="pf-wrap">${makePfStack(sym, '')}</div>
+              <div class="main-change" id="main-chg-${sym}"></div>
+              <div class="ref-price" id="sub-row-${sym}" style="display:none;">
+                <span class="ref-tag" id="sub-label-${sym}">收盤</span>
+                <span class="ref-value" id="sub-${sym}">—</span>
+                <span class="ref-change" id="sub-chg-${sym}"></span>
+              </div>
+            </div>
+            <div class="news-container" id="news-container-${sym}">
+              <div class="news-header">📰 最新消息</div>
+              <div class="news-list" id="news-list-${sym}"></div>
+            </div>
+          </div>
+        </div>
+      `;
+      newCard.onclick = () => toggleCard(sym, stock?.ex || '');
       ghost.parentNode.replaceChild(newCard, ghost);
       fixLastRowLayout();
+
+      // 套用最新資料
+      const data = window._lastStockData?.[sym];
+      if (data?.quote) renderPrice(sym, data.quote);
+      if (data?.news)  renderNews(sym, data.news);
+
+      // recently-viewed 脈衝後淡出
+      pendingAnimTimers.push(setTimeout(() => {
+        newCard.classList.remove('recently-viewed');
+      }, 3000));
+
+      expandedSym = null;
+      window._collapsingBusy = false;
     }, 520));
   };
 }
@@ -556,32 +617,30 @@ function toggleCard(sym, ex) {
     ghost.style.gridColumn = cardStyle.gridColumn;
     ghost.style.gridRow    = cardStyle.gridRow;
     ghost.style.height     = card.offsetHeight + 'px';
-    const _ghostPriceTxt   = document.getElementById(`pf-top-${sym}`)?.textContent || '—';
-    const _ghostMainChg    = document.getElementById(`main-chg-${sym}`)?.innerHTML || '';
-    const _ghostPhase      = document.getElementById(`phase-label-${sym}`)?.textContent || '現價';
-    const _ghostBadgeEl    = document.getElementById(`badge-${sym}`);
-    const _ghostBadgeHtml  = _ghostBadgeEl?.classList.contains('show') ? `<span class="tag tag-post show">${_ghostBadgeEl.textContent}</span>` : '';
-    const _ghostStockName  = STOCKS.find(s => s.sym === sym)?.name || '';
+    const _gPriceTxt  = document.getElementById(`pf-top-${sym}`)?.textContent || '—';
+    const _gMainChg   = document.getElementById(`main-chg-${sym}`)?.innerHTML || '';
+    const _gPhase     = document.getElementById(`phase-label-${sym}`)?.textContent || '現價';
+    const _gBadgeEl   = document.getElementById(`badge-${sym}`);
+    const _gBadgeHtml = _gBadgeEl?.classList.contains('show') ? `<span class="tag tag-post show">${_gBadgeEl.textContent}</span>` : '';
+    const _gName      = STOCKS.find(s => s.sym === sym)?.name || '';
     ghost.innerHTML = `
-      <div class="ghost-screw tl"></div>
-      <div class="ghost-screw tr"></div>
-      <div class="ghost-screw bl"></div>
-      <div class="ghost-screw br"></div>
+      <div class="ghost-screw tl"></div><div class="ghost-screw tr"></div>
+      <div class="ghost-screw bl"></div><div class="ghost-screw br"></div>
       <div class="ghost-axle"></div>
       <div class="ghost-content">
         <div class="card-header">
-          <div><div class="card-sym">${sym}</div><div class="card-name">${_ghostStockName}</div></div>
-          ${_ghostBadgeHtml}
+          <div><div class="card-sym">${sym}</div><div class="card-name">${_gName}</div></div>
+          ${_gBadgeHtml}
         </div>
         <div class="price-section">
-          <span class="phase-corner-label">${_ghostPhase}</span>
-          <div class="pf-wrap"><div class="pf-stack">
-            <div class="pf-top-static"><span>${_ghostPriceTxt}</span></div>
-            <div class="pf-bot-static"><span>${_ghostPriceTxt}</span></div>
-            <div class="pf-front"><span>${_ghostPriceTxt}</span></div>
-            <div class="pf-back"><span>${_ghostPriceTxt}</span></div>
+          <span class="phase-corner-label">${_gPhase}</span>
+          <div class="pf-wrap"><div class="pf-stack" style="max-width:210px;">
+            <div class="pf-top-static"><span>${_gPriceTxt}</span></div>
+            <div class="pf-bot-static"><span>${_gPriceTxt}</span></div>
+            <div class="pf-front"><span>${_gPriceTxt}</span></div>
+            <div class="pf-back"><span>${_gPriceTxt}</span></div>
           </div></div>
-          <div class="main-change">${_ghostMainChg}</div>
+          <div class="main-change">${_gMainChg}</div>
         </div>
       </div>
     `;
@@ -802,6 +861,7 @@ async function loadData() {
   try {
     const res  = await fetch('./stock_data.json?t=' + Date.now());
     const json = await res.json();
+    window._lastStockData = json.data || {};
     STOCKS.forEach((s, i) => {
       const data = json.data?.[s.sym];
       setTimeout(() => {
