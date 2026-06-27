@@ -138,20 +138,18 @@
     clip-path: inset(0 0 99% 0 round 10px);
     transform: scaleY(0.04);
     transform-origin: top center;
-    opacity: 1;
+    opacity: 0;
+    mask-image: linear-gradient(to bottom, black 0%, transparent 100%);
+    mask-size: 100% 200%;
+    mask-position: 0% 0%;
   }
   .card.expanded .split-left.panel-flap,
   .card.expanded .split-right.panel-flap {
-    animation: unrollDown 0.52s cubic-bezier(0.77,0,0.175,1) forwards,
-               unrollMask  0.52s cubic-bezier(0.77,0,0.175,1) forwards;
+    animation: unrollDown 0.52s cubic-bezier(0.77,0,0.175,1) forwards;
   }
   @keyframes unrollDown {
-    0%   { clip-path: inset(0 0 99% 0 round 10px); transform: scaleY(0.04); }
-    100% { clip-path: inset(0 0 0%  0 round 10px); transform: scaleY(1); }
-  }
-  @keyframes unrollMask {
-    0%   { mask-image: linear-gradient(to bottom, black 0%, transparent 0%);   mask-size: 100% 100%; }
-    100% { mask-image: linear-gradient(to bottom, black 100%, transparent 100%); mask-size: 100% 100%; }
+    0%   { clip-path: inset(0 0 99% 0 round 10px); transform: scaleY(0.04); opacity: 0; mask-position: 0% 0%; }
+    100% { clip-path: inset(0 0 0%  0 round 10px); transform: scaleY(1);    opacity: 1; mask-position: 0% 100%; }
   }
 
   .card.expanded .split-left { perspective: none; }
@@ -160,9 +158,16 @@
     margin: 12px; border-radius: 6px; overflow: hidden;
     border: 1px solid rgba(217,205,184,0.25); background: #000;
     box-shadow: inset 0 2px 8px rgba(0,0,0,0.6);
-    opacity: 0; transition: opacity 0.4s ease 0.3s;
+    opacity: 0;
+    mask-image: linear-gradient(to bottom, black 0%, transparent 100%);
+    mask-size: 100% 200%;
+    mask-position: 0% 0%;
+    transition: opacity 0.5s ease 0.35s, mask-position 0.5s ease 0.35s;
   }
-  .card.expanded .split-left .chart-container.show-chart { opacity: 1; }
+  .card.expanded .split-left .chart-container.show-chart {
+    opacity: 1;
+    mask-position: 0% 100%;
+  }
 
   .card.expanded .split-right .card-header {
     order: unset; flex: none;
@@ -637,6 +642,17 @@ function collapseCard(sym) {
         </div>
       `;
       newCard.onclick = () => toggleCard(sym, stock?.ex || '');
+      // 燈光先算好加到 newCard，replaceChild 時燈光就已在
+      const _data = window._lastStockData?.[sym];
+      if (_data?.quote) {
+        const _mc = _data.quote.d !== undefined ? parseFloat(_data.quote.d)
+          : (parseFloat(_data.quote.c??0) - parseFloat(_data.quote.prev_close??_data.quote.c??0));
+        const _ps = newCard.querySelector('.price-section');
+        if (_ps) {
+          if (_mc > 0) _ps.classList.add('light-up');
+          else if (_mc < 0) _ps.classList.add('light-down');
+        }
+      }
       ghost.parentNode.replaceChild(newCard, ghost);
       fixLastRowLayout();
       const data = window._lastStockData?.[sym];
