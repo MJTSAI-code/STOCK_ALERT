@@ -537,7 +537,12 @@ function collapseCard(sym) {
   if (window._collapsingBusy) return;
   window._collapsingBusy = true;
   window._expandingBusy = false;
-  // 保險：最多 1.5s 後強制解鎖，防止 onfinish 沒觸發導致永久卡住
+
+  // 清掉所有展開動畫的殘留 timer
+  pendingAnimTimers.forEach(id => clearTimeout(id));
+  pendingAnimTimers = [];
+
+  // 保險：最多 1.5s 後強制解鎖
   const _busyGuard = setTimeout(() => {
     document.getElementById('grid').style.pointerEvents = '';
     window._collapsingBusy = false;
