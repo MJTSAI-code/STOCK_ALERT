@@ -1,11 +1,16 @@
 name: 美股數據更新與情報推送
 on:
   schedule:
-    - cron: '40 21 * * 0-4'   # 台灣週一到週五 05:40（UTC 週日到週四 21:40）
-    - cron: '40 9  * * 1-5'   # 台灣週一到週五 17:40（UTC 10:40）- 早到確保18:00前執行
-    - cron: '40 21 * * 5'     # 台灣週六 05:40（UTC 週五 21:40）
-    - cron: '*/1 13-21 * * 1-5'   # 盤中每分鐘更新
-    - cron: '*/30 * * * 1-5'      # 每30分鐘靜默更新
+    # 推播用：台灣時間 05:40 觸發（UTC 週日到週四 21:40）= 週一到週五早上
+    - cron: '40 21 * * 0-4'
+    # 推播用：台灣時間 05:40 觸發（UTC 週五 21:40）= 週六早上
+    - cron: '40 21 * * 5'
+    # 推播用：台灣時間 17:40 觸發（UTC 09:40）= 週一到週五晚上
+    - cron: '40 9 * * 1-5'
+    # 盤中每分鐘靜默更新
+    - cron: '*/1 13-21 * * 1-5'
+    # 每30分鐘靜默更新（補漏）
+    - cron: '*/30 * * * 1-5'
   workflow_dispatch:
 
 permissions:
@@ -29,7 +34,7 @@ jobs:
             echo "✅ 平日，繼續執行"
             echo "is_weekday=true" >> $GITHUB_ENV
           elif [ "$UTC_DOW" -ge 1 ] && [ "$UTC_DOW" -le 5 ]; then
-            echo "✅ 台灣週六但UTC仍平日，放行"
+            echo "✅ 台灣週六但UTC仍平日（週五盤前05:30），放行"
             echo "is_weekday=true" >> $GITHUB_ENV
           else
             echo "🛌 週末，完全跳過"
@@ -50,11 +55,7 @@ jobs:
         if: env.is_weekday == 'true'
         run: pip install yfinance pytz
 
-      - name: 執行資料爬蟲
-        if: env.is_weekday == 'true'
-        run: python update_stocks.py
-
-      - name: 判斷是否推播（Python 精準判斷台灣時間）
+      - name: 判斷推播與新聞更新（Python 精準判斷台灣時間）
         if: env.is_weekday == 'true'
         run: |
           python3 - <<'EOF'
@@ -70,7 +71,7 @@ jobs:
 
           print(f"台灣時間: {now.strftime('%Y-%m-%d %H:%M')} 週{weekday+1}")
 
-          # 推播窗口：±20分鐘緩衝
+          # 推播窗口：±20 分鐘緩衝（吸收 GitHub Actions 延遲）
           morning = (hour == 5 and minute >= 40) or (hour == 6 and minute <= 20)
           evening = (hour == 17 and minute >= 40) or (hour == 18 and minute <= 20)
 
@@ -81,7 +82,7 @@ jobs:
           # 週六只推早上
           elif weekday == 5:
               send = morning
-              reason = "週六早上推播" if send else "週六非推播時間"
+              reason = "週六早上推播" if send else "週六非推播時間，靜默更新"
           # 週一到週五推早上和晚上
           else:
               send = morning or evening
@@ -92,11 +93,22 @@ jobs:
               else:
                   reason = "非推播時間，靜默更新"
 
+          # 新聞只在早上推播時更新
+          update_news = morning
+
           print(f"推播決定: {send} ({reason})")
+          print(f"新聞更新: {update_news}")
 
           with open(os.environ['GITHUB_ENV'], 'a') as f:
               f.write(f"send_alert={'true' if send else 'false'}\n")
+              f.write(f"UPDATE_NEWS={'true' if update_news else 'false'}\n")
           EOF
+
+      - name: 執行資料爬蟲
+        if: env.is_weekday == 'true'
+        run: python update_stocks.py
+        env:
+          UPDATE_NEWS: ${{ env.UPDATE_NEWS }}
 
       - name: 推送 stock_data.json 回倉庫
         if: env.is_weekday == 'true'
