@@ -305,8 +305,7 @@
   }
   .pf-stack {
     position: relative;
-    width: 100%;
-    max-width: 210px;
+    width: 210px;
     height: 44px;
     perspective: 600px;
   }
@@ -517,7 +516,6 @@ function collapseCard(sym) {
   const chartEl = document.getElementById(`chart-${sym}`);
   if (chartEl) chartEl.src = '';
 
-  // 展開卡 fade out
   card.animate(
     [{ opacity:1, transform:'translate(-50%,-50%) scale(1)' },
      { opacity:0, transform:'translate(-50%,-50%) scale(1)' }],
@@ -529,17 +527,13 @@ function collapseCard(sym) {
       window._collapsingBusy = false;
       return;
     }
-
-    // ghost 亮回來
     ghost.classList.add('reviving');
-
     pendingAnimTimers.push(setTimeout(() => {
       if (!ghost.parentNode) {
         expandedSym = null;
         window._collapsingBusy = false;
         return;
       }
-      // 換成完整結構的真卡片
       const newCard = document.createElement('div');
       newCard.className = 'card recently-viewed';
       newCard.id        = `card-${sym}`;
@@ -578,17 +572,10 @@ function collapseCard(sym) {
       newCard.onclick = () => toggleCard(sym, stock?.ex || '');
       ghost.parentNode.replaceChild(newCard, ghost);
       fixLastRowLayout();
-
-      // 套用最新資料
       const data = window._lastStockData?.[sym];
       if (data?.quote) renderPrice(sym, data.quote);
       if (data?.news)  renderNews(sym, data.news);
-
-      // recently-viewed 脈衝後淡出
-      pendingAnimTimers.push(setTimeout(() => {
-        newCard.classList.remove('recently-viewed');
-      }, 3000));
-
+      pendingAnimTimers.push(setTimeout(() => newCard.classList.remove('recently-viewed'), 3000));
       expandedSym = null;
       window._collapsingBusy = false;
     }, 520));
@@ -634,7 +621,7 @@ function toggleCard(sym, ex) {
         </div>
         <div class="price-section">
           <span class="phase-corner-label">${_gPhase}</span>
-          <div class="pf-wrap"><div class="pf-stack" style="max-width:210px;">
+          <div class="pf-wrap"><div class="pf-stack">
             <div class="pf-top-static"><span>${_gPriceTxt}</span></div>
             <div class="pf-bot-static"><span>${_gPriceTxt}</span></div>
             <div class="pf-front"><span>${_gPriceTxt}</span></div>
