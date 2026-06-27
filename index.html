@@ -535,6 +535,7 @@ function collapseCard(sym) {
 
   overlay.classList.remove('show');
   document.body.classList.remove('scroll-locked');
+  document.body.style.paddingRight = '';
   const chartEl = document.getElementById(`chart-${sym}`);
   if (chartEl) chartEl.src = '';
 
@@ -716,6 +717,8 @@ function toggleCard(sym, ex) {
     expandedSym = sym;
     history.pushState({ expanded: sym }, '');
     overlay.classList.add('show');
+    const scrollbarW = window.innerWidth - document.documentElement.clientWidth;
+    document.body.style.paddingRight = scrollbarW + 'px';
     document.body.classList.add('scroll-locked');
 
     const splitLeft  = card.querySelector('.split-left');
@@ -893,6 +896,14 @@ function renderPrice(sym, q) {
   const mainSign = mainChange >= 0 ? '▲' : '▼';
   document.getElementById(`main-chg-${sym}`).innerHTML =
     `<span class="${mainDir}">${mainSign} ${Math.abs(mainChange).toFixed(2)} (${Math.abs(mainPct).toFixed(2)}%)</span>`;
+
+  // 燈光
+  const priceSection = document.querySelector(`#card-${sym} .price-section`);
+  if (priceSection) {
+    priceSection.classList.remove('light-up', 'light-down');
+    if (mainChange > 0) priceSection.classList.add('light-up');
+    else if (mainChange < 0) priceSection.classList.add('light-down');
+  }
 
   const badge = document.getElementById(`badge-${sym}`);
   if (phase === '盤前' || phase === '盤後') { badge.textContent = phase; badge.classList.add('show'); }
