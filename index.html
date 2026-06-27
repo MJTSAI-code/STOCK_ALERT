@@ -644,12 +644,13 @@ function toggleCard(sym, ex) {
 
   if (!isExpanded && window._expandingBusy) return;
 
-  pendingAnimTimers.forEach(id => clearTimeout(id));
-  pendingAnimTimers = [];
-
   if (expandedSym && expandedSym !== sym) collapseCard(expandedSym);
 
   if (!isExpanded) {
+    // 只有真正要展開新卡時才清 timer
+    pendingAnimTimers.forEach(id => clearTimeout(id));
+    pendingAnimTimers = [];
+
     setTimeout(() => {
       document.querySelectorAll('.card.recently-viewed').forEach(c => c.classList.remove('recently-viewed'));
     }, 361);
