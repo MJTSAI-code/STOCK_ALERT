@@ -198,12 +198,61 @@
 
   .card-ghost {
     border-radius: 18px;
-    background: linear-gradient(180deg, var(--window) 0%, var(--window-edge) 100%);
-    border: 3px solid var(--card-frame);
-    box-shadow: 0 6px 0 rgba(0,0,0,0.3), 0 10px 22px rgba(0,0,0,0.25);
-    opacity: 0.18; pointer-events: none; filter: blur(0.5px);
-    transition: opacity 0.3s ease;
+    border: 2px dashed #2a2820;
+    background: #0e0c09;
+    position: relative;
+    overflow: hidden;
+    pointer-events: none;
+    transition: background 0.45s ease, border-color 0.45s ease,
+                border-style 0.45s ease, border-width 0.45s ease,
+                box-shadow 0.45s ease;
   }
+  .card-ghost .ghost-axle {
+    position: absolute;
+    top: 50%; left: 12px; right: 12px; height: 2px;
+    background: linear-gradient(90deg, transparent, #2a2820 20%, #3a3528 50%, #2a2820 80%, transparent);
+    transform: translateY(-50%);
+    transition: opacity 0.3s ease;
+    z-index: 1;
+  }
+  .card-ghost .ghost-screw {
+    position: absolute; width: 10px; height: 10px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 35% 35%, #4a4438, #1e1c16);
+    border: 1px solid #3a3528;
+    box-shadow: inset 0 1px 2px rgba(0,0,0,0.8);
+    transition: opacity 0.3s ease 0.1s;
+    z-index: 2;
+  }
+  .card-ghost .ghost-screw::before {
+    content: ''; position: absolute;
+    top: 50%; left: 15%; right: 15%; height: 1px;
+    background: #5a5040; transform: translateY(-50%);
+  }
+  .card-ghost .ghost-screw::after {
+    content: ''; position: absolute;
+    left: 50%; top: 15%; bottom: 15%; width: 1px;
+    background: #5a5040; transform: translateX(-50%);
+  }
+  .card-ghost .ghost-screw.tl { top: 10px; left: 10px; }
+  .card-ghost .ghost-screw.tr { top: 10px; right: 10px; }
+  .card-ghost .ghost-screw.bl { bottom: 10px; left: 10px; }
+  .card-ghost .ghost-screw.br { bottom: 10px; right: 10px; }
+  .card-ghost .ghost-content {
+    position: relative; z-index: 3;
+    opacity: 0; padding: 16px;
+    transition: opacity 0.35s ease 0.2s;
+  }
+  .card-ghost.reviving {
+    background: linear-gradient(180deg, var(--window) 0%, var(--window-edge) 100%);
+    border-color: var(--card-frame);
+    border-style: solid;
+    border-width: 3px;
+    box-shadow: 0 6px 0 rgba(0,0,0,0.5), 0 10px 22px rgba(0,0,0,0.45), inset 0 2px 6px rgba(0,0,0,0.3);
+  }
+  .card-ghost.reviving .ghost-axle  { opacity: 0; }
+  .card-ghost.reviving .ghost-screw { opacity: 0; }
+  .card-ghost.reviving .ghost-content { opacity: 1; }
   .card.recently-viewed {
     border-color: rgba(240,201,135,0.7);
     box-shadow: 0 6px 0 rgba(0,0,0,0.5), 0 10px 22px rgba(0,0,0,0.45),
@@ -447,32 +496,42 @@ function fixLastRowLayout() {
 window.addEventListener('resize', fixLastRowLayout);
 
 function collapseCard(sym) {
-  const card = document.getElementById(`card-${sym}`);
+  const card  = document.getElementById(`card-${sym}`);
   if (!card) return;
   const overlay = document.getElementById('cardOverlay');
-  card.classList.add('closing');
-  pendingAnimTimers.push(setTimeout(() => {
-    const ghost = document.getElementById(`ghost-${sym}`);
-    if (ghost) ghost.remove();
-  }, 280));
-  pendingAnimTimers.push(setTimeout(() => {
-    card.classList.remove('expanded','closing');
-    const sr = card.querySelector('.split-right');
-    if (sr && sr.dataset.expanded) {
-      sr.innerHTML = sr.dataset.originalHtml;
-      delete sr.dataset.expanded;
-      delete sr.dataset.originalHtml;
-    }
-    const sl = card.querySelector('.split-left');
-    sl?.classList.remove('panel-flap');
-    card.classList.add('recently-viewed');
-    fixLastRowLayout();
-  }, 360));
+  const ghost   = document.getElementById(`ghost-${sym}`);
+
   overlay.classList.remove('show');
   document.body.classList.remove('scroll-locked');
   const chartEl = document.getElementById(`chart-${sym}`);
   if (chartEl) chartEl.src = '';
   expandedSym = null;
+
+  // 展開卡 fade out
+  card.animate(
+    [{ opacity:1, transform:'translate(-50%,-50%) scale(1)' },
+     { opacity:0, transform:'translate(-50%,-50%) scale(1)' }],
+    { duration:200, easing:'linear', fill:'forwards' }
+  ).onfinish = () => {
+    card.remove();
+    if (!ghost) return;
+
+    // ghost 亮回來
+    ghost.classList.add('reviving');
+
+    // 亮完後換成真正的卡片
+    pendingAnimTimers.push(setTimeout(() => {
+      if (!ghost.parentNode) return;
+      const _stock   = STOCKS.find(s => s.sym === sym);
+      const newCard  = document.createElement('div');
+      newCard.className = 'card';
+      newCard.id        = `card-${sym}`;
+      newCard.innerHTML = ghost.querySelector('.ghost-content').innerHTML;
+      newCard.onclick   = () => toggleCard(sym, _stock?.ex || '');
+      ghost.parentNode.replaceChild(newCard, ghost);
+      fixLastRowLayout();
+    }, 520));
+  };
 }
 
 function toggleCard(sym, ex) {
@@ -497,6 +556,35 @@ function toggleCard(sym, ex) {
     ghost.style.gridColumn = cardStyle.gridColumn;
     ghost.style.gridRow    = cardStyle.gridRow;
     ghost.style.height     = card.offsetHeight + 'px';
+    const _ghostPriceTxt   = document.getElementById(`pf-top-${sym}`)?.textContent || '—';
+    const _ghostMainChg    = document.getElementById(`main-chg-${sym}`)?.innerHTML || '';
+    const _ghostPhase      = document.getElementById(`phase-label-${sym}`)?.textContent || '現價';
+    const _ghostBadgeEl    = document.getElementById(`badge-${sym}`);
+    const _ghostBadgeHtml  = _ghostBadgeEl?.classList.contains('show') ? `<span class="tag tag-post show">${_ghostBadgeEl.textContent}</span>` : '';
+    const _ghostStockName  = STOCKS.find(s => s.sym === sym)?.name || '';
+    ghost.innerHTML = `
+      <div class="ghost-screw tl"></div>
+      <div class="ghost-screw tr"></div>
+      <div class="ghost-screw bl"></div>
+      <div class="ghost-screw br"></div>
+      <div class="ghost-axle"></div>
+      <div class="ghost-content">
+        <div class="card-header">
+          <div><div class="card-sym">${sym}</div><div class="card-name">${_ghostStockName}</div></div>
+          ${_ghostBadgeHtml}
+        </div>
+        <div class="price-section">
+          <span class="phase-corner-label">${_ghostPhase}</span>
+          <div class="pf-wrap"><div class="pf-stack">
+            <div class="pf-top-static"><span>${_ghostPriceTxt}</span></div>
+            <div class="pf-bot-static"><span>${_ghostPriceTxt}</span></div>
+            <div class="pf-front"><span>${_ghostPriceTxt}</span></div>
+            <div class="pf-back"><span>${_ghostPriceTxt}</span></div>
+          </div></div>
+          <div class="main-change">${_ghostMainChg}</div>
+        </div>
+      </div>
+    `;
     card.parentNode.insertBefore(ghost, card.nextSibling);
 
     card.classList.add('expanded');
