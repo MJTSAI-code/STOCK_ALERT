@@ -116,7 +116,7 @@
     gap: 18px;
     perspective: 1200px;
   }
-  /* ── 手機版展開卡（完全獨立，不影響桌機版） ── */
+  /* ── 手機版：exp-close-btn 復古鬧鐘風格 ── */
   .exp-close-btn {
     display: none;
     position: absolute;
@@ -151,13 +151,45 @@
     color: #e8c97e;
   }
 
+  /* ── 手機版 TradingView 圖示按鈕 ── */
+  .mobile-tv-btn {
+    display: none;
+    margin: 10px 12px 12px;
+    padding: 12px 16px;
+    background: radial-gradient(circle at 35% 35%, #2a2418, #1a1510);
+    border: 1px solid #6a5a3a;
+    border-radius: 10px;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.5), inset 0 1px 0 rgba(200,160,80,0.1);
+    color: #c8a96e;
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    text-decoration: none;
+    text-align: center;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+  }
+  .mobile-tv-btn::before {
+    content: '📈';
+    font-size: 16px;
+  }
+  .mobile-tv-btn:active {
+    background: radial-gradient(circle at 35% 35%, #3a3020, #2a2018);
+    box-shadow: 0 1px 4px rgba(0,0,0,0.6), inset 0 2px 4px rgba(0,0,0,0.4);
+    color: #e8c97e;
+  }
+
   @media(max-width: 720px) {
     body { min-width: unset; }
-
-    /* X 按鈕只在手機顯示 */
     .exp-close-btn { display: block; }
+    .mobile-tv-btn { display: flex; }
 
-    /* 點擊反饋，讓用戶知道點到哪個卡片 */
+    /* 點擊反饋 */
     .card:not(.expanded):active {
       border-color: #c8a96e;
       filter: brightness(1.12);
@@ -169,67 +201,49 @@
         0 0 28px rgba(200,140,60,0.25);
     }
 
-    /* hover 只在有滑鼠的裝置 */
-    .card:not(.expanded):hover { filter: none; box-shadow: none; border-color: var(--card-frame); }
-
     /* 外層卡片微調 */
     .pf-stack { width: min(210px, 78%); }
     .card { padding: 14px; }
     .grid { gap: 10px; margin: 10px; }
 
-    /* 手機版展開卡 — 完全用 expanded-mobile 控制 */
+    /* 手機版展開卡 — 完全用 expanded-mobile 控制，不影響桌機 */
     .card.expanded-mobile {
       width: calc(100vw - 16px);
       max-height: 90vh;
-      overflow: hidden;
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
     }
     .card.expanded-mobile .card-body-split {
-      grid-template-columns: 1fr;
-      grid-template-rows: 40vh 48vh;
-      height: 88vh;
+      display: block;
     }
-    .card.expanded-mobile .split-left {
-      height: 40vh;
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-      border-radius: 10px;
-      perspective: none;
-    }
+    /* 隱藏 TradingView */
+    .card.expanded-mobile .split-left { display: none; }
+    /* 資訊欄全高 */
     .card.expanded-mobile .split-right {
-      height: 48vh;
-      overflow: hidden;
       display: flex;
       flex-direction: column;
       border-radius: 10px;
+      overflow: visible;
+      height: auto;
     }
-    /* TradingView clip-path 手機版 */
-    .card.expanded-mobile .split-left .chart-container {
-      clip-path: inset(0 0 0% 0 round 6px);
-      opacity: 1;
-    }
-    /* 展開後字體縮小 */
-    .card.expanded-mobile .card-sym { font-size: 15px; }
-    .card.expanded-mobile .card-name { font-size: 9px; }
-    .card.expanded-mobile .card-header { padding: 5px 10px; }
-    .card.expanded-mobile .expanded-price-stage { padding: 6px 10px 5px; margin: 3px 8px 0; }
-    .card.expanded-mobile .expanded-phase-label { font-size: 8px; }
-    .card.expanded-mobile .exp-pf-stack { width: min(200px, 82%); height: 36px; }
+    /* 展開後字體 */
+    .card.expanded-mobile .card-sym { font-size: 20px; }
+    .card.expanded-mobile .card-name { font-size: 10px; }
+    .card.expanded-mobile .card-header { padding: 14px 16px; }
+    .card.expanded-mobile .expanded-price-stage { padding: 16px 14px 12px; margin: 10px 12px 0; }
+    .card.expanded-mobile .expanded-phase-label { font-size: 9px; }
+    .card.expanded-mobile .exp-pf-stack { width: min(260px, 85%); height: 56px; }
     .card.expanded-mobile .exp-pf-stack .pf-top-static,
     .card.expanded-mobile .exp-pf-stack .pf-bot-static,
     .card.expanded-mobile .exp-pf-stack .pf-front,
-    .card.expanded-mobile .exp-pf-stack .pf-back { height: 18px; }
+    .card.expanded-mobile .exp-pf-stack .pf-back { height: 28px; }
     .card.expanded-mobile .exp-pf-stack .pf-top-static span,
     .card.expanded-mobile .exp-pf-stack .pf-bot-static span,
     .card.expanded-mobile .exp-pf-stack .pf-front span,
-    .card.expanded-mobile .exp-pf-stack .pf-back span { font-size: 26px; line-height: 36px; height: 36px; }
-    .card.expanded-mobile .expanded-main-change { font-size: 11px; margin-top: 3px; }
-    .card.expanded-mobile .expanded-ref-row { font-size: 9px; margin-top: 2px; }
-    .card.expanded-mobile .expanded-news-wrap { flex: 1; margin: 3px 8px 4px; overflow: hidden; }
-    .card.expanded-mobile .news-header { font-size: 9px; margin-bottom: 2px; }
-    .card.expanded-mobile .news-item { padding: 4px 8px; }
-    .card.expanded-mobile .news-headline { font-size: 10px; }
-    .card.expanded-mobile .news-source { font-size: 8px; }
+    .card.expanded-mobile .exp-pf-stack .pf-back span { font-size: 44px; line-height: 56px; height: 56px; }
+    .card.expanded-mobile .expanded-main-change { font-size: 13px; margin-top: 8px; }
+    .card.expanded-mobile .expanded-ref-row { font-size: 11px; margin-top: 8px; }
+    .card.expanded-mobile .expanded-news-wrap { flex: 1; margin: 10px 12px 0; overflow: visible; }
   }
 
   .card.expanded .split-left,
@@ -778,7 +792,7 @@ function collapseCard(sym) {
       ghost.parentNode.replaceChild(newCard, ghost);
       requestAnimationFrame(() => {
         requestAnimationFrame(() => {
-          newCard.style.transition = 'opacity 0.05s ease';
+          newCard.style.transition = 'opacity 0.2s ease';
           newCard.style.opacity = '1';
         });
       });
@@ -856,15 +870,6 @@ function toggleCard(sym, ex) {
 
     card.classList.add('expanded');
     card.onclick = null;
-    const isMobile = window.innerWidth <= 720;
-    if (isMobile) {
-      card.classList.add('expanded-mobile');
-      const closeBtn = document.createElement('button');
-      closeBtn.className = 'exp-close-btn';
-      closeBtn.textContent = '✕';
-      closeBtn.onclick = (e) => { e.stopPropagation(); toggleCard(sym, ex); };
-      card.appendChild(closeBtn);
-    }
     cardState = 'opening';
     document.getElementById('grid').style.pointerEvents = 'none';
 
@@ -902,73 +907,129 @@ function toggleCard(sym, ex) {
     const newsList = document.getElementById(`news-list-${sym}`);
     const newsHtml = newsList ? newsList.innerHTML : '';
 
-    splitRight.innerHTML = `
-      <div class="sf-wrap" id="exp-secHeader-${sym}">
-        <div class="card-header">
-          <div>
-            <div class="card-sym">${sym}</div>
-            <div class="card-name">${STOCKS.find(s=>s.sym===sym)?.name||''}</div>
+    if (isMobile) {
+      // ── 手機版展開：無 TradingView，加 TV 圖示按鈕 ──
+      splitRight.innerHTML = `
+        <div class="sf-wrap" id="exp-secHeader-${sym}">
+          <div class="card-header">
+            <div>
+              <div class="card-sym">${sym}</div>
+              <div class="card-name">${STOCKS.find(s=>s.sym===sym)?.name||''}</div>
+            </div>
+            ${badgeHtml}
           </div>
-          ${badgeHtml}
         </div>
-      </div>
-      <div class="sf-wrap" id="exp-secPrice-${sym}">
-        <div class="expanded-price-stage ${lightClass}">
-          <span class="expanded-phase-label">${bigLabel}</span>
-          <div class="pf-wrap" style="margin:4px 0;">
-            ${makePfStack('exp-'+sym, 'exp-pf-stack', '—')}
+        <div class="sf-wrap" id="exp-secPrice-${sym}">
+          <div class="expanded-price-stage ${lightClass}">
+            <span class="expanded-phase-label">${bigLabel}</span>
+            <div class="pf-wrap" style="margin:4px 0;">
+              ${makePfStack('exp-'+sym, 'exp-pf-stack', '—')}
+            </div>
+            <div class="expanded-main-change">${mainChg}</div>
+            ${showRef ? `
+            <div class="expanded-ref-row">
+              <span id="exp-flipFront-${sym}" style="font-size:11px;color:#c9b48a;">收盤 ${subVal} ${subChg}</span>
+            </div>` : ''}
           </div>
-          <div class="expanded-main-change">${mainChg}</div>
-          ${showRef ? `
-          <div class="expanded-ref-row">
-            <span id="exp-flipFront-${sym}" style="font-size:11px;color:#c9b48a;">收盤 ${subVal} ${subChg}</span>
-          </div>` : ''}
         </div>
-      </div>
-      <div class="sf-wrap" id="exp-secNews-${sym}">
-        <div class="expanded-news-wrap">
-          <div class="expanded-news-title">📰 最新消息</div>
-          ${newsHtml
-            ? newsHtml
-                .replace(/class="news-item"/g,     'class="expanded-news-item"')
-                .replace(/class="news-headline"/g, 'class="expanded-news-headline"')
-                .replace(/class="news-source"/g,   'class="expanded-news-source"')
-            : '<div style="font-size:11px;color:#7a7468;">暫無相關新聞</div>'}
+        <div class="sf-wrap" id="exp-secNews-${sym}">
+          <div class="expanded-news-wrap">
+            <div class="expanded-news-title">📰 最新消息</div>
+            ${newsHtml
+              ? newsHtml
+                  .replace(/class="news-item"/g,     'class="expanded-news-item"')
+                  .replace(/class="news-headline"/g, 'class="expanded-news-headline"')
+                  .replace(/class="news-source"/g,   'class="expanded-news-source"')
+              : '<div style="font-size:11px;color:#7a7468;">暫無相關新聞</div>'}
+          </div>
+          <a class="mobile-tv-btn" href="https://www.tradingview.com/chart/?symbol=${ex}:${sym}" target="_blank" rel="noopener noreferrer">
+            在 TradingView 查看圖表
+          </a>
         </div>
-      </div>
-    `;
+      `;
 
-    const chartEl = document.getElementById(`chart-${sym}`);
-    pendingAnimTimers.push(setTimeout(() => {
-      chartEl.src = `https://www.tradingview.com/widgetembed/?symbol=${ex}:${sym}&interval=D&hidesidetoolbar=1&theme=dark&style=1&timezone=Asia/Taipei&locale=zh_TW`;
-    }, 100));
+      // 手機版動畫：只有 splitRight
+      pendingAnimTimers.push(setTimeout(() => splitRight.classList.add('panel-flap'), 60));
+      pendingAnimTimers.push(setTimeout(() => {
+        const sh = document.getElementById(`exp-secHeader-${sym}`);
+        if (sh) sh.classList.add('reveal-full');
+      }, 60));
+      pendingAnimTimers.push(setTimeout(() => {
+        const sp = document.getElementById(`exp-secPrice-${sym}`);
+        if (sp) sp.classList.add('reveal-full');
+      }, 120));
+      pendingAnimTimers.push(setTimeout(() => {
+        flipPriceCard('exp-'+sym, curVal);
+      }, 540));
+      pendingAnimTimers.push(setTimeout(() => {
+        const sn = document.getElementById(`exp-secNews-${sym}`);
+        if (sn) sn.classList.add('reveal-full');
+      }, 560));
 
-    pendingAnimTimers.push(setTimeout(() => splitLeft.classList.add('panel-flap'),  60));
-    pendingAnimTimers.push(setTimeout(() => splitRight.classList.add('panel-flap'), 120));
+    } else {
+      // ── 桌機版展開：完整 TradingView + 兩欄 ──
+      splitRight.innerHTML = `
+        <div class="sf-wrap" id="exp-secHeader-${sym}">
+          <div class="card-header">
+            <div>
+              <div class="card-sym">${sym}</div>
+              <div class="card-name">${STOCKS.find(s=>s.sym===sym)?.name||''}</div>
+            </div>
+            ${badgeHtml}
+          </div>
+        </div>
+        <div class="sf-wrap" id="exp-secPrice-${sym}">
+          <div class="expanded-price-stage ${lightClass}">
+            <span class="expanded-phase-label">${bigLabel}</span>
+            <div class="pf-wrap" style="margin:4px 0;">
+              ${makePfStack('exp-'+sym, 'exp-pf-stack', '—')}
+            </div>
+            <div class="expanded-main-change">${mainChg}</div>
+            ${showRef ? `
+            <div class="expanded-ref-row">
+              <span id="exp-flipFront-${sym}" style="font-size:11px;color:#c9b48a;">收盤 ${subVal} ${subChg}</span>
+            </div>` : ''}
+          </div>
+        </div>
+        <div class="sf-wrap" id="exp-secNews-${sym}">
+          <div class="expanded-news-wrap">
+            <div class="expanded-news-title">📰 最新消息</div>
+            ${newsHtml
+              ? newsHtml
+                  .replace(/class="news-item"/g,     'class="expanded-news-item"')
+                  .replace(/class="news-headline"/g, 'class="expanded-news-headline"')
+                  .replace(/class="news-source"/g,   'class="expanded-news-source"')
+              : '<div style="font-size:11px;color:#7a7468;">暫無相關新聞</div>'}
+          </div>
+        </div>
+      `;
 
-    pendingAnimTimers.push(setTimeout(() => {
-      const cc = splitLeft.querySelector('.chart-container');
-      if (cc) cc.classList.add('show-chart');
-    }, 200));
-
-    pendingAnimTimers.push(setTimeout(() => {
-      const sh = document.getElementById(`exp-secHeader-${sym}`);
-      if (sh) sh.classList.add('reveal-full');
-    }, 120));
-
-    pendingAnimTimers.push(setTimeout(() => {
-      const sp = document.getElementById(`exp-secPrice-${sym}`);
-      if (sp) sp.classList.add('reveal-full');
-    }, 180));
-
-    pendingAnimTimers.push(setTimeout(() => {
-      flipPriceCard('exp-'+sym, curVal);
-    }, 640));
-
-    pendingAnimTimers.push(setTimeout(() => {
-      const sn = document.getElementById(`exp-secNews-${sym}`);
-      if (sn) sn.classList.add('reveal-full');
-    }, 660));
+      const chartEl = document.getElementById(`chart-${sym}`);
+      pendingAnimTimers.push(setTimeout(() => {
+        chartEl.src = `https://www.tradingview.com/widgetembed/?symbol=${ex}:${sym}&interval=D&hidesidetoolbar=1&theme=dark&style=1&timezone=Asia/Taipei&locale=zh_TW`;
+      }, 100));
+      pendingAnimTimers.push(setTimeout(() => splitLeft.classList.add('panel-flap'),  60));
+      pendingAnimTimers.push(setTimeout(() => splitRight.classList.add('panel-flap'), 120));
+      pendingAnimTimers.push(setTimeout(() => {
+        const cc = splitLeft.querySelector('.chart-container');
+        if (cc) cc.classList.add('show-chart');
+      }, 200));
+      pendingAnimTimers.push(setTimeout(() => {
+        const sh = document.getElementById(`exp-secHeader-${sym}`);
+        if (sh) sh.classList.add('reveal-full');
+      }, 120));
+      pendingAnimTimers.push(setTimeout(() => {
+        const sp = document.getElementById(`exp-secPrice-${sym}`);
+        if (sp) sp.classList.add('reveal-full');
+      }, 180));
+      pendingAnimTimers.push(setTimeout(() => {
+        flipPriceCard('exp-'+sym, curVal);
+      }, 640));
+      pendingAnimTimers.push(setTimeout(() => {
+        const sn = document.getElementById(`exp-secNews-${sym}`);
+        if (sn) sn.classList.add('reveal-full');
+      }, 660));
+    }
 
 
 
