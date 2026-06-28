@@ -42,6 +42,7 @@
     color: var(--text);
     font-family: 'Roboto Mono', 'Roboto Mono Fallback', monospace;
     min-height: 100vh;
+    min-width: 960px;
     padding-bottom: 40px;
   }
   body.scroll-locked { overflow: hidden; }
@@ -115,64 +116,118 @@
     gap: 18px;
     perspective: 1200px;
   }
-  @media(max-width: 720px) {
-    /* 展開卡全寬、高度 90vh */
-    .card.expanded { width: calc(100vw - 16px); max-height: 90vh; overflow: hidden; }
-
-    /* TradingView 40%，資訊 50%，共 90vh */
-    .card.expanded .card-body-split { grid-template-columns: 1fr; grid-template-rows: 40vh 50vh; height: 90vh; }
-    .card.expanded .split-left  { height: 40vh; overflow: hidden; }
-    .card.expanded .split-right { height: 50vh; overflow: hidden; display: flex; flex-direction: column; }
-
-    /* 展開後字體全面縮小，塞入 50vh 不滑動 */
-    .card.expanded .card-sym { font-size: 15px; }
-    .card.expanded .card-name { font-size: 9px; }
-    .card.expanded .card-header { padding: 5px 10px; min-height: unset; }
-    .expanded-price-stage { padding: 6px 10px 5px; margin: 3px 8px 0; }
-    .expanded-phase-label { font-size: 8px; margin-bottom: 2px; }
-    .exp-pf-stack { width: min(200px, 82%); height: 36px; }
-    .exp-pf-stack .pf-top-static,
-    .exp-pf-stack .pf-bot-static,
-    .exp-pf-stack .pf-front,
-    .exp-pf-stack .pf-back { height: 18px; }
-    .exp-pf-stack .pf-top-static span,
-    .exp-pf-stack .pf-bot-static span,
-    .exp-pf-stack .pf-front span,
-    .exp-pf-stack .pf-back span { font-size: 26px; line-height: 36px; height: 36px; }
-    .expanded-main-change { font-size: 11px; margin-top: 3px; }
-    .expanded-ref-row { font-size: 9px; margin-top: 2px; padding: 3px 0; }
-    .expanded-news-wrap { flex: 1; margin: 3px 8px 4px; overflow: hidden; }
-    .news-header { font-size: 9px; margin-bottom: 2px; }
-    .news-item { padding: 4px 8px; }
-    .news-headline { font-size: 10px; -webkit-line-clamp: 2; }
-    .news-source { font-size: 8px; }
-
-    /* 點擊反饋 */
-    .card:not(.expanded):active {
-      filter: brightness(1.12);
-      box-shadow: 0 6px 0 rgba(0,0,0,0.5), 0 10px 22px rgba(0,0,0,0.45),
-        inset 0 2px 6px rgba(0,0,0,0.3), inset 0 0 40px rgba(240,180,60,0.18),
-        0 0 0 1px rgba(200,169,110,0.4), 0 0 28px rgba(200,140,60,0.25);
-    }
-
-    /* 外層卡片 pf-stack */
-    .pf-stack { width: min(210px, 78%); }
-    .card-sym { font-size: 22px; }
-    .card-name { font-size: 11px; }
-    .card { padding: 14px; }
-    .grid { gap: 10px; margin: 10px; }
+  /* ── 手機版展開卡（完全獨立，不影響桌機版） ── */
+  .exp-close-btn {
+    display: none;
+    position: absolute;
+    top: -14px; right: -14px;
+    width: 36px; height: 36px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 35% 35%, #3a3020, #1a1510);
+    border: 2px solid #6a5a3a;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.6), inset 0 1px 3px rgba(0,0,0,0.8),
+                inset 0 -1px 2px rgba(200,160,80,0.15), 0 0 0 1px rgba(100,80,40,0.4);
+    color: #c8a96e;
+    font-size: 13px;
+    font-family: 'DM Mono', monospace;
+    font-weight: 500;
+    line-height: 32px;
+    text-align: center;
+    cursor: pointer;
+    z-index: 1100;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .exp-close-btn::before {
+    content: '';
+    position: absolute;
+    top: 3px; left: 3px; right: 3px; bottom: 3px;
+    border-radius: 50%;
+    border: 1px solid rgba(200,160,80,0.2);
+  }
+  .exp-close-btn:active {
+    background: radial-gradient(circle at 35% 35%, #4a4030, #2a2018);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.6), inset 0 2px 4px rgba(0,0,0,0.9),
+                0 0 0 1px rgba(100,80,40,0.4);
+    color: #e8c97e;
   }
 
-    /* 字體放大，觸控目標加大 */
-    .card-sym { font-size: 22px; }
-    .card-name { font-size: 11px; }
+  @media(max-width: 720px) {
+    /* X 按鈕只在手機顯示 */
+    .exp-close-btn { display: block; }
+
+    /* 點擊反饋，讓用戶知道點到哪個卡片 */
+    .card:not(.expanded):active {
+      border-color: #c8a96e;
+      filter: brightness(1.12);
+      box-shadow:
+        0 6px 0 rgba(0,0,0,0.5), 0 10px 22px rgba(0,0,0,0.45),
+        inset 0 2px 6px rgba(0,0,0,0.3),
+        inset 0 0 40px rgba(240,180,60,0.18),
+        0 0 0 1px rgba(200,169,110,0.4),
+        0 0 28px rgba(200,140,60,0.25);
+    }
+
+    /* hover 只在有滑鼠的裝置 */
+    .card:not(.expanded):hover { filter: none; box-shadow: none; border-color: var(--card-frame); }
+
+    /* 外層卡片微調 */
+    .pf-stack { width: min(210px, 78%); }
     .card { padding: 14px; }
-
-    /* header 上方間距 */
-    #header { padding: 12px 16px; }
-
-    /* grid 間距縮小 */
     .grid { gap: 10px; margin: 10px; }
+
+    /* 手機版展開卡 — 完全用 expanded-mobile 控制 */
+    .card.expanded-mobile {
+      width: calc(100vw - 16px);
+      max-height: 90vh;
+      overflow: hidden;
+    }
+    .card.expanded-mobile .card-body-split {
+      grid-template-columns: 1fr;
+      grid-template-rows: 40vh 48vh;
+      height: 88vh;
+    }
+    .card.expanded-mobile .split-left {
+      height: 40vh;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      border-radius: 10px;
+      perspective: none;
+    }
+    .card.expanded-mobile .split-right {
+      height: 48vh;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      border-radius: 10px;
+    }
+    /* TradingView clip-path 手機版 */
+    .card.expanded-mobile .split-left .chart-container {
+      clip-path: inset(0 0 0% 0 round 6px);
+      opacity: 1;
+    }
+    /* 展開後字體縮小 */
+    .card.expanded-mobile .card-sym { font-size: 15px; }
+    .card.expanded-mobile .card-name { font-size: 9px; }
+    .card.expanded-mobile .card-header { padding: 5px 10px; }
+    .card.expanded-mobile .expanded-price-stage { padding: 6px 10px 5px; margin: 3px 8px 0; }
+    .card.expanded-mobile .expanded-phase-label { font-size: 8px; }
+    .card.expanded-mobile .exp-pf-stack { width: min(200px, 82%); height: 36px; }
+    .card.expanded-mobile .exp-pf-stack .pf-top-static,
+    .card.expanded-mobile .exp-pf-stack .pf-bot-static,
+    .card.expanded-mobile .exp-pf-stack .pf-front,
+    .card.expanded-mobile .exp-pf-stack .pf-back { height: 18px; }
+    .card.expanded-mobile .exp-pf-stack .pf-top-static span,
+    .card.expanded-mobile .exp-pf-stack .pf-bot-static span,
+    .card.expanded-mobile .exp-pf-stack .pf-front span,
+    .card.expanded-mobile .exp-pf-stack .pf-back span { font-size: 26px; line-height: 36px; height: 36px; }
+    .card.expanded-mobile .expanded-main-change { font-size: 11px; margin-top: 3px; }
+    .card.expanded-mobile .expanded-ref-row { font-size: 9px; margin-top: 2px; }
+    .card.expanded-mobile .expanded-news-wrap { flex: 1; margin: 3px 8px 4px; overflow: hidden; }
+    .card.expanded-mobile .news-header { font-size: 9px; margin-bottom: 2px; }
+    .card.expanded-mobile .news-item { padding: 4px 8px; }
+    .card.expanded-mobile .news-headline { font-size: 10px; }
+    .card.expanded-mobile .news-source { font-size: 8px; }
   }
 
   .card.expanded .split-left,
@@ -245,47 +300,8 @@
     padding: 14px 16px;
     border-bottom: 1px solid rgba(217,205,184,0.2);
   }
-  .exp-close-btn {
-    display: none;
-    position: absolute;
-    top: -14px; right: -14px;
-    width: 36px; height: 36px;
-    border-radius: 50%;
-    background: radial-gradient(circle at 35% 35%, #3a3020, #1a1510);
-    border: 2px solid #6a5a3a;
-    box-shadow:
-      0 2px 6px rgba(0,0,0,0.6),
-      inset 0 1px 3px rgba(0,0,0,0.8),
-      inset 0 -1px 2px rgba(200,160,80,0.15),
-      0 0 0 1px rgba(100,80,40,0.4);
-    color: #c8a96e;
-    font-size: 13px;
-    font-family: 'DM Mono', monospace;
-    font-weight: 500;
-    line-height: 32px;
-    text-align: center;
-    cursor: pointer;
-    z-index: 1100;
-    -webkit-tap-highlight-color: transparent;
-  }
-  .exp-close-btn::before {
-    content: '';
-    position: absolute;
-    top: 3px; left: 3px; right: 3px; bottom: 3px;
-    border-radius: 50%;
-    border: 1px solid rgba(200,160,80,0.2);
-  }
-  .exp-close-btn:active {
-    background: radial-gradient(circle at 35% 35%, #4a4030, #2a2018);
-    box-shadow:
-      0 1px 3px rgba(0,0,0,0.6),
-      inset 0 2px 4px rgba(0,0,0,0.9),
-      0 0 0 1px rgba(100,80,40,0.4);
-    color: #e8c97e;
-  }
-  @media(max-width: 720px) {
-    .exp-close-btn { display: block; }
-  }
+  .card.expanded .card-sym { font-size: 20px; font-weight: 700; color: var(--digit); letter-spacing: 1px; }
+  .card.expanded .card-name { font-size: 10px; color: #aab09a; margin-top: 2px; }
 
   .sf-wrap { position: relative; clip-path: inset(0 0 100% 0); }
   .sf-wrap.reveal-full { animation: sfRevealFull 0.44s cubic-bezier(0.77,0,0.175,1) forwards; }
@@ -768,6 +784,7 @@ function collapseCard(sym) {
       if (window._lastStockData?.[sym]?.news) renderNews(sym, window._lastStockData[sym].news);
       pendingAnimTimers.push(setTimeout(() => newCard.classList.remove('recently-viewed'), 3000));
       expandedSym = null;
+      collapsingViaBack = false;
       clearTimeout(_busyGuard);
       document.getElementById('grid').style.pointerEvents = '';
       cardState = 'idle';
@@ -837,12 +854,15 @@ function toggleCard(sym, ex) {
 
     card.classList.add('expanded');
     card.onclick = null;
-    // 手機版插入 X 按鈕
-    const closeBtn = document.createElement('button');
-    closeBtn.className = 'exp-close-btn';
-    closeBtn.textContent = '✕';
-    closeBtn.onclick = (e) => { e.stopPropagation(); toggleCard(sym, ex); };
-    card.appendChild(closeBtn);
+    const isMobile = window.innerWidth <= 720;
+    if (isMobile) {
+      card.classList.add('expanded-mobile');
+      const closeBtn = document.createElement('button');
+      closeBtn.className = 'exp-close-btn';
+      closeBtn.textContent = '✕';
+      closeBtn.onclick = (e) => { e.stopPropagation(); toggleCard(sym, ex); };
+      card.appendChild(closeBtn);
+    }
     cardState = 'opening';
     document.getElementById('grid').style.pointerEvents = 'none';
 
@@ -1096,7 +1116,10 @@ function renderNews(sym, newsList) {
 
 let collapsingViaBack = false;
 window.addEventListener('popstate', () => {
-  if (expandedSym) { collapsingViaBack = true; toggleCard(expandedSym, ''); collapsingViaBack = false; }
+  if (expandedSym && cardState !== 'closing') {
+    collapsingViaBack = true;
+    toggleCard(expandedSym, '');
+  }
 });
 
 buildGrid();
