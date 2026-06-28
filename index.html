@@ -36,13 +36,12 @@
     --accent: #d9cdb8;
     --knob: #8a6240;
   }
-  * { box-sizing: border-box; margin: 0; padding: 0; }
+  * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
   body {
     background: var(--bg);
     color: var(--text);
     font-family: 'Roboto Mono', 'Roboto Mono Fallback', monospace;
     min-height: 100vh;
-    min-width: 960px;
     padding-bottom: 40px;
   }
   body.scroll-locked { overflow: hidden; }
@@ -73,15 +72,17 @@
     min-height: 160px;
     box-shadow: 0 6px 0 rgba(0,0,0,0.5), 0 10px 22px rgba(0,0,0,0.45), inset 0 2px 6px rgba(0,0,0,0.3);
   }
-  .card:not(.expanded):hover {
-    border-color: #c8a96e;
-    filter: brightness(1.12);
-    box-shadow:
-      0 6px 0 rgba(0,0,0,0.5), 0 10px 22px rgba(0,0,0,0.45),
-      inset 0 2px 6px rgba(0,0,0,0.3),
-      inset 0 0 40px rgba(240,180,60,0.18),
-      0 0 0 1px rgba(200,169,110,0.4),
-      0 0 28px rgba(200,140,60,0.25);
+  @media (hover: hover) and (pointer: fine) {
+    .card:not(.expanded):hover {
+      border-color: #c8a96e;
+      filter: brightness(1.12);
+      box-shadow:
+        0 6px 0 rgba(0,0,0,0.5), 0 10px 22px rgba(0,0,0,0.45),
+        inset 0 2px 6px rgba(0,0,0,0.3),
+        inset 0 0 40px rgba(240,180,60,0.18),
+        0 0 0 1px rgba(200,169,110,0.4),
+        0 0 28px rgba(200,140,60,0.25);
+    }
   }
   .card-body-split, .split-left, .split-right { display: contents; }
   .card-header { order: -2; }
@@ -115,8 +116,44 @@
     perspective: 1200px;
   }
   @media(max-width: 720px) {
-    .card.expanded { width: calc(100vw - 24px); }
+    /* 展開卡 */
+    .card.expanded { width: calc(100vw - 16px); }
     .card.expanded .card-body-split { grid-template-columns: 1fr; }
+
+    /* 點擊反饋取代藍色反白 */
+    .card:not(.expanded):active {
+      filter: brightness(1.12);
+      box-shadow:
+        0 6px 0 rgba(0,0,0,0.5), 0 10px 22px rgba(0,0,0,0.45),
+        inset 0 2px 6px rgba(0,0,0,0.3),
+        inset 0 0 40px rgba(240,180,60,0.18),
+        0 0 0 1px rgba(200,169,110,0.4),
+        0 0 28px rgba(200,140,60,0.25);
+    }
+
+    /* pf-stack 手機版縮放 */
+    .pf-stack { width: min(210px, 78%); }
+    .exp-pf-stack { width: min(240px, 85%); }
+    .exp-pf-stack .pf-top-static span,
+    .exp-pf-stack .pf-bot-static span,
+    .exp-pf-stack .pf-front span,
+    .exp-pf-stack .pf-back span { font-size: 36px; }
+
+    /* 展開卡高度適應手機螢幕 */
+    .card.expanded { max-height: min(90vh, 680px); }
+    .card.expanded .split-left,
+    .card.expanded .split-right { height: 240px; }
+
+    /* 字體放大，觸控目標加大 */
+    .card-sym { font-size: 22px; }
+    .card-name { font-size: 11px; }
+    .card { padding: 14px; }
+
+    /* header 上方間距 */
+    #header { padding: 12px 16px; }
+
+    /* grid 間距縮小 */
+    .grid { gap: 10px; margin: 10px; }
   }
 
   .card.expanded .split-left,
