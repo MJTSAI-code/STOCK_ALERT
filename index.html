@@ -678,7 +678,7 @@ function collapseCard(sym) {
       ghost.parentNode.replaceChild(newCard, ghost);
       requestAnimationFrame(() => {
         requestAnimationFrame(() => {
-          newCard.style.transition = 'opacity 0.35s ease';
+          newCard.style.transition = 'opacity 0.2s ease';
           newCard.style.opacity = '1';
         });
       });
@@ -841,26 +841,25 @@ function toggleCard(sym, ex) {
       if (cc) cc.classList.add('show-chart');
     }, 200));
 
-    // panel-flap 完成後（120+520=640ms）立刻 reveal
     pendingAnimTimers.push(setTimeout(() => {
       const sh = document.getElementById(`exp-secHeader-${sym}`);
       if (sh) sh.classList.add('reveal-full');
-    }, 650));
+    }, 120));
 
     pendingAnimTimers.push(setTimeout(() => {
       const sp = document.getElementById(`exp-secPrice-${sym}`);
       if (sp) sp.classList.add('reveal-full');
-    }, 680));
+    }, 180));
 
     pendingAnimTimers.push(setTimeout(() => {
       setPriceDirect('exp-'+sym, '—');
       setTimeout(() => flipPriceCard('exp-'+sym, curVal), 80);
-    }, 760));
+    }, 660));
 
     pendingAnimTimers.push(setTimeout(() => {
       const sn = document.getElementById(`exp-secNews-${sym}`);
       if (sn) sn.classList.add('reveal-full');
-    }, 800));
+    }, 700));
 
 
 
