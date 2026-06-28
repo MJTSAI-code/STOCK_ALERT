@@ -300,16 +300,7 @@
     position: relative; z-index: 3;
     opacity: 0; padding: 16px;
   }
-  .card-ghost.reviving {
-    background: linear-gradient(180deg, var(--window) 0%, var(--window-edge) 100%);
-    border-color: var(--card-frame);
-    border-style: solid;
-    border-width: 3px;
-    box-shadow: 0 6px 0 rgba(0,0,0,0.5), 0 10px 22px rgba(0,0,0,0.45), inset 0 2px 6px rgba(0,0,0,0.3);
-    transition: background 0.45s ease, border-color 0.45s ease,
-                border-style 0.45s ease, border-width 0.45s ease,
-                box-shadow 0.45s ease;
-  }
+  .card-ghost.reviving { }
   .card.recently-viewed {
     border-color: rgba(240,201,135,0.7);
     box-shadow: 0 6px 0 rgba(0,0,0,0.5), 0 10px 22px rgba(0,0,0,0.45),
@@ -687,8 +678,22 @@ function collapseCard(sym) {
       newCard.onclick = () => toggleCard(sym, stock?.ex || '');
       newCard.style.opacity = '0';
       newCard.style.transition = 'opacity 0.35s ease';
-      ghost.parentNode.replaceChild(newCard, ghost);
-      requestAnimationFrame(() => { newCard.style.opacity = '1'; });
+      // 新卡片插在 ghost 前面，疊在機芯上面
+      ghost.parentNode.insertBefore(newCard, ghost);
+      // grid 定位需要 ghost 的位置，先保留
+      ghost.style.position = 'absolute';
+      ghost.style.pointerEvents = 'none';
+      ghost.style.zIndex = '0';
+      newCard.style.zIndex = '1';
+      requestAnimationFrame(() => {
+        newCard.style.opacity = '1';
+      });
+      // 淡入完成後才移除 ghost
+      pendingAnimTimers.push(setTimeout(() => {
+        ghost.remove();
+        newCard.style.zIndex = '';
+        newCard.style.transition = '';
+      }, 400));
       fixLastRowLayout();
       if (window._lastStockData?.[sym]?.news) renderNews(sym, window._lastStockData[sym].news);
       pendingAnimTimers.push(setTimeout(() => newCard.classList.remove('recently-viewed'), 3000));
@@ -755,23 +760,23 @@ function toggleCard(sym, ex) {
     `;
     card.parentNode.insertBefore(ghost, card.nextSibling);
 
+    const scrollbarW = window.innerWidth - document.documentElement.clientWidth;
+    document.documentElement.style.setProperty('--scrollbar-w', scrollbarW + 'px');
+    document.getElementById('grid').style.paddingRight = scrollbarW + 'px';
+    document.body.classList.add('scroll-locked');
+
     card.classList.add('expanded');
     card.onclick = null;
     cardState = 'opening';
     document.getElementById('grid').style.pointerEvents = 'none';
-    
+
     pendingAnimTimers.push(setTimeout(() => {
-      
       document.getElementById('grid').style.pointerEvents = '';
       cardState = 'expanded';
     }, 700));
     expandedSym = sym;
     history.pushState({ expanded: sym }, '');
     overlay.classList.add('show');
-    const scrollbarW = window.innerWidth - document.documentElement.clientWidth;
-    document.documentElement.style.setProperty('--scrollbar-w', scrollbarW + 'px');
-    document.getElementById('grid').style.paddingRight = scrollbarW + 'px';
-    document.body.classList.add('scroll-locked');
 
     const splitLeft  = card.querySelector('.split-left');
     const splitRight = card.querySelector('.split-right');
