@@ -679,7 +679,7 @@ function collapseCard(sym) {
       ghost.parentNode.replaceChild(newCard, ghost);
       requestAnimationFrame(() => {
         requestAnimationFrame(() => {
-          newCard.style.transition = 'opacity 0.2s ease';
+          newCard.style.transition = 'opacity 0.12s ease';
           newCard.style.opacity = '1';
         });
       });
@@ -853,14 +853,13 @@ function toggleCard(sym, ex) {
     }, 180));
 
     pendingAnimTimers.push(setTimeout(() => {
-      setPriceDirect('exp-'+sym, '—');
-      setTimeout(() => flipPriceCard('exp-'+sym, curVal), 80);
-    }, 660));
+      flipPriceCard('exp-'+sym, curVal);
+    }, 640));
 
     pendingAnimTimers.push(setTimeout(() => {
       const sn = document.getElementById(`exp-secNews-${sym}`);
       if (sn) sn.classList.add('reveal-full');
-    }, 700));
+    }, 660));
 
 
 
