@@ -117,58 +117,49 @@
   }
   @media(max-width: 720px) {
     /* 展開卡全寬、高度 90vh */
-    .card.expanded {
-      width: calc(100vw - 16px);
-      max-height: 90vh;
-      overflow: hidden;
-    }
+    .card.expanded { width: calc(100vw - 16px); max-height: 90vh; overflow: hidden; }
 
-    /* 上下排列 */
-    .card.expanded .card-body-split {
-      grid-template-columns: 1fr;
-      grid-template-rows: 45vh 45vh;
-      height: 90vh;
-    }
+    /* TradingView 40%，資訊 50%，共 90vh */
+    .card.expanded .card-body-split { grid-template-columns: 1fr; grid-template-rows: 40vh 50vh; height: 90vh; }
+    .card.expanded .split-left  { height: 40vh; overflow: hidden; }
+    .card.expanded .split-right { height: 50vh; overflow: hidden; display: flex; flex-direction: column; }
 
-    /* 上半：TradingView */
-    .card.expanded .split-left {
-      height: 45vh;
-      overflow: hidden;
-    }
-
-    /* 下半：股價+新聞，可上下滑 */
-    .card.expanded .split-right {
-      height: 45vh;
-      overflow-y: auto;
-      -webkit-overflow-scrolling: touch;
-      padding-bottom: 16px;
-    }
-
-    /* 點擊反饋取代藍色反白 */
-    .card:not(.expanded):active {
-      filter: brightness(1.12);
-      box-shadow:
-        0 6px 0 rgba(0,0,0,0.5), 0 10px 22px rgba(0,0,0,0.45),
-        inset 0 2px 6px rgba(0,0,0,0.3),
-        inset 0 0 40px rgba(240,180,60,0.18),
-        0 0 0 1px rgba(200,169,110,0.4),
-        0 0 28px rgba(200,140,60,0.25);
-    }
-
-    /* pf-stack 手機版縮放 */
-    .pf-stack { width: min(210px, 78%); }
-    .exp-pf-stack { width: min(240px, 85%); }
+    /* 展開後字體全面縮小，塞入 50vh 不滑動 */
+    .card.expanded .card-sym { font-size: 15px; }
+    .card.expanded .card-name { font-size: 9px; }
+    .card.expanded .card-header { padding: 5px 10px; min-height: unset; }
+    .expanded-price-stage { padding: 6px 10px 5px; margin: 3px 8px 0; }
+    .expanded-phase-label { font-size: 8px; margin-bottom: 2px; }
+    .exp-pf-stack { width: min(200px, 82%); height: 36px; }
+    .exp-pf-stack .pf-top-static,
+    .exp-pf-stack .pf-bot-static,
+    .exp-pf-stack .pf-front,
+    .exp-pf-stack .pf-back { height: 18px; }
     .exp-pf-stack .pf-top-static span,
     .exp-pf-stack .pf-bot-static span,
     .exp-pf-stack .pf-front span,
-    .exp-pf-stack .pf-back span { font-size: 36px; }
+    .exp-pf-stack .pf-back span { font-size: 26px; line-height: 36px; height: 36px; }
+    .expanded-main-change { font-size: 11px; margin-top: 3px; }
+    .expanded-ref-row { font-size: 9px; margin-top: 2px; padding: 3px 0; }
+    .expanded-news-wrap { flex: 1; margin: 3px 8px 4px; overflow: hidden; }
+    .news-header { font-size: 9px; margin-bottom: 2px; }
+    .news-item { padding: 4px 8px; }
+    .news-headline { font-size: 10px; -webkit-line-clamp: 2; }
+    .news-source { font-size: 8px; }
 
-    /* 字體放大 */
+    /* 點擊反饋 */
+    .card:not(.expanded):active {
+      filter: brightness(1.12);
+      box-shadow: 0 6px 0 rgba(0,0,0,0.5), 0 10px 22px rgba(0,0,0,0.45),
+        inset 0 2px 6px rgba(0,0,0,0.3), inset 0 0 40px rgba(240,180,60,0.18),
+        0 0 0 1px rgba(200,169,110,0.4), 0 0 28px rgba(200,140,60,0.25);
+    }
+
+    /* 外層卡片 pf-stack */
+    .pf-stack { width: min(210px, 78%); }
     .card-sym { font-size: 22px; }
     .card-name { font-size: 11px; }
     .card { padding: 14px; }
-
-    /* grid 間距縮小 */
     .grid { gap: 10px; margin: 10px; }
   }
 
@@ -257,7 +248,7 @@
   .exp-close-btn {
     display: none;
     position: absolute;
-    top: 10px; right: 10px;
+    top: -14px; right: -14px;
     width: 36px; height: 36px;
     border-radius: 50%;
     background: radial-gradient(circle at 35% 35%, #3a3020, #1a1510);
@@ -271,12 +262,11 @@
     font-size: 13px;
     font-family: 'DM Mono', monospace;
     font-weight: 500;
-    line-height: 34px;
+    line-height: 32px;
     text-align: center;
     cursor: pointer;
-    z-index: 10;
+    z-index: 1100;
     -webkit-tap-highlight-color: transparent;
-    letter-spacing: 0;
   }
   .exp-close-btn::before {
     content: '';
@@ -847,6 +837,12 @@ function toggleCard(sym, ex) {
 
     card.classList.add('expanded');
     card.onclick = null;
+    // 手機版插入 X 按鈕
+    const closeBtn = document.createElement('button');
+    closeBtn.className = 'exp-close-btn';
+    closeBtn.textContent = '✕';
+    closeBtn.onclick = (e) => { e.stopPropagation(); toggleCard(sym, ex); };
+    card.appendChild(closeBtn);
     cardState = 'opening';
     document.getElementById('grid').style.pointerEvents = 'none';
 
@@ -893,7 +889,6 @@ function toggleCard(sym, ex) {
           </div>
           ${badgeHtml}
         </div>
-        <button class="exp-close-btn" onclick="toggleCard('${sym}','${ex}')">✕</button>
       </div>
       <div class="sf-wrap" id="exp-secPrice-${sym}">
         <div class="expanded-price-stage ${lightClass}">
