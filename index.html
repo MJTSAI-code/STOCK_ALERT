@@ -511,7 +511,8 @@
     .pf-stack { width: min(210px, 78%); }
     .card { padding: 14px; }
     .grid { gap: 10px; margin: 10px; }
-    .price-section { min-height: 120px; }
+
+
 
     /* ── 手機版展開：全螢幕，完全獨立於桌機版 ── */
     .card.expanded {
@@ -556,9 +557,71 @@
     .card.expanded .expanded-main-change { font-size: 13px; margin-top: 8px; }
     .card.expanded .expanded-ref-row { font-size: 11px; margin-top: 8px; }
     .card.expanded .expanded-news-wrap { margin: 10px 12px 0; }
+    /* 底部留空，避免被 close-bar 蓋住 */
+    .card.expanded .card-body-split { padding-bottom: 72px; }
   }
 
   .footer { text-align: center; margin-top: 24px; font-size: 10px; color: var(--muted); letter-spacing: 1px; }
+
+  /* ── 底部關閉列：復古機械風格 ── */
+  .mobile-close-bar {
+    display: none;
+  }
+  @media(max-width: 720px) {
+    .mobile-close-bar {
+      display: flex;
+      position: fixed;
+      bottom: 0; left: 0; right: 0;
+      height: 56px;
+      background: linear-gradient(180deg, #1a1710 0%, #111009 100%);
+      border-top: 1px solid #3a3020;
+      box-shadow: 0 -2px 12px rgba(0,0,0,0.6), inset 0 1px 0 rgba(200,160,80,0.15);
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      cursor: pointer;
+      z-index: 1300;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .mobile-close-bar:active {
+      background: linear-gradient(180deg, #201e14 0%, #181510 100%);
+      box-shadow: 0 -1px 8px rgba(0,0,0,0.6), inset 0 2px 6px rgba(0,0,0,0.5), inset 0 1px 0 rgba(200,160,80,0.1);
+    }
+    .mobile-close-bar .cb-screw {
+      width: 10px; height: 10px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 35% 35%, #4a4438, #1e1c16);
+      border: 1px solid #3a3528;
+      box-shadow: inset 0 1px 2px rgba(0,0,0,0.8);
+      flex-shrink: 0;
+      position: relative;
+    }
+    .mobile-close-bar .cb-screw::before {
+      content: ''; position: absolute;
+      top: 50%; left: 15%; right: 15%; height: 1px;
+      background: #5a5040; transform: translateY(-50%);
+    }
+    .mobile-close-bar .cb-screw::after {
+      content: ''; position: absolute;
+      left: 50%; top: 15%; bottom: 15%; width: 1px;
+      background: #5a5040; transform: translateX(-50%);
+    }
+    .mobile-close-bar .cb-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      font-weight: 500;
+      color: #c8a96e;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+    }
+    .mobile-close-bar .cb-line {
+      width: 24px; height: 1px;
+      background: linear-gradient(90deg, transparent, #6a5a3a);
+    }
+    .mobile-close-bar .cb-line.right {
+      background: linear-gradient(90deg, #6a5a3a, transparent);
+    }
+  }
 </style>
 </head>
 <body>
@@ -694,6 +757,9 @@ function collapseCard(sym) {
   document.body.style.paddingRight = '';
   document.getElementById('grid').style.paddingRight = '';
   document.documentElement.style.removeProperty('--scrollbar-w');
+  // 清理 mobile-close-bar
+  const existingBar = document.querySelector('.mobile-close-bar');
+  if (existingBar) existingBar.remove();
   const chartEl = document.getElementById(`chart-${sym}`);
   if (chartEl) chartEl.src = '';
 
@@ -869,11 +935,11 @@ function toggleCard(sym, ex) {
     if (isMobile) {
       card.classList.add('expanded-mobile');
       splitLeft.style.display = 'none';
-      const closeBtn = document.createElement('button');
-      closeBtn.className = 'exp-close-btn';
-      closeBtn.textContent = '✕';
-      closeBtn.onclick = (e) => { e.stopPropagation(); toggleCard(sym, ex); };
-      card.appendChild(closeBtn);
+      const closeBar = document.createElement('div');
+      closeBar.className = 'mobile-close-bar';
+      closeBar.innerHTML = '<div class="cb-screw"></div><div class="cb-line"></div><span class="cb-label">CLOSE</span><div class="cb-line right"></div><div class="cb-screw"></div>';
+      closeBar.onclick = (e) => { e.stopPropagation(); toggleCard(sym, ex); };
+      document.body.appendChild(closeBar);
     }
 
     splitRight.dataset.originalHtml = splitRight.innerHTML;
