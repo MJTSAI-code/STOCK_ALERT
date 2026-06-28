@@ -213,12 +213,6 @@
       overflow-y: auto;
       -webkit-overflow-scrolling: touch;
     }
-    .card.expanded-mobile .card-body-split {
-      display: block;
-    }
-    /* 隱藏 TradingView */
-    .card.expanded-mobile .split-left { display: none; }
-    /* 資訊欄全高 */
     .card.expanded-mobile .split-right {
       display: flex;
       flex-direction: column;
@@ -870,6 +864,16 @@ function toggleCard(sym, ex) {
 
     card.classList.add('expanded');
     card.onclick = null;
+    const isMobile = window.innerWidth <= 720;
+    if (isMobile) {
+      card.classList.add('expanded-mobile');
+      splitLeft.style.display = 'none';
+      const closeBtn = document.createElement('button');
+      closeBtn.className = 'exp-close-btn';
+      closeBtn.textContent = '✕';
+      closeBtn.onclick = (e) => { e.stopPropagation(); toggleCard(sym, ex); };
+      card.appendChild(closeBtn);
+    }
     cardState = 'opening';
     document.getElementById('grid').style.pointerEvents = 'none';
 
