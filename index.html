@@ -20,8 +20,6 @@
     size-adjust: 98%;
     ascent-override: 90%;
   }
-</style>
-<style>
   :root {
     --bg: #0a0a0a;
     --card-bg: #1c1a16;
@@ -618,29 +616,17 @@ function collapseCard(sym) {
       newCard.id        = `card-${sym}`;
 
       // 先算好所有資料，填進 innerHTML，replaceChild 時直接是完整狀態
-      const _q = window._lastStockData?.[sym]?.quote;
-      const _current   = _q ? parseFloat(_q.c ?? _q.regular ?? 0) : 0;
-      const _regular   = _q ? parseFloat(_q.regular ?? _q.c ?? 0) : 0;
-      const _prevClose = _q ? parseFloat(_q.prev_close ?? _regular) : 0;
-      const _phase     = _q?.phase || '正式盤';
-      const _valStr    = _current ? `$${_current.toFixed(2)}` : '—';
-      const _phaseLabelMap = { '盤前':'盤前','盤後':'盤後','正式盤':'現價','錯誤':'—' };
-      const _phaseLabel = _phaseLabelMap[_phase] || '現價';
-      const _mc  = _q?.d !== undefined ? parseFloat(_q.d) : (_current - _prevClose);
-      const _mct = _q?.dp !== undefined ? parseFloat(_q.dp) : (_prevClose ? (_mc / _prevClose * 100) : 0);
-      const _dir = _mc >= 0 ? 'up' : 'down';
-      const _sg  = _mc >= 0 ? '▲' : '▼';
-      const _mainChgHtml = _q ? `<span class="${_dir}">${_sg} ${Math.abs(_mc).toFixed(2)} (${Math.abs(_mct).toFixed(2)}%)</span>` : '';
-
-      const _showSub = _phase === '盤後' || _phase === '盤前';
-      const _rc  = _q?.reg_d  !== undefined ? parseFloat(_q.reg_d)  : (_regular - _prevClose);
-      const _rp  = _q?.reg_dp !== undefined ? parseFloat(_q.reg_dp) : (_prevClose ? (_rc / _prevClose * 100) : 0);
-      const _rd  = _rc >= 0 ? 'up' : 'down';
-      const _rsg = _rc >= 0 ? '▲' : '▼';
-      const _subChgHtml = _q ? `<span class="${_rd}">${_rsg} ${Math.abs(_rc).toFixed(2)} (${Math.abs(_rp).toFixed(2)}%)</span>` : '';
-
-      const _lightClass = _mc > 0 ? 'light-up' : _mc < 0 ? 'light-down' : '';
-      const _badgeShow  = (_phase === '盤前' || _phase === '盤後') ? 'show' : '';
+      const _q  = window._lastStockData?.[sym]?.quote;
+      const _d  = parseQuote(_q);
+      const _valStr      = _d ? _d.valStr : '—';
+      const _phaseLabel  = _d ? _d.phaseLabel : '現價';
+      const _lightClass  = _d ? _d.lightClass : '';
+      const _badgeShow   = _d?.isExt ? 'show' : '';
+      const _phase       = _d ? _d.phase : '正式盤';
+      const _mainChgHtml = _d ? `<span class="${_d.dir}">${_d.sg} ${Math.abs(_d.mc).toFixed(2)} (${Math.abs(_d.mct).toFixed(2)}%)</span>` : '';
+      const _subChgHtml  = _d ? `<span class="${_d.rd}">${_d.rsg} ${Math.abs(_d.rc).toFixed(2)} (${Math.abs(_d.rp).toFixed(2)}%)</span>` : '';
+      const _showSub     = _d?.isExt ?? false;
+      const _regular     = _d ? _d.regular : 0;
 
       newCard.innerHTML = `
         <div class="card-body-split">
@@ -655,7 +641,7 @@ function collapseCard(sym) {
                 <div class="card-sym">${sym}</div>
                 <div class="card-name">${stock?.name || ''}</div>
               </div>
-              <span class="tag tag-post ${_badgeShow}" id="badge-${sym}">${_phase === '盤前' || _phase === '盤後' ? _phase : '盤後'}</span>
+              <span class="tag tag-post ${_badgeShow}" id="badge-${sym}">${_d?.isExt ? _phase : '盤後'}</span>
             </div>
             <div class="price-section ${_lightClass}">
               <span class="phase-corner-label" id="phase-label-${sym}">${_phaseLabel}</span>
@@ -926,37 +912,45 @@ function setPriceDirect(sym, val) {
 
 const lastPhase = {};
 
-function renderPrice(sym, q) {
-  if (!q) return;
+function parseQuote(q) {
+  if (!q) return null;
   const current   = parseFloat(q.c ?? q.regular ?? 0);
   const regular   = parseFloat(q.regular ?? q.c ?? 0);
   const prevClose = parseFloat(q.prev_close ?? regular);
   const phase     = q.phase || '正式盤';
   const valStr    = `$${current.toFixed(2)}`;
-
+  const mc  = q.d  !== undefined ? parseFloat(q.d)  : (current - prevClose);
+  const mct = q.dp !== undefined ? parseFloat(q.dp) : (prevClose ? (mc / prevClose * 100) : 0);
+  const rc  = q.reg_d  !== undefined ? parseFloat(q.reg_d)  : (regular - prevClose);
+  const rp  = q.reg_dp !== undefined ? parseFloat(q.reg_dp) : (prevClose ? (rc / prevClose * 100) : 0);
   const phaseLabelMap = { '盤前':'盤前','盤後':'盤後','正式盤':'現價','錯誤':'—' };
-  document.getElementById(`phase-label-${sym}`).textContent = phaseLabelMap[phase]||'現價';
+  const isExt = phase === '盤前' || phase === '盤後';
+  return { current, regular, prevClose, phase, valStr, mc, mct, rc, rp, isExt,
+           phaseLabel: phaseLabelMap[phase] || '現價',
+           dir: mc >= 0 ? 'up' : 'down', sg: mc >= 0 ? '▲' : '▼',
+           rd: rc >= 0 ? 'up' : 'down', rsg: rc >= 0 ? '▲' : '▼',
+           lightClass: mc > 0 ? 'light-up' : mc < 0 ? 'light-down' : '' };
+}
 
-  flipPriceCard(sym, valStr);
-  lastPhase[sym] = phase;
+function renderPrice(sym, q) {
+  const d = parseQuote(q);
+  if (!d) return;
 
-  const mainChange = q.d  !== undefined ? parseFloat(q.d)  : (current - prevClose);
-  const mainPct    = q.dp !== undefined ? parseFloat(q.dp) : (prevClose ? (mainChange / prevClose * 100) : 0);
-  const mainDir  = mainChange >= 0 ? 'up' : 'down';
-  const mainSign = mainChange >= 0 ? '▲' : '▼';
+  document.getElementById(`phase-label-${sym}`).textContent = d.phaseLabel;
+  flipPriceCard(sym, d.valStr);
+  lastPhase[sym] = d.phase;
+
   document.getElementById(`main-chg-${sym}`).innerHTML =
-    `<span class="${mainDir}">${mainSign} ${Math.abs(mainChange).toFixed(2)} (${Math.abs(mainPct).toFixed(2)}%)</span>`;
+    `<span class="${d.dir}">${d.sg} ${Math.abs(d.mc).toFixed(2)} (${Math.abs(d.mct).toFixed(2)}%)</span>`;
 
-  // 燈光
   const priceSection = document.querySelector(`#card-${sym} .price-section`);
   if (priceSection) {
     priceSection.classList.remove('light-up', 'light-down');
-    if (mainChange > 0) priceSection.classList.add('light-up');
-    else if (mainChange < 0) priceSection.classList.add('light-down');
+    if (d.lightClass) priceSection.classList.add(d.lightClass);
   }
 
   const badge = document.getElementById(`badge-${sym}`);
-  if (phase === '盤前' || phase === '盤後') { badge.textContent = phase; badge.classList.add('show'); }
+  if (d.isExt) { badge.textContent = d.phase; badge.classList.add('show'); }
   else badge.classList.remove('show');
 
   const subRow   = document.getElementById(`sub-row-${sym}`);
@@ -964,14 +958,11 @@ function renderPrice(sym, q) {
   const subEl    = document.getElementById(`sub-${sym}`);
   const subChgEl = document.getElementById(`sub-chg-${sym}`);
 
-  if (phase === '盤後' || phase === '盤前') {
+  if (d.isExt) {
     subRow.style.visibility = 'visible'; subRow.style.display = 'flex';
     subLabel.textContent = '收盤';
-    subEl.textContent = `$${regular.toFixed(2)}`;
-    const rc = q.reg_d  !== undefined ? parseFloat(q.reg_d)  : (regular - prevClose);
-    const rp = q.reg_dp !== undefined ? parseFloat(q.reg_dp) : (prevClose ? (rc / prevClose * 100) : 0);
-    const d = rc >= 0 ? 'up' : 'down', sg = rc >= 0 ? '▲' : '▼';
-    subChgEl.innerHTML = `<span class="${d}">${sg} ${Math.abs(rc).toFixed(2)} (${Math.abs(rp).toFixed(2)}%)</span>`;
+    subEl.textContent = `$${d.regular.toFixed(2)}`;
+    subChgEl.innerHTML = `<span class="${d.rd}">${d.rsg} ${Math.abs(d.rc).toFixed(2)} (${Math.abs(d.rp).toFixed(2)}%)</span>`;
   } else {
     subRow.style.visibility = 'hidden'; subRow.style.display = '';
   }
