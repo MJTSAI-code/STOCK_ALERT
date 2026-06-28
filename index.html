@@ -116,215 +116,76 @@
     gap: 18px;
     perspective: 1200px;
   }
-  /* ── 手機版：exp-close-btn 簡潔 UI 風格 ── */
-  .exp-close-btn {
-    display: none;
-    position: fixed;
-    top: 16px; right: 16px;
-    width: 36px; height: 36px;
-    border-radius: 50%;
-    background: rgba(255,255,255,0.12);
-    border: none;
-    color: #ffffff;
-    font-size: 18px;
-    line-height: 36px;
-    text-align: center;
-    cursor: pointer;
-    z-index: 1200;
-    -webkit-tap-highlight-color: transparent;
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-  }
-  .exp-close-btn:active {
-    background: rgba(255,255,255,0.25);
-  }
-
-  /* ── 手機版 TradingView 圖示按鈕 ── */
-  .mobile-tv-btn {
-    display: none;
-    margin: 10px 12px 12px;
-    padding: 12px 16px;
-    background: radial-gradient(circle at 35% 35%, #2a2418, #1a1510);
-    border: 1px solid #6a5a3a;
-    border-radius: 10px;
-    box-shadow: 0 3px 8px rgba(0,0,0,0.5), inset 0 1px 0 rgba(200,160,80,0.1);
-    color: #c8a96e;
-    font-family: 'DM Mono', monospace;
-    font-size: 12px;
-    font-weight: 500;
-    letter-spacing: 0.5px;
-    text-decoration: none;
-    text-align: center;
-    cursor: pointer;
-    -webkit-tap-highlight-color: transparent;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-  }
-  .mobile-tv-btn::before {
-    content: '📈';
-    font-size: 16px;
-  }
-  .mobile-tv-btn:active {
-    background: radial-gradient(circle at 35% 35%, #3a3020, #2a2018);
-    box-shadow: 0 1px 4px rgba(0,0,0,0.6), inset 0 2px 4px rgba(0,0,0,0.4);
-    color: #e8c97e;
-  }
-
-  @media(max-width: 720px) {
-    body { min-width: unset; }
-    .exp-close-btn { display: block; }
-    .mobile-tv-btn { display: flex; }
-
-    /* 點擊反饋 */
-    .card:not(.expanded):active {
-      border-color: #c8a96e;
-      filter: brightness(1.12);
-      box-shadow:
-        0 6px 0 rgba(0,0,0,0.5), 0 10px 22px rgba(0,0,0,0.45),
-        inset 0 2px 6px rgba(0,0,0,0.3),
-        inset 0 0 40px rgba(240,180,60,0.18),
-        0 0 0 1px rgba(200,169,110,0.4),
-        0 0 28px rgba(200,140,60,0.25);
-    }
-
-    /* 外層卡片微調 */
-    .pf-stack { width: min(210px, 78%); }
-    .card { padding: 14px; }
-    .grid { gap: 10px; margin: 10px; }
-
-    /* 手機版展開卡 — 完全用 expanded-mobile 控制，不影響桌機 */
-    .card.expanded-mobile {
-      position: fixed;
-      top: 0; left: 0;
-      width: 100vw;
-      height: 100vh;
-      max-height: 100vh;
-      transform: none;
-      background: var(--bg);
-      border: none;
-      box-shadow: none;
-      padding: 0;
+  @media(min-width: 721px) {
+    .card.expanded .split-left,
+    .card.expanded .split-right {
+      background: linear-gradient(180deg, var(--window) 0%, var(--window-edge) 100%);
+      border: 2px solid var(--card-frame);
+      border-radius: 10px;
+      box-shadow: 0 6px 0 rgba(0,0,0,0.5), 0 12px 24px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.06);
       overflow: hidden;
-      animation: none;
-      border-radius: 0;
-      display: flex;
-      flex-direction: column;
+      position: relative;
+      height: 460px;
     }
-    .card.expanded-mobile .card-body-split {
-      display: flex !important;
-      flex-direction: column;
-      flex: 1;
-      overflow-y: auto;
-      -webkit-overflow-scrolling: touch;
+    .card.expanded .split-left  { display: flex; flex-direction: column; }
+    .card.expanded .split-right { display: flex; flex-direction: column; }
+    .card.expanded .split-left,
+    .card.expanded .split-right {
+      clip-path: inset(0 0 99% 0 round 10px);
+      transform: scaleY(0.04);
+      transform-origin: top center;
+      opacity: 0;
     }
-    .card.expanded-mobile .split-right {
-      display: flex;
-      flex-direction: column;
-      height: auto !important;
-      overflow: visible !important;
-      padding-bottom: 20px;
-      border-radius: 0 !important;
-      box-shadow: none !important;
-      border: none !important;
-      background: transparent !important;
-      clip-path: none !important;
-      transform: none !important;
-      opacity: 1 !important;
+    .card.expanded .split-left.panel-flap,
+    .card.expanded .split-right.panel-flap {
+      animation: unrollDown 0.52s cubic-bezier(0.77,0,0.175,1) forwards;
     }
-    /* 展開後字體 */
-    .card.expanded-mobile .card-sym { font-size: 20px; }
-    .card.expanded-mobile .card-name { font-size: 10px; }
-    .card.expanded-mobile .card-header { padding: 14px 16px; }
-    .card.expanded-mobile .expanded-price-stage { padding: 16px 14px 12px; margin: 10px 12px 0; }
-    .card.expanded-mobile .expanded-phase-label { font-size: 9px; }
-    .card.expanded-mobile .exp-pf-stack { width: min(260px, 85%); height: 56px; }
-    .card.expanded-mobile .exp-pf-stack .pf-top-static,
-    .card.expanded-mobile .exp-pf-stack .pf-bot-static,
-    .card.expanded-mobile .exp-pf-stack .pf-front,
-    .card.expanded-mobile .exp-pf-stack .pf-back { height: 28px; }
-    .card.expanded-mobile .exp-pf-stack .pf-top-static span,
-    .card.expanded-mobile .exp-pf-stack .pf-bot-static span,
-    .card.expanded-mobile .exp-pf-stack .pf-front span,
-    .card.expanded-mobile .exp-pf-stack .pf-back span { font-size: 44px; line-height: 56px; height: 56px; }
-    .card.expanded-mobile .expanded-main-change { font-size: 13px; margin-top: 8px; }
-    .card.expanded-mobile .expanded-ref-row { font-size: 11px; margin-top: 8px; }
-    .card.expanded-mobile .expanded-news-wrap { flex: 1; margin: 10px 12px 0; overflow: visible; }
+    @keyframes unrollDown {
+      0%   { clip-path: inset(0 0 99% 0 round 10px); transform: scaleY(0.04); opacity: 0; }
+      100% { clip-path: inset(0 0 0%  0 round 10px); transform: scaleY(1);    opacity: 1; }
+    }
+    .card.expanded .split-left::after,
+    .card.expanded .split-right::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 60px;
+      background: linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.45) 100%);
+      pointer-events: none;
+      z-index: 20;
+      opacity: 1;
+      transition: opacity 0.3s ease;
+    }
+    .card.expanded .split-left.panel-flap::after,
+    .card.expanded .split-right.panel-flap::after {
+      animation: fadeOutGradient 0.3s ease 0.4s forwards;
+    }
+    @keyframes fadeOutGradient {
+      0%   { opacity: 1; }
+      100% { opacity: 0; }
+    }
+    .card.expanded .split-left { perspective: none; }
+    .card.expanded .split-left .chart-container {
+      flex: 1; height: auto !important; max-height: none !important;
+      margin: 12px; border-radius: 6px; overflow: hidden;
+      border: 1px solid rgba(217,205,184,0.25); background: #000;
+      box-shadow: inset 0 2px 8px rgba(0,0,0,0.6);
+      opacity: 1;
+      clip-path: inset(0 0 100% 0 round 6px);
+      transition: clip-path 0.5s cubic-bezier(0.77,0,0.175,1) 0.1s;
+    }
+    .card.expanded .split-left .chart-container.show-chart {
+      clip-path: inset(0 0 0% 0 round 6px);
+    }
+    .card.expanded .split-right .card-header {
+      order: unset; flex: none;
+      display: flex; justify-content: space-between; align-items: flex-start;
+      padding: 14px 16px;
+      border-bottom: 1px solid rgba(217,205,184,0.2);
+    }
+    .card.expanded .card-sym { font-size: 20px; font-weight: 700; color: var(--digit); letter-spacing: 1px; }
+    .card.expanded .card-name { font-size: 10px; color: #aab09a; margin-top: 2px; }
   }
-
-  .card.expanded .split-left,
-  .card.expanded .split-right {
-    background: linear-gradient(180deg, var(--window) 0%, var(--window-edge) 100%);
-    border: 2px solid var(--card-frame);
-    border-radius: 10px;
-    box-shadow: 0 6px 0 rgba(0,0,0,0.5), 0 12px 24px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.06);
-    overflow: hidden;
-    position: relative;
-    height: 460px;
-  }
-  .card.expanded .split-left  { display: flex; flex-direction: column; }
-  .card.expanded .split-right { display: flex; flex-direction: column; }
-
-  .card.expanded .split-left,
-  .card.expanded .split-right {
-    clip-path: inset(0 0 99% 0 round 10px);
-    transform: scaleY(0.04);
-    transform-origin: top center;
-    opacity: 0;
-  }
-  .card.expanded .split-left.panel-flap,
-  .card.expanded .split-right.panel-flap {
-    animation: unrollDown 0.52s cubic-bezier(0.77,0,0.175,1) forwards;
-  }
-  @keyframes unrollDown {
-    0%   { clip-path: inset(0 0 99% 0 round 10px); transform: scaleY(0.04); opacity: 0; }
-    100% { clip-path: inset(0 0 0%  0 round 10px); transform: scaleY(1);    opacity: 1; }
-  }
-  /* 展開過程底部漸層邊 */
-  .card.expanded .split-left::after,
-  .card.expanded .split-right::after {
-    content: '';
-    position: absolute;
-    bottom: 0; left: 0; right: 0;
-    height: 60px;
-    background: linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.45) 100%);
-    pointer-events: none;
-    z-index: 20;
-    opacity: 1;
-    transition: opacity 0.3s ease;
-  }
-  .card.expanded .split-left.panel-flap::after,
-  .card.expanded .split-right.panel-flap::after {
-    animation: fadeOutGradient 0.3s ease 0.4s forwards;
-  }
-  @keyframes fadeOutGradient {
-    0%   { opacity: 1; }
-    100% { opacity: 0; }
-  }
-
-  .card.expanded .split-left { perspective: none; }
-  .card.expanded .split-left .chart-container {
-    flex: 1; height: auto !important; max-height: none !important;
-    margin: 12px; border-radius: 6px; overflow: hidden;
-    border: 1px solid rgba(217,205,184,0.25); background: #000;
-    box-shadow: inset 0 2px 8px rgba(0,0,0,0.6);
-    opacity: 1;
-    clip-path: inset(0 0 100% 0 round 6px);
-    transition: clip-path 0.5s cubic-bezier(0.77,0,0.175,1) 0.1s;
-  }
-  .card.expanded .split-left .chart-container.show-chart {
-    clip-path: inset(0 0 0% 0 round 6px);
-  }
-
-  .card.expanded .split-right .card-header {
-    order: unset; flex: none;
-    display: flex; justify-content: space-between; align-items: flex-start;
-    padding: 14px 16px;
-    border-bottom: 1px solid rgba(217,205,184,0.2);
-  }
-  .card.expanded .card-sym { font-size: 20px; font-weight: 700; color: var(--digit); letter-spacing: 1px; }
-  .card.expanded .card-name { font-size: 10px; color: #aab09a; margin-top: 2px; }
 
   .sf-wrap { position: relative; clip-path: inset(0 0 100% 0); }
   .sf-wrap.reveal-full { animation: sfRevealFull 0.44s cubic-bezier(0.77,0,0.175,1) forwards; }
@@ -584,6 +445,118 @@
   .news-item:hover { background: rgba(255,255,255,0.07); }
   .news-headline { font-size: 12px; color: var(--text); line-height: 1.5; }
   .news-source { font-size: 10px; color: var(--muted); margin-top: 4px; }
+  /* ── X 按鈕：簡潔 UI 風格，只在手機顯示 ── */
+  .exp-close-btn {
+    display: none;
+    position: fixed;
+    top: 16px; right: 16px;
+    width: 36px; height: 36px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.12);
+    border: none;
+    color: #ffffff;
+    font-size: 18px;
+    line-height: 36px;
+    text-align: center;
+    cursor: pointer;
+    z-index: 1200;
+    -webkit-tap-highlight-color: transparent;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+  }
+  .exp-close-btn:active { background: rgba(255,255,255,0.25); }
+
+  /* ── TradingView 圖示按鈕，只在手機展開時顯示 ── */
+  .mobile-tv-btn {
+    display: none;
+    margin: 10px 12px 16px;
+    padding: 14px 16px;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(217,205,184,0.2);
+    border-radius: 10px;
+    color: #c8a96e;
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.5px;
+    text-decoration: none;
+    text-align: center;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+  }
+  .mobile-tv-btn:active { background: rgba(255,255,255,0.1); }
+
+  @media(max-width: 720px) {
+    body { min-width: unset; }
+    .exp-close-btn { display: block; }
+    .mobile-tv-btn { display: flex; }
+
+    /* 點擊反饋 */
+    .card:not(.expanded):active {
+      border-color: #c8a96e;
+      filter: brightness(1.12);
+      box-shadow:
+        0 6px 0 rgba(0,0,0,0.5), 0 10px 22px rgba(0,0,0,0.45),
+        inset 0 2px 6px rgba(0,0,0,0.3),
+        inset 0 0 40px rgba(240,180,60,0.18),
+        0 0 0 1px rgba(200,169,110,0.4),
+        0 0 28px rgba(200,140,60,0.25);
+    }
+    /* hover 手機上取消 */
+    .card:not(.expanded):hover { filter: none; box-shadow: none; border-color: var(--card-frame); }
+
+    /* 外層卡片微調 */
+    .pf-stack { width: min(210px, 78%); }
+    .card { padding: 14px; }
+    .grid { gap: 10px; margin: 10px; }
+
+    /* ── 手機版展開：全螢幕，完全獨立於桌機版 ── */
+    .card.expanded {
+      top: 0; left: 0;
+      width: 100vw;
+      height: 100vh;
+      max-height: 100vh;
+      transform: none;
+      background: var(--bg);
+      border-radius: 0;
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
+      animation: none;
+      display: flex;
+      flex-direction: column;
+      padding: 0;
+    }
+    .card.expanded .card-body-split {
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+    .card.expanded .split-right {
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+    .card.expanded .card-sym { font-size: 20px; }
+    .card.expanded .card-name { font-size: 10px; }
+    .card.expanded .card-header { padding: 14px 16px; }
+    .card.expanded .expanded-price-stage { padding: 16px 14px 12px; margin: 10px 12px 0; }
+    .card.expanded .expanded-phase-label { font-size: 9px; }
+    .card.expanded .exp-pf-stack { width: min(260px, 85%); height: 56px; }
+    .card.expanded .exp-pf-stack .pf-top-static,
+    .card.expanded .exp-pf-stack .pf-bot-static,
+    .card.expanded .exp-pf-stack .pf-front,
+    .card.expanded .exp-pf-stack .pf-back { height: 28px; }
+    .card.expanded .exp-pf-stack .pf-top-static span,
+    .card.expanded .exp-pf-stack .pf-bot-static span,
+    .card.expanded .exp-pf-stack .pf-front span,
+    .card.expanded .exp-pf-stack .pf-back span { font-size: 44px; line-height: 56px; height: 56px; }
+    .card.expanded .expanded-main-change { font-size: 13px; margin-top: 8px; }
+    .card.expanded .expanded-ref-row { font-size: 11px; margin-top: 8px; }
+    .card.expanded .expanded-news-wrap { margin: 10px 12px 0; }
+  }
+
   .footer { text-align: center; margin-top: 24px; font-size: 10px; color: var(--muted); letter-spacing: 1px; }
 </style>
 </head>
@@ -926,7 +899,7 @@ function toggleCard(sym, ex) {
     const newsHtml = newsList ? newsList.innerHTML : '';
 
     if (isMobile) {
-      // ── 手機版展開：無 TradingView，加 TV 圖示按鈕 ──
+      // ── 手機版展開：無 TradingView，加 TV 連結 ──
       splitRight.innerHTML = `
         <div class="sf-wrap" id="exp-secHeader-${sym}">
           <div class="card-header">
@@ -961,12 +934,10 @@ function toggleCard(sym, ex) {
               : '<div style="font-size:11px;color:#7a7468;">暫無相關新聞</div>'}
           </div>
           <a class="mobile-tv-btn" href="https://www.tradingview.com/chart/?symbol=${ex}:${sym}" target="_blank" rel="noopener noreferrer">
-            在 TradingView 查看圖表
+            📈 在 TradingView 查看圖表
           </a>
         </div>
       `;
-
-      // 手機版動畫：只有 splitRight
       pendingAnimTimers.push(setTimeout(() => splitRight.classList.add('panel-flap'), 60));
       pendingAnimTimers.push(setTimeout(() => {
         const sh = document.getElementById(`exp-secHeader-${sym}`);
@@ -1021,7 +992,6 @@ function toggleCard(sym, ex) {
           </div>
         </div>
       `;
-
       const chartEl = document.getElementById(`chart-${sym}`);
       pendingAnimTimers.push(setTimeout(() => {
         chartEl.src = `https://www.tradingview.com/widgetembed/?symbol=${ex}:${sym}&interval=D&hidesidetoolbar=1&theme=dark&style=1&timezone=Asia/Taipei&locale=zh_TW`;
