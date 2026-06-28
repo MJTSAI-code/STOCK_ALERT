@@ -116,9 +116,33 @@
     perspective: 1200px;
   }
   @media(max-width: 720px) {
-    /* 展開卡 */
-    .card.expanded { width: calc(100vw - 16px); }
-    .card.expanded .card-body-split { grid-template-columns: 1fr; }
+    /* 展開卡全寬、高度 90vh */
+    .card.expanded {
+      width: calc(100vw - 16px);
+      max-height: 90vh;
+      overflow: hidden;
+    }
+
+    /* 上下排列 */
+    .card.expanded .card-body-split {
+      grid-template-columns: 1fr;
+      grid-template-rows: 45vh 45vh;
+      height: 90vh;
+    }
+
+    /* 上半：TradingView */
+    .card.expanded .split-left {
+      height: 45vh;
+      overflow: hidden;
+    }
+
+    /* 下半：股價+新聞，可上下滑 */
+    .card.expanded .split-right {
+      height: 45vh;
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
+      padding-bottom: 16px;
+    }
 
     /* 點擊反饋取代藍色反白 */
     .card:not(.expanded):active {
@@ -139,10 +163,14 @@
     .exp-pf-stack .pf-front span,
     .exp-pf-stack .pf-back span { font-size: 36px; }
 
-    /* 展開卡高度適應手機螢幕 */
-    .card.expanded { max-height: min(90vh, 680px); }
-    .card.expanded .split-left,
-    .card.expanded .split-right { height: 240px; }
+    /* 字體放大 */
+    .card-sym { font-size: 22px; }
+    .card-name { font-size: 11px; }
+    .card { padding: 14px; }
+
+    /* grid 間距縮小 */
+    .grid { gap: 10px; margin: 10px; }
+  }
 
     /* 字體放大，觸控目標加大 */
     .card-sym { font-size: 22px; }
@@ -226,8 +254,48 @@
     padding: 14px 16px;
     border-bottom: 1px solid rgba(217,205,184,0.2);
   }
-  .card.expanded .card-sym { font-size: 20px; font-weight: 700; color: var(--digit); letter-spacing: 1px; }
-  .card.expanded .card-name { font-size: 10px; color: #aab09a; margin-top: 2px; }
+  .exp-close-btn {
+    display: none;
+    position: absolute;
+    top: 10px; right: 10px;
+    width: 36px; height: 36px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 35% 35%, #3a3020, #1a1510);
+    border: 2px solid #6a5a3a;
+    box-shadow:
+      0 2px 6px rgba(0,0,0,0.6),
+      inset 0 1px 3px rgba(0,0,0,0.8),
+      inset 0 -1px 2px rgba(200,160,80,0.15),
+      0 0 0 1px rgba(100,80,40,0.4);
+    color: #c8a96e;
+    font-size: 13px;
+    font-family: 'DM Mono', monospace;
+    font-weight: 500;
+    line-height: 34px;
+    text-align: center;
+    cursor: pointer;
+    z-index: 10;
+    -webkit-tap-highlight-color: transparent;
+    letter-spacing: 0;
+  }
+  .exp-close-btn::before {
+    content: '';
+    position: absolute;
+    top: 3px; left: 3px; right: 3px; bottom: 3px;
+    border-radius: 50%;
+    border: 1px solid rgba(200,160,80,0.2);
+  }
+  .exp-close-btn:active {
+    background: radial-gradient(circle at 35% 35%, #4a4030, #2a2018);
+    box-shadow:
+      0 1px 3px rgba(0,0,0,0.6),
+      inset 0 2px 4px rgba(0,0,0,0.9),
+      0 0 0 1px rgba(100,80,40,0.4);
+    color: #e8c97e;
+  }
+  @media(max-width: 720px) {
+    .exp-close-btn { display: block; }
+  }
 
   .sf-wrap { position: relative; clip-path: inset(0 0 100% 0); }
   .sf-wrap.reveal-full { animation: sfRevealFull 0.44s cubic-bezier(0.77,0,0.175,1) forwards; }
@@ -825,6 +893,7 @@ function toggleCard(sym, ex) {
           </div>
           ${badgeHtml}
         </div>
+        <button class="exp-close-btn" onclick="toggleCard('${sym}','${ex}')">✕</button>
       </div>
       <div class="sf-wrap" id="exp-secPrice-${sym}">
         <div class="expanded-price-stage ${lightClass}">
