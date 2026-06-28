@@ -675,23 +675,13 @@ function collapseCard(sym) {
       `;
       newCard.onclick = () => toggleCard(sym, stock?.ex || '');
       newCard.style.opacity = '0';
-      newCard.style.transition = 'opacity 0.35s ease';
-      // 新卡片插在 ghost 前面，疊在機芯上面
-      ghost.parentNode.insertBefore(newCard, ghost);
-      // grid 定位需要 ghost 的位置，先保留
-      ghost.style.position = 'absolute';
-      ghost.style.pointerEvents = 'none';
-      ghost.style.zIndex = '0';
-      newCard.style.zIndex = '1';
+      ghost.parentNode.replaceChild(newCard, ghost);
       requestAnimationFrame(() => {
-        newCard.style.opacity = '1';
+        requestAnimationFrame(() => {
+          newCard.style.transition = 'opacity 0.35s ease';
+          newCard.style.opacity = '1';
+        });
       });
-      // 淡入完成後才移除 ghost
-      pendingAnimTimers.push(setTimeout(() => {
-        ghost.remove();
-        newCard.style.zIndex = '';
-        newCard.style.transition = '';
-      }, 400));
       fixLastRowLayout();
       if (window._lastStockData?.[sym]?.news) renderNews(sym, window._lastStockData[sym].news);
       pendingAnimTimers.push(setTimeout(() => newCard.classList.remove('recently-viewed'), 3000));
