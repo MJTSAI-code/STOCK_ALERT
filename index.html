@@ -864,16 +864,6 @@ function toggleCard(sym, ex) {
 
     card.classList.add('expanded');
     card.onclick = null;
-    const isMobile = window.innerWidth <= 720;
-    if (isMobile) {
-      card.classList.add('expanded-mobile');
-      splitLeft.style.display = 'none';
-      const closeBtn = document.createElement('button');
-      closeBtn.className = 'exp-close-btn';
-      closeBtn.textContent = '✕';
-      closeBtn.onclick = (e) => { e.stopPropagation(); toggleCard(sym, ex); };
-      card.appendChild(closeBtn);
-    }
     cardState = 'opening';
     document.getElementById('grid').style.pointerEvents = 'none';
 
@@ -887,6 +877,17 @@ function toggleCard(sym, ex) {
 
     const splitLeft  = card.querySelector('.split-left');
     const splitRight = card.querySelector('.split-right');
+
+    const isMobile = window.innerWidth <= 720;
+    if (isMobile) {
+      card.classList.add('expanded-mobile');
+      splitLeft.style.display = 'none';
+      const closeBtn = document.createElement('button');
+      closeBtn.className = 'exp-close-btn';
+      closeBtn.textContent = '✕';
+      closeBtn.onclick = (e) => { e.stopPropagation(); toggleCard(sym, ex); };
+      card.appendChild(closeBtn);
+    }
 
     splitRight.dataset.originalHtml = splitRight.innerHTML;
     splitRight.dataset.expanded = '1';
