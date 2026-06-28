@@ -196,7 +196,6 @@
 
     /* 手機版展開卡 — 完全用 expanded-mobile 控制，不影響桌機 */
     .card.expanded-mobile {
-      /* 完全覆蓋桌機版展開設定 */
       position: fixed;
       top: 0; left: 0;
       width: 100vw;
@@ -207,17 +206,23 @@
       border: none;
       box-shadow: none;
       padding: 0;
-      overflow-y: auto;
-      -webkit-overflow-scrolling: touch;
+      overflow: hidden;
       animation: none;
       border-radius: 0;
+      display: flex;
+      flex-direction: column;
+    }
+    .card.expanded-mobile .card-body-split {
+      display: flex !important;
+      flex-direction: column;
+      flex: 1;
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
     }
     .card.expanded-mobile .split-right {
       display: flex;
       flex-direction: column;
-      border-radius: 10px;
-      overflow: visible;
-      height: auto;
+      padding-bottom: 20px;
     }
     /* 展開後字體 */
     .card.expanded-mobile .card-sym { font-size: 20px; }
