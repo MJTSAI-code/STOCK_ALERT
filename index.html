@@ -489,6 +489,11 @@
     /* 外層卡片微調 */
     .pf-stack { width: min(210px, 80%); }
 
+    /* 手機版：凹痕保留但縮小，不蓋過光暈 */
+    .price-section {
+      box-shadow: inset 0 1px 4px rgba(0,0,0,0.25), inset 0 0 30px rgba(240,180,90,0.12);
+    }
+
     /* 手機版底卡光暈：移除頂部黑色陰影，避免不同瀏覽器渲染差異 */
     .price-section.light-up {
       box-shadow:
