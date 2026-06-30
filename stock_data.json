@@ -1,24 +1,24 @@
 {
   "name": "美股盤前情報資料庫",
-  "updated_at": "2026-07-01T06:43:14.880942+08:00",
+  "updated_at": "2026-07-01T06:50:17.538488+08:00",
   "data": {
     "NOW": {
       "quote": {
-        "c": 99.42,
-        "d": 0.14,
-        "dp": 0.141,
+        "c": 99.4,
+        "d": 0.12,
+        "dp": 0.1209,
         "regular": 99.28,
         "reg_d": -0.69,
         "reg_dp": -0.6902,
         "pre": null,
-        "post": 99.42,
+        "post": 99.4,
         "prev_close": 99.97,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Is The Market Ignoring The Real Growth Story In Salesforce Stock?",
-          "datetime": 1782852398,
+          "datetime": 1782859817,
           "source": "Yahoo Finance",
           "url": "https://www.trefis.com/articles/605160/is-the-market-ignoring-the-real-growth-story-in-salesforce-stock/2026-06-30"
         }
@@ -26,21 +26,21 @@
     },
     "NVDA": {
       "quote": {
-        "c": 199.53,
-        "d": -0.56,
-        "dp": -0.2799,
+        "c": 199.27,
+        "d": -0.82,
+        "dp": -0.4098,
         "regular": 200.09,
         "reg_d": 5.12,
         "reg_dp": 2.626,
         "pre": null,
-        "post": 199.53,
+        "post": 199.27,
         "prev_close": 194.97,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Nvidia stock is sagging. Here's what's behind the negative short-term trend.",
-          "datetime": 1782852398,
+          "datetime": 1782859817,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/markets/stocks/article/nvidia-stock-is-sagging-heres-whats-behind-the-negative-short-term-trend-120447121.html"
         }
@@ -48,21 +48,21 @@
     },
     "LITE": {
       "quote": {
-        "c": 856.01,
-        "d": -2.05,
-        "dp": -0.2389,
+        "c": 855.51,
+        "d": -2.55,
+        "dp": -0.2972,
         "regular": 858.06,
         "reg_d": 6.66,
         "reg_dp": 0.7822,
         "pre": null,
-        "post": 856.01,
+        "post": 855.51,
         "prev_close": 851.4,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "These 7 Stocks Will Solve AI’s Most Important Bottleneck",
-          "datetime": 1782852398,
+          "datetime": 1782859817,
           "source": "Yahoo Finance",
           "url": "https://247wallst.com/investing/2026/06/29/these-7-stocks-will-solve-ais-most-important-bottleneck/"
         }
@@ -70,21 +70,21 @@
     },
     "ONDS": {
       "quote": {
-        "c": 8.26,
-        "d": 0.02,
-        "dp": 0.2427,
+        "c": 8.27,
+        "d": 0.03,
+        "dp": 0.3483,
         "regular": 8.24,
         "reg_d": 0.22,
         "reg_dp": 2.7431,
         "pre": null,
-        "post": 8.26,
+        "post": 8.27,
         "prev_close": 8.02,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Ondas Inc. (ONDS) Receives More Than $40 million in New Orders for Autonomous Defense Systems",
-          "datetime": 1782852398,
+          "datetime": 1782859817,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/markets/stocks/articles/ondas-inc-onds-receives-more-163455163.html"
         }
@@ -92,43 +92,43 @@
     },
     "MRVL": {
       "quote": {
-        "c": 296.62,
-        "d": -1.27,
-        "dp": -0.4263,
+        "c": 296.34,
+        "d": -1.55,
+        "dp": -0.5203,
         "regular": 297.89,
         "reg_d": 20.14,
         "reg_dp": 7.2511,
         "pre": null,
-        "post": 296.62,
+        "post": 296.34,
         "prev_close": 277.75,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Marvell Just Ripped 45% in a Month. Is It Time to Take Profits?",
-          "datetime": 1782852398,
+          "headline": "Dow Jones Futures: Market Extends Rebound, Bloom Energy Soars Late. SpaceX's First Entry?",
+          "datetime": 1782859817,
           "source": "Yahoo Finance",
-          "url": "https://247wallst.com/investing/2026/06/30/marvell-just-ripped-45-in-a-month-is-it-time-to-take-profits/"
+          "url": "https://www.investors.com/market-trend/stock-market-today/dow-jones-futures-market-rebound-bloom-energy-spacex-buy-point/?src=A00220&yptr=yahoo"
         }
       ]
     },
     "GOOG": {
       "quote": {
-        "c": 353.33,
-        "d": 0.0,
-        "dp": 0.0,
+        "c": 353.7,
+        "d": 0.37,
+        "dp": 0.1047,
         "regular": 353.33,
         "reg_d": 2.05,
         "reg_dp": 0.5836,
         "pre": null,
-        "post": 353.33,
+        "post": 353.7,
         "prev_close": 351.28,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Tech stocks today: Tech stocks recover as second quarter comes to a close",
-          "datetime": 1782852398,
+          "datetime": 1782859817,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/technology/live/tech-stocks-today-tech-stocks-recover-as-second-quarter-comes-to-a-close-151053436.html"
         }
@@ -136,65 +136,65 @@
     },
     "SPCX": {
       "quote": {
-        "c": 171.65,
-        "d": 0.79,
-        "dp": 0.4624,
+        "c": 171.88,
+        "d": 1.02,
+        "dp": 0.5968,
         "regular": 170.86,
         "reg_d": 6.67,
         "reg_dp": 4.0624,
         "pre": null,
-        "post": 171.65,
+        "post": 171.88,
         "prev_close": 164.19,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Stock Market Today: Dow Closes At A Record High; SpaceX Extends Win Streak (Live Coverage)",
-          "datetime": 1782852398,
+          "headline": "Dow Jones Futures: Market Extends Rebound, Bloom Energy Soars Late. SpaceX's First Entry?",
+          "datetime": 1782859817,
           "source": "Yahoo Finance",
-          "url": "https://www.investors.com/market-trend/stock-market-today/stock-market-today-economic-data-aerovironment-avav/?src=A00220&yptr=yahoo"
+          "url": "https://www.investors.com/market-trend/stock-market-today/dow-jones-futures-market-rebound-bloom-energy-spacex-buy-point/?src=A00220&yptr=yahoo"
         }
       ]
     },
     "TSM": {
       "quote": {
-        "c": 475.75,
-        "d": -1.82,
-        "dp": -0.3811,
+        "c": 475.6,
+        "d": -1.97,
+        "dp": -0.4125,
         "regular": 477.57,
         "reg_d": 22.47,
         "reg_dp": 4.9374,
         "pre": null,
-        "post": 475.75,
+        "post": 475.6,
         "prev_close": 455.1,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Etched Raises $800 Million as AI Chip Race Intensifies",
-          "datetime": 1782852398,
+          "headline": "Mizuho lifts TSMC CoWoS capacity forecasts as server CPU demand surges",
+          "datetime": 1782859817,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/technology/ai/articles/etched-raises-800-million-ai-202858979.html"
+          "url": "https://finance.yahoo.com/technology/articles/mizuho-lifts-tsmc-cowos-capacity-224423833.html"
         }
       ]
     },
     "MU": {
       "quote": {
-        "c": 1152.8,
-        "d": -1.49,
-        "dp": -0.1291,
+        "c": 1153.31,
+        "d": -0.98,
+        "dp": -0.0849,
         "regular": 1154.29,
         "reg_d": 9.01,
         "reg_dp": 0.7867,
         "pre": null,
-        "post": 1152.8,
+        "post": 1153.31,
         "prev_close": 1145.28,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Were the Mag 7 more like the Lag 7 in Q2 2026?",
-          "datetime": 1782852398,
+          "datetime": 1782859817,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/video/were-the-mag-7-more-like-the-lag-7-in-q2-2026-140012890.html"
         }
@@ -202,43 +202,43 @@
     },
     "SNDK": {
       "quote": {
-        "c": 2238.0,
-        "d": -35.73,
-        "dp": -1.5714,
+        "c": 2240.0,
+        "d": -33.73,
+        "dp": -1.4835,
         "regular": 2273.73,
         "reg_d": 223.34,
         "reg_dp": 10.8926,
         "pre": null,
-        "post": 2238.0,
+        "post": 2240.0,
         "prev_close": 2050.39,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Stock Market Today: Dow Closes At A Record High; SpaceX Extends Win Streak (Live Coverage)",
-          "datetime": 1782852398,
+          "headline": "Update: S&P 500, Nasdaq Composite Close Strongest Quarter in Six Years Amid Gains in Technology, Decline in Crude Oil",
+          "datetime": 1782859817,
           "source": "Yahoo Finance",
-          "url": "https://www.investors.com/market-trend/stock-market-today/stock-market-today-economic-data-aerovironment-avav/?src=A00220&yptr=yahoo"
+          "url": "https://finance.yahoo.com/markets/stocks/articles/p-500-nasdaq-composite-close-205610906.html"
         }
       ]
     },
     "TSLA": {
       "quote": {
-        "c": 416.58,
-        "d": -4.02,
-        "dp": -0.9557,
+        "c": 416.46,
+        "d": -4.14,
+        "dp": -0.9832,
         "regular": 420.6,
         "reg_d": 8.76,
         "reg_dp": 2.127,
         "pre": null,
-        "post": 416.58,
+        "post": 416.46,
         "prev_close": 411.84,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Tesla Q2 delivery preview: Europe, international sales the driver as US sales in decline",
-          "datetime": 1782852398,
+          "datetime": 1782859817,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/markets/stocks/article/tesla-q2-delivery-preview-europe-international-sales-the-driver-as-us-sales-in-decline-152919456.html"
         }
