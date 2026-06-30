@@ -33,7 +33,6 @@ def get_market_phase(tw_hour, tw_minute, pre_price, post_price):
 
     # 正式盤時段：台灣 21:30 ~ 03:59（隔天）
     regular_start = 21 * 60 + 30  # 21:30
-    # 跨午夜處理：03:59 = 239 分鐘
 
     # 盤後時段：台灣 04:00 ~ 04:59
     post_start = 4 * 60   # 04:00
@@ -118,11 +117,12 @@ def fetch_stock_data():
             else:
                 current_price = regular_price
 
-            # 漲跌：現價 vs 收盤
-            dollar_change  = current_price - regular_price
-            percent_change = (dollar_change / regular_price * 100) if regular_price != 0 else 0
+            # 漲跌：現價 vs 前一日收盤（不分盤前/盤後/正式盤，邏輯統一）
+            # 修正：原本「正式盤時 current_price == regular_price」導致 d/dp 永遠是 0
+            dollar_change  = current_price - prev_close
+            percent_change = (dollar_change / prev_close * 100) if prev_close != 0 else 0
 
-            # 收盤 vs 前收漲跌
+            # 收盤 vs 前收漲跌（維持原邏輯，盤前/盤後時顯示「昨日正式盤」的漲跌參考）
             reg_change     = regular_price - prev_close
             reg_pct_change = (reg_change / prev_close * 100) if prev_close != 0 else 0
 
