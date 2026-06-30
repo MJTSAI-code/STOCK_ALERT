@@ -19,35 +19,21 @@ def load_existing_news():
     return existing_news
 
 def get_market_phase(tw_hour, tw_minute, pre_price, post_price):
-    """
-    根據台灣時間判斷市場階段：
-    盤前：台灣時間 05:00 ~ 21:30（美東 16:00 前）
-    正式盤：台灣時間 21:30 ~ 04:00
-    盤後：台灣時間 04:00 ~ 05:00，以及正式盤結束後
-    """
     total_minutes = tw_hour * 60 + tw_minute
-
-    # 盤前時段：台灣 05:00 ~ 21:29
-    pre_market_start  = 5 * 60        # 05:00
-    pre_market_end    = 21 * 60 + 29  # 21:29
-
-    # 正式盤時段：台灣 21:30 ~ 03:59（隔天）
-    regular_start = 21 * 60 + 30  # 21:30
-
-    # 盤後時段：台灣 04:00 ~ 04:59
-    post_start = 4 * 60   # 04:00
-    post_end   = 4 * 60 + 59  # 04:59
+    pre_market_start  = 5 * 60
+    pre_market_end    = 21 * 60 + 29
+    regular_start = 21 * 60 + 30
+    post_start = 4 * 60
+    post_end   = 4 * 60 + 59
 
     if pre_price is not None:
         return "盤前"
     if post_price is not None:
         return "盤後"
 
-    # yfinance 沒有回傳盤前/盤後價，用時間判斷
     if pre_market_start <= total_minutes <= pre_market_end:
         return "盤前"
     elif total_minutes >= regular_start or total_minutes <= post_end - 60:
-        # 21:30以後 或 凌晨04:00以前 = 正式盤或盤後
         if total_minutes >= regular_start:
             return "正式盤"
         else:
@@ -107,7 +93,6 @@ def fetch_stock_data():
             except Exception as info_err:
                 print(f"  ⚠️ {sym} info 接口受限: {info_err}")
 
-            # 決定市場階段（時間 + yfinance 雙重判斷）
             phase = get_market_phase(tw_hour, tw_minute, pre_price, post_price)
 
             if phase == "盤前" and pre_price is not None:
@@ -117,12 +102,19 @@ def fetch_stock_data():
             else:
                 current_price = regular_price
 
-            # 漲跌：現價 vs 前一日收盤（不分盤前/盤後/正式盤，邏輯統一）
-            # 修正：原本「正式盤時 current_price == regular_price」導致 d/dp 永遠是 0
-            dollar_change  = current_price - prev_close
-            percent_change = (dollar_change / prev_close * 100) if prev_close != 0 else 0
+            # ── 漲跌幅計算（按時段區分基準價）──
+            # 盤前：現價 vs 昨日收盤
+            # 正式盤：現價 vs 昨日收盤
+            # 盤後：現價 vs 今日正式盤收盤（不是昨日收盤！）
+            if phase == "盤後":
+                base_price = regular_price   # 今日正式盤收盤
+            else:
+                base_price = prev_close      # 昨日收盤
 
-            # 收盤 vs 前收漲跌（維持原邏輯，盤前/盤後時顯示「昨日正式盤」的漲跌參考）
+            dollar_change  = current_price - base_price
+            percent_change = (dollar_change / base_price * 100) if base_price != 0 else 0
+
+            # 收盤 vs 前收漲跌（固定用昨日收盤為基準）
             reg_change     = regular_price - prev_close
             reg_pct_change = (reg_change / prev_close * 100) if prev_close != 0 else 0
 
@@ -182,7 +174,7 @@ def fetch_stock_data():
                 "news": news_list
             }
 
-            print(f"  ✅ {sym} [{phase}] 現價${current_price:.2f} 收盤${regular_price:.2f} 前收${prev_close:.2f} ({reg_change:+.2f} / {reg_pct_change:+.2f}%)")
+            print(f"  ✅ {sym} [{phase}] 現價${current_price:.2f} 基準${base_price:.2f} 漲跌{dollar_change:+.2f} ({percent_change:+.2f}%)")
 
         except Exception as e:
             print(f"  ❌ {sym} 嚴重抓取失敗: {e}")
