@@ -446,27 +446,6 @@
   .news-item:hover { background: rgba(255,255,255,0.07); }
   .news-headline { font-size: 12px; color: var(--text); line-height: 1.5; }
   .news-source { font-size: 10px; color: var(--muted); margin-top: 4px; }
-  /* ── X 按鈕：簡潔 UI 風格，只在手機顯示 ── */
-  .exp-close-btn {
-    display: none;
-    position: fixed;
-    top: 16px; right: 16px;
-    width: 36px; height: 36px;
-    border-radius: 50%;
-    background: rgba(255,255,255,0.12);
-    border: none;
-    color: #ffffff;
-    font-size: 18px;
-    line-height: 36px;
-    text-align: center;
-    cursor: pointer;
-    z-index: 1200;
-    -webkit-tap-highlight-color: transparent;
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-  }
-  .exp-close-btn:active { background: rgba(255,255,255,0.25); }
-
   /* ── TradingView 圖示按鈕，只在手機展開時顯示 ── */
   .mobile-tv-btn {
     display: none;
@@ -491,7 +470,6 @@
 
   @media(max-width: 720px) {
     body { min-width: unset; }
-    .exp-close-btn { display: block; }
     .mobile-tv-btn { display: flex; }
 
     /* 點擊反饋 */
@@ -509,11 +487,9 @@
     .card:not(.expanded):hover { filter: none; box-shadow: none; border-color: var(--card-frame); }
 
     /* 外層卡片微調 */
-    .pf-stack { width: 210px; }
+    .pf-stack { width: min(210px, 80%); }
     .card { padding: 14px; }
     .grid { gap: 10px; margin: 10px; }
-
-
 
     /* ── 手機版展開：全螢幕，完全獨立於桌機版 ── */
     .card.expanded {
@@ -560,16 +536,8 @@
     .card.expanded .expanded-news-wrap { margin: 10px 12px 0; }
     /* 底部留空，避免被 close-bar 蓋住 */
     .card.expanded .card-body-split { padding-bottom: 72px; }
-  }
-
-  .footer { text-align: center; margin-top: 24px; font-size: 10px; color: var(--muted); letter-spacing: 1px; }
-
-  /* ── 底部關閉列：復古機械風格 ── */
-  .mobile-close-bar {
-    display: none;
-  }
-  @media(max-width: 720px) {
-    .mobile-close-bar {
+  
+.mobile-close-bar {
       display: flex;
       position: fixed;
       bottom: 0; left: 0; right: 0;
@@ -622,6 +590,14 @@
     .mobile-close-bar .cb-line.right {
       background: linear-gradient(90deg, #6a5a3a, transparent);
     }
+  }
+}
+
+  .footer { text-align: center; margin-top: 24px; font-size: 10px; color: var(--muted); letter-spacing: 1px; }
+
+  /* ── 底部關閉列：復古機械風格 ── */
+  .mobile-close-bar {
+    display: none;
   }
 </style>
 </head>
@@ -1086,8 +1062,6 @@ function toggleCard(sym, ex) {
         if (sn) sn.classList.add('reveal-full');
       }, 660));
     }
-
-
 
   } else {
     collapseCard(sym);
