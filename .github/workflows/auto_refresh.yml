@@ -1,16 +1,13 @@
 name: 美股數據更新與情報推送
 on:
   schedule:
-    - cron: '40 21 * * 0-4'   # 台灣週一到週五 05:40（UTC 週日到週四 21:40）
-    - cron: '40 9  * * 1-5'   # 台灣週一到週五 17:40（UTC 10:40）- 早到確保18:00前執行
-    - cron: '40 21 * * 5'     # 台灣週六 05:40（UTC 週五 21:40）
-    - cron: '*/1 13-21 * * 1-5'   # 盤中每分鐘更新
-    - cron: '*/30 * * * 1-5'      # 每30分鐘靜默更新
+    - cron: '30 21 * * 0-4'
+    - cron: '30 9 * * 1-5'
+    - cron: '*/1 13-21 * * 1-5'
+    - cron: '*/30 * * * 1-5'
   workflow_dispatch:
-
 permissions:
   contents: write
-
 jobs:
   update-and-push:
     runs-on: ubuntu-latest
@@ -29,75 +26,62 @@ jobs:
             echo "✅ 平日，繼續執行"
             echo "is_weekday=true" >> $GITHUB_ENV
           elif [ "$UTC_DOW" -ge 1 ] && [ "$UTC_DOW" -le 5 ]; then
-            echo "✅ 台灣週六但UTC仍平日，放行"
+            echo "✅ 台灣週六但UTC仍平日（週五盤前05:30），放行"
             echo "is_weekday=true" >> $GITHUB_ENV
           else
             echo "🛌 週末，完全跳過"
             echo "is_weekday=false" >> $GITHUB_ENV
           fi
-
       - name: 複製專案代碼
         if: env.is_weekday == 'true'
         uses: actions/checkout@v4
+
+      - name: 檢查是否為推播時段（依觸發來源判斷，避免每分鐘更新洗版）
+        if: env.is_weekday == 'true'
+        id: check_time
+        run: |
+          export TZ="Asia/Taipei"
+          TW_HOUR=$(date +%k | tr -d ' ')
+          echo "台灣時間: ${TW_HOUR} 點，觸發來源: ${{ github.event.schedule }}"
+
+          # 只有「早上整點排程」或「晚上整點排程」或手動觸發才推播
+          # 「每分鐘」「每30分鐘」這兩組只負責更新資料，絕不推播
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            echo "✅ 手動觸發，強制推播"
+            echo "send_alert=true" >> $GITHUB_ENV
+          elif [ "${{ github.event.schedule }}" = "30 21 * * 0-4" ]; then
+            echo "✅ 早上排程觸發，推播"
+            echo "send_alert=true" >> $GITHUB_ENV
+          elif [ "${{ github.event.schedule }}" = "30 9 * * 1-5" ]; then
+            echo "✅ 晚上排程觸發，推播"
+            echo "send_alert=true" >> $GITHUB_ENV
+          else
+            echo "🤫 背景靜默更新，不發 Telegram"
+            echo "send_alert=false" >> $GITHUB_ENV
+          fi
+
+          # 新聞更新：早上排程或手動觸發時才更新
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            echo "UPDATE_NEWS=true" >> $GITHUB_ENV
+          elif [ "${{ github.event.schedule }}" = "30 21 * * 0-4" ]; then
+            echo "UPDATE_NEWS=true" >> $GITHUB_ENV
+          else
+            echo "UPDATE_NEWS=false" >> $GITHUB_ENV
+          fi
 
       - name: 設定 Python 環境
         if: env.is_weekday == 'true'
         uses: actions/setup-python@v5
         with:
           python-version: '3.10'
-
       - name: 安裝依賴
         if: env.is_weekday == 'true'
         run: pip install yfinance pytz
-
       - name: 執行資料爬蟲
         if: env.is_weekday == 'true'
         run: python update_stocks.py
-
-      - name: 判斷是否推播（Python 精準判斷台灣時間）
-        if: env.is_weekday == 'true'
-        run: |
-          python3 - <<'EOF'
-          import os
-          from datetime import datetime
-          import pytz
-
-          tw = pytz.timezone('Asia/Taipei')
-          now = datetime.now(tw)
-          hour = now.hour
-          minute = now.minute
-          weekday = now.weekday()  # 0=週一, 6=週日
-
-          print(f"台灣時間: {now.strftime('%Y-%m-%d %H:%M')} 週{weekday+1}")
-
-          # 推播窗口：±20分鐘緩衝
-          morning = (hour == 5 and minute >= 40) or (hour == 6 and minute <= 20)
-          evening = (hour == 17 and minute >= 40) or (hour == 18 and minute <= 20)
-
-          # 週日完全不推
-          if weekday == 6:
-              send = False
-              reason = "週日不推播"
-          # 週六只推早上
-          elif weekday == 5:
-              send = morning
-              reason = "週六早上推播" if send else "週六非推播時間"
-          # 週一到週五推早上和晚上
-          else:
-              send = morning or evening
-              if morning:
-                  reason = "平日早上推播"
-              elif evening:
-                  reason = "平日晚上推播"
-              else:
-                  reason = "非推播時間，靜默更新"
-
-          print(f"推播決定: {send} ({reason})")
-
-          with open(os.environ['GITHUB_ENV'], 'a') as f:
-              f.write(f"send_alert={'true' if send else 'false'}\n")
-          EOF
-
+        env:
+          UPDATE_NEWS: ${{ env.UPDATE_NEWS }}
       - name: 推送 stock_data.json 回倉庫
         if: env.is_weekday == 'true'
         run: |
@@ -110,7 +94,6 @@ jobs:
           else
             echo "數據無變動，跳過 Commit"
           fi
-
       - name: 發射 Telegram 推送
         if: env.is_weekday == 'true' && env.send_alert == 'true'
         run: |
