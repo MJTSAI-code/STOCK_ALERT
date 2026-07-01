@@ -70,11 +70,6 @@ def fetch_stock_data():
     old_data = load_existing_data()
     existing_news = load_existing_news(old_data)
 
-    if UPDATE_NEWS:
-        print("📰 本次執行會更新新聞（盤前班次）")
-    else:
-        print("🤫 本次不更新新聞，沿用既有資料")
-
     print(f"🕐 台灣時間：{tw_now.strftime('%Y-%m-%d %H:%M')}（{tw_hour}時{tw_minute}分）")
 
     # ── 推播時段判斷 ──
@@ -90,9 +85,9 @@ def fetch_stock_data():
 
     already_sent = check_alert_sent(old_data, tw_now, session) if session else False
 
-    # 早上推播時段且尚未推播才更新新聞
-    UPDATE_NEWS = morning and not already_sent
-    print(f'新聞更新: {UPDATE_NEWS}')
+    # 新聞只在台灣時間 05:00~07:00 更新，完全獨立於推播邏輯
+    UPDATE_NEWS = (tw_hour >= 5 and tw_hour <= 7)
+    print(f"新聞更新: {UPDATE_NEWS} | 推播判斷: session={session} already_sent={already_sent}")
 
     if session and already_sent:
         print(f"⚠️ 今天 {session} 推播已發送過，跳過推播")
