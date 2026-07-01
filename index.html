@@ -629,6 +629,12 @@
   @media (prefers-color-scheme: dark) {
     :root { color-scheme: dark; }
   }
+
+  /* 告訴 WebView 亮色模式也有處理，不需要強制轉換 */
+  @media (prefers-color-scheme: light) {
+    :root { color-scheme: dark light; }
+    body { background: var(--bg); color: var(--text); }
+  }
 </style>
 </head>
 <body>
