@@ -5,17 +5,19 @@ import pytz
 import yfinance as yf
 
 STOCKS = ['NOW', 'NVDA', 'LITE', 'ONDS', 'MRVL', 'GOOG', 'SPCX', 'TSM', 'MU', 'SNDK', 'TSLA']
-UPDATE_NEWS = os.environ.get('UPDATE_NEWS', 'false').lower() == 'true'
+# UPDATE_NEWS 由時段自動決定（早上推播時段且尚未推播才更新）
 
-def load_existing_news():
-    existing_news = {}
+def load_existing_data():
     try:
         with open('stock_data.json', 'r', encoding='utf-8') as f:
-            old_data = json.load(f)
-            for sym, entry in old_data.get('data', {}).items():
-                existing_news[sym] = entry.get('news', [])
+            return json.load(f)
     except (FileNotFoundError, json.JSONDecodeError):
-        pass
+        return {}
+
+def load_existing_news(old_data):
+    existing_news = {}
+    for sym, entry in old_data.get('data', {}).items():
+        existing_news[sym] = entry.get('news', [])
     return existing_news
 
 def get_market_phase(tw_hour, tw_minute, pre_price, post_price):
@@ -43,13 +45,30 @@ def get_market_phase(tw_hour, tw_minute, pre_price, post_price):
     else:
         return "正式盤"
 
+def check_alert_sent(old_data, tw_now, session):
+    """
+    檢查今天這個時段是否已推播過。
+    session: 'morning' 或 'evening'
+    """
+    today = tw_now.strftime('%Y-%m-%d')
+    alert_log = old_data.get('alert_sent', {})
+    return alert_log.get(session) == today
+
+def mark_alert_sent(final_payload, tw_now, session):
+    """在 stock_data.json 裡標記今天這個時段已推播。"""
+    today = tw_now.strftime('%Y-%m-%d')
+    if 'alert_sent' not in final_payload:
+        final_payload['alert_sent'] = {}
+    final_payload['alert_sent'][session] = today
+
 def fetch_stock_data():
     output_data = {}
     tw_tz = pytz.timezone('Asia/Taipei')
     tw_now = datetime.datetime.now(tw_tz)
     tw_hour = tw_now.hour
     tw_minute = tw_now.minute
-    existing_news = load_existing_news()
+    old_data = load_existing_data()
+    existing_news = load_existing_news(old_data)
 
     if UPDATE_NEWS:
         print("📰 本次執行會更新新聞（盤前班次）")
@@ -57,6 +76,36 @@ def fetch_stock_data():
         print("🤫 本次不更新新聞，沿用既有資料")
 
     print(f"🕐 台灣時間：{tw_now.strftime('%Y-%m-%d %H:%M')}（{tw_hour}時{tw_minute}分）")
+
+    # ── 推播時段判斷 ──
+    morning = (tw_hour == 5 and tw_minute >= 30) or (tw_hour == 6 and tw_minute <= 30)
+    evening = (tw_hour == 17 and tw_minute >= 30) or (tw_hour == 18 and tw_minute <= 30)
+
+    if morning:
+        session = 'morning'
+    elif evening:
+        session = 'evening'
+    else:
+        session = None
+
+    already_sent = check_alert_sent(old_data, tw_now, session) if session else False
+
+    # 早上推播時段且尚未推播才更新新聞
+    UPDATE_NEWS = morning and not already_sent
+    print(f'新聞更新: {UPDATE_NEWS}')
+
+    if session and already_sent:
+        print(f"⚠️ 今天 {session} 推播已發送過，跳過推播")
+    elif session:
+        print(f"✅ 在推播窗口內（{session}），本次將推播")
+    else:
+        print("🤫 非推播時段，靜默更新")
+
+    # 寫出推播決定給 yml 讀取
+    send_alert = session is not None and not already_sent
+    with open('should_alert.txt', 'w') as f:
+        f.write('true' if send_alert else 'false')
+    print(f"推播決定: {'true' if send_alert else 'false'}")
 
     for sym in STOCKS:
         try:
@@ -102,19 +151,15 @@ def fetch_stock_data():
             else:
                 current_price = regular_price
 
-            # ── 漲跌幅計算（按時段區分基準價）──
-            # 盤前：現價 vs 昨日收盤
-            # 正式盤：現價 vs 昨日收盤
-            # 盤後：現價 vs 今日正式盤收盤（不是昨日收盤！）
+            # 漲跌幅計算
             if phase == "盤後":
-                base_price = regular_price   # 今日正式盤收盤
+                base_price = regular_price
             else:
-                base_price = prev_close      # 昨日收盤
+                base_price = prev_close
 
             dollar_change  = current_price - base_price
             percent_change = (dollar_change / base_price * 100) if base_price != 0 else 0
 
-            # 收盤 vs 前收漲跌（固定用昨日收盤為基準）
             reg_change     = regular_price - prev_close
             reg_pct_change = (reg_change / prev_close * 100) if prev_close != 0 else 0
 
@@ -191,8 +236,14 @@ def fetch_stock_data():
     final_payload = {
         "name": "美股盤前情報資料庫",
         "updated_at": tw_now.isoformat(),
-        "data": output_data
+        "data": output_data,
+        "alert_sent": old_data.get('alert_sent', {})
     }
+
+    # 如果本次推播，寫入 flag
+    if send_alert:
+        mark_alert_sent(final_payload, tw_now, session)
+        print(f"📝 已標記今天 {session} 推播完成")
 
     with open('stock_data.json', 'w', encoding='utf-8') as f:
         json.dump(final_payload, f, ensure_ascii=False, indent=2)
