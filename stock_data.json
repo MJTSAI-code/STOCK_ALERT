@@ -1,19 +1,19 @@
 {
   "name": "美股盤前情報資料庫",
-  "updated_at": "2026-07-01T21:16:40.000320+08:00",
+  "updated_at": "2026-07-01T23:42:40.650495+08:00",
   "data": {
     "NOW": {
       "quote": {
-        "c": 103.8,
-        "d": 3.83,
-        "dp": 3.8311,
-        "regular": 99.28,
-        "reg_d": -0.69,
-        "reg_dp": -0.6902,
-        "pre": 103.8,
+        "c": 105.45,
+        "d": 6.17,
+        "dp": 6.2147,
+        "regular": 105.45,
+        "reg_d": 6.17,
+        "reg_dp": 6.2147,
+        "pre": null,
         "post": null,
-        "prev_close": 99.97,
-        "phase": "盤前"
+        "prev_close": 99.28,
+        "phase": "正式盤"
       },
       "news": [
         {
@@ -26,16 +26,16 @@
     },
     "NVDA": {
       "quote": {
-        "c": 195.31,
-        "d": 0.34,
-        "dp": 0.1749,
-        "regular": 200.09,
-        "reg_d": 5.12,
-        "reg_dp": 2.626,
-        "pre": 195.31,
+        "c": 197.14,
+        "d": -2.95,
+        "dp": -1.4743,
+        "regular": 197.14,
+        "reg_d": -2.95,
+        "reg_dp": -1.4743,
+        "pre": null,
         "post": null,
-        "prev_close": 194.97,
-        "phase": "盤前"
+        "prev_close": 200.09,
+        "phase": "正式盤"
       },
       "news": [
         {
@@ -48,16 +48,16 @@
     },
     "LITE": {
       "quote": {
-        "c": 823.45,
-        "d": -27.95,
-        "dp": -3.2828,
-        "regular": 858.06,
-        "reg_d": 6.66,
-        "reg_dp": 0.7822,
-        "pre": 823.45,
+        "c": 807.1,
+        "d": -50.96,
+        "dp": -5.939,
+        "regular": 807.1,
+        "reg_d": -50.96,
+        "reg_dp": -5.939,
+        "pre": null,
         "post": null,
-        "prev_close": 851.4,
-        "phase": "盤前"
+        "prev_close": 858.06,
+        "phase": "正式盤"
       },
       "news": [
         {
@@ -70,16 +70,16 @@
     },
     "ONDS": {
       "quote": {
-        "c": 8.14,
-        "d": 0.12,
-        "dp": 1.4963,
-        "regular": 8.24,
-        "reg_d": 0.22,
-        "reg_dp": 2.7431,
-        "pre": 8.14,
+        "c": 8.41,
+        "d": 0.17,
+        "dp": 2.1238,
+        "regular": 8.41,
+        "reg_d": 0.17,
+        "reg_dp": 2.1238,
+        "pre": null,
         "post": null,
-        "prev_close": 8.02,
-        "phase": "盤前"
+        "prev_close": 8.24,
+        "phase": "正式盤"
       },
       "news": [
         {
@@ -92,16 +92,16 @@
     },
     "MRVL": {
       "quote": {
-        "c": 282.51,
-        "d": 4.76,
-        "dp": 1.7138,
-        "regular": 297.89,
-        "reg_d": 20.14,
-        "reg_dp": 7.2511,
-        "pre": 282.51,
+        "c": 278.18,
+        "d": -19.71,
+        "dp": -6.6165,
+        "regular": 278.18,
+        "reg_d": -19.71,
+        "reg_dp": -6.6165,
+        "pre": null,
         "post": null,
-        "prev_close": 277.75,
-        "phase": "盤前"
+        "prev_close": 297.89,
+        "phase": "正式盤"
       },
       "news": [
         {
@@ -114,16 +114,16 @@
     },
     "GOOG": {
       "quote": {
-        "c": 357.5,
-        "d": 6.22,
-        "dp": 1.7707,
-        "regular": 353.33,
-        "reg_d": 2.05,
-        "reg_dp": 0.5836,
-        "pre": 357.5,
+        "c": 356.76,
+        "d": 3.44,
+        "dp": 0.9722,
+        "regular": 356.76,
+        "reg_d": 3.44,
+        "reg_dp": 0.9722,
+        "pre": null,
         "post": null,
-        "prev_close": 351.28,
-        "phase": "盤前"
+        "prev_close": 353.33,
+        "phase": "正式盤"
       },
       "news": [
         {
@@ -136,16 +136,16 @@
     },
     "SPCX": {
       "quote": {
-        "c": 169.98,
-        "d": 5.79,
-        "dp": 3.5264,
-        "regular": 170.86,
-        "reg_d": 6.67,
-        "reg_dp": 4.0624,
-        "pre": 169.98,
+        "c": 159.99,
+        "d": -10.87,
+        "dp": -6.3619,
+        "regular": 159.99,
+        "reg_d": -10.87,
+        "reg_dp": -6.3619,
+        "pre": null,
         "post": null,
-        "prev_close": 164.19,
-        "phase": "盤前"
+        "prev_close": 170.86,
+        "phase": "正式盤"
       },
       "news": [
         {
@@ -158,16 +158,16 @@
     },
     "TSM": {
       "quote": {
-        "c": 466.8,
-        "d": 11.7,
-        "dp": 2.5709,
-        "regular": 477.57,
-        "reg_d": 22.47,
-        "reg_dp": 4.9374,
-        "pre": 466.8,
+        "c": 450.37,
+        "d": -27.2,
+        "dp": -5.6965,
+        "regular": 450.37,
+        "reg_d": -27.2,
+        "reg_dp": -5.6965,
+        "pre": null,
         "post": null,
-        "prev_close": 455.1,
-        "phase": "盤前"
+        "prev_close": 477.57,
+        "phase": "正式盤"
       },
       "news": [
         {
@@ -180,16 +180,16 @@
     },
     "MU": {
       "quote": {
-        "c": 1086.39,
-        "d": -58.89,
-        "dp": -5.142,
-        "regular": 1154.29,
-        "reg_d": 9.01,
-        "reg_dp": 0.7867,
-        "pre": 1086.39,
+        "c": 1059.4,
+        "d": -94.89,
+        "dp": -8.2206,
+        "regular": 1059.4,
+        "reg_d": -94.89,
+        "reg_dp": -8.2206,
+        "pre": null,
         "post": null,
-        "prev_close": 1145.28,
-        "phase": "盤前"
+        "prev_close": 1154.29,
+        "phase": "正式盤"
       },
       "news": [
         {
@@ -202,16 +202,16 @@
     },
     "SNDK": {
       "quote": {
-        "c": 2082.0,
-        "d": 31.61,
-        "dp": 1.5417,
-        "regular": 2273.73,
-        "reg_d": 223.34,
-        "reg_dp": 10.8926,
-        "pre": 2082.0,
+        "c": 2067.87,
+        "d": -205.86,
+        "dp": -9.0539,
+        "regular": 2067.87,
+        "reg_d": -205.86,
+        "reg_dp": -9.0539,
+        "pre": null,
         "post": null,
-        "prev_close": 2050.39,
-        "phase": "盤前"
+        "prev_close": 2273.73,
+        "phase": "正式盤"
       },
       "news": [
         {
@@ -224,16 +224,16 @@
     },
     "TSLA": {
       "quote": {
-        "c": 419.1,
-        "d": 7.26,
-        "dp": 1.7628,
-        "regular": 420.6,
-        "reg_d": 8.76,
-        "reg_dp": 2.127,
-        "pre": 419.1,
+        "c": 430.7,
+        "d": 10.1,
+        "dp": 2.4024,
+        "regular": 430.7,
+        "reg_d": 10.1,
+        "reg_dp": 2.4024,
+        "pre": null,
         "post": null,
-        "prev_close": 411.84,
-        "phase": "盤前"
+        "prev_close": 420.6,
+        "phase": "正式盤"
       },
       "news": [
         {
