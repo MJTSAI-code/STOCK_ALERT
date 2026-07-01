@@ -46,6 +46,7 @@
     min-height: 100vh;
     min-width: 960px;
     padding-bottom: 40px;
+    color-scheme: dark;
   }
   body.scroll-locked { overflow: hidden; }
 
@@ -625,12 +626,7 @@
     display: none;
   }
 
-  /* 告訴 WebView 這個網站已經有暗色設計，不需要 Force Dark */
-  @media (prefers-color-scheme: dark) {
-    :root { color-scheme: dark; }
-  }
-
-  /* 告訴 WebView 亮色模式也有處理，不需要強制轉換 */
+  /* 告訴 WebView 這是暗色頁面，不需要 Force Dark */
   @media (prefers-color-scheme: light) {
     :root { color-scheme: dark light; }
     body { background: var(--bg); color: var(--text); }
