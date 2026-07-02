@@ -54,6 +54,29 @@ def mark_alert_sent(final_payload, tw_now, session):
         final_payload['alert_sent'] = {}
     final_payload['alert_sent'][session] = today
 
+
+def calc_next_update_at(tw_now: datetime.datetime) -> str:
+    """Calculate the ISO-8601 UTC timestamp of the next expected data update.
+
+    Logic mirrors the GitHub Actions cron schedule:
+      - Regular session (TW 21:30-03:59): every 5 min (Actions throttle floor)
+      - Pre/Post market  (TW 04:00-21:29): every 30 min
+    Returns UTC ISO string so the frontend can use Date.parse() directly.
+    """
+    tw_minutes = tw_now.hour * 60 + tw_now.minute
+    REGULAR_START = 21 * 60 + 30  # 1290
+    POST_START    = 4  * 60       # 240
+    POST_END      = 4  * 60 + 59  # 299
+
+    is_regular = (tw_minutes >= REGULAR_START) or (tw_minutes <= POST_START - 1)
+    interval_minutes = 5 if is_regular else 30
+
+    next_dt = tw_now + datetime.timedelta(minutes=interval_minutes)
+    # Truncate to interval boundary for predictability
+    boundary = (next_dt.minute // interval_minutes + 1) * interval_minutes
+    next_dt  = next_dt.replace(minute=0, second=0, microsecond=0) + datetime.timedelta(minutes=boundary)
+    return next_dt.astimezone(datetime.timezone.utc).strftime('%Y-%m-%dT%H:%M:%SZ')
+
 def fetch_stock_data():
     output_data = {}
     tw_tz = pytz.timezone('Asia/Taipei')
@@ -247,6 +270,7 @@ def fetch_stock_data():
     final_payload = {
         "name": "美股盤前情報資料庫",
         "updated_at": tw_now.isoformat(),
+        "next_update_at": calc_next_update_at(tw_now),
         "data": output_data,
         "alert_sent": old_data.get('alert_sent', {})
     }
