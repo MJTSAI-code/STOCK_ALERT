@@ -492,14 +492,16 @@
     /* 外層卡片微調 */
     .pf-stack { width: min(210px, 80%); }
 
-    /* 手機版：sf-wrap 改用 GPU 可加速的 opacity+translateY，取代 clip-path（卡頓來源）*/
+    /* 手機版：sf-wrap 改用 GPU 可加速的 opacity+translateY，取代 clip-path（卡頓來源）
+       animation-play-state:paused 讓元素 DOM 插入瞬間即凍結在 0%（opacity:0），
+       無空窗閃現，行為穩定於 Android WebView / iOS Safari */
     .sf-wrap {
       clip-path: none;
-      opacity: 1;
-      transform: none;
+      animation: sfRevealMobile 0.32s ease-out forwards;
+      animation-play-state: paused;
     }
     .sf-wrap.reveal-full {
-      animation: sfRevealMobile 0.32s ease-out both;
+      animation-play-state: running;
     }
     @keyframes sfRevealMobile {
       0%   { opacity: 0; transform: translateY(12px); }
@@ -1224,6 +1226,9 @@ function renderPrice(sym, q) {
   }
 }
 
+// Precise-refresh timer handle — cancelled and reset on every successful load.
+let _nextUpdateTimer = null;
+
 async function loadData() {
   try {
     const res  = await fetch('./stock_data.json?t=' + Date.now());
@@ -1234,6 +1239,16 @@ async function loadData() {
       if (data?.quote) renderPrice(s.sym, data.quote);
       if (data?.news)  renderNews(s.sym, data.news);
     });
+
+    // Schedule a precise refresh at the next expected update time.
+    // Falls back to the 60-second polling interval if field is absent or stale.
+    if (_nextUpdateTimer) clearTimeout(_nextUpdateTimer);
+    const nextAt = json.next_update_at ? Date.parse(json.next_update_at) : NaN;
+    const msUntilNext = nextAt - Date.now();
+    if (msUntilNext > 0 && msUntilNext < 35 * 60 * 1000) {
+      // Only arm if the target is in the future and within 35 min (sanity cap).
+      _nextUpdateTimer = setTimeout(loadData, msUntilNext);
+    }
   } catch(e) { console.error(e); }
 }
 
