@@ -495,12 +495,11 @@
     /* 手機版：sf-wrap 改用 GPU 可加速的 opacity+translateY，取代 clip-path（卡頓來源）*/
     .sf-wrap {
       clip-path: none;
-      opacity: 0;
-      transform: translateY(12px);
-      will-change: opacity, transform;
+      opacity: 1;
+      transform: none;
     }
     .sf-wrap.reveal-full {
-      animation: sfRevealMobile 0.32s ease-out forwards;
+      animation: sfRevealMobile 0.32s ease-out both;
     }
     @keyframes sfRevealMobile {
       0%   { opacity: 0; transform: translateY(12px); }
