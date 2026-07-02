@@ -1,71 +1,71 @@
 {
   "name": "美股盤前情報資料庫",
-  "updated_at": "2026-07-03T04:47:43.946939+08:00",
-  "next_update_at": "2026-07-02T21:30:00Z",
+  "updated_at": "2026-07-03T05:40:42.549536+08:00",
+  "next_update_at": "2026-07-02T22:30:00Z",
   "data": {
     "NOW": {
       "quote": {
-        "c": 106.58,
-        "d": 0.26,
-        "dp": 0.2445,
+        "c": 106.0,
+        "d": -0.32,
+        "dp": -0.301,
         "regular": 106.32,
         "reg_d": 0.52,
         "reg_dp": 0.4915,
         "pre": null,
-        "post": 106.58,
+        "post": 106.0,
         "prev_close": 105.8,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "PagerDuty, Paychex, and Commerce Shares Are Soaring, What You Need To Know",
-          "datetime": 1782947205,
+          "headline": "Palantir Stock Gains After Upgrade Adds Momentum to Comeback",
+          "datetime": 1783028442,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/markets/stocks/articles/pagerduty-paychex-commerce-shares-soaring-220900179.html"
+          "url": "https://www.barrons.com/articles/palantir-stock-price-upgrade-nvidia-1cacf3b9?siteid=yhoof2&yptr=yahoo"
         }
       ]
     },
     "NVDA": {
       "quote": {
-        "c": 194.56,
-        "d": -0.27,
-        "dp": -0.1386,
+        "c": 194.53,
+        "d": -0.3,
+        "dp": -0.154,
         "regular": 194.83,
         "reg_d": -2.75,
         "reg_dp": -1.3918,
         "pre": null,
-        "post": 194.56,
+        "post": 194.53,
         "prev_close": 197.58,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "What's next for AI and Big Tech in the second half of 2026?",
-          "datetime": 1782947205,
+          "headline": "Palantir upgraded to Buy, Rivian lifts delivery outlook, Robinhood's new product",
+          "datetime": 1783028442,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/video/whats-next-for-ai-and-big-tech-in-the-second-half-of-2026-141912104.html"
+          "url": "https://finance.yahoo.com/video/palantir-upgraded-to-buy-rivian-lifts-delivery-outlook-robinhoods-new-product-193145290.html"
         }
       ]
     },
     "LITE": {
       "quote": {
-        "c": 725.0,
-        "d": -3.32,
-        "dp": -0.4558,
+        "c": 725.5,
+        "d": -2.82,
+        "dp": -0.3872,
         "regular": 728.32,
         "reg_d": -72.84,
         "reg_dp": -9.0918,
         "pre": null,
-        "post": 725.0,
+        "post": 725.5,
         "prev_close": 801.16,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Lumentum's Component Business Accelerates: More Upside Ahead?",
-          "datetime": 1782947205,
+          "headline": "Applied Optoelectronics Plunges 17%, Coherent and Lumentum Sink 10% as Photonics Stocks Reset",
+          "datetime": 1783028442,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/markets/stocks/articles/lumentums-component-business-accelerates-more-134300457.html"
+          "url": "https://247wallst.com/investing/2026/07/02/applied-optoelectronics-plunges-17-coherent-and-lumentum-sink-10-as-photonics-stocks-reset/"
         }
       ]
     },
@@ -85,7 +85,7 @@
       "news": [
         {
           "headline": "Ondas Inc. (ONDS) Receives More Than $40 million in New Orders for Autonomous Defense Systems",
-          "datetime": 1782947205,
+          "datetime": 1783028442,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/markets/stocks/articles/ondas-inc-onds-receives-more-163455163.html"
         }
@@ -93,160 +93,160 @@
     },
     "MRVL": {
       "quote": {
-        "c": 247.2,
-        "d": 1.91,
-        "dp": 0.7787,
+        "c": 246.58,
+        "d": 1.29,
+        "dp": 0.5259,
         "regular": 245.29,
         "reg_d": -26.76,
         "reg_dp": -9.8364,
         "pre": null,
-        "post": 247.2,
+        "post": 246.58,
         "prev_close": 272.05,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Here’s Why POET Technologies (POET) Has Declined Recently, Wall Street Continues to See Huge Upside",
-          "datetime": 1782947205,
+          "headline": "Marvell Stock: A Faster Lane On The Same Highway",
+          "datetime": 1783028442,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/technology/ai/articles/why-poet-technologies-poet-declined-210508374.html"
+          "url": "https://www.trefis.com/articles/605378/marvell-stock-a-faster-lane-on-the-same-highway/2026-07-02"
         }
       ]
     },
     "GOOG": {
       "quote": {
-        "c": 355.54,
-        "d": -0.64,
-        "dp": -0.1803,
+        "c": 355.33,
+        "d": -0.85,
+        "dp": -0.2386,
         "regular": 356.18,
         "reg_d": -1.71,
         "reg_dp": -0.4778,
         "pre": null,
-        "post": 355.54,
+        "post": 355.33,
         "prev_close": 357.89,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "The ETFs behind Trump's new child investment accounts",
-          "datetime": 1782947205,
+          "headline": "The average investor is running away from 'Magnificent 7' stocks",
+          "datetime": 1783028442,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/video/the-etfs-behind-trumps-new-child-investment-accounts-215300606.html"
+          "url": "https://finance.yahoo.com/markets/stocks/article/the-average-investor-is-running-away-from-magnificent-7-stocks-120204013.html"
         }
       ]
     },
     "SPCX": {
       "quote": {
-        "c": 160.22,
-        "d": -1.78,
-        "dp": -1.0988,
+        "c": 160.64,
+        "d": -1.36,
+        "dp": -0.8395,
         "regular": 162.0,
         "reg_d": 4.46,
         "reg_dp": 2.831,
         "pre": null,
-        "post": 160.22,
+        "post": 160.64,
         "prev_close": 157.54,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Why this analyst thinks it's too soon to buy SpaceX",
-          "datetime": 1782947205,
+          "headline": "Jersey Mike's is officially going public. Here's what to expect.",
+          "datetime": 1783028442,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/video/why-this-analyst-thinks-its-too-soon-to-buy-spacex-194559104.html"
+          "url": "https://finance.yahoo.com/video/jersey-mikes-is-officially-going-public-heres-what-to-expect-202336496.html"
         }
       ]
     },
     "TSM": {
       "quote": {
-        "c": 434.65,
-        "d": 0.49,
-        "dp": 0.1129,
+        "c": 434.66,
+        "d": 0.5,
+        "dp": 0.1152,
         "regular": 434.16,
         "reg_d": -10.07,
         "reg_dp": -2.2668,
         "pre": null,
-        "post": 434.65,
+        "post": 434.66,
         "prev_close": 444.23,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Stocks Surged in Q2 2026, but Is the Market Getting Too Expensive?",
-          "datetime": 1782947205,
+          "headline": "Dow Jones Futures: Dow Hits High But AI Tumbles; Apple, Robinhood Are Buys As Tesla, Sandisk Dive",
+          "datetime": 1783028442,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/markets/stocks/articles/stocks-surged-q2-2026-market-214900729.html"
+          "url": "https://www.investors.com/market-trend/stock-market-today/dow-jones-futures-ai-tumbles-apple-robinhood-buy-signals-tesla-sandisk-dive/?src=A00220&yptr=yahoo"
         }
       ]
     },
     "MU": {
       "quote": {
-        "c": 975.6,
-        "d": 0.04,
-        "dp": 0.0041,
+        "c": 977.97,
+        "d": 2.41,
+        "dp": 0.247,
         "regular": 975.56,
         "reg_d": -56.72,
         "reg_dp": -5.4946,
         "pre": null,
-        "post": 975.6,
+        "post": 977.97,
         "prev_close": 1032.28,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Why investors should 'complement' their SpaceX ETFs with these other themes",
-          "datetime": 1782947205,
+          "headline": "What a weak jobs report means for crypto",
+          "datetime": 1783028442,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/video/why-investors-should-complement-their-spacex-etfs-with-these-other-themes-152831294.html"
+          "url": "https://finance.yahoo.com/video/what-a-weak-jobs-report-means-for-crypto-173342792.html"
         }
       ]
     },
     "SNDK": {
       "quote": {
-        "c": 1755.0,
-        "d": 10.0,
-        "dp": 0.5731,
+        "c": 1763.0,
+        "d": 18.0,
+        "dp": 1.0315,
         "regular": 1745.0,
         "reg_d": -287.22,
         "reg_dp": -14.1333,
         "pre": null,
-        "post": 1755.0,
+        "post": 1763.0,
         "prev_close": 2032.22,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Why investors should 'complement' their SpaceX ETFs with these other themes",
-          "datetime": 1782947205,
+          "headline": "Dow Jones Futures: Dow Hits High But AI Tumbles; Apple, Robinhood Are Buys As Tesla, Sandisk Dive",
+          "datetime": 1783028442,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/video/why-investors-should-complement-their-spacex-etfs-with-these-other-themes-152831294.html"
+          "url": "https://www.investors.com/market-trend/stock-market-today/dow-jones-futures-ai-tumbles-apple-robinhood-buy-signals-tesla-sandisk-dive/?src=A00220&yptr=yahoo"
         }
       ]
     },
     "TSLA": {
       "quote": {
-        "c": 393.19,
-        "d": -0.25,
-        "dp": -0.0648,
+        "c": 393.41,
+        "d": -0.04,
+        "dp": -0.0102,
         "regular": 393.45,
         "reg_d": -31.85,
         "reg_dp": -7.4888,
         "pre": null,
-        "post": 393.19,
+        "post": 393.41,
         "prev_close": 425.3,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Why this analyst thinks it's too soon to buy SpaceX",
-          "datetime": 1782947205,
+          "headline": "Stock market today: Dow notches fresh record, Nasdaq slides as Tesla sinks, semiconductors extend decline",
+          "datetime": 1783028442,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/video/why-this-analyst-thinks-its-too-soon-to-buy-spacex-194559104.html"
+          "url": "https://finance.yahoo.com/markets/live/stock-market-today-thursday-july-2-223136955.html"
         }
       ]
     }
   },
   "alert_sent": {
-    "morning": "2026-07-02"
+    "morning": "2026-07-03"
   }
 }
