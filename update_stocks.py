@@ -131,7 +131,8 @@ def fetch_stock_data():
             try:
                 info = ticker.info or {}
                 regular_price = info.get('regularMarketPrice') or info.get('currentPrice') or regular_price
-                prev_close    = info.get('regularMarketPreviousClose') or info.get('previousClose') or prev_close
+                # prev_close 不讓 info 覆蓋，fast_info.previous_close 是最可靠的來源
+                # info.regularMarketPreviousClose 在盤前時段有時回傳不正確的值
                 pre_price     = info.get('preMarketPrice')
                 post_price    = info.get('postMarketPrice')
             except Exception as info_err:
@@ -146,11 +147,13 @@ def fetch_stock_data():
             else:
                 current_price = regular_price
 
-            # 漲跌幅計算
-            if phase == "盤後":
-                base_price = regular_price
-            else:
+            # 漲跌幅計算（對齊 TradingView 邏輯）
+            # 盤前/盤後：vs 今日正式盤收盤 (regular_price)
+            # 正式盤：vs 昨日收盤 (prev_close)
+            if phase == "正式盤":
                 base_price = prev_close
+            else:
+                base_price = regular_price
 
             dollar_change  = current_price - base_price
             percent_change = (dollar_change / base_price * 100) if base_price != 0 else 0
