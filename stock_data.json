@@ -1,7 +1,7 @@
 {
   "name": "美股盤前情報資料庫",
-  "updated_at": "2026-07-03T05:51:02.446274+08:00",
-  "next_update_at": "2026-07-02T22:30:00Z",
+  "updated_at": "2026-07-03T06:36:39.675420+08:00",
+  "next_update_at": "2026-07-02T23:30:00Z",
   "data": {
     "NOW": {
       "quote": {
@@ -18,30 +18,30 @@
       },
       "news": [
         {
-          "headline": "Palantir Stock Gains After Upgrade Adds Momentum to Comeback",
-          "datetime": 1783029062,
+          "headline": "Stocks making big moves yesterday: ServiceNow, CoStar, Freshpet, The Trade Desk, and Amplitude",
+          "datetime": 1783031799,
           "source": "Yahoo Finance",
-          "url": "https://www.barrons.com/articles/palantir-stock-price-upgrade-nvidia-1cacf3b9?siteid=yhoof2&yptr=yahoo"
+          "url": "https://finance.yahoo.com/markets/stocks/articles/stocks-making-big-moves-yesterday-214824729.html"
         }
       ]
     },
     "NVDA": {
       "quote": {
-        "c": 194.52,
-        "d": -0.31,
-        "dp": -0.1591,
+        "c": 194.62,
+        "d": -0.21,
+        "dp": -0.1078,
         "regular": 194.83,
         "reg_d": -2.75,
         "reg_dp": -1.3918,
         "pre": null,
-        "post": 194.52,
+        "post": 194.62,
         "prev_close": 197.58,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Palantir upgraded to Buy, Rivian lifts delivery outlook, Robinhood's new product",
-          "datetime": 1783029062,
+          "datetime": 1783031799,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/video/palantir-upgraded-to-buy-rivian-lifts-delivery-outlook-robinhoods-new-product-193145290.html"
         }
@@ -49,21 +49,21 @@
     },
     "LITE": {
       "quote": {
-        "c": 722.78,
-        "d": -5.54,
-        "dp": -0.7605,
+        "c": 726.0,
+        "d": -2.32,
+        "dp": -0.3185,
         "regular": 728.32,
         "reg_d": -72.84,
         "reg_dp": -9.0918,
         "pre": null,
-        "post": 722.78,
+        "post": 726.0,
         "prev_close": 801.16,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Applied Optoelectronics Plunges 17%, Coherent and Lumentum Sink 10% as Photonics Stocks Reset",
-          "datetime": 1783029062,
+          "datetime": 1783031799,
           "source": "Yahoo Finance",
           "url": "https://247wallst.com/investing/2026/07/02/applied-optoelectronics-plunges-17-coherent-and-lumentum-sink-10-as-photonics-stocks-reset/"
         }
@@ -71,21 +71,21 @@
     },
     "ONDS": {
       "quote": {
-        "c": 7.47,
-        "d": 0.06,
-        "dp": 0.8097,
+        "c": 7.44,
+        "d": 0.03,
+        "dp": 0.4049,
         "regular": 7.41,
         "reg_d": -0.51,
         "reg_dp": -6.4394,
         "pre": null,
-        "post": 7.47,
+        "post": 7.44,
         "prev_close": 7.92,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Ondas Inc. (ONDS) Receives More Than $40 million in New Orders for Autonomous Defense Systems",
-          "datetime": 1783029062,
+          "datetime": 1783031799,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/markets/stocks/articles/ondas-inc-onds-receives-more-163455163.html"
         }
@@ -93,21 +93,21 @@
     },
     "MRVL": {
       "quote": {
-        "c": 246.6,
-        "d": 1.31,
-        "dp": 0.5341,
+        "c": 246.63,
+        "d": 1.34,
+        "dp": 0.5464,
         "regular": 245.29,
         "reg_d": -26.76,
         "reg_dp": -9.8364,
         "pre": null,
-        "post": 246.6,
+        "post": 246.63,
         "prev_close": 272.05,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Fed's Beth Hammack Warns AI Spending Could Keep Inflation Hot and Force Interest Rates Higher: 'Not Seeing A Lot Of Restraint...'",
-          "datetime": 1783029062,
+          "datetime": 1783031799,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/economy/policy/articles/feds-beth-hammack-warns-ai-203105019.html"
         }
@@ -115,21 +115,21 @@
     },
     "GOOG": {
       "quote": {
-        "c": 355.48,
-        "d": -0.7,
-        "dp": -0.1965,
+        "c": 355.34,
+        "d": -0.84,
+        "dp": -0.2352,
         "regular": 356.18,
         "reg_d": -1.71,
         "reg_dp": -0.4778,
         "pre": null,
-        "post": 355.48,
+        "post": 355.34,
         "prev_close": 357.89,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "The average investor is running away from 'Magnificent 7' stocks",
-          "datetime": 1783029062,
+          "datetime": 1783031799,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/markets/stocks/article/the-average-investor-is-running-away-from-magnificent-7-stocks-120204013.html"
         }
@@ -139,7 +139,7 @@
       "quote": {
         "c": 160.59,
         "d": -1.41,
-        "dp": -0.8694,
+        "dp": -0.8704,
         "regular": 162.0,
         "reg_d": 4.46,
         "reg_dp": 2.831,
@@ -151,7 +151,7 @@
       "news": [
         {
           "headline": "Jersey Mike's is officially going public. Here's what to expect.",
-          "datetime": 1783029062,
+          "datetime": 1783031799,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/video/jersey-mikes-is-officially-going-public-heres-what-to-expect-202336496.html"
         }
@@ -159,43 +159,43 @@
     },
     "TSM": {
       "quote": {
-        "c": 434.9,
-        "d": 0.74,
-        "dp": 0.1704,
+        "c": 437.0,
+        "d": 2.84,
+        "dp": 0.6541,
         "regular": 434.16,
         "reg_d": -10.07,
         "reg_dp": -2.2668,
         "pre": null,
-        "post": 434.9,
+        "post": 437.0,
         "prev_close": 444.23,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Dow Jones Futures: Dow Hits High But AI Tumbles; Apple, Robinhood Are Buys As Tesla, Sandisk Dive",
-          "datetime": 1783029062,
+          "headline": "Thiel Capital’s Jack Selby nabs stakes in hot startups like Etched through Arizona connections",
+          "datetime": 1783031799,
           "source": "Yahoo Finance",
-          "url": "https://www.investors.com/market-trend/stock-market-today/dow-jones-futures-ai-tumbles-apple-robinhood-buy-signals-tesla-sandisk-dive/?src=A00220&yptr=yahoo"
+          "url": "https://finance.yahoo.com/technology/articles/thiel-capital-jack-selby-nabs-215710518.html"
         }
       ]
     },
     "MU": {
       "quote": {
-        "c": 980.44,
-        "d": 4.88,
-        "dp": 0.5002,
+        "c": 986.99,
+        "d": 11.43,
+        "dp": 1.1716,
         "regular": 975.56,
         "reg_d": -56.72,
         "reg_dp": -5.4946,
         "pre": null,
-        "post": 980.44,
+        "post": 986.99,
         "prev_close": 1032.28,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "What a weak jobs report means for crypto",
-          "datetime": 1783029062,
+          "datetime": 1783031799,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/video/what-a-weak-jobs-report-means-for-crypto-173342792.html"
         }
@@ -203,21 +203,21 @@
     },
     "SNDK": {
       "quote": {
-        "c": 1767.89,
-        "d": 22.89,
-        "dp": 1.3117,
+        "c": 1772.0,
+        "d": 27.0,
+        "dp": 1.5473,
         "regular": 1745.0,
         "reg_d": -287.22,
         "reg_dp": -14.1333,
         "pre": null,
-        "post": 1767.89,
+        "post": 1772.0,
         "prev_close": 2032.22,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Dow Jones Futures: Dow Hits High But AI Tumbles; Apple, Robinhood Are Buys As Tesla, Sandisk Dive",
-          "datetime": 1783029062,
+          "datetime": 1783031799,
           "source": "Yahoo Finance",
           "url": "https://www.investors.com/market-trend/stock-market-today/dow-jones-futures-ai-tumbles-apple-robinhood-buy-signals-tesla-sandisk-dive/?src=A00220&yptr=yahoo"
         }
@@ -225,21 +225,21 @@
     },
     "TSLA": {
       "quote": {
-        "c": 393.3,
-        "d": -0.15,
-        "dp": -0.0374,
+        "c": 393.58,
+        "d": 0.13,
+        "dp": 0.0342,
         "regular": 393.45,
         "reg_d": -31.85,
         "reg_dp": -7.4888,
         "pre": null,
-        "post": 393.3,
+        "post": 393.58,
         "prev_close": 425.3,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Stock market today: Dow notches fresh record, Nasdaq slides as Tesla sinks, semiconductors extend decline",
-          "datetime": 1783029062,
+          "datetime": 1783031799,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/markets/live/stock-market-today-thursday-july-2-223136955.html"
         }
