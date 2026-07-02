@@ -3,7 +3,7 @@ on:
   schedule:
     - cron: '30 21 * * 0-4'
     - cron: '30 9 * * 1-5'
-    - cron: '*/1 13-21 * * 1-5'
+    - cron: '*/5 13-21 * * 1-5'
     - cron: '*/30 * * * 1-5'
   workflow_dispatch:
 permissions:
@@ -32,21 +32,17 @@ jobs:
             echo "🛌 週末，完全跳過"
             echo "is_weekday=false" >> $GITHUB_ENV
           fi
-
       - name: 複製專案代碼
         if: env.is_weekday == 'true'
         uses: actions/checkout@v4
-
       - name: 設定 Python 環境
         if: env.is_weekday == 'true'
         uses: actions/setup-python@v5
         with:
           python-version: '3.10'
-
       - name: 安裝依賴
         if: env.is_weekday == 'true'
         run: pip install yfinance pytz
-
       - name: 執行資料爬蟲（含推播判斷）
         if: env.is_weekday == 'true'
         run: |
@@ -55,8 +51,6 @@ jobs:
           SHOULD_ALERT=$(cat should_alert.txt 2>/dev/null || echo "false")
           echo "send_alert=${SHOULD_ALERT}" >> $GITHUB_ENV
           echo "推播決定: ${SHOULD_ALERT}"
-
-
       - name: 推送 stock_data.json 回倉庫
         if: env.is_weekday == 'true'
         run: |
@@ -69,7 +63,6 @@ jobs:
           else
             echo "數據無變動，跳過 Commit"
           fi
-
       - name: 發射 Telegram 推送
         if: env.is_weekday == 'true' && env.send_alert == 'true'
         run: |
