@@ -492,6 +492,21 @@
     /* 外層卡片微調 */
     .pf-stack { width: min(210px, 80%); }
 
+    /* 手機版：sf-wrap 改用 GPU 可加速的 opacity+translateY，取代 clip-path（卡頓來源）*/
+    .sf-wrap {
+      clip-path: none;
+      opacity: 0;
+      transform: translateY(12px);
+      will-change: opacity, transform;
+    }
+    .sf-wrap.reveal-full {
+      animation: sfRevealMobile 0.32s ease-out forwards;
+    }
+    @keyframes sfRevealMobile {
+      0%   { opacity: 0; transform: translateY(12px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
     /* 手機版：字卡位置固定，不依賴瀏覽器 flex 自動置中 */
     .pf-wrap { margin: 8px 0; }
 
