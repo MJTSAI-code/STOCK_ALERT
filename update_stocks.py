@@ -1,11 +1,9 @@
 import json
-import os
 import datetime
 import pytz
 import yfinance as yf
 
 STOCKS = ['NOW', 'NVDA', 'LITE', 'ONDS', 'MRVL', 'GOOG', 'SPCX', 'TSM', 'MU', 'SNDK', 'TSLA']
-# UPDATE_NEWS 由時段自動決定（早上推播時段且尚未推播才更新）
 
 def load_existing_data():
     try:
@@ -20,42 +18,37 @@ def load_existing_news(old_data):
         existing_news[sym] = entry.get('news', [])
     return existing_news
 
-def get_market_phase(tw_hour, tw_minute, pre_price, post_price):
-    total_minutes = tw_hour * 60 + tw_minute
-    pre_market_start  = 5 * 60
-    pre_market_end    = 21 * 60 + 29
-    regular_start = 21 * 60 + 30
-    post_start = 4 * 60
-    post_end   = 4 * 60 + 59
+def get_market_phase(market_state: str) -> str:
+    """將 Yahoo Finance marketState 映射至顯示用時段字串。
 
-    if pre_price is not None:
-        return "盤前"
-    if post_price is not None:
-        return "盤後"
+    以 Yahoo 伺服器端 marketState 作為唯一 source of truth。
+    不自行計算台灣時間邊界，徹底消除 preMarketPrice/postMarketPrice
+    殘留值（stale cache）造成的 phase 誤判。
 
-    if pre_market_start <= total_minutes <= pre_market_end:
-        return "盤前"
-    elif total_minutes >= regular_start or total_minutes <= post_end - 60:
-        if total_minutes >= regular_start:
-            return "正式盤"
-        else:
-            return "盤後"
-    elif post_start <= total_minutes <= post_end:
-        return "盤後"
-    else:
-        return "正式盤"
+    Yahoo Finance marketState 已知值：
+      PRE      → 盤前（美東 04:00–09:29）
+      REGULAR  → 正式盤（美東 09:30–16:00）
+      POST     → 盤後（美東 16:00–20:00）
+      POSTPOST → 盤後結束後過渡態，仍顯示盤後
+      PREPRE   → 深夜過渡態，無延長交易，顯示昨收基準
+      CLOSED   → 週末/假日休市，顯示昨收基準
+    """
+    _PHASE_MAP: dict[str, str] = {
+        'PRE':      '盤前',
+        'REGULAR':  '正式盤',
+        'POST':     '盤後',
+        'POSTPOST': '盤後',
+        'PREPRE':   '正式盤',
+        'CLOSED':   '正式盤',
+    }
+    return _PHASE_MAP.get((market_state or '').upper().strip(), '正式盤')
 
 def check_alert_sent(old_data, tw_now, session):
-    """
-    檢查今天這個時段是否已推播過。
-    session: 'morning' 或 'evening'
-    """
     today = tw_now.strftime('%Y-%m-%d')
     alert_log = old_data.get('alert_sent', {})
     return alert_log.get(session) == today
 
 def mark_alert_sent(final_payload, tw_now, session):
-    """在 stock_data.json 裡標記今天這個時段已推播。"""
     today = tw_now.strftime('%Y-%m-%d')
     if 'alert_sent' not in final_payload:
         final_payload['alert_sent'] = {}
@@ -72,7 +65,6 @@ def fetch_stock_data():
 
     print(f"🕐 台灣時間：{tw_now.strftime('%Y-%m-%d %H:%M')}（{tw_hour}時{tw_minute}分）")
 
-    # ── 推播時段判斷 ──
     morning = (tw_hour == 5 and tw_minute >= 30) or (tw_hour == 6 and tw_minute <= 30)
     evening = (tw_hour == 17 and tw_minute >= 30) or (tw_hour == 18 and tw_minute <= 30)
 
@@ -85,7 +77,6 @@ def fetch_stock_data():
 
     already_sent = check_alert_sent(old_data, tw_now, session) if session else False
 
-    # 新聞只在台灣時間 05:00~07:00 更新，完全獨立於推播邏輯
     UPDATE_NEWS = (tw_hour >= 5 and tw_hour <= 7)
     print(f"新聞更新: {UPDATE_NEWS} | 推播判斷: session={session} already_sent={already_sent}")
 
@@ -96,7 +87,6 @@ def fetch_stock_data():
     else:
         print("🤫 非推播時段，靜默更新")
 
-    # 寫出推播決定給 yml 讀取
     send_alert = session is not None and not already_sent
     with open('should_alert.txt', 'w') as f:
         f.write('true' if send_alert else 'false')
@@ -107,61 +97,81 @@ def fetch_stock_data():
             print(f"正在抓取 {sym}...")
             ticker = yf.Ticker(sym)
 
-            regular_price = 0.0
-            prev_close = 0.0
-            try:
-                f_info = ticker.fast_info
-                regular_price = getattr(f_info, 'last_price', None) or 0.0
-                prev_close = getattr(f_info, 'previous_close', None) or 0.0
-            except Exception as fe:
-                print(f"  ⚠️ {sym} fast_info 讀取失敗: {fe}")
+            # ── 資料來源優先順序：info（即時）> fast_info（延遲）> history（保底）──
+            regular_price: float = 0.0
+            prev_close: float    = 0.0
+            pre_price: float | None  = None
+            post_price: float | None = None
+            info: dict = {}
 
+            try:
+                info          = ticker.info or {}
+                regular_price = float(
+                    info.get('regularMarketPrice') or
+                    info.get('currentPrice') or
+                    0.0
+                )
+                prev_close = float(
+                    info.get('regularMarketPreviousClose') or
+                    info.get('previousClose') or
+                    0.0
+                )
+                pre_price  = info.get('preMarketPrice')
+                post_price = info.get('postMarketPrice')
+            except Exception as info_err:
+                print(f"  ⚠️ {sym} info 接口受限: {info_err}")
+
+            # fast_info 補救（info 完全失敗時）
+            if regular_price == 0.0:
+                try:
+                    f_info        = ticker.fast_info
+                    regular_price = float(getattr(f_info, 'last_price', None) or 0.0)
+                    prev_close    = float(getattr(f_info, 'previous_close', None) or prev_close or 0.0)
+                except Exception as fe:
+                    print(f"  ⚠️ {sym} fast_info 補救失敗: {fe}")
+
+            # history 最後保底
             if regular_price == 0.0:
                 try:
                     hist = ticker.history(period="2d")
                     if not hist.empty:
                         regular_price = float(hist['Close'].iloc[-1])
-                        prev_close = float(hist['Close'].iloc[-2]) if len(hist) >= 2 else float(hist['Open'].iloc[-1])
+                        prev_close    = (
+                            float(hist['Close'].iloc[-2])
+                            if len(hist) >= 2
+                            else float(hist['Open'].iloc[-1])
+                        )
                 except Exception as he:
-                    print(f"  ⚠️ {sym} history 補救失敗: {he}")
+                    print(f"  ⚠️ {sym} history 保底失敗: {he}")
 
-            pre_price = None
-            post_price = None
-
-            try:
-                info = ticker.info or {}
-                regular_price = info.get('regularMarketPrice') or info.get('currentPrice') or regular_price
-                # prev_close 不讓 info 覆蓋，fast_info.previous_close 是最可靠的來源
-                # info.regularMarketPreviousClose 在盤前時段有時回傳不正確的值
-                pre_price     = info.get('preMarketPrice')
-                post_price    = info.get('postMarketPrice')
-            except Exception as info_err:
-                print(f"  ⚠️ {sym} info 接口受限: {info_err}")
-
-            phase = get_market_phase(tw_hour, tw_minute, pre_price, post_price)
+            # ── phase：以 Yahoo marketState 為 source of truth ──
+            market_state = info.get('marketState', '')
+            phase = get_market_phase(market_state)
+            print(f"  marketState={market_state!r} → phase={phase}")
 
             if phase == "盤前" and pre_price is not None:
-                current_price = pre_price
+                current_price = float(pre_price)
             elif phase == "盤後" and post_price is not None:
-                current_price = post_price
+                current_price = float(post_price)
             else:
                 current_price = regular_price
 
-            # 漲跌幅計算（對齊 TradingView 邏輯）
-            # 盤前/盤後：vs 今日正式盤收盤 (regular_price)
-            # 正式盤：vs 昨日收盤 (prev_close)
-            if phase == "正式盤":
-                base_price = prev_close
-            else:
+            # 漲跌幅基準對齊 TradingView：
+            #   盤前：preMarketPrice   vs prev_close    (T-1 正式盤收盤)
+            #   正式盤：regularMarketPrice vs prev_close (T-1 正式盤收盤)
+            #   盤後：postMarketPrice  vs regular_price (今日正式盤收盤)
+            if phase == "盤後":
                 base_price = regular_price
+            else:
+                base_price = prev_close
 
             dollar_change  = current_price - base_price
-            percent_change = (dollar_change / base_price * 100) if base_price != 0 else 0
+            percent_change = (dollar_change / base_price * 100) if base_price != 0 else 0.0
 
             reg_change     = regular_price - prev_close
-            reg_pct_change = (reg_change / prev_close * 100) if prev_close != 0 else 0
+            reg_pct_change = (reg_change / prev_close * 100) if prev_close != 0 else 0.0
 
-            # 新聞處理
+            # ── 新聞處理（邏輯未變）──
             if UPDATE_NEWS:
                 news_list = []
                 try:
@@ -170,12 +180,14 @@ def fetch_stock_data():
                         title = (
                             item.get('title') or
                             item.get('headline') or
-                            (item.get('content', {}).get('title') if isinstance(item.get('content'), dict) else None)
+                            (item.get('content', {}).get('title')
+                             if isinstance(item.get('content'), dict) else None)
                         )
                         link = (
                             item.get('link') or
                             item.get('url') or
-                            (item.get('content', {}).get('canonicalUrl', {}).get('url') if isinstance(item.get('content'), dict) else None)
+                            (item.get('content', {}).get('canonicalUrl', {}).get('url')
+                             if isinstance(item.get('content'), dict) else None)
                         )
                         source = item.get('publisher') or item.get('source') or "Yahoo Finance"
                         if title and title.strip() and link:
@@ -217,7 +229,8 @@ def fetch_stock_data():
                 "news": news_list
             }
 
-            print(f"  ✅ {sym} [{phase}] 現價${current_price:.2f} 基準${base_price:.2f} 漲跌{dollar_change:+.2f} ({percent_change:+.2f}%)")
+            print(f"  ✅ {sym} [{phase}] 現價${current_price:.2f} 基準${base_price:.2f} "
+                  f"昨收${prev_close:.2f} 漲跌{dollar_change:+.2f} ({percent_change:+.2f}%)")
 
         except Exception as e:
             print(f"  ❌ {sym} 嚴重抓取失敗: {e}")
@@ -238,7 +251,6 @@ def fetch_stock_data():
         "alert_sent": old_data.get('alert_sent', {})
     }
 
-    # 如果本次推播，寫入 flag
     if send_alert:
         mark_alert_sent(final_payload, tw_now, session)
         print(f"📝 已標記今天 {session} 推播完成")
