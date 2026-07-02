@@ -107,7 +107,8 @@ def build_telegram_message(output_data: dict, phase: str, tw_now: datetime.datet
         arrow = '▲' if d >= 0 else '▼'
         abs_d  = abs(d)
         abs_dp = abs(dp)
-        lines.append(f"{sym:<5} ${c:<9.2f} {arrow}{abs_d:.2f} ({"-" if d < 0 else ""}{abs_dp:.2f}%)")
+        sign = "-" if d < 0 else ""
+        lines.append(f"{sym:<5} ${c:<9.2f} {arrow}{abs_d:.2f} ({sign}{abs_dp:.2f}%)")
 
     lines.append("")
     lines.append(build_market_brief(output_data, phase, tw_now))
