@@ -3,8 +3,7 @@ import datetime
 import pytz
 import yfinance as yf
 
-STOCKS = ['NOW', 'NVDA', 'LITE', 'ONDS', 'MRVL', 'GOOG', 'SPCX', 'TSM', 'MU', 'SNDK', 'TSLA']
-
+DEFAULT_STOCKS = ['NOW', 'NVDA', 'LITE', 'ONDS', 'MRVL', 'GOOG', 'SPCX', 'TSM', 'MU', 'SNDK', 'TSLA']
 
 
 def load_existing_data():
@@ -76,13 +75,14 @@ def _fetch_market_headline() -> str:
         except Exception as e:
             print(f"  ⚠️ _fetch_market_headline({symbol}) failed: {e}")
     return ""
-def build_alert_summary(output_data: dict, phase: str, tw_now: datetime.datetime) -> str:
+
+def build_alert_summary(output_data: dict, phase: str, tw_now: datetime.datetime, stocks: list[str]) -> str:
     """異動播報：標題句 + 只報顯著漲跌（>±0.5%），綠漲黃平紅跌（美股慣例）。"""
     crash: list[str] = []
     flat:  list[str] = []
     rise:  list[str] = []
 
-    for sym in STOCKS:
+    for sym in stocks:
         entry = output_data.get(sym)
         if not entry:
             continue
@@ -120,9 +120,9 @@ def build_alert_summary(output_data: dict, phase: str, tw_now: datetime.datetime
 
     return "\n".join(lines)
 
-def build_telegram_message(output_data: dict, phase: str, tw_now: datetime.datetime) -> str:
+def build_telegram_message(output_data: dict, phase: str, tw_now: datetime.datetime, stocks: list[str]) -> str:
     """組裝 Telegram 推播文字（純文字，無 Markdown，相容所有客戶端）。"""
-    return build_alert_summary(output_data, phase, tw_now)
+    return build_alert_summary(output_data, phase, tw_now, stocks)
 
 def get_display_phase(tw_now: datetime.datetime) -> str:
     """Display phase for alert messages based on TW wall-clock time.
@@ -146,6 +146,12 @@ def fetch_stock_data():
     tw_minute = tw_now.minute
     old_data = load_existing_data()
     existing_news = load_existing_news(old_data)
+
+    # ── 股票清單：優先讀 stock_data.json 的 stocks 欄位，fallback 到 DEFAULT ──
+    STOCKS: list[str] = old_data.get('stocks', DEFAULT_STOCKS)
+    if not STOCKS:
+        STOCKS = DEFAULT_STOCKS
+    print(f"📋 追蹤股票（{len(STOCKS)} 支）：{', '.join(STOCKS)}")
 
     print(f"🕐 台灣時間：{tw_now.strftime('%Y-%m-%d %H:%M')}（{tw_hour}時{tw_minute}分）")
 
@@ -178,7 +184,7 @@ def fetch_stock_data():
 
     display_phase = get_display_phase(tw_now)
 
-    for i, sym in enumerate(STOCKS):
+    for sym in STOCKS:
         try:
             print(f"正在抓取 {sym}...")
             ticker = yf.Ticker(sym)
@@ -308,7 +314,7 @@ def fetch_stock_data():
             }
 
     # 組裝推播訊息並寫出供 yml 讀取
-    telegram_msg = build_telegram_message(output_data, display_phase, tw_now)
+    telegram_msg = build_telegram_message(output_data, display_phase, tw_now, STOCKS)
     with open('telegram_msg.txt', 'w', encoding='utf-8') as f:
         f.write(telegram_msg)
     print("\n📨 推播訊息預覽：")
@@ -318,6 +324,7 @@ def fetch_stock_data():
         "name": "美股盤前情報資料庫",
         "updated_at": tw_now.isoformat(),
         "next_update_at": calc_next_update_at(tw_now),
+        "stocks": STOCKS,
         "data": output_data,
         "alert_sent": old_data.get('alert_sent', {})
     }
