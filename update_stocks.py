@@ -6,6 +6,7 @@ import yfinance as yf
 STOCKS = ['NOW', 'NVDA', 'LITE', 'ONDS', 'MRVL', 'GOOG', 'SPCX', 'TSM', 'MU', 'SNDK', 'TSLA']
 
 
+
 def load_existing_data():
     try:
         with open('stock_data.json', 'r', encoding='utf-8') as f:
@@ -53,69 +54,89 @@ def calc_next_update_at(tw_now: datetime.datetime) -> str:
     next_dt  = next_dt.replace(minute=0, second=0, microsecond=0) + datetime.timedelta(minutes=boundary)
     return next_dt.astimezone(datetime.timezone.utc).strftime('%Y-%m-%dT%H:%M:%SZ')
 
-def build_market_brief(output_data: dict, phase: str, tw_now: datetime.datetime) -> str:
+def _fetch_market_headline() -> str:
+    """Fetch latest headline from ^SOX (Philadelphia Semiconductor Index) news.
+
+    Falls back to ^GSPC (S&P 500) if SOX news is unavailable.
+    Returns empty string on any failure — caller handles gracefully.
     """
-    規則型總經摘要：依漲跌幅分層，並歸納板塊強弱。
-    僅使用已抓取的 yfinance 資料，無需外部 API。
-    """
-    surge, rise, flat, fall, crash = [], [], [], [], []
-
-    for sym, entry in output_data.items():
-        dp = entry['quote'].get('dp', 0.0)
-        label = f"{sym} {dp:+.2f}%"
-        if dp >= 3:
-            surge.append(label)
-        elif dp >= 0.5:
-            rise.append(label)
-        elif dp > -0.5:
-            flat.append(label)
-        elif dp > -3:
-            fall.append(label)
-        else:
-            crash.append(label)
-
-    date_str = tw_now.strftime('%m/%d')
-    lines = [f"📋 板塊摘要 | {phase} {date_str}"]
-    lines.append("")
-
-    if crash:
-        lines.append("🔴 重挫（<-3%）：" + "、".join(crash))
-    if fall:
-        lines.append("🟠 下跌（-3~-0.5%）：" + "、".join(fall))
-    if flat:
-        lines.append("⚪ 持平：" + "、".join(flat))
-    if rise:
-        lines.append("🟡 上漲（+0.5~+3%）：" + "、".join(rise))
-    if surge:
-        lines.append("🟢 強漲（>+3%）：" + "、".join(surge))
-
-    return "\n".join(lines)
-
-def build_telegram_message(output_data: dict, phase: str, tw_now: datetime.datetime) -> str:
-    """組裝 Telegram 推播文字（純文字，無 Markdown，相容所有客戶端）。"""
-    date_str = tw_now.strftime('%m/%d %H:%M')
-    lines = [f"🛡 美股情報 | {phase} {date_str}", ""]
+    for symbol in ('^SOX', '^GSPC'):
+        try:
+            ticker = yf.Ticker(symbol)
+            news_items = ticker.news or []
+            for item in news_items[:3]:
+                title: str | None = (
+                    item.get('title') or
+                    item.get('headline') or
+                    (item.get('content', {}).get('title')
+                     if isinstance(item.get('content'), dict) else None)
+                )
+                if title and title.strip():
+                    return title.strip()
+        except Exception as e:
+            print(f"  ⚠️ _fetch_market_headline({symbol}) failed: {e}")
+    return ""
+def build_alert_summary(output_data: dict, phase: str, tw_now: datetime.datetime) -> str:
+    """異動播報：標題句 + 只報顯著漲跌（>±0.5%），綠漲黃平紅跌（美股慣例）。"""
+    crash: list[str] = []
+    flat:  list[str] = []
+    rise:  list[str] = []
 
     for sym in STOCKS:
         entry = output_data.get(sym)
         if not entry:
             continue
-        q   = entry['quote']
-        c   = q.get('c', 0.0)
-        d   = q.get('d', 0.0)
-        dp  = q.get('dp', 0.0)
-        arrow = '▲' if d >= 0 else '▼'
-        abs_d  = abs(d)
-        abs_dp = abs(dp)
-        sign = "-" if d < 0 else ""
-        lines.append(f"{sym:<5} ${c:<9.2f} {arrow}{abs_d:.2f} ({sign}{abs_dp:.2f}%)")
+        dp = entry['quote'].get('dp', 0.0)
+        label = f"{sym} {dp:+.2f}%"
+        if dp >= 0.5:
+            rise.append(label)
+        elif dp > -0.5:
+            flat.append(label)
+        else:
+            crash.append(label)
+
+    date_str = tw_now.strftime('%m/%d %H:%M')
+    headline = _fetch_market_headline()
+
+    lines = [
+        f"🛡 美股播報 | {phase} {date_str}",
+        f"📰 {headline}",
+        "",
+    ]
+
+    def fmt(label: str) -> str:
+        sym, pct = label.split(" ", 1)
+        return f"<code>{sym}</code> {pct}"
+
+    if crash:
+        lines.append("🔴 " + "  ".join(fmt(l) for l in crash))
+    if flat:
+        lines.append("🟡 " + "  ".join(fmt(l) for l in flat))
+    if rise:
+        lines.append("🟢 " + "  ".join(fmt(l) for l in rise))
 
     lines.append("")
-    lines.append(build_market_brief(output_data, phase, tw_now))
-    lines.append("")
-    lines.append("🔗 https://mjtsai-code.github.io/STOCK_ALERT/")
+    lines.append("📊 完整數據 → https://mjtsai-code.github.io/STOCK_ALERT/")
 
     return "\n".join(lines)
+
+def build_telegram_message(output_data: dict, phase: str, tw_now: datetime.datetime) -> str:
+    """組裝 Telegram 推播文字（純文字，無 Markdown，相容所有客戶端）。"""
+    return build_alert_summary(output_data, phase, tw_now)
+
+def get_display_phase(tw_now: datetime.datetime) -> str:
+    """Display phase for alert messages based on TW wall-clock time.
+    Independent of yfinance marketState cache.
+    """
+    tw_minutes = tw_now.hour * 60 + tw_now.minute
+    REGULAR_START = 21 * 60 + 30
+    POST_START    = 4  * 60
+    POST_END      = 4  * 60 + 59
+    if (tw_minutes >= REGULAR_START) or (tw_minutes <= POST_START - 1):
+        return '正式盤'
+    if POST_START <= tw_minutes <= POST_END:
+        return '盤後'
+    return '盤前'
 
 def fetch_stock_data():
     output_data = {}
@@ -155,7 +176,7 @@ def fetch_stock_data():
         f.write('true' if send_alert else 'false')
     print(f"推播決定: {'true' if send_alert else 'false'}")
 
-    current_phase = '正式盤'  # 由第一支股票的 marketState 決定
+    display_phase = get_display_phase(tw_now)
 
     for i, sym in enumerate(STOCKS):
         try:
@@ -198,10 +219,6 @@ def fetch_stock_data():
             market_state = info.get('marketState', '')
             phase = get_market_phase(market_state)
             print(f"  marketState={market_state!r} → phase={phase}")
-
-            # 以第一支股票的 phase 代表整體市場時段
-            if i == 0:
-                current_phase = phase
 
             if phase == "盤前" and pre_price is not None:
                 current_price = float(pre_price)
@@ -291,7 +308,7 @@ def fetch_stock_data():
             }
 
     # 組裝推播訊息並寫出供 yml 讀取
-    telegram_msg = build_telegram_message(output_data, current_phase, tw_now)
+    telegram_msg = build_telegram_message(output_data, display_phase, tw_now)
     with open('telegram_msg.txt', 'w', encoding='utf-8') as f:
         f.write(telegram_msg)
     print("\n📨 推播訊息預覽：")
