@@ -1,5 +1,6 @@
 import json
 import datetime
+import time
 import pytz
 import yfinance as yf
 
@@ -41,12 +42,50 @@ def mark_alert_sent(final_payload, tw_now, session):
         final_payload['alert_sent'] = {}
     final_payload['alert_sent'][session] = today
 
+def _ny_session(now: datetime.datetime) -> str:
+    """NYSE session by New York wall-clock. pytz handles EST/EDT (DST) automatically.
+
+    Returns: 'REGULAR' (09:30–15:59), 'POST' (16:00–16:59), 'PRE' (otherwise).
+    Weekends return 'PRE' (treated as non-regular; alert_sent dedup guards alerts).
+    Known limitation: US market holidays not modeled — worst case is a faster
+    update interval on a closed day, which is harmless.
+    """
+    ny = now.astimezone(pytz.timezone('America/New_York'))
+    if ny.weekday() >= 5:
+        return 'PRE'
+    minutes = ny.hour * 60 + ny.minute
+    if (9 * 60 + 30) <= minutes < (16 * 60):
+        return 'REGULAR'
+    if (16 * 60) <= minutes < (17 * 60):
+        return 'POST'
+    return 'PRE'
+
+def _is_data_stale(market_times: list[int], tw_now: datetime.datetime,
+                   threshold_hours: int = 30) -> bool:
+    """Data-freshness gate for alerts: True if last trade is older than threshold.
+
+    Rationale: TW morning alert fires ~17h after a normal close, but >40h
+    after a US market holiday — 30h cleanly separates the two without a
+    holiday calendar. Median across tickers tolerates per-ticker field gaps.
+    Fail-open: no timestamps → treat as fresh（寧多推，不漏推）.
+    """
+    if not market_times:
+        print("  ⚠️ staleness check: 無 regularMarketTime 可用，fail-open 視為新鮮")
+        return False
+    ts_sorted = sorted(market_times)
+    median_ts = ts_sorted[len(ts_sorted) // 2]
+    age_hours = (tw_now.timestamp() - median_ts) / 3600
+    print(f"  📅 資料新鮮度: 最後成交距今 {age_hours:.1f}h（閾值 {threshold_hours}h）")
+    return age_hours > threshold_hours
+
 def calc_next_update_at(tw_now: datetime.datetime) -> str:
-    tw_minutes = tw_now.hour * 60 + tw_now.minute
-    REGULAR_START = 21 * 60 + 30
-    POST_START    = 4  * 60
-    POST_END      = 4  * 60 + 59
-    is_regular = (tw_minutes >= REGULAR_START) or (tw_minutes <= POST_START - 1)
+    # /* Backup of original logic (夏令硬編碼，冬令偏移 1hr):
+    # tw_minutes = tw_now.hour * 60 + tw_now.minute
+    # REGULAR_START = 21 * 60 + 30
+    # POST_START    = 4  * 60
+    # is_regular = (tw_minutes >= REGULAR_START) or (tw_minutes <= POST_START - 1)
+    # */
+    is_regular = _ny_session(tw_now) == 'REGULAR'
     interval_minutes = 5 if is_regular else 30
     next_dt = tw_now + datetime.timedelta(minutes=interval_minutes)
     boundary = (next_dt.minute // interval_minutes + 1) * interval_minutes
@@ -128,13 +167,21 @@ def get_display_phase(tw_now: datetime.datetime) -> str:
     """Display phase for alert messages based on TW wall-clock time.
     Independent of yfinance marketState cache.
     """
-    tw_minutes = tw_now.hour * 60 + tw_now.minute
-    REGULAR_START = 21 * 60 + 30
-    POST_START    = 4  * 60
-    POST_END      = 4  * 60 + 59
-    if (tw_minutes >= REGULAR_START) or (tw_minutes <= POST_START - 1):
+    # /* Backup of original logic (夏令硬編碼，冬令偏移 1hr):
+    # tw_minutes = tw_now.hour * 60 + tw_now.minute
+    # REGULAR_START = 21 * 60 + 30
+    # POST_START    = 4  * 60
+    # POST_END      = 4  * 60 + 59
+    # if (tw_minutes >= REGULAR_START) or (tw_minutes <= POST_START - 1):
+    #     return '正式盤'
+    # if POST_START <= tw_minutes <= POST_END:
+    #     return '盤後'
+    # return '盤前'
+    # */
+    session = _ny_session(tw_now)
+    if session == 'REGULAR':
         return '正式盤'
-    if POST_START <= tw_minutes <= POST_END:
+    if session == 'POST':
         return '盤後'
     return '盤前'
 
@@ -155,8 +202,25 @@ def fetch_stock_data():
 
     print(f"🕐 台灣時間：{tw_now.strftime('%Y-%m-%d %H:%M')}（{tw_hour}時{tw_minute}分）")
 
-    morning = (tw_hour == 5 and tw_minute >= 30) or (tw_hour == 6 and tw_minute <= 30)
-    evening = (tw_hour == 17 and tw_minute >= 30) or (tw_hour == 18 and tw_minute <= 30)
+    # /* Backup of original logic:
+    # morning = (tw_hour == 5 and tw_minute >= 30) or (tw_hour == 6 and tw_minute <= 30)
+    # evening = (tw_hour == 17 and tw_minute >= 30) or (tw_hour == 18 and tw_minute <= 30)
+    # */
+    # ── 推播窗口 ──────────────────────────────────────────────
+    # morning: 週二~週六 06:30–07:29（美股收盤後）
+    # evening: 週一~週五 18:00–18:59（美股盤前提醒）
+    # 60 分鐘容錯窗口 = cron 30 分鐘頻率 + GH Actions 延遲緩衝；
+    # alert_sent 按日去重保證同窗口多次命中只推播一次。
+    tw_weekday: int = tw_now.weekday()  # 週一=0 ... 週日=6
+
+    morning = (
+        tw_weekday in (1, 2, 3, 4, 5)
+        and ((tw_hour == 6 and tw_minute >= 30) or (tw_hour == 7 and tw_minute <= 29))
+    )
+    evening = (
+        tw_weekday in (0, 1, 2, 3, 4)
+        and tw_hour == 18
+    )
 
     if morning:
         session = 'morning'
@@ -178,13 +242,20 @@ def fetch_stock_data():
         print("🤫 非推播時段，靜默更新")
 
     send_alert = session is not None and not already_sent
-    with open('should_alert.txt', 'w') as f:
-        f.write('true' if send_alert else 'false')
+    # /* Backup of original logic (過早寫 flag，中途 crash 會推播上一輪舊訊息):
+    # with open('should_alert.txt', 'w') as f:
+    #     f.write('true' if send_alert else 'false')
+    # */
+    # should_alert.txt 延後到所有股票抓取完成、telegram_msg.txt 寫出後
+    # 才落盤（見函式尾端），確保 flag 與訊息原子性一致。
     print(f"推播決定: {'true' if send_alert else 'false'}")
 
     display_phase = get_display_phase(tw_now)
+    market_times: list[int] = []  # regularMarketTime per ticker（僅供 staleness gate，不寫入 JSON）
 
-    for sym in STOCKS:
+    for idx, sym in enumerate(STOCKS):
+        if idx > 0:
+            time.sleep(0.8)  # P1#3: inter-ticker delay，降低 Yahoo 429 機率
         try:
             print(f"正在抓取 {sym}...")
             ticker = yf.Ticker(sym)
@@ -195,14 +266,24 @@ def fetch_stock_data():
             post_price: float | None = None
             info: dict = {}
 
-            try:
-                info          = ticker.info or {}
-                regular_price = float(info.get('regularMarketPrice') or info.get('currentPrice') or 0.0)
-                prev_close    = float(info.get('regularMarketPreviousClose') or info.get('previousClose') or 0.0)
-                pre_price     = info.get('preMarketPrice')
-                post_price    = info.get('postMarketPrice')
-            except Exception as info_err:
-                print(f"  ⚠️ {sym} info 接口受限: {info_err}")
+            # P1#3: .info 是 phase 判定與 pre/post 價的唯一來源，429 靜默失敗
+            # 會級聯成 phase 全錯 → 現價選錯。加 backoff 重試（0s→2s→4s）。
+            _INFO_RETRIES: int = 3
+            for attempt in range(_INFO_RETRIES):
+                try:
+                    info          = ticker.info or {}
+                    regular_price = float(info.get('regularMarketPrice') or info.get('currentPrice') or 0.0)
+                    prev_close    = float(info.get('regularMarketPreviousClose') or info.get('previousClose') or 0.0)
+                    pre_price     = info.get('preMarketPrice')
+                    post_price    = info.get('postMarketPrice')
+                    break
+                except Exception as info_err:
+                    if attempt < _INFO_RETRIES - 1:
+                        backoff = 2 ** (attempt + 1)
+                        print(f"  ⚠️ {sym} info 失敗（第{attempt+1}次）: {info_err}，{backoff}s 後重試")
+                        time.sleep(backoff)
+                    else:
+                        print(f"  ⚠️ {sym} info 接口受限（已重試 {_INFO_RETRIES} 次）: {info_err}")
 
             if regular_price == 0.0:
                 try:
@@ -223,6 +304,9 @@ def fetch_stock_data():
                     print(f"  ⚠️ {sym} history 保底失敗: {he}")
 
             market_state = info.get('marketState', '')
+            _mt = info.get('regularMarketTime')
+            if isinstance(_mt, (int, float)) and _mt > 0:
+                market_times.append(int(_mt))
             phase = get_market_phase(market_state)
             print(f"  marketState={market_state!r} → phase={phase}")
 
@@ -238,8 +322,35 @@ def fetch_stock_data():
             else:
                 base_price = prev_close
 
-            dollar_change  = current_price - base_price
-            percent_change = (dollar_change / base_price * 100) if base_price != 0 else 0.0
+            # /* Backup of original logic (盤前誤用 prev_close＝前天收盤當基準):
+            # dollar_change  = current_price - base_price
+            # percent_change = (dollar_change / base_price * 100) if base_price != 0 else 0.0
+            # */
+            # Source of truth: Yahoo 已算好的 change 欄位（欄位滾動時機由
+            # Yahoo 端處理，避免 prev_close 在盤前仍指向前天收盤的坑）。
+            _CHANGE_FIELDS: dict[str, str] = {
+                "盤前":  'preMarketChange',
+                "盤後":  'postMarketChange',
+                "正式盤": 'regularMarketChange',
+            }
+            d_field = _CHANGE_FIELDS[phase]
+            yh_d = info.get(d_field)
+
+            if yh_d is not None:
+                # 只信 dollar-change 欄位；percent 自導出（d / 基準價）。
+                # 不用 *ChangePercent 欄位：yfinance 版本間單位不一致
+                # （fraction vs percent），d/(current-d) 推導永遠單位正確。
+                dollar_change = float(yh_d)
+                effective_base = current_price - dollar_change
+                percent_change = (dollar_change / effective_base * 100) if effective_base != 0 else 0.0
+            else:
+                # Fallback（info 受限時）：盤前基準修正為最近收盤 regular_price，
+                # 因盤前時段 prev_close 語意 = 前天收盤。
+                effective_base = regular_price if phase == "盤前" else base_price
+                dollar_change  = current_price - effective_base
+                percent_change = (dollar_change / effective_base * 100) if effective_base != 0 else 0.0
+                print(f"  ⚠️ {sym} 缺 {d_field}，fallback 自算（基準 {effective_base:.2f}）")
+
             reg_change     = regular_price - prev_close
             reg_pct_change = (reg_change / prev_close * 100) if prev_close != 0 else 0.0
 
@@ -298,7 +409,7 @@ def fetch_stock_data():
                 "news": news_list
             }
 
-            print(f"  ✅ {sym} [{phase}] 現價${current_price:.2f} 基準${base_price:.2f} "
+            print(f"  ✅ {sym} [{phase}] 現價${current_price:.2f} 基準${effective_base:.2f} "
                   f"昨收${prev_close:.2f} 漲跌{dollar_change:+.2f} ({percent_change:+.2f}%)")
 
         except Exception as e:
@@ -313,12 +424,26 @@ def fetch_stock_data():
                 "news": existing_news.get(sym, [])
             }
 
-    # 組裝推播訊息並寫出供 yml 讀取
-    telegram_msg = build_telegram_message(output_data, display_phase, tw_now, STOCKS)
+    # ── 假日防護: 資料過舊（美股休市）則取消本輪推播 ─────────────
+    # 只 gate morning：正常早上距上次收盤 ~17h，假日後早上 >40h，30h 乾淨
+    # 分離。evening 不 gate——正常週一晚距週五收盤 ~62h，必然「過舊」，
+    # 且盤前提醒的本質問題（今晚是否開盤）無法由成交時間回答。
+    # 不標 alert_sent：若同窗口稍後資料轉新鮮（極端情況），仍可推播。
+    if send_alert and session == 'morning' and _is_data_stale(market_times, tw_now):
+        print("🏖 資料為休市前舊數據（美股假日），取消本輪 morning 推播")
+        send_alert = False
+
+    # ── 所有資料就緒後才組訊息、寫 flag（原子性：flag 永遠對應本輪訊息）──
+    # P1#4: headline 只在真的要推播時才抓（省 ~38 次/日的 news API 呼叫）
+    telegram_msg = (build_telegram_message(output_data, display_phase, tw_now, STOCKS)
+                    if send_alert else '')
     with open('telegram_msg.txt', 'w', encoding='utf-8') as f:
         f.write(telegram_msg)
-    print("\n📨 推播訊息預覽：")
-    print(telegram_msg)
+    with open('should_alert.txt', 'w') as f:
+        f.write('true' if send_alert else 'false')
+    if send_alert:
+        print("\n📨 推播訊息預覽：")
+        print(telegram_msg)
 
     final_payload = {
         "name": "美股盤前情報資料庫",
