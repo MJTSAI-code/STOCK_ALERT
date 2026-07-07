@@ -1,7 +1,7 @@
 {
   "name": "美股盤前情報資料庫",
-  "updated_at": "2026-07-08T06:21:36.013568+08:00",
-  "next_update_at": "2026-07-07T23:00:00Z",
+  "updated_at": "2026-07-08T06:52:02.677801+08:00",
+  "next_update_at": "2026-07-07T23:30:00Z",
   "stocks": [
     "NOW",
     "NVDA",
@@ -18,43 +18,43 @@
   "data": {
     "NOW": {
       "quote": {
-        "c": 109.41,
-        "d": -1.32,
-        "dp": -1.1886,
+        "c": 109.66,
+        "d": -1.07,
+        "dp": -0.9654,
         "regular": 110.73,
         "reg_d": 2.8,
         "reg_dp": 2.5943,
         "pre": null,
-        "post": 109.41,
+        "post": 109.66,
         "prev_close": 107.93,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "ServiceNow (NOW) Stock Is Up, What You Need To Know",
-          "datetime": 1783462896,
+          "headline": "PagerDuty and Paylocity Shares Are Soaring, What You Need To Know",
+          "datetime": 1783464722,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/markets/stocks/articles/servicenow-now-stock-know-221752919.html"
+          "url": "https://finance.yahoo.com/markets/stocks/articles/pagerduty-paylocity-shares-soaring-know-224152491.html"
         }
       ]
     },
     "NVDA": {
       "quote": {
-        "c": 195.73,
-        "d": -1.2,
-        "dp": -0.6094,
+        "c": 195.99,
+        "d": -0.94,
+        "dp": -0.4773,
         "regular": 196.93,
         "reg_d": 1.38,
         "reg_dp": 0.7057,
         "pre": null,
-        "post": 195.73,
+        "post": 195.99,
         "prev_close": 195.55,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "DeepSeek looks to reduce reliance on Nvidia with own AI chip",
-          "datetime": 1783462896,
+          "datetime": 1783464722,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/video/deepseek-looks-to-reduce-reliance-on-nvidia-with-own-ai-chip-203313261.html"
         }
@@ -62,21 +62,21 @@
     },
     "LITE": {
       "quote": {
-        "c": 698.0,
-        "d": -0.91,
-        "dp": -0.1302,
+        "c": 693.0,
+        "d": -5.91,
+        "dp": -0.8456,
         "regular": 698.91,
         "reg_d": -32.34,
         "reg_dp": -4.4226,
         "pre": null,
-        "post": 698.0,
+        "post": 693.0,
         "prev_close": 731.25,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Lumentum Stock Skyrockets 700% in a Year: Is It Still a Buy?",
-          "datetime": 1783462896,
+          "datetime": 1783464722,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/markets/stocks/articles/lumentum-stock-skyrockets-700-still-144400354.html"
         }
@@ -84,21 +84,21 @@
     },
     "ONDS": {
       "quote": {
-        "c": 7.35,
-        "d": 0.0,
-        "dp": 0.0,
+        "c": 7.34,
+        "d": -0.01,
+        "dp": -0.1361,
         "regular": 7.35,
         "reg_d": -0.47,
         "reg_dp": -6.0102,
         "pre": null,
-        "post": 7.35,
+        "post": 7.34,
         "prev_close": 7.82,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "DZYNE Buyout Sparks Ondas Stock Rally: More Gains Ahead?",
-          "datetime": 1783462896,
+          "datetime": 1783464722,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/markets/stocks/articles/dzyne-buyout-sparks-ondas-stock-133300355.html"
         }
@@ -106,21 +106,21 @@
     },
     "MRVL": {
       "quote": {
-        "c": 230.6,
-        "d": -0.1,
-        "dp": -0.0435,
+        "c": 230.8,
+        "d": 0.1,
+        "dp": 0.0433,
         "regular": 230.7,
         "reg_d": -18.57,
         "reg_dp": -7.4497,
         "pre": null,
-        "post": 230.6,
+        "post": 230.8,
         "prev_close": 249.27,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "📉 Which Tech Stocks Fell the Most Today?",
-          "datetime": 1783462896,
+          "datetime": 1783464722,
           "source": "Yahoo Finance",
           "url": "https://www.wsj.com/livecoverage/stock-market-today-dow-sp-500-nasdaq-07-07-2026/card/-which-tech-stocks-are-falling-the-most-today--ZJ8L41EcRW26zRtVSy9v?siteid=yhoof2&yptr=yahoo"
         }
@@ -128,21 +128,21 @@
     },
     "GOOG": {
       "quote": {
-        "c": 363.43,
-        "d": -0.19,
-        "dp": -0.0511,
+        "c": 363.39,
+        "d": -0.23,
+        "dp": -0.0632,
         "regular": 363.62,
         "reg_d": -1.28,
         "reg_dp": -0.3508,
         "pre": null,
-        "post": 363.43,
+        "post": 363.39,
         "prev_close": 364.9,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "DeepSeek looks to reduce reliance on Nvidia with own AI chip",
-          "datetime": 1783462896,
+          "datetime": 1783464722,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/video/deepseek-looks-to-reduce-reliance-on-nvidia-with-own-ai-chip-203313261.html"
         }
@@ -150,21 +150,21 @@
     },
     "SPCX": {
       "quote": {
-        "c": 151.05,
-        "d": 1.58,
-        "dp": 1.0571,
+        "c": 151.18,
+        "d": 1.71,
+        "dp": 1.144,
         "regular": 149.47,
         "reg_d": -10.95,
         "reg_dp": -6.8258,
         "pre": null,
-        "post": 151.05,
+        "post": 151.18,
         "prev_close": 160.42,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "SpaceX stock drops below IPO opening price despite flood of bullish Wall Street ratings",
-          "datetime": 1783462896,
+          "datetime": 1783464722,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/markets/stocks/article/spacex-stock-drops-below-ipo-opening-price-despite-flood-of-bullish-wall-street-ratings-153809443.html"
         }
@@ -172,21 +172,21 @@
     },
     "TSM": {
       "quote": {
-        "c": 433.08,
-        "d": 0.51,
-        "dp": 0.1175,
+        "c": 433.3,
+        "d": 0.73,
+        "dp": 0.1688,
         "regular": 432.57,
         "reg_d": -19.22,
         "reg_dp": -4.2542,
         "pre": null,
-        "post": 433.08,
+        "post": 433.3,
         "prev_close": 451.79,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "DeepSeek looks to reduce reliance on Nvidia with own AI chip",
-          "datetime": 1783462896,
+          "datetime": 1783464722,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/video/deepseek-looks-to-reduce-reliance-on-nvidia-with-own-ai-chip-203313261.html"
         }
@@ -194,21 +194,21 @@
     },
     "MU": {
       "quote": {
-        "c": 926.2,
-        "d": -12.18,
-        "dp": -1.298,
+        "c": 926.09,
+        "d": -12.29,
+        "dp": -1.3097,
         "regular": 938.38,
         "reg_d": -46.37,
         "reg_dp": -4.7088,
         "pre": null,
-        "post": 926.2,
+        "post": 926.09,
         "prev_close": 984.75,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Samsung saw a record quarter, but it's not enough for investors. Here's why.",
-          "datetime": 1783462896,
+          "datetime": 1783464722,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/video/samsung-saw-a-record-quarter-but-its-not-enough-for-investors-heres-why-203148500.html"
         }
@@ -216,21 +216,21 @@
     },
     "SNDK": {
       "quote": {
-        "c": 1606.0,
-        "d": -11.7,
-        "dp": -0.7232,
+        "c": 1610.01,
+        "d": -7.69,
+        "dp": -0.4754,
         "regular": 1617.7,
         "reg_d": -126.73,
         "reg_dp": -7.2648,
         "pre": null,
-        "post": 1606.0,
+        "post": 1610.01,
         "prev_close": 1744.43,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Samsung saw a record quarter, but it's not enough for investors. Here's why.",
-          "datetime": 1783462896,
+          "datetime": 1783464722,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/video/samsung-saw-a-record-quarter-but-its-not-enough-for-investors-heres-why-203148500.html"
         }
@@ -238,21 +238,21 @@
     },
     "TSLA": {
       "quote": {
-        "c": 403.95,
-        "d": 1.05,
-        "dp": 0.2618,
+        "c": 404.01,
+        "d": 1.11,
+        "dp": 0.2755,
         "regular": 402.9,
         "reg_d": -16.87,
         "reg_dp": -4.0189,
         "pre": null,
-        "post": 403.95,
+        "post": 404.01,
         "prev_close": 419.77,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "SpaceX to join the Nasdaq 100: How Wall Street feels about the Elon Musk story",
-          "datetime": 1783462896,
+          "datetime": 1783464722,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/video/spacex-join-nasdaq-100-wall-140000776.html"
         }
@@ -260,7 +260,7 @@
     }
   },
   "alert_sent": {
-    "morning": "2026-07-07",
+    "morning": "2026-07-08",
     "evening": "2026-07-03"
   }
 }
