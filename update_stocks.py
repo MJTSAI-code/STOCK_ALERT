@@ -20,7 +20,12 @@ def load_existing_news(old_data):
         existing_news[sym] = entry.get('news', [])
     return existing_news
 
-def get_market_phase(market_state: str) -> str:
+def get_market_phase(market_state: str, now: datetime.datetime | None = None) -> str:
+    """Phase from Yahoo marketState (server truth). When marketState is missing
+    (e.g. .info 429 → fast_info rescue has no marketState), fall back to the
+    NY wall-clock session instead of a hardcoded default — a wrong hardcoded
+    phase cascades into wrong price selection and wrong baseline.
+    """
     _PHASE_MAP: dict[str, str] = {
         'PRE':      '盤前',
         'REGULAR':  '正式盤',
@@ -29,7 +34,18 @@ def get_market_phase(market_state: str) -> str:
         'PREPRE':   '正式盤',
         'CLOSED':   '正式盤',
     }
-    return _PHASE_MAP.get((market_state or '').upper().strip(), '正式盤')
+    key = (market_state or '').upper().strip()
+    if key in _PHASE_MAP:
+        return _PHASE_MAP[key]
+    # /* Backup of original logic (缺失時寫死預設，429 時 NOW 誤標正式盤):
+    # return _PHASE_MAP.get(key, '正式盤')
+    # */
+    if now is None:
+        now = datetime.datetime.now(pytz.timezone('Asia/Taipei'))
+    _SESSION_TO_PHASE = {'REGULAR': '正式盤', 'POST': '盤後', 'PRE': '盤前'}
+    fb = _SESSION_TO_PHASE[_ny_session(now)]
+    print(f"  ⚠️ marketState 缺失，以 NY 時鐘 fallback → {fb}")
+    return fb
 
 def check_alert_sent(old_data, tw_now, session):
     today = tw_now.strftime('%Y-%m-%d')
@@ -45,7 +61,7 @@ def mark_alert_sent(final_payload, tw_now, session):
 def _ny_session(now: datetime.datetime) -> str:
     """NYSE session by New York wall-clock. pytz handles EST/EDT (DST) automatically.
 
-    Returns: 'REGULAR' (09:30–15:59), 'POST' (16:00–16:59), 'PRE' (otherwise).
+    Returns: 'REGULAR' (09:30–15:59), 'POST' (16:00–19:59 after-hours), 'PRE' (otherwise).
     Weekends return 'PRE' (treated as non-regular; alert_sent dedup guards alerts).
     Known limitation: US market holidays not modeled — worst case is a faster
     update interval on a closed day, which is harmless.
@@ -56,7 +72,11 @@ def _ny_session(now: datetime.datetime) -> str:
     minutes = ny.hour * 60 + ny.minute
     if (9 * 60 + 30) <= minutes < (16 * 60):
         return 'REGULAR'
-    if (16 * 60) <= minutes < (17 * 60):
+    # /* Backup of original logic (POST 誤定義為僅一小時，致 morning 推播
+    #    標題在 NY 17:00 後誤標「盤前」):
+    # if (16 * 60) <= minutes < (17 * 60):
+    # */
+    if (16 * 60) <= minutes < (20 * 60):
         return 'POST'
     return 'PRE'
 
@@ -207,15 +227,14 @@ def fetch_stock_data():
     # evening = (tw_hour == 17 and tw_minute >= 30) or (tw_hour == 18 and tw_minute <= 30)
     # */
     # ── 推播窗口 ──────────────────────────────────────────────
-    # morning: 週二~週六 06:30–07:29（美股收盤後）
+    # morning: 週二~週六 05:30–06:30（美股收盤後）
     # evening: 週一~週五 18:00–18:59（美股盤前提醒）
-    # 60 分鐘容錯窗口 = cron 30 分鐘頻率 + GH Actions 延遲緩衝；
-    # alert_sent 按日去重保證同窗口多次命中只推播一次。
+    # 容錯窗口 + alert_sent 按日去重保證同窗口多次命中只推播一次。
     tw_weekday: int = tw_now.weekday()  # 週一=0 ... 週日=6
 
     morning = (
         tw_weekday in (1, 2, 3, 4, 5)
-        and ((tw_hour == 6 and tw_minute >= 30) or (tw_hour == 7 and tw_minute <= 29))
+        and ((tw_hour == 5 and tw_minute >= 30) or (tw_hour == 6 and tw_minute <= 30))
     )
     evening = (
         tw_weekday in (0, 1, 2, 3, 4)
@@ -307,7 +326,7 @@ def fetch_stock_data():
             _mt = info.get('regularMarketTime')
             if isinstance(_mt, (int, float)) and _mt > 0:
                 market_times.append(int(_mt))
-            phase = get_market_phase(market_state)
+            phase = get_market_phase(market_state, tw_now)
             print(f"  marketState={market_state!r} → phase={phase}")
 
             if phase == "盤前" and pre_price is not None:
