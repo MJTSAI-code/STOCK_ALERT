@@ -1,7 +1,7 @@
 {
   "name": "美股盤前情報資料庫",
-  "updated_at": "2026-07-09T03:58:12.958054+08:00",
-  "next_update_at": "2026-07-08T20:05:00Z",
+  "updated_at": "2026-07-09T05:12:29.687883+08:00",
+  "next_update_at": "2026-07-08T22:00:00Z",
   "stocks": [
     "NOW",
     "NVDA",
@@ -18,243 +18,243 @@
   "data": {
     "NOW": {
       "quote": {
-        "c": 107.87,
-        "d": -2.86,
-        "dp": -2.5829,
-        "regular": 107.87,
-        "reg_d": -2.86,
-        "reg_dp": -2.5829,
+        "c": 107.78,
+        "d": 0.0,
+        "dp": 0.0,
+        "regular": 107.78,
+        "reg_d": -1.61,
+        "reg_dp": -1.4706,
         "pre": null,
         "post": null,
-        "prev_close": 110.73,
-        "phase": "正式盤"
+        "prev_close": 109.39,
+        "phase": "盤後"
       },
       "news": [
         {
-          "headline": "GoDaddy, Freshworks, and HubSpot Shares Are Soaring, What You Need To Know",
-          "datetime": 1783468078,
+          "headline": "This analyst upgraded Salesforce & ServiceNow, but not because they'll be AI winners",
+          "datetime": 1783545149,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/markets/stocks/articles/godaddy-freshworks-hubspot-shares-soaring-230552374.html"
+          "url": "https://finance.yahoo.com/video/analyst-upgraded-salesforce-servicenow-not-120000208.html"
         }
       ]
     },
     "NVDA": {
       "quote": {
-        "c": 204.32,
-        "d": 7.4,
-        "dp": 3.7551,
-        "regular": 204.32,
-        "reg_d": 7.39,
-        "reg_dp": 3.7551,
+        "c": 202.81,
+        "d": -1.32,
+        "dp": -0.6442,
+        "regular": 204.12,
+        "reg_d": 7.19,
+        "reg_dp": 3.651,
         "pre": null,
-        "post": null,
+        "post": 202.81,
         "prev_close": 196.93,
-        "phase": "正式盤"
+        "phase": "盤後"
       },
       "news": [
         {
-          "headline": "DeepSeek looks to reduce reliance on Nvidia with own AI chip",
-          "datetime": 1783468078,
+          "headline": "China warned that Anthropic's Claude Code puts your data at risk. Is that true?",
+          "datetime": 1783545149,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/video/deepseek-looks-to-reduce-reliance-on-nvidia-with-own-ai-chip-203313261.html"
+          "url": "https://finance.yahoo.com/video/china-warned-that-anthropics-claude-code-puts-your-data-at-risk-is-that-true-203951387.html"
         }
       ]
     },
     "LITE": {
       "quote": {
-        "c": 706.55,
-        "d": 7.64,
-        "dp": 1.0931,
-        "regular": 706.55,
-        "reg_d": 7.64,
-        "reg_dp": 1.0931,
+        "c": 701.09,
+        "d": -6.01,
+        "dp": -0.8499,
+        "regular": 707.1,
+        "reg_d": 8.19,
+        "reg_dp": 1.1718,
         "pre": null,
-        "post": null,
+        "post": 701.09,
         "prev_close": 698.91,
-        "phase": "正式盤"
+        "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Lumentum Stock Skyrockets 700% in a Year: Is It Still a Buy?",
-          "datetime": 1783468078,
+          "headline": "Lumentum Holdings (LITE) Could Be 86% Undervalued Despite Russell Index Removals",
+          "datetime": 1783545149,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/markets/stocks/articles/lumentum-stock-skyrockets-700-still-144400354.html"
+          "url": "https://finance.yahoo.com/markets/stocks/articles/lumentum-holdings-lite-could-86-201224759.html"
         }
       ]
     },
     "ONDS": {
       "quote": {
-        "c": 7.54,
-        "d": 0.2,
-        "dp": 2.6531,
-        "regular": 7.54,
-        "reg_d": 0.2,
-        "reg_dp": 2.6531,
+        "c": 7.52,
+        "d": -0.0,
+        "dp": -0.0013,
+        "regular": 7.52,
+        "reg_d": 0.17,
+        "reg_dp": 2.3129,
         "pre": null,
-        "post": null,
+        "post": 7.52,
         "prev_close": 7.35,
-        "phase": "正式盤"
+        "phase": "盤後"
       },
       "news": [
         {
-          "headline": "DZYNE Buyout Sparks Ondas Stock Rally: More Gains Ahead?",
-          "datetime": 1783468078,
+          "headline": "Ondas (ONDS) Could Be 62% Undervalued Following Its $875.8 Million DZYNE Deal",
+          "datetime": 1783545149,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/markets/stocks/articles/dzyne-buyout-sparks-ondas-stock-133300355.html"
+          "url": "https://finance.yahoo.com/markets/stocks/articles/ondas-onds-could-62-undervalued-191208751.html"
         }
       ]
     },
     "MRVL": {
       "quote": {
-        "c": 231.59,
-        "d": 0.89,
-        "dp": 0.3836,
-        "regular": 231.59,
-        "reg_d": 0.89,
-        "reg_dp": 0.3836,
+        "c": 231.71,
+        "d": -0.0,
+        "dp": -0.0007,
+        "regular": 231.71,
+        "reg_d": 1.01,
+        "reg_dp": 0.4378,
         "pre": null,
-        "post": null,
+        "post": 231.71,
         "prev_close": 230.7,
-        "phase": "正式盤"
+        "phase": "盤後"
       },
       "news": [
         {
-          "headline": "3 Soaring Stocks That May Have More Upside Ahead",
-          "datetime": 1783468078,
+          "headline": "The MediaTek Ghost Story Just Dropped the World’s Most Powerful Custom-Silicon Juggernaut Into a 25% Discount Zone",
+          "datetime": 1783545149,
           "source": "Yahoo Finance",
-          "url": "https://www.fool.com/investing/2026/07/07/3-soaring-stocks-that-may-have-more-upside-ahead/"
+          "url": "https://247wallst.com/investing/2026/07/08/the-mediatek-ghost-story-just-dropped-the-worlds-most-powerful-custom-silicon-juggernaut-into-a-25-discount-zone/"
         }
       ]
     },
     "GOOG": {
       "quote": {
-        "c": 359.18,
-        "d": -4.44,
-        "dp": -1.2211,
-        "regular": 359.18,
-        "reg_d": -4.44,
-        "reg_dp": -1.2211,
+        "c": 358.03,
+        "d": -0.68,
+        "dp": -0.1893,
+        "regular": 358.71,
+        "reg_d": -4.91,
+        "reg_dp": -1.3503,
         "pre": null,
-        "post": null,
+        "post": 358.03,
         "prev_close": 363.62,
-        "phase": "正式盤"
+        "phase": "盤後"
       },
       "news": [
         {
-          "headline": "DeepSeek looks to reduce reliance on Nvidia with own AI chip",
-          "datetime": 1783468078,
+          "headline": "AI spending is becoming more capital market 'sensitive': Portfolio mgr.",
+          "datetime": 1783545149,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/video/deepseek-looks-to-reduce-reliance-on-nvidia-with-own-ai-chip-203313261.html"
+          "url": "https://finance.yahoo.com/video/ai-spending-becoming-more-capital-120000916.html"
         }
       ]
     },
     "SPCX": {
       "quote": {
-        "c": 147.66,
-        "d": -1.82,
-        "dp": -1.2143,
-        "regular": 147.66,
-        "reg_d": -1.81,
-        "reg_dp": -1.2143,
+        "c": 149.7,
+        "d": 1.4,
+        "dp": 0.944,
+        "regular": 148.3,
+        "reg_d": -1.17,
+        "reg_dp": -0.7828,
         "pre": null,
-        "post": null,
+        "post": 149.7,
         "prev_close": 149.47,
-        "phase": "正式盤"
+        "phase": "盤後"
       },
       "news": [
         {
-          "headline": "SpaceX stock drops below IPO opening price despite flood of bullish Wall Street ratings",
-          "datetime": 1783468078,
+          "headline": "Jeff Bezos's Blue Origin is looking to fuel growth. What does that mean for rival SpaceX?",
+          "datetime": 1783545149,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/markets/stocks/article/spacex-stock-drops-below-ipo-opening-price-despite-flood-of-bullish-wall-street-ratings-153809443.html"
+          "url": "https://finance.yahoo.com/video/jeff-bezoss-blue-origin-is-looking-to-fuel-growth-what-does-that-mean-for-rival-spacex-210129232.html"
         }
       ]
     },
     "TSM": {
       "quote": {
-        "c": 436.9,
-        "d": 4.33,
-        "dp": 1.001,
-        "regular": 436.9,
-        "reg_d": 4.33,
-        "reg_dp": 1.001,
+        "c": 435.0,
+        "d": -1.98,
+        "dp": -0.4531,
+        "regular": 436.98,
+        "reg_d": 4.41,
+        "reg_dp": 1.0195,
         "pre": null,
-        "post": null,
+        "post": 435.0,
         "prev_close": 432.57,
-        "phase": "正式盤"
+        "phase": "盤後"
       },
       "news": [
         {
-          "headline": "DeepSeek looks to reduce reliance on Nvidia with own AI chip",
-          "datetime": 1783468078,
+          "headline": "Veteran analyst drops massive Micron valuation prediction",
+          "datetime": 1783545149,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/video/deepseek-looks-to-reduce-reliance-on-nvidia-with-own-ai-chip-203313261.html"
+          "url": "https://www.thestreet.com/investing/stocks/mu-micron-trillion-dollar-prediction-melius-research"
         }
       ]
     },
     "MU": {
       "quote": {
-        "c": 949.67,
-        "d": 11.29,
-        "dp": 1.2032,
-        "regular": 949.67,
-        "reg_d": 11.29,
-        "reg_dp": 1.2032,
+        "c": 943.0,
+        "d": -5.8,
+        "dp": -0.6113,
+        "regular": 948.8,
+        "reg_d": 10.42,
+        "reg_dp": 1.1104,
         "pre": null,
-        "post": null,
+        "post": 943.0,
         "prev_close": 938.38,
-        "phase": "正式盤"
+        "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Samsung saw a record quarter, but it's not enough for investors. Here's why.",
-          "datetime": 1783468078,
+          "headline": "AI memory stocks trim losses as investors buy the dip",
+          "datetime": 1783545149,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/video/samsung-saw-a-record-quarter-but-its-not-enough-for-investors-heres-why-203148500.html"
+          "url": "https://finance.yahoo.com/markets/stocks/article/ai-memory-stocks-trim-losses-as-investors-buy-the-dip-122848703.html"
         }
       ]
     },
     "SNDK": {
       "quote": {
-        "c": 1719.75,
-        "d": 102.05,
-        "dp": 6.3083,
-        "regular": 1719.75,
-        "reg_d": 102.05,
-        "reg_dp": 6.3083,
+        "c": 1708.8,
+        "d": -18.38,
+        "dp": -1.0641,
+        "regular": 1727.18,
+        "reg_d": 109.48,
+        "reg_dp": 6.7676,
         "pre": null,
-        "post": null,
+        "post": 1708.8,
         "prev_close": 1617.7,
-        "phase": "正式盤"
+        "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Samsung saw a record quarter, but it's not enough for investors. Here's why.",
-          "datetime": 1783468078,
+          "headline": "AI memory stocks trim losses as investors buy the dip",
+          "datetime": 1783545149,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/video/samsung-saw-a-record-quarter-but-its-not-enough-for-investors-heres-why-203148500.html"
+          "url": "https://finance.yahoo.com/markets/stocks/article/ai-memory-stocks-trim-losses-as-investors-buy-the-dip-122848703.html"
         }
       ]
     },
     "TSLA": {
       "quote": {
-        "c": 394.16,
-        "d": -8.74,
-        "dp": -2.1693,
-        "regular": 394.16,
-        "reg_d": -8.74,
-        "reg_dp": -2.1693,
+        "c": 393.08,
+        "d": -0.98,
+        "dp": -0.2487,
+        "regular": 394.06,
+        "reg_d": -8.84,
+        "reg_dp": -2.1941,
         "pre": null,
-        "post": null,
+        "post": 393.08,
         "prev_close": 402.9,
-        "phase": "正式盤"
+        "phase": "盤後"
       },
       "news": [
         {
-          "headline": "SpaceX to join the Nasdaq 100: How Wall Street feels about the Elon Musk story",
-          "datetime": 1783468078,
+          "headline": "Tesla latest: The 'inevitable' SpaceX merger, Robotaxi's Miami launch, & more",
+          "datetime": 1783545149,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/video/spacex-join-nasdaq-100-wall-140000776.html"
+          "url": "https://finance.yahoo.com/video/tesla-latest-inevitable-spacex-merger-120000921.html"
         }
       ]
     }
