@@ -1,7 +1,7 @@
 {
   "name": "美股盤前情報資料庫",
-  "updated_at": "2026-07-09T06:17:43.911830+08:00",
-  "next_update_at": "2026-07-08T23:00:00Z",
+  "updated_at": "2026-07-09T07:21:51.570733+08:00",
+  "next_update_at": "2026-07-09T00:00:00Z",
   "stocks": [
     "NOW",
     "NVDA",
@@ -18,21 +18,21 @@
   "data": {
     "NOW": {
       "quote": {
-        "c": 107.59,
-        "d": -0.19,
-        "dp": -0.1763,
+        "c": 107.6,
+        "d": -0.18,
+        "dp": -0.167,
         "regular": 107.78,
         "reg_d": -2.95,
         "reg_dp": -2.6641,
         "pre": null,
-        "post": 107.59,
+        "post": 107.6,
         "prev_close": 110.73,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "This analyst upgraded Salesforce & ServiceNow, but not because they'll be AI winners",
-          "datetime": 1783549063,
+          "datetime": 1783552911,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/video/analyst-upgraded-salesforce-servicenow-not-120000208.html"
         }
@@ -40,21 +40,21 @@
     },
     "NVDA": {
       "quote": {
-        "c": 203.37,
-        "d": -0.75,
-        "dp": -0.3674,
+        "c": 202.86,
+        "d": -1.26,
+        "dp": -0.6173,
         "regular": 204.12,
         "reg_d": 7.19,
         "reg_dp": 3.651,
         "pre": null,
-        "post": 203.37,
+        "post": 202.86,
         "prev_close": 196.93,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "China warned that Anthropic's Claude Code puts your data at risk. Is that true?",
-          "datetime": 1783549063,
+          "datetime": 1783552911,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/video/china-warned-that-anthropics-claude-code-puts-your-data-at-risk-is-that-true-203951387.html"
         }
@@ -62,21 +62,21 @@
     },
     "LITE": {
       "quote": {
-        "c": 705.5,
-        "d": -1.6,
-        "dp": -0.2263,
+        "c": 704.5,
+        "d": -2.6,
+        "dp": -0.3677,
         "regular": 707.1,
         "reg_d": 8.19,
         "reg_dp": 1.1718,
         "pre": null,
-        "post": 705.5,
+        "post": 704.5,
         "prev_close": 698.91,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Lumentum Holdings (LITE) Could Be 86% Undervalued Despite Russell Index Removals",
-          "datetime": 1783549063,
+          "datetime": 1783552911,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/markets/stocks/articles/lumentum-holdings-lite-could-86-201224759.html"
         }
@@ -84,21 +84,21 @@
     },
     "ONDS": {
       "quote": {
-        "c": 7.53,
-        "d": 0.01,
-        "dp": 0.1237,
+        "c": 7.56,
+        "d": 0.04,
+        "dp": 0.5319,
         "regular": 7.52,
         "reg_d": 0.17,
         "reg_dp": 2.3129,
         "pre": null,
-        "post": 7.53,
+        "post": 7.56,
         "prev_close": 7.35,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Ondas (ONDS) Could Be 62% Undervalued Following Its $875.8 Million DZYNE Deal",
-          "datetime": 1783549063,
+          "datetime": 1783552911,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/markets/stocks/articles/ondas-onds-could-62-undervalued-191208751.html"
         }
@@ -106,21 +106,21 @@
     },
     "MRVL": {
       "quote": {
-        "c": 232.64,
-        "d": 0.93,
-        "dp": 0.4014,
+        "c": 232.3,
+        "d": 0.59,
+        "dp": 0.2535,
         "regular": 231.71,
         "reg_d": 1.01,
         "reg_dp": 0.4378,
         "pre": null,
-        "post": 232.64,
+        "post": 232.3,
         "prev_close": 230.7,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Top financial expert declares Marvell 'no longer a marvelous buy'",
-          "datetime": 1783549063,
+          "datetime": 1783552911,
           "source": "Yahoo Finance",
           "url": "https://www.thestreet.com/investing/stocks/top-financial-expert-declares-marvell-no-longer-a-marvelous-buy"
         }
@@ -128,21 +128,21 @@
     },
     "GOOG": {
       "quote": {
-        "c": 358.33,
-        "d": -0.38,
-        "dp": -0.1059,
+        "c": 358.22,
+        "d": -0.49,
+        "dp": -0.1366,
         "regular": 358.71,
         "reg_d": -4.91,
         "reg_dp": -1.3503,
         "pre": null,
-        "post": 358.33,
+        "post": 358.22,
         "prev_close": 363.62,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "AI spending is becoming more capital market 'sensitive': Portfolio mgr.",
-          "datetime": 1783549063,
+          "datetime": 1783552911,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/video/ai-spending-becoming-more-capital-120000916.html"
         }
@@ -150,21 +150,21 @@
     },
     "SPCX": {
       "quote": {
-        "c": 149.35,
-        "d": 1.05,
-        "dp": 0.7074,
+        "c": 148.82,
+        "d": 0.52,
+        "dp": 0.3506,
         "regular": 148.3,
         "reg_d": -1.17,
         "reg_dp": -0.7828,
         "pre": null,
-        "post": 149.35,
+        "post": 148.82,
         "prev_close": 149.47,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Jeff Bezos's Blue Origin is looking to fuel growth. What does that mean for rival SpaceX?",
-          "datetime": 1783549063,
+          "datetime": 1783552911,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/video/jeff-bezoss-blue-origin-is-looking-to-fuel-growth-what-does-that-mean-for-rival-spacex-210129232.html"
         }
@@ -172,21 +172,21 @@
     },
     "TSM": {
       "quote": {
-        "c": 436.95,
-        "d": -0.03,
-        "dp": -0.0069,
+        "c": 436.25,
+        "d": -0.73,
+        "dp": -0.1671,
         "regular": 436.98,
         "reg_d": 4.41,
         "reg_dp": 1.0195,
         "pre": null,
-        "post": 436.95,
+        "post": 436.25,
         "prev_close": 432.57,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Veteran analyst drops massive Micron valuation prediction",
-          "datetime": 1783549063,
+          "datetime": 1783552911,
           "source": "Yahoo Finance",
           "url": "https://www.thestreet.com/investing/stocks/mu-micron-trillion-dollar-prediction-melius-research"
         }
@@ -194,21 +194,21 @@
     },
     "MU": {
       "quote": {
-        "c": 945.76,
-        "d": -3.04,
-        "dp": -0.3209,
+        "c": 947.0,
+        "d": -1.8,
+        "dp": -0.1897,
         "regular": 948.8,
         "reg_d": 10.42,
         "reg_dp": 1.1104,
         "pre": null,
-        "post": 945.76,
+        "post": 947.0,
         "prev_close": 938.38,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "AI memory stocks trim losses as investors buy the dip",
-          "datetime": 1783549063,
+          "datetime": 1783552911,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/markets/stocks/article/ai-memory-stocks-trim-losses-as-investors-buy-the-dip-122848703.html"
         }
@@ -216,21 +216,21 @@
     },
     "SNDK": {
       "quote": {
-        "c": 1718.0,
-        "d": -9.18,
-        "dp": -0.5315,
+        "c": 1718.5,
+        "d": -8.68,
+        "dp": -0.5026,
         "regular": 1727.18,
         "reg_d": 109.48,
         "reg_dp": 6.7676,
         "pre": null,
-        "post": 1718.0,
+        "post": 1718.5,
         "prev_close": 1617.7,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "AI memory stocks trim losses as investors buy the dip",
-          "datetime": 1783549063,
+          "datetime": 1783552911,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/markets/stocks/article/ai-memory-stocks-trim-losses-as-investors-buy-the-dip-122848703.html"
         }
@@ -238,21 +238,21 @@
     },
     "TSLA": {
       "quote": {
-        "c": 393.74,
-        "d": -0.32,
-        "dp": -0.0812,
+        "c": 393.38,
+        "d": -0.68,
+        "dp": -0.1726,
         "regular": 394.06,
         "reg_d": -8.84,
         "reg_dp": -2.1941,
         "pre": null,
-        "post": 393.74,
+        "post": 393.38,
         "prev_close": 402.9,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Tesla latest: The 'inevitable' SpaceX merger, Robotaxi's Miami launch, & more",
-          "datetime": 1783549063,
+          "datetime": 1783552911,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/video/tesla-latest-inevitable-spacex-merger-120000921.html"
         }
