@@ -1,7 +1,7 @@
 {
   "name": "美股盤前情報資料庫",
-  "updated_at": "2026-07-10T03:55:20.830266+08:00",
-  "next_update_at": "2026-07-09T20:05:00Z",
+  "updated_at": "2026-07-10T05:20:30.519138+08:00",
+  "next_update_at": "2026-07-09T22:00:00Z",
   "stocks": [
     "NOW",
     "NVDA",
@@ -19,86 +19,86 @@
     "NOW": {
       "quote": {
         "c": 108.73,
-        "d": 0.95,
-        "dp": 0.8814,
-        "regular": 108.73,
-        "reg_d": 0.95,
-        "reg_dp": 0.8814,
+        "d": -0.11,
+        "dp": -0.1047,
+        "regular": 108.84,
+        "reg_d": 1.06,
+        "reg_dp": 0.9835,
         "pre": null,
-        "post": null,
+        "post": 108.73,
         "prev_close": 107.78,
-        "phase": "正式盤"
+        "phase": "盤後"
       },
       "news": [
         {
-          "headline": "This analyst upgraded Salesforce & ServiceNow, but not because they'll be AI winners",
-          "datetime": 1783552911,
+          "headline": "Chip Stocks Drop 12% as Software Rebounds in AI Trade Shift",
+          "datetime": 1783632030,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/video/analyst-upgraded-salesforce-servicenow-not-120000208.html"
+          "url": "https://finance.yahoo.com/technology/ai/articles/chip-stocks-drop-12-software-183927139.html"
         }
       ]
     },
     "NVDA": {
       "quote": {
-        "c": 203.43,
-        "d": -0.69,
-        "dp": -0.338,
-        "regular": 203.43,
-        "reg_d": -0.69,
-        "reg_dp": -0.338,
+        "c": 202.85,
+        "d": 0.07,
+        "dp": 0.037,
+        "regular": 202.78,
+        "reg_d": -1.34,
+        "reg_dp": -0.6565,
         "pre": null,
-        "post": null,
+        "post": 202.85,
         "prev_close": 204.12,
-        "phase": "正式盤"
+        "phase": "盤後"
       },
       "news": [
         {
-          "headline": "China warned that Anthropic's Claude Code puts your data at risk. Is that true?",
-          "datetime": 1783552911,
+          "headline": "Nvidia's stock valuation fell to pre–AI boom lows, but this strategist still isn't bullish",
+          "datetime": 1783632030,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/video/china-warned-that-anthropics-claude-code-puts-your-data-at-risk-is-that-true-203951387.html"
+          "url": "https://finance.yahoo.com/video/nvidias-stock-valuation-fell-pre-155958092.html"
         }
       ]
     },
     "LITE": {
       "quote": {
-        "c": 785.3,
-        "d": 78.2,
-        "dp": 11.0593,
-        "regular": 785.3,
-        "reg_d": 78.2,
-        "reg_dp": 11.0593,
+        "c": 785.01,
+        "d": -0.76,
+        "dp": -0.0967,
+        "regular": 785.77,
+        "reg_d": 78.67,
+        "reg_dp": 11.1257,
         "pre": null,
-        "post": null,
+        "post": 785.01,
         "prev_close": 707.1,
-        "phase": "正式盤"
+        "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Lumentum Holdings (LITE) Could Be 86% Undervalued Despite Russell Index Removals",
-          "datetime": 1783552911,
+          "headline": "Why Meta’s In-House AI Chip Plans Sent Chip-Equipment Stocks Soaring",
+          "datetime": 1783632030,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/markets/stocks/articles/lumentum-holdings-lite-could-86-201224759.html"
+          "url": "https://www.barrons.com/articles/applied-materials-lam-research-meta-ai-chip-10398bf4?siteid=yhoof2&yptr=yahoo"
         }
       ]
     },
     "ONDS": {
       "quote": {
-        "c": 7.6,
-        "d": 0.08,
-        "dp": 1.0638,
-        "regular": 7.6,
-        "reg_d": 0.08,
-        "reg_dp": 1.0638,
+        "c": 7.67,
+        "d": 0.02,
+        "dp": 0.2614,
+        "regular": 7.65,
+        "reg_d": 0.13,
+        "reg_dp": 1.7287,
         "pre": null,
-        "post": null,
+        "post": 7.67,
         "prev_close": 7.52,
-        "phase": "正式盤"
+        "phase": "盤後"
       },
       "news": [
         {
           "headline": "Ondas (ONDS) Could Be 62% Undervalued Following Its $875.8 Million DZYNE Deal",
-          "datetime": 1783552911,
+          "datetime": 1783632030,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/markets/stocks/articles/ondas-onds-could-62-undervalued-191208751.html"
         }
@@ -106,155 +106,155 @@
     },
     "MRVL": {
       "quote": {
-        "c": 242.79,
-        "d": 11.08,
-        "dp": 4.7808,
-        "regular": 242.79,
-        "reg_d": 11.08,
-        "reg_dp": 4.7808,
+        "c": 244.56,
+        "d": 1.29,
+        "dp": 0.5303,
+        "regular": 243.27,
+        "reg_d": 11.56,
+        "reg_dp": 4.989,
         "pre": null,
-        "post": null,
+        "post": 244.56,
         "prev_close": 231.71,
-        "phase": "正式盤"
+        "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Top financial expert declares Marvell 'no longer a marvelous buy'",
-          "datetime": 1783552911,
+          "headline": "Micron, Sandisk, Marvell stocks jump, leading chip sector gains",
+          "datetime": 1783632030,
           "source": "Yahoo Finance",
-          "url": "https://www.thestreet.com/investing/stocks/top-financial-expert-declares-marvell-no-longer-a-marvelous-buy"
+          "url": "https://finance.yahoo.com/markets/stocks/article/micron-sandisk-marvell-stocks-jump-leading-chip-sector-gains-135433074.html"
         }
       ]
     },
     "GOOG": {
       "quote": {
-        "c": 356.45,
-        "d": -2.26,
-        "dp": -0.6292,
-        "regular": 356.45,
-        "reg_d": -2.26,
-        "reg_dp": -0.6292,
+        "c": 355.56,
+        "d": -0.68,
+        "dp": -0.19,
+        "regular": 356.24,
+        "reg_d": -2.47,
+        "reg_dp": -0.6886,
         "pre": null,
-        "post": null,
+        "post": 355.56,
         "prev_close": 358.71,
-        "phase": "正式盤"
+        "phase": "盤後"
       },
       "news": [
         {
-          "headline": "AI spending is becoming more capital market 'sensitive': Portfolio mgr.",
-          "datetime": 1783552911,
+          "headline": "Earnings season will prove 'durability of growth' for chip stocks",
+          "datetime": 1783632030,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/video/ai-spending-becoming-more-capital-120000916.html"
+          "url": "https://finance.yahoo.com/video/earnings-season-prove-durability-growth-164500402.html"
         }
       ]
     },
     "SPCX": {
       "quote": {
-        "c": 151.44,
-        "d": 3.18,
-        "dp": 2.1449,
-        "regular": 151.44,
-        "reg_d": 3.18,
-        "reg_dp": 2.1449,
+        "c": 152.65,
+        "d": 0.49,
+        "dp": 0.322,
+        "regular": 152.16,
+        "reg_d": 3.9,
+        "reg_dp": 2.6305,
         "pre": null,
-        "post": null,
+        "post": 152.65,
         "prev_close": 148.26,
-        "phase": "正式盤"
+        "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Jeff Bezos's Blue Origin is looking to fuel growth. What does that mean for rival SpaceX?",
-          "datetime": 1783552911,
+          "headline": "SK Hynix is the talk of the town. Is IPO day the right time to buy?",
+          "datetime": 1783632030,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/video/jeff-bezoss-blue-origin-is-looking-to-fuel-growth-what-does-that-mean-for-rival-spacex-210129232.html"
+          "url": "https://finance.yahoo.com/video/sk-hynix-talk-town-ipo-155738106.html"
         }
       ]
     },
     "TSM": {
       "quote": {
-        "c": 437.1,
-        "d": 0.11,
-        "dp": 0.0263,
-        "regular": 437.1,
-        "reg_d": 0.12,
-        "reg_dp": 0.0263,
+        "c": 438.89,
+        "d": 1.93,
+        "dp": 0.4417,
+        "regular": 436.96,
+        "reg_d": -0.02,
+        "reg_dp": -0.0046,
         "pre": null,
-        "post": null,
+        "post": 438.89,
         "prev_close": 436.98,
-        "phase": "正式盤"
+        "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Veteran analyst drops massive Micron valuation prediction",
-          "datetime": 1783552911,
+          "headline": "Dow Jones Futures: Micron, Sandisk Jump As Nasdaq Tops Key Level; Delta, Taiwan Semi, SK Hynix Due",
+          "datetime": 1783632030,
           "source": "Yahoo Finance",
-          "url": "https://www.thestreet.com/investing/stocks/mu-micron-trillion-dollar-prediction-melius-research"
+          "url": "https://www.investors.com/market-trend/stock-market-today/dow-jones-futures-nasdaq-micron-sandisk-jump-delta-taiwan-semi-sk-hynix/?src=A00220&yptr=yahoo"
         }
       ]
     },
     "MU": {
       "quote": {
-        "c": 990.32,
-        "d": 41.52,
-        "dp": 4.3761,
-        "regular": 990.32,
-        "reg_d": 41.52,
-        "reg_dp": 4.3761,
+        "c": 994.54,
+        "d": 2.9,
+        "dp": 0.2924,
+        "regular": 991.64,
+        "reg_d": 42.84,
+        "reg_dp": 4.5152,
         "pre": null,
-        "post": null,
+        "post": 994.54,
         "prev_close": 948.8,
-        "phase": "正式盤"
+        "phase": "盤後"
       },
       "news": [
         {
-          "headline": "AI memory stocks trim losses as investors buy the dip",
-          "datetime": 1783552911,
+          "headline": "Nvidia's stock valuation fell to pre–AI boom lows, but this strategist still isn't bullish",
+          "datetime": 1783632030,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/markets/stocks/article/ai-memory-stocks-trim-losses-as-investors-buy-the-dip-122848703.html"
+          "url": "https://finance.yahoo.com/video/nvidias-stock-valuation-fell-pre-155958092.html"
         }
       ]
     },
     "SNDK": {
       "quote": {
-        "c": 1856.45,
-        "d": 129.27,
-        "dp": 7.4846,
-        "regular": 1856.45,
-        "reg_d": 129.27,
-        "reg_dp": 7.4846,
+        "c": 1867.5,
+        "d": 9.23,
+        "dp": 0.4967,
+        "regular": 1858.27,
+        "reg_d": 131.09,
+        "reg_dp": 7.5898,
         "pre": null,
-        "post": null,
+        "post": 1867.5,
         "prev_close": 1727.18,
-        "phase": "正式盤"
+        "phase": "盤後"
       },
       "news": [
         {
-          "headline": "AI memory stocks trim losses as investors buy the dip",
-          "datetime": 1783552911,
+          "headline": "Nvidia's nearly $1 trillion wipeout could prompt this bullish action",
+          "datetime": 1783632030,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/markets/stocks/article/ai-memory-stocks-trim-losses-as-investors-buy-the-dip-122848703.html"
+          "url": "https://finance.yahoo.com/markets/stocks/article/nvidias-nearly-1-trillion-wipeout-could-prompt-this-bullish-action-122707475.html"
         }
       ]
     },
     "TSLA": {
       "quote": {
-        "c": 405.58,
-        "d": 11.65,
-        "dp": 2.9574,
-        "regular": 405.58,
-        "reg_d": 11.65,
-        "reg_dp": 2.9574,
+        "c": 405.9,
+        "d": -0.65,
+        "dp": -0.1599,
+        "regular": 406.55,
+        "reg_d": 12.62,
+        "reg_dp": 3.2036,
         "pre": null,
-        "post": null,
+        "post": 405.9,
         "prev_close": 393.93,
-        "phase": "正式盤"
+        "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Tesla latest: The 'inevitable' SpaceX merger, Robotaxi's Miami launch, & more",
-          "datetime": 1783552911,
+          "headline": "Nvidia owns the AI chips market. Google, Amazon, and others are coming",
+          "datetime": 1783632030,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/video/tesla-latest-inevitable-spacex-merger-120000921.html"
+          "url": "https://qz.com/custom-ai-chips-openai-google-amazon-microsoft-meta-tesla-070626"
         }
       ]
     }
