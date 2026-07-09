@@ -1,7 +1,7 @@
 {
   "name": "美股盤前情報資料庫",
-  "updated_at": "2026-07-10T05:20:30.519138+08:00",
-  "next_update_at": "2026-07-09T22:00:00Z",
+  "updated_at": "2026-07-10T06:46:28.493120+08:00",
+  "next_update_at": "2026-07-09T23:30:00Z",
   "stocks": [
     "NOW",
     "NVDA",
@@ -20,7 +20,7 @@
       "quote": {
         "c": 108.73,
         "d": -0.11,
-        "dp": -0.1047,
+        "dp": -0.1011,
         "regular": 108.84,
         "reg_d": 1.06,
         "reg_dp": 0.9835,
@@ -32,7 +32,7 @@
       "news": [
         {
           "headline": "Chip Stocks Drop 12% as Software Rebounds in AI Trade Shift",
-          "datetime": 1783632030,
+          "datetime": 1783637188,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/technology/ai/articles/chip-stocks-drop-12-software-183927139.html"
         }
@@ -40,21 +40,21 @@
     },
     "NVDA": {
       "quote": {
-        "c": 202.85,
-        "d": 0.07,
-        "dp": 0.037,
+        "c": 202.32,
+        "d": -0.46,
+        "dp": -0.2268,
         "regular": 202.78,
         "reg_d": -1.34,
         "reg_dp": -0.6565,
         "pre": null,
-        "post": 202.85,
+        "post": 202.32,
         "prev_close": 204.12,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Nvidia's stock valuation fell to pre–AI boom lows, but this strategist still isn't bullish",
-          "datetime": 1783632030,
+          "datetime": 1783637188,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/video/nvidias-stock-valuation-fell-pre-155958092.html"
         }
@@ -62,43 +62,43 @@
     },
     "LITE": {
       "quote": {
-        "c": 785.01,
-        "d": -0.76,
-        "dp": -0.0967,
+        "c": 785.63,
+        "d": -0.14,
+        "dp": -0.0178,
         "regular": 785.77,
         "reg_d": 78.67,
         "reg_dp": 11.1257,
         "pre": null,
-        "post": 785.01,
+        "post": 785.63,
         "prev_close": 707.1,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Why Meta’s In-House AI Chip Plans Sent Chip-Equipment Stocks Soaring",
-          "datetime": 1783632030,
+          "headline": "Lumentum, Sandisk, Applied Materials, AstraZeneca, and More Stocks That Explain Today’s Market",
+          "datetime": 1783637188,
           "source": "Yahoo Finance",
-          "url": "https://www.barrons.com/articles/applied-materials-lam-research-meta-ai-chip-10398bf4?siteid=yhoof2&yptr=yahoo"
+          "url": "https://www.barrons.com/articles/stock-movers-35ab3cc0?siteid=yhoof2&yptr=yahoo"
         }
       ]
     },
     "ONDS": {
       "quote": {
-        "c": 7.67,
-        "d": 0.02,
-        "dp": 0.2614,
+        "c": 7.68,
+        "d": 0.03,
+        "dp": 0.3922,
         "regular": 7.65,
         "reg_d": 0.13,
         "reg_dp": 1.7287,
         "pre": null,
-        "post": 7.67,
+        "post": 7.68,
         "prev_close": 7.52,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Ondas (ONDS) Could Be 62% Undervalued Following Its $875.8 Million DZYNE Deal",
-          "datetime": 1783632030,
+          "datetime": 1783637188,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/markets/stocks/articles/ondas-onds-could-62-undervalued-191208751.html"
         }
@@ -106,21 +106,21 @@
     },
     "MRVL": {
       "quote": {
-        "c": 244.56,
-        "d": 1.29,
-        "dp": 0.5303,
+        "c": 244.76,
+        "d": 1.49,
+        "dp": 0.6125,
         "regular": 243.27,
         "reg_d": 11.56,
         "reg_dp": 4.989,
         "pre": null,
-        "post": 244.56,
+        "post": 244.76,
         "prev_close": 231.71,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Micron, Sandisk, Marvell stocks jump, leading chip sector gains",
-          "datetime": 1783632030,
+          "datetime": 1783637188,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/markets/stocks/article/micron-sandisk-marvell-stocks-jump-leading-chip-sector-gains-135433074.html"
         }
@@ -128,21 +128,21 @@
     },
     "GOOG": {
       "quote": {
-        "c": 355.56,
-        "d": -0.68,
-        "dp": -0.19,
+        "c": 354.86,
+        "d": -1.38,
+        "dp": -0.3874,
         "regular": 356.24,
         "reg_d": -2.47,
         "reg_dp": -0.6886,
         "pre": null,
-        "post": 355.56,
+        "post": 354.86,
         "prev_close": 358.71,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Earnings season will prove 'durability of growth' for chip stocks",
-          "datetime": 1783632030,
+          "datetime": 1783637188,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/video/earnings-season-prove-durability-growth-164500402.html"
         }
@@ -150,21 +150,21 @@
     },
     "SPCX": {
       "quote": {
-        "c": 152.65,
-        "d": 0.49,
-        "dp": 0.322,
+        "c": 152.42,
+        "d": 0.26,
+        "dp": 0.1709,
         "regular": 152.16,
         "reg_d": 3.9,
         "reg_dp": 2.6305,
         "pre": null,
-        "post": 152.65,
+        "post": 152.42,
         "prev_close": 148.26,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "SK Hynix is the talk of the town. Is IPO day the right time to buy?",
-          "datetime": 1783632030,
+          "datetime": 1783637188,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/video/sk-hynix-talk-town-ipo-155738106.html"
         }
@@ -172,21 +172,21 @@
     },
     "TSM": {
       "quote": {
-        "c": 438.89,
-        "d": 1.93,
-        "dp": 0.4417,
+        "c": 438.56,
+        "d": 1.6,
+        "dp": 0.367,
         "regular": 436.96,
         "reg_d": -0.02,
         "reg_dp": -0.0046,
         "pre": null,
-        "post": 438.89,
+        "post": 438.56,
         "prev_close": 436.98,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Dow Jones Futures: Micron, Sandisk Jump As Nasdaq Tops Key Level; Delta, Taiwan Semi, SK Hynix Due",
-          "datetime": 1783632030,
+          "datetime": 1783637188,
           "source": "Yahoo Finance",
           "url": "https://www.investors.com/market-trend/stock-market-today/dow-jones-futures-nasdaq-micron-sandisk-jump-delta-taiwan-semi-sk-hynix/?src=A00220&yptr=yahoo"
         }
@@ -194,67 +194,67 @@
     },
     "MU": {
       "quote": {
-        "c": 994.54,
-        "d": 2.9,
-        "dp": 0.2924,
+        "c": 999.14,
+        "d": 7.5,
+        "dp": 0.7563,
         "regular": 991.64,
         "reg_d": 42.84,
         "reg_dp": 4.5152,
         "pre": null,
-        "post": 994.54,
+        "post": 999.14,
         "prev_close": 948.8,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Nvidia's stock valuation fell to pre–AI boom lows, but this strategist still isn't bullish",
-          "datetime": 1783632030,
+          "headline": "Micron, Sandisk, Marvell stocks jump, leading chip sector gains",
+          "datetime": 1783637188,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/video/nvidias-stock-valuation-fell-pre-155958092.html"
+          "url": "https://finance.yahoo.com/markets/stocks/article/micron-sandisk-marvell-stocks-jump-leading-chip-sector-gains-135433074.html"
         }
       ]
     },
     "SNDK": {
       "quote": {
-        "c": 1867.5,
-        "d": 9.23,
-        "dp": 0.4967,
+        "c": 1875.2,
+        "d": 16.93,
+        "dp": 0.9111,
         "regular": 1858.27,
         "reg_d": 131.09,
         "reg_dp": 7.5898,
         "pre": null,
-        "post": 1867.5,
+        "post": 1875.2,
         "prev_close": 1727.18,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Nvidia's nearly $1 trillion wipeout could prompt this bullish action",
-          "datetime": 1783632030,
+          "headline": "Micron, Sandisk, Marvell stocks jump, leading chip sector gains",
+          "datetime": 1783637188,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/markets/stocks/article/nvidias-nearly-1-trillion-wipeout-could-prompt-this-bullish-action-122707475.html"
+          "url": "https://finance.yahoo.com/markets/stocks/article/micron-sandisk-marvell-stocks-jump-leading-chip-sector-gains-135433074.html"
         }
       ]
     },
     "TSLA": {
       "quote": {
-        "c": 405.9,
-        "d": -0.65,
-        "dp": -0.1599,
+        "c": 404.8,
+        "d": -1.75,
+        "dp": -0.4305,
         "regular": 406.55,
         "reg_d": 12.62,
         "reg_dp": 3.2036,
         "pre": null,
-        "post": 405.9,
+        "post": 404.8,
         "prev_close": 393.93,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Nvidia owns the AI chips market. Google, Amazon, and others are coming",
-          "datetime": 1783632030,
+          "headline": "Did Tesla’s Miami Robotaxi Launch and Q2 Numbers Just Shift TSLA’s Autonomy‑First Narrative?",
+          "datetime": 1783637188,
           "source": "Yahoo Finance",
-          "url": "https://qz.com/custom-ai-chips-openai-google-amazon-microsoft-meta-tesla-070626"
+          "url": "https://finance.yahoo.com/markets/stocks/articles/did-tesla-miami-robotaxi-launch-221357688.html"
         }
       ]
     }
