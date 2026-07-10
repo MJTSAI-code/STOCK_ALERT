@@ -1,5 +1,5 @@
 {
-  "name": "美股盤前情報資料庫",
+  "name": "ç¾è¡ç¤åæå ±è³æåº«",
   "updated_at": "2026-07-10T20:41:45.745296+08:00",
   "next_update_at": "2026-07-10T13:30:00Z",
   "stocks": [
@@ -13,7 +13,8 @@
     "TSM",
     "MU",
     "SNDK",
-    "TSLA"
+    "TSLA",
+    "MSFT"
   ],
   "data": {
     "NOW": {
@@ -28,7 +29,7 @@
         "pre": 111.08,
         "post": null,
         "prev_close": 107.78,
-        "phase": "盤前"
+        "phase": "ç¤å"
       },
       "news": [
         {
@@ -51,7 +52,7 @@
         "pre": 201.49,
         "post": null,
         "prev_close": 204.12,
-        "phase": "盤前"
+        "phase": "ç¤å"
       },
       "news": [
         {
@@ -74,11 +75,11 @@
         "pre": 774.31,
         "post": null,
         "prev_close": 707.1,
-        "phase": "盤前"
+        "phase": "ç¤å"
       },
       "news": [
         {
-          "headline": "Lumentum, Sandisk, Applied Materials, AstraZeneca, and More Stocks That Explain Today’s Market",
+          "headline": "Lumentum, Sandisk, Applied Materials, AstraZeneca, and More Stocks That Explain Todayâs Market",
           "datetime": 1783640047,
           "source": "Yahoo Finance",
           "url": "https://www.barrons.com/articles/stock-movers-35ab3cc0?siteid=yhoof2&yptr=yahoo"
@@ -97,7 +98,7 @@
         "pre": 7.72,
         "post": null,
         "prev_close": 7.52,
-        "phase": "盤前"
+        "phase": "ç¤å"
       },
       "news": [
         {
@@ -120,7 +121,7 @@
         "pre": 239.7,
         "post": null,
         "prev_close": 231.71,
-        "phase": "盤前"
+        "phase": "ç¤å"
       },
       "news": [
         {
@@ -143,7 +144,7 @@
         "pre": 353.93,
         "post": null,
         "prev_close": 358.71,
-        "phase": "盤前"
+        "phase": "ç¤å"
       },
       "news": [
         {
@@ -166,7 +167,7 @@
         "pre": 151.21,
         "post": null,
         "prev_close": 148.26,
-        "phase": "盤前"
+        "phase": "ç¤å"
       },
       "news": [
         {
@@ -189,7 +190,7 @@
         "pre": 438.19,
         "post": null,
         "prev_close": 436.98,
-        "phase": "盤前"
+        "phase": "ç¤å"
       },
       "news": [
         {
@@ -203,16 +204,16 @@
     "MU": {
       "name": "Micron Technology, Inc.",
       "quote": {
-        "c": 974.0,
+        "c": 974,
         "d": -17.64,
         "dp": -1.7789,
         "regular": 991.64,
         "reg_d": 42.84,
         "reg_dp": 4.5152,
-        "pre": 974.0,
+        "pre": 974,
         "post": null,
         "prev_close": 948.8,
-        "phase": "盤前"
+        "phase": "ç¤å"
       },
       "news": [
         {
@@ -226,16 +227,16 @@
     "SNDK": {
       "name": "Sandisk Corporation",
       "quote": {
-        "c": 1811.0,
+        "c": 1811,
         "d": -47.27,
         "dp": -2.5438,
         "regular": 1858.27,
         "reg_d": 131.09,
         "reg_dp": 7.5898,
-        "pre": 1811.0,
+        "pre": 1811,
         "post": null,
         "prev_close": 1727.18,
-        "phase": "盤前"
+        "phase": "ç¤å"
       },
       "news": [
         {
@@ -258,11 +259,11 @@
         "pre": 408.03,
         "post": null,
         "prev_close": 393.93,
-        "phase": "盤前"
+        "phase": "ç¤å"
       },
       "news": [
         {
-          "headline": "Did Tesla’s Miami Robotaxi Launch and Q2 Numbers Just Shift TSLA’s Autonomy‑First Narrative?",
+          "headline": "Did Teslaâs Miami Robotaxi Launch and Q2 Numbers Just Shift TSLAâs AutonomyâFirst Narrative?",
           "datetime": 1783640047,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/markets/stocks/articles/did-tesla-miami-robotaxi-launch-221357688.html"
