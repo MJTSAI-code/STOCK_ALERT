@@ -1,3 +1,4 @@
+import html
 import json
 import datetime
 import time
@@ -157,15 +158,24 @@ def build_alert_summary(output_data: dict, phase: str, tw_now: datetime.datetime
     date_str = tw_now.strftime('%m/%d %H:%M')
     headline = _fetch_market_headline()
 
+    # parse_mode=HTML 下，動態文字須跳脫 & < >，否則如 "S&P 500" 會使
+    # Telegram sendMessage 回 400、整輪推播失敗。<code> 為刻意標籤，不跳脫。
+    # /* Backup of original logic (headline 未跳脫，& 觸發 400):
+    # lines = [
+    #     f"🛡 美股播報 | {phase} {date_str}",
+    #     f"📰 {headline}",
+    #     "",
+    # ]
+    # */
     lines = [
         f"🛡 美股播報 | {phase} {date_str}",
-        f"📰 {headline}",
+        f"📰 {html.escape(headline)}",
         "",
     ]
 
     def fmt(label: str) -> str:
         sym, pct = label.split(" ", 1)
-        return f"<code>{sym}</code> {pct}"
+        return f"<code>{html.escape(sym)}</code> {pct}"
 
     if crash:
         lines.append("🔴 " + "  ".join(fmt(l) for l in crash))
@@ -228,7 +238,7 @@ def fetch_stock_data():
     # */
     # ── 推播窗口 ──────────────────────────────────────────────
     # morning: 週二~週六 05:30–06:30（美股收盤後）
-    # evening: 週一~週五 18:00–18:59（美股盤前提醒）
+    # evening: 週一~週五 17:45–18:59（美股盤前提醒，主發 17:50 準時送達）
     # 容錯窗口 + alert_sent 按日去重保證同窗口多次命中只推播一次。
     tw_weekday: int = tw_now.weekday()  # 週一=0 ... 週日=6
 
@@ -236,9 +246,15 @@ def fetch_stock_data():
         tw_weekday in (1, 2, 3, 4, 5)
         and ((tw_hour == 5 and tw_minute >= 30) or (tw_hour == 6 and tw_minute <= 30))
     )
+    # /* Backup of original logic (窗口僅 18 點整段，17:50 主發會落在窗口外空跑):
+    # evening = (
+    #     tw_weekday in (0, 1, 2, 3, 4)
+    #     and tw_hour == 18
+    # )
+    # */
     evening = (
         tw_weekday in (0, 1, 2, 3, 4)
-        and tw_hour == 18
+        and ((tw_hour == 17 and tw_minute >= 45) or tw_hour == 18)
     )
 
     if morning:
