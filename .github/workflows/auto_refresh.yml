@@ -19,6 +19,10 @@ on:
     - cron: '5 22 * * 1-5'          # TW 06:05：morning 推播備援（alert_sent 去重）
     - cron: '50 9 * * 1-5'          # TW 17:50：evening 推播主發（窗口 17:45–18:59）
     - cron: '5 10 * * 1-5'          # TW 18:05：evening 推播備援（alert_sent 去重）
+    - cron: '35 10 * * 1-5'         # TW 18:35：晚間盤前追蹤（落在推播窗口內，
+                                    # alert_sent 已標記 → 靜默更新不重推）
+    - cron: '2,32 11-12 * * 1-5'    # TW 19:02–20:32 每 30 分：晚間盤前追蹤，
+                                    # 銜接 21:02 起的盤中排程，全程無 30 分以上空窗
   workflow_dispatch:
 permissions:
   contents: write
