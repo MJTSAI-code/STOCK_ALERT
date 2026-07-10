@@ -338,6 +338,10 @@ def fetch_stock_data():
                 except Exception as he:
                     print(f"  ⚠️ {sym} history 保底失敗: {he}")
 
+            # BUG 3: 公司名 source of truth。info 受限時 fallback 代號，
+            # 前端只在佔位符（name === sym）時採用，不覆蓋手寫策展名。
+            company_name: str = str(info.get('shortName') or info.get('longName') or sym).strip() or sym
+
             market_state = info.get('marketState', '')
             _mt = info.get('regularMarketTime')
             if isinstance(_mt, (int, float)) and _mt > 0:
@@ -429,6 +433,7 @@ def fetch_stock_data():
                 }]
 
             output_data[sym] = {
+                "name": company_name,
                 "quote": {
                     "c":          round(float(current_price), 2),
                     "d":          round(float(dollar_change), 2),
@@ -450,6 +455,7 @@ def fetch_stock_data():
         except Exception as e:
             print(f"  ❌ {sym} 嚴重抓取失敗: {e}")
             output_data[sym] = {
+                "name": sym,
                 "quote": {
                     "c": 0.0, "d": 0.0, "dp": 0.0,
                     "regular": 0.0, "reg_d": 0.0, "reg_dp": 0.0,
