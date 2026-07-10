@@ -1,25 +1,30 @@
 name: 美股數據更新與情報推送
 on:
   schedule:
-    # ── 分段排程（UTC）。分鐘 offset 2/7/37 錯開 :00/:30 整點踩踏
-    #    （GitHub 高負載時段 cron 丟棄的官方緩解建議）。
-    # 靜默時段：TW 平日 06:38–16:06 零排程（不消耗 GitHub）。
-    # /* Backup of original schedule:
-    # - cron: '*/5 13-21 * * 1-5'
-    # - cron: '*/30 * * * 1-5'
+    # ── 低頻排程（UTC）。設計原則：推播成功率最大化。
+    # 實測 2026-07-10：原高頻排程（~120 次/日）遭 GitHub 降級，
+    # 實際執行間隔 1.5–2 小時，morning 窗口 05:30–06:30 整段零 run。
+    # 低頻（~21 次/日）+ 分鐘 offset 2/32/50/5 避開整點高峰。
+    # /* Backup of original schedule (高頻，遭 GitHub 丟棄 ~95%):
+    # - cron: '2-57/5 13-21 * * 1-5'
+    # - cron: '7,37 8-12 * * 1-5'
+    # - cron: '7,37 22 * * 1-5'
     # */
-    - cron: '2-57/5 13-21 * * 1-5'  # 正式盤 5 分頻率。TW 21:02–05:57。
-                                    # 21 點段：冬令=正式盤最後一小時（必要），
-                                    # 夏令=盤後第一小時（過密但無害）。
-                                    # UTC 21:32–57 亦覆蓋 morning 窗口前半（TW 05:32+）
-    - cron: '7,37 8-12 * * 1-5'     # 盤前 30 分頻率。TW 16:07–20:37。
-                                    # 覆蓋 evening 推播窗口（TW 18:07、18:37 兩發）
-    - cron: '7,37 22 * * 1-5'       # TW 06:07、06:37：morning 窗口後半 + 收尾更新
+    - cron: '2,32 13-20 * * 1-5'   # 盤中每 30 分。TW 21:02–04:32。
+                                    # 21:32 = 夏令開盤後 2 分；22:32 = 冬令開盤後 2 分，
+                                    # 兩種令制下開盤即有新價。
+    - cron: '2 21 * * 1-5'          # TW 05:02：冬令收盤（05:00）收尾快照。
+                                    # 夏令此發為盤後快照，無害。
+    - cron: '50 21 * * 1-5'         # TW 05:50：morning 推播主發（窗口 05:30–06:30）
+    - cron: '5 22 * * 1-5'          # TW 06:05：morning 推播備援（alert_sent 去重）
+    - cron: '50 9 * * 1-5'          # TW 17:50：evening 推播主發（窗口 17:45–18:59）
+    - cron: '5 10 * * 1-5'          # TW 18:05：evening 推播備援（alert_sent 去重）
   workflow_dispatch:
 permissions:
   contents: write
-# 防併發：*/5 與 */30 在 :00/:30 同時觸發時排隊執行，
-# 避免雙 run 同時 git push 造成 non-fast-forward 失敗與 stock_data.json lost-update。
+# 防併發：多條 cron 或外部 workflow_dispatch（cron-job.org 保險）同時觸發時
+# 排隊執行，避免雙 run 同時 git push 造成 non-fast-forward 失敗與
+# stock_data.json lost-update。
 # cancel-in-progress: false → 排隊而非砍掉正在推播的 run。
 concurrency:
   group: stock-update
