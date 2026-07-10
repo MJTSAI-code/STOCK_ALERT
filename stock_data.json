@@ -1,7 +1,7 @@
 {
   "name": "美股盤前情報資料庫",
-  "updated_at": "2026-07-11T06:41:24.648748+08:00",
-  "next_update_at": "2026-07-10T23:30:00Z",
+  "updated_at": "2026-07-11T07:02:15.116962+08:00",
+  "next_update_at": "2026-07-11T00:00:00Z",
   "stocks": [
     "NOW",
     "NVDA",
@@ -20,44 +20,44 @@
     "NOW": {
       "name": "ServiceNow, Inc.",
       "quote": {
-        "c": 107.5,
-        "d": -0.21,
-        "dp": -0.195,
+        "c": 107.45,
+        "d": -0.26,
+        "dp": -0.2414,
         "regular": 107.71,
         "reg_d": -1.13,
         "reg_dp": -1.0382,
         "pre": null,
-        "post": 107.5,
+        "post": 107.45,
         "prev_close": 108.84,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "CTSH Strengthens Enterprise AI Strategy With Frontier Workforce",
-          "datetime": 1783723284,
+          "headline": "ServiceNow (NOW) Stock Sinks As Market Gains: What You Should Know",
+          "datetime": 1783724535,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/technology/ai/articles/ctsh-strengthens-enterprise-ai-strategy-160300540.html"
+          "url": "https://finance.yahoo.com/markets/stocks/articles/servicenow-now-stock-sinks-market-214502394.html"
         }
       ]
     },
     "NVDA": {
       "name": "NVIDIA Corporation",
       "quote": {
-        "c": 210.39,
-        "d": -0.57,
-        "dp": -0.2702,
+        "c": 210.55,
+        "d": -0.41,
+        "dp": -0.1936,
         "regular": 210.96,
         "reg_d": 8.18,
         "reg_dp": 4.0339,
         "pre": null,
-        "post": 210.39,
+        "post": 210.55,
         "prev_close": 202.78,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Stock market today: Dow, S&P 500, Nasdaq rise to cap choppy week as SK Hynix pops in US debut",
-          "datetime": 1783723284,
+          "datetime": 1783724535,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/markets/live/stock-market-today-friday-july-10-dow-sp-nasdaq-113921604.html"
         }
@@ -66,21 +66,21 @@
     "LITE": {
       "name": "Lumentum Holdings Inc.",
       "quote": {
-        "c": 803.96,
-        "d": 1.95,
-        "dp": 0.2431,
+        "c": 804.5,
+        "d": 2.49,
+        "dp": 0.3105,
         "regular": 802.01,
         "reg_d": 16.24,
         "reg_dp": 2.0668,
         "pre": null,
-        "post": 803.96,
+        "post": 804.5,
         "prev_close": 785.77,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Lumentum Stock Was Already Sold Out Before Its Big Rally",
-          "datetime": 1783723284,
+          "datetime": 1783724535,
           "source": "Yahoo Finance",
           "url": "https://www.trefis.com/articles/606621/lumentum-stock-was-already-sold-out-before-its-big-rally/2026-07-10"
         }
@@ -89,21 +89,21 @@
     "ONDS": {
       "name": "Ondas Inc",
       "quote": {
-        "c": 7.27,
-        "d": 0.01,
-        "dp": 0.1364,
+        "c": 7.25,
+        "d": -0.01,
+        "dp": -0.1377,
         "regular": 7.26,
         "reg_d": -0.39,
         "reg_dp": -5.098,
         "pre": null,
-        "post": 7.27,
+        "post": 7.25,
         "prev_close": 7.65,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Ondas Stock Up 261% in a Year: Should Investors Buy, Hold or Sell?",
-          "datetime": 1783723284,
+          "datetime": 1783724535,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/markets/stocks/articles/ondas-stock-261-investors-buy-151800969.html"
         }
@@ -112,44 +112,44 @@
     "MRVL": {
       "name": "Marvell Technology, Inc.",
       "quote": {
-        "c": 236.18,
-        "d": 0.37,
-        "dp": 0.1569,
+        "c": 236.2,
+        "d": 0.39,
+        "dp": 0.1654,
         "regular": 235.81,
         "reg_d": -7.46,
         "reg_dp": -3.0666,
         "pre": null,
-        "post": 236.18,
+        "post": 236.2,
         "prev_close": 243.27,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "SK Hynix, Micron, Meta, Delta, Circle Internet, and More Stocks That Explain Today’s Market",
-          "datetime": 1783723284,
+          "headline": "Marvell Technology (MRVL) Stock Sinks As Market Gains: Here's Why",
+          "datetime": 1783724535,
           "source": "Yahoo Finance",
-          "url": "https://www.barrons.com/articles/stock-movers-7c9adc92?siteid=yhoof2&yptr=yahoo"
+          "url": "https://finance.yahoo.com/markets/stocks/articles/marvell-technology-mrvl-stock-sinks-214502764.html"
         }
       ]
     },
     "GOOG": {
       "name": "Alphabet Inc.",
       "quote": {
-        "c": 354.94,
-        "d": -0.09,
-        "dp": -0.0253,
+        "c": 354.76,
+        "d": -0.27,
+        "dp": -0.0758,
         "regular": 355.03,
         "reg_d": -1.21,
         "reg_dp": -0.3397,
         "pre": null,
-        "post": 354.94,
+        "post": 354.76,
         "prev_close": 356.24,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "What Meta's Muse AI image tool means for Instagram privacy",
-          "datetime": 1783723284,
+          "datetime": 1783724535,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/video/what-metas-muse-ai-image-tool-means-for-instagram-privacy-203855526.html"
         }
@@ -158,21 +158,21 @@
     "SPCX": {
       "name": "Space Exploration Technologies",
       "quote": {
-        "c": 146.06,
-        "d": 0.76,
-        "dp": 0.5231,
+        "c": 145.81,
+        "d": 0.51,
+        "dp": 0.351,
         "regular": 145.3,
         "reg_d": -6.86,
         "reg_dp": -4.5084,
         "pre": null,
-        "post": 146.06,
+        "post": 145.81,
         "prev_close": 152.16,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Why you should care about SK Hynix's IPO",
-          "datetime": 1783723284,
+          "datetime": 1783724535,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/video/why-you-should-care-about-sk-hynixs-ipo-142904448.html"
         }
@@ -181,44 +181,44 @@
     "TSM": {
       "name": "Taiwan Semiconductor Manufactur",
       "quote": {
-        "c": 435.84,
-        "d": 1.73,
-        "dp": 0.3985,
+        "c": 435.85,
+        "d": 1.74,
+        "dp": 0.4008,
         "regular": 434.11,
         "reg_d": -2.85,
         "reg_dp": -0.6522,
         "pre": null,
-        "post": 435.84,
+        "post": 435.85,
         "prev_close": 436.96,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "SK Hynix's US listing, Delta earnings, housing bill: What to Watch",
-          "datetime": 1783723284,
+          "headline": "Why Is Meta (META) Stock Soaring Today",
+          "datetime": 1783724535,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/video/sk-hynixs-us-listing-delta-230000258.html"
+          "url": "https://finance.yahoo.com/markets/stocks/articles/why-meta-meta-stock-soaring-210320840.html"
         }
       ]
     },
     "MU": {
       "name": "Micron Technology, Inc.",
       "quote": {
-        "c": 977.12,
-        "d": -2.18,
-        "dp": -0.2226,
+        "c": 977.8,
+        "d": -1.5,
+        "dp": -0.1532,
         "regular": 979.3,
         "reg_d": -12.34,
         "reg_dp": -1.2444,
         "pre": null,
-        "post": 977.12,
+        "post": 977.8,
         "prev_close": 991.64,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "AI cash flow is booming for chipmakers & plummeting for Big Tech: Charts of the Day",
-          "datetime": 1783723284,
+          "datetime": 1783724535,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/video/ai-cash-flow-is-booming-for-chipmakers--plummeting-for-big-tech-charts-of-the-day-194325231.html"
         }
@@ -227,21 +227,21 @@
     "SNDK": {
       "name": "Sandisk Corporation",
       "quote": {
-        "c": 1919.49,
-        "d": 3.57,
-        "dp": 0.1863,
+        "c": 1921.61,
+        "d": 5.69,
+        "dp": 0.297,
         "regular": 1915.92,
         "reg_d": 57.65,
         "reg_dp": 3.1023,
         "pre": null,
-        "post": 1919.49,
+        "post": 1921.61,
         "prev_close": 1858.27,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Chip stocks regain some ground after whipsaw of a trading week",
-          "datetime": 1783723284,
+          "datetime": 1783724535,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/video/chip-stocks-regain-ground-whipsaw-143000172.html"
         }
@@ -250,44 +250,44 @@
     "TSLA": {
       "name": "Tesla, Inc.",
       "quote": {
-        "c": 407.08,
-        "d": -0.68,
-        "dp": -0.1662,
+        "c": 407.15,
+        "d": -0.61,
+        "dp": -0.1496,
         "regular": 407.76,
         "reg_d": 1.21,
         "reg_dp": 0.2976,
         "pre": null,
-        "post": 407.08,
+        "post": 407.15,
         "prev_close": 406.55,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Subversive Capital files 'Ex-Elon' ETFs with the SEC that strip Tesla and SpaceX from the S&P 500 and Nasdaq-100",
-          "datetime": 1783723284,
+          "headline": "Waymo, Tesla must fix a dangerous issue with their robotaxis, NHTSA says",
+          "datetime": 1783724535,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/markets/stocks/articles/subversive-capital-files-ex-elon-211500636.html"
+          "url": "https://www.thestreet.com/technology/nhtsa-warns-tesla-waymo-serious-issue"
         }
       ]
     },
     "MSFT": {
       "name": "Microsoft Corporation",
       "quote": {
-        "c": 385.25,
-        "d": 0.15,
-        "dp": 0.0389,
+        "c": 385.44,
+        "d": 0.34,
+        "dp": 0.0883,
         "regular": 385.1,
         "reg_d": 0.74,
         "reg_dp": 0.1925,
         "pre": null,
-        "post": 385.25,
+        "post": 385.44,
         "prev_close": 384.36,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "PC shipments fall as AI demand spikes memory prices",
-          "datetime": 1783723284,
+          "datetime": 1783724535,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/video/pc-shipments-fall-as-ai-demand-spikes-memory-prices-200214556.html"
         }
