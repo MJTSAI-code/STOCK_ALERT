@@ -95,10 +95,14 @@
   #syncStatus { font-size: 11px; min-height: 16px; margin-top: 6px; font-family: monospace; }
 
   /* ── 編輯模式指示 1：慢閃 set mode（電子鐘調時感，未選取才閃）──
-     作用於整個 .pf-stack 容器：四層翻頁結構上下半同步閃，
-     只選 span 子層會漏掉下靜態層 → 上半閃下半恆亮，視覺像壞掉 */
+     動畫掛在 span 層：span 無背景色，只有發光數字明滅、黑底框穩定不動。
+     四層（上靜態/下靜態/前蓋/後蓋）必須全選，漏任何一層＝該半截恆亮。
+     （掛在 .pf-stack 容器會連黑底框一起閃 → 整個黑框明滅，錯誤層級）*/
   @keyframes setBlink { 0%,100% { opacity: 1; } 50% { opacity: .3; } }
-  body.editing .card:not(.go):not(.selected) .pf-stack { animation: setBlink 1.3s ease-in-out infinite; }
+  body.editing .card:not(.go):not(.selected) .pf-top-static span,
+  body.editing .card:not(.go):not(.selected) .pf-bot-static span,
+  body.editing .card:not(.go):not(.selected) .pf-front span,
+  body.editing .card:not(.go):not(.selected) .pf-back span { animation: setBlink 1.3s ease-in-out infinite; }
 
   /* ── 編輯模式指示 2：頂邊發光細縫（面板未扣上）── */
   .card::before {
@@ -122,7 +126,10 @@
                   0 0 0 1px rgba(200,169,110,0.4),
                   0 0 28px rgba(200,140,60,0.25);
     }
-    body.editing .card:not(.selected):not(.go):hover .pf-stack { animation: none; }
+    body.editing .card:not(.selected):not(.go):hover .pf-top-static span,
+    body.editing .card:not(.selected):not(.go):hover .pf-bot-static span,
+    body.editing .card:not(.selected):not(.go):hover .pf-front span,
+    body.editing .card:not(.selected):not(.go):hover .pf-back span { animation: none; }
     body.editing .card:not(.selected):not(.go):hover::before { height: 3px; box-shadow: 0 0 16px rgba(255,200,110,0.85); }
   }
   .card.selected {
