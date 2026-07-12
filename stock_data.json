@@ -1,34 +1,30 @@
 {
-  "name": "美股盤前情報資料庫",
+  "name": "ç¾è¡ç¤åæå ±è³æåº«",
   "updated_at": "2026-07-12T17:52:09.720460+08:00",
   "next_update_at": "2026-07-12T10:30:00Z",
   "stocks": [
     "NOW",
     "NVDA",
-    "LITE",
-    "MRVL",
-    "GOOG",
     "SPCX",
     "TSM",
     "MU",
     "SNDK",
-    "TSLA",
-    "MSFT"
+    "TSLA"
   ],
   "data": {
     "NOW": {
       "name": "NOW",
       "quote": {
         "c": 107.71,
-        "d": 0.0,
-        "dp": 0.0,
+        "d": 0,
+        "dp": 0,
         "regular": 107.71,
         "reg_d": -1.12,
         "reg_dp": -1.028,
         "pre": null,
         "post": null,
         "prev_close": 108.83,
-        "phase": "盤前"
+        "phase": "ç¤å"
       },
       "news": [
         {
@@ -51,7 +47,7 @@
         "pre": null,
         "post": 210.57,
         "prev_close": 202.78,
-        "phase": "正式盤"
+        "phase": "æ­£å¼ç¤"
       },
       "news": [
         {
@@ -72,9 +68,9 @@
         "reg_d": 16.24,
         "reg_dp": 2.0668,
         "pre": null,
-        "post": 805.0,
+        "post": 805,
         "prev_close": 785.77,
-        "phase": "正式盤"
+        "phase": "æ­£å¼ç¤"
       },
       "news": [
         {
@@ -97,7 +93,7 @@
         "pre": null,
         "post": 236.7,
         "prev_close": 243.27,
-        "phase": "正式盤"
+        "phase": "æ­£å¼ç¤"
       },
       "news": [
         {
@@ -120,7 +116,7 @@
         "pre": null,
         "post": 355.06,
         "prev_close": 356.24,
-        "phase": "正式盤"
+        "phase": "æ­£å¼ç¤"
       },
       "news": [
         {
@@ -143,7 +139,7 @@
         "pre": null,
         "post": 145.92,
         "prev_close": 152.16,
-        "phase": "正式盤"
+        "phase": "æ­£å¼ç¤"
       },
       "news": [
         {
@@ -166,7 +162,7 @@
         "pre": null,
         "post": 435.8,
         "prev_close": 436.96,
-        "phase": "正式盤"
+        "phase": "æ­£å¼ç¤"
       },
       "news": [
         {
@@ -189,7 +185,7 @@
         "pre": null,
         "post": 982.75,
         "prev_close": 991.64,
-        "phase": "正式盤"
+        "phase": "æ­£å¼ç¤"
       },
       "news": [
         {
@@ -210,9 +206,9 @@
         "reg_d": 57.65,
         "reg_dp": 3.1023,
         "pre": null,
-        "post": 1935.0,
+        "post": 1935,
         "prev_close": 1858.27,
-        "phase": "正式盤"
+        "phase": "æ­£å¼ç¤"
       },
       "news": [
         {
@@ -235,7 +231,7 @@
         "pre": null,
         "post": 407.59,
         "prev_close": 406.55,
-        "phase": "正式盤"
+        "phase": "æ­£å¼ç¤"
       },
       "news": [
         {
@@ -258,7 +254,7 @@
         "pre": null,
         "post": 385.35,
         "prev_close": 384.36,
-        "phase": "正式盤"
+        "phase": "æ­£å¼ç¤"
       },
       "news": [
         {
@@ -272,20 +268,20 @@
     "MPMPMPS": {
       "name": "MPMPMPS",
       "quote": {
-        "c": 0.0,
-        "d": 0.0,
-        "dp": 0.0,
-        "regular": 0.0,
-        "reg_d": 0.0,
-        "reg_dp": 0.0,
+        "c": 0,
+        "d": 0,
+        "dp": 0,
+        "regular": 0,
+        "reg_d": 0,
+        "reg_dp": 0,
         "pre": null,
         "post": null,
-        "prev_close": 0.0,
-        "phase": "盤前"
+        "prev_close": 0,
+        "phase": "ç¤å"
       },
       "news": [
         {
-          "headline": "暫無最新新聞",
+          "headline": "æ«ç¡ææ°æ°è",
           "datetime": 1783849929,
           "source": "Yahoo Finance",
           "url": "#"
