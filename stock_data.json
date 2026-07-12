@@ -1,6 +1,6 @@
 {
   "name": "美股盤前情報資料庫",
-  "updated_at": "2026-07-12T17:53:18.973894+08:00",
+  "updated_at": "2026-07-12T17:53:47.436286+08:00",
   "next_update_at": "2026-07-12T10:30:00Z",
   "stocks": [
     "NOW",
@@ -102,29 +102,6 @@
         }
       ]
     },
-    "MU": {
-      "name": "Micron Technology, Inc.",
-      "quote": {
-        "c": 979.3,
-        "d": -12.34,
-        "dp": -1.2444,
-        "regular": 979.3,
-        "reg_d": -12.34,
-        "reg_dp": -1.2444,
-        "pre": null,
-        "post": 982.75,
-        "prev_close": 991.64,
-        "phase": "正式盤"
-      },
-      "news": [
-        {
-          "headline": "AI cash flow is booming for chipmakers & plummeting for Big Tech: Charts of the Day",
-          "datetime": 1783724535,
-          "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/video/ai-cash-flow-is-booming-for-chipmakers--plummeting-for-big-tech-charts-of-the-day-194325231.html"
-        }
-      ]
-    },
     "SNDK": {
       "name": "Sandisk Corporation",
       "quote": {
@@ -145,29 +122,6 @@
           "datetime": 1783724535,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/video/chip-stocks-regain-ground-whipsaw-143000172.html"
-        }
-      ]
-    },
-    "TSLA": {
-      "name": "Tesla, Inc.",
-      "quote": {
-        "c": 407.76,
-        "d": 1.21,
-        "dp": 0.2976,
-        "regular": 407.76,
-        "reg_d": 1.21,
-        "reg_dp": 0.2976,
-        "pre": null,
-        "post": 407.59,
-        "prev_close": 406.55,
-        "phase": "正式盤"
-      },
-      "news": [
-        {
-          "headline": "Waymo, Tesla must fix a dangerous issue with their robotaxis, NHTSA says",
-          "datetime": 1783724535,
-          "source": "Yahoo Finance",
-          "url": "https://www.thestreet.com/technology/nhtsa-warns-tesla-waymo-serious-issue"
         }
       ]
     }
