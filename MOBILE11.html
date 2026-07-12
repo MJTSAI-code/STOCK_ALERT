@@ -9,2098 +9,1303 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&family=DM+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
-  @font-face {
-    font-family: 'DM Mono Fallback';
-    src: local('Courier New'), local('Courier');
-    size-adjust: 96%;
-    ascent-override: 90%;
-  }
-  @font-face {
-    font-family: 'Roboto Mono Fallback';
-    src: local('Courier New'), local('Courier');
-    size-adjust: 98%;
-    ascent-override: 90%;
-  }
-  :root {
-    color-scheme: dark light;
-    --bg: #0a0a0a;
-    --card-bg: #1c1a16;
-    --card-frame: #d9cdb8;
-    --card-border: #3a352c;
-    --window: #4a5240;
-    --window-edge: #2e3328;
-    --digit: #f0c987;
-    --text: #f0e8d8;
-    --muted: #7a7468;
-    --label: #b8ad96;
-    --up: #00e676;
-    --down: #ff1744;
-    --accent: #d9cdb8;
-    --knob: #8a6240;
-  }
-  * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
-  body {
-    background: var(--bg);
-    color: var(--text);
-    font-family: 'Roboto Mono', 'Roboto Mono Fallback', monospace;
-    min-height: 100vh;
-    min-width: 960px;
-    padding-bottom: 40px;
-    color-scheme: dark;
-  }
-  body.scroll-locked { overflow: hidden; }
-
-  .topbar {
-    display: flex; align-items: center; justify-content: space-between;
-    padding: 16px 20px; background: #0d0d0d;
-    border-bottom: 1px solid var(--card-frame);
-  }
-  .logo { font-size: 13px; font-weight: 700; color: var(--accent); letter-spacing: 2px; text-transform: uppercase; }
-  .hero-time { font-family: 'DM Mono', monospace; font-size: 36px; font-weight: 500; color: var(--digit); letter-spacing: 2px; line-height: 1; text-shadow: 0 0 12px rgba(240,201,135,0.25); }
-  .hero-date { font-size: 11px; color: var(--muted); text-align: right; margin-top: 2px; }
-
-  .grid { display: grid; grid-template-columns: 1fr; gap: 12px; margin: 16px; }
-  .card-pending {
-    border: 0.5px dashed #3a3020; background: #111008; border-radius: 10px;
-    padding: 14px 12px; text-align: center; color: #555; font-size: 11px;
-    font-family: monospace; letter-spacing: 1px;
-  }
-  #searchPanel {
-    display: none; background: #0d0c07; border-top: 1px solid #2a2418;
-    padding: 14px 16px; position: sticky; bottom: 0; z-index: 500;
-  }
-  body.editing #searchPanel { display: block; }
-  .manage-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; }
-  .manage-title { color: #c8a96e; font-size: 11px; letter-spacing: 2px; }
-  .manage-close { background: none; border: none; cursor: pointer; color: #555; font-size: 18px; line-height: 1; padding: 0; }
-  .manage-close:hover { color: #c8a96e; }
-  .search-inner { background: #131109; border: 1px solid #2a2620; border-radius: 12px; padding: 10px; }
-  .search-inner input {
-    width: 100%; background: #0c0b07; border: 1px solid #33302a; border-radius: 8px;
-    padding: 9px 12px; color: #f0e8d8; font-family: 'DM Mono', monospace; font-size: 13px;
-    text-transform: uppercase; outline: none;
-  }
-  .search-inner input:focus { border-color: #c8a96e; }
-  .results { margin-top: 8px; max-height: 130px; overflow-y: auto; display: flex; flex-direction: column; gap: 6px; }
-  .res-row { display: flex; align-items: center; justify-content: space-between; padding: 7px 10px; background: #171509; border: 1px solid #2a2620; border-radius: 8px; }
-  .res-row .r-sym { font-size: 13px; font-weight: 700; color: var(--digit); font-family: 'DM Mono', monospace; letter-spacing: 1px; }
-  .res-row .r-name { font-size: 10px; color: #8a8474; margin-top: 2px; }
-  .add-btn {
-    padding: 5px 14px; border: none; background: #c8a96e;
-    color: #0a0900; border-radius: 7px; font-size: 12px; font-weight: 600;
-    cursor: pointer; font-family: 'DM Mono', monospace; letter-spacing: 1px;
-  }
-  .add-btn:hover { background: #d9bc84; }
-  .res-empty { font-size: 11px; color: #6f6a5e; text-align: center; padding: 10px; }
-  #syncStatus { font-size: 11px; min-height: 16px; margin-top: 6px; font-family: monospace; }
-
-  /* ── 編輯模式指示 1：慢閃 set mode（電子鐘調時感，未選取才閃）──
-     動畫掛在 span 層：span 無背景色，只有發光數字明滅、黑底框穩定不動。
-     四層（上靜態/下靜態/前蓋/後蓋）必須全選，漏任何一層＝該半截恆亮。
-     （掛在 .pf-stack 容器會連黑底框一起閃 → 整個黑框明滅，錯誤層級）*/
-  @keyframes setBlink { 0%,100% { opacity: 1; } 50% { opacity: .3; } }
-  body.editing .card:not(.go):not(.selected) .pf-top-static span,
-  body.editing .card:not(.go):not(.selected) .pf-bot-static span,
-  body.editing .card:not(.go):not(.selected) .pf-front span,
-  body.editing .card:not(.go):not(.selected) .pf-back span { animation: setBlink 1.3s ease-in-out infinite; }
-
-  /* ── 編輯模式指示 2：頂邊發光細縫（面板未扣上）── */
-  .card::before {
-    content: ''; position: absolute; top: -2px; left: 14px; right: 14px; height: 2px;
-    border-radius: 2px; z-index: 6; pointer-events: none;
-    background: linear-gradient(90deg, transparent 0%, rgba(255,205,115,0.9) 30%, rgba(255,215,130,1) 50%, rgba(255,205,115,0.9) 70%, transparent 100%);
-    box-shadow: 0 0 8px rgba(255,190,100,0.5);
-    opacity: 0; transition: opacity .3s ease, box-shadow .2s ease, height .2s ease;
-  }
-  body.editing .card:not(.go)::before { opacity: 1; }
-  .card.selected::before { height: 3px; box-shadow: 0 0 18px rgba(255,205,115,0.9); }
-
-  /* ── hover / 選取（琥珀金光暈）── */
-  body.editing .card { cursor: pointer; }
-  @media (hover: hover) and (pointer: fine) {
-    body.editing .card:not(.selected):not(.go):hover {
-      border-color: #c8a96e; filter: brightness(1.12);
-      box-shadow: 0 6px 0 rgba(0,0,0,0.5), 0 10px 22px rgba(0,0,0,0.45),
-                  inset 0 2px 6px rgba(0,0,0,0.3),
-                  inset 0 0 40px rgba(240,180,60,0.18),
-                  0 0 0 1px rgba(200,169,110,0.4),
-                  0 0 28px rgba(200,140,60,0.25);
-    }
-    body.editing .card:not(.selected):not(.go):hover .pf-top-static span,
-    body.editing .card:not(.selected):not(.go):hover .pf-bot-static span,
-    body.editing .card:not(.selected):not(.go):hover .pf-front span,
-    body.editing .card:not(.selected):not(.go):hover .pf-back span { animation: none; }
-    body.editing .card:not(.selected):not(.go):hover::before { height: 3px; box-shadow: 0 0 16px rgba(255,200,110,0.85); }
-  }
-  .card.selected {
-    border-color: #f0c060 !important; filter: brightness(1.13);
-    box-shadow: 0 6px 0 rgba(0,0,0,0.5), 0 10px 22px rgba(0,0,0,0.45),
-                inset 0 2px 6px rgba(0,0,0,0.3),
-                inset 0 0 44px rgba(240,185,70,0.22),
-                0 0 0 1.5px rgba(230,195,110,0.5),
-                0 0 30px rgba(220,160,70,0.3);
-  }
-  /* 選取順序角標（1,2,3…）取代單張 ✕ */
-  .check {
-    position: absolute; top: -9px; right: -9px; min-width: 26px; height: 26px; padding: 0 6px;
-    border-radius: 8px; background: #3a2c12; border: 1px solid #f0c060;
-    display: flex; align-items: center; justify-content: center;
-    opacity: 0; transform: scale(0.5); transition: opacity .18s, transform .2s cubic-bezier(0.34,1.56,0.64,1);
-    z-index: 12; box-shadow: 0 2px 8px rgba(0,0,0,0.5);
-    font-family: 'DM Mono', monospace; font-size: 13px; font-weight: 700; color: #201400;
-    pointer-events: none;
-  }
-  .card.selected .check { opacity: 1; transform: scale(1); background: #f0c060; box-shadow: 0 0 12px rgba(240,190,90,0.6); }
-
-  /* ── 卸除：翻頁歸零後熄滅 → 淡出 ── */
-  .price-section.off { transition: filter .14s ease, opacity .14s ease; filter: brightness(0.15); opacity: .3; }
-  .main-change.off { transition: opacity .14s ease; opacity: .25; }
-  @keyframes cardTeardownFade { 0%{opacity:1} 100%{opacity:0} }
-  .card.fade { animation: cardTeardownFade .2s ease forwards; }
-  .card.go .check { opacity: 0; }
-
-  /* ── 底部批量刪除動作列 ── */
-  #actionBar {
-    display: none; position: fixed; bottom: 0; left: 0; right: 0; z-index: 1400;
-    background: linear-gradient(180deg, #1a1710 0%, #111009 100%);
-    border-top: 1px solid #3a3020; box-shadow: 0 -2px 12px rgba(0,0,0,0.6), inset 0 1px 0 rgba(200,160,80,0.1);
-    padding: 12px 16px; align-items: center; justify-content: space-between;
-  }
-  body.editing #actionBar { display: flex; }
-  #actionBar .bar-count { font-size: 12px; color: #c8a96e; font-family: 'DM Mono', monospace; }
-  #actionBar .confirm-txt { display: none; font-size: 12px; color: #e05c5c; }
-  #actionBar.confirming .bar-count { display: none; }
-  #actionBar.confirming .confirm-txt { display: inline; }
-  #actionBar .grp { display: flex; gap: 8px; align-items: center; }
-  #actionBar .default-grp { display: flex; }
-  #actionBar .confirm-grp { display: none; align-items: center; gap: 10px; }
-  #actionBar.confirming .default-grp { display: none; }
-  #actionBar.confirming .confirm-grp { display: flex; }
-  #actionBar .eb-btn {
-    padding: 7px 15px; border-radius: 9px; font-family: 'DM Mono', monospace; font-size: 12px;
-    letter-spacing: 1px; cursor: pointer; border: 1px solid transparent;
-  }
-  #actionBar .eb-del { background: rgba(224,92,92,0.12); border-color: #e05c5c; color: #e05c5c; }
-  #actionBar .eb-del:hover { background: #e05c5c; color: #140f0f; }
-  #actionBar .eb-del[disabled] { opacity: .35; cursor: default; border-color: #5a3030; background: none; color: #8a5a5a; }
-  #actionBar .eb-ghost { background: none; border-color: #3a3020; color: #c8a96e; }
-  #actionBar .eb-ghost:hover { border-color: #c8a96e; }
-  /* ── 設定：topbar ⚙️ + bottom sheet ── */
-  .topbar-right { display: flex; align-items: center; gap: 14px; }
-  .settings-btn {
-    background: none; border: 1px solid #3a3020; border-radius: 8px;
-    color: #c8a96e; font-size: 18px; line-height: 1;
-    width: 38px; height: 38px; cursor: pointer;
-    -webkit-tap-highlight-color: transparent;
-  }
-  .settings-btn:hover { border-color: #c8a96e; }
-  .edit-btn {
-    width: auto; padding: 0 14px; font-weight: 600;
-    font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 2px;
-  }
-  .edit-btn.active { border-color: #c8a96e; background: #c8a96e; color: #0a0900; }
-  /* 查無代號防呆：錯誤卡標示 */
-  .card.card-error { border-color: rgba(224,92,92,0.55); }
-  .card.card-error .price-section {
-    box-shadow: inset 0 2px 10px rgba(0,0,0,0.5), inset 0 0 30px rgba(224,92,92,0.08);
-  }
-  .settings-overlay {
-    display: none; position: fixed; inset: 0;
-    background: rgba(0,0,0,0.6); z-index: 1490;
-  }
-  .settings-overlay.show { display: block; }
-  #settingsSheet {
-    display: none; position: fixed;
-    bottom: 0; left: 0; right: 0;
-    background: #0d0c07; border-top: 1px solid #2a2418;
-    padding: 14px 16px 22px; z-index: 1500;
-  }
-  #settingsSheet.open { display: block; }
-  .settings-token-status {
-    font-size: 11px; font-family: monospace; color: #7a7468;
-    margin-bottom: 10px; letter-spacing: 1px;
-  }
-  .settings-actions { margin-bottom: 10px; }
-  .settings-hint { font-size: 10px; color: #555; line-height: 1.6; }
-  .token-row { display: flex; gap: 8px; margin-bottom: 10px; }
-  .token-input {
-    flex: 1; background: #0c0b07; border: 1px solid #33302a; color: #f0e8d8;
-    border-radius: 8px; padding: 9px 12px; font-size: 13px;
-    font-family: 'DM Mono', monospace; outline: none;
-  }
-  .token-input:focus { border-color: #c8a96e; }
-  .eb-save-btn {
-    background: #c8a96e; border: none; color: #0a0900; border-radius: 8px;
-    padding: 0 18px; font-size: 12px; font-weight: 600; cursor: pointer;
-    font-family: 'DM Mono', monospace; letter-spacing: 1px;
-  }
-  .eb-save-btn:hover { background: #d9bc84; }
-  .eb-clear-btn {
-    padding: 7px 15px; border-radius: 9px;
-    border: 1px solid #3a3020; background: none;
-    color: #a05a5a; font-size: 12px; cursor: pointer;
-    font-family: 'DM Mono', monospace; letter-spacing: 1px;
-  }
-  .eb-clear-btn:hover { border-color: #e05c5c; color: #e05c5c; }
-  @media(min-width: 640px)  { .grid { grid-template-columns: repeat(4,1fr); } .grid > .card { grid-column: span 2; } }
-  @media(min-width: 1000px) { .grid { grid-template-columns: repeat(6,1fr); } .grid > .card { grid-column: span 2; } }
-  .card.last-row-solo   { grid-column: 3/5; }
-  .card.last-row-pair-1 { grid-column: 2/4; }
-  .card.last-row-pair-2 { grid-column: 4/6; }
-
-  .card {
-    background: linear-gradient(180deg, var(--window) 0%, var(--window-edge) 100%);
-    border: 3px solid var(--card-frame);
-    border-radius: 18px; padding: 16px; cursor: pointer;
-    transition: box-shadow 0.2s, border-color 0.2s, filter 0.25s;
-    position: relative; perspective: 500px;
-    display: flex; flex-direction: column;
-    min-height: 160px;
-    box-shadow: 0 6px 0 rgba(0,0,0,0.5), 0 10px 22px rgba(0,0,0,0.45), inset 0 2px 6px rgba(0,0,0,0.3);
-  }
-  @media (hover: hover) and (pointer: fine) {
-    .card:not(.expanded):hover {
-      border-color: #c8a96e;
-      filter: brightness(1.12);
-      box-shadow:
-        0 6px 0 rgba(0,0,0,0.5), 0 10px 22px rgba(0,0,0,0.45),
-        inset 0 2px 6px rgba(0,0,0,0.3),
-        inset 0 0 40px rgba(240,180,60,0.18),
-        0 0 0 1px rgba(200,169,110,0.4),
-        0 0 28px rgba(200,140,60,0.25);
-    }
-  }
-  .card-body-split, .split-left, .split-right { display: contents; }
-  .card-header { order: -2; }
-  .price-section { order: -1; }
-
-  .card.expanded {
-    cursor: default; position: fixed;
-    top: 50%; left: 50%;
-    width: min(1040px, calc(100vw - 32px + var(--scrollbar-w, 0px)));
-    max-height: calc(100vh - 32px);
-    transform: translate(-50%, -50%);
-    z-index: 1001;
-    background: transparent; border: none; box-shadow: none; padding: 0;
-    overflow: visible;
-    animation: cardQuietAppear 0.3s ease-out forwards;
-  }
-  @keyframes cardQuietAppear {
-    0%   { opacity: 0; transform: translate(-50%,-50%) scale(0.96); }
-    100% { opacity: 1; transform: translate(-50%,-50%) scale(1); }
-  }
-  .card.expanded.closing { animation: cardQuietDisappear 0.28s ease-in forwards; }
-  @keyframes cardQuietDisappear {
-    0%   { opacity: 1; transform: translate(-50%,-50%) scale(1); }
-    100% { opacity: 0; transform: translate(-50%,-50%) scale(0.96); }
-  }
-
-  .card.expanded .card-body-split {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 18px;
-    perspective: 1200px;
-  }
-  @media(min-width: 721px) {
-    .card.expanded .split-left,
-    .card.expanded .split-right {
-      background: linear-gradient(180deg, var(--window) 0%, var(--window-edge) 100%);
-      border: 2px solid var(--card-frame);
-      border-radius: 10px;
-      box-shadow: 0 6px 0 rgba(0,0,0,0.5), 0 12px 24px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.06);
-      overflow: hidden;
-      position: relative;
-      height: 460px;
-    }
-    .card.expanded .split-left  { display: flex; flex-direction: column; }
-    .card.expanded .split-right { display: flex; flex-direction: column; }
-    .card.expanded .split-left,
-    .card.expanded .split-right {
-      clip-path: inset(0 0 99% 0 round 10px);
-      transform: scaleY(0.04);
-      transform-origin: top center;
-      opacity: 0;
-    }
-    .card.expanded .split-left.panel-flap,
-    .card.expanded .split-right.panel-flap {
-      animation: unrollDown 0.52s cubic-bezier(0.77,0,0.175,1) forwards;
-    }
-    @keyframes unrollDown {
-      0%   { clip-path: inset(0 0 99% 0 round 10px); transform: scaleY(0.04); opacity: 0; }
-      100% { clip-path: inset(0 0 0%  0 round 10px); transform: scaleY(1);    opacity: 1; }
-    }
-    .card.expanded .split-left::after,
-    .card.expanded .split-right::after {
-      content: '';
-      position: absolute;
-      bottom: 0; left: 0; right: 0;
-      height: 60px;
-      background: linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.45) 100%);
-      pointer-events: none;
-      z-index: 20;
-      opacity: 1;
-      transition: opacity 0.3s ease;
-    }
-    .card.expanded .split-left.panel-flap::after,
-    .card.expanded .split-right.panel-flap::after {
-      animation: fadeOutGradient 0.3s ease 0.4s forwards;
-    }
-    @keyframes fadeOutGradient {
-      0%   { opacity: 1; }
-      100% { opacity: 0; }
-    }
-    .card.expanded .split-left { perspective: none; }
-    .card.expanded .split-left .chart-container {
-      flex: 1; height: auto !important; max-height: none !important;
-      margin: 12px; border-radius: 6px; overflow: hidden;
-      border: 1px solid rgba(217,205,184,0.25); background: #000;
-      box-shadow: inset 0 2px 8px rgba(0,0,0,0.6);
-      opacity: 1;
-      clip-path: inset(0 0 100% 0 round 6px);
-      transition: clip-path 0.5s cubic-bezier(0.77,0,0.175,1) 0.1s;
-    }
-    .card.expanded .split-left .chart-container.show-chart {
-      clip-path: inset(0 0 0% 0 round 6px);
-    }
-    .card.expanded .split-right .card-header {
-      order: unset; flex: none;
-      display: flex; justify-content: space-between; align-items: flex-start;
-      padding: 14px 16px;
-      border-bottom: 1px solid rgba(217,205,184,0.2);
-    }
-    .card.expanded .card-sym { font-size: 20px; font-weight: 700; color: var(--digit); letter-spacing: 1px; }
-    .card.expanded .card-name { font-size: 10px; color: #aab09a; margin-top: 2px; }
-  }
-
-  .sf-wrap { position: relative; clip-path: inset(0 0 100% 0); }
-  .sf-wrap.reveal-full { animation: sfRevealFull 0.44s cubic-bezier(0.77,0,0.175,1) forwards; }
-  @keyframes sfRevealFull { 0% { clip-path: inset(0 0 100% 0); } 100% { clip-path: inset(0 0 0% 0); } }
-
-  .expanded-price-stage {
-    padding: 16px 14px 12px;
-    background: linear-gradient(180deg, #5a4422 0%, #3d2e16 100%);
-    border: 1px solid rgba(0,0,0,0.35); border-radius: 8px;
-    margin: 10px 12px 0; text-align: center;
-    box-shadow: inset 0 2px 10px rgba(0,0,0,0.5); position: relative;
-    transition: box-shadow 0.15s ease;
-  }
-  .expanded-price-stage.light-up {
-    box-shadow:
-      inset 0 2px 10px rgba(0,0,0,0.5),
-      inset 0 0 30px rgba(240,180,90,0.06),
-      inset 0 15px 50px rgba(38, 166, 154, 0.50),
-      inset 0 0 80px rgba(38, 166, 154, 0.22),
-      inset 0 0 120px rgba(38, 166, 154, 0.09);
-  }
-  .expanded-price-stage.light-down {
-    box-shadow:
-      inset 0 2px 10px rgba(0,0,0,0.5),
-      inset 0 0 30px rgba(240,180,90,0.06),
-      inset 0 15px 50px rgba(239, 83, 80, 0.50),
-      inset 0 0 80px rgba(239, 83, 80, 0.22),
-      inset 0 0 120px rgba(239, 83, 80, 0.09);
-  }
-  .expanded-phase-label {
-    position: absolute; top: 6px; left: 10px;
-    font-size: 9px; font-weight: 700; color: #d9b87a; opacity: 0.8; letter-spacing: 1px;
-  }
-  .expanded-main-change { font-size: 13px; font-weight: 700; margin-top: 8px; }
-  .expanded-ref-row {
-    margin-top: 8px; padding-top: 8px;
-    border-top: 1px solid rgba(255,255,255,0.08);
-    font-size: 11px; color: #c9b48a;
-    overflow: hidden; perspective: 300px;
-  }
-  .expanded-ref-row #flipFront {
-    display: block;
-  }
-
-  .expanded-news-wrap {
-    flex: 1; overflow-y: auto; margin: 10px 12px 12px;
-    background: rgba(0,0,0,0.2); border: 1px solid rgba(217,205,184,0.15);
-    border-radius: 6px; padding: 12px;
-  }
-  .expanded-news-title { font-size: 11px; font-weight: 700; color: var(--card-frame); letter-spacing: 1px; margin-bottom: 8px; }
-  .expanded-news-item { padding: 8px 10px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06); border-radius: 5px; margin-bottom: 6px; text-decoration: none; display: block; transition: background 0.15s; }
-  .expanded-news-item:hover { background: rgba(255,255,255,0.07); }
-  .expanded-news-headline { font-size: 11px; color: var(--text); line-height: 1.5; }
-  .expanded-news-source { font-size: 9px; color: var(--muted); margin-top: 3px; }
-
-  .card-overlay {
-    display: none; position: fixed; inset: 0;
-    background: rgba(0,0,0,0.65); z-index: 1000;
-    opacity: 0; transition: opacity 0.3s ease;
-  }
-  .card-overlay.show { display: block; opacity: 1; }
-
-  .card-ghost {
-    border-radius: 18px;
-    border: 2px dashed #2a2820;
-    background: transparent;
-    position: relative;
-    overflow: hidden;
-    pointer-events: none;
-    transition: border-color 0.45s ease;
-  }
-  .card-ghost .ghost-axle {
-    position: absolute;
-    top: 50%; left: 12px; right: 12px; height: 2px;
-    background: linear-gradient(90deg, transparent, #2a2820 20%, #3a3528 50%, #2a2820 80%, transparent);
-    transform: translateY(-50%);
-    transition: opacity 0.3s ease;
-    z-index: 1;
-  }
-  .card-ghost .ghost-screw {
-    position: absolute; width: 10px; height: 10px;
-    border-radius: 50%;
-    background: radial-gradient(circle at 35% 35%, #4a4438, #1e1c16);
-    border: 1px solid #3a3528;
-    box-shadow: inset 0 1px 2px rgba(0,0,0,0.8);
-    transition: opacity 0.3s ease 0.1s;
-    z-index: 2;
-  }
-  .card-ghost .ghost-screw::before {
-    content: ''; position: absolute;
-    top: 50%; left: 15%; right: 15%; height: 1px;
-    background: #5a5040; transform: translateY(-50%);
-  }
-  .card-ghost .ghost-screw::after {
-    content: ''; position: absolute;
-    left: 50%; top: 15%; bottom: 15%; width: 1px;
-    background: #5a5040; transform: translateX(-50%);
-  }
-  .card-ghost .ghost-screw.tl { top: 10px; left: 10px; }
-  .card-ghost .ghost-screw.tr { top: 10px; right: 10px; }
-  .card-ghost .ghost-screw.bl { bottom: 10px; left: 10px; }
-  .card-ghost .ghost-screw.br { bottom: 10px; right: 10px; }
-  .card-ghost .ghost-content {
-    position: relative; z-index: 3;
-    opacity: 0; padding: 16px;
-  }
-  .card-ghost.reviving { }
-  .card.recently-viewed {
-    border-color: rgba(240,201,135,0.7);
-    box-shadow: 0 6px 0 rgba(0,0,0,0.5), 0 10px 22px rgba(0,0,0,0.45),
-      inset 0 2px 6px rgba(0,0,0,0.3), 0 0 0 1px rgba(240,201,135,0.25),
-      0 0 18px rgba(240,201,135,0.12);
-    transition: border-color 0.3s ease, box-shadow 0.3s ease;
-  }
-  .card.recently-viewed::before {
-    content: '◉'; position: absolute; top: 6px; right: 10px;
-    font-size: 8px; color: rgba(240,201,135,0.8);
-    text-shadow: 0 0 6px rgba(240,201,135,0.6);
-    animation: recentPulse 2s ease-in-out infinite;
-  }
-  @keyframes recentPulse { 0%, 100% { opacity: 0.8; } 50% { opacity: 0.3; } }
-
-  .card-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 14px; }
-  .card-sym { font-size: 20px; font-weight: 700; color: var(--digit); letter-spacing: 1px; }
-  .card-name { font-size: 10px; color: #aab09a; margin-top: 2px; }
-  .tag { font-size: 10px; font-weight: 700; padding: 3px 8px; border-radius: 4px; letter-spacing: 0.5px; }
-  .tag-post { background: #3a2a18; color: #e0b97d; border: 1px solid var(--knob); display: none; }
-  .tag-post.show { display: inline-block; }
-
-  .price-section {
-    position: relative; display: flex; flex-direction: column;
-    align-items: center; justify-content: center; min-height: 120px;
-    background: linear-gradient(180deg, #5a4422 0%, #3d2e16 100%);
-    border: 1px solid rgba(0,0,0,0.35); border-radius: 10px;
-    box-shadow: inset 0 2px 10px rgba(0,0,0,0.5), inset 0 0 30px rgba(240,180,90,0.12);
-    padding: 18px 14px 14px; text-align: center;
-    transition: box-shadow 0.15s ease;
-  }
-  .price-section.light-up {
-    box-shadow:
-      inset 0 2px 10px rgba(0,0,0,0.5),
-      inset 0 0 30px rgba(240,180,90,0.06),
-      inset 0 15px 50px rgba(38, 166, 154, 0.50),
-      inset 0 0 80px rgba(38, 166, 154, 0.22),
-      inset 0 0 120px rgba(38, 166, 154, 0.09);
-  }
-  .price-section.light-down {
-    box-shadow:
-      inset 0 2px 10px rgba(0,0,0,0.5),
-      inset 0 0 30px rgba(240,180,90,0.06),
-      inset 0 15px 50px rgba(239, 83, 80, 0.50),
-      inset 0 0 80px rgba(239, 83, 80, 0.22),
-      inset 0 0 120px rgba(239, 83, 80, 0.09);
-  }
-  .phase-corner-label { position: absolute; top: 8px; left: 10px; font-size: 9px; font-weight: 700; color: #d9b87a; letter-spacing: 1px; opacity: 0.75; }
-  .main-change { font-size: 12px; font-weight: 700; margin-top: 6px; min-height: 18px; }
-  .ref-price { margin-top: 10px; padding-top: 8px; border-top: 1px solid rgba(255,255,255,0.08); width: 100%; font-size: 11px; color: #c9b48a; display: flex; justify-content: center; gap: 6px; align-items: baseline; }
-  .ref-price .ref-tag { opacity: 0.6; font-size: 10px; }
-  .ref-price .ref-value { font-family: 'DM Mono', monospace; color: #e8d4a8; }
-  .up   { color: var(--up);   background: #00e67615; border: 1px solid #00e67630; }
-  .down { color: var(--down); background: #ff174415; border: 1px solid #ff174430; }
-  .divider { display: none; }
-
-  /* ── PRICE FLIP：四層結構 ── */
-  .pf-wrap {
-    display: flex;
-    justify-content: center;
-    width: 100%;
-  }
-  .pf-stack {
-    position: relative;
-    width: 210px;
-    height: 44px;
-    perspective: 600px;
-  }
-  /* 共用基底 */
-  .pf-top-static,
-  .pf-bot-static,
-  .pf-front,
-  .pf-back {
-    position: absolute;
-    left: 0; right: 0;
-    height: 22px;
-    border-radius: 2px;
-  }
-  /* 靜態層 clip */
-  .pf-top-static,
-  .pf-bot-static { overflow: hidden; background: #14120d; }
-  /* 翻蓋層：上下明暗微差，模擬光影 */
-  .pf-front { overflow: hidden; background: #1a1812; }
-  .pf-back  { overflow: hidden; background: #111009; }
-  /* 字體共用 */
-  .pf-top-static span,
-  .pf-bot-static span,
-  .pf-front span,
-  .pf-back span {
-    display: block;
-    font-family: 'DM Mono', monospace;
-    font-size: 32px;
-    font-weight: 500;
-    color: #ffd98a;
-    text-shadow: 0 0 14px rgba(255,200,110,0.55);
-    text-align: center;
-    line-height: 44px;
-    height: 44px;
-    white-space: nowrap;
-    user-select: none;
-    backface-visibility: hidden;
-  }
-  .pf-top-static { top: 0;    border-radius: 2px 2px 0 0; }
-  .pf-top-static span { margin-top: 0; }
-  .pf-bot-static { bottom: 0; border-radius: 0 0 2px 2px; }
-  .pf-bot-static span { margin-top: -22px; }
-  .pf-front {
-    top: 0; border-radius: 2px 2px 0 0;
-    z-index: 10;
-    transform-origin: bottom center;
-  }
-  .pf-front span { margin-top: 0; }
-  .pf-back {
-    bottom: 0; border-radius: 0 0 2px 2px;
-    z-index: 10;
-    transform-origin: top center;
-    transform: rotateX(90deg);
-  }
-  .pf-back span { margin-top: -22px; }
-
-  @keyframes pfFrontFall { from { transform: rotateX(0deg); } to { transform: rotateX(-90deg); } }
-  @keyframes pfBackRise  { from { transform: rotateX(90deg); } to { transform: rotateX(0deg); } }
-
-  .pf-front.go { animation: pfFrontFall 0.13s cubic-bezier(0.55,0,1,1)   forwards; }
-  .pf-back.go  { animation: pfBackRise  0.12s cubic-bezier(0,0,0.45,1)   forwards; animation-delay: 0.11s; }
-
-  /* expanded 尺寸覆蓋 */
-  .exp-pf-stack { width: 260px; height: 56px; }
-  .exp-pf-stack .pf-top-static,
-  .exp-pf-stack .pf-bot-static,
-  .exp-pf-stack .pf-front,
-  .exp-pf-stack .pf-back { height: 28px; }
-  .exp-pf-stack .pf-top-static span,
-  .exp-pf-stack .pf-bot-static span,
-  .exp-pf-stack .pf-front span,
-  .exp-pf-stack .pf-back span { font-size: 44px; line-height: 56px; height: 56px; }
-  .exp-pf-stack .pf-bot-static span,
-  .exp-pf-stack .pf-back span { margin-top: -28px; }
-
-  .chart-container {
-    margin-top: 0; border: 2px solid #d9cdb3; border-radius: 10px;
-    overflow: hidden; height: 0; max-height: 0; background: #000; opacity: 0;
-    clip-path: none;
-    box-shadow: inset 0 2px 10px rgba(0,0,0,0.6);
-    transition: height 0.5s cubic-bezier(0.25,0.1,0.25,1), margin-top 0.5s cubic-bezier(0.25,0.1,0.25,1), opacity 0.4s ease;
-  }
-  .news-container { display: none; }
-  .news-header { font-size: 12px; font-weight: 700; color: var(--card-frame); letter-spacing: 1px; margin-bottom: 10px; }
-  .news-list { display: flex; flex-direction: column; gap: 8px; }
-  .news-item { display: block; padding: 10px 12px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06); border-radius: 6px; text-decoration: none; transition: background 0.15s; }
-  .news-item:hover { background: rgba(255,255,255,0.07); }
-  .news-headline { font-size: 12px; color: var(--text); line-height: 1.5; }
-  .news-source { font-size: 10px; color: var(--muted); margin-top: 4px; }
-  /* ── TradingView 圖示按鈕，只在手機展開時顯示 ── */
-  .mobile-tv-btn {
-    display: none;
-    margin: 10px 12px 16px;
-    padding: 14px 16px;
-    background: rgba(255,255,255,0.05);
-    border: 1px solid rgba(217,205,184,0.2);
-    border-radius: 10px;
-    color: #c8a96e;
-    font-family: 'DM Mono', monospace;
-    font-size: 12px;
-    letter-spacing: 0.5px;
-    text-decoration: none;
-    text-align: center;
-    cursor: pointer;
-    -webkit-tap-highlight-color: transparent;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-  }
-  .mobile-tv-btn:active { background: rgba(255,255,255,0.1); }
-
-  @media(max-width: 720px) {
-    body { min-width: unset; }
-    .mobile-tv-btn { display: flex; }
-
-    /* 點擊反饋 */
-    .card:not(.expanded):active {
-      border-color: #c8a96e;
-      filter: brightness(1.12);
-      box-shadow:
-        0 6px 0 rgba(0,0,0,0.5), 0 10px 22px rgba(0,0,0,0.45),
-        inset 0 2px 6px rgba(0,0,0,0.3),
-        inset 0 0 40px rgba(240,180,60,0.18),
-        0 0 0 1px rgba(200,169,110,0.4),
-        0 0 28px rgba(200,140,60,0.25);
-    }
-    /* hover 手機上取消 */
-    .card:not(.expanded):hover { filter: none; box-shadow: none; border-color: var(--card-frame); }
-
-    /* 外層卡片微調 */
-    .pf-stack { width: min(210px, 80%); }
-
-    /* 手機版：sf-wrap 改用 GPU 可加速的 opacity+translateY，取代 clip-path（卡頓來源）
-       animation-play-state:paused 讓元素 DOM 插入瞬間即凍結在 0%（opacity:0），
-       無空窗閃現，行為穩定於 Android WebView / iOS Safari */
-    .sf-wrap {
-      clip-path: none;
-      animation: sfRevealMobile 0.32s ease-out forwards;
-      animation-play-state: paused;
-    }
-    .sf-wrap.reveal-full {
-      animation-play-state: running;
-    }
-    @keyframes sfRevealMobile {
-      0%   { opacity: 0; transform: translateY(12px); }
-      100% { opacity: 1; transform: translateY(0); }
-    }
-
-    /* 手機版：字卡位置固定，不依賴瀏覽器 flex 自動置中 */
-    .pf-wrap { margin: 8px 0; }
-
-    /* 手機版光暈：高彩度螢光 */
-    .price-section {
-      box-shadow: inset 0 2px 10px rgba(0,0,0,0.5), inset 0 0 30px rgba(240,180,90,0.12);
-    }
-    .price-section.light-up {
-      box-shadow:
-        inset 0 2px 10px rgba(0,0,0,0.5),
-        inset 0 0 30px rgba(240,180,90,0.06),
-        inset 0 15px 50px rgba(38, 166, 154, 0.60),
-        inset 0 0 80px rgba(38, 166, 154, 0.28),
-        inset 0 0 120px rgba(38, 166, 154, 0.12);
-    }
-    .price-section.light-down {
-      box-shadow:
-        inset 0 2px 10px rgba(0,0,0,0.5),
-        inset 0 0 30px rgba(240,180,90,0.06),
-        inset 0 15px 50px rgba(239, 83, 80, 0.60),
-        inset 0 0 80px rgba(239, 83, 80, 0.28),
-        inset 0 0 120px rgba(239, 83, 80, 0.12);
-    }
-    .card { padding: 14px; }
-    .grid { gap: 10px; margin: 10px; }
-
-    /* ── 手機版展開：全螢幕，完全獨立於桌機版 ── */
-    .card.expanded {
-      top: 0; left: 0;
-      width: 100vw;
-      height: 100vh;
-      max-height: 100vh;
-      transform: none;
-      background: var(--bg);
-      border-radius: 0;
-      overflow-y: auto;
-      -webkit-overflow-scrolling: touch;
-      animation: none;
-      display: flex;
-      flex-direction: column;
-      padding: 0;
-    }
-    .card.expanded .card-body-split {
-      display: flex;
-      flex-direction: column;
-      flex: 1;
-    }
-    .card.expanded .split-right {
-      display: flex;
-      flex-direction: column;
-      flex: 1;
-    }
-    .card.expanded .card-sym { font-size: 20px; }
-    .card.expanded .card-name { font-size: 10px; }
-    .card.expanded .card-header { padding: 14px 16px; }
-    .card.expanded .expanded-price-stage { padding: 16px 14px 12px; margin: 10px 12px 0; }
-    .card.expanded .expanded-phase-label { font-size: 9px; }
-    .card.expanded .exp-pf-stack { width: min(260px, 85%); height: 56px; }
-    .card.expanded .exp-pf-stack .pf-top-static,
-    .card.expanded .exp-pf-stack .pf-bot-static,
-    .card.expanded .exp-pf-stack .pf-front,
-    .card.expanded .exp-pf-stack .pf-back { height: 28px; }
-    .card.expanded .exp-pf-stack .pf-top-static span,
-    .card.expanded .exp-pf-stack .pf-bot-static span,
-    .card.expanded .exp-pf-stack .pf-front span,
-    .card.expanded .exp-pf-stack .pf-back span { font-size: 44px; line-height: 56px; height: 56px; }
-    .card.expanded .expanded-main-change { font-size: 13px; margin-top: 8px; }
-    .card.expanded .expanded-ref-row { font-size: 11px; margin-top: 8px; }
-    .card.expanded .expanded-news-wrap { margin: 10px 12px 0; }
-    /* 底部留空，避免被 close-bar 蓋住 */
-    .card.expanded .card-body-split { padding-bottom: 72px; }
-  
-.mobile-close-bar {
-      display: flex;
-      position: fixed;
-      bottom: 0; left: 0; right: 0;
-      height: 56px;
-      background: linear-gradient(180deg, #1a1710 0%, #111009 100%);
-      border-top: 1px solid #3a3020;
-      box-shadow: 0 -2px 12px rgba(0,0,0,0.6), inset 0 1px 0 rgba(200,160,80,0.15);
-      align-items: center;
-      justify-content: center;
-      gap: 14px;
-      cursor: pointer;
-      z-index: 1300;
-      -webkit-tap-highlight-color: transparent;
-    }
-    .mobile-close-bar:active {
-      background: linear-gradient(180deg, #201e14 0%, #181510 100%);
-      box-shadow: 0 -1px 8px rgba(0,0,0,0.6), inset 0 2px 6px rgba(0,0,0,0.5), inset 0 1px 0 rgba(200,160,80,0.1);
-    }
-    .mobile-close-bar .cb-screw {
-      width: 10px; height: 10px;
-      border-radius: 50%;
-      background: radial-gradient(circle at 35% 35%, #4a4438, #1e1c16);
-      border: 1px solid #3a3528;
-      box-shadow: inset 0 1px 2px rgba(0,0,0,0.8);
-      flex-shrink: 0;
-      position: relative;
-    }
-    .mobile-close-bar .cb-screw::before {
-      content: ''; position: absolute;
-      top: 50%; left: 15%; right: 15%; height: 1px;
-      background: #5a5040; transform: translateY(-50%);
-    }
-    .mobile-close-bar .cb-screw::after {
-      content: ''; position: absolute;
-      left: 50%; top: 15%; bottom: 15%; width: 1px;
-      background: #5a5040; transform: translateX(-50%);
-    }
-    .mobile-close-bar .cb-label {
-      font-family: 'DM Mono', monospace;
-      font-size: 11px;
-      font-weight: 500;
-      color: #c8a96e;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-    }
-    .mobile-close-bar .cb-line {
-      width: 24px; height: 1px;
-      background: linear-gradient(90deg, transparent, #6a5a3a);
-    }
-    .mobile-close-bar .cb-line.right {
-      background: linear-gradient(90deg, #6a5a3a, transparent);
-    }
-  }
-
-  .footer { text-align: center; margin-top: 24px; font-size: 10px; color: var(--muted); letter-spacing: 1px; }
-
-  /* ── 底部關閉列：復古機械風格 ── */
-  .mobile-close-bar {
-    display: none;
-  }
-
-
+@font-face { font-family: 'DM Mono Fallback'; src: local('Courier New'), local('Courier'); size-adjust: 96%; ascent-override: 90%; }
+@font-face { font-family: 'Roboto Mono Fallback'; src: local('Courier New'), local('Courier'); size-adjust: 98%; ascent-override: 90%; }
+:root {
+color-scheme: dark light;
+--bg: #0a0a0a; --card-bg: #1c1a16; --card-frame: #d9cdb8; --card-border: #3a352c;
+--window: #4a5240; --window-edge: #2e3328; --digit: #f0c987; --text: #f0e8d8;
+--muted: #7a7468; --label: #b8ad96; --up: #00e676; --down: #ff1744;
+--accent: #d9cdb8; --knob: #8a6240;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+body { background: var(--bg); color: var(--text); font-family: 'Roboto Mono', 'Roboto Mono Fallback', monospace; min-height: 100vh; min-width: 960px; padding-bottom: 40px; color-scheme: dark; }
+body.scroll-locked { overflow: hidden; }
+.topbar { display: flex; align-items: center; justify-content: space-between; padding: 16px 20px; background: #0d0d0d; border-bottom: 1px solid var(--card-frame); }
+.logo { font-size: 13px; font-weight: 700; color: var(--accent); letter-spacing: 2px; text-transform: uppercase; }
+.hero-time { font-family: 'DM Mono', monospace; font-size: 36px; font-weight: 500; color: var(--digit); letter-spacing: 2px; line-height: 1; text-shadow: 0 0 12px rgba(240,201,135,0.25); }
+.hero-date { font-size: 11px; color: var(--muted); text-align: right; margin-top: 2px; }
+.grid { display: grid; grid-template-columns: 1fr; gap: 12px; margin: 16px; }
+.card-pending { border: 0.5px dashed #3a3020; background: #111008; border-radius: 10px; padding: 14px 12px; text-align: center; color: #555; font-size: 11px; font-family: monospace; letter-spacing: 1px; }
+#searchPanel { display: none; background: #0d0c07; border-top: 1px solid #2a2418; padding: 14px 16px; position: sticky; bottom: 60px; z-index: 500; }
+body.editing #searchPanel { display: block; }
+body.editing::after { content: ''; display: block; height: 60px; }
+.manage-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; }
+.manage-title { color: #c8a96e; font-size: 11px; letter-spacing: 2px; }
+.manage-close { background: none; border: none; cursor: pointer; color: #555; font-size: 18px; line-height: 1; padding: 0; }
+.manage-close:hover { color: #c8a96e; }
+.search-inner { background: #131109; border: 1px solid #2a2620; border-radius: 12px; padding: 10px; }
+.search-inner input { width: 100%; background: #0c0b07; border: 1px solid #33302a; border-radius: 8px; padding: 9px 12px; color: #f0e8d8; font-family: 'DM Mono', monospace; font-size: 13px; text-transform: uppercase; outline: none; }
+.search-inner input:focus { border-color: #c8a96e; }
+.results { margin-top: 8px; max-height: 130px; overflow-y: auto; display: flex; flex-direction: column; gap: 6px; }
+.res-row { display: flex; align-items: center; justify-content: space-between; padding: 7px 10px; background: #171509; border: 1px solid #2a2620; border-radius: 8px; }
+.res-row .r-sym { font-size: 13px; font-weight: 700; color: var(--digit); font-family: 'DM Mono', monospace; letter-spacing: 1px; }
+.res-row .r-name { font-size: 10px; color: #8a8474; margin-top: 2px; }
+.add-btn { padding: 5px 14px; border: none; background: #c8a96e; color: #0a0900; border-radius: 7px; font-size: 12px; font-weight: 600; cursor: pointer; font-family: 'DM Mono', monospace; letter-spacing: 1px; }
+.add-btn:hover { background: #d9bc84; }
+.res-empty { font-size: 11px; color: #6f6a5e; text-align: center; padding: 10px; }
+#syncStatus { font-size: 11px; min-height: 16px; margin-top: 6px; font-family: monospace; }
+@keyframes setBlink { 0%,100% { opacity: 1; } 50% { opacity: .3; } }
+body.editing .card:not(.go):not(.selected) .pf-top-static span,
+body.editing .card:not(.go):not(.selected) .pf-bot-static span,
+body.editing .card:not(.go):not(.selected) .pf-front span,
+body.editing .card:not(.go):not(.selected) .pf-back span { animation: setBlink 1.3s ease-in-out infinite; }
+.card::before { content: ''; position: absolute; top: -2px; left: 14px; right: 14px; height: 2px; border-radius: 2px; z-index: 6; pointer-events: none; background: linear-gradient(90deg, transparent 0%, rgba(255,205,115,0.9) 30%, rgba(255,215,130,1) 50%, rgba(255,205,115,0.9) 70%, transparent 100%); box-shadow: 0 0 8px rgba(255,190,100,0.5); opacity: 0; transition: opacity .3s ease, box-shadow .2s ease, height .2s ease; }
+body.editing .card:not(.go)::before { opacity: 1; }
+.card.selected::before { height: 3px; box-shadow: 0 0 18px rgba(255,205,115,0.9); }
+body.editing .card { cursor: pointer; }
+@media (hover: hover) and (pointer: fine) {
+body.editing .card:not(.selected):not(.go):hover { border-color: #c8a96e; filter: brightness(1.12); box-shadow: 0 6px 0 rgba(0,0,0,0.5), 0 10px 22px rgba(0,0,0,0.45), inset 0 2px 6px rgba(0,0,0,0.3), inset 0 0 40px rgba(240,180,60,0.18), 0 0 0 1px rgba(200,169,110,0.4), 0 0 28px rgba(200,140,60,0.25); }
+body.editing .card:not(.selected):not(.go):hover .pf-top-static span,
+body.editing .card:not(.selected):not(.go):hover .pf-bot-static span,
+body.editing .card:not(.selected):not(.go):hover .pf-front span,
+body.editing .card:not(.selected):not(.go):hover .pf-back span { animation: none; }
+body.editing .card:not(.selected):not(.go):hover::before { height: 3px; box-shadow: 0 0 16px rgba(255,200,110,0.85); }
+}
+.card.selected { border-color: #f0c060 !important; filter: brightness(1.13); box-shadow: 0 6px 0 rgba(0,0,0,0.5), 0 10px 22px rgba(0,0,0,0.45), inset 0 2px 6px rgba(0,0,0,0.3), inset 0 0 44px rgba(240,185,70,0.22), 0 0 0 1.5px rgba(230,195,110,0.5), 0 0 30px rgba(220,160,70,0.3); }
+.check { position: absolute; top: -9px; right: -9px; min-width: 26px; height: 26px; padding: 0 6px; border-radius: 8px; background: #3a2c12; border: 1px solid #f0c060; display: flex; align-items: center; justify-content: center; opacity: 0; transform: scale(0.5); transition: opacity .18s, transform .2s cubic-bezier(0.34,1.56,0.64,1); z-index: 12; box-shadow: 0 2px 8px rgba(0,0,0,0.5); font-family: 'DM Mono', monospace; font-size: 13px; font-weight: 700; color: #201400; pointer-events: none; }
+.card.selected .check { opacity: 1; transform: scale(1); background: #f0c060; box-shadow: 0 0 12px rgba(240,190,90,0.6); }
+.price-section.off { transition: filter .14s ease, opacity .14s ease; filter: brightness(0.15); opacity: .3; }
+.main-change.off { transition: opacity .14s ease; opacity: .25; }
+@keyframes cardTeardownFade { 0%{opacity:1} 100%{opacity:0} }
+.card.fade { animation: cardTeardownFade .2s ease forwards; }
+.card.go .check { opacity: 0; }
+#actionBar { display: none; position: fixed; bottom: 0; left: 0; right: 0; z-index: 1400; height: 60px; box-sizing: border-box; background: linear-gradient(180deg, #1a1710 0%, #111009 100%); border-top: 1px solid #3a3020; box-shadow: 0 -2px 12px rgba(0,0,0,0.6), inset 0 1px 0 rgba(200,160,80,0.1); padding: 12px 16px; align-items: center; justify-content: space-between; }
+body.editing #actionBar { display: flex; }
+#actionBar .bar-count { font-size: 12px; color: #c8a96e; font-family: 'DM Mono', monospace; }
+#actionBar .confirm-txt { display: none; font-size: 12px; color: #e05c5c; }
+#actionBar.confirming .bar-count { display: none; }
+#actionBar.confirming .confirm-txt { display: inline; }
+#actionBar .grp { display: flex; gap: 8px; align-items: center; }
+#actionBar .default-grp { display: flex; }
+#actionBar .confirm-grp { display: none; align-items: center; gap: 10px; }
+#actionBar.confirming .default-grp { display: none; }
+#actionBar.confirming .confirm-grp { display: flex; }
+#actionBar .eb-btn { padding: 7px 15px; border-radius: 9px; font-family: 'DM Mono', monospace; font-size: 12px; letter-spacing: 1px; cursor: pointer; border: 1px solid transparent; }
+#actionBar .eb-del { background: rgba(224,92,92,0.12); border-color: #e05c5c; color: #e05c5c; }
+#actionBar .eb-del:hover { background: #e05c5c; color: #140f0f; }
+#actionBar .eb-del[disabled] { opacity: .35; cursor: default; border-color: #5a3030; background: none; color: #8a5a5a; }
+#actionBar .eb-ghost { background: none; border-color: #3a3020; color: #c8a96e; }
+#actionBar .eb-ghost:hover { border-color: #c8a96e; }
+.topbar-right { display: flex; align-items: center; gap: 14px; }
+.settings-btn { background: none; border: 1px solid #3a3020; border-radius: 8px; color: #c8a96e; font-size: 18px; line-height: 1; width: 38px; height: 38px; cursor: pointer; -webkit-tap-highlight-color: transparent; }
+.settings-btn:hover { border-color: #c8a96e; }
+.edit-btn { width: auto; padding: 0 14px; font-weight: 600; font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 2px; }
+.edit-btn.active { border-color: #c8a96e; background: #c8a96e; color: #0a0900; }
+.card.card-error { border-color: rgba(224,92,92,0.55); }
+.card.card-error .price-section { box-shadow: inset 0 2px 10px rgba(0,0,0,0.5), inset 0 0 30px rgba(224,92,92,0.08); }
+.settings-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.6); z-index: 1490; }
+.settings-overlay.show { display: block; }
+#settingsSheet { display: none; position: fixed; bottom: 0; left: 0; right: 0; background: #0d0c07; border-top: 1px solid #2a2418; padding: 14px 16px 22px; z-index: 1500; }
+#settingsSheet.open { display: block; }
+.settings-token-status { font-size: 11px; font-family: monospace; color: #7a7468; margin-bottom: 10px; letter-spacing: 1px; }
+.settings-actions { margin-bottom: 10px; }
+.settings-hint { font-size: 10px; color: #555; line-height: 1.6; }
+.token-row { display: flex; gap: 8px; margin-bottom: 10px; }
+.token-input { flex: 1; background: #0c0b07; border: 1px solid #33302a; color: #f0e8d8; border-radius: 8px; padding: 9px 12px; font-size: 13px; font-family: 'DM Mono', monospace; outline: none; }
+.token-input:focus { border-color: #c8a96e; }
+.eb-save-btn { background: #c8a96e; border: none; color: #0a0900; border-radius: 8px; padding: 0 18px; font-size: 12px; font-weight: 600; cursor: pointer; font-family: 'DM Mono', monospace; letter-spacing: 1px; }
+.eb-save-btn:hover { background: #d9bc84; }
+.eb-clear-btn { padding: 7px 15px; border-radius: 9px; border: 1px solid #3a3020; background: none; color: #a05a5a; font-size: 12px; cursor: pointer; font-family: 'DM Mono', monospace; letter-spacing: 1px; }
+.eb-clear-btn:hover { border-color: #e05c5c; color: #e05c5c; }
+@media(min-width: 640px) { .grid { grid-template-columns: repeat(4,1fr); } .grid > .card { grid-column: span 2; } }
+@media(min-width: 1000px) { .grid { grid-template-columns: repeat(6,1fr); } .grid > .card { grid-column: span 2; } }
+.card.last-row-solo { grid-column: 3/5; }
+.card.last-row-pair-1 { grid-column: 2/4; }
+.card.last-row-pair-2 { grid-column: 4/6; }
+.card { background: linear-gradient(180deg, var(--window) 0%, var(--window-edge) 100%); border: 3px solid var(--card-frame); border-radius: 18px; padding: 16px; cursor: pointer; transition: box-shadow 0.2s, border-color 0.2s, filter 0.25s; position: relative; perspective: 500px; display: flex; flex-direction: column; min-height: 160px; box-shadow: 0 6px 0 rgba(0,0,0,0.5), 0 10px 22px rgba(0,0,0,0.45), inset 0 2px 6px rgba(0,0,0,0.3); }
+@media (hover: hover) and (pointer: fine) {
+.card:not(.expanded):hover { border-color: #c8a96e; filter: brightness(1.12); box-shadow: 0 6px 0 rgba(0,0,0,0.5), 0 10px 22px rgba(0,0,0,0.45), inset 0 2px 6px rgba(0,0,0,0.3), inset 0 0 40px rgba(240,180,60,0.18), 0 0 0 1px rgba(200,169,110,0.4), 0 0 28px rgba(200,140,60,0.25); }
+}
+.card-body-split, .split-left, .split-right { display: contents; }
+.card-header { order: -2; }
+.price-section { order: -1; }
+.card.expanded { cursor: default; position: fixed; top: 50%; left: 50%; width: min(1040px, calc(100vw - 32px + var(--scrollbar-w, 0px))); max-height: calc(100vh - 32px); transform: translate(-50%, -50%); z-index: 1001; background: transparent; border: none; box-shadow: none; padding: 0; overflow: visible; animation: cardQuietAppear 0.3s ease-out forwards; }
+@keyframes cardQuietAppear { 0% { opacity: 0; transform: translate(-50%,-50%) scale(0.96); } 100% { opacity: 1; transform: translate(-50%,-50%) scale(1); } }
+.card.expanded.closing { animation: cardQuietDisappear 0.28s ease-in forwards; }
+@keyframes cardQuietDisappear { 0% { opacity: 1; transform: translate(-50%,-50%) scale(1); } 100% { opacity: 0; transform: translate(-50%,-50%) scale(0.96); } }
+.card.expanded .card-body-split { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; perspective: 1200px; }
+@media(min-width: 721px) {
+.card.expanded .split-left, .card.expanded .split-right { background: linear-gradient(180deg, var(--window) 0%, var(--window-edge) 100%); border: 2px solid var(--card-frame); border-radius: 10px; box-shadow: 0 6px 0 rgba(0,0,0,0.5), 0 12px 24px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.06); overflow: hidden; position: relative; height: 460px; }
+.card.expanded .split-left { display: flex; flex-direction: column; }
+.card.expanded .split-right { display: flex; flex-direction: column; }
+.card.expanded .split-left, .card.expanded .split-right { clip-path: inset(0 0 99% 0 round 10px); transform: scaleY(0.04); transform-origin: top center; opacity: 0; }
+.card.expanded .split-left.panel-flap, .card.expanded .split-right.panel-flap { animation: unrollDown 0.52s cubic-bezier(0.77,0,0.175,1) forwards; }
+@keyframes unrollDown { 0% { clip-path: inset(0 0 99% 0 round 10px); transform: scaleY(0.04); opacity: 0; } 100% { clip-path: inset(0 0 0% 0 round 10px); transform: scaleY(1); opacity: 1; } }
+.card.expanded .split-left::after, .card.expanded .split-right::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 60px; background: linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.45) 100%); pointer-events: none; z-index: 20; opacity: 1; transition: opacity 0.3s ease; }
+.card.expanded .split-left.panel-flap::after, .card.expanded .split-right.panel-flap::after { animation: fadeOutGradient 0.3s ease 0.4s forwards; }
+@keyframes fadeOutGradient { 0% { opacity: 1; } 100% { opacity: 0; } }
+.card.expanded .split-left { perspective: none; }
+.card.expanded .split-left .chart-container { flex: 1; height: auto !important; max-height: none !important; margin: 12px; border-radius: 6px; overflow: hidden; border: 1px solid rgba(217,205,184,0.25); background: #000; box-shadow: inset 0 2px 8px rgba(0,0,0,0.6); opacity: 1; clip-path: inset(0 0 100% 0 round 6px); transition: clip-path 0.5s cubic-bezier(0.77,0,0.175,1) 0.1s; }
+.card.expanded .split-left .chart-container.show-chart { clip-path: inset(0 0 0% 0 round 6px); }
+.card.expanded .split-right .card-header { order: unset; flex: none; display: flex; justify-content: space-between; align-items: flex-start; padding: 14px 16px; border-bottom: 1px solid rgba(217,205,184,0.2); }
+.card.expanded .card-sym { font-size: 20px; font-weight: 700; color: var(--digit); letter-spacing: 1px; }
+.card.expanded .card-name { font-size: 10px; color: #aab09a; margin-top: 2px; }
+}
+.sf-wrap { position: relative; clip-path: inset(0 0 100% 0); }
+.sf-wrap.reveal-full { animation: sfRevealFull 0.44s cubic-bezier(0.77,0,0.175,1) forwards; }
+@keyframes sfRevealFull { 0% { clip-path: inset(0 0 100% 0); } 100% { clip-path: inset(0 0 0% 0); } }
+.expanded-price-stage { padding: 16px 14px 12px; background: linear-gradient(180deg, #5a4422 0%, #3d2e16 100%); border: 1px solid rgba(0,0,0,0.35); border-radius: 8px; margin: 10px 12px 0; text-align: center; box-shadow: inset 0 2px 10px rgba(0,0,0,0.5); position: relative; transition: box-shadow 0.15s ease; }
+.expanded-price-stage.light-up { box-shadow: inset 0 2px 10px rgba(0,0,0,0.5), inset 0 0 30px rgba(240,180,90,0.06), inset 0 15px 50px rgba(38, 166, 154, 0.50), inset 0 0 80px rgba(38, 166, 154, 0.22), inset 0 0 120px rgba(38, 166, 154, 0.09); }
+.expanded-price-stage.light-down { box-shadow: inset 0 2px 10px rgba(0,0,0,0.5), inset 0 0 30px rgba(240,180,90,0.06), inset 0 15px 50px rgba(239, 83, 80, 0.50), inset 0 0 80px rgba(239, 83, 80, 0.22), inset 0 0 120px rgba(239, 83, 80, 0.09); }
+.expanded-phase-label { position: absolute; top: 6px; left: 10px; font-size: 9px; font-weight: 700; color: #d9b87a; opacity: 0.8; letter-spacing: 1px; }
+.expanded-main-change { font-size: 13px; font-weight: 700; margin-top: 8px; }
+.expanded-ref-row { margin-top: 8px; padding-top: 8px; border-top: 1px solid rgba(255,255,255,0.08); font-size: 11px; color: #c9b48a; overflow: hidden; perspective: 300px; }
+.expanded-ref-row #flipFront { display: block; }
+.expanded-news-wrap { flex: 1; overflow-y: auto; margin: 10px 12px 12px; background: rgba(0,0,0,0.2); border: 1px solid rgba(217,205,184,0.15); border-radius: 6px; padding: 12px; }
+.expanded-news-title { font-size: 11px; font-weight: 700; color: var(--card-frame); letter-spacing: 1px; margin-bottom: 8px; }
+.expanded-news-item { padding: 8px 10px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06); border-radius: 5px; margin-bottom: 6px; text-decoration: none; display: block; transition: background 0.15s; }
+.expanded-news-item:hover { background: rgba(255,255,255,0.07); }
+.expanded-news-headline { font-size: 11px; color: var(--text); line-height: 1.5; }
+.expanded-news-source { font-size: 9px; color: var(--muted); margin-top: 3px; }
+.card-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.65); z-index: 1000; opacity: 0; transition: opacity 0.3s ease; }
+.card-overlay.show { display: block; opacity: 1; }
+.card-ghost { border-radius: 18px; border: 2px dashed #2a2820; background: transparent; position: relative; overflow: hidden; pointer-events: none; transition: border-color 0.45s ease; }
+.card-ghost .ghost-axle { position: absolute; top: 50%; left: 12px; right: 12px; height: 2px; background: linear-gradient(90deg, transparent, #2a2820 20%, #3a3528 50%, #2a2820 80%, transparent); transform: translateY(-50%); transition: opacity 0.3s ease; z-index: 1; }
+.card-ghost .ghost-screw { position: absolute; width: 10px; height: 10px; border-radius: 50%; background: radial-gradient(circle at 35% 35%, #4a4438, #1e1c16); border: 1px solid #3a3528; box-shadow: inset 0 1px 2px rgba(0,0,0,0.8); transition: opacity 0.3s ease 0.1s; z-index: 2; }
+.card-ghost .ghost-screw::before { content: ''; position: absolute; top: 50%; left: 15%; right: 15%; height: 1px; background: #5a5040; transform: translateY(-50%); }
+.card-ghost .ghost-screw::after { content: ''; position: absolute; left: 50%; top: 15%; bottom: 15%; width: 1px; background: #5a5040; transform: translateX(-50%); }
+.card-ghost .ghost-screw.tl { top: 10px; left: 10px; }
+.card-ghost .ghost-screw.tr { top: 10px; right: 10px; }
+.card-ghost .ghost-screw.bl { bottom: 10px; left: 10px; }
+.card-ghost .ghost-screw.br { bottom: 10px; right: 10px; }
+.card-ghost .ghost-content { position: relative; z-index: 3; opacity: 0; padding: 16px; }
+.card-ghost.reviving { }
+.card.recently-viewed { border-color: rgba(240,201,135,0.7); box-shadow: 0 6px 0 rgba(0,0,0,0.5), 0 10px 22px rgba(0,0,0,0.45), inset 0 2px 6px rgba(0,0,0,0.3), 0 0 0 1px rgba(240,201,135,0.25), 0 0 18px rgba(240,201,135,0.12); transition: border-color 0.3s ease, box-shadow 0.3s ease; }
+.card.recently-viewed::before { content: '◉'; position: absolute; top: 6px; right: 10px; left: auto; height: auto; background: none; box-shadow: none; font-size: 8px; color: rgba(240,201,135,0.8); text-shadow: 0 0 6px rgba(240,201,135,0.6); animation: recentPulse 2s ease-in-out infinite; }
+@keyframes recentPulse { 0%, 100% { opacity: 0.8; } 50% { opacity: 0.3; } }
+.card-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 14px; }
+.card-sym { font-size: 20px; font-weight: 700; color: var(--digit); letter-spacing: 1px; }
+.card-name { font-size: 10px; color: #aab09a; margin-top: 2px; }
+.tag { font-size: 10px; font-weight: 700; padding: 3px 8px; border-radius: 4px; letter-spacing: 0.5px; }
+.tag-post { background: #3a2a18; color: #e0b97d; border: 1px solid var(--knob); display: none; }
+.tag-post.show { display: inline-block; }
+.price-section { position: relative; display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 120px; background: linear-gradient(180deg, #5a4422 0%, #3d2e16 100%); border: 1px solid rgba(0,0,0,0.35); border-radius: 10px; box-shadow: inset 0 2px 10px rgba(0,0,0,0.5), inset 0 0 30px rgba(240,180,90,0.12); padding: 18px 14px 14px; text-align: center; transition: box-shadow 0.15s ease; }
+.price-section.light-up { box-shadow: inset 0 2px 10px rgba(0,0,0,0.5), inset 0 0 30px rgba(240,180,90,0.06), inset 0 15px 50px rgba(38, 166, 154, 0.50), inset 0 0 80px rgba(38, 166, 154, 0.22), inset 0 0 120px rgba(38, 166, 154, 0.09); }
+.price-section.light-down { box-shadow: inset 0 2px 10px rgba(0,0,0,0.5), inset 0 0 30px rgba(240,180,90,0.06), inset 0 15px 50px rgba(239, 83, 80, 0.50), inset 0 0 80px rgba(239, 83, 80, 0.22), inset 0 0 120px rgba(239, 83, 80, 0.09); }
+.phase-corner-label { position: absolute; top: 8px; left: 10px; font-size: 9px; font-weight: 700; color: #d9b87a; letter-spacing: 1px; opacity: 0.75; }
+.main-change { font-size: 12px; font-weight: 700; margin-top: 6px; min-height: 18px; }
+.ref-price { margin-top: 10px; padding-top: 8px; border-top: 1px solid rgba(255,255,255,0.08); width: 100%; font-size: 11px; color: #c9b48a; display: flex; justify-content: center; gap: 6px; align-items: baseline; }
+.ref-price .ref-tag { opacity: 0.6; font-size: 10px; }
+.ref-price .ref-value { font-family: 'DM Mono', monospace; color: #e8d4a8; }
+.up { color: var(--up); background: #00e67615; border: 1px solid #00e67630; }
+.down { color: var(--down); background: #ff174415; border: 1px solid #ff174430; }
+.divider { display: none; }
+.pf-wrap { display: flex; justify-content: center; width: 100%; }
+.pf-stack { position: relative; width: 210px; height: 44px; perspective: 600px; }
+.pf-top-static, .pf-bot-static, .pf-front, .pf-back { position: absolute; left: 0; right: 0; height: 22px; border-radius: 2px; }
+.pf-top-static, .pf-bot-static { overflow: hidden; background: #14120d; }
+.pf-front { overflow: hidden; background: #1a1812; }
+.pf-back { overflow: hidden; background: #111009; }
+.pf-top-static span, .pf-bot-static span, .pf-front span, .pf-back span { display: block; font-family: 'DM Mono', monospace; font-size: 32px; font-weight: 500; color: #ffd98a; text-shadow: 0 0 14px rgba(255,200,110,0.55); text-align: center; line-height: 44px; height: 44px; white-space: nowrap; user-select: none; backface-visibility: hidden; }
+.pf-top-static { top: 0; border-radius: 2px 2px 0 0; }
+.pf-top-static span { margin-top: 0; }
+.pf-bot-static { bottom: 0; border-radius: 0 0 2px 2px; }
+.pf-bot-static span { margin-top: -22px; }
+.pf-front { top: 0; border-radius: 2px 2px 0 0; z-index: 10; transform-origin: bottom center; }
+.pf-front span { margin-top: 0; }
+.pf-back { bottom: 0; border-radius: 0 0 2px 2px; z-index: 10; transform-origin: top center; transform: rotateX(90deg); }
+.pf-back span { margin-top: -22px; }
+@keyframes pfFrontFall { from { transform: rotateX(0deg); } to { transform: rotateX(-90deg); } }
+@keyframes pfBackRise { from { transform: rotateX(90deg); } to { transform: rotateX(0deg); } }
+.pf-front.go { animation: pfFrontFall 0.13s cubic-bezier(0.55,0,1,1) forwards; }
+.pf-back.go { animation: pfBackRise 0.12s cubic-bezier(0,0,0.45,1) forwards; animation-delay: 0.11s; }
+.exp-pf-stack { width: 260px; height: 56px; }
+.exp-pf-stack .pf-top-static, .exp-pf-stack .pf-bot-static, .exp-pf-stack .pf-front, .exp-pf-stack .pf-back { height: 28px; }
+.exp-pf-stack .pf-top-static span, .exp-pf-stack .pf-bot-static span, .exp-pf-stack .pf-front span, .exp-pf-stack .pf-back span { font-size: 44px; line-height: 56px; height: 56px; }
+.exp-pf-stack .pf-bot-static span, .exp-pf-stack .pf-back span { margin-top: -28px; }
+.chart-container { margin-top: 0; border: 2px solid #d9cdb3; border-radius: 10px; overflow: hidden; height: 0; max-height: 0; background: #000; opacity: 0; clip-path: none; box-shadow: inset 0 2px 10px rgba(0,0,0,0.6); transition: height 0.5s cubic-bezier(0.25,0.1,0.25,1), margin-top 0.5s cubic-bezier(0.25,0.1,0.25,1), opacity 0.4s ease; }
+.news-container { display: none; }
+.news-header { font-size: 12px; font-weight: 700; color: var(--card-frame); letter-spacing: 1px; margin-bottom: 10px; }
+.news-list { display: flex; flex-direction: column; gap: 8px; }
+.news-item { display: block; padding: 10px 12px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06); border-radius: 6px; text-decoration: none; transition: background 0.15s; }
+.news-item:hover { background: rgba(255,255,255,0.07); }
+.news-headline { font-size: 12px; color: var(--text); line-height: 1.5; }
+.news-source { font-size: 10px; color: var(--muted); margin-top: 4px; }
+.mobile-tv-btn { display: none; margin: 10px 12px 16px; padding: 14px 16px; background: rgba(255,255,255,0.05); border: 1px solid rgba(217,205,184,0.2); border-radius: 10px; color: #c8a96e; font-family: 'DM Mono', monospace; font-size: 12px; letter-spacing: 0.5px; text-decoration: none; text-align: center; cursor: pointer; -webkit-tap-highlight-color: transparent; align-items: center; justify-content: center; gap: 8px; }
+.mobile-tv-btn:active { background: rgba(255,255,255,0.1); }
+@media(max-width: 720px) {
+body { min-width: unset; }
+.mobile-tv-btn { display: flex; }
+.card:not(.expanded):active { border-color: #c8a96e; filter: brightness(1.12); box-shadow: 0 6px 0 rgba(0,0,0,0.5), 0 10px 22px rgba(0,0,0,0.45), inset 0 2px 6px rgba(0,0,0,0.3), inset 0 0 40px rgba(240,180,60,0.18), 0 0 0 1px rgba(200,169,110,0.4), 0 0 28px rgba(200,140,60,0.25); }
+.card:not(.expanded):hover { filter: none; box-shadow: none; border-color: var(--card-frame); }
+.pf-stack { width: min(210px, 80%); }
+.sf-wrap { clip-path: none; animation: sfRevealMobile 0.32s ease-out forwards; animation-play-state: paused; }
+.sf-wrap.reveal-full { animation-play-state: running; }
+@keyframes sfRevealMobile { 0% { opacity: 0; transform: translateY(12px); } 100% { opacity: 1; transform: translateY(0); } }
+.pf-wrap { margin: 8px 0; }
+.price-section { box-shadow: inset 0 2px 10px rgba(0,0,0,0.5), inset 0 0 30px rgba(240,180,90,0.12); }
+.price-section.light-up { box-shadow: inset 0 2px 10px rgba(0,0,0,0.5), inset 0 0 30px rgba(240,180,90,0.06), inset 0 15px 50px rgba(38, 166, 154, 0.60), inset 0 0 80px rgba(38, 166, 154, 0.28), inset 0 0 120px rgba(38, 166, 154, 0.12); }
+.price-section.light-down { box-shadow: inset 0 2px 10px rgba(0,0,0,0.5), inset 0 0 30px rgba(240,180,90,0.06), inset 0 15px 50px rgba(239, 83, 80, 0.60), inset 0 0 80px rgba(239, 83, 80, 0.28), inset 0 0 120px rgba(239, 83, 80, 0.12); }
+.card { padding: 14px; }
+.grid { gap: 10px; margin: 10px; }
+.card.expanded { top: 0; left: 0; width: 100vw; height: 100vh; max-height: 100vh; transform: none; background: var(--bg); border-radius: 0; overflow-y: auto; -webkit-overflow-scrolling: touch; animation: none; display: flex; flex-direction: column; padding: 0; }
+.card.expanded .card-body-split { display: flex; flex-direction: column; flex: 1; }
+.card.expanded .split-right { display: flex; flex-direction: column; flex: 1; }
+.card.expanded .card-sym { font-size: 20px; }
+.card.expanded .card-name { font-size: 10px; }
+.card.expanded .card-header { padding: 14px 16px; }
+.card.expanded .expanded-price-stage { padding: 16px 14px 12px; margin: 10px 12px 0; }
+.card.expanded .expanded-phase-label { font-size: 9px; }
+.card.expanded .exp-pf-stack { width: min(260px, 85%); height: 56px; }
+.card.expanded .exp-pf-stack .pf-top-static, .card.expanded .exp-pf-stack .pf-bot-static, .card.expanded .exp-pf-stack .pf-front, .card.expanded .exp-pf-stack .pf-back { height: 28px; }
+.card.expanded .exp-pf-stack .pf-top-static span, .card.expanded .exp-pf-stack .pf-bot-static span, .card.expanded .exp-pf-stack .pf-front span, .card.expanded .exp-pf-stack .pf-back span { font-size: 44px; line-height: 56px; height: 56px; }
+.card.expanded .expanded-main-change { font-size: 13px; margin-top: 8px; }
+.card.expanded .expanded-ref-row { font-size: 11px; margin-top: 8px; }
+.card.expanded .expanded-news-wrap { margin: 10px 12px 0; }
+.card.expanded .card-body-split { padding-bottom: 72px; }
+.mobile-close-bar { display: flex; position: fixed; bottom: 0; left: 0; right: 0; height: 56px; background: linear-gradient(180deg, #1a1710 0%, #111009 100%); border-top: 1px solid #3a3020; box-shadow: 0 -2px 12px rgba(0,0,0,0.6), inset 0 1px 0 rgba(200,160,80,0.15); align-items: center; justify-content: center; gap: 14px; cursor: pointer; z-index: 1300; -webkit-tap-highlight-color: transparent; }
+.mobile-close-bar:active { background: linear-gradient(180deg, #201e14 0%, #181510 100%); box-shadow: 0 -1px 8px rgba(0,0,0,0.6), inset 0 2px 6px rgba(0,0,0,0.5), inset 0 1px 0 rgba(200,160,80,0.1); }
+.mobile-close-bar .cb-screw { width: 10px; height: 10px; border-radius: 50%; background: radial-gradient(circle at 35% 35%, #4a4438, #1e1c16); border: 1px solid #3a3528; box-shadow: inset 0 1px 2px rgba(0,0,0,0.8); flex-shrink: 0; position: relative; }
+.mobile-close-bar .cb-screw::before { content: ''; position: absolute; top: 50%; left: 15%; right: 15%; height: 1px; background: #5a5040; transform: translateY(-50%); }
+.mobile-close-bar .cb-screw::after { content: ''; position: absolute; left: 50%; top: 15%; bottom: 15%; width: 1px; background: #5a5040; transform: translateX(-50%); }
+.mobile-close-bar .cb-label { font-family: 'DM Mono', monospace; font-size: 11px; font-weight: 500; color: #c8a96e; letter-spacing: 3px; text-transform: uppercase; }
+.mobile-close-bar .cb-line { width: 24px; height: 1px; background: linear-gradient(90deg, transparent, #6a5a3a); }
+.mobile-close-bar .cb-line.right { background: linear-gradient(90deg, #6a5a3a, transparent); }
+}
+.footer { text-align: center; margin-top: 24px; font-size: 10px; color: var(--muted); letter-spacing: 1px; }
+.mobile-close-bar { display: none; }
 </style>
 </head>
 <body>
-
 <div class="topbar">
-  <div class="logo">美股情報 PRO</div>
-  <div class="topbar-right">
-    <div>
-      <div class="hero-time" id="heroTime">00:00</div>
-      <div class="hero-date" id="heroDate"></div>
-    </div>
-    <button class="settings-btn edit-btn" id="editBtn" onclick="toggleEditMode()" aria-label="編輯模式">編輯</button>
-    <button class="settings-btn" onclick="openSettings()" aria-label="設定">&#9881;</button>
-  </div>
+<div class="logo">美股情報 PRO</div>
+<div class="topbar-right">
+<div>
+<div class="hero-time" id="heroTime">00:00</div>
+<div class="hero-date" id="heroDate"></div>
 </div>
-
+<button class="settings-btn edit-btn" id="editBtn" onclick="toggleEditMode()" aria-label="編輯模式">編輯</button>
+<button class="settings-btn" onclick="openSettings()" aria-label="設定">&#9881;</button>
+</div>
+</div>
 <div class="card-overlay" id="cardOverlay" onclick="if(expandedSym) toggleCard(expandedSym,'')"></div>
 <div class="grid" id="grid"></div>
 <div id="searchPanel">
-  <div class="manage-header">
-    <span class="manage-title">新增股票</span>
-    <button class="manage-close" onclick="toggleEditMode(false)" aria-label="關閉">&#x2715;</button>
-  </div>
-  <div class="search-inner">
-    <input id="searchInput" type="text" placeholder="請輸入股票代號" maxlength="10" autocomplete="off" />
-    <div class="results" id="searchResults"></div>
-  </div>
-  <div id="syncStatus"></div>
+<div class="manage-header">
+<span class="manage-title">新增股票</span>
+<button class="manage-close" onclick="toggleEditMode(false)" aria-label="關閉">&#x2715;</button>
+</div>
+<div class="search-inner">
+<input id="searchInput" type="text" placeholder="請輸入股票代號" maxlength="10" autocomplete="off" />
+<div class="results" id="searchResults"></div>
+</div>
+<div id="syncStatus"></div>
 </div>
 <div id="actionBar">
-  <div class="bar-count" id="barCount">已選 0 項</div>
-  <span class="confirm-txt" id="confirmTxt">刪除 <b id="confirmCount">0</b> 項？</span>
-  <div class="default-grp grp">
-    <button class="eb-btn eb-ghost" id="clearSelBtn" onclick="_clearSelection()" style="display:none;">取消</button>
-    <button class="eb-btn eb-del" id="delSelBtn" onclick="_askConfirmDelete()" disabled>刪除</button>
-  </div>
-  <div class="confirm-grp grp">
-    <button class="eb-btn eb-ghost" onclick="_cancelConfirmDelete()">取消</button>
-    <button class="eb-btn eb-del" onclick="_doDeleteSelected()">確定刪除</button>
-  </div>
+<div class="bar-count" id="barCount">已選 0 項</div>
+<span class="confirm-txt" id="confirmTxt">刪除 <b id="confirmCount">0</b> 項？</span>
+<div class="default-grp grp">
+<button class="eb-btn eb-ghost" id="clearSelBtn" onclick="_clearSelection()" style="display:none;">取消</button>
+<button class="eb-btn eb-del" id="delSelBtn" onclick="_askConfirmDelete()" disabled>刪除</button>
 </div>
-
+<div class="confirm-grp grp">
+<button class="eb-btn eb-ghost" onclick="_cancelConfirmDelete()">取消</button>
+<button class="eb-btn eb-del" onclick="_doDeleteSelected()">確定刪除</button>
+</div>
+</div>
 <div class="settings-overlay" id="settingsOverlay" onclick="closeSettings()"></div>
 <div id="settingsSheet" role="dialog" aria-label="設定">
-  <div class="manage-header">
-    <span class="manage-title">設定 · GITHUB TOKEN</span>
-    <button class="manage-close" onclick="closeSettings()" aria-label="關閉">&#x2715;</button>
-  </div>
-  <div class="settings-token-status" id="tokenStatus">未設定</div>
-  <div class="token-row">
-    <input id="settingsTokenInput" class="token-input" type="password"
-           placeholder="貼上 fine-grained PAT" autocomplete="off"
-           autocapitalize="off" spellcheck="false" style="text-transform:none;" />
-    <button class="eb-save-btn" onclick="saveTokenFromSheet()">儲存</button>
-  </div>
-  <div class="settings-actions">
-    <button class="eb-clear-btn" onclick="clearToken()">清除 Token</button>
-  </div>
-  <div class="settings-hint">此 Token 只存在你這台裝置的瀏覽器裡，僅用於同步自選股清單，建議申請僅限 STOCK_ALERT repo、Contents 讀寫權限的 fine-grained token。</div>
+<div class="manage-header">
+<span class="manage-title">設定 · GITHUB TOKEN</span>
+<button class="manage-close" onclick="closeSettings()" aria-label="關閉">&#x2715;</button>
 </div>
-
-
+<div class="settings-token-status" id="tokenStatus">未設定</div>
+<div class="token-row">
+<input id="settingsTokenInput" class="token-input" type="password" placeholder="貼上 fine-grained PAT" autocomplete="off" autocapitalize="off" spellcheck="false" style="text-transform:none;" />
+<button class="eb-save-btn" onclick="saveTokenFromSheet()">儲存</button>
+</div>
+<div class="settings-actions">
+<button class="eb-clear-btn" onclick="clearToken()">清除 Token</button>
+</div>
+<div class="settings-hint">此 Token 只存在你這台裝置的瀏覽器裡，僅用於同步自選股清單，建議申請僅限 STOCK_ALERT repo、Contents 讀寫權限的 fine-grained token。</div>
+</div>
 <script>
 const DEFAULT_STOCKS = [
-  {sym:'NOW',  name:'ServiceNow', ex:'NYSE'},
-  {sym:'NVDA', name:'Nvidia',     ex:'NASDAQ'},
-  {sym:'LITE', name:'Lumentum',   ex:'NASDAQ'},
-  {sym:'ONDS', name:'Ondas',      ex:'NASDAQ'},
-  {sym:'MRVL', name:'Marvell',    ex:'NASDAQ'},
-  {sym:'GOOG', name:'Google C',   ex:'NASDAQ'},
-  {sym:'SPCX', name:'SpaceX',     ex:'NASDAQ'},
-  {sym:'TSM',  name:'TSMC',       ex:'NYSE'},
-  {sym:'MU',   name:'Micron',     ex:'NASDAQ'},
-  {sym:'SNDK', name:'SanDisk',    ex:'NASDAQ'},
-  {sym:'TSLA', name:'Tesla',      ex:'NASDAQ'}
+{sym:'NOW', name:'ServiceNow', ex:'NYSE'},
+{sym:'NVDA', name:'Nvidia', ex:'NASDAQ'},
+{sym:'LITE', name:'Lumentum', ex:'NASDAQ'},
+{sym:'ONDS', name:'Ondas', ex:'NASDAQ'},
+{sym:'MRVL', name:'Marvell', ex:'NASDAQ'},
+{sym:'GOOG', name:'Google C', ex:'NASDAQ'},
+{sym:'SPCX', name:'SpaceX', ex:'NASDAQ'},
+{sym:'TSM', name:'TSMC', ex:'NYSE'},
+{sym:'MU', name:'Micron', ex:'NASDAQ'},
+{sym:'SNDK', name:'SanDisk', ex:'NASDAQ'},
+{sym:'TSLA', name:'Tesla', ex:'NASDAQ'}
 ];
-
-// 上限：DEFAULT_STOCKS 有 11 支，原上限 10 導致第一次新增必被擋
 const MAX_STOCKS = 12;
-
-// ── Stock schema validator (Bug 1: corrupt localStorage guard) ──
 function _isValidStockEntry(s) {
-  return s && typeof s.sym === 'string' && /^[A-Z0-9._^]{1,12}$/.test(s.sym);
+return s && typeof s.sym === 'string' && /^[A-Z0-9._^]{1,12}$/.test(s.sym);
 }
-
 function _loadStocks() {
-  try {
-    const raw = localStorage.getItem('userStocks');
-    if (!raw) return null;
-    const arr = JSON.parse(raw);
-    if (!Array.isArray(arr) || arr.length === 0) return null;
-    // Filter out any corrupt entries rather than rejecting the whole list
-    const valid = arr.filter(_isValidStockEntry);
-    return valid.length > 0 ? valid : null;
-  } catch (e) {
-    console.warn('[stocks] localStorage parse failed, resetting:', e);
-    localStorage.removeItem('userStocks');
-    return null;
-  }
+try {
+const raw = localStorage.getItem('userStocks');
+if (!raw) return null;
+const arr = JSON.parse(raw);
+if (!Array.isArray(arr) || arr.length === 0) return null;
+const valid = arr.filter(_isValidStockEntry);
+return valid.length > 0 ? valid : null;
+} catch (e) {
+console.warn('[stocks] localStorage parse failed, resetting:', e);
+localStorage.removeItem('userStocks');
+return null;
 }
-
+}
 let STOCKS = _loadStocks() || DEFAULT_STOCKS.slice();
-
 function _saveStocks() {
-  try {
-    localStorage.setItem('userStocks', JSON.stringify(STOCKS));
-  } catch (e) {
-    console.error('[stocks] localStorage write failed:', e);
-  }
+try { localStorage.setItem('userStocks', JSON.stringify(STOCKS)); }
+catch (e) { console.error('[stocks] localStorage write failed:', e); }
 }
-
-function _getToken() {
-  return localStorage.getItem('ghToken') || '';
-}
-
-// ── P1 設定 sheet：Token 唯一 UI 入口（值只進 localStorage，永不進檔案）──
+function _getToken() { return localStorage.getItem('ghToken') || ''; }
 function _refreshTokenStatus() {
-  var el = document.getElementById('tokenStatus');
-  if (!el) return;
-  var t = _getToken();
-  // 遮罩顯示：只露尾 4 碼，避免螢幕側錄
-  el.textContent = t ? ('已設定 ····' + t.slice(-4)) : '未設定';
-  el.style.color = t ? '#4caf7d' : '#7a7468';
+var el = document.getElementById('tokenStatus');
+if (!el) return;
+var t = _getToken();
+el.textContent = t ? ('已設定 ····' + t.slice(-4)) : '未設定';
+el.style.color = t ? '#4caf7d' : '#7a7468';
 }
-
 function openSettings() {
-  document.getElementById('settingsOverlay').classList.add('show');
-  document.getElementById('settingsSheet').classList.add('open');
-  _refreshTokenStatus();
+document.getElementById('settingsOverlay').classList.add('show');
+document.getElementById('settingsSheet').classList.add('open');
+_refreshTokenStatus();
 }
-
 function closeSettings() {
-  document.getElementById('settingsOverlay').classList.remove('show');
-  document.getElementById('settingsSheet').classList.remove('open');
-  var input = document.getElementById('settingsTokenInput');
-  if (input) input.value = '';  // 關閉即清輸入框，不留殘值
+document.getElementById('settingsOverlay').classList.remove('show');
+document.getElementById('settingsSheet').classList.remove('open');
+var input = document.getElementById('settingsTokenInput');
+if (input) input.value = '';
 }
-
 function saveTokenFromSheet() {
-  var input = document.getElementById('settingsTokenInput');
-  var v = (input.value || '').trim();
-  if (!v) { _refreshTokenStatus(); return; }
-  try {
-    localStorage.setItem('ghToken', v);
-  } catch (e) {
-    console.error('[settings] token write failed:', e);
-  }
-  input.value = '';
-  _refreshTokenStatus();
+var input = document.getElementById('settingsTokenInput');
+var v = (input.value || '').trim();
+if (!v) { _refreshTokenStatus(); return; }
+try { localStorage.setItem('ghToken', v); }
+catch (e) { console.error('[settings] token write failed:', e); }
+input.value = '';
+_refreshTokenStatus();
 }
-
 function clearToken() {
-  try { localStorage.removeItem('ghToken'); } catch (e) {}
-  _refreshTokenStatus();
+try { localStorage.removeItem('ghToken'); } catch (e) {}
+_refreshTokenStatus();
 }
-
-// Bug 6: surface sync errors to user via manage panel status
 function _showSyncStatus(msg, isError) {
-  var el = document.getElementById('syncStatus');
-  if (!el) return;
-  el.textContent = msg;
-  el.style.color = isError ? '#e05c5c' : '#4caf7d';
-  clearTimeout(el._t);
-  el._t = setTimeout(function() { el.textContent = ''; }, 3000);
+var el = document.getElementById('syncStatus');
+if (!el) return;
+el.textContent = msg;
+el.style.color = isError ? '#e05c5c' : '#4caf7d';
+clearTimeout(el._t);
+el._t = setTimeout(function() { el.textContent = ''; }, 3000);
 }
-
-// ── 即時觸發：sync 成功後踩 workflow_dispatch，讓 Action 立刻抓新清單價格 ──
-// workflow id 用 API 依名稱查一次後快取（不硬編 yml 檔名）。
-// 需 PAT 具 Actions: Read and write；無權限時 403 → 靜默降級，同步仍成功。
 let _workflowId = null;
 async function _triggerWorkflow(token) {
-  const OWNER = 'mjtsai-code', REPO = 'STOCK_ALERT';
-  const WF_NAME = '美股數據更新與情報推送';
-  const H = { Authorization: 'Bearer ' + token, Accept: 'application/vnd.github+json' };
-  try {
-    if (!_workflowId) {
-      const r = await fetch('https://api.github.com/repos/' + OWNER + '/' + REPO + '/actions/workflows', { headers: H });
-      if (!r.ok) { console.warn('[dispatch] list workflows', r.status); return false; }
-      const j = await r.json();
-      const wf = (j.workflows || []).find(function(w) { return w.name === WF_NAME; });
-      if (!wf) { console.warn('[dispatch] workflow not found:', WF_NAME); return false; }
-      _workflowId = wf.id;
-    }
-    const d = await fetch(
-      'https://api.github.com/repos/' + OWNER + '/' + REPO + '/actions/workflows/' + _workflowId + '/dispatches',
-      { method: 'POST', headers: Object.assign({ 'Content-Type': 'application/json' }, H),
-        body: JSON.stringify({ ref: 'main' }) }
-    );
-    if (d.status !== 204) console.warn('[dispatch] fire failed', d.status, d.status === 403 ? '（PAT 缺 Actions 權限？）' : '');
-    return d.status === 204;
-  } catch (e) {
-    console.warn('[dispatch] error:', e);
-    return false;
-  }
+const OWNER = 'mjtsai-code', REPO = 'STOCK_ALERT';
+const WF_NAME = '美股數據更新與情報推送';
+const H = { Authorization: 'Bearer ' + token, Accept: 'application/vnd.github+json' };
+try {
+if (!_workflowId) {
+const r = await fetch('https://api.github.com/repos/' + OWNER + '/' + REPO + '/actions/workflows', { headers: H });
+if (!r.ok) { console.warn('[dispatch] list workflows', r.status); return false; }
+const j = await r.json();
+const wf = (j.workflows || []).find(function(w) { return w.name === WF_NAME; });
+if (!wf) { console.warn('[dispatch] workflow not found:', WF_NAME); return false; }
+_workflowId = wf.id;
 }
-
-// Bug 2: returns Promise so callers can await before rebuilding UI
-// In-flight guard + trailing flush: 進行中收到新請求不再丟棄（會掉最後一筆
-// 變更），改記 dirty 旗標，本輪結束自動補跑一輪，帶上當下最新 STOCKS。
+const d = await fetch(
+'https://api.github.com/repos/' + OWNER + '/' + REPO + '/actions/workflows/' + _workflowId + '/dispatches',
+{ method: 'POST', headers: Object.assign({ 'Content-Type': 'application/json' }, H), body: JSON.stringify({ ref: 'main' }) }
+);
+if (d.status !== 204) console.warn('[dispatch] fire failed', d.status, d.status === 403 ? '（PAT 缺 Actions 權限？）' : '');
+return d.status === 204;
+} catch (e) {
+console.warn('[dispatch] error:', e);
+return false;
+}
+}
 let _syncInFlight = false;
 let _syncDirty = false;
 async function _syncGitHub() {
-  if (_syncInFlight) { _syncDirty = true; return; }
-  _syncInFlight = true;
-  const token = _getToken();
-  if (!token) { _syncInFlight = false; return; }
-  const OWNER = 'mjtsai-code', REPO = 'STOCK_ALERT', PATH = 'stock_data.json';
-  try {
-    const metaRes = await fetch(
-      'https://api.github.com/repos/' + OWNER + '/' + REPO + '/contents/' + PATH,
-      { headers: { Authorization: 'Bearer ' + token, Accept: 'application/vnd.github+json' } }
-    );
-    if (!metaRes.ok) {
-      const status = metaRes.status;
-      const hint = status === 401 ? '（Token 已過期）' : status === 409 ? '（衝突，請稍後再試）' : '';
-      _showSyncStatus('同步失敗 ' + status + hint, true);
-      console.warn('[syncGitHub] HTTP', status);
-      return;
-    }
-    const meta = await metaRes.json();
-    const decoded = meta.content.split('\n').join('');
-    const current = JSON.parse(atob(decoded));
-    current.stocks = STOCKS.map(function(s) { return s.sym; });
-    const putRes = await fetch(
-      'https://api.github.com/repos/' + OWNER + '/' + REPO + '/contents/' + PATH,
-      {
-        method: 'PUT',
-        headers: { Authorization: 'Bearer ' + token, Accept: 'application/vnd.github+json', 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          message: '📊 更新自選股清單',
-          content: btoa(unescape(encodeURIComponent(JSON.stringify(current, null, 2)))),
-          sha: meta.sha
-        })
-      }
-    );
-    if (!putRes.ok) {
-      _showSyncStatus('同步寫入失敗 ' + putRes.status, true);
-      console.warn('[syncGitHub] PUT failed', putRes.status);
-    } else {
-      const fired = await _triggerWorkflow(token);
-      _showSyncStatus(fired ? '✓ 已同步，資料更新中（約 2–4 分鐘）' : '✓ 已同步至 GitHub', false);
-    }
-  } catch (e) {
-    _showSyncStatus('同步錯誤（網路？）', true);
-    console.warn('[syncGitHub] error:', e);
-  } finally {
-    _syncInFlight = false;
-    if (_syncDirty) {
-      _syncDirty = false;
-      _syncGitHub();  // 補同步：PUT body 於執行時讀 STOCKS，必為最新清單
-    }
-  }
+if (_syncInFlight) { _syncDirty = true; return; }
+_syncInFlight = true;
+const token = _getToken();
+if (!token) { _syncInFlight = false; return; }
+const OWNER = 'mjtsai-code', REPO = 'STOCK_ALERT', PATH = 'stock_data.json';
+try {
+const metaRes = await fetch(
+'https://api.github.com/repos/' + OWNER + '/' + REPO + '/contents/' + PATH,
+{ headers: { Authorization: 'Bearer ' + token, Accept: 'application/vnd.github+json' } }
+);
+if (!metaRes.ok) {
+const status = metaRes.status;
+const hint = status === 401 ? '（Token 已過期）' : status === 409 ? '（衝突，請稍後再試）' : '';
+_showSyncStatus('同步失敗 ' + status + hint, true);
+console.warn('[syncGitHub] HTTP', status);
+return;
 }
-
-// Bug 4: safe DOM id — replace special chars for card-{id}
-function _safeId(sym) {
-  return sym.replace(/[^A-Z0-9]/g, '_');
+const meta = await metaRes.json();
+const decoded = meta.content.split('\n').join('');
+const current = JSON.parse(atob(decoded));
+current.stocks = STOCKS.map(function(s) { return s.sym; });
+const putRes = await fetch(
+'https://api.github.com/repos/' + OWNER + '/' + REPO + '/contents/' + PATH,
+{ method: 'PUT', headers: { Authorization: 'Bearer ' + token, Accept: 'application/vnd.github+json', 'Content-Type': 'application/json' },
+body: JSON.stringify({ message: '📊 更新自選股清單', content: btoa(unescape(encodeURIComponent(JSON.stringify(current, null, 2)))), sha: meta.sha }) }
+);
+if (!putRes.ok) {
+_showSyncStatus('同步寫入失敗 ' + putRes.status, true);
+console.warn('[syncGitHub] PUT failed', putRes.status);
+} else {
+const fired = await _triggerWorkflow(token);
+_showSyncStatus(fired ? '✓ 已同步，資料更新中（約 2–4 分鐘）' : '✓ 已同步至 GitHub', false);
 }
-
-// ── P0 XSS 防護：外部資料（Yahoo 新聞）進 innerHTML 前必經 ──
-// headline/source 來自 yfinance 抓的外部標題，未跳脫時一則含
-// <img onerror=...> 的標題即可執行任意 JS → 讀走 localStorage token。
+} catch (e) {
+_showSyncStatus('同步錯誤（網路？）', true);
+console.warn('[syncGitHub] error:', e);
+} finally {
+_syncInFlight = false;
+if (_syncDirty) { _syncDirty = false; _syncGitHub(); }
+}
+}
+function _safeId(sym) { return sym.replace(/[^A-Z0-9]/g, '_'); }
 function _escapeHtml(s) {
-  if (typeof s !== 'string') return '';
-  return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
-          .replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+if (typeof s !== 'string') return '';
+return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+.replace(/"/g, '&quot;').replace(/'/g, '&#39;');
 }
-
-// URL 協議白名單：擋 javascript: / data: 等可執行協議
 function _safeUrl(u) {
-  if (typeof u !== 'string') return '#';
-  const t = u.trim();
-  if (t === '#' || /^https?:\/\//i.test(t)) return t;
-  return '#';
+if (typeof u !== 'string') return '#';
+const t = u.trim();
+if (t === '#' || /^https?:\/\//i.test(t)) return t;
+return '#';
 }
-
-// _renderManageList() removed — deletion moved to bottom action bar (batch)
-
-// ── 搜尋新增：本地字庫比對 ─────────────────────────────
-// symbols.json（月更 workflow 產出，NASDAQ Trader 官方清單 ~1 萬檔）
-// 與頁面同源伺服 → 零 CORS。首次搜尋時懶載入，之後每個按鍵皆為
-// 記憶體即時比對：代號前綴 + 公司名子字串，可像 demo 一樣用名字搜。
-// 字庫載入失敗（檔案尚未生成/網路）→ fail-open：顯示 ⚠ 仍可加入，
-// 由後端「查無此代號」防呆兜底。
-let _symLib = null;        // null=未載入 | 'loading' | 'failed' | Map(sym -> name)
-const _SYM_SAFE_RE = /^[A-Z0-9.\-^$]{1,12}$/;  // 進 inline onclick 前的白名單
-
+let _symLib = null;
+const _SYM_SAFE_RE = /^[A-Z0-9.\-^$]{1,12}$/;
 async function _loadSymLib() {
-  if (_symLib instanceof Map || _symLib === 'loading') return;
-  _symLib = 'loading';
-  try {
-    const res = await fetch('./symbols.json');
-    if (!res.ok) throw new Error('HTTP ' + res.status);
-    const arr = await res.json();
-    const m = new Map();
-    if (Array.isArray(arr)) {
-      arr.forEach(function(row) {
-        if (Array.isArray(row) && _SYM_SAFE_RE.test(String(row[0]))) {
-          m.set(String(row[0]), String(row[1] || row[0]));
-        }
-      });
-    }
-    if (m.size === 0) throw new Error('empty library');
-    _symLib = m;
-    console.info('[symLib] 字庫載入完成:', m.size, '筆');
-  } catch (e) {
-    console.warn('[symLib] 字庫載入失敗，fail-open:', e);
-    _symLib = 'failed';
-  }
-  _renderSearch();  // 載入結束後刷新當前搜尋畫面
+if (_symLib instanceof Map || _symLib === 'loading') return;
+_symLib = 'loading';
+try {
+const res = await fetch('./symbols.json');
+if (!res.ok) throw new Error('HTTP ' + res.status);
+const arr = await res.json();
+const m = new Map();
+if (Array.isArray(arr)) {
+arr.forEach(function(row) {
+if (Array.isArray(row) && _SYM_SAFE_RE.test(String(row[0]))) {
+m.set(String(row[0]), String(row[1] || row[0]));
 }
-
+});
+}
+if (m.size === 0) throw new Error('empty library');
+_symLib = m;
+console.info('[symLib] 字庫載入完成:', m.size, '筆');
+} catch (e) {
+console.warn('[symLib] 字庫載入失敗，fail-open:', e);
+_symLib = 'failed';
+}
+_renderSearch();
+}
 function _renderSearch() {
-  var input = document.getElementById('searchInput');
-  var results = document.getElementById('searchResults');
-  if (!input || !results) return;
-  var raw = input.value.trim();
-  var q = raw.toUpperCase();
-  var sym = q.replace(/[^A-Z0-9._^]/g, '');
-  if (!q) { results.innerHTML = ''; return; }
-
-  if (STOCKS.length >= MAX_STOCKS) {
-    results.innerHTML = '<div class="res-empty">已達上限 ' + MAX_STOCKS + ' 支</div>';
-    return;
-  }
-
-  if (_symLib === null || _symLib === 'loading') {
-    results.innerHTML = '<div class="res-empty">載入代號字庫中…</div>';
-    _loadSymLib();
-    return;
-  }
-
-  if (_symLib === 'failed') {
-    // fail-open：無字庫可查，格式合法即允許加入，後端防呆兜底
-    var validTicker = /^[A-Z^][A-Z0-9._^]{0,11}$/.test(sym);
-    if (!sym || !validTicker) {
-      results.innerHTML = '<div class="res-empty">代號格式無效</div>';
-      return;
-    }
-    if (STOCKS.find(function(s) { return s.sym === sym; })) {
-      results.innerHTML = '<div class="res-empty">「' + sym + '」已在自選清單中</div>';
-      return;
-    }
-    results.innerHTML =
-      '<div class="res-row"><div><span class="r-sym">' + sym + '</span>' +
-      '<div class="r-name" style="color:#a08a5a;">⚠ 字庫無法載入，未驗證即加入，若查無將標示於卡片</div>' +
-      '</div><button class="add-btn" onclick="_addStockFromSearch(\'' + sym + '\')">＋ 加入</button></div>';
-    return;
-  }
-
-  // ── 字庫比對：代號前綴優先，公司名子字串次之，最多 6 筆 ──
-  var hits = [];
-  var nameHits = [];
-  _symLib.forEach(function(name, s) {
-    if (hits.length >= 6) return;
-    if (s === q || s.indexOf(q) === 0) hits.push([s, name]);
-    else if (nameHits.length < 6 && q.length >= 2 && name.toUpperCase().indexOf(q) !== -1) nameHits.push([s, name]);
-  });
-  var merged = hits.concat(nameHits).slice(0, 6);
-  // 完全相符者排最前
-  merged.sort(function(a, b) { return (a[0] === q ? -1 : 0) - (b[0] === q ? -1 : 0); });
-
-  if (merged.length === 0) {
-    results.innerHTML = '<div class="res-empty">查無「' + _escapeHtml(raw) + '」相符的股票代號或名稱</div>';
-    return;
-  }
-
-  results.innerHTML = merged.map(function(row) {
-    var s = row[0], name = row[1];
-    if (STOCKS.find(function(st) { return st.sym === s; })) {
-      return '<div class="res-row"><div><span class="r-sym">' + s + '</span>' +
-             '<div class="r-name">' + _escapeHtml(name) + '</div></div>' +
-             '<span class="res-empty" style="padding:0;">已在清單</span></div>';
-    }
-    return '<div class="res-row"><div><span class="r-sym">' + s + '</span>' +
-           '<div class="r-name">' + _escapeHtml(name) + '</div></div>' +
-           '<button class="add-btn" onclick="_addStockFromSearch(\'' + s + '\')">＋ 加入</button></div>';
-  }).join('');
+var input = document.getElementById('searchInput');
+var results = document.getElementById('searchResults');
+if (!input || !results) return;
+var raw = input.value.trim();
+var q = raw.toUpperCase();
+var sym = q.replace(/[^A-Z0-9._^]/g, '');
+if (!q) { results.innerHTML = ''; return; }
+if (STOCKS.length >= MAX_STOCKS) {
+results.innerHTML = '<div class="res-empty">已達上限 ' + MAX_STOCKS + ' 支</div>';
+return;
 }
-
+if (_symLib === null || _symLib === 'loading') {
+results.innerHTML = '<div class="res-empty">載入代號字庫中…</div>';
+_loadSymLib();
+return;
+}
+if (_symLib === 'failed') {
+var validTicker = /^[A-Z^][A-Z0-9._^]{0,11}$/.test(sym);
+if (!sym || !validTicker) {
+results.innerHTML = '<div class="res-empty">代號格式無效</div>';
+return;
+}
+if (STOCKS.find(function(s) { return s.sym === sym; })) {
+results.innerHTML = '<div class="res-empty">「' + sym + '」已在自選清單中</div>';
+return;
+}
+results.innerHTML = '<div class="res-row"><div><span class="r-sym">' + sym + '</span>' +
+'<div class="r-name" style="color:#a08a5a;">⚠ 字庫無法載入，未驗證即加入，若查無將標示於卡片</div>' +
+'</div><button class="add-btn" onclick="_addStockFromSearch(\'' + sym + '\')">＋ 加入</button></div>';
+return;
+}
+var hits = [];
+var nameHits = [];
+_symLib.forEach(function(name, s) {
+if (hits.length >= 6) return;
+if (s === q || s.indexOf(q) === 0) hits.push([s, name]);
+else if (nameHits.length < 6 && q.length >= 2 && name.toUpperCase().indexOf(q) !== -1) nameHits.push([s, name]);
+});
+var merged = hits.concat(nameHits).slice(0, 6);
+merged.sort(function(a, b) { return (a[0] === q ? -1 : 0) - (b[0] === q ? -1 : 0); });
+if (merged.length === 0) {
+results.innerHTML = '<div class="res-empty">查無「' + _escapeHtml(raw) + '」相符的股票代號或名稱</div>';
+return;
+}
+results.innerHTML = merged.map(function(row) {
+var s = row[0], name = row[1];
+if (STOCKS.find(function(st) { return st.sym === s; })) {
+return '<div class="res-row"><div><span class="r-sym">' + s + '</span>' +
+'<div class="r-name">' + _escapeHtml(name) + '</div></div>' +
+'<span class="res-empty" style="padding:0;">已在清單</span></div>';
+}
+return '<div class="res-row"><div><span class="r-sym">' + s + '</span>' +
+'<div class="r-name">' + _escapeHtml(name) + '</div></div>' +
+'<button class="add-btn" onclick="_addStockFromSearch(\'' + s + '\')">＋ 加入</button></div>';
+}).join('');
+}
 async function _addStockFromSearch(sym) {
-  if (!sym || !_SYM_SAFE_RE.test(sym)) return;
-  if (STOCKS.find(function(s) { return s.sym === sym; }) || STOCKS.length >= MAX_STOCKS) return;
-  var name = (_symLib instanceof Map && _symLib.get(sym)) || sym;
-  // ex 留空 → TradingView URL 走裸代號 fallback，由 TV resolver 解析主上市
-  STOCKS.push({ sym: sym, name: name, ex: '' });
-  _saveStocks();
-  _markEditDirty();
-  var input = document.getElementById('searchInput');
-  if (input) input.value = '';
-  buildGrid();   // show card immediately with pending state (Bug 3)
-  _renderAllFromCache();  // 既有卡片價格立即回填，不閃 '—'
-  _applyEditClasses();
-  _renderSearch();
-  await _syncGitHub();  // Bug 2: await sync before any further reload
+if (!sym || !_SYM_SAFE_RE.test(sym)) return;
+if (STOCKS.find(function(s) { return s.sym === sym; }) || STOCKS.length >= MAX_STOCKS) return;
+var name = (_symLib instanceof Map && _symLib.get(sym)) || sym;
+STOCKS.push({ sym: sym, name: name, ex: '' });
+_saveStocks();
+_markEditDirty();
+var input = document.getElementById('searchInput');
+if (input) input.value = '';
+buildGrid();
+_renderAllFromCache();
+_applyEditClasses();
+_renderSearch();
+await _syncGitHub();
 }
-
 document.addEventListener('keydown', function(e) {
-  if (e.key !== 'Enter') return;
-  var input = document.getElementById('searchInput');
-  if (document.activeElement !== input) return;
-  var results = document.getElementById('searchResults');
-  var btn = results && results.querySelector('.add-btn');
-  if (btn) btn.click();
+if (e.key !== 'Enter') return;
+var input = document.getElementById('searchInput');
+if (document.activeElement !== input) return;
+var results = document.getElementById('searchResults');
+var btn = results && results.querySelector('.add-btn');
+if (btn) btn.click();
 });
 document.addEventListener('DOMContentLoaded', function() {
-  var input = document.getElementById('searchInput');
-  if (input) input.addEventListener('input', _renderSearch);
+var input = document.getElementById('searchInput');
+if (input) input.addEventListener('input', _renderSearch);
 });
-
 let expandedSym = null;
 let pendingAnimTimers = [];
-// State machine: 'idle' | 'opening' | 'expanded' | 'closing'
 let cardState = 'idle';
-
 function updateClock() {
-  const now = new Date();
-  const pad = n => String(n).padStart(2,'0');
-  document.getElementById('heroTime').textContent = `${pad(now.getHours())}:${pad(now.getMinutes())}`;
-  const days = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
-  document.getElementById('heroDate').textContent = `${now.getFullYear()}/${pad(now.getMonth()+1)}/${pad(now.getDate())} ${days[now.getDay()]}`;
+const now = new Date();
+const pad = n => String(n).padStart(2,'0');
+document.getElementById('heroTime').textContent = `${pad(now.getHours())}:${pad(now.getMinutes())}`;
+const days = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+document.getElementById('heroDate').textContent = `${now.getFullYear()}/${pad(now.getMonth()+1)}/${pad(now.getDate())} ${days[now.getDay()]}`;
 }
 setInterval(updateClock, 1000);
 updateClock();
-
 function makePfStack(sym, extraClass, initVal) {
-  const cls = extraClass ? `pf-stack ${extraClass}` : 'pf-stack';
-  const v   = initVal || '—';
-  return `
-    <div class="${cls}" id="pf-stack-${sym}">
-      <div class="pf-top-static"><span id="pf-top-${sym}">${v}</span></div>
-      <div class="pf-bot-static"><span id="pf-bot-${sym}">${v}</span></div>
-      <div class="pf-front"     ><span id="pf-front-${sym}">${v}</span></div>
-      <div class="pf-back"      ><span id="pf-back-${sym}">${v}</span></div>
-    </div>`;
+const cls = extraClass ? `pf-stack ${extraClass}` : 'pf-stack';
+const v = initVal || '—';
+return `
+<div class="${cls}" id="pf-stack-${sym}">
+<div class="pf-top-static"><span id="pf-top-${sym}">${v}</span></div>
+<div class="pf-bot-static"><span id="pf-bot-${sym}">${v}</span></div>
+<div class="pf-front" ><span id="pf-front-${sym}">${v}</span></div>
+<div class="pf-back" ><span id="pf-back-${sym}">${v}</span></div>
+</div>`;
 }
-
 function buildGrid() {
-  document.getElementById('grid').innerHTML = STOCKS.map(s => `
-    <div class="card" id="card-${_safeId(s.sym)}" onclick="toggleCard('${s.sym}','${s.ex}')">
-      <div class="check"></div>
-      <div class="card-body-split">
-        <div class="split-left">
-          <div class="chart-container">
-            <iframe id="chart-${s.sym}" width="100%" height="100%" frameborder="0" allowfullscreen></iframe>
-          </div>
-        </div>
-        <div class="split-right">
-          <div class="card-header">
-            <div>
-              <div class="card-sym">${s.sym}</div>
-              <div class="card-name">${s.name}</div>
-            </div>
-            <span class="tag tag-post" id="badge-${s.sym}">盤後</span>
-          </div>
-          <div class="price-section">
-            <span class="phase-corner-label" id="phase-label-${s.sym}">現價</span>
-            <div class="pf-wrap">${makePfStack(s.sym, '')}</div>
-            <div class="main-change" id="main-chg-${s.sym}"></div>
-            <div class="ref-price" id="sub-row-${s.sym}" style="visibility:hidden;">
-              <span class="ref-tag"   id="sub-label-${s.sym}">收盤</span>
-              <span class="ref-value" id="sub-${s.sym}">—</span>
-              <span class="ref-change" id="sub-chg-${s.sym}"></span>
-            </div>
-          </div>
-          <div class="news-container" id="news-container-${s.sym}">
-            <div class="news-header">📰 最新消息</div>
-            <div class="news-list" id="news-list-${s.sym}"></div>
-          </div>
-        </div>
-      </div>
-    </div>
-  `).join('');
-  fixLastRowLayout();
-  _attachLongPressHandlers();
-  _applyEditClasses();
+document.getElementById('grid').innerHTML = STOCKS.map(s => `
+<div class="card" id="card-${_safeId(s.sym)}" onclick="toggleCard('${s.sym}','${s.ex}')">
+<div class="check"></div>
+<div class="card-body-split">
+<div class="split-left">
+<div class="chart-container">
+<iframe id="chart-${s.sym}" width="100%" height="100%" frameborder="0" allowfullscreen></iframe>
+</div>
+</div>
+<div class="split-right">
+<div class="card-header">
+<div>
+<div class="card-sym">${s.sym}</div>
+<div class="card-name">${_escapeHtml(s.name)}</div>
+</div>
+<span class="tag tag-post" id="badge-${s.sym}">盤後</span>
+</div>
+<div class="price-section">
+<span class="phase-corner-label" id="phase-label-${s.sym}">現價</span>
+<div class="pf-wrap">${makePfStack(s.sym, '')}</div>
+<div class="main-change" id="main-chg-${s.sym}"></div>
+<div class="ref-price" id="sub-row-${s.sym}" style="visibility:hidden;">
+<span class="ref-tag" id="sub-label-${s.sym}">收盤</span>
+<span class="ref-value" id="sub-${s.sym}">—</span>
+<span class="ref-change" id="sub-chg-${s.sym}"></span>
+</div>
+</div>
+<div class="news-container" id="news-container-${s.sym}">
+<div class="news-header">📰 最新消息</div>
+<div class="news-list" id="news-list-${s.sym}"></div>
+</div>
+</div>
+</div>
+</div>
+`).join('');
+fixLastRowLayout();
+_attachLongPressHandlers();
+_applyEditClasses();
 }
-
-// ── 編輯模式（多選批量刪除系統）──────────────────────────
-// 主入口：topbar「編輯」鈕（手機/桌機同一概念）。長按為觸控快捷，
-// 觸發同一個全域編輯模式。點卡片＝勾選（不展開），底部列批量刪除。
-let _lpTimer = null;          // long-press setTimeout handle
-let _lpMoved = false;         // cancel if finger moves (scroll guard)
-let _globalEdit = false;      // 全域編輯模式開關
-let _selOrder = [];           // 選取順序（sym 陣列，決定角標 1,2,3…）
-let _editDirty = false;       // 編輯模式中是否已有實際變更（勾選/新增/刪除）
-
+let _lpTimer = null;
+let _lpMoved = false;
+let _globalEdit = false;
+let _selOrder = [];
+let _editDirty = false;
 function toggleEditMode(force) {
-  var on = (typeof force === 'boolean') ? force : !_globalEdit;
-  _globalEdit = on;
-  document.body.classList.toggle('editing', on);
-  var btn = document.getElementById('editBtn');
-  if (on) {
-    _editDirty = false;
-    if (btn) { btn.textContent = '退出'; btn.classList.remove('active'); }
-  } else {
-    _editDirty = false;
-    if (btn) { btn.textContent = '編輯'; btn.classList.remove('active'); }
-  }
-  if (!on) { _clearSelection(); _cancelConfirmDelete(); }
-  _applyEditClasses();
-  _updateActionBar();
-  if (on) { var si = document.getElementById('searchInput'); if (si) { si.value = ''; _renderSearch(); } }
+var on = (typeof force === 'boolean') ? force : !_globalEdit;
+_globalEdit = on;
+document.body.classList.toggle('editing', on);
+var btn = document.getElementById('editBtn');
+if (on) {
+_editDirty = false;
+if (btn) { btn.textContent = '退出'; btn.classList.remove('active'); }
+} else {
+_editDirty = false;
+if (btn) { btn.textContent = '編輯'; btn.classList.remove('active'); }
 }
-
-// 標記編輯模式中已有實際變更（勾選/新增/刪除任一），按鈕文字「退出」→「完成」
+if (!on) { _clearSelection(); _cancelConfirmDelete(); }
+_applyEditClasses();
+_updateActionBar();
+if (on) {
+var si = document.getElementById('searchInput');
+if (si) { si.value = ''; _renderSearch(); }
+}
+}
 function _markEditDirty() {
-  if (_editDirty) return;
-  _editDirty = true;
-  var btn = document.getElementById('editBtn');
-  if (btn) { btn.textContent = '完成'; btn.classList.add('active'); }
+if (_editDirty) return;
+_editDirty = true;
+var btn = document.getElementById('editBtn');
+if (btn) { btn.textContent = '完成'; btn.classList.add('active'); }
 }
-
-// buildGrid() 重建後重掛 selected class + 角標（刪除一張後其餘勾選狀態保留）
 function _applyEditClasses() {
-  STOCKS.forEach(function(s) {
-    var card = document.getElementById('card-' + _safeId(s.sym));
-    if (!card) return;
-    var idx = _selOrder.indexOf(s.sym);
-    card.classList.toggle('selected', idx !== -1);
-    var chip = card.querySelector('.check');
-    if (chip) chip.textContent = idx !== -1 ? (idx + 1) : '';
-  });
+STOCKS.forEach(function(s) {
+var card = document.getElementById('card-' + _safeId(s.sym));
+if (!card) return;
+var idx = _selOrder.indexOf(s.sym);
+card.classList.toggle('selected', idx !== -1);
+var chip = card.querySelector('.check');
+if (chip) chip.textContent = idx !== -1 ? (idx + 1) : '';
+});
 }
-
 function _attachLongPressHandlers() {
-  STOCKS.forEach(function(s) {
-    var card = document.getElementById('card-' + _safeId(s.sym));
-    if (!card) return;
-    // Prevent iOS system callout on long press
-    card.style.webkitTouchCallout = 'none';
-    card.style.userSelect = 'none';
-
-    card.addEventListener('touchstart', function(e) {
-      if (card.classList.contains('expanded')) return;
-      _lpMoved = false;
-      _lpTimer = setTimeout(function() {
-        if (!_lpMoved && !_globalEdit) toggleEditMode(true);
-      }, 500);
-    }, { passive: true });
-
-    card.addEventListener('touchmove', function() {
-      _lpMoved = true;
-      clearTimeout(_lpTimer);
-    }, { passive: true });
-
-    card.addEventListener('touchend', function() {
-      clearTimeout(_lpTimer);
-    }, { passive: true });
-
-    card.addEventListener('touchcancel', function() {
-      clearTimeout(_lpTimer);
-    }, { passive: true });
-  });
+STOCKS.forEach(function(s) {
+var card = document.getElementById('card-' + _safeId(s.sym));
+if (!card) return;
+card.style.webkitTouchCallout = 'none';
+card.style.userSelect = 'none';
+card.addEventListener('touchstart', function(e) {
+if (card.classList.contains('expanded')) return;
+_lpMoved = false;
+_lpTimer = setTimeout(function() { if (!_lpMoved && !_globalEdit) toggleEditMode(true); }, 500);
+}, { passive: true });
+card.addEventListener('touchmove', function() { _lpMoved = true; clearTimeout(_lpTimer); }, { passive: true });
+card.addEventListener('touchend', function() { clearTimeout(_lpTimer); }, { passive: true });
+card.addEventListener('touchcancel', function() { clearTimeout(_lpTimer); }, { passive: true });
+});
 }
-
-// 點卡片切換勾選（editMode 下由 toggleCard 呼叫，見下方）
 function _toggleSelect(sym) {
-  var card = document.getElementById('card-' + _safeId(sym));
-  if (!card || card.classList.contains('go')) return;
-  var idx = _selOrder.indexOf(sym);
-  if (idx !== -1) _selOrder.splice(idx, 1);
-  else _selOrder.push(sym);
-  _applyEditClasses();
-  _cancelConfirmDelete();
-  _updateActionBar();
+var card = document.getElementById('card-' + _safeId(sym));
+if (!card || card.classList.contains('go')) return;
+var idx = _selOrder.indexOf(sym);
+if (idx !== -1) _selOrder.splice(idx, 1);
+else _selOrder.push(sym);
+_applyEditClasses();
+_cancelConfirmDelete();
+_updateActionBar();
 }
-
 function _clearSelection() {
-  _selOrder = [];
-  _applyEditClasses();
-  _updateActionBar();
+_selOrder = [];
+_applyEditClasses();
+_updateActionBar();
 }
-
 function _updateActionBar() {
-  var n = _selOrder.length;
-  var countEl = document.getElementById('barCount');
-  if (countEl) countEl.textContent = '已選 ' + n + ' 項';
-  var delBtn = document.getElementById('delSelBtn');
-  if (delBtn) delBtn.disabled = n === 0;
-  var clearBtn = document.getElementById('clearSelBtn');
-  if (clearBtn) clearBtn.style.display = n > 0 ? '' : 'none';
+var n = _selOrder.length;
+var countEl = document.getElementById('barCount');
+if (countEl) countEl.textContent = '已選 ' + n + ' 項';
+var delBtn = document.getElementById('delSelBtn');
+if (delBtn) delBtn.disabled = n === 0;
+var clearBtn = document.getElementById('clearSelBtn');
+if (clearBtn) clearBtn.style.display = n > 0 ? '' : 'none';
 }
-
 function _askConfirmDelete() {
-  if (!_selOrder.length) return;
-  var cc = document.getElementById('confirmCount');
-  if (cc) cc.textContent = _selOrder.length;
-  var bar = document.getElementById('actionBar');
-  if (bar) bar.classList.add('confirming');
+if (!_selOrder.length) return;
+var cc = document.getElementById('confirmCount');
+if (cc) cc.textContent = _selOrder.length;
+var bar = document.getElementById('actionBar');
+if (bar) bar.classList.add('confirming');
 }
-
 function _cancelConfirmDelete() {
-  var bar = document.getElementById('actionBar');
-  if (bar) bar.classList.remove('confirming');
+var bar = document.getElementById('actionBar');
+if (bar) bar.classList.remove('confirming');
 }
-
-// ── 批量刪除：翻頁歸零 → 熄滅 → 淡出（逐張），完成後統一重建清單 ──
 const _TEARDOWN_FLIP_MS = 90;
 function _teardownFlip(sym, seq, onAllDone) {
-  var i = 0;
-  function step() {
-    if (i >= seq.length) { onAllDone(); return; }
-    var last = (i === seq.length - 1);
-    _teardownFlipOnce(sym, seq[i], last);
-    i++;
-    setTimeout(step, _TEARDOWN_FLIP_MS);
-  }
-  step();
+var i = 0;
+function step() {
+if (i >= seq.length) { onAllDone(); return; }
+var last = (i === seq.length - 1);
+_teardownFlipOnce(sym, seq[i], last);
+i++;
+setTimeout(step, _TEARDOWN_FLIP_MS);
+}
+step();
 }
 function _teardownFlipOnce(sym, val, isLast) {
-  var top = document.getElementById('pf-top-' + sym), bot = document.getElementById('pf-bot-' + sym),
-      front = document.getElementById('pf-front-' + sym), back = document.getElementById('pf-back-' + sym);
-  if (!top || !bot || !front || !back) return;
-  var fw = front.parentElement, bw = back.parentElement, cur = top.textContent;
-  top.textContent = val; bot.textContent = cur; front.textContent = cur; back.textContent = val;
-  fw.classList.remove('go'); bw.classList.remove('go'); bw.style.transform = 'rotateX(90deg)';
-  void fw.offsetWidth;
-  fw.classList.add('go'); bw.classList.add('go');
-  setTimeout(function() { bot.textContent = val; }, 40);
-  setTimeout(function() {
-    fw.classList.remove('go'); bw.classList.remove('go'); bw.style.transform = '';
-    front.textContent = val; back.textContent = val;
-  }, _TEARDOWN_FLIP_MS);
+var top = document.getElementById('pf-top-' + sym),
+bot = document.getElementById('pf-bot-' + sym),
+front = document.getElementById('pf-front-' + sym),
+back = document.getElementById('pf-back-' + sym);
+if (!top || !bot || !front || !back) return;
+var fw = front.parentElement, bw = back.parentElement, cur = top.textContent;
+top.textContent = val; bot.textContent = cur; front.textContent = cur; back.textContent = val;
+fw.classList.remove('go'); bw.classList.remove('go');
+bw.style.transform = 'rotateX(90deg)';
+void fw.offsetWidth;
+fw.classList.add('go'); bw.classList.add('go');
+setTimeout(function() { bot.textContent = val; }, 40);
+setTimeout(function() {
+fw.classList.remove('go'); bw.classList.remove('go');
+bw.style.transform = '';
+front.textContent = val; back.textContent = val;
+}, _TEARDOWN_FLIP_MS);
 }
 function _teardownSeqFor(sym) {
-  var top = document.getElementById('pf-top-' + sym);
-  var p = top ? parseFloat((top.textContent || '').replace(/[^0-9.]/g, '')) || 0 : 0;
-  return ['$' + (p * 0.55).toFixed(2), '$' + (p * 0.20).toFixed(2), '—'];
+var top = document.getElementById('pf-top-' + sym);
+var p = top ? parseFloat((top.textContent || '').replace(/[^0-9.]/g, '')) || 0 : 0;
+return ['$' + (p * 0.55).toFixed(2), '$' + (p * 0.20).toFixed(2), '—'];
 }
-
 async function _doDeleteSelected() {
-  var syms = _selOrder.slice();
-  if (!syms.length || STOCKS.length - syms.length < 1) {
-    // 至少保留 1 支，超出的部分不刪（防禦：避免清單清空造成後端 fallback）
-    syms = syms.slice(0, Math.max(0, STOCKS.length - 1));
-    if (!syms.length) { _cancelConfirmDelete(); return; }
-  }
-  _cancelConfirmDelete();
-  _selOrder = [];
-  _applyEditClasses();   // 被 min-1 防禦裁掉的卡立即取消 selected 金光，不殘留
-  _updateActionBar();
-
-  var pending = syms.length;
-  syms.forEach(function(sym) {
-    var card = document.getElementById('card-' + _safeId(sym));
-    if (!card) { pending--; return; }
-    card.classList.add('go');
-    var ps = card.querySelector('.price-section');
-    var mc = card.querySelector('.main-change');
-    _teardownFlip(sym, _teardownSeqFor(sym), function() {
-      if (ps) ps.classList.add('off');
-      if (mc) mc.classList.add('off');
-      setTimeout(function() {
-        card.classList.add('fade');
-        pending--;
-        if (pending === 0) _finishBatchDelete(syms);
-      }, 150);
-    });
-  });
-  // 邊界：全部卡片都不在 DOM（pending 於同步路徑歸零）時，
-  // 上面的動畫回呼一個都不會觸發，需在此直接收尾，否則刪除假死
-  if (pending === 0) _finishBatchDelete(syms);
+var syms = _selOrder.slice();
+if (!syms.length || STOCKS.length - syms.length < 1) {
+syms = syms.slice(0, Math.max(0, STOCKS.length - 1));
+if (!syms.length) { _cancelConfirmDelete(); return; }
 }
-
+_cancelConfirmDelete();
+_selOrder = [];
+_applyEditClasses();
+_updateActionBar();
+var pending = syms.length;
+syms.forEach(function(sym) {
+var card = document.getElementById('card-' + _safeId(sym));
+if (!card) { pending--; return; }
+card.classList.add('go');
+var ps = card.querySelector('.price-section');
+var mc = card.querySelector('.main-change');
+_teardownFlip(sym, _teardownSeqFor(sym), function() {
+if (ps) ps.classList.add('off');
+if (mc) mc.classList.add('off');
+setTimeout(function() {
+card.classList.add('fade');
+pending--;
+if (pending === 0) _finishBatchDelete(syms);
+}, 150);
+});
+});
+if (pending === 0) _finishBatchDelete(syms);
+}
 async function _finishBatchDelete(syms) {
-  STOCKS = STOCKS.filter(function(s) { return syms.indexOf(s.sym) === -1; });
-  _saveStocks();
-  _markEditDirty();
-  buildGrid();
-  _renderAllFromCache();
-  _applyEditClasses();
-  _updateActionBar();
-  await _syncGitHub();
+STOCKS = STOCKS.filter(function(s) { return syms.indexOf(s.sym) === -1; });
+_saveStocks();
+_markEditDirty();
+buildGrid();
+_renderAllFromCache();
+_applyEditClasses();
+_updateActionBar();
+await _syncGitHub();
 }
-// ─────────────────────────────────────────────────────────
-
 function fixLastRowLayout() {
-  const grid = document.getElementById('grid');
-  if (!grid) return;
-  grid.querySelectorAll('.last-row-solo, .last-row-pair-1, .last-row-pair-2')
-    .forEach(el => el.classList.remove('last-row-solo','last-row-pair-1','last-row-pair-2'));
-  if (window.innerWidth < 1000) return;
-  const cards = Array.from(grid.querySelectorAll('.card:not(.expanded), .card-ghost'));
-  const total = cards.length;
-  const remainder = total % 3;
-  if (remainder === 1) cards[total-1].classList.add('last-row-solo');
-  else if (remainder === 2) { cards[total-2].classList.add('last-row-pair-1'); cards[total-1].classList.add('last-row-pair-2'); }
+const grid = document.getElementById('grid');
+if (!grid) return;
+grid.querySelectorAll('.last-row-solo, .last-row-pair-1, .last-row-pair-2')
+.forEach(el => el.classList.remove('last-row-solo','last-row-pair-1','last-row-pair-2'));
+if (window.innerWidth < 1000) return;
+const cards = Array.from(grid.querySelectorAll('.card:not(.expanded), .card-ghost'));
+const total = cards.length;
+const remainder = total % 3;
+if (remainder === 1) cards[total-1].classList.add('last-row-solo');
+else if (remainder === 2) { cards[total-2].classList.add('last-row-pair-1'); cards[total-1].classList.add('last-row-pair-2'); }
 }
 window.addEventListener('resize', fixLastRowLayout);
-
 function collapseCard(sym) {
-  const card  = document.getElementById(`card-${_safeId(sym)}`);
-  if (!card) return;
-  if (cardState === 'closing' || cardState === 'opening') return;
-  cardState = 'closing';
-
-  // 清掉所有展開動畫的殘留 timer
-  pendingAnimTimers.forEach(id => clearTimeout(id));
-  pendingAnimTimers = [];
-
-  // 保險：最多 1.5s 後強制解鎖
-  const _busyGuard = setTimeout(() => {
-    document.getElementById('grid').style.pointerEvents = '';
-    cardState = 'idle';
-  }, 1500);
-
-  const overlay = document.getElementById('cardOverlay');
-  const ghost   = document.getElementById(`ghost-${sym}`);
-  const stock   = STOCKS.find(s => s.sym === sym);
-
-  overlay.classList.remove('show');
-  document.body.classList.remove('scroll-locked');
-  document.body.style.paddingRight = '';
-  document.getElementById('grid').style.paddingRight = '';
-  document.documentElement.style.removeProperty('--scrollbar-w');
-  // 清理 mobile-close-bar
-  const existingBar = document.querySelector('.mobile-close-bar');
-  if (existingBar) existingBar.remove();
-  const chartEl = document.getElementById(`chart-${sym}`);
-  if (chartEl) chartEl.src = '';
-
-  card.animate(
-    [{ opacity:1, transform:'translate(-50%,-50%) scale(1)' },
-     { opacity:0, transform:'translate(-50%,-50%) scale(1)' }],
-    { duration:200, easing:'linear', fill:'forwards' }
-  ).onfinish = () => {
-    card.remove();
-    if (!ghost) {
-      expandedSym = null;
-      clearTimeout(_busyGuard);
-      document.getElementById('grid').style.pointerEvents = '';
-      cardState = 'idle';
-      return;
-    }
-    ghost.classList.add('reviving');
-    pendingAnimTimers.push(setTimeout(() => {
-      if (!ghost.parentNode) {
-        expandedSym = null;
-        clearTimeout(_busyGuard);
-        document.getElementById('grid').style.pointerEvents = '';
-        cardState = 'idle';
-        return;
-      }
-      const newCard = document.createElement('div');
-      newCard.className = 'card recently-viewed';
-      newCard.id        = `card-${_safeId(sym)}`;
-
-      // 先算好所有資料，填進 innerHTML，replaceChild 時直接是完整狀態
-      const _q  = window._lastStockData?.[sym]?.quote;
-      const _d  = parseQuote(_q);
-      const _valStr      = _d ? _d.valStr : '—';
-      const _phaseLabel  = _d ? _d.phaseLabel : '現價';
-      const _lightClass  = _d ? _d.lightClass : '';
-      const _badgeShow   = _d?.isExt ? 'show' : '';
-      const _phase       = _d ? _d.phase : '正式盤';
-      const _mainChgHtml = _d ? `<span class="${_d.dir}">${_d.sg} ${Math.abs(_d.mc).toFixed(2)} (${Math.abs(_d.mct).toFixed(2)}%)</span>` : '';
-      const _subChgHtml  = _d ? `<span class="${_d.rd}">${_d.rsg} ${Math.abs(_d.rc).toFixed(2)} (${Math.abs(_d.rp).toFixed(2)}%)</span>` : '';
-      const _showSub     = _d?.isExt ?? false;
-      const _regular     = _d ? _d.regular : 0;
-
-      newCard.innerHTML = `
-        <div class="card-body-split">
-          <div class="split-left">
-            <div class="chart-container">
-              <iframe id="chart-${sym}" width="100%" height="100%" frameborder="0" allowfullscreen></iframe>
-            </div>
-          </div>
-          <div class="split-right">
-            <div class="card-header">
-              <div>
-                <div class="card-sym">${sym}</div>
-                <div class="card-name">${stock?.name || ''}</div>
-              </div>
-              <span class="tag tag-post ${_badgeShow}" id="badge-${sym}">${_d?.isExt ? _phase : '盤後'}</span>
-            </div>
-            <div class="price-section ${_lightClass}">
-              <span class="phase-corner-label" id="phase-label-${sym}">${_phaseLabel}</span>
-              <div class="pf-wrap">${makePfStack(sym, '', _valStr)}</div>
-              <div class="main-change" id="main-chg-${sym}">${_mainChgHtml}</div>
-              <div class="ref-price" id="sub-row-${sym}" style="${_showSub ? 'visibility:visible;display:flex;' : 'visibility:hidden;'}">
-                <span class="ref-tag" id="sub-label-${sym}">收盤</span>
-                <span class="ref-value" id="sub-${sym}">${_q ? `$${_regular.toFixed(2)}` : '—'}</span>
-                <span class="ref-change" id="sub-chg-${sym}">${_subChgHtml}</span>
-              </div>
-            </div>
-            <div class="news-container" id="news-container-${sym}">
-              <div class="news-header">📰 最新消息</div>
-              <div class="news-list" id="news-list-${sym}"></div>
-            </div>
-          </div>
-        </div>
-      `;
-      newCard.onclick = () => toggleCard(sym, stock?.ex || '');
-      newCard.style.opacity = '0';
-      ghost.parentNode.replaceChild(newCard, ghost);
-      requestAnimationFrame(() => {
-        requestAnimationFrame(() => {
-          newCard.style.transition = 'opacity 0.2s ease';
-          newCard.style.opacity = '1';
-        });
-      });
-      fixLastRowLayout();
-      if (window._lastStockData?.[sym]?.news) renderNews(sym, window._lastStockData[sym].news);
-      pendingAnimTimers.push(setTimeout(() => newCard.classList.remove('recently-viewed'), 3000));
-      expandedSym = null;
-      collapsingViaBack = false;
-      clearTimeout(_busyGuard);
-      document.getElementById('grid').style.pointerEvents = '';
-      cardState = 'idle';
-    }, 100));
-  };
+const card = document.getElementById(`card-${_safeId(sym)}`);
+if (!card) return;
+if (cardState === 'closing' || cardState === 'opening') return;
+cardState = 'closing';
+pendingAnimTimers.forEach(id => clearTimeout(id));
+pendingAnimTimers = [];
+const _busyGuard = setTimeout(() => {
+document.getElementById('grid').style.pointerEvents = '';
+cardState = 'idle';
+}, 1500);
+const overlay = document.getElementById('cardOverlay');
+const ghost = document.getElementById(`ghost-${sym}`);
+const stock = STOCKS.find(s => s.sym === sym);
+overlay.classList.remove('show');
+document.body.classList.remove('scroll-locked');
+document.body.style.paddingRight = '';
+document.getElementById('grid').style.paddingRight = '';
+document.documentElement.style.removeProperty('--scrollbar-w');
+const existingBar = document.querySelector('.mobile-close-bar');
+if (existingBar) existingBar.remove();
+const chartEl = document.getElementById(`chart-${sym}`);
+if (chartEl) chartEl.src = '';
+const _isMobileClose = card.classList.contains('expanded-mobile');
+card.animate(
+_isMobileClose
+? [{ opacity: 1 }, { opacity: 0 }]
+: [{ opacity:1, transform:'translate(-50%,-50%) scale(1)' },
+{ opacity:0, transform:'translate(-50%,-50%) scale(1)' }],
+{ duration:200, easing:'linear', fill:'forwards' }
+).onfinish = () => {
+card.remove();
+if (!ghost) {
+expandedSym = null;
+clearTimeout(_busyGuard);
+document.getElementById('grid').style.pointerEvents = '';
+cardState = 'idle';
+return;
 }
-
+ghost.classList.add('reviving');
+pendingAnimTimers.push(setTimeout(() => {
+if (!ghost.parentNode) {
+expandedSym = null;
+clearTimeout(_busyGuard);
+document.getElementById('grid').style.pointerEvents = '';
+cardState = 'idle';
+return;
+}
+const newCard = document.createElement('div');
+newCard.className = 'card recently-viewed';
+newCard.id = `card-${_safeId(sym)}`;
+const _q = window._lastStockData?.[sym]?.quote;
+const _d = parseQuote(_q);
+const _valStr = _d ? _d.valStr : '—';
+const _phaseLabel = _d ? _d.phaseLabel : '現價';
+const _lightClass = _d ? _d.lightClass : '';
+const _badgeShow = _d?.isExt ? 'show' : '';
+const _phase = _d ? _d.phase : '正式盤';
+const _mainChgHtml = _d ? `<span class="${_d.dir}">${_d.sg} ${Math.abs(_d.mc).toFixed(2)} (${Math.abs(_d.mct).toFixed(2)}%)</span>` : '';
+const _subChgHtml = _d ? `<span class="${_d.rd}">${_d.rsg} ${Math.abs(_d.rc).toFixed(2)} (${Math.abs(_d.rp).toFixed(2)}%)</span>` : '';
+const _showSub = _d?.isExt ?? false;
+const _regular = _d ? _d.regular : 0;
+newCard.innerHTML = `
+<div class="card-body-split">
+<div class="split-left">
+<div class="chart-container">
+<iframe id="chart-${sym}" width="100%" height="100%" frameborder="0" allowfullscreen></iframe>
+</div>
+</div>
+<div class="split-right">
+<div class="card-header">
+<div>
+<div class="card-sym">${sym}</div>
+<div class="card-name">${_escapeHtml(stock?.name || '')}</div>
+</div>
+<span class="tag tag-post ${_badgeShow}" id="badge-${sym}">${_d?.isExt ? _phase : '盤後'}</span>
+</div>
+<div class="price-section ${_lightClass}">
+<span class="phase-corner-label" id="phase-label-${sym}">${_phaseLabel}</span>
+<div class="pf-wrap">${makePfStack(sym, '', _valStr)}</div>
+<div class="main-change" id="main-chg-${sym}">${_mainChgHtml}</div>
+<div class="ref-price" id="sub-row-${sym}" style="${_showSub ? 'visibility:visible;display:flex;' : 'visibility:hidden;'}">
+<span class="ref-tag" id="sub-label-${sym}">收盤</span>
+<span class="ref-value" id="sub-${sym}">${_q ? `$${_regular.toFixed(2)}` : '—'}</span>
+<span class="ref-change" id="sub-chg-${sym}">${_subChgHtml}</span>
+</div>
+</div>
+<div class="news-container" id="news-container-${sym}">
+<div class="news-header">📰 最新消息</div>
+<div class="news-list" id="news-list-${sym}"></div>
+</div>
+</div>
+</div>
+`;
+newCard.onclick = () => toggleCard(sym, stock?.ex || '');
+newCard.style.opacity = '0';
+ghost.parentNode.replaceChild(newCard, ghost);
+requestAnimationFrame(() => {
+requestAnimationFrame(() => {
+newCard.style.transition = 'opacity 0.2s ease';
+newCard.style.opacity = '1';
+});
+});
+fixLastRowLayout();
+if (window._lastStockData?.[sym]?.news) renderNews(sym, window._lastStockData[sym].news);
+pendingAnimTimers.push(setTimeout(() => newCard.classList.remove('recently-viewed'), 3000));
+expandedSym = null;
+collapsingViaBack = false;
+clearTimeout(_busyGuard);
+document.getElementById('grid').style.pointerEvents = '';
+cardState = 'idle';
+}, 100));
+};
+}
 function toggleCard(sym, ex) {
-  if (_globalEdit) { _toggleSelect(sym); return; }  // 編輯模式下點卡片＝勾選，不展開
-  if (cardState === 'opening' || cardState === 'closing') return;
-
-  const card = document.getElementById(`card-${_safeId(sym)}`);
-  const isExpanded = card.classList.contains('expanded');
-  const overlay = document.getElementById('cardOverlay');
-
-  if (expandedSym && expandedSym !== sym) collapseCard(expandedSym);
-
-  if (!isExpanded) {
-    if (cardState === 'expanded') return;
-    // 只有真正要展開新卡時才清 timer
-    pendingAnimTimers.forEach(id => clearTimeout(id));
-    pendingAnimTimers = [];
-
-    setTimeout(() => {
-      document.querySelectorAll('.card.recently-viewed').forEach(c => c.classList.remove('recently-viewed'));
-    }, 361);
-
-    const ghost = document.createElement('div');
-    ghost.id = `ghost-${sym}`;
-    ghost.className = 'card-ghost';
-    const cardStyle = window.getComputedStyle(card);
-    ghost.style.gridColumn = cardStyle.gridColumn;
-    ghost.style.gridRow    = cardStyle.gridRow;
-    ghost.style.height     = card.offsetHeight + 'px';
-    const _gPriceTxt  = document.getElementById(`pf-top-${sym}`)?.textContent || '—';
-    const _gMainChg   = document.getElementById(`main-chg-${sym}`)?.innerHTML || '';
-    const _gPhase     = document.getElementById(`phase-label-${sym}`)?.textContent || '現價';
-    const _gBadgeEl   = document.getElementById(`badge-${sym}`);
-    const _gBadgeHtml = _gBadgeEl?.classList.contains('show') ? `<span class="tag tag-post show">${_gBadgeEl.textContent}</span>` : '';
-    const _gName      = STOCKS.find(s => s.sym === sym)?.name || '';
-    ghost.innerHTML = `
-      <div class="ghost-screw tl"></div><div class="ghost-screw tr"></div>
-      <div class="ghost-screw bl"></div><div class="ghost-screw br"></div>
-      <div class="ghost-axle"></div>
-      <div class="ghost-content">
-        <div class="card-header">
-          <div><div class="card-sym">${sym}</div><div class="card-name">${_gName}</div></div>
-          ${_gBadgeHtml}
-        </div>
-        <div class="price-section">
-          <span class="phase-corner-label">${_gPhase}</span>
-          <div class="pf-wrap"><div class="pf-stack">
-            <div class="pf-top-static"><span>${_gPriceTxt}</span></div>
-            <div class="pf-bot-static"><span>${_gPriceTxt}</span></div>
-            <div class="pf-front"><span>${_gPriceTxt}</span></div>
-            <div class="pf-back"><span>${_gPriceTxt}</span></div>
-          </div></div>
-          <div class="main-change">${_gMainChg}</div>
-        </div>
-      </div>
-    `;
-    card.parentNode.insertBefore(ghost, card.nextSibling);
-
-    const scrollbarW = window.innerWidth - document.documentElement.clientWidth;
-    document.documentElement.style.setProperty('--scrollbar-w', scrollbarW + 'px');
-    document.getElementById('grid').style.paddingRight = scrollbarW + 'px';
-    document.body.classList.add('scroll-locked');
-
-    card.classList.add('expanded');
-    card.onclick = null;
-    cardState = 'opening';
-    document.getElementById('grid').style.pointerEvents = 'none';
-
-    pendingAnimTimers.push(setTimeout(() => {
-      document.getElementById('grid').style.pointerEvents = '';
-      cardState = 'expanded';
-    }, 700));
-    expandedSym = sym;
-    history.pushState({ expanded: sym }, '');
-    overlay.classList.add('show');
-
-    const splitLeft  = card.querySelector('.split-left');
-    const splitRight = card.querySelector('.split-right');
-
-    const isMobile = window.innerWidth <= 720;
-    if (isMobile) {
-      card.classList.add('expanded-mobile');
-      splitLeft.style.display = 'none';
-      const closeBar = document.createElement('div');
-      closeBar.className = 'mobile-close-bar';
-      closeBar.innerHTML = '<div class="cb-screw"></div><div class="cb-line"></div><span class="cb-label">CLOSE</span><div class="cb-line right"></div><div class="cb-screw"></div>';
-      closeBar.onclick = (e) => { e.stopPropagation(); toggleCard(sym, ex); };
-      document.body.appendChild(closeBar);
-    }
-
-    splitRight.dataset.originalHtml = splitRight.innerHTML;
-    splitRight.dataset.expanded = '1';
-
-    const curVal     = document.getElementById(`pf-top-${sym}`)?.textContent || '—';
-    const mainChg    = document.getElementById(`main-chg-${sym}`)?.innerHTML || '';
-    const phaseLabel = document.getElementById(`phase-label-${sym}`)?.textContent || '現價';
-    const badgeEl    = document.getElementById(`badge-${sym}`);
-    const badgeHtml  = badgeEl?.classList.contains('show') ? `<span class="tag tag-post show">${badgeEl.textContent}</span>` : '';
-    // 抓現有燈光 class
-    const existingPS  = document.querySelector(`#card-${_safeId(sym)} .price-section`);
-    const lightClass  = existingPS?.classList.contains('light-up') ? 'light-up'
-                      : existingPS?.classList.contains('light-down') ? 'light-down' : '';
-
-    const isPost   = phaseLabel === '盤後';
-    const isPre    = phaseLabel === '盤前';
-    const bigLabel = isPost ? '盤後' : (isPre ? '盤前' : '現價');
-    const subVal   = document.getElementById(`sub-${sym}`)?.textContent || '—';
-    const subChg   = document.getElementById(`sub-chg-${sym}`)?.innerHTML || '';
-    const showRef  = isPost && subVal !== '—';
-
-    const newsList = document.getElementById(`news-list-${sym}`);
-    const newsHtml = newsList ? newsList.innerHTML : '';
-
-    if (isMobile) {
-      // ── 手機版展開：無 TradingView，加 TV 連結 ──
-      splitRight.innerHTML = `
-        <div class="sf-wrap" id="exp-secHeader-${sym}">
-          <div class="card-header">
-            <div>
-              <div class="card-sym">${sym}</div>
-              <div class="card-name">${STOCKS.find(s=>s.sym===sym)?.name||''}</div>
-            </div>
-            ${badgeHtml}
-          </div>
-        </div>
-        <div class="sf-wrap" id="exp-secPrice-${sym}">
-          <div class="expanded-price-stage ${lightClass}">
-            <span class="expanded-phase-label">${bigLabel}</span>
-            <div class="pf-wrap" style="margin:4px 0;">
-              ${makePfStack('exp-'+sym, 'exp-pf-stack', '—')}
-            </div>
-            <div class="expanded-main-change">${mainChg}</div>
-            ${showRef ? `
-            <div class="expanded-ref-row">
-              <span id="exp-flipFront-${sym}" style="font-size:11px;color:#c9b48a;">收盤 ${subVal} ${subChg}</span>
-            </div>` : ''}
-          </div>
-        </div>
-        <div class="sf-wrap" id="exp-secNews-${sym}">
-          <div class="expanded-news-wrap">
-            <div class="expanded-news-title">📰 最新消息</div>
-            ${newsHtml
-              ? newsHtml
-                  .replace(/class="news-item"/g,     'class="expanded-news-item"')
-                  .replace(/class="news-headline"/g, 'class="expanded-news-headline"')
-                  .replace(/class="news-source"/g,   'class="expanded-news-source"')
-              : '<div style="font-size:11px;color:#7a7468;">暫無相關新聞</div>'}
-          </div>
-          <a class="mobile-tv-btn" href="https://www.tradingview.com/chart/?symbol=${ex ? ex + ':' + sym : sym}" target="_blank" rel="noopener noreferrer">
-            📈 在 TradingView 查看圖表
-          </a>
-        </div>
-      `;
-      pendingAnimTimers.push(setTimeout(() => splitRight.classList.add('panel-flap'), 60));
-      pendingAnimTimers.push(setTimeout(() => {
-        const sh = document.getElementById(`exp-secHeader-${sym}`);
-        if (sh) sh.classList.add('reveal-full');
-      }, 60));
-      pendingAnimTimers.push(setTimeout(() => {
-        const sp = document.getElementById(`exp-secPrice-${sym}`);
-        if (sp) sp.classList.add('reveal-full');
-      }, 120));
-      pendingAnimTimers.push(setTimeout(() => {
-        flipPriceCard('exp-'+sym, curVal);
-      }, 540));
-      pendingAnimTimers.push(setTimeout(() => {
-        const sn = document.getElementById(`exp-secNews-${sym}`);
-        if (sn) sn.classList.add('reveal-full');
-      }, 560));
-
-    } else {
-      // ── 桌機版展開：完整 TradingView + 兩欄 ──
-      splitRight.innerHTML = `
-        <div class="sf-wrap" id="exp-secHeader-${sym}">
-          <div class="card-header">
-            <div>
-              <div class="card-sym">${sym}</div>
-              <div class="card-name">${STOCKS.find(s=>s.sym===sym)?.name||''}</div>
-            </div>
-            ${badgeHtml}
-          </div>
-        </div>
-        <div class="sf-wrap" id="exp-secPrice-${sym}">
-          <div class="expanded-price-stage ${lightClass}">
-            <span class="expanded-phase-label">${bigLabel}</span>
-            <div class="pf-wrap" style="margin:4px 0;">
-              ${makePfStack('exp-'+sym, 'exp-pf-stack', '—')}
-            </div>
-            <div class="expanded-main-change">${mainChg}</div>
-            ${showRef ? `
-            <div class="expanded-ref-row">
-              <span id="exp-flipFront-${sym}" style="font-size:11px;color:#c9b48a;">收盤 ${subVal} ${subChg}</span>
-            </div>` : ''}
-          </div>
-        </div>
-        <div class="sf-wrap" id="exp-secNews-${sym}">
-          <div class="expanded-news-wrap">
-            <div class="expanded-news-title">📰 最新消息</div>
-            ${newsHtml
-              ? newsHtml
-                  .replace(/class="news-item"/g,     'class="expanded-news-item"')
-                  .replace(/class="news-headline"/g, 'class="expanded-news-headline"')
-                  .replace(/class="news-source"/g,   'class="expanded-news-source"')
-              : '<div style="font-size:11px;color:#7a7468;">暫無相關新聞</div>'}
-          </div>
-        </div>
-      `;
-      const chartEl = document.getElementById(`chart-${sym}`);
-      pendingAnimTimers.push(setTimeout(() => {
-        chartEl.src = `https://www.tradingview.com/widgetembed/?symbol=${ex ? ex + ':' + sym : sym}&interval=D&hidesidetoolbar=1&theme=dark&style=1&timezone=Asia/Taipei&locale=zh_TW`;
-      }, 100));
-      pendingAnimTimers.push(setTimeout(() => splitLeft.classList.add('panel-flap'),  60));
-      pendingAnimTimers.push(setTimeout(() => splitRight.classList.add('panel-flap'), 120));
-      pendingAnimTimers.push(setTimeout(() => {
-        const cc = splitLeft.querySelector('.chart-container');
-        if (cc) cc.classList.add('show-chart');
-      }, 200));
-      pendingAnimTimers.push(setTimeout(() => {
-        const sh = document.getElementById(`exp-secHeader-${sym}`);
-        if (sh) sh.classList.add('reveal-full');
-      }, 120));
-      pendingAnimTimers.push(setTimeout(() => {
-        const sp = document.getElementById(`exp-secPrice-${sym}`);
-        if (sp) sp.classList.add('reveal-full');
-      }, 180));
-      pendingAnimTimers.push(setTimeout(() => {
-        flipPriceCard('exp-'+sym, curVal);
-      }, 640));
-      pendingAnimTimers.push(setTimeout(() => {
-        const sn = document.getElementById(`exp-secNews-${sym}`);
-        if (sn) sn.classList.add('reveal-full');
-      }, 660));
-    }
-
-  } else {
-    collapseCard(sym);
-    if (!collapsingViaBack && history.state?.expanded === sym) history.back();
-  }
+if (_globalEdit) { _toggleSelect(sym); return; }
+if (cardState === 'opening' || cardState === 'closing') return;
+const card = document.getElementById(`card-${_safeId(sym)}`);
+const isExpanded = card.classList.contains('expanded');
+const overlay = document.getElementById('cardOverlay');
+if (expandedSym && expandedSym !== sym) collapseCard(expandedSym);
+if (!isExpanded) {
+if (cardState === 'expanded') return;
+pendingAnimTimers.forEach(id => clearTimeout(id));
+pendingAnimTimers = [];
+setTimeout(() => {
+document.querySelectorAll('.card.recently-viewed').forEach(c => c.classList.remove('recently-viewed'));
+}, 361);
+const ghost = document.createElement('div');
+ghost.id = `ghost-${sym}`;
+ghost.className = 'card-ghost';
+const cardStyle = window.getComputedStyle(card);
+ghost.style.gridColumn = cardStyle.gridColumn;
+ghost.style.gridRow = cardStyle.gridRow;
+ghost.style.height = card.offsetHeight + 'px';
+const _gPriceTxt = document.getElementById(`pf-top-${sym}`)?.textContent || '—';
+const _gMainChg = document.getElementById(`main-chg-${sym}`)?.innerHTML || '';
+const _gPhase = document.getElementById(`phase-label-${sym}`)?.textContent || '現價';
+const _gBadgeEl = document.getElementById(`badge-${sym}`);
+const _gBadgeHtml = _gBadgeEl?.classList.contains('show') ? `<span class="tag tag-post show">${_gBadgeEl.textContent}</span>` : '';
+const _gName = STOCKS.find(s => s.sym === sym)?.name || '';
+ghost.innerHTML = `
+<div class="ghost-screw tl"></div><div class="ghost-screw tr"></div>
+<div class="ghost-screw bl"></div><div class="ghost-screw br"></div>
+<div class="ghost-axle"></div>
+<div class="ghost-content">
+<div class="card-header">
+<div><div class="card-sym">${sym}</div><div class="card-name">${_escapeHtml(_gName)}</div></div>
+${_gBadgeHtml}
+</div>
+<div class="price-section">
+<span class="phase-corner-label">${_gPhase}</span>
+<div class="pf-wrap"><div class="pf-stack">
+<div class="pf-top-static"><span>${_gPriceTxt}</span></div>
+<div class="pf-bot-static"><span>${_gPriceTxt}</span></div>
+<div class="pf-front"><span>${_gPriceTxt}</span></div>
+<div class="pf-back"><span>${_gPriceTxt}</span></div>
+</div></div>
+<div class="main-change">${_gMainChg}</div>
+</div>
+</div>
+`;
+card.parentNode.insertBefore(ghost, card.nextSibling);
+const scrollbarW = window.innerWidth - document.documentElement.clientWidth;
+document.documentElement.style.setProperty('--scrollbar-w', scrollbarW + 'px');
+document.getElementById('grid').style.paddingRight = scrollbarW + 'px';
+document.body.classList.add('scroll-locked');
+card.classList.add('expanded');
+card.onclick = null;
+cardState = 'opening';
+document.getElementById('grid').style.pointerEvents = 'none';
+pendingAnimTimers.push(setTimeout(() => {
+document.getElementById('grid').style.pointerEvents = '';
+cardState = 'expanded';
+}, 700));
+expandedSym = sym;
+history.pushState({ expanded: sym }, '');
+overlay.classList.add('show');
+const splitLeft = card.querySelector('.split-left');
+const splitRight = card.querySelector('.split-right');
+const isMobile = window.innerWidth <= 720;
+if (isMobile) {
+card.classList.add('expanded-mobile');
+splitLeft.style.display = 'none';
+const closeBar = document.createElement('div');
+closeBar.className = 'mobile-close-bar';
+closeBar.innerHTML = '<div class="cb-screw"></div><div class="cb-line"></div><span class="cb-label">CLOSE</span><div class="cb-line right"></div><div class="cb-screw"></div>';
+closeBar.onclick = (e) => { e.stopPropagation(); toggleCard(sym, ex); };
+document.body.appendChild(closeBar);
 }
-
-// ── 四層翻頁邏輯 ──
+splitRight.dataset.originalHtml = splitRight.innerHTML;
+splitRight.dataset.expanded = '1';
+const curVal = document.getElementById(`pf-top-${sym}`)?.textContent || '—';
+const mainChg = document.getElementById(`main-chg-${sym}`)?.innerHTML || '';
+const phaseLabel = document.getElementById(`phase-label-${sym}`)?.textContent || '現價';
+const badgeEl = document.getElementById(`badge-${sym}`);
+const badgeHtml = badgeEl?.classList.contains('show') ? `<span class="tag tag-post show">${badgeEl.textContent}</span>` : '';
+const existingPS = document.querySelector(`#card-${_safeId(sym)} .price-section`);
+const lightClass = existingPS?.classList.contains('light-up') ? 'light-up' : existingPS?.classList.contains('light-down') ? 'light-down' : '';
+const isPost = phaseLabel === '盤後';
+const isPre = phaseLabel === '盤前';
+const bigLabel = isPost ? '盤後' : (isPre ? '盤前' : '現價');
+const subVal = document.getElementById(`sub-${sym}`)?.textContent || '—';
+const subChg = document.getElementById(`sub-chg-${sym}`)?.innerHTML || '';
+const showRef = isPost && subVal !== '—';
+const newsList = document.getElementById(`news-list-${sym}`);
+const newsHtml = newsList ? newsList.innerHTML : '';
+if (isMobile) {
+splitRight.innerHTML = `
+<div class="sf-wrap" id="exp-secHeader-${sym}">
+<div class="card-header">
+<div>
+<div class="card-sym">${sym}</div>
+<div class="card-name">${_escapeHtml(STOCKS.find(s=>s.sym===sym)?.name||'')}</div>
+</div>
+${badgeHtml}
+</div>
+</div>
+<div class="sf-wrap" id="exp-secPrice-${sym}">
+<div class="expanded-price-stage ${lightClass}">
+<span class="expanded-phase-label">${bigLabel}</span>
+<div class="pf-wrap" style="margin:4px 0;">
+${makePfStack('exp-'+sym, 'exp-pf-stack', '—')}
+</div>
+<div class="expanded-main-change">${mainChg}</div>
+${showRef ? `
+<div class="expanded-ref-row">
+<span id="exp-flipFront-${sym}" style="font-size:11px;color:#c9b48a;">收盤 ${subVal} ${subChg}</span>
+</div>` : ''}
+</div>
+</div>
+<div class="sf-wrap" id="exp-secNews-${sym}">
+<div class="expanded-news-wrap">
+<div class="expanded-news-title">📰 最新消息</div>
+${newsHtml ? newsHtml
+.replace(/class="news-item"/g, 'class="expanded-news-item"')
+.replace(/class="news-headline"/g, 'class="expanded-news-headline"')
+.replace(/class="news-source"/g, 'class="expanded-news-source"')
+: '<div style="font-size:11px;color:#7a7468;">暫無相關新聞</div>'}
+</div>
+<a class="mobile-tv-btn" href="https://www.tradingview.com/chart/?symbol=${ex ? ex + ':' + sym : sym}" target="_blank" rel="noopener noreferrer">
+📈 在 TradingView 查看圖表
+</a>
+</div>
+`;
+pendingAnimTimers.push(setTimeout(() => splitRight.classList.add('panel-flap'), 60));
+pendingAnimTimers.push(setTimeout(() => { const sh = document.getElementById(`exp-secHeader-${sym}`); if (sh) sh.classList.add('reveal-full'); }, 60));
+pendingAnimTimers.push(setTimeout(() => { const sp = document.getElementById(`exp-secPrice-${sym}`); if (sp) sp.classList.add('reveal-full'); }, 120));
+pendingAnimTimers.push(setTimeout(() => { flipPriceCard('exp-'+sym, curVal); }, 540));
+pendingAnimTimers.push(setTimeout(() => { const sn = document.getElementById(`exp-secNews-${sym}`); if (sn) sn.classList.add('reveal-full'); }, 560));
+} else {
+splitRight.innerHTML = `
+<div class="sf-wrap" id="exp-secHeader-${sym}">
+<div class="card-header">
+<div>
+<div class="card-sym">${sym}</div>
+<div class="card-name">${_escapeHtml(STOCKS.find(s=>s.sym===sym)?.name||'')}</div>
+</div>
+${badgeHtml}
+</div>
+</div>
+<div class="sf-wrap" id="exp-secPrice-${sym}">
+<div class="expanded-price-stage ${lightClass}">
+<span class="expanded-phase-label">${bigLabel}</span>
+<div class="pf-wrap" style="margin:4px 0;">
+${makePfStack('exp-'+sym, 'exp-pf-stack', '—')}
+</div>
+<div class="expanded-main-change">${mainChg}</div>
+${showRef ? `
+<div class="expanded-ref-row">
+<span id="exp-flipFront-${sym}" style="font-size:11px;color:#c9b48a;">收盤 ${subVal} ${subChg}</span>
+</div>` : ''}
+</div>
+</div>
+<div class="sf-wrap" id="exp-secNews-${sym}">
+<div class="expanded-news-wrap">
+<div class="expanded-news-title">📰 最新消息</div>
+${newsHtml ? newsHtml
+.replace(/class="news-item"/g, 'class="expanded-news-item"')
+.replace(/class="news-headline"/g, 'class="expanded-news-headline"')
+.replace(/class="news-source"/g, 'class="expanded-news-source"')
+: '<div style="font-size:11px;color:#7a7468;">暫無相關新聞</div>'}
+</div>
+</div>
+`;
+const chartEl = document.getElementById(`chart-${sym}`);
+pendingAnimTimers.push(setTimeout(() => {
+chartEl.src = `https://www.tradingview.com/widgetembed/?symbol=${ex ? ex + ':' + sym : sym}&interval=D&hidesidetoolbar=1&theme=dark&style=1&timezone=Asia/Taipei&locale=zh_TW`;
+}, 100));
+pendingAnimTimers.push(setTimeout(() => splitLeft.classList.add('panel-flap'), 60));
+pendingAnimTimers.push(setTimeout(() => splitRight.classList.add('panel-flap'), 120));
+pendingAnimTimers.push(setTimeout(() => { const cc = splitLeft.querySelector('.chart-container'); if (cc) cc.classList.add('show-chart'); }, 200));
+pendingAnimTimers.push(setTimeout(() => { const sh = document.getElementById(`exp-secHeader-${sym}`); if (sh) sh.classList.add('reveal-full'); }, 120));
+pendingAnimTimers.push(setTimeout(() => { const sp = document.getElementById(`exp-secPrice-${sym}`); if (sp) sp.classList.add('reveal-full'); }, 180));
+pendingAnimTimers.push(setTimeout(() => { flipPriceCard('exp-'+sym, curVal); }, 640));
+pendingAnimTimers.push(setTimeout(() => { const sn = document.getElementById(`exp-secNews-${sym}`); if (sn) sn.classList.add('reveal-full'); }, 660));
+}
+} else {
+collapseCard(sym);
+if (!collapsingViaBack && history.state?.expanded === sym) history.back();
+}
+}
 function flipPriceCard(sym, newVal) {
-  const topEl   = document.getElementById(`pf-top-${sym}`);
-  const botEl   = document.getElementById(`pf-bot-${sym}`);
-  const frontEl = document.getElementById(`pf-front-${sym}`);
-  const backEl  = document.getElementById(`pf-back-${sym}`);
-  const frontWrap = frontEl?.parentElement;
-  const backWrap  = backEl?.parentElement;
-  if (!topEl || !botEl || !frontEl || !backEl) return;
-
-  const curVal = topEl.textContent;
-  if (curVal === newVal) return;
-
-  // 上靜態換成新值（被前翻蓋蓋住，使用者看不到）
-  topEl.textContent = newVal;
-  // 下靜態維持舊值（被後翻蓋蓋住）
-  botEl.textContent = curVal;
-  // 前翻蓋顯示舊值上半 → 往下翻走
-  frontEl.textContent = curVal;
-  // 後翻蓋顯示新值下半 → 從下翻上來
-  backEl.textContent = newVal;
-
-  // reset
-  frontWrap.classList.remove('go');
-  backWrap.classList.remove('go');
-  backWrap.style.transform = 'rotateX(90deg)';
-  void frontWrap.offsetWidth;
-
-  // fire
-  frontWrap.classList.add('go');
-  backWrap.classList.add('go');
-
-  setTimeout(() => { botEl.textContent = newVal; }, 130);
-
-  // cleanup（0.13 + delay 0.11 + 0.12 = 0.36s + buffer）
-  setTimeout(() => {
-    frontWrap.classList.remove('go');
-    backWrap.classList.remove('go');
-    backWrap.style.transform = '';
-    frontEl.textContent = newVal;
-  }, 280);
+const topEl = document.getElementById(`pf-top-${sym}`);
+const botEl = document.getElementById(`pf-bot-${sym}`);
+const frontEl = document.getElementById(`pf-front-${sym}`);
+const backEl = document.getElementById(`pf-back-${sym}`);
+const frontWrap = frontEl?.parentElement;
+const backWrap = backEl?.parentElement;
+if (!topEl || !botEl || !frontEl || !backEl) return;
+const curVal = topEl.textContent;
+if (curVal === newVal) return;
+topEl.textContent = newVal;
+botEl.textContent = curVal;
+frontEl.textContent = curVal;
+backEl.textContent = newVal;
+frontWrap.classList.remove('go');
+backWrap.classList.remove('go');
+backWrap.style.transform = 'rotateX(90deg)';
+void frontWrap.offsetWidth;
+frontWrap.classList.add('go');
+backWrap.classList.add('go');
+setTimeout(() => { botEl.textContent = newVal; }, 130);
+setTimeout(() => {
+frontWrap.classList.remove('go');
+backWrap.classList.remove('go');
+backWrap.style.transform = '';
+frontEl.textContent = newVal;
+}, 280);
 }
-
 function setPriceDirect(sym, val) {
-  const topEl   = document.getElementById(`pf-top-${sym}`);
-  const botEl   = document.getElementById(`pf-bot-${sym}`);
-  const frontEl = document.getElementById(`pf-front-${sym}`);
-  const backEl  = document.getElementById(`pf-back-${sym}`);
-  if (!topEl) return;
-  topEl.textContent   = val;
-  botEl.textContent   = val;
-  frontEl.textContent = val;
-  backEl.textContent  = val;
+const topEl = document.getElementById(`pf-top-${sym}`);
+const botEl = document.getElementById(`pf-bot-${sym}`);
+const frontEl = document.getElementById(`pf-front-${sym}`);
+const backEl = document.getElementById(`pf-back-${sym}`);
+if (!topEl) return;
+topEl.textContent = val; botEl.textContent = val; frontEl.textContent = val; backEl.textContent = val;
 }
-
 const lastPhase = {};
-
 function parseQuote(q) {
-  if (!q) return null;
-  const current   = parseFloat(q.c ?? q.regular ?? 0);
-  const regular   = parseFloat(q.regular ?? q.c ?? 0);
-  const prevClose = parseFloat(q.prev_close ?? regular);
-  const phase     = q.phase || '正式盤';
-  const valStr    = `$${current.toFixed(2)}`;
-  const mc  = q.d  !== undefined ? parseFloat(q.d)  : (current - prevClose);
-  const mct = q.dp !== undefined ? parseFloat(q.dp) : (prevClose ? (mc / prevClose * 100) : 0);
-  const rc  = q.reg_d  !== undefined ? parseFloat(q.reg_d)  : (regular - prevClose);
-  const rp  = q.reg_dp !== undefined ? parseFloat(q.reg_dp) : (prevClose ? (rc / prevClose * 100) : 0);
-  const phaseLabelMap = { '盤前':'盤前','盤後':'盤後','正式盤':'現價','錯誤':'—' };
-  const isExt = phase === '盤前' || phase === '盤後';
-  return { current, regular, prevClose, phase, valStr, mc, mct, rc, rp, isExt,
-           phaseLabel: phaseLabelMap[phase] || '現價',
-           dir: mc >= 0 ? 'up' : 'down', sg: mc >= 0 ? '▲' : '▼',
-           rd: rc >= 0 ? 'up' : 'down', rsg: rc >= 0 ? '▲' : '▼',
-           lightClass: mc > 0 ? 'light-up' : mc < 0 ? 'light-down' : '' };
+if (!q) return null;
+const current = parseFloat(q.c ?? q.regular ?? 0);
+const regular = parseFloat(q.regular ?? q.c ?? 0);
+const prevClose = parseFloat(q.prev_close ?? regular);
+const phase = q.phase || '正式盤';
+const valStr = `$${current.toFixed(2)}`;
+const mc = q.d !== undefined ? parseFloat(q.d) : (current - prevClose);
+const mct = q.dp !== undefined ? parseFloat(q.dp) : (prevClose ? (mc / prevClose * 100) : 0);
+const rc = q.reg_d !== undefined ? parseFloat(q.reg_d) : (regular - prevClose);
+const rp = q.reg_dp !== undefined ? parseFloat(q.reg_dp) : (prevClose ? (rc / prevClose * 100) : 0);
+const phaseLabelMap = { '盤前':'盤前','盤後':'盤後','正式盤':'現價','錯誤':'—' };
+const isExt = phase === '盤前' || phase === '盤後';
+return {
+current, regular, prevClose, phase, valStr,
+mc, mct, rc, rp, isExt,
+phaseLabel: phaseLabelMap[phase] || '現價',
+dir: mc >= 0 ? 'up' : 'down',
+sg: mc >= 0 ? '▲' : '▼',
+rd: rc >= 0 ? 'up' : 'down',
+rsg: rc >= 0 ? '▲' : '▼',
+lightClass: mc > 0 ? 'light-up' : mc < 0 ? 'light-down' : ''
+};
 }
-
 function renderPrice(sym, q) {
-  const d = parseQuote(q);
-  if (!d) return;
-
-  const cardEl = document.getElementById(`card-${_safeId(sym)}`);
-
-  // ── 查無代號防呆：後端標錯誤，或價格與昨收皆為 0（舊版後端對無效
-  // 代號會漏出 phase=盤前 的 $0.00 假資料，此條件接住）──
-  if (d.phase === '錯誤' || (d.current === 0 && d.prevClose === 0)) {
-    if (cardEl) cardEl.classList.add('card-error');
-    document.getElementById(`phase-label-${sym}`).textContent = '查無';
-    setPriceDirect(sym, '—');
-    document.getElementById(`main-chg-${sym}`).innerHTML =
-      '<span style="color:#e05c5c;">查無此代號 · 按「編輯」可移除</span>';
-    const ps = cardEl?.querySelector('.price-section');
-    if (ps) ps.classList.remove('light-up', 'light-down');
-    const errBadge = document.getElementById(`badge-${sym}`);
-    if (errBadge) errBadge.classList.remove('show');
-    const errSubRow = document.getElementById(`sub-row-${sym}`);
-    if (errSubRow) { errSubRow.style.visibility = 'hidden'; errSubRow.style.display = ''; }
-    return;
-  }
-  if (cardEl) cardEl.classList.remove('card-error');
-
-  document.getElementById(`phase-label-${sym}`).textContent = d.phaseLabel;
-  flipPriceCard(sym, d.valStr);
-  lastPhase[sym] = d.phase;
-
-  document.getElementById(`main-chg-${sym}`).innerHTML =
-    `<span class="${d.dir}">${d.sg} ${Math.abs(d.mc).toFixed(2)} (${Math.abs(d.mct).toFixed(2)}%)</span>`;
-
-  const priceSection = document.querySelector(`#card-${_safeId(sym)} .price-section`);
-  if (priceSection) {
-    priceSection.classList.remove('light-up', 'light-down');
-    if (d.lightClass) priceSection.classList.add(d.lightClass);
-  }
-
-  const badge = document.getElementById(`badge-${sym}`);
-  if (d.isExt) { badge.textContent = d.phase; badge.classList.add('show'); }
-  else badge.classList.remove('show');
-
-  const subRow   = document.getElementById(`sub-row-${sym}`);
-  const subLabel = document.getElementById(`sub-label-${sym}`);
-  const subEl    = document.getElementById(`sub-${sym}`);
-  const subChgEl = document.getElementById(`sub-chg-${sym}`);
-
-  if (d.isExt) {
-    subRow.style.visibility = 'visible'; subRow.style.display = 'flex';
-    subLabel.textContent = '收盤';
-    subEl.textContent = `$${d.regular.toFixed(2)}`;
-    subChgEl.innerHTML = `<span class="${d.rd}">${d.rsg} ${Math.abs(d.rc).toFixed(2)} (${Math.abs(d.rp).toFixed(2)}%)</span>`;
-  } else {
-    subRow.style.visibility = 'hidden'; subRow.style.display = '';
-  }
+const d = parseQuote(q);
+if (!d) return;
+const cardEl = document.getElementById(`card-${_safeId(sym)}`);
+if (d.phase === '錯誤' || (d.current === 0 && d.prevClose === 0)) {
+if (cardEl) cardEl.classList.add('card-error');
+document.getElementById(`phase-label-${sym}`).textContent = '查無';
+setPriceDirect(sym, '—');
+document.getElementById(`main-chg-${sym}`).innerHTML = '<span style="color:#e05c5c;">查無此代號 · 按「編輯」可移除</span>';
+const ps = cardEl?.querySelector('.price-section');
+if (ps) ps.classList.remove('light-up', 'light-down');
+const errBadge = document.getElementById(`badge-${sym}`);
+if (errBadge) errBadge.classList.remove('show');
+const errSubRow = document.getElementById(`sub-row-${sym}`);
+if (errSubRow) { errSubRow.style.visibility = 'hidden'; errSubRow.style.display = ''; }
+return;
 }
-
-// ── buildGrid() 重建後立即從快取回填價格/新聞，不等下一輪輪詢 ──
-// 修復：新增/刪除卡片時全部卡片閃回 '—' 需等最久 60s 的問題。
+if (cardEl) cardEl.classList.remove('card-error');
+document.getElementById(`phase-label-${sym}`).textContent = d.phaseLabel;
+flipPriceCard(sym, d.valStr);
+lastPhase[sym] = d.phase;
+document.getElementById(`main-chg-${sym}`).innerHTML = `<span class="${d.dir}">${d.sg} ${Math.abs(d.mc).toFixed(2)} (${Math.abs(d.mct).toFixed(2)}%)</span>`;
+const priceSection = document.querySelector(`#card-${_safeId(sym)} .price-section`);
+if (priceSection) {
+priceSection.classList.remove('light-up', 'light-down');
+if (d.lightClass) priceSection.classList.add(d.lightClass);
+}
+const badge = document.getElementById(`badge-${sym}`);
+if (d.isExt) { badge.textContent = d.phase; badge.classList.add('show'); }
+else badge.classList.remove('show');
+const subRow = document.getElementById(`sub-row-${sym}`);
+const subLabel = document.getElementById(`sub-label-${sym}`);
+const subEl = document.getElementById(`sub-${sym}`);
+const subChgEl = document.getElementById(`sub-chg-${sym}`);
+if (d.isExt) {
+subRow.style.visibility = 'visible'; subRow.style.display = 'flex';
+subLabel.textContent = '收盤';
+subEl.textContent = `$${d.regular.toFixed(2)}`;
+subChgEl.innerHTML = `<span class="${d.rd}">${d.rsg} ${Math.abs(d.rc).toFixed(2)} (${Math.abs(d.rp).toFixed(2)}%)</span>`;
+} else {
+subRow.style.visibility = 'hidden'; subRow.style.display = '';
+}
+}
 function _renderAllFromCache() {
-  const cache = window._lastStockData;
-  if (!cache) return;
-  STOCKS.forEach(function(s) {
-    const data = cache[s.sym];
-    if (data?.quote) renderPrice(s.sym, data.quote);
-    if (data?.news)  renderNews(s.sym, data.news);
-  });
+const cache = window._lastStockData;
+if (!cache) return;
+STOCKS.forEach(function(s) {
+const data = cache[s.sym];
+if (data?.quote) renderPrice(s.sym, data.quote);
+if (data?.news) renderNews(s.sym, data.news);
+});
 }
-
-// ── BUG 2 修復：跨裝置清單同步 ─────────────────────────────
-// GitHub 的 stocks 欄位 = source of truth，localStorage 僅為快取。
-// 防護：無 token（本機唯讀模式，remote 非本人清單語意）、sync 進行中
-// （避免覆寫剛按下的新增）、卡片展開/編輯中（避免重建 DOM 打斷互動）
-// 皆跳過，交給下一輪輪詢。
 function _reconcileStocks(remoteSyms) {
-  if (!Array.isArray(remoteSyms) || remoteSyms.length === 0) return;
-  if (!_getToken()) return;
-  if (_syncInFlight || expandedSym || _globalEdit || cardState !== 'idle') return;
-  const localSyms = STOCKS.map(function(s) { return s.sym; });
-  if (JSON.stringify(localSyms) === JSON.stringify(remoteSyms)) return;
-  const bySym = {};
-  STOCKS.forEach(function(s) { bySym[s.sym] = s; });
-  STOCKS = remoteSyms
-    .filter(function(sym) { return /^[A-Z0-9._^]{1,12}$/.test(sym); })
-    .map(function(sym) { return bySym[sym] || { sym: sym, name: sym, ex: '' }; });
-  _saveStocks();
-  buildGrid();
-  _renderAllFromCache();
-  console.info('[reconcile] 清單已對齊 GitHub:', remoteSyms.join(','));
+if (!Array.isArray(remoteSyms) || remoteSyms.length === 0) return;
+if (!_getToken()) return;
+if (_syncInFlight || expandedSym || _globalEdit || cardState !== 'idle') return;
+const localSyms = STOCKS.map(function(s) { return s.sym; });
+if (JSON.stringify(localSyms) === JSON.stringify(remoteSyms)) return;
+const bySym = {};
+STOCKS.forEach(function(s) { bySym[s.sym] = s; });
+STOCKS = remoteSyms
+.filter(function(sym) { return /^[A-Z0-9._^]{1,12}$/.test(sym); })
+.map(function(sym) { return bySym[sym] || { sym: sym, name: sym, ex: '' }; });
+_saveStocks();
+buildGrid();
+_renderAllFromCache();
+console.info('[reconcile] 清單已對齊 GitHub:', remoteSyms.join(','));
 }
-
-// Precise-refresh timer handle — cancelled and reset on every successful load.
 let _nextUpdateTimer = null;
-
 async function loadData() {
-  try {
-    const res  = await fetch('./stock_data.json?t=' + Date.now());
-    const json = await res.json();
-    window._lastStockData = json.data || {};
-    _reconcileStocks(json.stocks);
-    let _nameDirty = false;
-    STOCKS.forEach((s) => {
-      const data = json.data?.[s.sym];
-      // BUG 3: 後端 name 回填。僅當本地 name 仍是佔位符（=== sym）時採用，
-      // 手寫策展名（'Google C'、'TSMC'…）永不被覆蓋。
-      if (data?.name && s.name === s.sym && data.name !== s.sym) {
-        s.name = data.name;
-        _nameDirty = true;
-        const nameEl = document.querySelector(`#card-${_safeId(s.sym)} .card-name`);
-        if (nameEl) nameEl.textContent = s.name;
-      }
-      if (data?.quote) renderPrice(s.sym, data.quote);
-      if (data?.news)  renderNews(s.sym, data.news);
-    });
-    if (_nameDirty) _saveStocks();
-
-    // Schedule a precise refresh at the next expected update time.
-    // Falls back to the 60-second polling interval if field is absent or stale.
-    if (_nextUpdateTimer) clearTimeout(_nextUpdateTimer);
-    const nextAt = json.next_update_at ? Date.parse(json.next_update_at) : NaN;
-    const msUntilNext = nextAt - Date.now();
-    if (msUntilNext > 0 && msUntilNext < 35 * 60 * 1000) {
-      // Only arm if the target is in the future and within 35 min (sanity cap).
-      _nextUpdateTimer = setTimeout(loadData, msUntilNext);
-    }
-  } catch(e) { console.error(e); }
+try {
+const res = await fetch('./stock_data.json?t=' + Date.now());
+const json = await res.json();
+window._lastStockData = json.data || {};
+_reconcileStocks(json.stocks);
+let _nameDirty = false;
+STOCKS.forEach((s) => {
+const data = json.data?.[s.sym];
+if (data?.name && s.name === s.sym && data.name !== s.sym) {
+s.name = data.name;
+_nameDirty = true;
+const nameEl = document.querySelector(`#card-${_safeId(s.sym)} .card-name`);
+if (nameEl) nameEl.textContent = s.name;
 }
-
+if (data?.quote) renderPrice(s.sym, data.quote);
+if (data?.news) renderNews(s.sym, data.news);
+});
+if (_nameDirty) _saveStocks();
+if (_nextUpdateTimer) clearTimeout(_nextUpdateTimer);
+const nextAt = json.next_update_at ? Date.parse(json.next_update_at) : NaN;
+const msUntilNext = nextAt - Date.now();
+if (msUntilNext > 0 && msUntilNext < 35 * 60 * 1000) {
+_nextUpdateTimer = setTimeout(loadData, msUntilNext);
+}
+} catch(e) { console.error(e); }
+}
 function renderNews(sym, newsList) {
-  const el = document.getElementById(`news-list-${sym}`);
-  if (!el) return;
-  el.innerHTML = newsList.length
-    ? newsList.map(n =>
-        `<a class="news-item" href="${_escapeHtml(_safeUrl(n.url))}" target="_blank" rel="noopener noreferrer">
-           <div class="news-headline">${_escapeHtml(n.headline)}</div>
-           <div class="news-source">${_escapeHtml(n.source)}</div>
-         </a>`).join('')
-    : `<div class="news-source">暫無相關新聞</div>`;
+const el = document.getElementById(`news-list-${sym}`);
+if (!el) return;
+el.innerHTML = newsList.length ? newsList.map(n =>
+`<a class="news-item" href="${_escapeHtml(_safeUrl(n.url))}" target="_blank" rel="noopener noreferrer">
+<div class="news-headline">${_escapeHtml(n.headline)}</div>
+<div class="news-source">${_escapeHtml(n.source)}</div>
+</a>`).join('') : `<div class="news-source">暫無相關新聞</div>`;
 }
-
 let collapsingViaBack = false;
 window.addEventListener('popstate', () => {
-  if (expandedSym && cardState !== 'closing') {
-    collapsingViaBack = true;
-    toggleCard(expandedSym, '');
-  }
+if (expandedSym && cardState !== 'closing') {
+collapsingViaBack = true;
+toggleCard(expandedSym, '');
+}
 });
-
 buildGrid();
 loadData();
 setInterval(loadData, 60000);
