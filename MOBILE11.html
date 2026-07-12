@@ -94,10 +94,11 @@
   .res-empty { font-size: 11px; color: #6f6a5e; text-align: center; padding: 10px; }
   #syncStatus { font-size: 11px; min-height: 16px; margin-top: 6px; font-family: monospace; }
 
-  /* ── 編輯模式指示 1：慢閃 set mode（電子鐘調時感，未選取才閃）── */
-  @keyframes setBlink { 0%,100% { opacity: 1; } 50% { opacity: .3; text-shadow: 0 0 5px rgba(255,200,110,0.2); } }
-  body.editing .card:not(.go):not(.selected) .pf-top-static span,
-  body.editing .card:not(.go):not(.selected) .pf-front span { animation: setBlink 1.3s ease-in-out infinite; }
+  /* ── 編輯模式指示 1：慢閃 set mode（電子鐘調時感，未選取才閃）──
+     作用於整個 .pf-stack 容器：四層翻頁結構上下半同步閃，
+     只選 span 子層會漏掉下靜態層 → 上半閃下半恆亮，視覺像壞掉 */
+  @keyframes setBlink { 0%,100% { opacity: 1; } 50% { opacity: .3; } }
+  body.editing .card:not(.go):not(.selected) .pf-stack { animation: setBlink 1.3s ease-in-out infinite; }
 
   /* ── 編輯模式指示 2：頂邊發光細縫（面板未扣上）── */
   .card::before {
@@ -121,8 +122,7 @@
                   0 0 0 1px rgba(200,169,110,0.4),
                   0 0 28px rgba(200,140,60,0.25);
     }
-    body.editing .card:not(.selected):not(.go):hover .pf-top-static span,
-    body.editing .card:not(.selected):not(.go):hover .pf-front span { animation: none; }
+    body.editing .card:not(.selected):not(.go):hover .pf-stack { animation: none; }
     body.editing .card:not(.selected):not(.go):hover::before { height: 3px; box-shadow: 0 0 16px rgba(255,200,110,0.85); }
   }
   .card.selected {
@@ -1189,7 +1189,9 @@ function _renderSearchResult(sym, info) {
     results.innerHTML = '<div class="res-empty">查無「' + sym + '」此股票代號</div>';
     return;
   }
-  var nameHtml = info.unverified ? '' : '<div class="r-name">' + _escapeHtml(info.name) + '</div>';
+  var nameHtml = info.unverified
+    ? '<div class="r-name" style="color:#a08a5a;">⚠ 無法即時驗證代號，加入後若查無將標示於卡片</div>'
+    : '<div class="r-name">' + _escapeHtml(info.name) + '</div>';
   // onclick 只帶 sym（已通過 /^[A-Z^][A-Z0-9._^]{0,11}$/ 驗證，無 XSS 風險）；
   // 外部資料（公司名/交易所）留在 _symSearchCache 內存，由 _addStockFromSearch 讀取，
   // 不讓任何未跳脫的外部字串進入 inline onclick attribute。
