@@ -1,7 +1,7 @@
 {
-  "name": "ç¾è¡ç¤åæå ±è³æåº«",
-  "updated_at": "2026-07-12T17:57:44.038008+08:00",
-  "next_update_at": "2026-07-12T10:30:00Z",
+  "name": "美股盤前情報資料庫",
+  "updated_at": "2026-07-13T01:58:32.130193+08:00",
+  "next_update_at": "2026-07-12T18:30:00Z",
   "stocks": [
     "NOW",
     "TSM"
@@ -19,7 +19,7 @@
         "pre": null,
         "post": 107.35,
         "prev_close": 108.84,
-        "phase": "æ­£å¼ç¤"
+        "phase": "正式盤"
       },
       "news": [
         {
@@ -27,52 +27,6 @@
           "datetime": 1783724535,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/markets/stocks/articles/servicenow-now-stock-sinks-market-214502394.html"
-        }
-      ]
-    },
-    "NVDA": {
-      "name": "NVIDIA Corporation",
-      "quote": {
-        "c": 210.96,
-        "d": 8.18,
-        "dp": 4.0339,
-        "regular": 210.96,
-        "reg_d": 8.18,
-        "reg_dp": 4.0339,
-        "pre": null,
-        "post": 210.57,
-        "prev_close": 202.78,
-        "phase": "æ­£å¼ç¤"
-      },
-      "news": [
-        {
-          "headline": "Stock market today: Dow, S&P 500, Nasdaq rise to cap choppy week as SK Hynix pops in US debut",
-          "datetime": 1783724535,
-          "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/markets/live/stock-market-today-friday-july-10-dow-sp-nasdaq-113921604.html"
-        }
-      ]
-    },
-    "SPCX": {
-      "name": "Space Exploration Technologies",
-      "quote": {
-        "c": 145.3,
-        "d": -6.86,
-        "dp": -4.5084,
-        "regular": 145.3,
-        "reg_d": -6.86,
-        "reg_dp": -4.5084,
-        "pre": null,
-        "post": 145.92,
-        "prev_close": 152.16,
-        "phase": "æ­£å¼ç¤"
-      },
-      "news": [
-        {
-          "headline": "Why you should care about SK Hynix's IPO",
-          "datetime": 1783724535,
-          "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/video/why-you-should-care-about-sk-hynixs-ipo-142904448.html"
         }
       ]
     },
@@ -88,7 +42,7 @@
         "pre": null,
         "post": 435.8,
         "prev_close": 436.96,
-        "phase": "æ­£å¼ç¤"
+        "phase": "正式盤"
       },
       "news": [
         {
@@ -96,52 +50,6 @@
           "datetime": 1783724535,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/markets/stocks/articles/why-meta-meta-stock-soaring-210320840.html"
-        }
-      ]
-    },
-    "SNDK": {
-      "name": "Sandisk Corporation",
-      "quote": {
-        "c": 1915.92,
-        "d": 57.65,
-        "dp": 3.1023,
-        "regular": 1915.92,
-        "reg_d": 57.65,
-        "reg_dp": 3.1023,
-        "pre": null,
-        "post": 1935,
-        "prev_close": 1858.27,
-        "phase": "æ­£å¼ç¤"
-      },
-      "news": [
-        {
-          "headline": "Chip stocks regain some ground after whipsaw of a trading week",
-          "datetime": 1783724535,
-          "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/video/chip-stocks-regain-ground-whipsaw-143000172.html"
-        }
-      ]
-    },
-    "MPMPMPMPMP": {
-      "name": "MPMPMPMPMP",
-      "quote": {
-        "c": 0,
-        "d": 0,
-        "dp": 0,
-        "regular": 0,
-        "reg_d": 0,
-        "reg_dp": 0,
-        "pre": null,
-        "post": null,
-        "prev_close": 0,
-        "phase": "ç¤å"
-      },
-      "news": [
-        {
-          "headline": "æ«ç¡ææ°æ°è",
-          "datetime": 1783850264,
-          "source": "Yahoo Finance",
-          "url": "#"
         }
       ]
     }
