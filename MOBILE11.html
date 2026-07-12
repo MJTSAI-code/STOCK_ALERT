@@ -19,6 +19,8 @@ color-scheme: dark light;
 --accent: #d9cdb8; --knob: #8a6240;
 }
 * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+/* 捲軸槽永久保留：捲軸出現/消失都不再改變版面寬度，根治點卡片與編輯切換的位移 */
+html { scrollbar-gutter: stable; }
 body { background: var(--bg); color: var(--text); font-family: 'Roboto Mono', 'Roboto Mono Fallback', monospace; min-height: 100vh; min-width: 960px; padding-bottom: 40px; color-scheme: dark; }
 body.scroll-locked { overflow: hidden; }
 .topbar { display: flex; align-items: center; justify-content: space-between; padding: 16px 20px; background: #0d0d0d; border-bottom: 1px solid var(--card-frame); }
@@ -994,9 +996,7 @@ ${_gBadgeHtml}
 </div>
 `;
 card.parentNode.insertBefore(ghost, card.nextSibling);
-const scrollbarW = window.innerWidth - document.documentElement.clientWidth;
-document.documentElement.style.setProperty('--scrollbar-w', scrollbarW + 'px');
-document.getElementById('grid').style.paddingRight = scrollbarW + 'px';
+// 捲軸補償改由 CSS scrollbar-gutter:stable 處理，JS 不再手動加 padding（避免雙重補償反向位移）
 document.body.classList.add('scroll-locked');
 card.classList.add('expanded');
 card.onclick = null;
