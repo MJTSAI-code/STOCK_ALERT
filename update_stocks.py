@@ -349,6 +349,24 @@ def fetch_stock_data():
             phase = get_market_phase(market_state, tw_now)
             print(f"  marketState={market_state!r} → phase={phase}")
 
+            # ── 資料品質閘門：無效代號（如亂碼）在 yfinance 三層抓取中
+            # 全部「安靜失敗」（不拋例外、只回空值），price 維持 0.0 卻會
+            # 繼續往下組出 phase=盤前/正式盤 的假資料 → 前端「查無」防呆
+            # 永不觸發。此處強制攔下標記錯誤。──
+            if regular_price == 0.0 and pre_price is None and post_price is None:
+                print(f"  ⚠️ {sym} 三層抓取皆無價格（疑為無效代號），標記錯誤")
+                output_data[sym] = {
+                    "name": company_name,
+                    "quote": {
+                        "c": 0.0, "d": 0.0, "dp": 0.0,
+                        "regular": 0.0, "reg_d": 0.0, "reg_dp": 0.0,
+                        "pre": None, "post": None,
+                        "prev_close": 0.0, "phase": "錯誤"
+                    },
+                    "news": existing_news.get(sym, [])
+                }
+                continue
+
             if phase == "盤前" and pre_price is not None:
                 current_price = float(pre_price)
             elif phase == "盤後" and post_price is not None:
