@@ -1103,119 +1103,114 @@ function _safeUrl(u) {
 
 // _renderManageList() removed — deletion moved to bottom action bar (batch)
 
-// ── 搜尋新增：格式合法後，debounce 呼叫 TradingView 公開 symbol-search
-// API 即時驗證代號是否真實存在（延伸既有依賴，圖表本來就靠 TV，非
-// 新增外部依賴）。查到 → 顯示真實公司名/交易所，新增當下即為正確
-// 資料，不用等 2-4 分鐘後端回填。查不到 → 直接拦下，不給「+加入」。
-// 查詢本身失敗（網路/CORS/timeout）→ 靜默退回舊行為（sym 當暫時名
-// 稱直接可加），由既有的後端「查無此代號」防呆兜底，不因驗證失敗而卡死。
-let _symSearchTimer = null;
-const _symSearchCache = new Map();  // sym -> {name, ex} | null（session 內快取，同代號不重查）
+// ── 搜尋新增：本地字庫比對 ─────────────────────────────
+// symbols.json（月更 workflow 產出，NASDAQ Trader 官方清單 ~1 萬檔）
+// 與頁面同源伺服 → 零 CORS。首次搜尋時懶載入，之後每個按鍵皆為
+// 記憶體即時比對：代號前綴 + 公司名子字串，可像 demo 一樣用名字搜。
+// 字庫載入失敗（檔案尚未生成/網路）→ fail-open：顯示 ⚠ 仍可加入，
+// 由後端「查無此代號」防呆兜底。
+let _symLib = null;        // null=未載入 | 'loading' | 'failed' | Map(sym -> name)
+const _SYM_SAFE_RE = /^[A-Z0-9.\-^$]{1,12}$/;  // 進 inline onclick 前的白名單
+
+async function _loadSymLib() {
+  if (_symLib instanceof Map || _symLib === 'loading') return;
+  _symLib = 'loading';
+  try {
+    const res = await fetch('./symbols.json');
+    if (!res.ok) throw new Error('HTTP ' + res.status);
+    const arr = await res.json();
+    const m = new Map();
+    if (Array.isArray(arr)) {
+      arr.forEach(function(row) {
+        if (Array.isArray(row) && _SYM_SAFE_RE.test(String(row[0]))) {
+          m.set(String(row[0]), String(row[1] || row[0]));
+        }
+      });
+    }
+    if (m.size === 0) throw new Error('empty library');
+    _symLib = m;
+    console.info('[symLib] 字庫載入完成:', m.size, '筆');
+  } catch (e) {
+    console.warn('[symLib] 字庫載入失敗，fail-open:', e);
+    _symLib = 'failed';
+  }
+  _renderSearch();  // 載入結束後刷新當前搜尋畫面
+}
 
 function _renderSearch() {
   var input = document.getElementById('searchInput');
   var results = document.getElementById('searchResults');
   if (!input || !results) return;
   var raw = input.value.trim();
-  var sym = raw.toUpperCase().replace(/[^A-Z0-9._^]/g, '');
-  clearTimeout(_symSearchTimer);
-  if (!sym) { results.innerHTML = ''; return; }
+  var q = raw.toUpperCase();
+  var sym = q.replace(/[^A-Z0-9._^]/g, '');
+  if (!q) { results.innerHTML = ''; return; }
 
-  var validTicker = /^[A-Z^][A-Z0-9._^]{0,11}$/.test(sym);
-  if (!validTicker) {
-    results.innerHTML = '<div class="res-empty">代號格式無效</div>';
-    return;
-  }
-  if (STOCKS.find(function(s) { return s.sym === sym; })) {
-    results.innerHTML = '<div class="res-empty">「' + sym + '」已在自選清單中</div>';
-    return;
-  }
   if (STOCKS.length >= MAX_STOCKS) {
     results.innerHTML = '<div class="res-empty">已達上限 ' + MAX_STOCKS + ' 支</div>';
     return;
   }
 
-  if (_symSearchCache.has(sym)) {
-    _renderSearchResult(sym, _symSearchCache.get(sym));
+  if (_symLib === null || _symLib === 'loading') {
+    results.innerHTML = '<div class="res-empty">載入代號字庫中…</div>';
+    _loadSymLib();
     return;
   }
 
-  results.innerHTML = '<div class="res-empty">查詢中…</div>';
-  _symSearchTimer = setTimeout(function() { _lookupSymbol(sym); }, 300);
-}
-
-async function _lookupSymbol(sym) {
-  var timedOut = false;
-  var timeoutId = setTimeout(function() { timedOut = true; }, 4000);
-  try {
-    // 用 setTimeout race 取代 AbortController：部分沙盒/預覽環境會把
-    // fetch 轉手包成 postMessage，AbortSignal 物件無法被安全複製會直接
-    // 拋錯（DataCloneError），改用旗標判斷逾時更相容，行為仍等同逾時放棄。
-    var res = await Promise.race([
-      fetch('https://symbol-search.tradingview.com/symbol_search/?text=' + encodeURIComponent(sym) + '&type=stock'),
-      new Promise(function(_, reject) { setTimeout(function() { reject(new Error('lookup timeout')); }, 4000); })
-    ]);
-    clearTimeout(timeoutId);
-    if (timedOut) return;  // 逾時後才回來的結果直接丟棄
-    if (!res.ok) throw new Error('HTTP ' + res.status);
-    var list = await res.json();
-    var hit = Array.isArray(list) ? list.find(function(item) {
-      var s = String(item.symbol || '').split(':').pop().toUpperCase();
-      return s === sym;
-    }) : null;
-
-    // 確認查詢當下輸入框仍是這個代號（防止使用者已改打別的字，舊結果晚到蓋掉新畫面）
-    var input = document.getElementById('searchInput');
-    var curSym = input ? input.value.trim().toUpperCase().replace(/[^A-Z0-9._^]/g, '') : '';
-    if (curSym !== sym) return;
-
-    if (hit) {
-      var info = { name: (hit.description || sym).trim(), ex: (hit.exchange || '').toUpperCase() };
-      _symSearchCache.set(sym, info);
-      _renderSearchResult(sym, info);
-    } else {
-      _symSearchCache.set(sym, null);
-      _renderSearchResult(sym, null);
+  if (_symLib === 'failed') {
+    // fail-open：無字庫可查，格式合法即允許加入，後端防呆兜底
+    var validTicker = /^[A-Z^][A-Z0-9._^]{0,11}$/.test(sym);
+    if (!sym || !validTicker) {
+      results.innerHTML = '<div class="res-empty">代號格式無效</div>';
+      return;
     }
-  } catch (e) {
-    clearTimeout(timeoutId);
-    // 查詢失敗（非查無，是連不上）：靜默退回舊行為，不拦阻新增，
-    // 交給既有後端「查無此代號」防呆兜底
-    console.warn('[symbolSearch] lookup failed, fallback to direct add:', e);
-    var input2 = document.getElementById('searchInput');
-    var curSym2 = input2 ? input2.value.trim().toUpperCase().replace(/[^A-Z0-9._^]/g, '') : '';
-    if (curSym2 !== sym) return;
-    _renderSearchResult(sym, { name: sym, ex: '', unverified: true });
-  }
-}
-
-function _renderSearchResult(sym, info) {
-  var results = document.getElementById('searchResults');
-  if (!results) return;
-  if (info === null) {
-    results.innerHTML = '<div class="res-empty">查無「' + sym + '」此股票代號</div>';
+    if (STOCKS.find(function(s) { return s.sym === sym; })) {
+      results.innerHTML = '<div class="res-empty">「' + sym + '」已在自選清單中</div>';
+      return;
+    }
+    results.innerHTML =
+      '<div class="res-row"><div><span class="r-sym">' + sym + '</span>' +
+      '<div class="r-name" style="color:#a08a5a;">⚠ 字庫無法載入，未驗證即加入，若查無將標示於卡片</div>' +
+      '</div><button class="add-btn" onclick="_addStockFromSearch(\'' + sym + '\')">＋ 加入</button></div>';
     return;
   }
-  var nameHtml = info.unverified
-    ? '<div class="r-name" style="color:#a08a5a;">⚠ 無法即時驗證代號，加入後若查無將標示於卡片</div>'
-    : '<div class="r-name">' + _escapeHtml(info.name) + '</div>';
-  // onclick 只帶 sym（已通過 /^[A-Z^][A-Z0-9._^]{0,11}$/ 驗證，無 XSS 風險）；
-  // 外部資料（公司名/交易所）留在 _symSearchCache 內存，由 _addStockFromSearch 讀取，
-  // 不讓任何未跳脫的外部字串進入 inline onclick attribute。
-  results.innerHTML =
-    '<div class="res-row"><div>' +
-    '<span class="r-sym">' + sym + '</span>' + nameHtml +
-    '</div><button class="add-btn" onclick="_addStockFromSearch(\'' + sym + '\')">＋ 加入</button></div>';
+
+  // ── 字庫比對：代號前綴優先，公司名子字串次之，最多 6 筆 ──
+  var hits = [];
+  var nameHits = [];
+  _symLib.forEach(function(name, s) {
+    if (hits.length >= 6) return;
+    if (s === q || s.indexOf(q) === 0) hits.push([s, name]);
+    else if (nameHits.length < 6 && q.length >= 2 && name.toUpperCase().indexOf(q) !== -1) nameHits.push([s, name]);
+  });
+  var merged = hits.concat(nameHits).slice(0, 6);
+  // 完全相符者排最前
+  merged.sort(function(a, b) { return (a[0] === q ? -1 : 0) - (b[0] === q ? -1 : 0); });
+
+  if (merged.length === 0) {
+    results.innerHTML = '<div class="res-empty">查無「' + _escapeHtml(raw) + '」相符的股票代號或名稱</div>';
+    return;
+  }
+
+  results.innerHTML = merged.map(function(row) {
+    var s = row[0], name = row[1];
+    if (STOCKS.find(function(st) { return st.sym === s; })) {
+      return '<div class="res-row"><div><span class="r-sym">' + s + '</span>' +
+             '<div class="r-name">' + _escapeHtml(name) + '</div></div>' +
+             '<span class="res-empty" style="padding:0;">已在清單</span></div>';
+    }
+    return '<div class="res-row"><div><span class="r-sym">' + s + '</span>' +
+           '<div class="r-name">' + _escapeHtml(name) + '</div></div>' +
+           '<button class="add-btn" onclick="_addStockFromSearch(\'' + s + '\')">＋ 加入</button></div>';
+  }).join('');
 }
 
 async function _addStockFromSearch(sym) {
-  if (!sym || STOCKS.find(function(s) { return s.sym === sym; }) || STOCKS.length >= MAX_STOCKS) return;
-  var cached = _symSearchCache.get(sym);
-  var name = (cached && cached.name) || sym;
-  var ex = (cached && cached.ex) || '';
-  // ex 有值就用查到的真實交易所；查詢失敗/查無快取時留空 → TradingView
-  // URL 走裸代號 fallback，由 TV 自己的 resolver 解析主上市
-  STOCKS.push({ sym: sym, name: name, ex: ex });
+  if (!sym || !_SYM_SAFE_RE.test(sym)) return;
+  if (STOCKS.find(function(s) { return s.sym === sym; }) || STOCKS.length >= MAX_STOCKS) return;
+  var name = (_symLib instanceof Map && _symLib.get(sym)) || sym;
+  // ex 留空 → TradingView URL 走裸代號 fallback，由 TV resolver 解析主上市
+  STOCKS.push({ sym: sym, name: name, ex: '' });
   _saveStocks();
   _markEditDirty();
   var input = document.getElementById('searchInput');
@@ -1965,8 +1960,9 @@ function renderPrice(sym, q) {
 
   const cardEl = document.getElementById(`card-${_safeId(sym)}`);
 
-  // ── 查無代號防呆：後端三層抓取全失敗時 phase='錯誤' ──
-  if (d.phase === '錯誤') {
+  // ── 查無代號防呆：後端標錯誤，或價格與昨收皆為 0（舊版後端對無效
+  // 代號會漏出 phase=盤前 的 $0.00 假資料，此條件接住）──
+  if (d.phase === '錯誤' || (d.current === 0 && d.prevClose === 0)) {
     if (cardEl) cardEl.classList.add('card-error');
     document.getElementById(`phase-label-${sym}`).textContent = '查無';
     setPriceDirect(sym, '—');
