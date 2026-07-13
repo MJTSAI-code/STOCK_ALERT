@@ -1,7 +1,7 @@
 {
   "name": "美股盤前情報資料庫",
-  "updated_at": "2026-07-13T08:29:41.167569+08:00",
-  "next_update_at": "2026-07-13T01:00:00Z",
+  "updated_at": "2026-07-13T08:30:03.898237+08:00",
+  "next_update_at": "2026-07-13T01:30:00Z",
   "stocks": [
     "MSFT",
     "GOOG",
@@ -100,6 +100,52 @@
           "datetime": 1783724535,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/markets/stocks/articles/servicenow-now-stock-sinks-market-214502394.html"
+        }
+      ]
+    },
+    "TSM": {
+      "name": "Taiwan Semiconductor Manufactur",
+      "quote": {
+        "c": 434.11,
+        "d": -2.85,
+        "dp": -0.6522,
+        "regular": 434.11,
+        "reg_d": -2.85,
+        "reg_dp": -0.6522,
+        "pre": null,
+        "post": 435.8,
+        "prev_close": 436.96,
+        "phase": "正式盤"
+      },
+      "news": [
+        {
+          "headline": "Why Is Meta (META) Stock Soaring Today",
+          "datetime": 1783724535,
+          "source": "Yahoo Finance",
+          "url": "https://finance.yahoo.com/markets/stocks/articles/why-meta-meta-stock-soaring-210320840.html"
+        }
+      ]
+    },
+    "MRVL": {
+      "name": "Marvell Technology, Inc.",
+      "quote": {
+        "c": 235.81,
+        "d": -7.46,
+        "dp": -3.0666,
+        "regular": 235.81,
+        "reg_d": -7.46,
+        "reg_dp": -3.0666,
+        "pre": null,
+        "post": 236.7,
+        "prev_close": 243.27,
+        "phase": "正式盤"
+      },
+      "news": [
+        {
+          "headline": "暫無最新新聞",
+          "datetime": 1783902603,
+          "source": "Yahoo Finance",
+          "url": "#"
         }
       ]
     }
