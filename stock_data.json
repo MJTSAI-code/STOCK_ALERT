@@ -1,6 +1,6 @@
 {
   "name": "美股盤前情報資料庫",
-  "updated_at": "2026-07-14T05:48:59.788411+08:00",
+  "updated_at": "2026-07-14T05:58:26.361453+08:00",
   "next_update_at": "2026-07-13T22:30:00Z",
   "stocks": [
     "MSFT",
@@ -18,21 +18,21 @@
     "MSFT": {
       "name": "Microsoft Corporation",
       "quote": {
-        "c": 389.79,
-        "d": -1.2,
-        "dp": -0.3069,
+        "c": 389.86,
+        "d": -1.13,
+        "dp": -0.289,
         "regular": 390.99,
         "reg_d": 5.89,
         "reg_dp": 1.5295,
         "pre": null,
-        "post": 389.79,
+        "post": 389.86,
         "prev_close": 385.1,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "'Scam Altman strikes again': Why SpaceX CEO Elon Musk was beefing on X over the weekend",
-          "datetime": 1783979339,
+          "datetime": 1783979906,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/video/scam-altman-strikes-again-why-spacex-ceo-elon-musk-was-beefing-on-x-over-the-weekend-202657668.html"
         }
@@ -41,21 +41,21 @@
     "GOOG": {
       "name": "Alphabet Inc.",
       "quote": {
-        "c": 350.47,
-        "d": -0.2,
-        "dp": -0.0576,
+        "c": 350.44,
+        "d": -0.23,
+        "dp": -0.0656,
         "regular": 350.67,
         "reg_d": -4.36,
         "reg_dp": -1.2281,
         "pre": null,
-        "post": 350.47,
+        "post": 350.44,
         "prev_close": 355.03,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Meta's data center costs are skyrocketing. Here's what you need to know.",
-          "datetime": 1783979339,
+          "datetime": 1783979906,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/video/metas-data-center-costs-are-skyrocketing-heres-what-you-need-to-know-203416070.html"
         }
@@ -64,21 +64,21 @@
     "NVDA": {
       "name": "NVIDIA Corporation",
       "quote": {
-        "c": 203.66,
+        "c": 203.65,
         "d": 0.12,
-        "dp": 0.0614,
+        "dp": 0.0565,
         "regular": 203.53,
         "reg_d": -7.43,
         "reg_dp": -3.522,
         "pre": null,
-        "post": 203.66,
+        "post": 203.65,
         "prev_close": 210.96,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Retail investors are cashing out of Apple, Tesla, and chip stocks: Chart of the Day",
-          "datetime": 1783979339,
+          "datetime": 1783979906,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/markets/article/retail-investors-are-cashing-out-of-apple-tesla-and-chip-stocks-chart-of-the-day-162404788.html"
         }
@@ -87,21 +87,21 @@
     "NOW": {
       "name": "ServiceNow, Inc.",
       "quote": {
-        "c": 110.78,
-        "d": -0.48,
-        "dp": -0.4314,
+        "c": 110.7,
+        "d": -0.56,
+        "dp": -0.5033,
         "regular": 111.26,
         "reg_d": 3.55,
         "reg_dp": 3.2959,
         "pre": null,
-        "post": 110.78,
+        "post": 110.7,
         "prev_close": 107.71,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "3 Profitable Stocks for Long-Term Investors",
-          "datetime": 1783979339,
+          "datetime": 1783979906,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/markets/stocks/articles/3-profitable-stocks-long-term-160639882.html"
         }
@@ -110,21 +110,21 @@
     "TSM": {
       "name": "Taiwan Semiconductor Manufactur",
       "quote": {
-        "c": 423.39,
-        "d": 1.81,
-        "dp": 0.4293,
+        "c": 423.33,
+        "d": 1.75,
+        "dp": 0.4156,
         "regular": 421.58,
         "reg_d": -12.53,
         "reg_dp": -2.8864,
         "pre": null,
-        "post": 423.39,
+        "post": 423.33,
         "prev_close": 434.11,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Stock Market Today: Dow, Nasdaq Close Lower As Oil Prices Spike; This Memory ETF In Bear Market",
-          "datetime": 1783979339,
+          "datetime": 1783979906,
           "source": "Yahoo Finance",
           "url": "https://www.investors.com/market-trend/stock-market-today/dow-jones-sp500-nasdaq-us-iran-sk-hynix-stock-skhy/?src=A00220&yptr=yahoo"
         }
@@ -133,21 +133,21 @@
     "MRVL": {
       "name": "Marvell Technology, Inc.",
       "quote": {
-        "c": 215.82,
-        "d": -1.71,
-        "dp": -0.7861,
+        "c": 215.99,
+        "d": -1.54,
+        "dp": -0.7079,
         "regular": 217.53,
         "reg_d": -18.28,
         "reg_dp": -7.752,
         "pre": null,
-        "post": 215.82,
+        "post": 215.99,
         "prev_close": 235.81,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Arm And Marvell Tumble As Chip Stocks Sell Off",
-          "datetime": 1783979339,
+          "datetime": 1783979906,
           "source": "Yahoo Finance",
           "url": "https://www.investors.com/news/technology/chip-stocks-sox-arm-marvell-sell-off/?src=A00220&yptr=yahoo"
         }
@@ -156,21 +156,21 @@
     "AVGO": {
       "name": "Broadcom Inc.",
       "quote": {
-        "c": 384.15,
-        "d": 0.1,
-        "dp": 0.026,
+        "c": 384.01,
+        "d": -0.04,
+        "dp": -0.0104,
         "regular": 384.05,
         "reg_d": -15.92,
         "reg_dp": -3.9803,
         "pre": null,
-        "post": 384.15,
+        "post": 384.01,
         "prev_close": 399.97,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Nvidia, Micron, and other chip players are poised to become cash-producing machines",
-          "datetime": 1783979339,
+          "datetime": 1783979906,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/markets/article/nvidia-micron-and-other-chip-players-are-poised-to-become-cash-producing-machines-150232841.html"
         }
@@ -179,21 +179,21 @@
     "MU": {
       "name": "Micron Technology, Inc.",
       "quote": {
-        "c": 933.76,
-        "d": -3.24,
-        "dp": -0.3458,
+        "c": 931.94,
+        "d": -5.06,
+        "dp": -0.54,
         "regular": 937.0,
         "reg_d": -42.3,
         "reg_dp": -4.3194,
         "pre": null,
-        "post": 933.76,
+        "post": 931.94,
         "prev_close": 979.3,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "What investors can expect this earnings season",
-          "datetime": 1783979339,
+          "datetime": 1783979906,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/video/what-investors-can-expect-this-earnings-season-205336498.html"
         }
@@ -202,21 +202,21 @@
     "SNDK": {
       "name": "Sandisk Corporation",
       "quote": {
-        "c": 1662.0,
-        "d": -11.97,
-        "dp": -0.7151,
+        "c": 1660.01,
+        "d": -13.96,
+        "dp": -0.8339,
         "regular": 1673.97,
         "reg_d": -241.95,
         "reg_dp": -12.6284,
         "pre": null,
-        "post": 1662.0,
+        "post": 1660.01,
         "prev_close": 1915.92,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Retail investors are cashing out of Apple, Tesla, and chip stocks: Chart of the Day",
-          "datetime": 1783979339,
+          "datetime": 1783979906,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/markets/article/retail-investors-are-cashing-out-of-apple-tesla-and-chip-stocks-chart-of-the-day-162404788.html"
         }
@@ -225,21 +225,21 @@
     "SPCX": {
       "name": "Space Exploration Technologies",
       "quote": {
-        "c": 138.83,
-        "d": -0.31,
-        "dp": -0.2228,
+        "c": 138.86,
+        "d": -0.28,
+        "dp": -0.2012,
         "regular": 139.14,
         "reg_d": -6.16,
         "reg_dp": -4.2395,
         "pre": null,
-        "post": 138.83,
+        "post": 138.86,
         "prev_close": 145.3,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "As SpaceX stock dips near IPO price, bulls like BofA's Epstein say buy on 'launch leadership'",
-          "datetime": 1783979339,
+          "datetime": 1783979906,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/markets/stocks/article/as-spacex-stock-dips-near-ipo-price-bulls-like-bofas-epstein-say-buy-on-launch-leadership-150227637.html"
         }
