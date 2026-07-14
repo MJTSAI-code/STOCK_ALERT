@@ -1,7 +1,7 @@
 {
   "name": "美股盤前情報資料庫",
-  "updated_at": "2026-07-15T06:40:10.478035+08:00",
-  "next_update_at": "2026-07-14T23:30:00Z",
+  "updated_at": "2026-07-15T07:00:37.687067+08:00",
+  "next_update_at": "2026-07-15T00:00:00Z",
   "stocks": [
     "MSFT",
     "GOOG",
@@ -32,7 +32,7 @@
       "news": [
         {
           "headline": "IBM stock closes down more than 25% after preannounced earnings results",
-          "datetime": 1784068810,
+          "datetime": 1784070037,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/markets/stocks/article/ibm-stock-closes-down-more-than-25-after-preannounced-earnings-results-150605880.html"
         }
@@ -41,21 +41,21 @@
     "GOOG": {
       "name": "Alphabet Inc.",
       "quote": {
-        "c": 356.6,
-        "d": -0.73,
-        "dp": -0.2043,
+        "c": 356.48,
+        "d": -0.85,
+        "dp": -0.2377,
         "regular": 357.33,
         "reg_d": 6.66,
         "reg_dp": 1.8992,
         "pre": null,
-        "post": 356.6,
+        "post": 356.48,
         "prev_close": 350.67,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Chinese AI model developer DeepSeek preps for IPO: What to know",
-          "datetime": 1784068810,
+          "datetime": 1784070037,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/video/chinese-ai-model-developer-deepseek-preps-for-ipo-what-to-know-205729630.html"
         }
@@ -64,21 +64,21 @@
     "NVDA": {
       "name": "NVIDIA Corporation",
       "quote": {
-        "c": 211.5,
-        "d": -0.3,
-        "dp": -0.1416,
+        "c": 211.45,
+        "d": -0.35,
+        "dp": -0.1653,
         "regular": 211.8,
         "reg_d": 8.27,
         "reg_dp": 4.0641,
         "pre": null,
-        "post": 211.5,
+        "post": 211.45,
         "prev_close": 203.53,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "New York enacts statewide moratorium on AI data center construction: A closer look",
-          "datetime": 1784068810,
+          "datetime": 1784070037,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/video/new-york-enacts-statewide-moratorium-on-ai-data-center-construction-a-closer-look-210912459.html"
         }
@@ -87,21 +87,21 @@
     "NOW": {
       "name": "ServiceNow, Inc.",
       "quote": {
-        "c": 105.16,
-        "d": 0.31,
-        "dp": 0.2957,
+        "c": 105.18,
+        "d": 0.33,
+        "dp": 0.3147,
         "regular": 104.85,
         "reg_d": -6.41,
         "reg_dp": -5.7613,
         "pre": null,
-        "post": 105.16,
+        "post": 105.18,
         "prev_close": 111.26,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Why The Trade Desk (TTD) Shares Are Sliding Today",
-          "datetime": 1784068810,
+          "datetime": 1784070037,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/markets/stocks/articles/why-trade-desk-ttd-shares-222311861.html"
         }
@@ -110,21 +110,21 @@
     "TSM": {
       "name": "Taiwan Semiconductor Manufactur",
       "quote": {
-        "c": 422.5,
-        "d": 2.11,
-        "dp": 0.5019,
+        "c": 422.26,
+        "d": 1.87,
+        "dp": 0.4448,
         "regular": 420.39,
         "reg_d": -1.19,
         "reg_dp": -0.2823,
         "pre": null,
-        "post": 422.5,
+        "post": 422.26,
         "prev_close": 421.58,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Taiwan Semiconductor Manufacturing Company Limited (TSM) Not at Risk of Losing Competitive Edge, CEO Says",
-          "datetime": 1784068810,
+          "datetime": 1784070037,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/markets/stocks/articles/taiwan-semiconductor-manufacturing-company-limited-214512031.html"
         }
@@ -133,21 +133,21 @@
     "MRVL": {
       "name": "Marvell Technology, Inc.",
       "quote": {
-        "c": 221.66,
-        "d": -0.78,
-        "dp": -0.3487,
+        "c": 221.6,
+        "d": -0.84,
+        "dp": -0.3778,
         "regular": 222.44,
         "reg_d": 4.91,
         "reg_dp": 2.2572,
         "pre": null,
-        "post": 221.66,
+        "post": 221.6,
         "prev_close": 217.53,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "The Real Risk Inside Broadcom Stock",
-          "datetime": 1784068810,
+          "datetime": 1784070037,
           "source": "Yahoo Finance",
           "url": "https://www.trefis.com/articles/607057/the-real-risk-inside-broadcom-stock/2026-07-14"
         }
@@ -156,21 +156,21 @@
     "AVGO": {
       "name": "Broadcom Inc.",
       "quote": {
-        "c": 389.64,
-        "d": 0.53,
-        "dp": 0.1362,
+        "c": 389.68,
+        "d": 0.57,
+        "dp": 0.1462,
         "regular": 389.11,
         "reg_d": 5.06,
         "reg_dp": 1.3175,
         "pre": null,
-        "post": 389.64,
+        "post": 389.68,
         "prev_close": 384.05,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Broadcom Inc. (AVGO) Agreement a Strategic Positive for Apple, says Evercore ISI",
-          "datetime": 1784068810,
+          "datetime": 1784070037,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/technology/articles/broadcom-inc-avgo-agreement-strategic-214435793.html"
         }
@@ -179,21 +179,21 @@
     "MU": {
       "name": "Micron Technology, Inc.",
       "quote": {
-        "c": 980.3,
-        "d": -2.82,
-        "dp": -0.2867,
+        "c": 981.1,
+        "d": -2.02,
+        "dp": -0.2054,
         "regular": 983.12,
         "reg_d": 46.12,
         "reg_dp": 4.9221,
         "pre": null,
-        "post": 980.3,
+        "post": 981.1,
         "prev_close": 937.0,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "GraniteShares launches new SK Hynix ETFs",
-          "datetime": 1784068810,
+          "datetime": 1784070037,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/video/graniteshares-launches-new-sk-hynix-etfs-203436945.html"
         }
@@ -202,21 +202,21 @@
     "SNDK": {
       "name": "Sandisk Corporation",
       "quote": {
-        "c": 1743.0,
-        "d": -14.82,
-        "dp": -0.8431,
+        "c": 1747.75,
+        "d": -10.07,
+        "dp": -0.5729,
         "regular": 1757.82,
         "reg_d": 83.85,
         "reg_dp": 5.0091,
         "pre": null,
-        "post": 1743.0,
+        "post": 1747.75,
         "prev_close": 1673.97,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Nvidia, Intel and Micron Rebound as Chip Stocks Shake Off War Fears",
-          "datetime": 1784068810,
+          "datetime": 1784070037,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/markets/stocks/articles/nvidia-intel-micron-rebound-chip-210146757.html"
         }
@@ -225,21 +225,21 @@
     "SPCX": {
       "name": "Space Exploration Technologies",
       "quote": {
-        "c": 137.09,
-        "d": 1.01,
-        "dp": 0.7422,
+        "c": 137.0,
+        "d": 0.92,
+        "dp": 0.6759,
         "regular": 136.08,
         "reg_d": -3.06,
         "reg_dp": -2.1992,
         "pre": null,
-        "post": 137.09,
+        "post": 137.0,
         "prev_close": 139.14,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "SpaceX and other mega AI deals are lifting big bank profits. CEOs say more are coming.",
-          "datetime": 1784068810,
+          "datetime": 1784070037,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/markets/article/spacex-and-other-mega-ai-deals-are-lifting-big-bank-profits-ceos-say-more-are-coming-200253557.html"
         }
