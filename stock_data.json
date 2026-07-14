@@ -1,7 +1,7 @@
 {
   "name": "美股盤前情報資料庫",
-  "updated_at": "2026-07-15T04:52:27.293483+08:00",
-  "next_update_at": "2026-07-14T21:30:00Z",
+  "updated_at": "2026-07-15T05:51:27.998455+08:00",
+  "next_update_at": "2026-07-14T22:30:00Z",
   "stocks": [
     "MSFT",
     "GOOG",
@@ -18,236 +18,236 @@
     "MSFT": {
       "name": "Microsoft Corporation",
       "quote": {
-        "c": 385.26,
-        "d": 0.33,
-        "dp": 0.0857,
+        "c": 385.1,
+        "d": 0.17,
+        "dp": 0.0442,
         "regular": 384.93,
         "reg_d": -6.06,
         "reg_dp": -1.5499,
         "pre": null,
-        "post": 385.26,
+        "post": 385.1,
         "prev_close": 390.99,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "'Scam Altman strikes again': Why SpaceX CEO Elon Musk was beefing on X over the weekend",
-          "datetime": 1783983565,
+          "headline": "IBM stock closes down more than 25% after preannounced earnings results",
+          "datetime": 1784065887,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/video/scam-altman-strikes-again-why-spacex-ceo-elon-musk-was-beefing-on-x-over-the-weekend-202657668.html"
+          "url": "https://finance.yahoo.com/markets/stocks/article/ibm-stock-closes-down-more-than-25-after-preannounced-earnings-results-150605880.html"
         }
       ]
     },
     "GOOG": {
       "name": "Alphabet Inc.",
       "quote": {
-        "c": 356.76,
-        "d": -0.57,
-        "dp": -0.1596,
+        "c": 356.81,
+        "d": -0.52,
+        "dp": -0.1459,
         "regular": 357.33,
         "reg_d": 6.66,
         "reg_dp": 1.8992,
         "pre": null,
-        "post": 356.76,
+        "post": 356.81,
         "prev_close": 350.67,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Meta's data center costs are skyrocketing. Here's what you need to know.",
-          "datetime": 1783983565,
+          "headline": "Chinese AI model developer DeepSeek preps for IPO: What to know",
+          "datetime": 1784065887,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/video/metas-data-center-costs-are-skyrocketing-heres-what-you-need-to-know-203416070.html"
+          "url": "https://finance.yahoo.com/video/chinese-ai-model-developer-deepseek-preps-for-ipo-what-to-know-205729630.html"
         }
       ]
     },
     "NVDA": {
       "name": "NVIDIA Corporation",
       "quote": {
-        "c": 211.65,
-        "d": -0.15,
-        "dp": -0.0732,
+        "c": 211.49,
+        "d": -0.32,
+        "dp": -0.1487,
         "regular": 211.8,
         "reg_d": 8.27,
         "reg_dp": 4.0641,
         "pre": null,
-        "post": 211.65,
+        "post": 211.49,
         "prev_close": 203.53,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Why Fortune 500 companies are flocking to open source AI",
-          "datetime": 1783983565,
+          "headline": "New York enacts statewide moratorium on AI data center construction: A closer look",
+          "datetime": 1784065887,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/video/why-fortune-500-companies-are-flocking-to-open-source-ai-223952992.html"
+          "url": "https://finance.yahoo.com/video/new-york-enacts-statewide-moratorium-on-ai-data-center-construction-a-closer-look-210912459.html"
         }
       ]
     },
     "NOW": {
       "name": "ServiceNow, Inc.",
       "quote": {
-        "c": 105.25,
-        "d": 0.4,
-        "dp": 0.3815,
+        "c": 105.5,
+        "d": 0.65,
+        "dp": 0.6188,
         "regular": 104.85,
         "reg_d": -6.41,
         "reg_dp": -5.7613,
         "pre": null,
-        "post": 105.25,
+        "post": 105.5,
         "prev_close": 111.26,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "3 Profitable Stocks for Long-Term Investors",
-          "datetime": 1783983565,
+          "headline": "Atlassian, monday.com, and Agilysys Stocks Trade Down, What You Need To Know",
+          "datetime": 1784065887,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/markets/stocks/articles/3-profitable-stocks-long-term-160639882.html"
+          "url": "https://finance.yahoo.com/markets/stocks/articles/atlassian-monday-com-agilysys-stocks-211911212.html"
         }
       ]
     },
     "TSM": {
       "name": "Taiwan Semiconductor Manufactur",
       "quote": {
-        "c": 422.09,
-        "d": 1.7,
-        "dp": 0.4044,
+        "c": 422.45,
+        "d": 2.06,
+        "dp": 0.4907,
         "regular": 420.39,
         "reg_d": -1.19,
         "reg_dp": -0.2823,
         "pre": null,
-        "post": 422.09,
+        "post": 422.45,
         "prev_close": 421.58,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Analyst Dan Ives Calls Memory Chips the “Golden Child” of the AI Revolution with “15-to-1” Demand-to-Supply Imbalance",
-          "datetime": 1783983565,
+          "headline": "ASML Stock Rises Ahead of Earnings with Eyes on Potential Sales Boost",
+          "datetime": 1784065887,
           "source": "Yahoo Finance",
-          "url": "https://247wallst.com/investing/2026/07/13/analyst-dan-ives-calls-memory-chips-the-golden-child-of-the-ai-revolution-with-15-to-1-demand-to-supply-imbalance/"
+          "url": "https://www.barrons.com/articles/asml-earnings-stock-price-85aa0b64?siteid=yhoof2&yptr=yahoo"
         }
       ]
     },
     "MRVL": {
       "name": "Marvell Technology, Inc.",
       "quote": {
-        "c": 221.8,
-        "d": -0.64,
-        "dp": -0.2877,
+        "c": 221.86,
+        "d": -0.58,
+        "dp": -0.2608,
         "regular": 222.44,
         "reg_d": 4.91,
         "reg_dp": 2.2572,
         "pre": null,
-        "post": 221.8,
+        "post": 221.86,
         "prev_close": 217.53,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Arm And Marvell Tumble As Chip Stocks Sell Off",
-          "datetime": 1783983565,
+          "headline": "The Real Risk Inside Broadcom Stock",
+          "datetime": 1784065887,
           "source": "Yahoo Finance",
-          "url": "https://www.investors.com/news/technology/chip-stocks-sox-arm-marvell-sell-off/?src=A00220&yptr=yahoo"
+          "url": "https://www.trefis.com/articles/607057/the-real-risk-inside-broadcom-stock/2026-07-14"
         }
       ]
     },
     "AVGO": {
       "name": "Broadcom Inc.",
       "quote": {
-        "c": 389.76,
-        "d": 0.65,
-        "dp": 0.1683,
+        "c": 389.73,
+        "d": 0.62,
+        "dp": 0.1593,
         "regular": 389.11,
         "reg_d": 5.06,
         "reg_dp": 1.3175,
         "pre": null,
-        "post": 389.76,
+        "post": 389.73,
         "prev_close": 384.05,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Nvidia, Micron, and other chip players are poised to become cash-producing machines",
-          "datetime": 1783983565,
+          "headline": "The Real Risk Inside Broadcom Stock",
+          "datetime": 1784065887,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/markets/article/nvidia-micron-and-other-chip-players-are-poised-to-become-cash-producing-machines-150232841.html"
+          "url": "https://www.trefis.com/articles/607057/the-real-risk-inside-broadcom-stock/2026-07-14"
         }
       ]
     },
     "MU": {
       "name": "Micron Technology, Inc.",
       "quote": {
-        "c": 980.51,
-        "d": -2.61,
-        "dp": -0.2655,
+        "c": 979.11,
+        "d": -4.01,
+        "dp": -0.4079,
         "regular": 983.12,
         "reg_d": 46.12,
         "reg_dp": 4.9221,
         "pre": null,
-        "post": 980.51,
+        "post": 979.11,
         "prev_close": 937.0,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "What investors can expect this earnings season",
-          "datetime": 1783983565,
+          "headline": "GraniteShares launches new SK Hynix ETFs",
+          "datetime": 1784065887,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/video/what-investors-can-expect-this-earnings-season-205336498.html"
+          "url": "https://finance.yahoo.com/video/graniteshares-launches-new-sk-hynix-etfs-203436945.html"
         }
       ]
     },
     "SNDK": {
       "name": "Sandisk Corporation",
       "quote": {
-        "c": 1747.99,
-        "d": -9.83,
-        "dp": -0.5592,
+        "c": 1744.41,
+        "d": -13.41,
+        "dp": -0.7627,
         "regular": 1757.82,
         "reg_d": 83.85,
         "reg_dp": 5.0091,
         "pre": null,
-        "post": 1747.99,
+        "post": 1744.41,
         "prev_close": 1673.97,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Retail investors are cashing out of Apple, Tesla, and chip stocks: Chart of the Day",
-          "datetime": 1783983565,
+          "headline": "Nvidia, Intel and Micron Rebound as Chip Stocks Shake Off War Fears",
+          "datetime": 1784065887,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/markets/article/retail-investors-are-cashing-out-of-apple-tesla-and-chip-stocks-chart-of-the-day-162404788.html"
+          "url": "https://finance.yahoo.com/markets/stocks/articles/nvidia-intel-micron-rebound-chip-210146757.html"
         }
       ]
     },
     "SPCX": {
       "name": "Space Exploration Technologies",
       "quote": {
-        "c": 136.77,
-        "d": 0.69,
-        "dp": 0.5073,
+        "c": 136.93,
+        "d": 0.85,
+        "dp": 0.6246,
         "regular": 136.08,
         "reg_d": -3.06,
         "reg_dp": -2.1992,
         "pre": null,
-        "post": 136.77,
+        "post": 136.93,
         "prev_close": 139.14,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "As SpaceX stock dips near IPO price, bulls like BofA's Epstein say buy on 'launch leadership'",
-          "datetime": 1783983565,
+          "headline": "SpaceX and other mega AI deals are lifting big bank profits. CEOs say more are coming.",
+          "datetime": 1784065887,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/markets/stocks/article/as-spacex-stock-dips-near-ipo-price-bulls-like-bofas-epstein-say-buy-on-launch-leadership-150227637.html"
+          "url": "https://finance.yahoo.com/markets/article/spacex-and-other-mega-ai-deals-are-lifting-big-bank-profits-ceos-say-more-are-coming-200253557.html"
         }
       ]
     }
   },
   "alert_sent": {
-    "morning": "2026-07-14",
+    "morning": "2026-07-15",
     "evening": "2026-07-14"
   }
 }
