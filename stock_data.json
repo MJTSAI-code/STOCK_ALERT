@@ -1,6 +1,6 @@
 {
   "name": "美股盤前情報資料庫",
-  "updated_at": "2026-07-14T19:40:05.338017+08:00",
+  "updated_at": "2026-07-14T19:58:21.446622+08:00",
   "next_update_at": "2026-07-14T12:30:00Z",
   "stocks": [
     "MSFT",
@@ -18,13 +18,13 @@
     "MSFT": {
       "name": "Microsoft Corporation",
       "quote": {
-        "c": 390.99,
-        "d": 0.0,
-        "dp": 0.0,
+        "c": 386.88,
+        "d": -4.11,
+        "dp": -1.0514,
         "regular": 390.99,
         "reg_d": 5.89,
         "reg_dp": 1.5295,
-        "pre": null,
+        "pre": 386.88,
         "post": null,
         "prev_close": 385.1,
         "phase": "盤前"
