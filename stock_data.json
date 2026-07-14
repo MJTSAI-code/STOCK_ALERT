@@ -1,7 +1,7 @@
 {
   "name": "美股盤前情報資料庫",
-  "updated_at": "2026-07-14T20:20:00.542111+08:00",
-  "next_update_at": "2026-07-14T13:00:00Z",
+  "updated_at": "2026-07-14T21:12:30.473532+08:00",
+  "next_update_at": "2026-07-14T14:00:00Z",
   "stocks": [
     "MSFT",
     "GOOG",
@@ -18,13 +18,13 @@
     "MSFT": {
       "name": "Microsoft Corporation",
       "quote": {
-        "c": 386.88,
-        "d": -4.11,
-        "dp": -1.0514,
+        "c": 387.1,
+        "d": -3.89,
+        "dp": -0.9949,
         "regular": 390.99,
         "reg_d": 5.89,
         "reg_dp": 1.5295,
-        "pre": 386.88,
+        "pre": 387.1,
         "post": null,
         "prev_close": 385.1,
         "phase": "盤前"
@@ -156,13 +156,13 @@
     "AVGO": {
       "name": "Broadcom Inc.",
       "quote": {
-        "c": 384.05,
-        "d": 0.0,
-        "dp": 0.0,
+        "c": 388.27,
+        "d": 4.22,
+        "dp": 1.0988,
         "regular": 384.05,
         "reg_d": -15.92,
         "reg_dp": -3.9803,
-        "pre": null,
+        "pre": 388.27,
         "post": null,
         "prev_close": 399.97,
         "phase": "盤前"
@@ -179,13 +179,13 @@
     "MU": {
       "name": "Micron Technology, Inc.",
       "quote": {
-        "c": 937.0,
-        "d": 0.0,
-        "dp": 0.0,
+        "c": 969.01,
+        "d": 32.01,
+        "dp": 3.4162,
         "regular": 937.0,
         "reg_d": -42.3,
         "reg_dp": -4.3194,
-        "pre": null,
+        "pre": 969.01,
         "post": null,
         "prev_close": 979.3,
         "phase": "盤前"
