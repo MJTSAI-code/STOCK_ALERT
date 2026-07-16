@@ -1,7 +1,7 @@
 {
   "name": "美股盤前情報資料庫",
-  "updated_at": "2026-07-17T05:58:45.241035+08:00",
-  "next_update_at": "2026-07-16T22:30:00Z",
+  "updated_at": "2026-07-17T06:38:54.464879+08:00",
+  "next_update_at": "2026-07-16T23:30:00Z",
   "stocks": [
     "MSFT",
     "GOOG",
@@ -18,21 +18,21 @@
     "MSFT": {
       "name": "Microsoft Corporation",
       "quote": {
-        "c": 400.18,
-        "d": -0.92,
-        "dp": -0.2294,
+        "c": 399.8,
+        "d": -1.3,
+        "dp": -0.3241,
         "regular": 401.1,
         "reg_d": 5.47,
         "reg_dp": 1.3826,
         "pre": null,
-        "post": 400.18,
+        "post": 399.8,
         "prev_close": 395.63,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Wall Street explores tokenization of assets",
-          "datetime": 1784239125,
+          "datetime": 1784241534,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/video/wall-street-explores-tokenization-of-assets-165511819.html"
         }
@@ -41,21 +41,21 @@
     "GOOG": {
       "name": "Alphabet Inc.",
       "quote": {
-        "c": 356.0,
-        "d": 2.19,
-        "dp": 0.619,
+        "c": 356.45,
+        "d": 2.64,
+        "dp": 0.7462,
         "regular": 353.81,
         "reg_d": -16.4,
         "reg_dp": -4.4299,
         "pre": null,
-        "post": 356.0,
+        "post": 356.45,
         "prev_close": 370.21,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Stock market today: Dow, S&P 500, Nasdaq drop as chip stocks tumble, Alphabet stock sinks",
-          "datetime": 1784239125,
+          "datetime": 1784241534,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/markets/live/stock-market-today-thursday-july-16-dow-sp-500-nasdaq-chip-stocks-slide-103116735.html"
         }
@@ -64,21 +64,21 @@
     "NVDA": {
       "name": "NVIDIA Corporation",
       "quote": {
-        "c": 206.72,
-        "d": -0.68,
-        "dp": -0.3279,
+        "c": 206.35,
+        "d": -1.05,
+        "dp": -0.5063,
         "regular": 207.4,
         "reg_d": -5.1,
         "reg_dp": -2.4,
         "pre": null,
-        "post": 206.72,
+        "post": 206.35,
         "prev_close": 212.5,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "TSMC raises capex and revenue forecast, highlighting growing AI chip demand",
-          "datetime": 1784239125,
+          "datetime": 1784241534,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/markets/article/tsmc-raises-capex-and-revenue-forecast-highlighting-growing-ai-chip-demand-113101950.html"
         }
@@ -87,21 +87,21 @@
     "NOW": {
       "name": "ServiceNow, Inc.",
       "quote": {
-        "c": 103.23,
-        "d": -0.78,
-        "dp": -0.7527,
+        "c": 102.63,
+        "d": -1.38,
+        "dp": -1.3268,
         "regular": 104.01,
         "reg_d": -0.72,
         "reg_dp": -0.6875,
         "pre": null,
-        "post": 103.23,
+        "post": 102.63,
         "prev_close": 104.73,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Roper Technologies (ROP) Reports Next Week: Wall Street Expects Earnings Growth",
-          "datetime": 1784239125,
+          "datetime": 1784241534,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/markets/stocks/articles/roper-technologies-rop-reports-next-140012292.html"
         }
@@ -110,21 +110,21 @@
     "TSM": {
       "name": "Taiwan Semiconductor Manufactur",
       "quote": {
-        "c": 410.19,
-        "d": 0.45,
-        "dp": 0.1098,
+        "c": 409.75,
+        "d": 0.01,
+        "dp": 0.0024,
         "regular": 409.74,
         "reg_d": -9.74,
         "reg_dp": -2.3219,
         "pre": null,
-        "post": 410.19,
+        "post": 409.75,
         "prev_close": 419.48,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Earnings live: Netflix stock falls on Q3 revenue outlook and uninspiring engagement trends",
-          "datetime": 1784239125,
+          "datetime": 1784241534,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/markets/live/earnings-live-updates-second-quarter-120718616.html"
         }
@@ -133,21 +133,21 @@
     "MRVL": {
       "name": "Marvell Technology, Inc.",
       "quote": {
-        "c": 188.36,
-        "d": 0.06,
-        "dp": 0.0319,
+        "c": 187.39,
+        "d": -0.91,
+        "dp": -0.4833,
         "regular": 188.3,
         "reg_d": -17.96,
         "reg_dp": -8.7075,
         "pre": null,
-        "post": 188.36,
+        "post": 187.39,
         "prev_close": 206.26,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Chip Stocks Pummeled. SK Hynix Dives. SOX Socked Again.",
-          "datetime": 1784239125,
+          "datetime": 1784241534,
           "source": "Yahoo Finance",
           "url": "https://www.investors.com/news/technology/chip-stocks-sk-hynix-sox-index-fall/?src=A00220&yptr=yahoo"
         }
@@ -156,44 +156,44 @@
     "AVGO": {
       "name": "Broadcom Inc.",
       "quote": {
-        "c": 377.28,
-        "d": 2.83,
-        "dp": 0.7558,
+        "c": 376.34,
+        "d": 1.89,
+        "dp": 0.5047,
         "regular": 374.45,
         "reg_d": -19.83,
         "reg_dp": -5.0294,
         "pre": null,
-        "post": 377.28,
+        "post": 376.34,
         "prev_close": 394.28,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Most Stocks Gained, but Chip Selloff Drags Market",
-          "datetime": 1784239125,
+          "headline": "1 Critical Reason to Buy Broadcom Stock on the Dip",
+          "datetime": 1784241534,
           "source": "Yahoo Finance",
-          "url": "https://www.barrons.com/livecoverage/stock-market-news-today-071626/card/most-stocks-gained-but-chip-selloff-drags-market-i0I4NTWo7q5InmwR6KFh?siteid=yhoof2&yptr=yahoo"
+          "url": "https://www.fool.com/investing/2026/07/16/1-critical-reason-to-buy-broadcom-stock-on-the-dip/"
         }
       ]
     },
     "MU": {
       "name": "Micron Technology, Inc.",
       "quote": {
-        "c": 855.42,
-        "d": 2.22,
-        "dp": 0.2602,
+        "c": 846.99,
+        "d": -6.21,
+        "dp": -0.7279,
         "regular": 853.2,
         "reg_d": -51.08,
         "reg_dp": -5.6487,
         "pre": null,
-        "post": 855.42,
+        "post": 846.99,
         "prev_close": 904.28,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Dow Jones Futures: Micron, Sandisk, Google Lead AI Sell-Off, But These Groups Are Strong; SpaceX Starship Launch Due",
-          "datetime": 1784239125,
+          "headline": "Dow Jones Futures: Micron, Sandisk, Google Lead AI Sell-Off, Netflix Dives Late; SpaceX Starship Launch Due",
+          "datetime": 1784241534,
           "source": "Yahoo Finance",
           "url": "https://www.investors.com/market-trend/stock-market-today/dow-jones-futures-micron-sandisk-google-ai-sell-off-spacex-starship-launch/?src=A00220&yptr=yahoo"
         }
@@ -202,44 +202,44 @@
     "SNDK": {
       "name": "Sandisk Corporation",
       "quote": {
-        "c": 1408.51,
-        "d": -2.57,
-        "dp": -0.1819,
+        "c": 1383.69,
+        "d": -27.39,
+        "dp": -1.9411,
         "regular": 1411.08,
         "reg_d": -203.92,
         "reg_dp": -12.6266,
         "pre": null,
-        "post": 1408.51,
+        "post": 1383.69,
         "prev_close": 1615.0,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Dow Jones Futures: Micron, Sandisk, Google Lead AI Sell-Off, But These Groups Are Strong; SpaceX Starship Launch Due",
-          "datetime": 1784239125,
+          "headline": "Dow Jones Futures: Micron, Sandisk, Google Lead AI Sell-Off, Netflix Dives Late; SpaceX Starship Launch Due",
+          "datetime": 1784241534,
           "source": "Yahoo Finance",
-          "url": "https://www.investors.com/news/technology/chip-stocks-sk-hynix-sox-index-fall/?src=A00220&yptr=yahoo"
+          "url": "https://www.investors.com/market-trend/stock-market-today/dow-jones-futures-micron-sandisk-google-ai-sell-off-spacex-starship-launch/?src=A00220&yptr=yahoo"
         }
       ]
     },
     "SPCX": {
       "name": "Space Exploration Technologies",
       "quote": {
-        "c": 132.3,
-        "d": 1.19,
-        "dp": 0.9076,
+        "c": 132.18,
+        "d": 1.07,
+        "dp": 0.8148,
         "regular": 131.11,
         "reg_d": -4.16,
         "reg_dp": -3.0753,
         "pre": null,
-        "post": 132.3,
+        "post": 132.18,
         "prev_close": 135.27,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Why SpaceX's Starship test launch tonight matters so much for the industry",
-          "datetime": 1784239125,
+          "datetime": 1784241534,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/video/why-spacexs-starship-test-launch-tonight-matters-so-much-for-the-industry-201427668.html"
         }
