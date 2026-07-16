@@ -1,7 +1,7 @@
 {
   "name": "美股盤前情報資料庫",
-  "updated_at": "2026-07-17T04:52:28.999516+08:00",
-  "next_update_at": "2026-07-16T21:30:00Z",
+  "updated_at": "2026-07-17T05:00:24.203899+08:00",
+  "next_update_at": "2026-07-16T22:00:00Z",
   "stocks": [
     "MSFT",
     "GOOG",
@@ -18,230 +18,230 @@
     "MSFT": {
       "name": "Microsoft Corporation",
       "quote": {
-        "c": 400.34,
-        "d": -0.76,
-        "dp": -0.1895,
+        "c": 400.45,
+        "d": -0.65,
+        "dp": -0.1609,
         "regular": 401.1,
         "reg_d": 5.47,
         "reg_dp": 1.3826,
         "pre": null,
-        "post": 400.34,
+        "post": 400.45,
         "prev_close": 395.63,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Apple, Goldman Sachs, and Chevron are powering the Dow — for wildly different reasons: AlphaCheck",
-          "datetime": 1784156472,
+          "headline": "Wall Street explores tokenization of assets",
+          "datetime": 1784235624,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/markets/article/apple-goldman-sachs-and-chevron-are-powering-the-dow--for-wildly-different-reasons-alphacheck-181535203.html"
+          "url": "https://finance.yahoo.com/video/wall-street-explores-tokenization-of-assets-165511819.html"
         }
       ]
     },
     "GOOG": {
       "name": "Alphabet Inc.",
       "quote": {
-        "c": 355.61,
-        "d": 1.8,
-        "dp": 0.5087,
+        "c": 355.55,
+        "d": 1.74,
+        "dp": 0.4918,
         "regular": 353.81,
         "reg_d": -16.4,
         "reg_dp": -4.4299,
         "pre": null,
-        "post": 355.61,
+        "post": 355.55,
         "prev_close": 370.21,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "What rising memory chip prices could mean for Apple's iPhones",
-          "datetime": 1784156472,
+          "headline": "Stock market today: Dow, S&P 500, Nasdaq drop as chip stocks tumble, Alphabet stock sinks",
+          "datetime": 1784235624,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/video/what-rising-memory-chip-prices-could-mean-for-apples-iphones-204217792.html"
+          "url": "https://finance.yahoo.com/markets/live/stock-market-today-thursday-july-16-dow-sp-500-nasdaq-chip-stocks-slide-103116735.html"
         }
       ]
     },
     "NVDA": {
       "name": "NVIDIA Corporation",
       "quote": {
-        "c": 207.03,
-        "d": -0.37,
-        "dp": -0.1784,
+        "c": 206.87,
+        "d": -0.53,
+        "dp": -0.255,
         "regular": 207.4,
         "reg_d": -5.1,
         "reg_dp": -2.4,
         "pre": null,
-        "post": 207.03,
+        "post": 206.87,
         "prev_close": 212.5,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "YieldMax launches a new SpaceX options ETF: What investors should know",
-          "datetime": 1784156472,
+          "headline": "TSMC raises capex and revenue forecast, highlighting growing AI chip demand",
+          "datetime": 1784235624,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/video/yieldmax-launches-spacex-options-etf-201500551.html"
+          "url": "https://finance.yahoo.com/markets/article/tsmc-raises-capex-and-revenue-forecast-highlighting-growing-ai-chip-demand-113101950.html"
         }
       ]
     },
     "NOW": {
       "name": "ServiceNow, Inc.",
       "quote": {
-        "c": 103.33,
-        "d": -0.68,
-        "dp": -0.6521,
+        "c": 103.45,
+        "d": -0.56,
+        "dp": -0.5401,
         "regular": 104.01,
         "reg_d": -0.72,
         "reg_dp": -0.6875,
         "pre": null,
-        "post": 103.33,
+        "post": 103.45,
         "prev_close": 104.73,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "IBM's historic crash exposes a deeper tech divide: Chart of the Day",
-          "datetime": 1784156472,
+          "headline": "Roper Technologies (ROP) Reports Next Week: Wall Street Expects Earnings Growth",
+          "datetime": 1784235624,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/markets/article/ibms-historic-crash-exposes-a-deeper-tech-divide-chart-of-the-day-100000015.html"
+          "url": "https://finance.yahoo.com/markets/stocks/articles/roper-technologies-rop-reports-next-140012292.html"
         }
       ]
     },
     "TSM": {
       "name": "Taiwan Semiconductor Manufactur",
       "quote": {
-        "c": 410.13,
-        "d": 0.39,
-        "dp": 0.0952,
+        "c": 409.94,
+        "d": 0.2,
+        "dp": 0.0478,
         "regular": 409.74,
         "reg_d": -9.74,
         "reg_dp": -2.3219,
         "pre": null,
-        "post": 410.13,
+        "post": 409.94,
         "prev_close": 419.48,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "From bubbles to bottlenecks, what Wall Street is thinking about AI",
-          "datetime": 1784156472,
+          "headline": "Stock market today: Dow, S&P 500, Nasdaq drop as chip stocks tumble, Alphabet stock sinks",
+          "datetime": 1784235624,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/video/from-bubbles-to-bottlenecks-what-wall-street-is-thinking-about-ai-140133748.html"
+          "url": "https://finance.yahoo.com/markets/live/stock-market-today-thursday-july-16-dow-sp-500-nasdaq-chip-stocks-slide-103116735.html"
         }
       ]
     },
     "MRVL": {
       "name": "Marvell Technology, Inc.",
       "quote": {
-        "c": 188.2,
-        "d": -0.1,
-        "dp": -0.0531,
+        "c": 188.07,
+        "d": -0.23,
+        "dp": -0.1221,
         "regular": 188.3,
         "reg_d": -17.96,
         "reg_dp": -8.7075,
         "pre": null,
-        "post": 188.2,
+        "post": 188.07,
         "prev_close": 206.26,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Stock Market Today: Nasdaq Rises Despite Tumble Among Chip Leaders; Apple Paces Mag 7 Rally",
-          "datetime": 1784156472,
+          "headline": "Nasdaq Falls Sharply as Chip-Stock Slump Overshadows TSMC Record",
+          "datetime": 1784235624,
           "source": "Yahoo Finance",
-          "url": "https://www.investors.com/market-trend/stock-market-today/dow-jones-sp500-nasdaq-ppi-inflation-data-asml-stock/?src=A00220&yptr=yahoo"
+          "url": "https://www.wsj.com/finance/stocks/nasdaq-falls-sharply-as-chip-stock-slump-overshadows-tsmc-record-15880f5b?siteid=yhoof2&yptr=yahoo"
         }
       ]
     },
     "AVGO": {
       "name": "Broadcom Inc.",
       "quote": {
-        "c": 377.2,
-        "d": 2.75,
-        "dp": 0.7344,
+        "c": 377.64,
+        "d": 3.19,
+        "dp": 0.8518,
         "regular": 374.45,
         "reg_d": -19.83,
         "reg_dp": -5.0294,
         "pre": null,
-        "post": 377.2,
+        "post": 377.64,
         "prev_close": 394.28,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "My 3 Favorite AI Stocks to Buy on the Continued Chip Sell-Off",
-          "datetime": 1784156472,
+          "headline": "Most Stocks Gained, but Chip Selloff Drags Market",
+          "datetime": 1784235624,
           "source": "Yahoo Finance",
-          "url": "https://www.fool.com/investing/2026/07/15/my-3-favorite-ai-stocks-to-buy-on-the-continued-ch/"
+          "url": "https://www.barrons.com/livecoverage/stock-market-news-today-071626/card/most-stocks-gained-but-chip-selloff-drags-market-i0I4NTWo7q5InmwR6KFh?siteid=yhoof2&yptr=yahoo"
         }
       ]
     },
     "MU": {
       "name": "Micron Technology, Inc.",
       "quote": {
-        "c": 853.5,
-        "d": 0.3,
-        "dp": 0.0351,
+        "c": 856.55,
+        "d": 3.35,
+        "dp": 0.3926,
         "regular": 853.2,
         "reg_d": -51.08,
         "reg_dp": -5.6487,
         "pre": null,
-        "post": 853.5,
+        "post": 856.55,
         "prev_close": 904.28,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Is Micron indicative of a possible chip bubble to come?",
-          "datetime": 1784156472,
+          "headline": "Dow Jones Futures: Micron, Sandisk, Google Lead AI Sell-Off, But These Groups Are Strong; SpaceX Starship Launch Due",
+          "datetime": 1784235624,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/video/is-micron-indicative-of-a-possible-chip-bubble-to-come-193448630.html"
+          "url": "https://www.investors.com/market-trend/stock-market-today/dow-jones-futures-micron-sandisk-google-ai-sell-off-spacex-starship-launch/?src=A00220&yptr=yahoo"
         }
       ]
     },
     "SNDK": {
       "name": "Sandisk Corporation",
       "quote": {
-        "c": 1416.01,
-        "d": 4.93,
-        "dp": 0.3494,
+        "c": 1416.0,
+        "d": 4.92,
+        "dp": 0.3487,
         "regular": 1411.08,
         "reg_d": -203.92,
         "reg_dp": -12.6266,
         "pre": null,
-        "post": 1416.01,
+        "post": 1416.0,
         "prev_close": 1615.0,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Dow Jones Futures: Apple, Google Mask Dell, Sandisk, Micron Sell-Off; J.B. Hunt Jumps Late",
-          "datetime": 1784156472,
+          "headline": "Dow Jones Futures: Micron, Sandisk, Google Lead AI Sell-Off, But These Groups Are Strong; SpaceX Starship Launch Due",
+          "datetime": 1784235624,
           "source": "Yahoo Finance",
-          "url": "https://www.investors.com/market-trend/stock-market-today/dow-jones-futures-apple-google-dell-sandisk-micron-sell-off-spacex-ipo-price-taiwan-semiconductor-ge-aero/?src=A00220&yptr=yahoo"
+          "url": "https://www.investors.com/market-trend/stock-market-today/dow-jones-futures-micron-sandisk-google-ai-sell-off-spacex-starship-launch/?src=A00220&yptr=yahoo"
         }
       ]
     },
     "SPCX": {
       "name": "Space Exploration Technologies",
       "quote": {
-        "c": 131.56,
-        "d": 0.45,
-        "dp": 0.3397,
+        "c": 131.54,
+        "d": 0.43,
+        "dp": 0.3275,
         "regular": 131.11,
         "reg_d": -4.16,
         "reg_dp": -3.0753,
         "pre": null,
-        "post": 131.56,
+        "post": 131.54,
         "prev_close": 135.27,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "YieldMax launches a new SpaceX options ETF: What investors should know",
-          "datetime": 1784156472,
+          "headline": "Why SpaceX's Starship test launch tonight matters so much for the industry",
+          "datetime": 1784235624,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/video/yieldmax-launches-spacex-options-etf-201500551.html"
+          "url": "https://finance.yahoo.com/video/why-spacexs-starship-test-launch-tonight-matters-so-much-for-the-industry-201427668.html"
         }
       ]
     }
