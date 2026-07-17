@@ -1,7 +1,7 @@
 {
   "name": "美股盤前情報資料庫",
-  "updated_at": "2026-07-18T05:21:45.872047+08:00",
-  "next_update_at": "2026-07-17T22:00:00Z",
+  "updated_at": "2026-07-18T05:43:33.762514+08:00",
+  "next_update_at": "2026-07-17T22:30:00Z",
   "stocks": [
     "MSFT",
     "GOOG",
@@ -18,21 +18,21 @@
     "MSFT": {
       "name": "Microsoft Corporation",
       "quote": {
-        "c": 394.1,
-        "d": 0.28,
-        "dp": 0.0707,
+        "c": 394.35,
+        "d": 0.53,
+        "dp": 0.1346,
         "regular": 393.82,
         "reg_d": -7.28,
         "reg_dp": -1.815,
         "pre": null,
-        "post": 394.1,
+        "post": 394.35,
         "prev_close": 401.1,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "US stocks sink this week, semiconductors walloped amid sell-off",
-          "datetime": 1784323305,
+          "datetime": 1784324613,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/video/us-stocks-sink-this-week-semiconductors-walloped-amid-sell-off-201117763.html"
         }
@@ -41,21 +41,21 @@
     "GOOG": {
       "name": "Alphabet Inc.",
       "quote": {
-        "c": 345.74,
-        "d": -0.38,
-        "dp": -0.1085,
+        "c": 346.2,
+        "d": 0.08,
+        "dp": 0.0231,
         "regular": 346.12,
         "reg_d": -7.69,
         "reg_dp": -2.1735,
         "pre": null,
-        "post": 345.74,
+        "post": 346.2,
         "prev_close": 353.81,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "How Starlink is SpaceX's key to making big 'star bucks'",
-          "datetime": 1784323305,
+          "datetime": 1784324613,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/video/starlink-spacexs-key-making-big-202500888.html"
         }
@@ -64,21 +64,21 @@
     "NVDA": {
       "name": "NVIDIA Corporation",
       "quote": {
-        "c": 202.66,
-        "d": -0.15,
-        "dp": -0.0715,
+        "c": 202.65,
+        "d": -0.16,
+        "dp": -0.0814,
         "regular": 202.81,
         "reg_d": -4.59,
         "reg_dp": -2.2131,
         "pre": null,
-        "post": 202.66,
+        "post": 202.65,
         "prev_close": 207.4,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Semiconductor stocks trim losses as investors buy the dip",
-          "datetime": 1784323305,
+          "datetime": 1784324613,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/markets/article/semiconductor-stocks-trim-losses-as-investors-buy-the-dip-130920103.html"
         }
@@ -87,21 +87,21 @@
     "NOW": {
       "name": "ServiceNow, Inc.",
       "quote": {
-        "c": 103.15,
-        "d": -0.09,
-        "dp": -0.089,
+        "c": 103.07,
+        "d": -0.17,
+        "dp": -0.165,
         "regular": 103.24,
         "reg_d": -0.77,
         "reg_dp": -0.7403,
         "pre": null,
-        "post": 103.15,
+        "post": 103.07,
         "prev_close": 104.01,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "After an Epic Fall, IBM Faces a Long Road Back to Relevance",
-          "datetime": 1784323305,
+          "datetime": 1784324613,
           "source": "Yahoo Finance",
           "url": "https://www.barrons.com/articles/ibm-stock-price-fall-sell-87657335?siteid=yhoof2&yptr=yahoo"
         }
@@ -110,21 +110,21 @@
     "TSM": {
       "name": "Taiwan Semiconductor Manufactur",
       "quote": {
-        "c": 397.75,
-        "d": -0.62,
-        "dp": -0.1559,
+        "c": 398.0,
+        "d": -0.37,
+        "dp": -0.0929,
         "regular": 398.37,
         "reg_d": -11.37,
         "reg_dp": -2.7749,
         "pre": null,
-        "post": 397.75,
+        "post": 398.0,
         "prev_close": 409.74,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Nvidia and AMD Hit by AI Selloff",
-          "datetime": 1784323305,
+          "datetime": 1784324613,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/technology/ai/articles/nvidia-amd-hit-ai-selloff-200109203.html"
         }
@@ -133,21 +133,21 @@
     "MRVL": {
       "name": "Marvell Technology, Inc.",
       "quote": {
-        "c": 187.45,
-        "d": -1.23,
-        "dp": -0.6544,
+        "c": 187.22,
+        "d": -1.46,
+        "dp": -0.7738,
         "regular": 188.68,
         "reg_d": 0.38,
         "reg_dp": 0.2018,
         "pre": null,
-        "post": 187.45,
+        "post": 187.22,
         "prev_close": 188.3,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Semiconductor stocks trim losses as investors buy the dip",
-          "datetime": 1784323305,
+          "datetime": 1784324613,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/markets/article/semiconductor-stocks-trim-losses-as-investors-buy-the-dip-130920103.html"
         }
@@ -156,21 +156,21 @@
     "AVGO": {
       "name": "Broadcom Inc.",
       "quote": {
-        "c": 370.0,
-        "d": -0.83,
-        "dp": -0.2225,
+        "c": 371.65,
+        "d": 0.82,
+        "dp": 0.2225,
         "regular": 370.82,
         "reg_d": -3.62,
         "reg_dp": -0.9681,
         "pre": null,
-        "post": 370.0,
+        "post": 371.65,
         "prev_close": 374.45,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Semiconductor stocks trim losses as investors buy the dip",
-          "datetime": 1784323305,
+          "datetime": 1784324613,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/markets/article/semiconductor-stocks-trim-losses-as-investors-buy-the-dip-130920103.html"
         }
@@ -179,21 +179,21 @@
     "MU": {
       "name": "Micron Technology, Inc.",
       "quote": {
-        "c": 844.26,
-        "d": -4.69,
-        "dp": -0.5524,
+        "c": 843.97,
+        "d": -4.98,
+        "dp": -0.5866,
         "regular": 848.95,
         "reg_d": -4.25,
         "reg_dp": -0.4981,
         "pre": null,
-        "post": 844.26,
+        "post": 843.97,
         "prev_close": 853.2,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Semiconductor stocks trim losses as investors buy the dip",
-          "datetime": 1784323305,
+          "datetime": 1784324613,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/markets/article/semiconductor-stocks-trim-losses-as-investors-buy-the-dip-130920103.html"
         }
@@ -202,21 +202,21 @@
     "SNDK": {
       "name": "Sandisk Corporation",
       "quote": {
-        "c": 1346.75,
-        "d": -8.07,
-        "dp": -0.5956,
+        "c": 1342.2,
+        "d": -12.62,
+        "dp": -0.9316,
         "regular": 1354.82,
         "reg_d": -56.26,
         "reg_dp": -3.987,
         "pre": null,
-        "post": 1346.75,
+        "post": 1342.2,
         "prev_close": 1411.08,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "US stocks sink this week, semiconductors walloped amid sell-off",
-          "datetime": 1784323305,
+          "datetime": 1784324613,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/video/us-stocks-sink-this-week-semiconductors-walloped-amid-sell-off-201117763.html"
         }
@@ -225,21 +225,21 @@
     "SPCX": {
       "name": "Space Exploration Technologies",
       "quote": {
-        "c": 124.09,
-        "d": 0.1,
-        "dp": 0.0807,
+        "c": 124.05,
+        "d": 0.06,
+        "dp": 0.0484,
         "regular": 123.99,
         "reg_d": -7.12,
         "reg_dp": -5.4306,
         "pre": null,
-        "post": 124.09,
+        "post": 124.05,
         "prev_close": 131.11,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "How Starlink is SpaceX's key to making big 'star bucks'",
-          "datetime": 1784323305,
+          "datetime": 1784324613,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/video/starlink-spacexs-key-making-big-202500888.html"
         }
@@ -247,7 +247,7 @@
     }
   },
   "alert_sent": {
-    "morning": "2026-07-17",
+    "morning": "2026-07-18",
     "evening": "2026-07-17"
   }
 }
