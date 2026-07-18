@@ -487,15 +487,15 @@
   }
   @keyframes recentPulse { 0%, 100% { opacity: 0.8; } 50% { opacity: 0.3; } }
   .card-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 14px; }
-  /* badge 改為不收縮後，改由左側吸收擠壓；min-width:0 讓它能正常縮排換行 */
-  .card-header > div:first-child { min-width: 0; }
   .card-sym { font-size: 20px; font-weight: 700; color: var(--digit); letter-spacing: 1px; }
   .card-name { font-size: 10px; color: #aab09a; margin-top: 2px; }
-  /* white-space:nowrap + flex-shrink:0 缺一不可：
-     .tag 是 .card-header 的 flex item，CJK 每字之間皆為合法斷行點，
+  /* .tag 是 .card-header 的 flex item，CJK 每字之間皆為合法斷行點，
      故「盤後」的 min-content 僅一個字寬 —— 左側公司名較長時（如 SNDK / SPCX）
-     badge 會被壓成直排。英文標籤不受影響是因為 min-content 為整個單字。 */
-  .tag { font-size: 10px; font-weight: 700; padding: 3px 8px; border-radius: 4px; letter-spacing: 0.5px; white-space: nowrap; flex-shrink: 0; }
+     badge 會被壓成直排。英文標籤不受影響是因為 min-content 為整個單字。
+     只需 nowrap：flex item 的 min-width:auto 本就不會縮到比 min-content 更窄，
+     nowrap 讓 min-content 變成完整字串寬度，即已鎖死。不動 flex-shrink，
+     故 flex 計算與桌機版面完全不變。 */
+  .tag { font-size: 10px; font-weight: 700; padding: 3px 8px; border-radius: 4px; letter-spacing: 0.5px; white-space: nowrap; }
   .tag-post { background: #3a2a18; color: #e0b97d; border: 1px solid var(--knob); display: none; }
   .tag-post.show { display: inline-block; }
   .price-section {
@@ -526,7 +526,7 @@
   .phase-corner-label { position: absolute; top: 8px; left: 10px; font-size: 9px; font-weight: 700; color: #d9b87a; letter-spacing: 1px; opacity: 0.75; white-space: nowrap; }
   .main-change { font-size: 12px; font-weight: 700; margin-top: 6px; min-height: 18px; }
   .ref-price { margin-top: 10px; padding-top: 8px; border-top: 1px solid rgba(255,255,255,0.08); width: 100%; font-size: 11px; color: #c9b48a; display: flex; justify-content: center; gap: 6px; align-items: baseline; }
-  .ref-price .ref-tag { opacity: 0.6; font-size: 10px; white-space: nowrap; flex-shrink: 0; }
+  .ref-price .ref-tag { opacity: 0.6; font-size: 10px; white-space: nowrap; }
   .ref-price .ref-value { font-family: 'DM Mono', monospace; color: #e8d4a8; }
   .up   { color: var(--up);   background: #00e67615; border: 1px solid #00e67630; }
   .down { color: var(--down); background: #ff174415; border: 1px solid #ff174430; }
@@ -757,7 +757,12 @@
       animation: sfRevealMobile 0.18s linear forwards;
       animation-play-state: paused;
     }
+    /* 必須用 .sf-wrap.reveal-full（特異性 0,2,0）重新宣告整個 animation。
+       只寫 .sf-wrap（0,1,0）會輸給第 371 行的
+       .sf-wrap.reveal-full { animation: sfRevealFull ... }（clip-path 捲軸），
+       導致手機實際跑的是桌機那支動畫 —— 這是「改成 opacity 卻還是看到卷軸」的原因。 */
     .sf-wrap.reveal-full {
+      animation: sfRevealMobile 0.18s linear forwards;
       animation-play-state: running;
     }
     @keyframes sfRevealMobile {
@@ -1544,6 +1549,14 @@ function collapseCard(sym) {
   const stock   = STOCKS.find(s => s.sym === sym);
   overlay.classList.remove('show');
   document.body.classList.remove('scroll-locked');
+  // ── 置中：在簾幕後面完成 ──
+  // 此刻全螢幕卡片（.card.expanded，100vw × 100vh）仍完整覆蓋畫面，
+  // 背後怎麼捲動都看不見。等卡片淡出時，版面早已定位完畢 → 不會閃。
+  // 必須排在 scroll-locked 移除之後：body 還是 overflow:hidden 時捲動無效。
+  // 僅手機：桌機是三欄網格、卡片退回原格位即可，強制置中反而會讓視線跳動。
+  if (ghost && window.innerWidth <= 720) {
+    ghost.scrollIntoView({ block: 'center', inline: 'nearest', behavior: 'instant' });
+  }
   document.body.style.paddingRight = '';
   document.getElementById('grid').style.paddingRight = '';
   document.documentElement.style.removeProperty('--scrollbar-w');
@@ -1628,11 +1641,9 @@ function collapseCard(sym) {
       newCard.onclick = () => toggleCard(sym, stock?.ex || '');
       newCard.style.opacity = '0';
       ghost.parentNode.replaceChild(newCard, ghost);
-      fixLastRowLayout();   // 會重排 grid，必須先跑完才算得出正確捲動位置
-      // 卡片此刻仍是 opacity:0 —— 在看不見的狀態下「瞬間」定位到畫面中央，
-      // 使用者根本不會經歷捲動過程，等於一睜眼就已經置中。
-      // 原本的 behavior:'smooth' 會與下方淡入同時進行，兩個動畫疊加正是卡頓來源。
-      newCard.scrollIntoView({ block: 'center', inline: 'nearest', behavior: 'instant' });
+      fixLastRowLayout();
+      // 註：手機的置中已在 collapseCard 開頭、全螢幕卡片仍遮蔽畫面時完成，
+      //     newCard 是就地替換 ghost，位置本來就正確，此處不需再捲動。
       requestAnimationFrame(() => {
         requestAnimationFrame(() => {
           newCard.style.transition = 'opacity 0.2s ease';
