@@ -1549,6 +1549,44 @@ function _centerCardInViewport(el) {
     console.warn('[center] scroll failed:', e);
   }
 }
+// ── 捲動鎖 ──────────────────────────────────────────────
+// 桌機沿用原本的 body{overflow:hidden}（行為未變，不影響既有版面）。
+// 手機改用 position:fixed + top:-Y 技術，原因：
+//   html 的 overflow 是 visible，body 的 overflow 會傳播到 viewport；
+//   viewport 一旦不可捲動，瀏覽器會把 scrollTop 箝制歸零。
+//   解鎖後頁面已在最頂端，任何後續的座標計算都建立在被破壞的狀態上
+//   —— 這就是置中一直無效、且畫面有「跳回去」感的根因。
+// position:fixed 把捲動位置精確保存在 top 裡，完全不經過箝制。
+let _lockedScrollY = 0;
+let _lockedFixed   = false;
+function _lockBodyScroll(useFixed) {
+  _lockedScrollY = window.pageYOffset || document.documentElement.scrollTop || 0;
+  _lockedFixed   = !!useFixed;
+  if (_lockedFixed) {
+    const b = document.body.style;
+    b.position = 'fixed';
+    b.top      = `-${_lockedScrollY}px`;
+    b.left     = '0';
+    b.right    = '0';
+    b.width    = '100%';
+  } else {
+    document.body.classList.add('scroll-locked');
+  }
+}
+// centerEl 有值時還原到「該元素置中」的位置，否則還原到鎖定前的原位。
+// 兩次 scrollTo 都是同步的、同一幀內完成，使用者只會看到最終結果；
+// 且此刻全螢幕卡片仍完整遮蔽畫面，整個過程不可見 → 無跳動感。
+function _unlockBodyScroll(centerEl) {
+  if (_lockedFixed) {
+    const b = document.body.style;
+    b.position = ''; b.top = ''; b.left = ''; b.right = ''; b.width = '';
+    _lockedFixed = false;
+    window.scrollTo(0, _lockedScrollY);   // 先精確還原，座標系恢復正常
+  } else {
+    document.body.classList.remove('scroll-locked');
+  }
+  if (centerEl && window.innerWidth <= 720) _centerCardInViewport(centerEl);
+}
 function collapseCard(sym) {
   const card  = document.getElementById(`card-${_safeId(sym)}`);
   if (!card) return;
@@ -1566,14 +1604,11 @@ function collapseCard(sym) {
   const ghost   = document.getElementById(`ghost-${sym}`);
   const stock   = STOCKS.find(s => s.sym === sym);
   overlay.classList.remove('show');
-  document.body.classList.remove('scroll-locked');
-  // ── 置中（第一趟）：在簾幕後面完成 ──
-  // 此刻全螢幕卡片（.card.expanded，100vw × 100vh）仍完整覆蓋畫面，
-  // 背後怎麼捲動都看不見。等卡片淡出時，版面早已定位完畢 → 不會閃。
-  // 必須排在 scroll-locked 移除之後：body 還是 overflow:hidden 時捲動無效。
-  // 僅手機：桌機是三欄網格、卡片退回原格位即可，強制置中反而會讓視線跳動。
+  // 解鎖捲動，並在同一幀內直接定位到「該卡置中」。
+  // 此刻全螢幕卡片（100vw × 100vh）仍完整遮蔽畫面，整個過程不可見。
+  // 桌機傳 null → 僅解鎖、不置中，維持原本行為。
   const _wantCenter = window.innerWidth <= 720;
-  if (ghost && _wantCenter) _centerCardInViewport(ghost);
+  _unlockBodyScroll(_wantCenter ? ghost : null);
   document.body.style.paddingRight = '';
   document.getElementById('grid').style.paddingRight = '';
   document.documentElement.style.removeProperty('--scrollbar-w');
@@ -1732,7 +1767,8 @@ function toggleCard(sym, ex) {
     card.parentNode.insertBefore(ghost, card.nextSibling);
     // 捲軸補償改由 CSS scrollbar-gutter:stable 處理（見 html 規則），
     // JS 不再手動加 padding / --scrollbar-w，避免雙重補償反向位移。
-    document.body.classList.add('scroll-locked');
+    // 手機用 position:fixed 鎖（精確保存捲動位置），桌機沿用 overflow:hidden
+    _lockBodyScroll(window.innerWidth <= 720);
     card.classList.add('expanded');
     card.onclick = null;
     cardState = 'opening';
@@ -2142,6 +2178,15 @@ function renderNews(sym, newsList) {
          </a>`).join('')
     : `<div class="news-source">暫無相關新聞</div>`;
 }
+// ── 關閉瀏覽器的自動捲動還原 ──
+// 收合流程是 collapseCard() → history.back()。瀏覽器預設 scrollRestoration='auto'，
+// 會在 back 當下強制還原該 history entry 記錄的捲動座標，
+// 蓋掉 collapseCard() 裡剛設好的置中位置（手機症狀：置中無效）；
+// 而展開期間 body 曾 overflow:hidden、grid 也重排過，還原的座標與當下版面
+// 對不上，畫面就會莫名位移（桌機症狀：關掉卡片後網頁跳一下）。
+// 同一個機制造成兩個症狀，改為 manual 後捲動完全由本頁掌控。
+if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+
 let collapsingViaBack = false;
 window.addEventListener('popstate', () => {
   if (expandedSym && cardState !== 'closing') {
