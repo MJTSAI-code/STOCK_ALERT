@@ -2122,6 +2122,15 @@ function renderNews(sym, newsList) {
          </a>`).join('')
     : `<div class="news-source">暫無相關新聞</div>`;
 }
+// ── 關閉瀏覽器的自動捲動還原 ──
+// 收合流程是 collapseCard() → history.back()。瀏覽器預設 scrollRestoration='auto'，
+// 會在 back 當下強制還原該 history entry 記錄的捲動座標，
+// 蓋掉 collapseCard() 裡剛設好的置中位置（手機症狀：置中無效）；
+// 而展開期間 body 曾 overflow:hidden、grid 也重排過，還原的座標與當下版面
+// 對不上，畫面就會莫名位移（桌機症狀：關掉卡片後網頁跳一下）。
+// 同一個機制造成兩個症狀，改為 manual 後捲動完全由本頁掌控。
+if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+
 let collapsingViaBack = false;
 window.addEventListener('popstate', () => {
   if (expandedSym && cardState !== 'closing') {
