@@ -638,9 +638,80 @@
     gap: 8px;
   }
   .mobile-tv-btn:active { background: rgba(255,255,255,0.1); }
+  /* ── 回上一頁 BAR：內嵌於內容流，跟著捲動，位於 TV 連結下方 ── */
+  .mobile-back-bar {
+    display: none;
+    margin: 0 12px 16px;
+    height: 52px;
+    background: linear-gradient(180deg, #1a1710 0%, #111009 100%);
+    border: 1px solid #3a3020;
+    border-radius: 10px;
+    box-shadow: 0 2px 0 rgba(0,0,0,0.5), inset 0 1px 0 rgba(200,160,80,0.15);
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .mobile-back-bar:active {
+    background: linear-gradient(180deg, #201e14 0%, #181510 100%);
+    box-shadow: 0 1px 0 rgba(0,0,0,0.5), inset 0 2px 6px rgba(0,0,0,0.5);
+    transform: translateY(1px);
+  }
+  .mobile-back-bar .bb-screw {
+    width: 10px; height: 10px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 35% 35%, #4a4438, #1e1c16);
+    border: 1px solid #3a3528;
+    box-shadow: inset 0 1px 2px rgba(0,0,0,0.8);
+    flex-shrink: 0;
+    position: relative;
+  }
+  .mobile-back-bar .bb-screw::before {
+    content: ''; position: absolute;
+    top: 50%; left: 15%; right: 15%; height: 1px;
+    background: #5a5040; transform: translateY(-50%);
+  }
+  .mobile-back-bar .bb-screw::after {
+    content: ''; position: absolute;
+    left: 50%; top: 15%; bottom: 15%; width: 1px;
+    background: #5a5040; transform: translateX(-50%);
+  }
+  .mobile-back-bar .bb-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px; font-weight: 500;
+    color: #c8a96e; letter-spacing: 3px; text-transform: uppercase;
+  }
+  .mobile-back-bar .bb-line {
+    width: 24px; height: 1px;
+    background: linear-gradient(90deg, transparent, #6a5a3a);
+  }
+  .mobile-back-bar .bb-line.right {
+    background: linear-gradient(90deg, #6a5a3a, transparent);
+  }
   @media(max-width: 720px) {
     body { min-width: unset; }
     .mobile-tv-btn { display: flex; }
+    .mobile-back-bar { display: flex; }
+    /* ── 效能：翻頁字卡合成層隔離 ──
+       .pf-stack 提升為獨立合成層 + contain，讓 rotateX 逐幀重繪不會
+       波及父層 .expanded-price-stage 那 5 層 inset box-shadow（最大 120px blur）。
+       視覺外觀完全不變，只是把 paint 範圍鎖在字卡內。 */
+    /* 註：不使用 contain:paint —— rotateX 經 perspective 投影會略微超出元素邊界，
+       paint containment 會把它裁掉。用 translateZ(0) 提升合成層即足夠。 */
+    .pf-stack {
+      contain: layout style;
+      transform: translateZ(0);
+    }
+    .pf-front, .pf-back { will-change: transform; backface-visibility: hidden; }
+    /* 翻動當下把 text-shadow blur 從 14px 降到 6px：
+       44px 字 × 4 層模糊文字逐幀重繪是主要卡頓來源。
+       靜止狀態維持原本的完整光暈，動畫中的 0.13s 肉眼看不出差異。 */
+    .pf-front.go span, .pf-back.go span {
+      text-shadow: 0 0 6px rgba(255,200,110,0.45);
+    }
+    /* light-up/down 切換時 box-shadow transition 會讓整塊含巨型 blur 重繪 */
+    .card.expanded .expanded-price-stage { transition: none; }
     /* 點擊反饋 */
     .card:not(.expanded):active {
       border-color: #c8a96e;
@@ -661,7 +732,7 @@
        無空窗閃現，行為穩定於 Android WebView / iOS Safari */
     .sf-wrap {
       clip-path: none;
-      animation: sfRevealMobile 0.32s ease-out forwards;
+      animation: sfRevealMobile 0.24s ease-out forwards;
       animation-play-state: paused;
     }
     .sf-wrap.reveal-full {
@@ -1609,24 +1680,25 @@ function toggleCard(sym, ex) {
     card.onclick = null;
     cardState = 'opening';
     document.getElementById('grid').style.pointerEvents = 'none';
+    // isMobile 提前宣告：解鎖時間需依裝置分流（手機時間軸已壓縮）
+    const isMobile = window.innerWidth <= 720;
     pendingAnimTimers.push(setTimeout(() => {
       document.getElementById('grid').style.pointerEvents = '';
       cardState = 'expanded';
-    }, 700));
+    }, isMobile ? 420 : 700));
     expandedSym = sym;
     history.pushState({ expanded: sym }, '');
     overlay.classList.add('show');
     const splitLeft  = card.querySelector('.split-left');
     const splitRight = card.querySelector('.split-right');
-    const isMobile = window.innerWidth <= 720;
     if (isMobile) {
       card.classList.add('expanded-mobile');
       splitLeft.style.display = 'none';
-      const closeBar = document.createElement('div');
-      closeBar.className = 'mobile-close-bar';
-      closeBar.innerHTML = '<div class="cb-screw"></div><div class="cb-line"></div><span class="cb-label">CLOSE</span><div class="cb-line right"></div><div class="cb-screw"></div>';
-      closeBar.onclick = (e) => { e.stopPropagation(); toggleCard(sym, ex); };
-      document.body.appendChild(closeBar);
+      // 註：原本在此建立 .mobile-close-bar，但該 class 在樣式表末端被
+      //     `.mobile-close-bar { display: none }` 以同等 specificity 後蓋覆寫，
+      //     永遠不會顯示 —— 等於每次展開都建立一個看不見的節點。
+      //     功能已由內容流中的 .mobile-back-bar 取代，故移除。
+      //     （CSS 區塊保留未刪，日後若要改回固定式底欄可直接復用。）
     }
     splitRight.dataset.originalHtml = splitRight.innerHTML;
     splitRight.dataset.expanded = '1';
@@ -1685,8 +1757,25 @@ function toggleCard(sym, ex) {
           <a class="mobile-tv-btn" href="https://www.tradingview.com/chart/?symbol=${ex ? ex + ':' + sym : sym}" target="_blank" rel="noopener noreferrer">
             📈 在 TradingView 查看圖表
           </a>
+          <div class="mobile-back-bar" role="button" tabindex="0" aria-label="回上一頁">
+            <div class="bb-screw"></div>
+            <div class="bb-line"></div>
+            <span class="bb-label">← BACK</span>
+            <div class="bb-line right"></div>
+            <div class="bb-screw"></div>
+          </div>
         </div>
       `;
+      // 回上一頁 BAR：以 addEventListener 綁定，避免把 sym 內插進 inline handler
+      const _backBar = splitRight.querySelector('.mobile-back-bar');
+      if (_backBar) {
+        const _onBack = (e) => { e.stopPropagation(); toggleCard(sym, ex); };
+        _backBar.addEventListener('click', _onBack);
+        _backBar.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); _onBack(e); }
+        });
+      }
+      /* Backup of original logic — 固定 setTimeout 串接（會與翻頁動畫衝突）
       pendingAnimTimers.push(setTimeout(() => splitRight.classList.add('panel-flap'), 60));
       pendingAnimTimers.push(setTimeout(() => {
         const sh = document.getElementById(`exp-secHeader-${sym}`);
@@ -1703,6 +1792,40 @@ function toggleCard(sym, ex) {
         const sn = document.getElementById(`exp-secNews-${sym}`);
         if (sn) sn.classList.add('reveal-full');
       }, 560));
+      */
+
+      // ── 手機版展開序列 ──
+      // 三個區塊同時 reveal（皆為 sibling，互不影響），240ms 一起結束。
+      // 註：panel-flap 的 unrollDown 只定義在 @media(min-width:721px)，
+      //     手機上是 no-op，故不加。
+      const _priceSec = document.getElementById(`exp-secPrice-${sym}`);
+      pendingAnimTimers.push(setTimeout(() => {
+        document.getElementById(`exp-secHeader-${sym}`)?.classList.add('reveal-full');
+        document.getElementById(`exp-secNews-${sym}`)?.classList.add('reveal-full');
+        _priceSec?.classList.add('reveal-full');
+      }, 40));
+
+      // 唯一需要嚴格排序的關係：#exp-secPrice 是 .pf-stack（帶 perspective 的
+      // 3D rendering context）的祖先。祖先 transform 只要還在動，瀏覽器每幀
+      // 都得重新攤平 3D context —— 這就是翻頁卡頓的根因。
+      // 用 animationend 等它真正靜止再翻，可自動適應低階裝置的實際耗時。
+      if (_priceSec) {
+        let _flipped = false;
+        const _startFlip = (e) => {
+          // animationend 會冒泡：.pf-front.go/.pf-back.go 就在此元素內部，
+          // 必須濾掉子元素事件，只認 _priceSec 自己的動畫結束。
+          if (e && e.target !== _priceSec) return;
+          if (_flipped) return;
+          _flipped = true;
+          _priceSec.removeEventListener('animationend', _startFlip);
+          _priceSec.style.willChange = '';  // 釋放合成層，避免 GPU 記憶體堆積
+          flipPriceCard('exp-'+sym, curVal);
+        };
+        _priceSec.addEventListener('animationend', _startFlip);
+        _priceSec.style.willChange = 'transform, opacity';
+        // 保險：animationend 未觸發（動畫被中斷／元素提前移除）時仍要翻
+        pendingAnimTimers.push(setTimeout(() => _startFlip(null), 500));
+      }
     } else {
       // ── 桌機版展開：完整 TradingView + 兩欄 ──
       splitRight.innerHTML = `
