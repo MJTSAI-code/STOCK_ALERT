@@ -1531,6 +1531,24 @@ function fixLastRowLayout() {
   else if (remainder === 2) { cards[total-2].classList.add('last-row-pair-1'); cards[total-1].classList.add('last-row-pair-2'); }
 }
 window.addEventListener('resize', fixLastRowLayout);
+// ── 把指定元素捲到視窗垂直正中央 ──
+// 不用 scrollIntoView({behavior:'instant'})：'instant' 屬於較新的 ScrollBehavior 值，
+// 在部分 WebKit 版本會因 enum 不合法而丟 TypeError，一丟就會中斷整個 collapseCard。
+// 改用 window.scrollTo + 自行計算座標：行為明確、無 enum 相容性問題，
+// 且可自行 clamp 邊界（頂部/底部的卡片本來就無法真正置中，硬捲會產生空白）。
+function _centerCardInViewport(el) {
+  try {
+    if (!el || !el.getBoundingClientRect) return;
+    const rect = el.getBoundingClientRect();
+    const cur  = window.pageYOffset || document.documentElement.scrollTop || 0;
+    // 元素中心對齊視窗中心
+    const target = cur + rect.top + rect.height / 2 - window.innerHeight / 2;
+    const maxY = Math.max(0, document.documentElement.scrollHeight - window.innerHeight);
+    window.scrollTo(0, Math.min(Math.max(0, target), maxY));
+  } catch (e) {
+    console.warn('[center] scroll failed:', e);
+  }
+}
 function collapseCard(sym) {
   const card  = document.getElementById(`card-${_safeId(sym)}`);
   if (!card) return;
@@ -1549,14 +1567,13 @@ function collapseCard(sym) {
   const stock   = STOCKS.find(s => s.sym === sym);
   overlay.classList.remove('show');
   document.body.classList.remove('scroll-locked');
-  // ── 置中：在簾幕後面完成 ──
+  // ── 置中（第一趟）：在簾幕後面完成 ──
   // 此刻全螢幕卡片（.card.expanded，100vw × 100vh）仍完整覆蓋畫面，
   // 背後怎麼捲動都看不見。等卡片淡出時，版面早已定位完畢 → 不會閃。
   // 必須排在 scroll-locked 移除之後：body 還是 overflow:hidden 時捲動無效。
   // 僅手機：桌機是三欄網格、卡片退回原格位即可，強制置中反而會讓視線跳動。
-  if (ghost && window.innerWidth <= 720) {
-    ghost.scrollIntoView({ block: 'center', inline: 'nearest', behavior: 'instant' });
-  }
+  const _wantCenter = window.innerWidth <= 720;
+  if (ghost && _wantCenter) _centerCardInViewport(ghost);
   document.body.style.paddingRight = '';
   document.getElementById('grid').style.paddingRight = '';
   document.documentElement.style.removeProperty('--scrollbar-w');
@@ -1642,8 +1659,11 @@ function collapseCard(sym) {
       newCard.style.opacity = '0';
       ghost.parentNode.replaceChild(newCard, ghost);
       fixLastRowLayout();
-      // 註：手機的置中已在 collapseCard 開頭、全螢幕卡片仍遮蔽畫面時完成，
-      //     newCard 是就地替換 ghost，位置本來就正確，此處不需再捲動。
+      // ── 置中（第二趟）：以最終版面校正 ──
+      // 第一趟是在 ghost 上算的，之後又發生 replaceChild 與 fixLastRowLayout()，
+      // 版面可能微調。此刻 newCard 仍是 opacity:0，校正過程看不見。
+      // 若第一趟已經準確，這趟算出同一個座標，等同 no-op。
+      if (_wantCenter) _centerCardInViewport(newCard);
       requestAnimationFrame(() => {
         requestAnimationFrame(() => {
           newCard.style.transition = 'opacity 0.2s ease';
@@ -2122,15 +2142,6 @@ function renderNews(sym, newsList) {
          </a>`).join('')
     : `<div class="news-source">暫無相關新聞</div>`;
 }
-// ── 關閉瀏覽器的自動捲動還原 ──
-// 收合流程是 collapseCard() → history.back()。瀏覽器預設 scrollRestoration='auto'，
-// 會在 back 當下強制還原該 history entry 記錄的捲動座標，
-// 蓋掉 collapseCard() 裡剛設好的置中位置（手機症狀：置中無效）；
-// 而展開期間 body 曾 overflow:hidden、grid 也重排過，還原的座標與當下版面
-// 對不上，畫面就會莫名位移（桌機症狀：關掉卡片後網頁跳一下）。
-// 同一個機制造成兩個症狀，改為 manual 後捲動完全由本頁掌控。
-if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
-
 let collapsingViaBack = false;
 window.addEventListener('popstate', () => {
   if (expandedSym && cardState !== 'closing') {
