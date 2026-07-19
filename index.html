@@ -4,6 +4,14 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <meta name="color-scheme" content="dark light">
+<!-- App 內建瀏覽器（Messenger／LINE 等）的快取往往比原生瀏覽器更黏，
+     且使用者難以手動清除。GitHub Pages 對 HTML 預設 max-age=600，
+     這幾行讓願意遵守的瀏覽器每次都回源檢查。
+     註：meta http-equiv 的 Cache-Control 並非所有瀏覽器都採納，
+     屬盡力而為的補強，不是保證。 -->
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
 <title>美股情報 PRO</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
