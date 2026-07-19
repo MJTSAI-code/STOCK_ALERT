@@ -722,7 +722,10 @@
     background: linear-gradient(90deg, #6a5a3a, transparent);
   }
   @media(max-width: 720px) {
-    body { min-width: unset; }
+    /* 手機不該有橫向捲軸。overflow-x:hidden 是硬性保險 ——
+       就算日後某個元素算寬了，也只會被裁切，不會讓整頁能左右拖動。
+       （根本原因仍要修，這只是防止跑版擴散成全頁位移。） */
+    html, body { min-width: unset; max-width: 100%; overflow-x: hidden; }
     .mobile-tv-btn { display: flex; }
     .mobile-back-bar { display: flex; }
     /* ── 效能：翻頁字卡合成層隔離 ──
@@ -825,7 +828,15 @@
         inset 0 0 80px rgba(239, 83, 80, 0.28),
         inset 0 0 120px rgba(239, 83, 80, 0.12);
     }
-    .grid { gap: 8px; margin: 9px; }
+    /* ── grid 軌道必須可壓縮 ──
+       grid-template-columns:1fr 的最小尺寸預設是 auto，等於「不會縮到比
+       內容的 min-content 更窄」。公司名加了 white-space:nowrap 之後，
+       min-content 從「最長單字」變成整串不可斷的文字，卡片因此撐爆軌道，
+       整頁橫向溢出（topbar 也跟著跑版）。
+       minmax(0,1fr) 把最小值鎖成 0，軌道才會服從容器寬度。
+       .card 自身也需 min-width:0，否則同樣的 auto 最小值會在卡片層再犯一次。 */
+    .grid { gap: 8px; margin: 9px; grid-template-columns: minmax(0, 1fr); }
+    .card { min-width: 0; }
     /* ══════════════════════════════════════════════════════════════
        手機收合卡片：改為橫向雙欄，提高掃視密度
        ──────────────────────────────────────────────────────────────
@@ -860,14 +871,24 @@
        文字一律靠左，是西方閱讀習慣的預設。badge 緊貼代號右側，
        屬於「識別」這一群；先前用 space-between 會把它推到左欄右緣，
        結果與儀表板擠在一起，而公司名後方反而空一大塊。 */
+    /* ── 相位 badge 的位置：固定成一條垂直軌道 ──
+       先前用 flex-start，badge 緊貼公司名右側，於是每一列的 x 位置
+       都隨名稱長度浮動，掃視時會左右跳動，是密集列表的大忌。
+       改用 space-between：badge 恆定貼在左欄右緣，也就是儀表板正左方，
+       各列對齊成一條線。現價／盤前／盤後皆為兩字，寬度天然一致，
+       另加 min-width 讓未來若出現三字標籤也不破線。 */
     .card:not(.expanded) .card-header {
-      flex: 1; min-width: 0;
+      flex: 1 1 0;            /* flex-basis:0 → 不以內容寬度為起點，可完全壓縮 */
+      min-width: 0;
+      overflow: hidden;       /* 最後一道防線：內容再寬也不撐開卡片 */
       margin-bottom: 0;
-      justify-content: flex-start;
+      justify-content: space-between;
       align-items: center;
-      gap: 7px;
+      gap: 8px;
     }
-    .card:not(.expanded) .card-header > div:first-child { flex: 0 1 auto; min-width: 0; }
+    .card:not(.expanded) .card-header > div:first-child {
+      flex: 1 1 0; min-width: 0; overflow: hidden;
+    }
     .card:not(.expanded) .card-sym  { font-size: 17px; letter-spacing: 0.5px; }
     /* 密集列表必須維持等高列，否則掃視時節奏被打斷。
        長公司名改為單行截斷 —— 這是密集模式專屬，展開頁仍完整顯示。 */
@@ -875,7 +896,10 @@
       font-size: 9px; margin-top: 1px;
       white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
     }
-    .card:not(.expanded) .tag { font-size: 9px; padding: 2px 6px; flex-shrink: 0; }
+    .card:not(.expanded) .tag {
+      font-size: 9px; padding: 2px 0; flex-shrink: 0;
+      min-width: 34px; text-align: center;   /* 固定寬度 → 各列 badge 左右邊界都對齊 */
+    }
 
     /* ── 右欄：咖啡色凹槽貼齊機身右緣，黑色字窗再貼齊凹槽右緣 ──
        margin-left:auto 把咖啡色推到最右，各列形成一條對齊的右軌；
