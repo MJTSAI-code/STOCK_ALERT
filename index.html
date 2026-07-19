@@ -394,7 +394,12 @@
       inset 0 0 80px rgba(239, 83, 80, 0.22),
       inset 0 0 120px rgba(239, 83, 80, 0.09);
   }
+  /* 左上角的相位小字移除（手機與桌機皆然）：
+     右上角的 .tag-post badge 已標示同一份資訊（現價／盤前／盤後），
+     兩處並存等於同一件事講兩次。
+     DOM 保留、JS 完全不動 —— toggleCard() 仍會產生此元素，僅視覺隱藏。 */
   .expanded-phase-label {
+    display: none;
     position: absolute; top: 6px; left: 10px;
     font-size: 9px; font-weight: 700; color: #d9b87a; opacity: 0.8; letter-spacing: 1px;
     white-space: nowrap;
@@ -843,7 +848,8 @@
     .card.expanded .card-name { font-size: 10px; }
     .card.expanded .card-header { padding: 14px 16px; }
     .card.expanded .expanded-price-stage { padding: 16px 14px 12px; margin: 10px 12px 0; }
-    .card.expanded .expanded-phase-label { font-size: 9px; }
+    /* 註：.expanded-phase-label 的隱藏已提升為全域規則（見上方定義處），
+       手機與桌機一致，此處不再重複宣告。 */
     .card.expanded .exp-pf-stack { width: min(260px, 85%); height: 56px; }
     .card.expanded .exp-pf-stack .pf-top-static,
     .card.expanded .exp-pf-stack .pf-bot-static,
@@ -905,24 +911,29 @@
          0 5px 10px→ 落在機身上的影子
          inset 頂部高光 → 受光面
        仍不使用奶油色描邊，維持「奶油色只在最外框」的規則。 */
+    /* 棕色取自價格窗的同一族（#5a4422 → #3d2e16），壓深一階作為按鍵，
+       與機身的橄欖綠形成暖／冷對比，操作區一眼可辨。 */
     .card.expanded .mobile-tv-btn,
     .card.expanded .mobile-back-bar {
-      background: linear-gradient(180deg, #1a1710 0%, #111009 100%);
-      border: 1px solid #3a3020;
+      background: linear-gradient(180deg, #4a3620 0%, #31230f 100%);
+      border: 1px solid #6a4f2c;
       box-shadow:
         0 3px 0 rgba(0,0,0,0.5),
         0 5px 10px rgba(0,0,0,0.35),
-        inset 0 1px 0 rgba(200,160,80,0.18);
-      color: #c8a96e;
+        inset 0 1px 0 rgba(240,200,130,0.20);
+      color: #e8c88a;
       transition: transform 0.09s ease, box-shadow 0.09s ease;
     }
+    .card.expanded .mobile-back-bar .bb-label { color: #e8c88a; }
+    .card.expanded .mobile-back-bar .bb-line       { background: linear-gradient(90deg, transparent, #8a6a3a); }
+    .card.expanded .mobile-back-bar .bb-line.right { background: linear-gradient(90deg, #8a6a3a, transparent); }
     .card.expanded .mobile-tv-btn   { margin: 14px 16px 0; }
     .card.expanded .mobile-back-bar { margin: 12px 16px 22px; }
     /* 按下：整顆沉入，厚度歸零 */
     .card.expanded .mobile-tv-btn:active,
     .card.expanded .mobile-back-bar:active {
       transform: translateY(3px);
-      background: linear-gradient(180deg, #201e14 0%, #181510 100%);
+      background: linear-gradient(180deg, #3a2916 0%, #261a0a 100%);
       box-shadow:
         0 0 0 rgba(0,0,0,0.5),
         0 1px 3px rgba(0,0,0,0.3),
