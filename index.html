@@ -856,11 +856,11 @@
     .card.expanded .expanded-main-change { font-size: 13px; margin-top: 8px; }
     .card.expanded .expanded-ref-row { font-size: 11px; margin-top: 8px; }
     .card.expanded .expanded-news-wrap { margin: 10px 12px 0; }
-    /* ── 手機展開：沿用收合卡片的材質邏輯 ──
-       收合卡片的奶油色（--card-frame）只用在「最外框」一處，
-       內部的 .price-section 用的是深色邊 rgba(0,0,0,0.35) + inset 陰影。
-       展開＝走進這張卡的內部，因此不再出現任何奶油色線條，
-       只保留機身漸層，各區塊一律以深邊與凹陷陰影表現，與收合狀態一致。 */
+    /* ── 手機展開：沿用收合卡片的橄欖綠機身 ──
+       展開＝走進這張卡的內部，機身沿用同一組漸層，維持物件感。
+       內部各區塊一律「深邊 rgba(0,0,0,0.35) + inset 凹陷」，
+       與收合卡片的 .price-section 同一套材質規則；
+       奶油色（--card-frame）維持只在最外框出現一次的原則，內部不使用。 */
     .card.expanded {
       background: linear-gradient(180deg, var(--window) 0%, var(--window-edge) 100%);
     }
@@ -1721,6 +1721,7 @@ function collapseCard(sym) {
   const _busyGuard = setTimeout(() => {
     document.getElementById('grid').style.pointerEvents = '';
     cardState = 'idle';
+    _restoreScrollRestoration();
   }, 1500);
   const overlay = document.getElementById('cardOverlay');
   const ghost   = document.getElementById(`ghost-${sym}`);
@@ -1753,6 +1754,7 @@ function collapseCard(sym) {
       clearTimeout(_busyGuard);
       document.getElementById('grid').style.pointerEvents = '';
       cardState = 'idle';
+      _restoreScrollRestoration();
       return;
     }
     ghost.classList.add('reviving');
@@ -1762,6 +1764,7 @@ function collapseCard(sym) {
         clearTimeout(_busyGuard);
         document.getElementById('grid').style.pointerEvents = '';
         cardState = 'idle';
+        _restoreScrollRestoration();
         return;
       }
       const newCard = document.createElement('div');
@@ -1834,6 +1837,7 @@ function collapseCard(sym) {
       clearTimeout(_busyGuard);
       document.getElementById('grid').style.pointerEvents = '';
       cardState = 'idle';
+      _restoreScrollRestoration();   // 收合完成 → F5 可再度還原捲動位置
     }, 100));
   };
 }
@@ -1902,6 +1906,13 @@ function toggleCard(sym, ex) {
       cardState = 'expanded';
     }, isMobile ? 420 : 700));
     expandedSym = sym;
+    // ── 抑制返回時的自動捲動還原：必須在 pushState「之前」設定 ──
+    // history.scrollRestoration 設定的是「當前 entry」的模式，而 back() 時
+    // 瀏覽器讀的是「目標 entry」的模式。此刻當前 entry 正是列表頁，
+    // 也就是等一下 back 要回去的那一個 —— 設在這裡才有效。
+    // （設在 back() 前一刻只會設到「展開中」那個 entry，完全沒作用。）
+    // 收合完成後會在 collapseCard() 內改回 'auto'，確保 F5 仍能還原位置。
+    if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
     history.pushState({ expanded: sym }, '');
     overlay.classList.add('show');
     const splitLeft  = card.querySelector('.split-left');
@@ -2127,19 +2138,18 @@ function toggleCard(sym, ex) {
     if (!collapsingViaBack && history.state?.expanded === sym) _backWithoutScrollRestore();
   }
 }
-// ── 只在這一次 back 期間抑制瀏覽器的自動捲動還原 ──
-// 瀏覽器預設 scrollRestoration='auto'，會在 back 當下把畫面捲回該 history
-// entry 記錄的座標，蓋掉 collapseCard() 剛設好的置中位置。
-// 但若全域設成 'manual'，連 F5 重新整理都不會還原捲動位置（一律跳回頂端），
-// 副作用太大。因此只在 back 前後短暫切換，用完立刻還原。
-// 還原用 setTimeout 而非緊接其後：history.back() 的走訪是非同步排程的，
-// 同步還原會在走訪完成前就生效，等於沒抑制到。
+// 抑制設定已移至 pushState 之前（見 toggleCard 內註解）——
+// scrollRestoration 作用於「當前 entry」，必須在列表頁還是當前 entry 時設定。
+// 此處只負責觸發返回；還原成 'auto' 由 _restoreScrollRestoration() 處理。
 function _backWithoutScrollRestore() {
-  if (!('scrollRestoration' in history)) { history.back(); return; }
-  const _prev = history.scrollRestoration;
-  history.scrollRestoration = 'manual';
   history.back();
-  setTimeout(() => { history.scrollRestoration = _prev; }, 300);
+}
+// 收合完成後把列表 entry 的模式改回 'auto'，
+// 讓 F5 重新整理仍會還原到原本的捲動位置。
+// 用 setTimeout 是因為 history 走訪為非同步排程，需等它落地後再改。
+function _restoreScrollRestoration() {
+  if (!('scrollRestoration' in history)) return;
+  setTimeout(() => { history.scrollRestoration = 'auto'; }, 300);
 }
 // ── 四層翻頁邏輯 ──
 function flipPriceCard(sym, newVal) {
