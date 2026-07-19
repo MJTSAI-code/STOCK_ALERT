@@ -498,6 +498,16 @@
   .tag { font-size: 10px; font-weight: 700; padding: 3px 8px; border-radius: 4px; letter-spacing: 0.5px; white-space: nowrap; }
   .tag-post { background: #3a2a18; color: #e0b97d; border: 1px solid var(--knob); display: none; }
   .tag-post.show { display: inline-block; }
+  /* 相位標示已移至卡片右上角的 .tag-post（見 renderPrice）。
+     此元素保留於 DOM 並持續更新文字，toggleCard() 需讀它決定展開頁大標。 */
+  .phase-corner-label { display: none; }
+  /* ── 長公司名的閃避策略：讓左側收縮，不動白字本身 ──
+     badge 恆常顯示後，長公司名會擠壓右上角。解法是讓左側成為可壓縮的一方：
+       flex:1 + min-width:0 → 解除 flex item 的 min-content 下限，
+                              名稱在自己被壓縮的框內換行，不去推擠 badge
+     .card-name 的字級、顏色、換行行為皆維持原樣，未做任何更動。 */
+  .card-header { gap: 10px; }
+  .card-header > div:first-child { flex: 1; min-width: 0; }
   .price-section {
     position: relative; display: flex; flex-direction: column;
     align-items: center; justify-content: center; min-height: 120px;
@@ -1334,6 +1344,7 @@ function buildGrid() {
     </div>
   `).join('');
   fixLastRowLayout();
+  _updateCenterPadding();   // 卡片數量/高度變動後重算置中餘裕
   _attachLongPressHandlers();
   _applyEditClasses();
 }
@@ -1531,22 +1542,70 @@ function fixLastRowLayout() {
   else if (remainder === 2) { cards[total-2].classList.add('last-row-pair-1'); cards[total-1].classList.add('last-row-pair-2'); }
 }
 window.addEventListener('resize', fixLastRowLayout);
+// ── 置中餘裕：讓任何一張卡（含第一張與最後一張）都能捲到視窗正中央 ──
+// scrollTop 的物理邊界是 [0, scrollHeight - innerHeight]。第一張卡上方沒有
+// 內容可捲，因此不保留餘裕就永遠無法置中。頭尾各補「半視窗高 - 半卡高」，
+// 是 picker / carousel 類 UI 的標準做法。
+// 僅手機套用；桌機是多欄網格、不做置中，保持原樣。
+// 副作用：列表頂端會多出一段空白。初次建立時以 _compensateTopPad() 把捲動
+// 位置設到第一張卡，使用者一開始不會看到那段空白。
+let _centerPad = 0;
+function _updateCenterPadding() {
+  const grid = document.getElementById('grid');
+  if (!grid) return;
+  if (window.innerWidth > 720) {
+    grid.style.paddingTop = '';
+    grid.style.paddingBottom = '';
+    _centerPad = 0;
+    return;
+  }
+  const firstCard = grid.querySelector('.card, .card-ghost');
+  const cardH = firstCard ? firstCard.offsetHeight : 176;
+  _centerPad = Math.max(0, Math.round(window.innerHeight / 2 - cardH / 2));
+  grid.style.paddingTop    = _centerPad + 'px';
+  grid.style.paddingBottom = _centerPad + 'px';
+}
+function _compensateTopPad() {
+  // 抵銷頂部保留區：載入時直接停在第一張卡，而非那段空白上
+  if (_centerPad > 0 && (window.pageYOffset || 0) < 2) window.scrollTo(0, _centerPad);
+}
+window.addEventListener('resize', _updateCenterPadding);
 // ── 把指定元素捲到視窗垂直正中央 ──
 // 不用 scrollIntoView({behavior:'instant'})：'instant' 屬於較新的 ScrollBehavior 值，
 // 在部分 WebKit 版本會因 enum 不合法而丟 TypeError，一丟就會中斷整個 collapseCard。
 // 改用 window.scrollTo + 自行計算座標：行為明確、無 enum 相容性問題，
 // 且可自行 clamp 邊界（頂部/底部的卡片本來就無法真正置中，硬捲會產生空白）。
-function _centerCardInViewport(el) {
+// 診斷開關：需要追置中行為時在 Console 打 __CENTER_DEBUG = true
+window.__CENTER_DEBUG = window.__CENTER_DEBUG || false;
+function _centerCardInViewport(el, tag) {
   try {
-    if (!el || !el.getBoundingClientRect) return;
+    if (!el || !el.getBoundingClientRect) {
+      if (window.__CENTER_DEBUG) console.log('[center:' + tag + '] 中止：元素不存在');
+      return;
+    }
     const rect = el.getBoundingClientRect();
     const cur  = window.pageYOffset || document.documentElement.scrollTop || 0;
     // 元素中心對齊視窗中心
     const target = cur + rect.top + rect.height / 2 - window.innerHeight / 2;
     const maxY = Math.max(0, document.documentElement.scrollHeight - window.innerHeight);
-    window.scrollTo(0, Math.min(Math.max(0, target), maxY));
+    const final = Math.min(Math.max(0, target), maxY);
+    window.scrollTo(0, final);
+    if (window.__CENTER_DEBUG) {
+      const after = window.pageYOffset || document.documentElement.scrollTop || 0;
+      console.log(
+        '[center:' + tag + ']',
+        '目前捲動=' + Math.round(cur),
+        '元素top=' + Math.round(rect.top),
+        '元素高=' + Math.round(rect.height),
+        '視窗高=' + window.innerHeight,
+        '→ 理想=' + Math.round(target),
+        'clamp後=' + Math.round(final),
+        '實際=' + Math.round(after),
+        Math.abs(after - final) < 2 ? '✓ 生效' : '✗ 被擋下（有其他東西改了捲動）'
+      );
+    }
   } catch (e) {
-    console.warn('[center] scroll failed:', e);
+    console.warn('[center:' + tag + '] scroll failed:', e);
   }
 }
 // ── 捲動鎖 ──────────────────────────────────────────────
@@ -1585,7 +1644,12 @@ function _unlockBodyScroll(centerEl) {
   } else {
     document.body.classList.remove('scroll-locked');
   }
-  if (centerEl && window.innerWidth <= 720) _centerCardInViewport(centerEl);
+  if (window.__CENTER_DEBUG) {
+    console.log('[center] 解鎖捲動：模式=' + (_lockedFixed ? 'fixed' : 'overflow'),
+                '還原至=' + _lockedScrollY,
+                '要置中=' + !!centerEl);
+  }
+  if (centerEl && window.innerWidth <= 720) _centerCardInViewport(centerEl, '第1趟/ghost');
 }
 function collapseCard(sym) {
   const card  = document.getElementById(`card-${_safeId(sym)}`);
@@ -1651,7 +1715,7 @@ function collapseCard(sym) {
       const _valStr      = _d ? _d.valStr : '—';
       const _phaseLabel  = _d ? _d.phaseLabel : '現價';
       const _lightClass  = _d ? _d.lightClass : '';
-      const _badgeShow   = _d?.isExt ? 'show' : '';
+      const _badgeShow   = _d ? 'show' : '';
       const _phase       = _d ? _d.phase : '正式盤';
       const _mainChgHtml = _d ? `<span class="${_d.dir}">${_d.sg} ${Math.abs(_d.mc).toFixed(2)} (${Math.abs(_d.mct).toFixed(2)}%)</span>` : '';
       const _subChgHtml  = _d ? `<span class="${_d.rd}">${_d.rsg} ${Math.abs(_d.rc).toFixed(2)} (${Math.abs(_d.rp).toFixed(2)}%)</span>` : '';
@@ -1671,7 +1735,7 @@ function collapseCard(sym) {
                 <div class="card-sym">${sym}</div>
                 <div class="card-name">${stock?.name || ''}</div>
               </div>
-              <span class="tag tag-post ${_badgeShow}" id="badge-${sym}">${_d?.isExt ? _phase : '盤後'}</span>
+              <span class="tag tag-post ${_badgeShow}" id="badge-${sym}">${_d ? _d.phaseLabel : '現價'}</span>
             </div>
             <div class="price-section ${_lightClass}">
               <span class="phase-corner-label" id="phase-label-${sym}">${_phaseLabel}</span>
@@ -1698,7 +1762,7 @@ function collapseCard(sym) {
       // 第一趟是在 ghost 上算的，之後又發生 replaceChild 與 fixLastRowLayout()，
       // 版面可能微調。此刻 newCard 仍是 opacity:0，校正過程看不見。
       // 若第一趟已經準確，這趟算出同一個座標，等同 no-op。
-      if (_wantCenter) _centerCardInViewport(newCard);
+      if (_wantCenter) _centerCardInViewport(newCard, '第2趟/newCard');
       requestAnimationFrame(() => {
         requestAnimationFrame(() => {
           newCard.style.transition = 'opacity 0.2s ease';
@@ -2085,9 +2149,13 @@ function renderPrice(sym, q) {
     priceSection.classList.remove('light-up', 'light-down');
     if (d.lightClass) priceSection.classList.add(d.lightClass);
   }
+  // 相位標示統一放在卡片右上角。原本只有盤前/盤後才顯示，現在「現價」也一併
+  // 收進同一個 badge —— 兩者本來就是同一份資料（phaseLabelMap）的兩種呈現。
+  // 咖啡色面板左上的 .phase-corner-label 已改為視覺隱藏，但 DOM 與文字更新
+  // 都保留：toggleCard() 會讀它的 textContent 決定展開頁的大標，不可移除。
   const badge = document.getElementById(`badge-${sym}`);
-  if (d.isExt) { badge.textContent = d.phase; badge.classList.add('show'); }
-  else badge.classList.remove('show');
+  badge.textContent = d.phaseLabel;
+  badge.classList.add('show');   // 現價 / 盤前 / 盤後 共用同一組 .tag-post 樣式
   const subRow   = document.getElementById(`sub-row-${sym}`);
   const subLabel = document.getElementById(`sub-label-${sym}`);
   const subEl    = document.getElementById(`sub-${sym}`);
@@ -2195,6 +2263,7 @@ window.addEventListener('popstate', () => {
   }
 });
 buildGrid();
+_compensateTopPad();   // 載入時跳過頂部的置中保留區
 loadData();
 setInterval(loadData, 60000);
 </script>
