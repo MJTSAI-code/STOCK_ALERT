@@ -898,22 +898,34 @@
       background: rgba(0,0,0,0.18);
       border-color: rgba(0,0,0,0.3);
     }
-    /* 操作鍵：同一套深邊凹陷，不用奶油色描邊 */
-    .card.expanded .mobile-tv-btn {
-      margin: 12px 16px 0;
-      background: rgba(0,0,0,0.22);
-      border: 1px solid rgba(0,0,0,0.35);
-      box-shadow: inset 0 2px 8px rgba(0,0,0,0.4);
-    }
+    /* ── 操作鍵：凸起 ──
+       材質分工：可以按的東西凸出來，用來看的東西（顯示窗、新聞槽）凹進去。
+       凸起沿用收合卡片本身的語彙（0 6px 0 實心厚度 + 柔和落影），只是縮小尺度：
+         0 3px 0   → 按鍵的實體厚度
+         0 5px 10px→ 落在機身上的影子
+         inset 頂部高光 → 受光面
+       仍不使用奶油色描邊，維持「奶油色只在最外框」的規則。 */
+    .card.expanded .mobile-tv-btn,
     .card.expanded .mobile-back-bar {
-      margin: 12px 16px 20px;
-      background: rgba(0,0,0,0.3);
-      border: 1px solid rgba(0,0,0,0.4);
-      box-shadow: inset 0 2px 8px rgba(0,0,0,0.45);
+      background: linear-gradient(180deg, rgba(255,255,255,0.07) 0%, rgba(0,0,0,0.20) 100%);
+      border: 1px solid rgba(0,0,0,0.42);
+      box-shadow:
+        0 3px 0 rgba(0,0,0,0.45),
+        0 5px 10px rgba(0,0,0,0.35),
+        inset 0 1px 0 rgba(255,255,255,0.10);
+      transition: transform 0.09s ease, box-shadow 0.09s ease;
     }
+    .card.expanded .mobile-tv-btn   { margin: 14px 16px 0; }
+    .card.expanded .mobile-back-bar { margin: 12px 16px 22px; }
+    /* 按下：整顆沉入，厚度歸零 */
+    .card.expanded .mobile-tv-btn:active,
     .card.expanded .mobile-back-bar:active {
-      background: rgba(0,0,0,0.42);
-      box-shadow: inset 0 3px 10px rgba(0,0,0,0.6);
+      transform: translateY(3px);
+      background: linear-gradient(180deg, rgba(255,255,255,0.04) 0%, rgba(0,0,0,0.26) 100%);
+      box-shadow:
+        0 0 0 rgba(0,0,0,0.45),
+        0 1px 3px rgba(0,0,0,0.3),
+        inset 0 2px 7px rgba(0,0,0,0.45);
     }
     /* 底部留空，避免被 close-bar 蓋住 */
     .card.expanded .card-body-split { padding-bottom: 72px; }
@@ -2111,8 +2123,22 @@ function toggleCard(sym, ex) {
     }
   } else {
     collapseCard(sym);
-    if (!collapsingViaBack && history.state?.expanded === sym) history.back();
+    if (!collapsingViaBack && history.state?.expanded === sym) _backWithoutScrollRestore();
   }
+}
+// ── 只在這一次 back 期間抑制瀏覽器的自動捲動還原 ──
+// 瀏覽器預設 scrollRestoration='auto'，會在 back 當下把畫面捲回該 history
+// entry 記錄的座標，蓋掉 collapseCard() 剛設好的置中位置。
+// 但若全域設成 'manual'，連 F5 重新整理都不會還原捲動位置（一律跳回頂端），
+// 副作用太大。因此只在 back 前後短暫切換，用完立刻還原。
+// 還原用 setTimeout 而非緊接其後：history.back() 的走訪是非同步排程的，
+// 同步還原會在走訪完成前就生效，等於沒抑制到。
+function _backWithoutScrollRestore() {
+  if (!('scrollRestoration' in history)) { history.back(); return; }
+  const _prev = history.scrollRestoration;
+  history.scrollRestoration = 'manual';
+  history.back();
+  setTimeout(() => { history.scrollRestoration = _prev; }, 300);
 }
 // ── 四層翻頁邏輯 ──
 function flipPriceCard(sym, newVal) {
@@ -2309,15 +2335,6 @@ function renderNews(sym, newsList) {
          </a>`).join('')
     : `<div class="news-source">暫無相關新聞</div>`;
 }
-// ── 關閉瀏覽器的自動捲動還原 ──
-// 收合流程是 collapseCard() → history.back()。瀏覽器預設 scrollRestoration='auto'，
-// 會在 back 當下強制還原該 history entry 記錄的捲動座標，
-// 蓋掉 collapseCard() 裡剛設好的置中位置（手機症狀：置中無效）；
-// 而展開期間 body 曾 overflow:hidden、grid 也重排過，還原的座標與當下版面
-// 對不上，畫面就會莫名位移（桌機症狀：關掉卡片後網頁跳一下）。
-// 同一個機制造成兩個症狀，改為 manual 後捲動完全由本頁掌控。
-if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
-
 let collapsingViaBack = false;
 window.addEventListener('popstate', () => {
   if (expandedSym && cardState !== 'closing') {
