@@ -757,14 +757,12 @@
     .card.expanded .card-body-split { perspective: none; }
     .card.expanded .expanded-ref-row { perspective: none; }
 
-    /* ── 手機 reveal：純 opacity ──
-       行情面板的資訊應該「本來就在那裡」，不需要演出。
-       捨棄 translateY 後不再產生任何 transform 祖先，
-       純 opacity 是 compositor-only，不觸發 layout 或 paint，
-       也徹底消除與翻頁鬧鐘 3D context 打架的可能。 */
+    /* ── 手機 reveal：通電暖機 ──
+       螢光顯示器通電的亮度爬升：先暗 → 過衝到偏亮 → 回落穩定。
+       只動 opacity 與 filter，不觸發 layout，也不產生 transform 祖先。 */
     .sf-wrap {
       clip-path: none;
-      animation: sfRevealMobile 0.18s linear forwards;
+      animation: sfRevealMobile 0.42s cubic-bezier(0.2,0.7,0.3,1) forwards;
       animation-play-state: paused;
     }
     /* 必須用 .sf-wrap.reveal-full（特異性 0,2,0）重新宣告整個 animation。
@@ -772,12 +770,24 @@
        .sf-wrap.reveal-full { animation: sfRevealFull ... }（clip-path 捲軸），
        導致手機實際跑的是桌機那支動畫 —— 這是「改成 opacity 卻還是看到卷軸」的原因。 */
     .sf-wrap.reveal-full {
-      animation: sfRevealMobile 0.18s linear forwards;
+      animation: sfRevealMobile 0.42s cubic-bezier(0.2,0.7,0.3,1) forwards;
       animation-play-state: running;
     }
     @keyframes sfRevealMobile {
-      from { opacity: 0; }
-      to   { opacity: 1; }
+      0%   { opacity: 0; filter: brightness(0.25); }
+      45%  { opacity: 1; filter: brightness(1.55); }
+      100% { opacity: 1; filter: brightness(1); }
+    }
+    /* ── 關鍵：動畫結束必須撤掉 filter ──
+       filter 會讓元素渲染進獨立緩衝，並「攤平」子層的 3D 變換。
+       animation-fill-mode:forwards 會讓 brightness(1) 永久殘留，
+       翻頁鬧鐘（.pf-stack 的 rotateX）就會失去立體感。
+       animation:none 才能解除 fill-forwards 的鎖定 —— 動畫層級的計算值
+       優先於 inline style，光設 filter:none 是蓋不掉的。 */
+    .sf-wrap.reveal-done {
+      animation: none;
+      opacity: 1;
+      filter: none;
     }
     /* 手機版：字卡位置固定，不依賴瀏覽器 flex 自動置中 */
     .pf-wrap { margin: 8px 0; }
@@ -846,6 +856,65 @@
     .card.expanded .expanded-main-change { font-size: 13px; margin-top: 8px; }
     .card.expanded .expanded-ref-row { font-size: 11px; margin-top: 8px; }
     .card.expanded .expanded-news-wrap { margin: 10px 12px 0; }
+    /* ── 手機展開：沿用收合卡片的材質邏輯 ──
+       收合卡片的奶油色（--card-frame）只用在「最外框」一處，
+       內部的 .price-section 用的是深色邊 rgba(0,0,0,0.35) + inset 陰影。
+       展開＝走進這張卡的內部，因此不再出現任何奶油色線條，
+       只保留機身漸層，各區塊一律以深邊與凹陷陰影表現，與收合狀態一致。 */
+    .card.expanded {
+      background: linear-gradient(180deg, var(--window) 0%, var(--window-edge) 100%);
+    }
+    /* 標題區：與收合卡片相同，無框線，僅靠留白分隔 */
+    .card.expanded .card-header {
+      background: none;
+      border-bottom: none;
+      box-shadow: none;
+      padding: 16px 16px 10px;
+    }
+    /* 顯示窗：完全比照收合卡片的 .price-section */
+    .card.expanded .expanded-price-stage {
+      border: 1px solid rgba(0,0,0,0.35);
+      border-radius: 10px;
+      margin: 0 16px;
+      box-shadow:
+        inset 0 2px 10px rgba(0,0,0,0.5),
+        inset 0 0 30px rgba(240,180,90,0.12);
+    }
+    /* 新聞區：同樣的深邊凹陷語彙，只是底色更深以區隔層次 */
+    .card.expanded .expanded-news-wrap {
+      background: rgba(0,0,0,0.22);
+      border: 1px solid rgba(0,0,0,0.35);
+      border-radius: 10px;
+      box-shadow: inset 0 2px 10px rgba(0,0,0,0.45);
+      margin: 12px 16px 0;
+      padding: 13px;
+    }
+    .card.expanded .expanded-news-title {
+      border-bottom: none;
+      padding-bottom: 0;
+      margin-bottom: 9px;
+    }
+    .card.expanded .expanded-news-item {
+      background: rgba(0,0,0,0.18);
+      border-color: rgba(0,0,0,0.3);
+    }
+    /* 操作鍵：同一套深邊凹陷，不用奶油色描邊 */
+    .card.expanded .mobile-tv-btn {
+      margin: 12px 16px 0;
+      background: rgba(0,0,0,0.22);
+      border: 1px solid rgba(0,0,0,0.35);
+      box-shadow: inset 0 2px 8px rgba(0,0,0,0.4);
+    }
+    .card.expanded .mobile-back-bar {
+      margin: 12px 16px 20px;
+      background: rgba(0,0,0,0.3);
+      border: 1px solid rgba(0,0,0,0.4);
+      box-shadow: inset 0 2px 8px rgba(0,0,0,0.45);
+    }
+    .card.expanded .mobile-back-bar:active {
+      background: rgba(0,0,0,0.42);
+      box-shadow: inset 0 3px 10px rgba(0,0,0,0.6);
+    }
     /* 底部留空，避免被 close-bar 蓋住 */
     .card.expanded .card-body-split { padding-bottom: 72px; }
 
@@ -1344,7 +1413,6 @@ function buildGrid() {
     </div>
   `).join('');
   fixLastRowLayout();
-  _updateCenterPadding();   // 卡片數量/高度變動後重算置中餘裕
   _attachLongPressHandlers();
   _applyEditClasses();
 }
@@ -1542,34 +1610,11 @@ function fixLastRowLayout() {
   else if (remainder === 2) { cards[total-2].classList.add('last-row-pair-1'); cards[total-1].classList.add('last-row-pair-2'); }
 }
 window.addEventListener('resize', fixLastRowLayout);
-// ── 置中餘裕：讓任何一張卡（含第一張與最後一張）都能捲到視窗正中央 ──
-// scrollTop 的物理邊界是 [0, scrollHeight - innerHeight]。第一張卡上方沒有
-// 內容可捲，因此不保留餘裕就永遠無法置中。頭尾各補「半視窗高 - 半卡高」，
-// 是 picker / carousel 類 UI 的標準做法。
-// 僅手機套用；桌機是多欄網格、不做置中，保持原樣。
-// 副作用：列表頂端會多出一段空白。初次建立時以 _compensateTopPad() 把捲動
-// 位置設到第一張卡，使用者一開始不會看到那段空白。
-let _centerPad = 0;
-function _updateCenterPadding() {
-  const grid = document.getElementById('grid');
-  if (!grid) return;
-  if (window.innerWidth > 720) {
-    grid.style.paddingTop = '';
-    grid.style.paddingBottom = '';
-    _centerPad = 0;
-    return;
-  }
-  const firstCard = grid.querySelector('.card, .card-ghost');
-  const cardH = firstCard ? firstCard.offsetHeight : 176;
-  _centerPad = Math.max(0, Math.round(window.innerHeight / 2 - cardH / 2));
-  grid.style.paddingTop    = _centerPad + 'px';
-  grid.style.paddingBottom = _centerPad + 'px';
-}
-function _compensateTopPad() {
-  // 抵銷頂部保留區：載入時直接停在第一張卡，而非那段空白上
-  if (_centerPad > 0 && (window.pageYOffset || 0) < 2) window.scrollTo(0, _centerPad);
-}
-window.addEventListener('resize', _updateCenterPadding);
+// 註：先前為了讓第一張/最後一張卡也能置中，曾在 grid 頭尾各補半個視窗高的
+//     餘裕（picker / carousel 的標準做法）。但那會在列表頂端留下大片空白，
+//     視覺代價過高，已移除。現行行為：中段的卡片可精確置中，最頂/最底的
+//     卡片則貼齊邊界 —— 這是 scrollTop 物理邊界 [0, scrollHeight-innerHeight]
+//     的必然結果，_centerCardInViewport() 內的 clamp 已正確處理。
 // ── 把指定元素捲到視窗垂直正中央 ──
 // 不用 scrollIntoView({behavior:'instant'})：'instant' 屬於較新的 ScrollBehavior 值，
 // 在部分 WebKit 版本會因 enum 不合法而丟 TypeError，一丟就會中斷整個 collapseCard。
@@ -1956,10 +2001,25 @@ function toggleCard(sym, ex) {
       // 註：panel-flap 的 unrollDown 只定義在 @media(min-width:721px)，
       //     手機上是 no-op，故不加。
       const _priceSec = document.getElementById(`exp-secPrice-${sym}`);
+      const _allSecs  = [
+        document.getElementById(`exp-secHeader-${sym}`),
+        _priceSec,
+        document.getElementById(`exp-secNews-${sym}`),
+      ].filter(Boolean);
+      // 每一段動畫結束後掛上 .reveal-done：撤掉 filter，避免獨立緩衝殘留
+      // 而攤平翻頁鬧鐘的 3D（詳見 CSS .sf-wrap.reveal-done 註解）。
+      _allSecs.forEach((el) => {
+        const _cleanup = (e) => {
+          if (e.target !== el) return;          // 濾掉子元素冒泡上來的 animationend
+          el.removeEventListener('animationend', _cleanup);
+          el.style.willChange = '';
+          el.classList.add('reveal-done');
+        };
+        el.addEventListener('animationend', _cleanup);
+        el.style.willChange = 'opacity, filter';
+      });
       pendingAnimTimers.push(setTimeout(() => {
-        document.getElementById(`exp-secHeader-${sym}`)?.classList.add('reveal-full');
-        document.getElementById(`exp-secNews-${sym}`)?.classList.add('reveal-full');
-        _priceSec?.classList.add('reveal-full');
+        _allSecs.forEach((el) => el.classList.add('reveal-full'));
       }, 40));
 
       // 唯一需要嚴格排序的關係：#exp-secPrice 是 .pf-stack（帶 perspective 的
@@ -1975,13 +2035,16 @@ function toggleCard(sym, ex) {
           if (_flipped) return;
           _flipped = true;
           _priceSec.removeEventListener('animationend', _startFlip);
-          _priceSec.style.willChange = '';  // 釋放合成層，避免 GPU 記憶體堆積
+          // 翻頁前務必確保 filter 已撤除：filter 會攤平子層 3D 變換。
+          // 正常路徑由上方的 _cleanup 處理，此處是走 fallback 時的保險。
+          _priceSec.style.willChange = '';
+          _priceSec.classList.add('reveal-done');
           flipPriceCard('exp-'+sym, curVal);
         };
         _priceSec.addEventListener('animationend', _startFlip);
-        _priceSec.style.willChange = 'transform, opacity';
-        // 保險：animationend 未觸發（動畫被中斷／元素提前移除）時仍要翻
-        pendingAnimTimers.push(setTimeout(() => _startFlip(null), 500));
+        // 保險：animationend 未觸發（動畫被中斷／元素提前移除）時仍要翻。
+        // 通電動畫 0.42s 於 +40ms 啟動、約 460ms 結束 → 保險絲設 800ms 留餘裕。
+        pendingAnimTimers.push(setTimeout(() => _startFlip(null), 800));
       }
     } else {
       // ── 桌機版展開：完整 TradingView + 兩欄 ──
@@ -2263,7 +2326,6 @@ window.addEventListener('popstate', () => {
   }
 });
 buildGrid();
-_compensateTopPad();   // 載入時跳過頂部的置中保留區
 loadData();
 setInterval(loadData, 60000);
 </script>
