@@ -907,12 +907,13 @@
        仍不使用奶油色描邊，維持「奶油色只在最外框」的規則。 */
     .card.expanded .mobile-tv-btn,
     .card.expanded .mobile-back-bar {
-      background: linear-gradient(180deg, rgba(255,255,255,0.07) 0%, rgba(0,0,0,0.20) 100%);
-      border: 1px solid rgba(0,0,0,0.42);
+      background: linear-gradient(180deg, #1a1710 0%, #111009 100%);
+      border: 1px solid #3a3020;
       box-shadow:
-        0 3px 0 rgba(0,0,0,0.45),
+        0 3px 0 rgba(0,0,0,0.5),
         0 5px 10px rgba(0,0,0,0.35),
-        inset 0 1px 0 rgba(255,255,255,0.10);
+        inset 0 1px 0 rgba(200,160,80,0.18);
+      color: #c8a96e;
       transition: transform 0.09s ease, box-shadow 0.09s ease;
     }
     .card.expanded .mobile-tv-btn   { margin: 14px 16px 0; }
@@ -921,11 +922,11 @@
     .card.expanded .mobile-tv-btn:active,
     .card.expanded .mobile-back-bar:active {
       transform: translateY(3px);
-      background: linear-gradient(180deg, rgba(255,255,255,0.04) 0%, rgba(0,0,0,0.26) 100%);
+      background: linear-gradient(180deg, #201e14 0%, #181510 100%);
       box-shadow:
-        0 0 0 rgba(0,0,0,0.45),
+        0 0 0 rgba(0,0,0,0.5),
         0 1px 3px rgba(0,0,0,0.3),
-        inset 0 2px 7px rgba(0,0,0,0.45);
+        inset 0 2px 7px rgba(0,0,0,0.5);
     }
     /* 底部留空，避免被 close-bar 蓋住 */
     .card.expanded .card-body-split { padding-bottom: 72px; }
