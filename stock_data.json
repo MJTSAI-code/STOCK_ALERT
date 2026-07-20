@@ -1,6 +1,6 @@
 {
   "name": "美股盤前情報資料庫",
-  "updated_at": "2026-07-21T05:56:08.450990+08:00",
+  "updated_at": "2026-07-21T05:58:29.165171+08:00",
   "next_update_at": "2026-07-20T22:30:00Z",
   "stocks": [
     "MSFT",
@@ -18,21 +18,21 @@
     "MSFT": {
       "name": "Microsoft Corporation",
       "quote": {
-        "c": 401.3,
-        "d": -0.99,
-        "dp": -0.2461,
+        "c": 401.12,
+        "d": -1.17,
+        "dp": -0.2908,
         "regular": 402.29,
         "reg_d": 8.47,
         "reg_dp": 2.1507,
         "pre": null,
-        "post": 401.3,
+        "post": 401.12,
         "prev_close": 393.82,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Tech stocks live: Chip stocks recover from last week's losses on Google, AMD news",
-          "datetime": 1784584568,
+          "datetime": 1784584709,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/news/live/tech-stocks-live-chip-stocks-recover-from-last-weeks-losses-on-google-amd-news-164334720.html"
         }
@@ -41,21 +41,21 @@
     "GOOG": {
       "name": "Alphabet Inc.",
       "quote": {
-        "c": 352.15,
-        "d": 0.78,
-        "dp": 0.222,
+        "c": 352.24,
+        "d": 0.87,
+        "dp": 0.2476,
         "regular": 351.37,
         "reg_d": 5.25,
         "reg_dp": 1.5168,
         "pre": null,
-        "post": 352.15,
+        "post": 352.24,
         "prev_close": 346.12,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "AI capex to Pass $1 trillion by 2027: Strategist",
-          "datetime": 1784584568,
+          "datetime": 1784584709,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/video/ai-capex-to-pass-1-trillion-by-2027-strategist-203233858.html"
         }
@@ -64,21 +64,21 @@
     "NVDA": {
       "name": "NVIDIA Corporation",
       "quote": {
-        "c": 202.8,
-        "d": -0.48,
-        "dp": -0.2361,
+        "c": 202.75,
+        "d": -0.53,
+        "dp": -0.2607,
         "regular": 203.28,
         "reg_d": 0.47,
         "reg_dp": 0.2317,
         "pre": null,
-        "post": 202.8,
+        "post": 202.75,
         "prev_close": 202.81,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Tech stocks live: Chip stocks recover from last week's losses on Google, AMD news",
-          "datetime": 1784584568,
+          "datetime": 1784584709,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/news/live/tech-stocks-live-chip-stocks-recover-from-last-weeks-losses-on-google-amd-news-164334720.html"
         }
@@ -87,21 +87,21 @@
     "NOW": {
       "name": "ServiceNow, Inc.",
       "quote": {
-        "c": 104.39,
-        "d": -0.31,
-        "dp": -0.2961,
+        "c": 104.4,
+        "d": -0.3,
+        "dp": -0.2865,
         "regular": 104.7,
         "reg_d": 1.46,
         "reg_dp": 1.4142,
         "pre": null,
-        "post": 104.39,
+        "post": 104.4,
         "prev_close": 103.24,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "ServiceNow (NOW) Adds Ciroos And Esri To Bring AI And GIS Into Workflows",
-          "datetime": 1784584568,
+          "datetime": 1784584709,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/technology/ai/articles/servicenow-now-adds-ciroos-esri-210903778.html"
         }
@@ -110,21 +110,21 @@
     "TSM": {
       "name": "Taiwan Semiconductor Manufactur",
       "quote": {
-        "c": 403.45,
-        "d": 1.15,
-        "dp": 0.2856,
+        "c": 403.4,
+        "d": 1.1,
+        "dp": 0.2734,
         "regular": 402.3,
         "reg_d": 3.93,
         "reg_dp": 0.9865,
         "pre": null,
-        "post": 403.45,
+        "post": 403.4,
         "prev_close": 398.37,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Is ASML Extremely Overvalued or a Bargain at 45x Forward Earnings?",
-          "datetime": 1784584568,
+          "datetime": 1784584709,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/markets/stocks/articles/asml-extremely-overvalued-bargain-45x-193439508.html"
         }
@@ -133,21 +133,21 @@
     "MRVL": {
       "name": "Marvell Technology, Inc.",
       "quote": {
-        "c": 195.23,
-        "d": 0.29,
-        "dp": 0.1488,
+        "c": 195.15,
+        "d": 0.21,
+        "dp": 0.1077,
         "regular": 194.94,
         "reg_d": 6.26,
         "reg_dp": 3.3178,
         "pre": null,
-        "post": 195.23,
+        "post": 195.15,
         "prev_close": 188.68,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "AMD, Micron, SK Hynix climb as semiconductor complex attempt recovery",
-          "datetime": 1784584568,
+          "datetime": 1784584709,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/technology/article/amd-micron-sk-hynix-climb-as-semiconductor-complex-attempt-recovery-133110868.html"
         }
@@ -156,21 +156,21 @@
     "AVGO": {
       "name": "Broadcom Inc.",
       "quote": {
-        "c": 378.15,
-        "d": -0.01,
-        "dp": -0.0026,
+        "c": 378.39,
+        "d": 0.23,
+        "dp": 0.0608,
         "regular": 378.16,
         "reg_d": 7.34,
         "reg_dp": 1.978,
         "pre": null,
-        "post": 378.15,
+        "post": 378.39,
         "prev_close": 370.82,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Closing bell: The biggest market movers today",
-          "datetime": 1784584568,
+          "datetime": 1784584709,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/video/closing-bell-the-biggest-market-movers-today-193438506.html"
         }
@@ -179,21 +179,21 @@
     "MU": {
       "name": "Micron Technology, Inc.",
       "quote": {
-        "c": 871.8,
-        "d": 6.34,
-        "dp": 0.7326,
+        "c": 872.39,
+        "d": 6.93,
+        "dp": 0.8007,
         "regular": 865.46,
         "reg_d": 16.51,
         "reg_dp": 1.9448,
         "pre": null,
-        "post": 871.8,
+        "post": 872.39,
         "prev_close": 848.95,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "AI capex to Pass $1 trillion by 2027: Strategist",
-          "datetime": 1784584568,
+          "datetime": 1784584709,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/video/ai-capex-to-pass-1-trillion-by-2027-strategist-203233858.html"
         }
@@ -202,21 +202,21 @@
     "SNDK": {
       "name": "Sandisk Corporation",
       "quote": {
-        "c": 1404.2,
-        "d": 13.25,
-        "dp": 0.9526,
+        "c": 1405.02,
+        "d": 14.07,
+        "dp": 1.0115,
         "regular": 1390.95,
         "reg_d": 36.13,
         "reg_dp": 2.6668,
         "pre": null,
-        "post": 1404.2,
+        "post": 1405.02,
         "prev_close": 1354.82,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "AI capex to Pass $1 trillion by 2027: Strategist",
-          "datetime": 1784584568,
+          "datetime": 1784584709,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/video/ai-capex-to-pass-1-trillion-by-2027-strategist-203233858.html"
         }
@@ -227,7 +227,7 @@
       "quote": {
         "c": 120.3,
         "d": 0.45,
-        "dp": 0.3755,
+        "dp": 0.3754,
         "regular": 119.85,
         "reg_d": -4.14,
         "reg_dp": -3.339,
@@ -239,7 +239,7 @@
       "news": [
         {
           "headline": "Tesla earnings preview: Wall Street awaits Q2 results",
-          "datetime": 1784584568,
+          "datetime": 1784584709,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/video/tesla-earnings-preview-wall-street-awaits-q2-results-153850270.html"
         }
