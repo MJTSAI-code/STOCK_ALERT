@@ -1,6 +1,6 @@
 {
   "name": "美股盤前情報資料庫",
-  "updated_at": "2026-07-20T20:04:39.383330+08:00",
+  "updated_at": "2026-07-20T20:24:01.328816+08:00",
   "next_update_at": "2026-07-20T13:00:00Z",
   "stocks": [
     "MSFT",
@@ -18,13 +18,13 @@
     "MSFT": {
       "name": "Microsoft Corporation",
       "quote": {
-        "c": 390.8,
-        "d": -3.02,
-        "dp": -0.7669,
+        "c": 390.52,
+        "d": -3.3,
+        "dp": -0.838,
         "regular": 393.82,
         "reg_d": -7.28,
         "reg_dp": -1.815,
-        "pre": 390.8,
+        "pre": 390.52,
         "post": null,
         "prev_close": 401.1,
         "phase": "盤前"
@@ -41,13 +41,13 @@
     "GOOG": {
       "name": "Alphabet Inc.",
       "quote": {
-        "c": 347.85,
-        "d": 1.73,
-        "dp": 0.4998,
+        "c": 347.24,
+        "d": 1.12,
+        "dp": 0.3245,
         "regular": 346.12,
         "reg_d": -7.69,
         "reg_dp": -2.1735,
-        "pre": 347.85,
+        "pre": 347.24,
         "post": null,
         "prev_close": 353.81,
         "phase": "盤前"
@@ -64,13 +64,13 @@
     "NVDA": {
       "name": "NVIDIA Corporation",
       "quote": {
-        "c": 205.53,
-        "d": 2.72,
-        "dp": 1.3412,
+        "c": 205.7,
+        "d": 2.89,
+        "dp": 1.425,
         "regular": 202.81,
         "reg_d": -4.59,
         "reg_dp": -2.2131,
-        "pre": 205.53,
+        "pre": 205.7,
         "post": null,
         "prev_close": 207.4,
         "phase": "盤前"
@@ -87,13 +87,13 @@
     "NOW": {
       "name": "ServiceNow, Inc.",
       "quote": {
-        "c": 101.47,
-        "d": -1.76,
-        "dp": -1.7001,
+        "c": 101.2,
+        "d": -2.03,
+        "dp": -1.9665,
         "regular": 103.24,
         "reg_d": -0.77,
         "reg_dp": -0.7403,
-        "pre": 101.47,
+        "pre": 101.2,
         "post": null,
         "prev_close": 104.01,
         "phase": "盤前"
@@ -110,13 +110,13 @@
     "TSM": {
       "name": "Taiwan Semiconductor Manufactur",
       "quote": {
-        "c": 407.45,
-        "d": 9.22,
-        "dp": 2.3152,
+        "c": 408.38,
+        "d": 10.15,
+        "dp": 2.5488,
         "regular": 398.37,
         "reg_d": -11.37,
         "reg_dp": -2.7749,
-        "pre": 407.45,
+        "pre": 408.38,
         "post": null,
         "prev_close": 409.74,
         "phase": "盤前"
@@ -133,13 +133,13 @@
     "MRVL": {
       "name": "Marvell Technology, Inc.",
       "quote": {
-        "c": 193.98,
-        "d": 5.3,
-        "dp": 2.8114,
+        "c": 193.8,
+        "d": 5.12,
+        "dp": 2.7136,
         "regular": 188.68,
         "reg_d": 0.38,
         "reg_dp": 0.2018,
-        "pre": 193.98,
+        "pre": 193.8,
         "post": null,
         "prev_close": 188.3,
         "phase": "盤前"
@@ -156,13 +156,13 @@
     "AVGO": {
       "name": "Broadcom Inc.",
       "quote": {
-        "c": 375.14,
-        "d": 4.32,
-        "dp": 1.1636,
+        "c": 375.99,
+        "d": 5.16,
+        "dp": 1.3928,
         "regular": 370.82,
         "reg_d": -3.62,
         "reg_dp": -0.9681,
-        "pre": 375.14,
+        "pre": 375.99,
         "post": null,
         "prev_close": 374.45,
         "phase": "盤前"
@@ -179,13 +179,13 @@
     "MU": {
       "name": "Micron Technology, Inc.",
       "quote": {
-        "c": 889.15,
-        "d": 40.21,
-        "dp": 4.7359,
+        "c": 887.25,
+        "d": 38.3,
+        "dp": 4.5115,
         "regular": 848.95,
         "reg_d": -4.25,
         "reg_dp": -0.4981,
-        "pre": 889.15,
+        "pre": 887.25,
         "post": null,
         "prev_close": 853.2,
         "phase": "盤前"
@@ -202,13 +202,13 @@
     "SNDK": {
       "name": "Sandisk Corporation",
       "quote": {
-        "c": 1411.91,
-        "d": 57.09,
-        "dp": 4.2139,
+        "c": 1407.5,
+        "d": 52.68,
+        "dp": 3.8883,
         "regular": 1354.82,
         "reg_d": -56.26,
         "reg_dp": -3.987,
-        "pre": 1411.91,
+        "pre": 1407.5,
         "post": null,
         "prev_close": 1411.08,
         "phase": "盤前"
@@ -225,13 +225,13 @@
     "SPCX": {
       "name": "Space Exploration Technologies",
       "quote": {
-        "c": 125.31,
-        "d": 1.32,
-        "dp": 1.0646,
+        "c": 124.94,
+        "d": 0.95,
+        "dp": 0.7661,
         "regular": 123.99,
         "reg_d": -7.12,
         "reg_dp": -5.4306,
-        "pre": 125.31,
+        "pre": 124.94,
         "post": null,
         "prev_close": 131.11,
         "phase": "盤前"
