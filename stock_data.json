@@ -1,7 +1,7 @@
 {
   "name": "美股盤前情報資料庫",
-  "updated_at": "2026-07-22T05:59:07.961043+08:00",
-  "next_update_at": "2026-07-21T22:30:00Z",
+  "updated_at": "2026-07-22T06:36:53.655711+08:00",
+  "next_update_at": "2026-07-21T23:30:00Z",
   "stocks": [
     "MSFT",
     "GOOG",
@@ -18,21 +18,21 @@
     "MSFT": {
       "name": "Microsoft Corporation",
       "quote": {
-        "c": 396.8,
-        "d": -0.95,
-        "dp": -0.2388,
+        "c": 396.3,
+        "d": -1.45,
+        "dp": -0.3646,
         "regular": 397.75,
         "reg_d": -4.54,
         "reg_dp": -1.1285,
         "pre": null,
-        "post": 396.8,
+        "post": 396.3,
         "prev_close": 402.29,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "3M turns to AI to fuel turnaround",
-          "datetime": 1784671147,
+          "datetime": 1784673413,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/video/3m-turns-to-ai-to-fuel-turnaround-194739770.html"
         }
@@ -41,21 +41,21 @@
     "GOOG": {
       "name": "Alphabet Inc.",
       "quote": {
-        "c": 347.61,
-        "d": 1.42,
-        "dp": 0.4102,
+        "c": 347.26,
+        "d": 1.07,
+        "dp": 0.3091,
         "regular": 346.19,
         "reg_d": -5.18,
         "reg_dp": -1.4742,
         "pre": null,
-        "post": 347.61,
+        "post": 347.26,
         "prev_close": 351.37,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Earnings live: Danaher stock plunges on trimmed forecast, 3M stock surges",
-          "datetime": 1784671147,
+          "datetime": 1784673413,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/markets/live/earnings-live-second-quarter-results-tesla-google-july-115324842.html"
         }
@@ -64,21 +64,21 @@
     "NVDA": {
       "name": "NVIDIA Corporation",
       "quote": {
-        "c": 206.78,
-        "d": -0.51,
-        "dp": -0.246,
+        "c": 206.46,
+        "d": -0.83,
+        "dp": -0.4004,
         "regular": 207.29,
         "reg_d": 4.01,
         "reg_dp": 1.9726,
         "pre": null,
-        "post": 206.78,
+        "post": 206.46,
         "prev_close": 203.28,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Big Tech's big AI spending is 'a good thing' right now",
-          "datetime": 1784671147,
+          "datetime": 1784673413,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/video/big-techs-big-ai-spending-is-a-good-thing-right-now-203258720.html"
         }
@@ -87,21 +87,21 @@
     "NOW": {
       "name": "ServiceNow, Inc.",
       "quote": {
-        "c": 101.25,
-        "d": -0.81,
-        "dp": -0.7936,
+        "c": 101.43,
+        "d": -0.63,
+        "dp": -0.6173,
         "regular": 102.06,
         "reg_d": -2.64,
         "reg_dp": -2.5215,
         "pre": null,
-        "post": 101.25,
+        "post": 101.43,
         "prev_close": 104.7,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Google & Tesla kick off Big Tech earnings: What to Watch",
-          "datetime": 1784671147,
+          "datetime": 1784673413,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/video/google--tesla-kick-off-big-tech-earnings-what-to-watch-210020832.html"
         }
@@ -110,21 +110,21 @@
     "TSM": {
       "name": "Taiwan Semiconductor Manufactur",
       "quote": {
-        "c": 425.7,
-        "d": 1.09,
-        "dp": 0.2567,
+        "c": 425.07,
+        "d": 0.46,
+        "dp": 0.1089,
         "regular": 424.61,
         "reg_d": 22.31,
         "reg_dp": 5.5456,
         "pre": null,
-        "post": 425.7,
+        "post": 425.07,
         "prev_close": 402.3,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Intel, KLA Corporation, Lam Research, Marvell Technology, and Micron Shares Skyrocket, What You Need To Know",
-          "datetime": 1784671147,
+          "datetime": 1784673413,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/markets/stocks/articles/intel-kla-corporation-lam-research-205426906.html"
         }
@@ -133,21 +133,21 @@
     "MRVL": {
       "name": "Marvell Technology, Inc.",
       "quote": {
-        "c": 210.94,
-        "d": 2.98,
-        "dp": 1.433,
+        "c": 210.58,
+        "d": 2.62,
+        "dp": 1.2599,
         "regular": 207.96,
         "reg_d": 13.02,
         "reg_dp": 6.679,
         "pre": null,
-        "post": 210.94,
+        "post": 210.58,
         "prev_close": 194.94,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Intel, KLA Corporation, Lam Research, Marvell Technology, and Micron Shares Skyrocket, What You Need To Know",
-          "datetime": 1784671147,
+          "datetime": 1784673413,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/markets/stocks/articles/intel-kla-corporation-lam-research-205426906.html"
         }
@@ -156,44 +156,44 @@
     "AVGO": {
       "name": "Broadcom Inc.",
       "quote": {
-        "c": 386.42,
-        "d": -0.08,
-        "dp": -0.0198,
+        "c": 385.3,
+        "d": -1.2,
+        "dp": -0.3105,
         "regular": 386.5,
         "reg_d": 8.34,
         "reg_dp": 2.2054,
         "pre": null,
-        "post": 386.42,
+        "post": 385.3,
         "prev_close": 378.16,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "This Is My Favorite Artificial Intelligence Stock to Buy Right Now (Hint: Not Nvidia, Broadcom, or Alphabet)",
-          "datetime": 1784671147,
+          "headline": "Jim Cramer Says Stop Betting on Volatile Tech Stocks and Buy These “Boring” Sectors Instead",
+          "datetime": 1784673413,
           "source": "Yahoo Finance",
-          "url": "https://www.fool.com/investing/2026/07/21/this-is-my-favorite-artificial-intelligence-stock/"
+          "url": "https://247wallst.com/investing/2026/07/21/jim-cramer-says-stop-betting-on-volatile-tech-stocks-and-buy-these-boring-sectors-instead/"
         }
       ]
     },
     "MU": {
       "name": "Micron Technology, Inc.",
       "quote": {
-        "c": 979.61,
-        "d": 8.79,
-        "dp": 0.9051,
+        "c": 983.06,
+        "d": 12.24,
+        "dp": 1.2612,
         "regular": 970.82,
         "reg_d": 105.36,
         "reg_dp": 12.1739,
         "pre": null,
-        "post": 979.61,
+        "post": 983.06,
         "prev_close": 865.46,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Why GM's memory chip guidance could help stabilize stocks like Micron and Sandisk",
-          "datetime": 1784671147,
+          "datetime": 1784673413,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/markets/stocks/article/why-gms-memory-chip-guidance-could-help-stabilize-stocks-like-micron-and-sandisk-120313927.html"
         }
@@ -202,21 +202,21 @@
     "SNDK": {
       "name": "Sandisk Corporation",
       "quote": {
-        "c": 1626.36,
-        "d": 36.96,
-        "dp": 2.3254,
+        "c": 1625.0,
+        "d": 35.6,
+        "dp": 2.2398,
         "regular": 1589.4,
         "reg_d": 198.45,
         "reg_dp": 14.2672,
         "pre": null,
-        "post": 1626.36,
+        "post": 1625.0,
         "prev_close": 1390.95,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Why GM's memory chip guidance could help stabilize stocks like Micron and Sandisk",
-          "datetime": 1784671147,
+          "datetime": 1784673413,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/markets/stocks/article/why-gms-memory-chip-guidance-could-help-stabilize-stocks-like-micron-and-sandisk-120313927.html"
         }
@@ -225,21 +225,21 @@
     "SPCX": {
       "name": "Space Exploration Technologies",
       "quote": {
-        "c": 125.25,
-        "d": 1.71,
-        "dp": 1.3842,
+        "c": 124.9,
+        "d": 1.36,
+        "dp": 1.0991,
         "regular": 123.54,
         "reg_d": 3.69,
         "reg_dp": 3.0788,
         "pre": null,
-        "post": 125.25,
+        "post": 124.9,
         "prev_close": 119.85,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Jamie Dimon throws caution on the AI frenzy but sees promise in space data centers",
-          "datetime": 1784671147,
+          "datetime": 1784673413,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/markets/article/jamie-dimon-throws-caution-on-the-ai-frenzy-but-sees-promise-in-space-data-centers-182215908.html"
         }
