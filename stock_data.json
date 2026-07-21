@@ -1,6 +1,6 @@
 {
   "name": "美股盤前情報資料庫",
-  "updated_at": "2026-07-22T04:42:30.827396+08:00",
+  "updated_at": "2026-07-22T04:52:33.862475+08:00",
   "next_update_at": "2026-07-21T21:30:00Z",
   "stocks": [
     "MSFT",
@@ -18,14 +18,14 @@
     "MSFT": {
       "name": "Microsoft Corporation",
       "quote": {
-        "c": 397.18,
-        "d": -0.57,
-        "dp": -0.1433,
+        "c": 397.05,
+        "d": -0.7,
+        "dp": -0.176,
         "regular": 397.75,
         "reg_d": -4.54,
         "reg_dp": -1.1285,
         "pre": null,
-        "post": 397.18,
+        "post": 397.05,
         "prev_close": 402.29,
         "phase": "盤後"
       },
@@ -41,14 +41,14 @@
     "GOOG": {
       "name": "Alphabet Inc.",
       "quote": {
-        "c": 347.15,
-        "d": 0.96,
-        "dp": 0.2773,
+        "c": 346.91,
+        "d": 0.72,
+        "dp": 0.208,
         "regular": 346.19,
         "reg_d": -5.18,
         "reg_dp": -1.4742,
         "pre": null,
-        "post": 347.15,
+        "post": 346.91,
         "prev_close": 351.37,
         "phase": "盤後"
       },
@@ -64,14 +64,14 @@
     "NVDA": {
       "name": "NVIDIA Corporation",
       "quote": {
-        "c": 206.83,
-        "d": -0.46,
-        "dp": -0.22,
+        "c": 206.78,
+        "d": -0.51,
+        "dp": -0.246,
         "regular": 207.29,
         "reg_d": 4.01,
         "reg_dp": 1.9726,
         "pre": null,
-        "post": 206.83,
+        "post": 206.78,
         "prev_close": 203.28,
         "phase": "盤後"
       },
@@ -110,14 +110,14 @@
     "TSM": {
       "name": "Taiwan Semiconductor Manufactur",
       "quote": {
-        "c": 425.39,
-        "d": 0.78,
-        "dp": 0.1837,
+        "c": 425.0,
+        "d": 0.39,
+        "dp": 0.0919,
         "regular": 424.61,
         "reg_d": 22.31,
         "reg_dp": 5.5456,
         "pre": null,
-        "post": 425.39,
+        "post": 425.0,
         "prev_close": 402.3,
         "phase": "盤後"
       },
@@ -133,14 +133,14 @@
     "MRVL": {
       "name": "Marvell Technology, Inc.",
       "quote": {
-        "c": 209.31,
-        "d": 1.35,
-        "dp": 0.6506,
+        "c": 209.86,
+        "d": 1.9,
+        "dp": 0.9131,
         "regular": 207.96,
         "reg_d": 13.02,
         "reg_dp": 6.679,
         "pre": null,
-        "post": 209.31,
+        "post": 209.86,
         "prev_close": 194.94,
         "phase": "盤後"
       },
@@ -156,14 +156,14 @@
     "AVGO": {
       "name": "Broadcom Inc.",
       "quote": {
-        "c": 385.77,
-        "d": -0.73,
-        "dp": -0.1889,
+        "c": 386.5,
+        "d": 0.0,
+        "dp": 0.0,
         "regular": 386.5,
         "reg_d": 8.34,
         "reg_dp": 2.2054,
         "pre": null,
-        "post": 385.77,
+        "post": 386.5,
         "prev_close": 378.16,
         "phase": "盤後"
       },
@@ -179,14 +179,14 @@
     "MU": {
       "name": "Micron Technology, Inc.",
       "quote": {
-        "c": 978.99,
-        "d": 8.17,
-        "dp": 0.8416,
+        "c": 976.6,
+        "d": 5.78,
+        "dp": 0.5954,
         "regular": 970.82,
         "reg_d": 105.36,
         "reg_dp": 12.1739,
         "pre": null,
-        "post": 978.99,
+        "post": 976.6,
         "prev_close": 865.46,
         "phase": "盤後"
       },
@@ -202,14 +202,14 @@
     "SNDK": {
       "name": "Sandisk Corporation",
       "quote": {
-        "c": 1609.1,
-        "d": 19.7,
-        "dp": 1.2393,
+        "c": 1611.1,
+        "d": 21.7,
+        "dp": 1.365,
         "regular": 1589.4,
         "reg_d": 198.45,
         "reg_dp": 14.2672,
         "pre": null,
-        "post": 1609.1,
+        "post": 1611.1,
         "prev_close": 1390.95,
         "phase": "盤後"
       },
@@ -225,14 +225,14 @@
     "SPCX": {
       "name": "Space Exploration Technologies",
       "quote": {
-        "c": 124.38,
-        "d": 0.84,
-        "dp": 0.6799,
+        "c": 124.46,
+        "d": 0.92,
+        "dp": 0.7447,
         "regular": 123.54,
         "reg_d": 3.69,
         "reg_dp": 3.0788,
         "pre": null,
-        "post": 124.38,
+        "post": 124.46,
         "prev_close": 119.85,
         "phase": "盤後"
       },
