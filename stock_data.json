@@ -1,7 +1,7 @@
 {
   "name": "美股盤前情報資料庫",
-  "updated_at": "2026-07-22T04:52:33.862475+08:00",
-  "next_update_at": "2026-07-21T21:30:00Z",
+  "updated_at": "2026-07-22T05:20:34.465556+08:00",
+  "next_update_at": "2026-07-21T22:00:00Z",
   "stocks": [
     "MSFT",
     "GOOG",
@@ -18,230 +18,230 @@
     "MSFT": {
       "name": "Microsoft Corporation",
       "quote": {
-        "c": 397.05,
-        "d": -0.7,
-        "dp": -0.176,
+        "c": 396.65,
+        "d": -1.1,
+        "dp": -0.2765,
         "regular": 397.75,
         "reg_d": -4.54,
         "reg_dp": -1.1285,
         "pre": null,
-        "post": 397.05,
+        "post": 396.65,
         "prev_close": 402.29,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Tech stocks live: Chip stocks recover from last week's losses on Google, AMD news",
-          "datetime": 1784588653,
+          "headline": "3M turns to AI to fuel turnaround",
+          "datetime": 1784668834,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/news/live/tech-stocks-live-chip-stocks-recover-from-last-weeks-losses-on-google-amd-news-164334720.html"
+          "url": "https://finance.yahoo.com/video/3m-turns-to-ai-to-fuel-turnaround-194739770.html"
         }
       ]
     },
     "GOOG": {
       "name": "Alphabet Inc.",
       "quote": {
-        "c": 346.91,
-        "d": 0.72,
-        "dp": 0.208,
+        "c": 347.55,
+        "d": 1.36,
+        "dp": 0.3928,
         "regular": 346.19,
         "reg_d": -5.18,
         "reg_dp": -1.4742,
         "pre": null,
-        "post": 346.91,
+        "post": 347.55,
         "prev_close": 351.37,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Stock market today: Dow, S&P 500, Nasdaq rally fizzles as chip stock momentum fades, oil rises",
-          "datetime": 1784588653,
+          "headline": "Earnings live: Danaher stock plunges on trimmed forecast, 3M stock surges",
+          "datetime": 1784668834,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/markets/live/stock-market-today-monday-july-20-dow-sp-500-nasdaq-111429441.html"
+          "url": "https://finance.yahoo.com/markets/live/earnings-live-second-quarter-results-tesla-google-july-115324842.html"
         }
       ]
     },
     "NVDA": {
       "name": "NVIDIA Corporation",
       "quote": {
-        "c": 206.78,
-        "d": -0.51,
-        "dp": -0.246,
+        "c": 206.87,
+        "d": -0.42,
+        "dp": -0.2026,
         "regular": 207.29,
         "reg_d": 4.01,
         "reg_dp": 1.9726,
         "pre": null,
-        "post": 206.78,
+        "post": 206.87,
         "prev_close": 203.28,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Trump Media pitches $100K-a-month Truth Social feed",
-          "datetime": 1784588653,
+          "headline": "Big Tech's big AI spending is 'a good thing' right now",
+          "datetime": 1784668834,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/video/trump-media-pitches-100k-month-220000188.html"
+          "url": "https://finance.yahoo.com/video/big-techs-big-ai-spending-is-a-good-thing-right-now-203258720.html"
         }
       ]
     },
     "NOW": {
       "name": "ServiceNow, Inc.",
       "quote": {
-        "c": 101.4,
-        "d": -0.66,
-        "dp": -0.6467,
+        "c": 101.39,
+        "d": -0.67,
+        "dp": -0.6565,
         "regular": 102.06,
         "reg_d": -2.64,
         "reg_dp": -2.5215,
         "pre": null,
-        "post": 101.4,
+        "post": 101.39,
         "prev_close": 104.7,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Are ServiceNow’s New AI Integrations Quietly Redefining Its Platform Moat for Investors in NOW?",
-          "datetime": 1784588653,
+          "headline": "Google & Tesla kick off Big Tech earnings: What to Watch",
+          "datetime": 1784668834,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/technology/ai/articles/servicenow-ai-integrations-quietly-redefining-221339470.html"
+          "url": "https://finance.yahoo.com/video/google--tesla-kick-off-big-tech-earnings-what-to-watch-210020832.html"
         }
       ]
     },
     "TSM": {
       "name": "Taiwan Semiconductor Manufactur",
       "quote": {
-        "c": 425.0,
-        "d": 0.39,
-        "dp": 0.0919,
+        "c": 425.49,
+        "d": 0.88,
+        "dp": 0.2072,
         "regular": 424.61,
         "reg_d": 22.31,
         "reg_dp": 5.5456,
         "pre": null,
-        "post": 425.0,
+        "post": 425.49,
         "prev_close": 402.3,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Is ASML Extremely Overvalued or a Bargain at 45x Forward Earnings?",
-          "datetime": 1784588653,
+          "headline": "Intel, KLA Corporation, Lam Research, Marvell Technology, and Micron Shares Skyrocket, What You Need To Know",
+          "datetime": 1784668834,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/markets/stocks/articles/asml-extremely-overvalued-bargain-45x-193439508.html"
+          "url": "https://finance.yahoo.com/markets/stocks/articles/intel-kla-corporation-lam-research-205426906.html"
         }
       ]
     },
     "MRVL": {
       "name": "Marvell Technology, Inc.",
       "quote": {
-        "c": 209.86,
-        "d": 1.9,
-        "dp": 0.9131,
+        "c": 211.59,
+        "d": 3.63,
+        "dp": 1.7455,
         "regular": 207.96,
         "reg_d": 13.02,
         "reg_dp": 6.679,
         "pre": null,
-        "post": 209.86,
+        "post": 211.59,
         "prev_close": 194.94,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "AMD, Micron, SK Hynix climb as semiconductor complex attempt recovery",
-          "datetime": 1784588653,
+          "headline": "Intel, KLA Corporation, Lam Research, Marvell Technology, and Micron Shares Skyrocket, What You Need To Know",
+          "datetime": 1784668834,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/technology/article/amd-micron-sk-hynix-climb-as-semiconductor-complex-attempt-recovery-133110868.html"
+          "url": "https://finance.yahoo.com/markets/stocks/articles/intel-kla-corporation-lam-research-205426906.html"
         }
       ]
     },
     "AVGO": {
       "name": "Broadcom Inc.",
       "quote": {
-        "c": 386.5,
-        "d": 0.0,
-        "dp": 0.0,
+        "c": 386.25,
+        "d": -0.25,
+        "dp": -0.0647,
         "regular": 386.5,
         "reg_d": 8.34,
         "reg_dp": 2.2054,
         "pre": null,
-        "post": 386.5,
+        "post": 386.25,
         "prev_close": 378.16,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Closing bell: The biggest market movers today",
-          "datetime": 1784588653,
+          "headline": "This Is My Favorite Artificial Intelligence Stock to Buy Right Now (Hint: Not Nvidia, Broadcom, or Alphabet)",
+          "datetime": 1784668834,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/video/closing-bell-the-biggest-market-movers-today-193438506.html"
+          "url": "https://www.fool.com/investing/2026/07/21/this-is-my-favorite-artificial-intelligence-stock/"
         }
       ]
     },
     "MU": {
       "name": "Micron Technology, Inc.",
       "quote": {
-        "c": 976.6,
-        "d": 5.78,
-        "dp": 0.5954,
+        "c": 985.11,
+        "d": 14.29,
+        "dp": 1.4719,
         "regular": 970.82,
         "reg_d": 105.36,
         "reg_dp": 12.1739,
         "pre": null,
-        "post": 976.6,
+        "post": 985.11,
         "prev_close": 865.46,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "AI capex to Pass $1 trillion by 2027: Strategist",
-          "datetime": 1784588653,
+          "headline": "Why GM's memory chip guidance could help stabilize stocks like Micron and Sandisk",
+          "datetime": 1784668834,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/video/ai-capex-to-pass-1-trillion-by-2027-strategist-203233858.html"
+          "url": "https://finance.yahoo.com/markets/stocks/article/why-gms-memory-chip-guidance-could-help-stabilize-stocks-like-micron-and-sandisk-120313927.html"
         }
       ]
     },
     "SNDK": {
       "name": "Sandisk Corporation",
       "quote": {
-        "c": 1611.1,
-        "d": 21.7,
-        "dp": 1.365,
+        "c": 1633.03,
+        "d": 43.62,
+        "dp": 2.7447,
         "regular": 1589.4,
         "reg_d": 198.45,
         "reg_dp": 14.2672,
         "pre": null,
-        "post": 1611.1,
+        "post": 1633.03,
         "prev_close": 1390.95,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "AI capex to Pass $1 trillion by 2027: Strategist",
-          "datetime": 1784588653,
+          "headline": "Why GM's memory chip guidance could help stabilize stocks like Micron and Sandisk",
+          "datetime": 1784668834,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/video/ai-capex-to-pass-1-trillion-by-2027-strategist-203233858.html"
+          "url": "https://finance.yahoo.com/markets/stocks/article/why-gms-memory-chip-guidance-could-help-stabilize-stocks-like-micron-and-sandisk-120313927.html"
         }
       ]
     },
     "SPCX": {
       "name": "Space Exploration Technologies",
       "quote": {
-        "c": 124.46,
-        "d": 0.92,
-        "dp": 0.7447,
+        "c": 124.89,
+        "d": 1.35,
+        "dp": 1.0928,
         "regular": 123.54,
         "reg_d": 3.69,
         "reg_dp": 3.0788,
         "pre": null,
-        "post": 124.46,
+        "post": 124.89,
         "prev_close": 119.85,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Tesla earnings preview: Wall Street awaits Q2 results",
-          "datetime": 1784588653,
+          "headline": "Jamie Dimon throws caution on the AI frenzy but sees promise in space data centers",
+          "datetime": 1784668834,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/video/tesla-earnings-preview-wall-street-awaits-q2-results-153850270.html"
+          "url": "https://finance.yahoo.com/markets/article/jamie-dimon-throws-caution-on-the-ai-frenzy-but-sees-promise-in-space-data-centers-182215908.html"
         }
       ]
     }
