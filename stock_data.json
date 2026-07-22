@@ -1,7 +1,7 @@
 {
   "name": "美股盤前情報資料庫",
-  "updated_at": "2026-07-23T05:59:48.433204+08:00",
-  "next_update_at": "2026-07-22T22:30:00Z",
+  "updated_at": "2026-07-23T06:41:15.151921+08:00",
+  "next_update_at": "2026-07-22T23:30:00Z",
   "stocks": [
     "MSFT",
     "GOOG",
@@ -18,21 +18,21 @@
     "MSFT": {
       "name": "Microsoft Corporation",
       "quote": {
-        "c": 387.08,
-        "d": -3.26,
-        "dp": -0.8341,
+        "c": 387.35,
+        "d": -2.99,
+        "dp": -0.766,
         "regular": 390.34,
         "reg_d": -7.41,
         "reg_dp": -1.863,
         "pre": null,
-        "post": 387.08,
+        "post": 387.35,
         "prev_close": 397.75,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Anthropic and AMD are signing a major AI chip deal. What could this mean for Nvidia?",
-          "datetime": 1784757588,
+          "datetime": 1784760075,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/video/anthropic-amd-signing-major-ai-180000308.html"
         }
@@ -41,44 +41,44 @@
     "GOOG": {
       "name": "Alphabet Inc.",
       "quote": {
-        "c": 330.47,
-        "d": -11.44,
-        "dp": -3.3459,
+        "c": 332.42,
+        "d": -9.49,
+        "dp": -2.7756,
         "regular": 341.91,
         "reg_d": -4.28,
         "reg_dp": -1.2363,
         "pre": null,
-        "post": 330.47,
+        "post": 332.42,
         "prev_close": 346.19,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Tech stocks live: Big Tech earnings kickoff with Google, Tesla",
-          "datetime": 1784757588,
+          "headline": "Inside Alphabet's earnings call with Google CEO Sundar Pichai",
+          "datetime": 1784760075,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/technology/live/tech-stocks-live-tech-heavy-nasdaq-climbs-ahead-of-big-tech-earnings-kickoff-164334720.html"
+          "url": "https://finance.yahoo.com/video/inside-alphabets-earnings-call-with-google-ceo-sundar-pichai-223755892.html"
         }
       ]
     },
     "NVDA": {
       "name": "NVIDIA Corporation",
       "quote": {
-        "c": 211.01,
-        "d": -1.05,
-        "dp": -0.4951,
+        "c": 210.9,
+        "d": -1.16,
+        "dp": -0.547,
         "regular": 212.06,
         "reg_d": 4.77,
         "reg_dp": 2.3011,
         "pre": null,
-        "post": 211.01,
+        "post": 210.9,
         "prev_close": 207.29,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Anthropic and AMD are signing a major AI chip deal. What could this mean for Nvidia?",
-          "datetime": 1784757588,
+          "datetime": 1784760075,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/video/anthropic-amd-signing-major-ai-180000308.html"
         }
@@ -87,21 +87,21 @@
     "NOW": {
       "name": "ServiceNow, Inc.",
       "quote": {
-        "c": 98.82,
-        "d": 3.36,
-        "dp": 3.5198,
+        "c": 100.21,
+        "d": 4.75,
+        "dp": 4.9778,
         "regular": 95.46,
         "reg_d": -6.6,
         "reg_dp": -6.4668,
         "pre": null,
-        "post": 98.82,
+        "post": 100.21,
         "prev_close": 102.06,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Earnings live: Google stock drops on capex concerns, ServiceNow pops",
-          "datetime": 1784757588,
+          "datetime": 1784760075,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/markets/live/earnings-live-second-quarter-results-tesla-google-july-115324842.html"
         }
@@ -110,21 +110,21 @@
     "TSM": {
       "name": "Taiwan Semiconductor Manufactur",
       "quote": {
-        "c": 423.14,
-        "d": 1.93,
-        "dp": 0.4591,
+        "c": 421.61,
+        "d": 0.4,
+        "dp": 0.0948,
         "regular": 421.21,
         "reg_d": -3.4,
         "reg_dp": -0.8007,
         "pre": null,
-        "post": 423.14,
+        "post": 421.61,
         "prev_close": 424.61,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Intel Earnings Face Sky-High Expectations",
-          "datetime": 1784757588,
+          "datetime": 1784760075,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/markets/stocks/articles/intel-earnings-face-sky-high-210349584.html"
         }
@@ -133,21 +133,21 @@
     "MRVL": {
       "name": "Marvell Technology, Inc.",
       "quote": {
-        "c": 213.6,
-        "d": 2.61,
-        "dp": 1.237,
+        "c": 212.49,
+        "d": 1.5,
+        "dp": 0.7109,
         "regular": 210.99,
         "reg_d": 3.03,
         "reg_dp": 1.457,
         "pre": null,
-        "post": 213.6,
+        "post": 212.49,
         "prev_close": 207.96,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Super Micro, ServiceNow, GE Vernova, Pegasystems, and More Stocks That Explain Today’s Market",
-          "datetime": 1784757588,
+          "datetime": 1784760075,
           "source": "Yahoo Finance",
           "url": "https://www.barrons.com/articles/stock-movers-c14bcf85?siteid=yhoof2&yptr=yahoo"
         }
@@ -156,21 +156,21 @@
     "AVGO": {
       "name": "Broadcom Inc.",
       "quote": {
-        "c": 398.0,
-        "d": 1.19,
-        "dp": 0.2999,
+        "c": 396.68,
+        "d": -0.13,
+        "dp": -0.0328,
         "regular": 396.81,
         "reg_d": 10.31,
         "reg_dp": 2.6675,
         "pre": null,
-        "post": 398.0,
+        "post": 396.68,
         "prev_close": 386.5,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "This $222 Billion Vanguard ETF Is Trailing the S&P 500. That Almost Never Happens.",
-          "datetime": 1784757588,
+          "datetime": 1784760075,
           "source": "Yahoo Finance",
           "url": "https://247wallst.com/investing/etf/2026/07/22/this-222-billion-vanguard-etf-is-trailing-the-sp-500-that-almost-never-happens/"
         }
@@ -179,67 +179,67 @@
     "MU": {
       "name": "Micron Technology, Inc.",
       "quote": {
-        "c": 978.88,
-        "d": 19.4,
-        "dp": 2.0219,
+        "c": 972.0,
+        "d": 12.52,
+        "dp": 1.3049,
         "regular": 959.48,
         "reg_d": -11.34,
         "reg_dp": -1.1681,
         "pre": null,
-        "post": 978.88,
+        "post": 972.0,
         "prev_close": 970.82,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Super Micro, ServiceNow, GE Vernova, Pegasystems, and More Stocks That Explain Today’s Market",
-          "datetime": 1784757588,
+          "headline": "The Ultimate Bull Run for NVIDIA, Micron, and SanDisk May Be Closer Than Investors Think",
+          "datetime": 1784760075,
           "source": "Yahoo Finance",
-          "url": "https://www.barrons.com/articles/stock-movers-c14bcf85?siteid=yhoof2&yptr=yahoo"
+          "url": "https://247wallst.com/investing/2026/07/22/the-ultimate-bull-run-for-nvidia-micron-and-sandisk-could-begin-soon/"
         }
       ]
     },
     "SNDK": {
       "name": "Sandisk Corporation",
       "quote": {
-        "c": 1618.21,
-        "d": 18.94,
-        "dp": 1.1842,
+        "c": 1603.2,
+        "d": 3.93,
+        "dp": 0.2457,
         "regular": 1599.27,
         "reg_d": 9.87,
         "reg_dp": 0.621,
         "pre": null,
-        "post": 1618.21,
+        "post": 1603.2,
         "prev_close": 1589.4,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Super Micro, ServiceNow, GE Vernova, Pegasystems, and More Stocks That Explain Today’s Market",
-          "datetime": 1784757588,
+          "headline": "Why Sandisk Stock Was a Winner on Wednesday",
+          "datetime": 1784760075,
           "source": "Yahoo Finance",
-          "url": "https://www.barrons.com/articles/stock-movers-c14bcf85?siteid=yhoof2&yptr=yahoo"
+          "url": "https://www.fool.com/investing/2026/07/22/why-sandisk-stock-was-a-winner-on-wednesday/"
         }
       ]
     },
     "SPCX": {
       "name": "Space Exploration Technologies",
       "quote": {
-        "c": 115.96,
-        "d": 0.7,
-        "dp": 0.6073,
+        "c": 115.81,
+        "d": 0.55,
+        "dp": 0.4729,
         "regular": 115.26,
         "reg_d": -8.28,
         "reg_dp": -6.7023,
         "pre": null,
-        "post": 115.96,
+        "post": 115.81,
         "prev_close": 123.54,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Elon Musk is 'in denial' that Tesla is just an EV company: Ross Gerber",
-          "datetime": 1784757588,
+          "datetime": 1784760075,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/video/elon-musk-is-in-denial-that-tesla-is-just-an-ev-company-ross-gerber-210812615.html"
         }
