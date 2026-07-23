@@ -2296,7 +2296,7 @@ function parseQuote(q) {
            phaseLabel: phaseLabelMap[phase] || '現價',
            dir: mc >= 0 ? 'up' : 'down', sg: mc >= 0 ? '▲' : '▼',
            rd: rc >= 0 ? 'up' : 'down', rsg: rc >= 0 ? '▲' : '▼',
-           lightClass: mc > 0 ? 'light-up' : mc < 0 ? 'light-down' : '' };
+           lightClass: mc >= 0 ? 'light-up' : 'light-down' };
 }
 function renderPrice(sym, q) {
   const d = parseQuote(q);
