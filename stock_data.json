@@ -1,6 +1,6 @@
 {
-  "name": "ç¾è¡ç¤åæå ±è³æåº«",
-  "updated_at": "2026-07-23T19:34:34.498382+08:00",
+  "name": "美股盤前情報資料庫",
+  "updated_at": "2026-07-23T19:41:01.597412+08:00",
   "next_update_at": "2026-07-23T12:30:00Z",
   "stocks": [
     "MSFT",
@@ -19,16 +19,16 @@
     "MSFT": {
       "name": "Microsoft Corporation",
       "quote": {
-        "c": 389.45,
-        "d": -0.89,
-        "dp": -0.2279,
+        "c": 388.17,
+        "d": -2.17,
+        "dp": -0.5559,
         "regular": 390.34,
         "reg_d": -7.41,
         "reg_dp": -1.863,
-        "pre": 389.45,
+        "pre": 388.17,
         "post": null,
         "prev_close": 397.75,
-        "phase": "ç¤å"
+        "phase": "盤前"
       },
       "news": [
         {
@@ -42,16 +42,16 @@
     "GOOG": {
       "name": "Alphabet Inc.",
       "quote": {
-        "c": 327.05,
-        "d": -14.86,
-        "dp": -4.3467,
+        "c": 326.0,
+        "d": -15.91,
+        "dp": -4.6533,
         "regular": 341.91,
         "reg_d": -4.28,
         "reg_dp": -1.2363,
-        "pre": 327.05,
+        "pre": 326.0,
         "post": null,
         "prev_close": 346.19,
-        "phase": "ç¤å"
+        "phase": "盤前"
       },
       "news": [
         {
@@ -65,16 +65,16 @@
     "NVDA": {
       "name": "NVIDIA Corporation",
       "quote": {
-        "c": 210.41,
-        "d": -1.65,
-        "dp": -0.7758,
+        "c": 209.85,
+        "d": -2.21,
+        "dp": -1.0422,
         "regular": 212.06,
         "reg_d": 4.77,
         "reg_dp": 2.3011,
-        "pre": 210.41,
+        "pre": 209.85,
         "post": null,
         "prev_close": 207.29,
-        "phase": "ç¤å"
+        "phase": "盤前"
       },
       "news": [
         {
@@ -88,16 +88,16 @@
     "NOW": {
       "name": "ServiceNow, Inc.",
       "quote": {
-        "c": 101.69,
-        "d": 6.23,
-        "dp": 6.5254,
+        "c": 101.1,
+        "d": 5.64,
+        "dp": 5.9048,
         "regular": 95.46,
         "reg_d": -6.6,
         "reg_dp": -6.4668,
-        "pre": 101.69,
+        "pre": 101.1,
         "post": null,
         "prev_close": 102.06,
-        "phase": "ç¤å"
+        "phase": "盤前"
       },
       "news": [
         {
@@ -111,16 +111,16 @@
     "TSM": {
       "name": "Taiwan Semiconductor Manufactur",
       "quote": {
-        "c": 419.6,
-        "d": -1.54,
-        "dp": -0.3645,
+        "c": 419.03,
+        "d": -2.11,
+        "dp": -0.5,
         "regular": 421.21,
         "reg_d": -3.4,
         "reg_dp": -0.8007,
-        "pre": 419.6,
+        "pre": 419.03,
         "post": null,
         "prev_close": 424.61,
-        "phase": "ç¤å"
+        "phase": "盤前"
       },
       "news": [
         {
@@ -134,16 +134,16 @@
     "MRVL": {
       "name": "Marvell Technology, Inc.",
       "quote": {
-        "c": 212.81,
-        "d": 1.82,
-        "dp": 0.8612,
+        "c": 211.48,
+        "d": 0.49,
+        "dp": 0.2322,
         "regular": 210.99,
         "reg_d": 3.03,
         "reg_dp": 1.457,
-        "pre": 212.81,
+        "pre": 211.48,
         "post": null,
         "prev_close": 207.96,
-        "phase": "ç¤å"
+        "phase": "盤前"
       },
       "news": [
         {
@@ -157,16 +157,16 @@
     "AVGO": {
       "name": "Broadcom Inc.",
       "quote": {
-        "c": 395.88,
-        "d": -0.93,
-        "dp": -0.2344,
+        "c": 394.7,
+        "d": -2.11,
+        "dp": -0.5317,
         "regular": 396.81,
         "reg_d": 10.31,
         "reg_dp": 2.6675,
-        "pre": 395.88,
+        "pre": 394.7,
         "post": null,
         "prev_close": 386.5,
-        "phase": "ç¤å"
+        "phase": "盤前"
       },
       "news": [
         {
@@ -180,16 +180,16 @@
     "MU": {
       "name": "Micron Technology, Inc.",
       "quote": {
-        "c": 978.48,
-        "d": 19,
-        "dp": 1.9802,
+        "c": 974.33,
+        "d": 14.85,
+        "dp": 1.5477,
         "regular": 959.48,
         "reg_d": -11.34,
         "reg_dp": -1.1681,
-        "pre": 978.48,
+        "pre": 974.33,
         "post": null,
         "prev_close": 970.82,
-        "phase": "ç¤å"
+        "phase": "盤前"
       },
       "news": [
         {
@@ -203,16 +203,16 @@
     "SNDK": {
       "name": "Sandisk Corporation",
       "quote": {
-        "c": 1604.98,
-        "d": 5.71,
-        "dp": 0.357,
+        "c": 1596.0,
+        "d": -3.27,
+        "dp": -0.2045,
         "regular": 1599.27,
         "reg_d": 9.87,
         "reg_dp": 0.621,
-        "pre": 1604.98,
+        "pre": 1596.0,
         "post": null,
         "prev_close": 1589.4,
-        "phase": "ç¤å"
+        "phase": "盤前"
       },
       "news": [
         {
@@ -228,14 +228,14 @@
       "quote": {
         "c": 115.76,
         "d": 0.5,
-        "dp": 0.4338,
+        "dp": 0.4364,
         "regular": 115.26,
         "reg_d": -8.28,
         "reg_dp": -6.7023,
         "pre": 115.76,
         "post": null,
         "prev_close": 123.54,
-        "phase": "ç¤å"
+        "phase": "盤前"
       },
       "news": [
         {
@@ -243,6 +243,29 @@
           "datetime": 1784761756,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/video/elon-musk-is-in-denial-that-tesla-is-just-an-ev-company-ross-gerber-210812615.html"
+        }
+      ]
+    },
+    "ONDS": {
+      "name": "Ondas Inc",
+      "quote": {
+        "c": 8.02,
+        "d": 0.02,
+        "dp": 0.25,
+        "regular": 8.0,
+        "reg_d": 0.34,
+        "reg_dp": 4.4386,
+        "pre": 8.02,
+        "post": null,
+        "prev_close": 7.66,
+        "phase": "盤前"
+      },
+      "news": [
+        {
+          "headline": "暫無最新新聞",
+          "datetime": 1784806861,
+          "source": "Yahoo Finance",
+          "url": "#"
         }
       ]
     }
