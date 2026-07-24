@@ -1,7 +1,7 @@
 {
   "name": "美股盤前情報資料庫",
-  "updated_at": "2026-07-25T06:42:53.190072+08:00",
-  "next_update_at": "2026-07-24T23:30:00Z",
+  "updated_at": "2026-07-25T07:05:03.895086+08:00",
+  "next_update_at": "2026-07-25T00:00:00Z",
   "stocks": [
     "MSFT",
     "GOOG",
@@ -19,21 +19,21 @@
     "MSFT": {
       "name": "Microsoft Corporation",
       "quote": {
-        "c": 381.72,
-        "d": 0.02,
-        "dp": 0.0063,
+        "c": 381.54,
+        "d": -0.16,
+        "dp": -0.0419,
         "regular": 381.7,
         "reg_d": 0.12,
         "reg_dp": 0.0314,
         "pre": null,
-        "post": 381.72,
+        "post": 381.54,
         "prev_close": 381.58,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "What to watch next week: Big Tech earnings, the Fed, and Consumer Confidence",
-          "datetime": 1784932973,
+          "datetime": 1784934303,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/video/watch-next-week-big-tech-220000158.html"
         }
@@ -42,21 +42,21 @@
     "GOOG": {
       "name": "Alphabet Inc.",
       "quote": {
-        "c": 319.23,
-        "d": 0.14,
-        "dp": 0.0439,
+        "c": 319.09,
+        "d": 0.0,
+        "dp": 0.0,
         "regular": 319.09,
         "reg_d": 0.75,
         "reg_dp": 0.2356,
         "pre": null,
-        "post": 319.23,
+        "post": 319.09,
         "prev_close": 318.34,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "What to watch next week: Big Tech earnings, the Fed, and Consumer Confidence",
-          "datetime": 1784932973,
+          "datetime": 1784934303,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/video/watch-next-week-big-tech-220000158.html"
         }
@@ -65,21 +65,21 @@
     "NVDA": {
       "name": "NVIDIA Corporation",
       "quote": {
-        "c": 206.72,
-        "d": -0.12,
-        "dp": -0.0558,
+        "c": 206.81,
+        "d": -0.03,
+        "dp": -0.0149,
         "regular": 206.84,
         "reg_d": -1.92,
         "reg_dp": -0.9197,
         "pre": null,
-        "post": 206.72,
+        "post": 206.81,
         "prev_close": 208.76,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Tech stocks live: Huang, Nadella, and other CEOs defend open-source AI as US threatens crackdown",
-          "datetime": 1784932973,
+          "datetime": 1784934303,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/technology/live/tech-stocks-live-tech-heavy-nasdaq-climbs-ahead-of-big-tech-earnings-kickoff-164334720.html"
         }
@@ -88,21 +88,21 @@
     "NOW": {
       "name": "ServiceNow, Inc.",
       "quote": {
-        "c": 98.05,
-        "d": -0.73,
-        "dp": -0.739,
+        "c": 98.2,
+        "d": -0.58,
+        "dp": -0.5872,
         "regular": 98.78,
         "reg_d": 6.84,
         "reg_dp": 7.4396,
         "pre": null,
-        "post": 98.05,
+        "post": 98.2,
         "prev_close": 91.94,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Big Tech Earnings Week is Over. Who Won and Lost?",
-          "datetime": 1784932973,
+          "datetime": 1784934303,
           "source": "Yahoo Finance",
           "url": "https://beincrypto.com/big-tech-earnings-week-winners-losers-analysis/"
         }
@@ -111,21 +111,21 @@
     "TSM": {
       "name": "Taiwan Semiconductor Manufactur",
       "quote": {
-        "c": 403.0,
-        "d": -0.41,
-        "dp": -0.1016,
+        "c": 402.74,
+        "d": -0.67,
+        "dp": -0.1661,
         "regular": 403.41,
         "reg_d": -12.17,
         "reg_dp": -2.9284,
         "pre": null,
-        "post": 403.0,
+        "post": 402.74,
         "prev_close": 415.58,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "TSMC might set up a price hike that could come straight for your next phone, laptop, or tablet",
-          "datetime": 1784932973,
+          "datetime": 1784934303,
           "source": "Yahoo Finance",
           "url": "https://www.digitaltrends.com/computing/tsmc-just-quietly-set-up-a-price-hike-thats-coming-straight-for-your-next-phone/"
         }
@@ -134,21 +134,21 @@
     "MRVL": {
       "name": "Marvell Technology, Inc.",
       "quote": {
-        "c": 192.64,
-        "d": -1.59,
-        "dp": -0.8186,
+        "c": 192.66,
+        "d": -1.57,
+        "dp": -0.8063,
         "regular": 194.23,
         "reg_d": -15.09,
         "reg_dp": -7.2091,
         "pre": null,
-        "post": 192.64,
+        "post": 192.66,
         "prev_close": 209.32,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Lattice Semiconductor, Allegro MicroSystems, Monolithic Power Systems, Marvell Technology, and MACOM Shares Are Falling, What You Need To Know",
-          "datetime": 1784932973,
+          "datetime": 1784934303,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/markets/stocks/articles/lattice-semiconductor-allegro-microsystems-monolithic-222508289.html"
         }
@@ -157,21 +157,21 @@
     "AVGO": {
       "name": "Broadcom Inc.",
       "quote": {
-        "c": 381.75,
-        "d": -0.17,
-        "dp": -0.0445,
+        "c": 381.65,
+        "d": -0.27,
+        "dp": -0.0707,
         "regular": 381.92,
         "reg_d": -10.55,
         "reg_dp": -2.6881,
         "pre": null,
-        "post": 381.75,
+        "post": 381.65,
         "prev_close": 392.47,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Why Big Tech barnings could define the market next week",
-          "datetime": 1784932973,
+          "datetime": 1784934303,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/video/why-big-tech-barnings-could-define-the-market-next-week-142459959.html"
         }
@@ -180,21 +180,21 @@
     "MU": {
       "name": "Micron Technology, Inc.",
       "quote": {
-        "c": 915.0,
-        "d": -5.95,
-        "dp": -0.6461,
+        "c": 914.38,
+        "d": -6.57,
+        "dp": -0.7136,
         "regular": 920.95,
         "reg_d": -69.26,
         "reg_dp": -6.9945,
         "pre": null,
-        "post": 915.0,
+        "post": 914.38,
         "prev_close": 990.21,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Why Tesla, Google, and other Mag 7 stocks are losing billions in valuation",
-          "datetime": 1784932973,
+          "datetime": 1784934303,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/video/why-tesla-google-and-other-mag-7-stocks-are-losing-billions-in-valuation-200043787.html"
         }
@@ -203,21 +203,21 @@
     "SNDK": {
       "name": "Sandisk Corporation",
       "quote": {
-        "c": 1435.53,
-        "d": -1.03,
-        "dp": -0.0717,
+        "c": 1436.0,
+        "d": -0.56,
+        "dp": -0.039,
         "regular": 1436.56,
         "reg_d": -173.77,
         "reg_dp": -10.791,
         "pre": null,
-        "post": 1435.53,
+        "post": 1436.0,
         "prev_close": 1610.33,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Stock Market Today, July 24: Dow Recovers and Sandisk Tumbles 11% as Tech Stocks Fall Further",
-          "datetime": 1784932973,
+          "datetime": 1784934303,
           "source": "Yahoo Finance",
           "url": "https://www.fool.com/coverage/stock-market-today/2026/07/24/stock-market-today-july-24-dow-recovers-and-sandisk-tumbles-11-as-tech-stocks-fall-further/"
         }
@@ -226,21 +226,21 @@
     "SPCX": {
       "name": "Space Exploration Technologies",
       "quote": {
-        "c": 115.25,
-        "d": 0.18,
-        "dp": 0.1564,
+        "c": 113.15,
+        "d": -1.92,
+        "dp": -1.6685,
         "regular": 115.07,
         "reg_d": -3.17,
         "reg_dp": -2.681,
         "pre": null,
-        "post": 115.25,
+        "post": 113.15,
         "prev_close": 118.24,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "SpaceX stock stumbles ahead of major Starship test tonight",
-          "datetime": 1784932973,
+          "datetime": 1784934303,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/markets/stocks/article/spacex-stock-stumbles-ahead-of-major-starship-test-tonight-132710787.html"
         }
@@ -249,21 +249,21 @@
     "ONDS": {
       "name": "Ondas Inc",
       "quote": {
-        "c": 7.82,
-        "d": 0.02,
-        "dp": 0.2564,
+        "c": 7.83,
+        "d": 0.03,
+        "dp": 0.3641,
         "regular": 7.8,
         "reg_d": -0.13,
         "reg_dp": -1.6393,
         "pre": null,
-        "post": 7.82,
+        "post": 7.83,
         "prev_close": 7.93,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "These high-flying tech stocks are down 65% — here's how to shop the sell-off: One Big Investment Idea",
-          "datetime": 1784932973,
+          "datetime": 1784934303,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/markets/article/these-high-flying-tech-stocks-are-down-65--heres-how-to-shop-the-sell-off-one-big-investment-idea-131623103.html"
         }
