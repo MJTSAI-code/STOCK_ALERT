@@ -1,6 +1,6 @@
 {
   "name": "美股盤前情報資料庫",
-  "updated_at": "2026-07-25T05:58:13.419135+08:00",
+  "updated_at": "2026-07-25T05:58:45.760080+08:00",
   "next_update_at": "2026-07-24T22:30:00Z",
   "stocks": [
     "MSFT",
@@ -19,21 +19,21 @@
     "MSFT": {
       "name": "Microsoft Corporation",
       "quote": {
-        "c": 381.7,
-        "d": 0.0,
-        "dp": 0.0,
+        "c": 381.85,
+        "d": 0.15,
+        "dp": 0.0393,
         "regular": 381.7,
         "reg_d": 0.12,
         "reg_dp": 0.0314,
         "pre": null,
-        "post": 381.7,
+        "post": 381.85,
         "prev_close": 381.58,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Tech stocks live: Huang, Nadella, and other CEOs defend open-source AI as US threatens crackdown",
-          "datetime": 1784930293,
+          "datetime": 1784930325,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/technology/live/tech-stocks-live-tech-heavy-nasdaq-climbs-ahead-of-big-tech-earnings-kickoff-164334720.html"
         }
@@ -42,21 +42,21 @@
     "GOOG": {
       "name": "Alphabet Inc.",
       "quote": {
-        "c": 319.2,
-        "d": 0.11,
-        "dp": 0.035,
+        "c": 319.5,
+        "d": 0.41,
+        "dp": 0.1285,
         "regular": 319.09,
         "reg_d": 0.75,
         "reg_dp": 0.2356,
         "pre": null,
-        "post": 319.2,
+        "post": 319.5,
         "prev_close": 318.34,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Tech stocks live: Huang, Nadella, and other CEOs defend open-source AI as US threatens crackdown",
-          "datetime": 1784930293,
+          "datetime": 1784930325,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/technology/live/tech-stocks-live-tech-heavy-nasdaq-climbs-ahead-of-big-tech-earnings-kickoff-164334720.html"
         }
@@ -65,21 +65,21 @@
     "NVDA": {
       "name": "NVIDIA Corporation",
       "quote": {
-        "c": 206.86,
-        "d": 0.02,
-        "dp": 0.0097,
+        "c": 206.9,
+        "d": 0.06,
+        "dp": 0.029,
         "regular": 206.84,
         "reg_d": -1.92,
         "reg_dp": -0.9197,
         "pre": null,
-        "post": 206.86,
+        "post": 206.9,
         "prev_close": 208.76,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Tech stocks live: Huang, Nadella, and other CEOs defend open-source AI as US threatens crackdown",
-          "datetime": 1784930293,
+          "datetime": 1784930325,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/technology/live/tech-stocks-live-tech-heavy-nasdaq-climbs-ahead-of-big-tech-earnings-kickoff-164334720.html"
         }
@@ -88,21 +88,21 @@
     "NOW": {
       "name": "ServiceNow, Inc.",
       "quote": {
-        "c": 97.97,
-        "d": -0.81,
-        "dp": -0.82,
+        "c": 98.1,
+        "d": -0.68,
+        "dp": -0.6884,
         "regular": 98.78,
         "reg_d": 6.84,
         "reg_dp": 7.4396,
         "pre": null,
-        "post": 97.97,
+        "post": 98.1,
         "prev_close": 91.94,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Big Tech Earnings Week is Over. Who Won and Lost?",
-          "datetime": 1784930293,
+          "datetime": 1784930325,
           "source": "Yahoo Finance",
           "url": "https://beincrypto.com/big-tech-earnings-week-winners-losers-analysis/"
         }
@@ -125,7 +125,7 @@
       "news": [
         {
           "headline": "Intel’s Strong Earnings Couldn’t Save the Stock From an AI Spending Panic",
-          "datetime": 1784930293,
+          "datetime": 1784930325,
           "source": "Yahoo Finance",
           "url": "https://www.barrons.com/articles/intel-stock-price-earnings-ai-panic-0c53fe8c?siteid=yhoof2&yptr=yahoo"
         }
@@ -134,21 +134,21 @@
     "MRVL": {
       "name": "Marvell Technology, Inc.",
       "quote": {
-        "c": 193.0,
-        "d": -1.23,
-        "dp": -0.6333,
+        "c": 193.08,
+        "d": -1.15,
+        "dp": -0.5921,
         "regular": 194.23,
         "reg_d": -15.09,
         "reg_dp": -7.2091,
         "pre": null,
-        "post": 193.0,
+        "post": 193.08,
         "prev_close": 209.32,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "MRVL Has Momentum. The Question Is The Price",
-          "datetime": 1784930293,
+          "datetime": 1784930325,
           "source": "Yahoo Finance",
           "url": "https://www.trefis.com/articles/608755/mrvl-has-momentum-the-question-is-the-price/2026-07-24"
         }
@@ -157,21 +157,21 @@
     "AVGO": {
       "name": "Broadcom Inc.",
       "quote": {
-        "c": 382.46,
-        "d": 0.54,
-        "dp": 0.1414,
+        "c": 382.33,
+        "d": 0.41,
+        "dp": 0.1073,
         "regular": 381.92,
         "reg_d": -10.55,
         "reg_dp": -2.6881,
         "pre": null,
-        "post": 382.46,
+        "post": 382.33,
         "prev_close": 392.47,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Why Big Tech barnings could define the market next week",
-          "datetime": 1784930293,
+          "datetime": 1784930325,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/video/why-big-tech-barnings-could-define-the-market-next-week-142459959.html"
         }
@@ -180,21 +180,21 @@
     "MU": {
       "name": "Micron Technology, Inc.",
       "quote": {
-        "c": 910.84,
-        "d": -10.11,
-        "dp": -1.0978,
+        "c": 911.0,
+        "d": -9.95,
+        "dp": -1.0804,
         "regular": 920.95,
         "reg_d": -69.26,
         "reg_dp": -6.9945,
         "pre": null,
-        "post": 910.84,
+        "post": 911.0,
         "prev_close": 990.21,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Why Tesla, Google, and other Mag 7 stocks are losing billions in valuation",
-          "datetime": 1784930293,
+          "datetime": 1784930325,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/video/why-tesla-google-and-other-mag-7-stocks-are-losing-billions-in-valuation-200043787.html"
         }
@@ -203,21 +203,21 @@
     "SNDK": {
       "name": "Sandisk Corporation",
       "quote": {
-        "c": 1425.62,
-        "d": -10.94,
-        "dp": -0.7613,
+        "c": 1426.52,
+        "d": -10.04,
+        "dp": -0.6989,
         "regular": 1436.56,
         "reg_d": -173.77,
         "reg_dp": -10.791,
         "pre": null,
-        "post": 1425.62,
+        "post": 1426.52,
         "prev_close": 1610.33,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Stock Market Today, July 24: Dow Recovers and Sandisk Tumbles 11% as Tech Stocks Fall Further",
-          "datetime": 1784930293,
+          "datetime": 1784930325,
           "source": "Yahoo Finance",
           "url": "https://www.fool.com/coverage/stock-market-today/2026/07/24/stock-market-today-july-24-dow-recovers-and-sandisk-tumbles-11-as-tech-stocks-fall-further/"
         }
@@ -226,21 +226,21 @@
     "SPCX": {
       "name": "Space Exploration Technologies",
       "quote": {
-        "c": 114.78,
-        "d": -0.29,
-        "dp": -0.2515,
+        "c": 114.84,
+        "d": -0.23,
+        "dp": -0.1999,
         "regular": 115.07,
         "reg_d": -3.17,
         "reg_dp": -2.681,
         "pre": null,
-        "post": 114.78,
+        "post": 114.84,
         "prev_close": 118.24,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "SpaceX stock stumbles ahead of major Starship test tonight",
-          "datetime": 1784930293,
+          "datetime": 1784930325,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/markets/stocks/article/spacex-stock-stumbles-ahead-of-major-starship-test-tonight-132710787.html"
         }
@@ -249,21 +249,21 @@
     "ONDS": {
       "name": "Ondas Inc",
       "quote": {
-        "c": 7.83,
-        "d": 0.03,
-        "dp": 0.4038,
+        "c": 7.84,
+        "d": 0.04,
+        "dp": 0.5128,
         "regular": 7.8,
         "reg_d": -0.13,
         "reg_dp": -1.6393,
         "pre": null,
-        "post": 7.83,
+        "post": 7.84,
         "prev_close": 7.93,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "These high-flying tech stocks are down 65% — here's how to shop the sell-off: One Big Investment Idea",
-          "datetime": 1784930293,
+          "datetime": 1784930325,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/markets/article/these-high-flying-tech-stocks-are-down-65--heres-how-to-shop-the-sell-off-one-big-investment-idea-131623103.html"
         }
