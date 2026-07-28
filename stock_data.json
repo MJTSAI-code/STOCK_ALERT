@@ -1,7 +1,7 @@
 {
   "name": "美股盤前情報資料庫",
-  "updated_at": "2026-07-29T04:52:31.903293+08:00",
-  "next_update_at": "2026-07-28T21:30:00Z",
+  "updated_at": "2026-07-29T05:16:51.275883+08:00",
+  "next_update_at": "2026-07-28T22:00:00Z",
   "stocks": [
     "MSFT",
     "GOOG",
@@ -19,113 +19,113 @@
     "MSFT": {
       "name": "Microsoft Corporation",
       "quote": {
-        "c": 393.91,
-        "d": 0.56,
-        "dp": 0.1424,
+        "c": 393.87,
+        "d": 0.52,
+        "dp": 0.1319,
         "regular": 393.35,
         "reg_d": 4.25,
         "reg_dp": 1.0923,
         "pre": null,
-        "post": 393.91,
+        "post": 393.87,
         "prev_close": 389.1,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Earnings live: LVMH sales grow as US luxury shoppers boost results",
-          "datetime": 1785193689,
+          "headline": "Big Tech will fund more than a third of its AI investments with debt in 2027, Goldman Sachs predicts",
+          "datetime": 1785273411,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/markets/live/earnings-live-lvmh-sales-grow-as-us-luxury-shoppers-boost-results-115207214.html"
+          "url": "https://finance.yahoo.com/markets/article/big-tech-will-fund-more-than-a-third-of-its-ai-investments-with-debt-in-2027-goldman-sachs-predicts-145136150.html"
         }
       ]
     },
     "GOOG": {
       "name": "Alphabet Inc.",
       "quote": {
-        "c": 333.84,
-        "d": 1.24,
-        "dp": 0.3726,
+        "c": 333.93,
+        "d": 1.33,
+        "dp": 0.3999,
         "regular": 332.6,
         "reg_d": 6.03,
         "reg_dp": 1.8465,
         "pre": null,
-        "post": 333.84,
+        "post": 333.93,
         "prev_close": 326.57,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Earnings live: LVMH sales grow as US luxury shoppers boost results",
-          "datetime": 1785193689,
+          "headline": "Earnings live: Avis stock plunges as earnings fall short amid the summer travel season, Ford stock gains",
+          "datetime": 1785273411,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/markets/live/earnings-live-lvmh-sales-grow-as-us-luxury-shoppers-boost-results-115207214.html"
+          "url": "https://finance.yahoo.com/markets/live/earnings-live-avis-stock-plunges-as-earnings-fall-short-amid-the-summer-travel-season-ford-stock-gains-115207214.html"
         }
       ]
     },
     "NVDA": {
       "name": "NVIDIA Corporation",
       "quote": {
-        "c": 197.03,
-        "d": 0.02,
-        "dp": 0.0098,
+        "c": 197.04,
+        "d": 0.03,
+        "dp": 0.0149,
         "regular": 197.01,
         "reg_d": 0.5,
         "reg_dp": 0.2544,
         "pre": null,
-        "post": 197.03,
+        "post": 197.04,
         "prev_close": 196.51,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Nvidia reportedly in talks to finance OpenAI's massive Ohio data center",
-          "datetime": 1785193689,
+          "headline": "Micron, SK Hynix stocks sink as AI chip sell-off deepens",
+          "datetime": 1785273411,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/video/nvidia-reportedly-in-talks-to-finance-openais-massive-ohio-data-center-204640730.html"
+          "url": "https://finance.yahoo.com/markets/article/micron-sk-hynix-stocks-sink-as-ai-chip-sell-off-deepens-125622548.html"
         }
       ]
     },
     "NOW": {
       "name": "ServiceNow, Inc.",
       "quote": {
-        "c": 110.03,
-        "d": -0.59,
-        "dp": -0.5334,
+        "c": 109.85,
+        "d": -0.77,
+        "dp": -0.6952,
         "regular": 110.62,
         "reg_d": 5.06,
         "reg_dp": 4.7935,
         "pre": null,
-        "post": 110.03,
+        "post": 109.85,
         "prev_close": 105.56,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Stock Market Today, July 27: Dow Rises on Oil Retreat, and Sandisk Plunges 11% on Memory Weakness",
-          "datetime": 1785193689,
+          "headline": "FJTSY or NOW: Which Is the Better Value Stock Right Now?",
+          "datetime": 1785273411,
           "source": "Yahoo Finance",
-          "url": "https://www.fool.com/coverage/stock-market-today/2026/07/27/stock-market-today-july-27-dow-rises-on-oil-retreat-and-sandisk-plunges-11-on-memory-weakness/"
+          "url": "https://finance.yahoo.com/markets/stocks/articles/fjtsy-now-better-value-stock-154002464.html"
         }
       ]
     },
     "TSM": {
       "name": "Taiwan Semiconductor Manufactur",
       "quote": {
-        "c": 394.0,
-        "d": 1.69,
-        "dp": 0.4308,
+        "c": 395.16,
+        "d": 2.85,
+        "dp": 0.7265,
         "regular": 392.31,
         "reg_d": -6.78,
         "reg_dp": -1.6989,
         "pre": null,
-        "post": 394.0,
+        "post": 395.16,
         "prev_close": 399.09,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Semiconductor stock charts just formed this bearish shape that signals more potential losses",
-          "datetime": 1785193689,
+          "datetime": 1785273411,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/markets/article/semiconductor-stock-charts-just-formed-this-bearish-shape-that-signals-more-potential-losses-145440205.html"
         }
@@ -134,44 +134,44 @@
     "MRVL": {
       "name": "Marvell Technology, Inc.",
       "quote": {
-        "c": 174.45,
-        "d": -0.02,
-        "dp": -0.0115,
+        "c": 176.0,
+        "d": 1.53,
+        "dp": 0.8769,
         "regular": 174.47,
         "reg_d": -14.7,
         "reg_dp": -7.7708,
         "pre": null,
-        "post": 174.45,
+        "post": 176.0,
         "prev_close": 189.17,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Marvell Technology vs. Planet Labs: Which Growth Stock Is a Better Buy in 2026, the Artificial Intelligence Company or the Rising Star of the Space-Based Economy?",
-          "datetime": 1785193689,
+          "headline": "Micron, SK Hynix stocks sink as AI chip sell-off deepens",
+          "datetime": 1785273411,
           "source": "Yahoo Finance",
-          "url": "https://www.fool.com/coverage/better-buy/2026/07/27/marvell-technology-vs-planet-labs-which-growth-stock-is-a-better-buy-in-2026-the-artificial-intelligence-company-or-the-rising-star-of-the-space-based-economy/"
+          "url": "https://finance.yahoo.com/markets/article/micron-sk-hynix-stocks-sink-as-ai-chip-sell-off-deepens-125622548.html"
         }
       ]
     },
     "AVGO": {
       "name": "Broadcom Inc.",
       "quote": {
-        "c": 380.61,
-        "d": -0.3,
-        "dp": -0.0788,
+        "c": 380.78,
+        "d": -0.13,
+        "dp": -0.0341,
         "regular": 380.91,
         "reg_d": -2.31,
         "reg_dp": -0.6028,
         "pre": null,
-        "post": 380.61,
+        "post": 380.78,
         "prev_close": 383.22,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Semiconductor stock charts just formed this bearish shape that signals more potential losses",
-          "datetime": 1785193689,
+          "datetime": 1785273411,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/markets/article/semiconductor-stock-charts-just-formed-this-bearish-shape-that-signals-more-potential-losses-145440205.html"
         }
@@ -180,90 +180,90 @@
     "MU": {
       "name": "Micron Technology, Inc.",
       "quote": {
-        "c": 823.49,
-        "d": 2.96,
-        "dp": 0.3603,
+        "c": 829.21,
+        "d": 8.68,
+        "dp": 1.0579,
         "regular": 820.53,
         "reg_d": -79.67,
         "reg_dp": -8.8503,
         "pre": null,
-        "post": 823.49,
+        "post": 829.21,
         "prev_close": 900.2,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Elon Musk's Tesla, SpaceX shed $1.2T in July, while Apple sprints ahead: Chart of the Day",
-          "datetime": 1785193689,
+          "headline": "Assessing the chip sector's damage: Chart of the Day",
+          "datetime": 1785273411,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/video/elon-musks-tesla-spacex-shed-12t-in-july-while-apple-sprints-ahead-chart-of-the-day-202410236.html"
+          "url": "https://finance.yahoo.com/video/assessing-the-chip-sectors-damage-chart-of-the-day-195557807.html"
         }
       ]
     },
     "SNDK": {
       "name": "Sandisk Corporation",
       "quote": {
-        "c": 1114.91,
-        "d": 18.81,
-        "dp": 1.7161,
+        "c": 1124.63,
+        "d": 28.53,
+        "dp": 2.6029,
         "regular": 1096.1,
         "reg_d": -182.13,
         "reg_dp": -14.2486,
         "pre": null,
-        "post": 1114.91,
+        "post": 1124.63,
         "prev_close": 1278.23,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Dow Jones Futures: U.S.-Iran Peace Hopes Send Oil Prices Plunging; Nvidia, Micron, Sandisk, SpaceX, Tesla Sell Off",
-          "datetime": 1785193689,
+          "headline": "Assessing the chip sector's damage: Chart of the Day",
+          "datetime": 1785273411,
           "source": "Yahoo Finance",
-          "url": "https://www.investors.com/market-trend/stock-market-today/dow-jones-futures-us-iran-oil-prices-nvidia-micron-sandisk-spacex-tesla/?src=A00220&yptr=yahoo"
+          "url": "https://finance.yahoo.com/video/assessing-the-chip-sectors-damage-chart-of-the-day-195557807.html"
         }
       ]
     },
     "SPCX": {
       "name": "Space Exploration Technologies",
       "quote": {
-        "c": 116.56,
-        "d": 0.15,
-        "dp": 0.1323,
+        "c": 116.41,
+        "d": 0.0,
+        "dp": 0.0,
         "regular": 116.41,
         "reg_d": 2.91,
         "reg_dp": 2.5639,
         "pre": null,
-        "post": 116.56,
+        "post": 116.41,
         "prev_close": 113.5,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Why there could be a 'massive' $5T opportunity for prediction markets",
-          "datetime": 1785193689,
+          "headline": "SpaceX stock recovers after hitting all-time low",
+          "datetime": 1785273411,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/video/why-there-could-be-a-massive-5t-opportunity-for-prediction-markets-211845134.html"
+          "url": "https://finance.yahoo.com/markets/stocks/article/spacex-stock-recovers-after-hitting-all-time-low-144351570.html"
         }
       ]
     },
     "ONDS": {
       "name": "Ondas Inc",
       "quote": {
-        "c": 7.85,
-        "d": -0.01,
-        "dp": -0.126,
+        "c": 7.89,
+        "d": 0.03,
+        "dp": 0.3651,
         "regular": 7.86,
         "reg_d": -0.16,
         "reg_dp": -1.995,
         "pre": null,
-        "post": 7.85,
+        "post": 7.89,
         "prev_close": 8.02,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "These high-flying tech stocks are down 65% — here's how to shop the sell-off: One Big Investment Idea",
-          "datetime": 1785193689,
+          "datetime": 1785273411,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/markets/article/these-high-flying-tech-stocks-are-down-65--heres-how-to-shop-the-sell-off-one-big-investment-idea-131623103.html"
         }
