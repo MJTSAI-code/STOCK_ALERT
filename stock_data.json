@@ -1,7 +1,7 @@
 {
   "name": "美股盤前情報資料庫",
-  "updated_at": "2026-07-30T05:58:30.412250+08:00",
-  "next_update_at": "2026-07-29T22:30:00Z",
+  "updated_at": "2026-07-30T06:39:56.969034+08:00",
+  "next_update_at": "2026-07-29T23:30:00Z",
   "stocks": [
     "MSFT",
     "GOOG",
@@ -19,21 +19,21 @@
     "MSFT": {
       "name": "Microsoft Corporation",
       "quote": {
-        "c": 398.05,
-        "d": 7.51,
-        "dp": 1.9241,
+        "c": 422.66,
+        "d": 32.12,
+        "dp": 8.225,
         "regular": 390.54,
         "reg_d": -2.81,
         "reg_dp": -0.7144,
         "pre": null,
-        "post": 398.05,
+        "post": 422.66,
         "prev_close": 393.35,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Microsoft's Q4 results are 'narrative changing,' according to one analyst",
-          "datetime": 1785362310,
+          "datetime": 1785364796,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/video/microsofts-q4-results-narrative-changing-213000946.html"
         }
@@ -42,21 +42,21 @@
     "GOOG": {
       "name": "Alphabet Inc.",
       "quote": {
-        "c": 335.76,
-        "d": 0.0,
-        "dp": 0.0,
+        "c": 336.0,
+        "d": 0.24,
+        "dp": 0.0715,
         "regular": 335.76,
         "reg_d": 3.16,
         "reg_dp": 0.9501,
         "pre": null,
-        "post": 335.76,
+        "post": 336.0,
         "prev_close": 332.6,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Meta's revenue forecast is 'barely passable': D.A. Davidson analyst",
-          "datetime": 1785362310,
+          "datetime": 1785364796,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/video/metas-revenue-forecast-barely-passable-211000416.html"
         }
@@ -65,21 +65,21 @@
     "NVDA": {
       "name": "NVIDIA Corporation",
       "quote": {
-        "c": 189.3,
-        "d": -0.71,
-        "dp": -0.3737,
+        "c": 191.34,
+        "d": 1.33,
+        "dp": 0.7012,
         "regular": 190.01,
         "reg_d": -7.0,
         "reg_dp": -3.5531,
         "pre": null,
-        "post": 189.3,
+        "post": 191.34,
         "prev_close": 197.01,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Tech stocks today: Microsoft, Meta, Qualcomm report earnings as chip stocks struggle",
-          "datetime": 1785362310,
+          "datetime": 1785364796,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/technology/live/tech-stocks-today-big-tech-earnings-134611080.html"
         }
@@ -88,21 +88,21 @@
     "NOW": {
       "name": "ServiceNow, Inc.",
       "quote": {
-        "c": 114.19,
-        "d": -1.57,
-        "dp": -1.3563,
+        "c": 116.94,
+        "d": 1.18,
+        "dp": 1.0194,
         "regular": 115.76,
         "reg_d": 5.14,
         "reg_dp": 4.6465,
         "pre": null,
-        "post": 114.19,
+        "post": 116.94,
         "prev_close": 110.62,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "ServiceNow CEO admits there's a solution to AI's biggest problem",
-          "datetime": 1785362310,
+          "datetime": 1785364796,
           "source": "Yahoo Finance",
           "url": "https://www.thestreet.com/investing/stocks/now-servicenow-ceo-bill-mcdermott-says-theres-a-kill-switch-if-ai-agents-go-rogue"
         }
@@ -111,44 +111,44 @@
     "TSM": {
       "name": "Taiwan Semiconductor Manufactur",
       "quote": {
-        "c": 370.73,
-        "d": -3.94,
-        "dp": -1.0516,
+        "c": 374.1,
+        "d": -0.57,
+        "dp": -0.1521,
         "regular": 374.67,
         "reg_d": -17.64,
         "reg_dp": -4.4964,
         "pre": null,
-        "post": 370.73,
+        "post": 374.1,
         "prev_close": 392.31,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "TSMC Stock Drops 4.1% as $2 Trillion AI Rout Spreads",
-          "datetime": 1785362310,
+          "headline": "Which Company Will Win the Race to $3 Trillion -- Amazon, Broadcom, or Taiwan Semiconductor?",
+          "datetime": 1785364796,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/markets/stocks/articles/tsmc-stock-drops-4-1-183858715.html"
+          "url": "https://www.fool.com/investing/2026/07/29/which-company-will-win-the-race-to-3-trillion-amaz/"
         }
       ]
     },
     "MRVL": {
       "name": "Marvell Technology, Inc.",
       "quote": {
-        "c": 159.79,
-        "d": -3.61,
-        "dp": -2.2112,
+        "c": 163.02,
+        "d": -0.38,
+        "dp": -0.2296,
         "regular": 163.4,
         "reg_d": -11.07,
         "reg_dp": -6.3449,
         "pre": null,
-        "post": 159.79,
+        "post": 163.02,
         "prev_close": 174.47,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Marvell Is Making a Bigger Bet on India",
-          "datetime": 1785362310,
+          "datetime": 1785364796,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/technology/articles/marvell-making-bigger-bet-india-140140484.html"
         }
@@ -157,21 +157,21 @@
     "AVGO": {
       "name": "Broadcom Inc.",
       "quote": {
-        "c": 366.4,
-        "d": -3.92,
-        "dp": -1.0585,
+        "c": 369.58,
+        "d": -0.74,
+        "dp": -0.2012,
         "regular": 370.32,
         "reg_d": -10.59,
         "reg_dp": -2.7802,
         "pre": null,
-        "post": 366.4,
+        "post": 369.58,
         "prev_close": 380.91,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Kospi sell-off deepens, Why leveraged ETFs are under fire",
-          "datetime": 1785362310,
+          "datetime": 1785364796,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/video/kospi-sell-off-deepens-why-leveraged-etfs-are-under-fire-155119000.html"
         }
@@ -180,21 +180,21 @@
     "MU": {
       "name": "Micron Technology, Inc.",
       "quote": {
-        "c": 720.98,
-        "d": -18.02,
-        "dp": -2.4384,
+        "c": 734.56,
+        "d": -4.44,
+        "dp": -0.6008,
         "regular": 739.0,
         "reg_d": -81.53,
         "reg_dp": -9.9363,
         "pre": null,
-        "post": 720.98,
+        "post": 734.56,
         "prev_close": 820.53,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Nvidia, Micron, AMD sink after SK Hynix results fail to impress, AI trade unwinds",
-          "datetime": 1785362310,
+          "datetime": 1785364796,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/markets/article/nvidia-micron-amd-sink-after-sk-hynix-results-fail-to-impress-ai-trade-unwinds-130352334.html"
         }
@@ -203,21 +203,21 @@
     "SNDK": {
       "name": "Sandisk Corporation",
       "quote": {
-        "c": 994.86,
-        "d": -21.03,
-        "dp": -2.0701,
+        "c": 1009.74,
+        "d": -6.15,
+        "dp": -0.6054,
         "regular": 1015.89,
         "reg_d": -80.21,
         "reg_dp": -7.3178,
         "pre": null,
-        "post": 994.86,
+        "post": 1009.74,
         "prev_close": 1096.1,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Nvidia, Micron, AMD sink after SK Hynix results fail to impress, AI trade unwinds",
-          "datetime": 1785362310,
+          "datetime": 1785364796,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/markets/article/nvidia-micron-amd-sink-after-sk-hynix-results-fail-to-impress-ai-trade-unwinds-130352334.html"
         }
@@ -226,21 +226,21 @@
     "SPCX": {
       "name": "Space Exploration Technologies",
       "quote": {
-        "c": 112.04,
-        "d": -0.51,
-        "dp": -0.4561,
+        "c": 113.79,
+        "d": 1.24,
+        "dp": 1.1007,
         "regular": 112.55,
         "reg_d": -3.86,
         "reg_dp": -3.3159,
         "pre": null,
-        "post": 112.04,
+        "post": 113.79,
         "prev_close": 116.41,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "SpaceX stock sags again to a new low as Q2 earnings approach",
-          "datetime": 1785362310,
+          "datetime": 1785364796,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/markets/stocks/article/spacex-stock-sags-again-to-a-new-low-as-q2-earnings-approach-152137218.html"
         }
@@ -249,21 +249,21 @@
     "ONDS": {
       "name": "Ondas Inc",
       "quote": {
-        "c": 6.69,
-        "d": -0.11,
-        "dp": -1.6176,
+        "c": 6.85,
+        "d": 0.05,
+        "dp": 0.7353,
         "regular": 6.8,
         "reg_d": -1.06,
         "reg_dp": -13.486,
         "pre": null,
-        "post": 6.69,
+        "post": 6.85,
         "prev_close": 7.86,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "These high-flying tech stocks are down 65% — here's how to shop the sell-off: One Big Investment Idea",
-          "datetime": 1785362310,
+          "datetime": 1785364796,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/markets/article/these-high-flying-tech-stocks-are-down-65--heres-how-to-shop-the-sell-off-one-big-investment-idea-131623103.html"
         }
