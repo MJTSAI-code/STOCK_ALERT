@@ -1,7 +1,7 @@
 {
   "name": "美股盤前情報資料庫",
-  "updated_at": "2026-07-29T07:04:17.970269+08:00",
-  "next_update_at": "2026-07-29T00:00:00Z",
+  "updated_at": "2026-07-29T17:58:29.321892+08:00",
+  "next_update_at": "2026-07-29T10:30:00Z",
   "stocks": [
     "MSFT",
     "GOOG",
@@ -17,18 +17,18 @@
   ],
   "data": {
     "MSFT": {
-      "name": "MSFT",
+      "name": "Microsoft Corporation",
       "quote": {
-        "c": 393.35,
-        "d": 0.0,
-        "dp": 0.0,
+        "c": 393.19,
+        "d": -0.16,
+        "dp": -0.0407,
         "regular": 393.35,
-        "reg_d": 3.85,
-        "reg_dp": 0.9884,
-        "pre": null,
+        "reg_d": 4.25,
+        "reg_dp": 1.0923,
+        "pre": 393.19,
         "post": null,
-        "prev_close": 389.5,
-        "phase": "盤後"
+        "prev_close": 389.1,
+        "phase": "盤前"
       },
       "news": [
         {
@@ -40,18 +40,18 @@
       ]
     },
     "GOOG": {
-      "name": "GOOG",
+      "name": "Alphabet Inc.",
       "quote": {
-        "c": 332.6,
-        "d": 0.0,
-        "dp": 0.0,
+        "c": 333.14,
+        "d": 0.54,
+        "dp": 0.1624,
         "regular": 332.6,
-        "reg_d": 5.6,
-        "reg_dp": 1.7125,
-        "pre": null,
+        "reg_d": 6.03,
+        "reg_dp": 1.8465,
+        "pre": 333.14,
         "post": null,
-        "prev_close": 327.0,
-        "phase": "盤後"
+        "prev_close": 326.57,
+        "phase": "盤前"
       },
       "news": [
         {
@@ -65,16 +65,16 @@
     "NVDA": {
       "name": "NVIDIA Corporation",
       "quote": {
-        "c": 195.37,
-        "d": -1.64,
-        "dp": -0.8304,
+        "c": 197.94,
+        "d": 0.93,
+        "dp": 0.4737,
         "regular": 197.01,
         "reg_d": 0.5,
         "reg_dp": 0.2544,
-        "pre": null,
-        "post": 195.37,
+        "pre": 197.94,
+        "post": null,
         "prev_close": 196.51,
-        "phase": "盤後"
+        "phase": "盤前"
       },
       "news": [
         {
@@ -88,16 +88,16 @@
     "NOW": {
       "name": "ServiceNow, Inc.",
       "quote": {
-        "c": 111.5,
-        "d": 0.88,
-        "dp": 0.7955,
+        "c": 108.0,
+        "d": -2.62,
+        "dp": -2.3711,
         "regular": 110.62,
         "reg_d": 5.06,
         "reg_dp": 4.7935,
-        "pre": null,
-        "post": 111.5,
+        "pre": 108.0,
+        "post": null,
         "prev_close": 105.56,
-        "phase": "盤後"
+        "phase": "盤前"
       },
       "news": [
         {
@@ -111,16 +111,16 @@
     "TSM": {
       "name": "Taiwan Semiconductor Manufactur",
       "quote": {
-        "c": 387.98,
-        "d": -4.33,
-        "dp": -1.1037,
+        "c": 391.99,
+        "d": -0.31,
+        "dp": -0.0791,
         "regular": 392.31,
         "reg_d": -6.78,
         "reg_dp": -1.6989,
-        "pre": null,
-        "post": 387.98,
+        "pre": 391.99,
+        "post": null,
         "prev_close": 399.09,
-        "phase": "盤後"
+        "phase": "盤前"
       },
       "news": [
         {
@@ -134,16 +134,16 @@
     "MRVL": {
       "name": "Marvell Technology, Inc.",
       "quote": {
-        "c": 170.02,
-        "d": -4.45,
-        "dp": -2.5491,
+        "c": 175.95,
+        "d": 1.48,
+        "dp": 0.8501,
         "regular": 174.47,
         "reg_d": -14.7,
         "reg_dp": -7.7708,
-        "pre": null,
-        "post": 170.02,
+        "pre": 175.95,
+        "post": null,
         "prev_close": 189.17,
-        "phase": "盤後"
+        "phase": "盤前"
       },
       "news": [
         {
@@ -157,16 +157,16 @@
     "AVGO": {
       "name": "Broadcom Inc.",
       "quote": {
-        "c": 377.12,
-        "d": -3.79,
-        "dp": -0.995,
+        "c": 382.78,
+        "d": 1.87,
+        "dp": 0.4916,
         "regular": 380.91,
         "reg_d": -2.31,
         "reg_dp": -0.6028,
-        "pre": null,
-        "post": 377.12,
+        "pre": 382.78,
+        "post": null,
         "prev_close": 383.22,
-        "phase": "盤後"
+        "phase": "盤前"
       },
       "news": [
         {
@@ -180,16 +180,16 @@
     "MU": {
       "name": "Micron Technology, Inc.",
       "quote": {
-        "c": 784.84,
-        "d": -35.69,
-        "dp": -4.35,
+        "c": 835.99,
+        "d": 15.46,
+        "dp": 1.8841,
         "regular": 820.53,
         "reg_d": -79.67,
         "reg_dp": -8.8503,
-        "pre": null,
-        "post": 784.84,
+        "pre": 835.99,
+        "post": null,
         "prev_close": 900.2,
-        "phase": "盤後"
+        "phase": "盤前"
       },
       "news": [
         {
@@ -203,16 +203,16 @@
     "SNDK": {
       "name": "Sandisk Corporation",
       "quote": {
-        "c": 1053.0,
-        "d": -43.1,
-        "dp": -3.9321,
+        "c": 1116.0,
+        "d": 19.9,
+        "dp": 1.8155,
         "regular": 1096.1,
         "reg_d": -182.13,
         "reg_dp": -14.2486,
-        "pre": null,
-        "post": 1053.0,
+        "pre": 1116.0,
+        "post": null,
         "prev_close": 1278.23,
-        "phase": "盤後"
+        "phase": "盤前"
       },
       "news": [
         {
@@ -226,16 +226,16 @@
     "SPCX": {
       "name": "Space Exploration Technologies",
       "quote": {
-        "c": 115.0,
-        "d": -1.41,
-        "dp": -1.2112,
+        "c": 116.34,
+        "d": -0.07,
+        "dp": -0.0601,
         "regular": 116.41,
         "reg_d": 2.91,
         "reg_dp": 2.5639,
-        "pre": null,
-        "post": 115.0,
+        "pre": 116.34,
+        "post": null,
         "prev_close": 113.5,
-        "phase": "盤後"
+        "phase": "盤前"
       },
       "news": [
         {
@@ -249,16 +249,16 @@
     "ONDS": {
       "name": "Ondas Inc",
       "quote": {
-        "c": 7.72,
-        "d": -0.14,
-        "dp": -1.7812,
+        "c": 7.84,
+        "d": -0.02,
+        "dp": -0.2481,
         "regular": 7.86,
         "reg_d": -0.16,
         "reg_dp": -1.995,
-        "pre": null,
-        "post": 7.72,
+        "pre": 7.84,
+        "post": null,
         "prev_close": 8.02,
-        "phase": "盤後"
+        "phase": "盤前"
       },
       "news": [
         {
@@ -272,6 +272,6 @@
   },
   "alert_sent": {
     "morning": "2026-07-29",
-    "evening": "2026-07-28"
+    "evening": "2026-07-29"
   }
 }
