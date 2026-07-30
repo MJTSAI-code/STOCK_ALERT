@@ -1,7 +1,7 @@
 {
   "name": "美股盤前情報資料庫",
-  "updated_at": "2026-07-31T06:47:09.964144+08:00",
-  "next_update_at": "2026-07-30T23:30:00Z",
+  "updated_at": "2026-07-31T07:12:04.912781+08:00",
+  "next_update_at": "2026-07-31T00:00:00Z",
   "stocks": [
     "MSFT",
     "GOOG",
@@ -19,44 +19,44 @@
     "MSFT": {
       "name": "Microsoft Corporation",
       "quote": {
-        "c": 447.4,
-        "d": -3.7,
-        "dp": -0.8202,
+        "c": 448.02,
+        "d": -3.08,
+        "dp": -0.6828,
         "regular": 451.1,
         "reg_d": 60.56,
         "reg_dp": 15.5067,
         "pre": null,
-        "post": 447.4,
+        "post": 448.02,
         "prev_close": 390.54,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Tech stocks today: Microsoft makes market history, Apple and Amazon beat on earnings",
-          "datetime": 1785451629,
+          "headline": "Earnings live: Amazon stock surges on earnings beat, Apple stock slides",
+          "datetime": 1785453124,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/technology/live/tech-stocks-today-big-tech-earnings-134611080.html"
+          "url": "https://finance.yahoo.com/markets/live/earnings-live-amazon-stock-surges-on-earnings-beat-apple-stock-slides-115207214.html"
         }
       ]
     },
     "GOOG": {
       "name": "Alphabet Inc.",
       "quote": {
-        "c": 335.21,
-        "d": 1.53,
-        "dp": 0.4585,
+        "c": 335.19,
+        "d": 1.51,
+        "dp": 0.4525,
         "regular": 333.68,
         "reg_d": -2.08,
         "reg_dp": -0.6195,
         "pre": null,
-        "post": 335.21,
+        "post": 335.19,
         "prev_close": 335.76,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Earnings live: Amazon stock surges on earnings beat, Apple stock slides",
-          "datetime": 1785451629,
+          "datetime": 1785453124,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/markets/live/earnings-live-amazon-stock-surges-on-earnings-beat-apple-stock-slides-115207214.html"
         }
@@ -65,21 +65,21 @@
     "NVDA": {
       "name": "NVIDIA Corporation",
       "quote": {
-        "c": 196.0,
-        "d": 0.96,
-        "dp": 0.4922,
+        "c": 196.16,
+        "d": 1.12,
+        "dp": 0.5742,
         "regular": 195.04,
         "reg_d": 5.03,
         "reg_dp": 2.6472,
         "pre": null,
-        "post": 196.0,
+        "post": 196.16,
         "prev_close": 190.01,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Microsoft's $41 billion AI bet just cleared a major test: Chart of the Day",
-          "datetime": 1785451629,
+          "datetime": 1785453124,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/markets/article/microsofts-41-billion-ai-bet-just-cleared-a-major-test-chart-of-the-day-100000116.html"
         }
@@ -88,21 +88,21 @@
     "NOW": {
       "name": "ServiceNow, Inc.",
       "quote": {
-        "c": 108.68,
-        "d": -1.39,
-        "dp": -1.2619,
+        "c": 108.83,
+        "d": -1.24,
+        "dp": -1.1286,
         "regular": 110.07,
         "reg_d": -5.69,
         "reg_dp": -4.9153,
         "pre": null,
-        "post": 108.68,
+        "post": 108.83,
         "prev_close": 115.76,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Exclusive: ServiceNow to cut up to 1K jobs as part of planned rightsizing",
-          "datetime": 1785451629,
+          "datetime": 1785453124,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/technology/articles/exclusive-servicenow-cut-1k-jobs-183242920.html"
         }
@@ -111,21 +111,21 @@
     "TSM": {
       "name": "Taiwan Semiconductor Manufactur",
       "quote": {
-        "c": 411.0,
-        "d": 7.69,
-        "dp": 1.9067,
+        "c": 409.15,
+        "d": 5.84,
+        "dp": 1.448,
         "regular": 403.31,
         "reg_d": 28.64,
         "reg_dp": 7.6441,
         "pre": null,
-        "post": 411.0,
+        "post": 409.15,
         "prev_close": 374.67,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Astera Labs vs. CoreWeave: Which Technology Stock Is a Better Buy in 2026?",
-          "datetime": 1785451629,
+          "datetime": 1785453124,
           "source": "Yahoo Finance",
           "url": "https://www.fool.com/coverage/better-buy/2026/07/30/astera-labs-vs-coreweave-which-technology-stock-is-a-better-buy-in-2026/"
         }
@@ -134,21 +134,21 @@
     "MRVL": {
       "name": "Marvell Technology, Inc.",
       "quote": {
-        "c": 194.77,
-        "d": 11.47,
-        "dp": 6.2575,
+        "c": 193.52,
+        "d": 10.22,
+        "dp": 5.5756,
         "regular": 183.3,
         "reg_d": 19.9,
         "reg_dp": 12.1787,
         "pre": null,
-        "post": 194.77,
+        "post": 193.52,
         "prev_close": 163.4,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Marvell (MRVL) Stock Looks Stretched After A 206% Five Year Run",
-          "datetime": 1785451629,
+          "datetime": 1785453124,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/markets/stocks/articles/marvell-mrvl-stock-looks-stretched-221121829.html"
         }
@@ -157,44 +157,44 @@
     "AVGO": {
       "name": "Broadcom Inc.",
       "quote": {
-        "c": 389.6,
-        "d": 1.76,
-        "dp": 0.4538,
+        "c": 389.92,
+        "d": 2.08,
+        "dp": 0.5369,
         "regular": 387.84,
         "reg_d": 17.52,
         "reg_dp": 4.731,
         "pre": null,
-        "post": 389.6,
+        "post": 389.92,
         "prev_close": 370.32,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Apple commits more than $30 Billion to US manufacturing",
-          "datetime": 1785451629,
+          "headline": "Apple commits more than $30 billion to US manufacturing",
+          "datetime": 1785453124,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/video/apple-commits-more-30-billion-220800117.html"
+          "url": "https://finance.yahoo.com/video/apple-commits-more-than-30-billion-to-us-manufacturing-220800117.html"
         }
       ]
     },
     "MU": {
       "name": "Micron Technology, Inc.",
       "quote": {
-        "c": 907.58,
-        "d": 32.92,
-        "dp": 3.7636,
+        "c": 893.0,
+        "d": 18.34,
+        "dp": 2.0968,
         "regular": 874.66,
         "reg_d": 135.66,
         "reg_dp": 18.3572,
         "pre": null,
-        "post": 907.58,
+        "post": 893.0,
         "prev_close": 739.0,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Micron Technology (MU) Stock Gets Fair Value Bump As AI Demand And Contracts Draw Praise",
-          "datetime": 1785451629,
+          "datetime": 1785453124,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/markets/stocks/articles/micron-technology-mu-stock-gets-221028055.html"
         }
@@ -203,21 +203,21 @@
     "SNDK": {
       "name": "Sandisk Corporation",
       "quote": {
-        "c": 1347.26,
-        "d": 67.3,
-        "dp": 5.258,
+        "c": 1334.69,
+        "d": 54.73,
+        "dp": 4.2759,
         "regular": 1279.96,
         "reg_d": 264.07,
         "reg_dp": 25.994,
         "pre": null,
-        "post": 1347.26,
+        "post": 1334.69,
         "prev_close": 1015.89,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Sandisk Stock Had A Mammoth Run. Here's Why Some Investors Are Still Watching It.",
-          "datetime": 1785451629,
+          "datetime": 1785453124,
           "source": "Yahoo Finance",
           "url": "https://www.investors.com/news/sandisk-stock-had-its-run-why-some-investors-are-still-watching-it/?src=A00220&yptr=yahoo"
         }
@@ -226,23 +226,23 @@
     "SPCX": {
       "name": "Space Exploration Technologies",
       "quote": {
-        "c": 112.91,
-        "d": 0.71,
-        "dp": 0.6312,
+        "c": 112.9,
+        "d": 0.7,
+        "dp": 0.6239,
         "regular": 112.2,
         "reg_d": -0.35,
         "reg_dp": -0.311,
         "pre": null,
-        "post": 112.91,
+        "post": 112.9,
         "prev_close": 112.55,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Analyst compares SpaceX, Palantir to Bitcoin",
-          "datetime": 1785451629,
+          "headline": "5 charts: VC-backed IPOs hit a record 2026, but the aftermath is dimmer",
+          "datetime": 1785453124,
           "source": "Yahoo Finance",
-          "url": "https://www.thestreet.com/crypto/markets/analyst-compares-spacex-palantir-to-bitcoin"
+          "url": "https://pitchbook.com/news/articles/5-charts-vc-backed-ipos-hit-a-record-2026-but-the-aftermath-is-dimmer"
         }
       ]
     },
@@ -250,8 +250,8 @@
       "name": "Ondas Inc",
       "quote": {
         "c": 7.58,
-        "d": 0.0,
-        "dp": 0.0,
+        "d": -0.0,
+        "dp": -0.0013,
         "regular": 7.58,
         "reg_d": 0.75,
         "reg_dp": 11.0395,
@@ -263,7 +263,7 @@
       "news": [
         {
           "headline": "Uniti Group (UNIT) Reports Q2 Loss, Tops Revenue Estimates",
-          "datetime": 1785451629,
+          "datetime": 1785453124,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/markets/stocks/articles/uniti-group-unit-reports-q2-133508976.html"
         }
