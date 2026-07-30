@@ -1,7 +1,7 @@
 {
   "name": "美股盤前情報資料庫",
-  "updated_at": "2026-07-31T04:52:31.003067+08:00",
-  "next_update_at": "2026-07-30T21:30:00Z",
+  "updated_at": "2026-07-31T05:43:20.465158+08:00",
+  "next_update_at": "2026-07-30T22:30:00Z",
   "stocks": [
     "MSFT",
     "GOOG",
@@ -19,259 +19,259 @@
     "MSFT": {
       "name": "Microsoft Corporation",
       "quote": {
-        "c": 448.76,
-        "d": -2.34,
-        "dp": -0.5182,
+        "c": 447.35,
+        "d": -3.75,
+        "dp": -0.8313,
         "regular": 451.1,
         "reg_d": 60.56,
         "reg_dp": 15.5067,
         "pre": null,
-        "post": 448.76,
+        "post": 447.35,
         "prev_close": 390.54,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Microsoft's Q4 results are 'narrative changing,' according to one analyst",
-          "datetime": 1785366117,
+          "headline": "Tech stocks today: Microsoft makes market history, Apple and Amazon beat on earnings",
+          "datetime": 1785447800,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/video/microsofts-q4-results-narrative-changing-213000946.html"
+          "url": "https://finance.yahoo.com/technology/live/tech-stocks-today-big-tech-earnings-134611080.html"
         }
       ]
     },
     "GOOG": {
       "name": "Alphabet Inc.",
       "quote": {
-        "c": 334.39,
-        "d": 0.71,
-        "dp": 0.2138,
+        "c": 334.24,
+        "d": 0.56,
+        "dp": 0.1674,
         "regular": 333.68,
         "reg_d": -2.08,
         "reg_dp": -0.6195,
         "pre": null,
-        "post": 334.39,
+        "post": 334.24,
         "prev_close": 335.76,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Meta's revenue forecast is 'barely passable': D.A. Davidson analyst",
-          "datetime": 1785366117,
+          "headline": "Earnings live: Amazon stock surges on earnings beat, Apple stock slides",
+          "datetime": 1785447800,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/video/metas-revenue-forecast-barely-passable-211000416.html"
+          "url": "https://finance.yahoo.com/markets/live/earnings-live-amazon-stock-surges-on-earnings-beat-apple-stock-slides-115207214.html"
         }
       ]
     },
     "NVDA": {
       "name": "NVIDIA Corporation",
       "quote": {
-        "c": 195.88,
-        "d": 0.84,
-        "dp": 0.4307,
+        "c": 195.84,
+        "d": 0.8,
+        "dp": 0.4107,
         "regular": 195.04,
         "reg_d": 5.03,
         "reg_dp": 2.6472,
         "pre": null,
-        "post": 195.88,
+        "post": 195.84,
         "prev_close": 190.01,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Tech stocks today: Microsoft, Meta, Qualcomm report earnings as chip stocks struggle",
-          "datetime": 1785366117,
+          "headline": "Microsoft's $41 billion AI bet just cleared a major test: Chart of the Day",
+          "datetime": 1785447800,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/technology/live/tech-stocks-today-big-tech-earnings-134611080.html"
+          "url": "https://finance.yahoo.com/markets/article/microsofts-41-billion-ai-bet-just-cleared-a-major-test-chart-of-the-day-100000116.html"
         }
       ]
     },
     "NOW": {
       "name": "ServiceNow, Inc.",
       "quote": {
-        "c": 109.14,
-        "d": -0.93,
-        "dp": -0.8453,
+        "c": 108.33,
+        "d": -1.74,
+        "dp": -1.5813,
         "regular": 110.07,
         "reg_d": -5.69,
         "reg_dp": -4.9153,
         "pre": null,
-        "post": 109.14,
+        "post": 108.33,
         "prev_close": 115.76,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "ServiceNow CEO admits there's a solution to AI's biggest problem",
-          "datetime": 1785366117,
+          "headline": "Exclusive: ServiceNow to cut up to 1K jobs as part of planned rightsizing",
+          "datetime": 1785447800,
           "source": "Yahoo Finance",
-          "url": "https://www.thestreet.com/investing/stocks/now-servicenow-ceo-bill-mcdermott-says-theres-a-kill-switch-if-ai-agents-go-rogue"
+          "url": "https://finance.yahoo.com/technology/articles/exclusive-servicenow-cut-1k-jobs-183242920.html"
         }
       ]
     },
     "TSM": {
       "name": "Taiwan Semiconductor Manufactur",
       "quote": {
-        "c": 404.94,
-        "d": 1.63,
-        "dp": 0.4042,
+        "c": 407.03,
+        "d": 3.72,
+        "dp": 0.9224,
         "regular": 403.31,
         "reg_d": 28.64,
         "reg_dp": 7.6441,
         "pre": null,
-        "post": 404.94,
+        "post": 407.03,
         "prev_close": 374.67,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Which Company Will Win the Race to $3 Trillion -- Amazon, Broadcom, or Taiwan Semiconductor?",
-          "datetime": 1785366117,
+          "headline": "Intel Scores Needed Win, But Bigger Test Remains",
+          "datetime": 1785447800,
           "source": "Yahoo Finance",
-          "url": "https://www.fool.com/investing/2026/07/29/which-company-will-win-the-race-to-3-trillion-amaz/"
+          "url": "https://finance.yahoo.com/markets/stocks/articles/intel-scores-needed-win-bigger-200523007.html"
         }
       ]
     },
     "MRVL": {
       "name": "Marvell Technology, Inc.",
       "quote": {
-        "c": 189.49,
-        "d": 6.19,
-        "dp": 3.377,
+        "c": 193.0,
+        "d": 9.7,
+        "dp": 5.2919,
         "regular": 183.3,
         "reg_d": 19.9,
         "reg_dp": 12.1787,
         "pre": null,
-        "post": 189.49,
+        "post": 193.0,
         "prev_close": 163.4,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Marvell Is Making a Bigger Bet on India",
-          "datetime": 1785366117,
+          "headline": "The Growth That Has To Land For Advanced Micro Devices Stock to Make Sense",
+          "datetime": 1785447800,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/technology/articles/marvell-making-bigger-bet-india-140140484.html"
+          "url": "https://www.trefis.com/articles/609483/the-growth-that-has-to-land-for-advanced-micro-devices-stock-to-make-sense/2026-07-30"
         }
       ]
     },
     "AVGO": {
       "name": "Broadcom Inc.",
       "quote": {
-        "c": 388.28,
-        "d": 0.44,
-        "dp": 0.1134,
+        "c": 388.99,
+        "d": 1.15,
+        "dp": 0.2965,
         "regular": 387.84,
         "reg_d": 17.52,
         "reg_dp": 4.731,
         "pre": null,
-        "post": 388.28,
+        "post": 388.99,
         "prev_close": 370.32,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Kospi sell-off deepens, Why leveraged ETFs are under fire",
-          "datetime": 1785366117,
+          "headline": "Apple Tops Third-Quarter Estimates; IPad, Services Revenue Falls Short",
+          "datetime": 1785447800,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/video/kospi-sell-off-deepens-why-leveraged-etfs-are-under-fire-155119000.html"
+          "url": "https://finance.yahoo.com/markets/stocks/articles/apple-tops-third-quarter-estimates-211942912.html"
         }
       ]
     },
     "MU": {
       "name": "Micron Technology, Inc.",
       "quote": {
-        "c": 886.07,
-        "d": 11.41,
-        "dp": 1.3045,
+        "c": 902.5,
+        "d": 27.84,
+        "dp": 3.183,
         "regular": 874.66,
         "reg_d": 135.66,
         "reg_dp": 18.3572,
         "pre": null,
-        "post": 886.07,
+        "post": 902.5,
         "prev_close": 739.0,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Nvidia, Micron, AMD sink after SK Hynix results fail to impress, AI trade unwinds",
-          "datetime": 1785366117,
+          "headline": "Are Micron’s (MU) New Auto AI Deals Quietly Redefining Its Competitive Moat?",
+          "datetime": 1785447800,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/markets/article/nvidia-micron-amd-sink-after-sk-hynix-results-fail-to-impress-ai-trade-unwinds-130352334.html"
+          "url": "https://finance.yahoo.com/technology/ai/articles/micron-mu-auto-ai-deals-211016427.html"
         }
       ]
     },
     "SNDK": {
       "name": "Sandisk Corporation",
       "quote": {
-        "c": 1319.0,
-        "d": 39.04,
-        "dp": 3.0501,
+        "c": 1356.0,
+        "d": 76.04,
+        "dp": 5.9408,
         "regular": 1279.96,
         "reg_d": 264.07,
         "reg_dp": 25.994,
         "pre": null,
-        "post": 1319.0,
+        "post": 1356.0,
         "prev_close": 1015.89,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Nvidia, Micron, AMD sink after SK Hynix results fail to impress, AI trade unwinds",
-          "datetime": 1785366117,
+          "headline": "Sandisk Stock Is Having Its Best Day Since January. It Has Had a Tough Month.",
+          "datetime": 1785447800,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/markets/article/nvidia-micron-amd-sink-after-sk-hynix-results-fail-to-impress-ai-trade-unwinds-130352334.html"
+          "url": "https://www.barrons.com/articles/sandisk-stock-soars-ai-samsung-52239f06?siteid=yhoof2&yptr=yahoo"
         }
       ]
     },
     "SPCX": {
       "name": "Space Exploration Technologies",
       "quote": {
-        "c": 112.7,
-        "d": 0.5,
-        "dp": 0.4456,
+        "c": 112.49,
+        "d": 0.29,
+        "dp": 0.2613,
         "regular": 112.2,
         "reg_d": -0.35,
         "reg_dp": -0.311,
         "pre": null,
-        "post": 112.7,
+        "post": 112.49,
         "prev_close": 112.55,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "SpaceX stock sags again to a new low as Q2 earnings approach",
-          "datetime": 1785366117,
+          "headline": "Memecoins Are Trading Against Stocks Now",
+          "datetime": 1785447800,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/markets/stocks/article/spacex-stock-sags-again-to-a-new-low-as-q2-earnings-approach-152137218.html"
+          "url": "https://www.bankless.com/read/tb"
         }
       ]
     },
     "ONDS": {
       "name": "Ondas Inc",
       "quote": {
-        "c": 7.49,
-        "d": -0.09,
-        "dp": -1.1834,
+        "c": 7.54,
+        "d": -0.04,
+        "dp": -0.5277,
         "regular": 7.58,
         "reg_d": 0.75,
         "reg_dp": 11.0395,
         "pre": null,
-        "post": 7.49,
+        "post": 7.54,
         "prev_close": 6.83,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "These high-flying tech stocks are down 65% — here's how to shop the sell-off: One Big Investment Idea",
-          "datetime": 1785366117,
+          "headline": "Uniti Group (UNIT) Reports Q2 Loss, Tops Revenue Estimates",
+          "datetime": 1785447800,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/markets/article/these-high-flying-tech-stocks-are-down-65--heres-how-to-shop-the-sell-off-one-big-investment-idea-131623103.html"
+          "url": "https://finance.yahoo.com/markets/stocks/articles/uniti-group-unit-reports-q2-133508976.html"
         }
       ]
     }
   },
   "alert_sent": {
-    "morning": "2026-07-30",
+    "morning": "2026-07-31",
     "evening": "2026-07-30"
   }
 }
