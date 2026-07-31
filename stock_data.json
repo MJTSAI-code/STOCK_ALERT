@@ -1,6 +1,6 @@
 {
   "name": "美股盤前情報資料庫",
-  "updated_at": "2026-08-01T05:38:37.023515+08:00",
+  "updated_at": "2026-08-01T05:58:30.792151+08:00",
   "next_update_at": "2026-07-31T22:30:00Z",
   "stocks": [
     "MSFT",
@@ -19,44 +19,44 @@
     "MSFT": {
       "name": "Microsoft Corporation",
       "quote": {
-        "c": 462.3,
-        "d": -2.42,
-        "dp": -0.5206,
+        "c": 461.85,
+        "d": -2.87,
+        "dp": -0.6176,
         "regular": 464.72,
         "reg_d": 13.62,
         "reg_dp": 3.0193,
         "pre": null,
-        "post": 462.3,
+        "post": 461.85,
         "prev_close": 451.1,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Apple stock plunges: CEO Tim Cook explains weak revenue forecast",
-          "datetime": 1785533917,
+          "headline": "Stock market today: Dow, S&P 500, Nasdaq rise to cap volatile July as Big Tech AI spending ramps up",
+          "datetime": 1785535110,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/video/apple-stock-plunges-ceo-tim-145105241.html"
+          "url": "https://finance.yahoo.com/markets/live/stock-market-today-friday-july-31-dow-sp-500-nasdaq-081227738.html"
         }
       ]
     },
     "GOOG": {
       "name": "Alphabet Inc.",
       "quote": {
-        "c": 356.16,
-        "d": -0.49,
-        "dp": -0.138,
+        "c": 354.23,
+        "d": -2.42,
+        "dp": -0.6781,
         "regular": 356.65,
         "reg_d": 22.97,
         "reg_dp": 6.8838,
         "pre": null,
-        "post": 356.16,
+        "post": 354.23,
         "prev_close": 333.68,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Tech stocks today: Amazon beats, Apple sinks",
-          "datetime": 1785533917,
+          "datetime": 1785535110,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/technology/live/tech-stocks-today-big-tech-earnings-134611080.html"
         }
@@ -65,21 +65,21 @@
     "NVDA": {
       "name": "NVIDIA Corporation",
       "quote": {
-        "c": 199.51,
-        "d": -1.24,
-        "dp": -0.6177,
+        "c": 198.98,
+        "d": -1.77,
+        "dp": -0.8833,
         "regular": 200.75,
         "reg_d": 5.71,
         "reg_dp": 2.9276,
         "pre": null,
-        "post": 199.51,
+        "post": 198.98,
         "prev_close": 195.04,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "AI trade is a combination of 'perception and reality': Bradley Tusk",
-          "datetime": 1785533917,
+          "datetime": 1785535110,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/video/ai-trade-combination-perception-reality-212136645.html"
         }
@@ -88,21 +88,21 @@
     "NOW": {
       "name": "ServiceNow, Inc.",
       "quote": {
-        "c": 110.48,
-        "d": -0.75,
-        "dp": -0.6758,
+        "c": 110.27,
+        "d": -0.96,
+        "dp": -0.864,
         "regular": 111.23,
         "reg_d": 1.16,
         "reg_dp": 1.0539,
         "pre": null,
-        "post": 110.48,
+        "post": 110.27,
         "prev_close": 110.07,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "IBM's Enterprise AI Strategy Targets Security, Data Control and Trust",
-          "datetime": 1785533917,
+          "datetime": 1785535110,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/technology/ai/articles/ibms-enterprise-ai-strategy-targets-174200203.html"
         }
@@ -111,21 +111,21 @@
     "TSM": {
       "name": "Taiwan Semiconductor Manufactur",
       "quote": {
-        "c": 404.37,
-        "d": 0.12,
-        "dp": 0.0297,
+        "c": 404.45,
+        "d": 0.2,
+        "dp": 0.0495,
         "regular": 404.25,
         "reg_d": 0.94,
         "reg_dp": 0.2331,
         "pre": null,
-        "post": 404.37,
+        "post": 404.45,
         "prev_close": 403.31,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "1 AI Stock I’d Buy Before It Hits Another All-Time High",
-          "datetime": 1785533917,
+          "datetime": 1785535110,
           "source": "Yahoo Finance",
           "url": "https://247wallst.com/investing/2026/07/31/1-ai-stock-id-buy-before-it-hits-another-all-time-high/"
         }
@@ -134,21 +134,21 @@
     "MRVL": {
       "name": "Marvell Technology, Inc.",
       "quote": {
-        "c": 186.81,
-        "d": -0.74,
-        "dp": -0.3972,
+        "c": 185.9,
+        "d": -1.66,
+        "dp": -0.8851,
         "regular": 187.56,
         "reg_d": 4.26,
         "reg_dp": 2.3241,
         "pre": null,
-        "post": 186.81,
+        "post": 185.9,
         "prev_close": 183.3,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Stocks to Watch: Apple, Amazon, SK Hynix, Roblox",
-          "datetime": 1785533917,
+          "datetime": 1785535110,
           "source": "Yahoo Finance",
           "url": "https://www.wsj.com/livecoverage/stock-market-today-dow-sp-500-nasdaq-07-31-2026/card/stocks-to-watch-apple-amazon-sk-hynix-samsung-roblox-UVBiwSE6WbBhfL3eozHj?siteid=yhoof2&yptr=yahoo"
         }
@@ -157,21 +157,21 @@
     "AVGO": {
       "name": "Broadcom Inc.",
       "quote": {
-        "c": 388.0,
-        "d": -1.28,
-        "dp": -0.3288,
+        "c": 387.82,
+        "d": -1.46,
+        "dp": -0.3739,
         "regular": 389.28,
         "reg_d": 1.44,
         "reg_dp": 0.3713,
         "pre": null,
-        "post": 388.0,
+        "post": 387.82,
         "prev_close": 387.84,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Apple commits more than $30 billion to US manufacturing",
-          "datetime": 1785533917,
+          "datetime": 1785535110,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/video/apple-commits-more-than-30-billion-to-us-manufacturing-220800117.html"
         }
@@ -180,21 +180,21 @@
     "MU": {
       "name": "Micron Technology, Inc.",
       "quote": {
-        "c": 817.91,
-        "d": -5.12,
-        "dp": -0.6218,
+        "c": 815.77,
+        "d": -7.26,
+        "dp": -0.8817,
         "regular": 823.03,
         "reg_d": -51.63,
         "reg_dp": -5.9029,
         "pre": null,
-        "post": 817.91,
+        "post": 815.77,
         "prev_close": 874.66,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Apple CEO Tim Cook says this '100-year flood' won't be receding anytime soon",
-          "datetime": 1785533917,
+          "datetime": 1785535110,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/technology/article/apple-ceo-tim-cook-says-this-100-year-flood-wont-be-receding-anytime-soon-121832016.html"
         }
@@ -203,21 +203,21 @@
     "SNDK": {
       "name": "Sandisk Corporation",
       "quote": {
-        "c": 1212.0,
-        "d": -2.83,
-        "dp": -0.233,
+        "c": 1208.03,
+        "d": -6.8,
+        "dp": -0.5602,
         "regular": 1214.83,
         "reg_d": -65.13,
         "reg_dp": -5.0884,
         "pre": null,
-        "post": 1212.0,
+        "post": 1208.03,
         "prev_close": 1279.96,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Dow Jones Futures: Market Rebounds, Now Watch For This; SpaceX, AMD, Sandisk, Eli Lilly Earnings Loom",
-          "datetime": 1785533917,
+          "datetime": 1785535110,
           "source": "Yahoo Finance",
           "url": "https://www.investors.com/market-trend/stock-market-today/dow-jones-futures-market-rebounds-now-watch-for-this-spacex-amd-sandisk-eli-lilly-earnings-loom/?src=A00220&yptr=yahoo"
         }
@@ -226,21 +226,21 @@
     "SPCX": {
       "name": "Space Exploration Technologies",
       "quote": {
-        "c": 107.9,
-        "d": -0.47,
-        "dp": -0.4337,
+        "c": 107.83,
+        "d": -0.54,
+        "dp": -0.498,
         "regular": 108.37,
         "reg_d": -3.83,
         "reg_dp": -3.4135,
         "pre": null,
-        "post": 107.9,
+        "post": 107.83,
         "prev_close": 112.2,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "AI trade is a combination of 'perception and reality': Bradley Tusk",
-          "datetime": 1785533917,
+          "datetime": 1785535110,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/video/ai-trade-combination-perception-reality-212136645.html"
         }
@@ -249,21 +249,21 @@
     "ONDS": {
       "name": "Ondas Inc",
       "quote": {
-        "c": 7.45,
-        "d": -0.04,
-        "dp": -0.534,
+        "c": 7.43,
+        "d": -0.06,
+        "dp": -0.8011,
         "regular": 7.49,
         "reg_d": -0.09,
         "reg_dp": -1.1873,
         "pre": null,
-        "post": 7.45,
+        "post": 7.43,
         "prev_close": 7.58,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Uniti Group (UNIT) Reports Q2 Loss, Tops Revenue Estimates",
-          "datetime": 1785533917,
+          "datetime": 1785535110,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/markets/stocks/articles/uniti-group-unit-reports-q2-133508976.html"
         }
