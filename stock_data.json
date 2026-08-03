@@ -1,7 +1,7 @@
 {
   "name": "美股盤前情報資料庫",
-  "updated_at": "2026-08-04T06:00:26.074674+08:00",
-  "next_update_at": "2026-08-03T23:00:00Z",
+  "updated_at": "2026-08-04T06:41:16.443148+08:00",
+  "next_update_at": "2026-08-03T23:30:00Z",
   "stocks": [
     "MSFT",
     "GOOG",
@@ -19,21 +19,21 @@
     "MSFT": {
       "name": "Microsoft Corporation",
       "quote": {
-        "c": 485.35,
-        "d": -2.3,
-        "dp": -0.4716,
+        "c": 484.51,
+        "d": -3.14,
+        "dp": -0.6439,
         "regular": 487.65,
         "reg_d": 22.93,
         "reg_dp": 4.9342,
         "pre": null,
-        "post": 485.35,
+        "post": 484.51,
         "prev_close": 464.72,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Why Palantir is the 'best' publicly traded tech company",
-          "datetime": 1785794426,
+          "datetime": 1785796876,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/video/why-palantir-best-publicly-traded-204416015.html"
         }
@@ -42,21 +42,21 @@
     "GOOG": {
       "name": "Alphabet Inc.",
       "quote": {
-        "c": 370.61,
-        "d": -1.86,
-        "dp": -0.4994,
+        "c": 371.46,
+        "d": -1.01,
+        "dp": -0.2711,
         "regular": 372.47,
         "reg_d": 15.82,
         "reg_dp": 4.4357,
         "pre": null,
-        "post": 370.61,
+        "post": 371.46,
         "prev_close": 356.65,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Why Microsoft, Amazon, & other Big Tech stocks are soaring post-earnings",
-          "datetime": 1785794426,
+          "datetime": 1785796876,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/video/why-microsoft-amazon-other-big-195257279.html"
         }
@@ -65,21 +65,21 @@
     "NVDA": {
       "name": "NVIDIA Corporation",
       "quote": {
-        "c": 206.82,
-        "d": 0.18,
-        "dp": 0.0871,
+        "c": 207.33,
+        "d": 0.69,
+        "dp": 0.3339,
         "regular": 206.64,
         "reg_d": 5.89,
         "reg_dp": 2.934,
         "pre": null,
-        "post": 206.82,
+        "post": 207.33,
         "prev_close": 200.75,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Tech stocks rally to kick off August. Can chipmakers keep up with demand?",
-          "datetime": 1785794426,
+          "datetime": 1785796876,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/video/tech-stocks-rally-kick-off-213000641.html"
         }
@@ -88,44 +88,44 @@
     "NOW": {
       "name": "ServiceNow, Inc.",
       "quote": {
-        "c": 115.12,
-        "d": 0.93,
-        "dp": 0.8144,
+        "c": 114.64,
+        "d": 0.45,
+        "dp": 0.3946,
         "regular": 114.19,
         "reg_d": 2.96,
         "reg_dp": 2.6612,
         "pre": null,
-        "post": 115.12,
+        "post": 114.64,
         "prev_close": 111.23,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Top Tech Analyst Says Hyperscalers Are the Clear AI Winners, but Beaten-Down Software Offers Value",
-          "datetime": 1785794426,
+          "headline": "ServiceNow (NOW) Cuts 300 Jobs As It Reworks Teams Around AI",
+          "datetime": 1785796876,
           "source": "Yahoo Finance",
-          "url": "https://247wallst.com/investing/2026/08/03/top-tech-analyst-says-hyperscalers-are-the-clear-ai-winners-but-beaten-down-software-offers-value/"
+          "url": "https://finance.yahoo.com/technology/ai/articles/servicenow-now-cuts-300-jobs-221023550.html"
         }
       ]
     },
     "TSM": {
       "name": "Taiwan Semiconductor Manufactur",
       "quote": {
-        "c": 407.57,
-        "d": 1.46,
-        "dp": 0.3595,
+        "c": 409.0,
+        "d": 2.89,
+        "dp": 0.7116,
         "regular": 406.11,
         "reg_d": 1.86,
         "reg_dp": 0.4601,
         "pre": null,
-        "post": 407.57,
+        "post": 409.0,
         "prev_close": 404.25,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "After Comparing Every AI ETF, These 3 Beat the Nasdaq Without Betting on a Single Stock",
-          "datetime": 1785794426,
+          "datetime": 1785796876,
           "source": "Yahoo Finance",
           "url": "https://247wallst.com/investing/2026/08/03/after-comparing-every-ai-etf-these-3-beat-the-nasdaq-without-betting-on-a-single-stock/"
         }
@@ -134,21 +134,21 @@
     "MRVL": {
       "name": "Marvell Technology, Inc.",
       "quote": {
-        "c": 195.7,
-        "d": 1.93,
-        "dp": 0.9934,
+        "c": 198.56,
+        "d": 4.79,
+        "dp": 2.4694,
         "regular": 193.78,
         "reg_d": 6.22,
         "reg_dp": 3.3136,
         "pre": null,
-        "post": 195.7,
+        "post": 198.56,
         "prev_close": 187.56,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Semiconductor stocks pare losses amid fears of increased competition from China",
-          "datetime": 1785794426,
+          "datetime": 1785796876,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/markets/article/semiconductor-stocks-pare-losses-amid-fears-of-increased-competition-from-china-133938642.html"
         }
@@ -157,44 +157,44 @@
     "AVGO": {
       "name": "Broadcom Inc.",
       "quote": {
-        "c": 392.22,
-        "d": -0.01,
-        "dp": -0.0037,
+        "c": 392.3,
+        "d": 0.07,
+        "dp": 0.0178,
         "regular": 392.23,
         "reg_d": 2.95,
         "reg_dp": 0.7578,
         "pre": null,
-        "post": 392.22,
+        "post": 392.3,
         "prev_close": 389.28,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Broadcom Stock Slips After Losing Major EU Antitrust Fight",
-          "datetime": 1785794426,
+          "headline": "1 Nasdaq 100 Stock to Target This Week and 2 We Question",
+          "datetime": 1785796876,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/markets/stocks/articles/broadcom-stock-slips-losing-major-182425517.html"
+          "url": "https://finance.yahoo.com/markets/stocks/articles/1-nasdaq-100-stock-target-222122065.html"
         }
       ]
     },
     "MU": {
       "name": "Micron Technology, Inc.",
       "quote": {
-        "c": 833.88,
-        "d": 4.38,
-        "dp": 0.528,
+        "c": 838.5,
+        "d": 9.0,
+        "dp": 1.085,
         "regular": 829.5,
         "reg_d": 6.47,
         "reg_dp": 0.7861,
         "pre": null,
-        "post": 833.88,
+        "post": 838.5,
         "prev_close": 823.03,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Semiconductor stocks pare losses amid fears of increased competition from China",
-          "datetime": 1785794426,
+          "datetime": 1785796876,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/markets/article/semiconductor-stocks-pare-losses-amid-fears-of-increased-competition-from-china-133938642.html"
         }
@@ -203,21 +203,21 @@
     "SNDK": {
       "name": "Sandisk Corporation",
       "quote": {
-        "c": 1307.95,
-        "d": 19.92,
-        "dp": 1.5465,
+        "c": 1311.06,
+        "d": 23.03,
+        "dp": 1.788,
         "regular": 1288.03,
         "reg_d": 73.2,
         "reg_dp": 6.0255,
         "pre": null,
-        "post": 1307.95,
+        "post": 1311.06,
         "prev_close": 1214.83,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Semiconductor stocks pare losses amid fears of increased competition from China",
-          "datetime": 1785794426,
+          "datetime": 1785796876,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/markets/article/semiconductor-stocks-pare-losses-amid-fears-of-increased-competition-from-china-133938642.html"
         }
@@ -226,21 +226,21 @@
     "SPCX": {
       "name": "Space Exploration Technologies",
       "quote": {
-        "c": 114.6,
-        "d": 0.07,
-        "dp": 0.0611,
+        "c": 114.59,
+        "d": 0.06,
+        "dp": 0.0524,
         "regular": 114.53,
         "reg_d": 6.16,
         "reg_dp": 5.6842,
         "pre": null,
-        "post": 114.6,
+        "post": 114.59,
         "prev_close": 108.37,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Earnings live updates: Snap stock surges as World Cup ads boost revenue, Whirlpool falls",
-          "datetime": 1785794426,
+          "datetime": 1785796876,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/markets/live/earnings-live-updates-130425228.html"
         }
@@ -249,21 +249,21 @@
     "ONDS": {
       "name": "Ondas Inc",
       "quote": {
-        "c": 8.37,
-        "d": 0.0,
-        "dp": 0.037,
+        "c": 8.38,
+        "d": 0.01,
+        "dp": 0.1159,
         "regular": 8.37,
         "reg_d": 0.88,
         "reg_dp": 11.749,
         "pre": null,
-        "post": 8.37,
+        "post": 8.38,
         "prev_close": 7.49,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Why BlackRock Is Betting Big on Ondas Stock Now",
-          "datetime": 1785794426,
+          "datetime": 1785796876,
           "source": "Yahoo Finance",
           "url": "https://www.barchart.com/story/news/3594136/why-blackrock-is-betting-big-on-ondas-stock-now"
         }
