@@ -1,7 +1,7 @@
 {
   "name": "美股盤前情報資料庫",
-  "updated_at": "2026-08-05T05:58:27.431153+08:00",
-  "next_update_at": "2026-08-04T22:30:00Z",
+  "updated_at": "2026-08-05T06:05:34.108456+08:00",
+  "next_update_at": "2026-08-04T23:00:00Z",
   "stocks": [
     "MSFT",
     "GOOG",
@@ -19,21 +19,21 @@
     "MSFT": {
       "name": "Microsoft Corporation",
       "quote": {
-        "c": 491.85,
-        "d": -0.96,
-        "dp": -0.1946,
+        "c": 492.79,
+        "d": -0.02,
+        "dp": -0.0041,
         "regular": 492.81,
         "reg_d": 5.16,
         "reg_dp": 1.0581,
         "pre": null,
-        "post": 491.85,
+        "post": 492.79,
         "prev_close": 487.65,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "What Southern Copper (SCCO)'s Record Q2 Dividend and Earnings Amid Lower Output Means For Shareholders",
-          "datetime": 1785880707,
+          "datetime": 1785881134,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/markets/stocks/articles/southern-copper-scco-record-q2-210955485.html"
         }
@@ -42,21 +42,21 @@
     "GOOG": {
       "name": "Alphabet Inc.",
       "quote": {
-        "c": 377.24,
-        "d": 1.89,
-        "dp": 0.5035,
+        "c": 378.22,
+        "d": 2.87,
+        "dp": 0.7633,
         "regular": 375.35,
         "reg_d": 2.88,
         "reg_dp": 0.7732,
         "pre": null,
-        "post": 377.24,
+        "post": 378.22,
         "prev_close": 372.47,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Tech stocks today: SpaceX and AMD post quarterly results; investors weren't impressed.",
-          "datetime": 1785880707,
+          "datetime": 1785881134,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/technology/live/tech-stocks-today-spacex-and-amd-post-quarterly-results-investors-werent-impressed-140419479.html"
         }
@@ -65,21 +65,21 @@
     "NVDA": {
       "name": "NVIDIA Corporation",
       "quote": {
-        "c": 214.9,
-        "d": 2.96,
-        "dp": 1.3966,
+        "c": 215.27,
+        "d": 3.33,
+        "dp": 1.5712,
         "regular": 211.94,
         "reg_d": 5.3,
         "reg_dp": 2.5648,
         "pre": null,
-        "post": 214.9,
+        "post": 215.27,
         "prev_close": 206.64,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Tech stocks today: SpaceX and AMD post quarterly results; investors weren't impressed.",
-          "datetime": 1785880707,
+          "datetime": 1785881134,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/technology/live/tech-stocks-today-spacex-and-amd-post-quarterly-results-investors-werent-impressed-140419479.html"
         }
@@ -88,21 +88,21 @@
     "NOW": {
       "name": "ServiceNow, Inc.",
       "quote": {
-        "c": 116.9,
-        "d": -1.24,
-        "dp": -1.0496,
+        "c": 116.76,
+        "d": -1.38,
+        "dp": -1.1681,
         "regular": 118.14,
         "reg_d": 3.95,
         "reg_dp": 3.4591,
         "pre": null,
-        "post": 116.9,
+        "post": 116.76,
         "prev_close": 114.19,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Goldman Sachs Just Added Microsoft to Its Closely Watched ‘Conviction List.’ Broadcom and ServiceNow Were Removed.",
-          "datetime": 1785880707,
+          "datetime": 1785881134,
           "source": "Yahoo Finance",
           "url": "https://247wallst.com/investing/2026/08/04/goldman-sachs-just-added-microsoft-to-its-closely-watched-conviction-list-broadcom-and-servicenow-were-removed/"
         }
@@ -111,21 +111,21 @@
     "TSM": {
       "name": "Taiwan Semiconductor Manufactur",
       "quote": {
-        "c": 416.0,
-        "d": -1.17,
-        "dp": -0.2805,
+        "c": 416.94,
+        "d": -0.23,
+        "dp": -0.0551,
         "regular": 417.17,
         "reg_d": 11.06,
         "reg_dp": 2.7234,
         "pre": null,
-        "post": 416.0,
+        "post": 416.94,
         "prev_close": 406.11,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Taiwan Semiconductor's AI Push Hits Surprising Milestone",
-          "datetime": 1785880707,
+          "datetime": 1785881134,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/technology/ai/articles/taiwan-semiconductors-ai-push-hits-202554417.html"
         }
@@ -134,21 +134,21 @@
     "MRVL": {
       "name": "Marvell Technology, Inc.",
       "quote": {
-        "c": 215.96,
-        "d": -2.63,
-        "dp": -1.2032,
+        "c": 216.5,
+        "d": -2.09,
+        "dp": -0.9561,
         "regular": 218.59,
         "reg_d": 24.81,
         "reg_dp": 12.8061,
         "pre": null,
-        "post": 215.96,
+        "post": 216.5,
         "prev_close": 193.78,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Marvell, Sandisk, SK Hynix lead semiconductor stock rally as S&P 500 trades at record highs",
-          "datetime": 1785880707,
+          "datetime": 1785881134,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/markets/article/marvell-sandisk-sk-hynix-lead-semiconductor-stock-rally-as-sp-500-trades-at-record-highs-172216048.html"
         }
@@ -157,21 +157,21 @@
     "AVGO": {
       "name": "Broadcom Inc.",
       "quote": {
-        "c": 416.5,
-        "d": -1.66,
-        "dp": -0.397,
+        "c": 416.31,
+        "d": -1.85,
+        "dp": -0.4424,
         "regular": 418.16,
         "reg_d": 25.93,
         "reg_dp": 6.6109,
         "pre": null,
-        "post": 416.5,
+        "post": 416.31,
         "prev_close": 392.23,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Marvell, Sandisk, SK Hynix lead semiconductor stock rally as S&P 500 trades at record highs",
-          "datetime": 1785880707,
+          "datetime": 1785881134,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/markets/article/marvell-sandisk-sk-hynix-lead-semiconductor-stock-rally-as-sp-500-trades-at-record-highs-172216048.html"
         }
@@ -180,21 +180,21 @@
     "MU": {
       "name": "Micron Technology, Inc.",
       "quote": {
-        "c": 883.5,
-        "d": -9.17,
-        "dp": -1.0273,
+        "c": 882.9,
+        "d": -9.77,
+        "dp": -1.0945,
         "regular": 892.67,
         "reg_d": 63.17,
         "reg_dp": 7.6154,
         "pre": null,
-        "post": 883.5,
+        "post": 882.9,
         "prev_close": 829.5,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Marvell, Sandisk, SK Hynix lead semiconductor stock rally as S&P 500 trades at record highs",
-          "datetime": 1785880707,
+          "datetime": 1785881134,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/markets/article/marvell-sandisk-sk-hynix-lead-semiconductor-stock-rally-as-sp-500-trades-at-record-highs-172216048.html"
         }
@@ -203,21 +203,21 @@
     "SNDK": {
       "name": "Sandisk Corporation",
       "quote": {
-        "c": 1412.0,
-        "d": -15.62,
-        "dp": -1.0941,
+        "c": 1411.02,
+        "d": -16.6,
+        "dp": -1.1628,
         "regular": 1427.62,
         "reg_d": 139.59,
         "reg_dp": 10.8375,
         "pre": null,
-        "post": 1412.0,
+        "post": 1411.02,
         "prev_close": 1288.03,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "The great AI trade is back, with these tech names leading markets: Chart of the Day",
-          "datetime": 1785880707,
+          "datetime": 1785881134,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/video/great-ai-trade-back-tech-191404891.html"
         }
@@ -226,21 +226,21 @@
     "SPCX": {
       "name": "Space Exploration Technologies",
       "quote": {
-        "c": 115.96,
-        "d": -9.37,
-        "dp": -7.4763,
+        "c": 116.0,
+        "d": -9.33,
+        "dp": -7.4443,
         "regular": 125.33,
         "reg_d": 10.8,
         "reg_dp": 9.4298,
         "pre": null,
-        "post": 115.96,
+        "post": 116.0,
         "prev_close": 114.53,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "SpaceX's Q2 results top estimates but stock drops on AI capex costs",
-          "datetime": 1785880707,
+          "datetime": 1785881134,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/technology/article/spacexs-q2-results-top-estimates-but-stock-drops-on-ai-capex-costs-132323178.html"
         }
@@ -249,21 +249,21 @@
     "ONDS": {
       "name": "Ondas Inc",
       "quote": {
-        "c": 8.65,
-        "d": -0.21,
-        "dp": -2.3691,
+        "c": 8.68,
+        "d": -0.18,
+        "dp": -2.0542,
         "regular": 8.86,
         "reg_d": 0.49,
         "reg_dp": 5.8542,
         "pre": null,
-        "post": 8.65,
+        "post": 8.68,
         "prev_close": 8.37,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Why BlackRock Is Betting Big on Ondas Stock Now",
-          "datetime": 1785880707,
+          "datetime": 1785881134,
           "source": "Yahoo Finance",
           "url": "https://www.barchart.com/story/news/3594136/why-blackrock-is-betting-big-on-ondas-stock-now"
         }
