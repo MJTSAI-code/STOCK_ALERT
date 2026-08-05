@@ -1,7 +1,7 @@
 {
   "name": "美股盤前情報資料庫",
-  "updated_at": "2026-08-06T04:52:33.296148+08:00",
-  "next_update_at": "2026-08-05T21:30:00Z",
+  "updated_at": "2026-08-06T05:58:27.884894+08:00",
+  "next_update_at": "2026-08-05T22:30:00Z",
   "stocks": [
     "MSFT",
     "GOOG",
@@ -19,182 +19,182 @@
     "MSFT": {
       "name": "Microsoft Corporation",
       "quote": {
-        "c": 499.59,
-        "d": 12.13,
-        "dp": 2.4888,
+        "c": 484.25,
+        "d": -3.21,
+        "dp": -0.6585,
         "regular": 487.46,
         "reg_d": -5.35,
         "reg_dp": -1.0856,
         "pre": null,
-        "post": 499.59,
+        "post": 484.25,
         "prev_close": 492.81,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Microsoft is Soaring After Earnings While Meta Platforms Drops. Is The Market Giving Zuckerberg Too Little Credit?",
-          "datetime": 1785884809,
+          "headline": "Why this CIO sees the S&P 500 climbing above $8,000 by year-end",
+          "datetime": 1785967107,
           "source": "Yahoo Finance",
-          "url": "https://247wallst.com/videos/microsoft-is-soaring-after-earnings-while-meta-platforms-drops-is-the-market-giving-zuckerberg-too-little-credit/"
+          "url": "https://finance.yahoo.com/video/why-cio-sees-p-500-203700974.html"
         }
       ]
     },
     "GOOG": {
       "name": "Alphabet Inc.",
       "quote": {
-        "c": 360.4,
-        "d": 0.27,
-        "dp": 0.075,
+        "c": 360.8,
+        "d": 0.67,
+        "dp": 0.186,
         "regular": 360.13,
         "reg_d": -15.22,
         "reg_dp": -4.0549,
         "pre": null,
-        "post": 360.4,
+        "post": 360.8,
         "prev_close": 375.35,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Tech stocks today: SpaceX and AMD post quarterly results; investors weren't impressed.",
-          "datetime": 1785884809,
+          "headline": "Tech stocks today: Google shakes up AI leadership, SpaceX plunges",
+          "datetime": 1785967107,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/technology/live/tech-stocks-today-spacex-and-amd-post-quarterly-results-investors-werent-impressed-140419479.html"
+          "url": "https://finance.yahoo.com/technology/live/tech-stocks-today-google-shakes-up-ai-leadership-spacex-plunges-140419479.html"
         }
       ]
     },
     "NVDA": {
       "name": "NVIDIA Corporation",
       "quote": {
-        "c": 220.08,
-        "d": 0.86,
-        "dp": 0.3923,
+        "c": 219.97,
+        "d": 0.75,
+        "dp": 0.3421,
         "regular": 219.22,
         "reg_d": 7.28,
         "reg_dp": 3.4349,
         "pre": null,
-        "post": 220.08,
+        "post": 219.97,
         "prev_close": 211.94,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "SpaceX teams up with Nvidia: Musk says Vera Rubin is 'the best AI computer'",
-          "datetime": 1785884809,
+          "headline": "Nvidia stock rises after Musk says SpaceX will exclusively use company's chips",
+          "datetime": 1785967107,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/video/spacex-teams-nvidia-musk-says-221211771.html"
+          "url": "https://finance.yahoo.com/technology/article/nvidia-stock-rises-after-musk-says-spacex-will-exclusively-use-companys-chips-211803293.html"
         }
       ]
     },
     "NOW": {
       "name": "ServiceNow, Inc.",
       "quote": {
-        "c": 113.64,
-        "d": -3.58,
-        "dp": -3.0541,
+        "c": 112.49,
+        "d": -4.73,
+        "dp": -4.0352,
         "regular": 117.22,
         "reg_d": -0.92,
         "reg_dp": -0.7787,
         "pre": null,
-        "post": 113.64,
+        "post": 112.49,
         "prev_close": 118.14,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Goldman Sachs Just Added Microsoft to Its Closely Watched ‘Conviction List.’ Broadcom and ServiceNow Were Removed.",
-          "datetime": 1785884809,
+          "headline": "Can CRM Stock Compound Its Way Higher?",
+          "datetime": 1785967107,
           "source": "Yahoo Finance",
-          "url": "https://247wallst.com/investing/2026/08/04/goldman-sachs-just-added-microsoft-to-its-closely-watched-conviction-list-broadcom-and-servicenow-were-removed/"
+          "url": "https://www.trefis.com/articles/610187/can-crm-stock-compound-its-way-higher/2026-08-05"
         }
       ]
     },
     "TSM": {
       "name": "Taiwan Semiconductor Manufactur",
       "quote": {
-        "c": 412.02,
-        "d": -1.98,
-        "dp": -0.4783,
+        "c": 411.84,
+        "d": -2.16,
+        "dp": -0.5217,
         "regular": 414.0,
         "reg_d": -3.17,
         "reg_dp": -0.7599,
         "pre": null,
-        "post": 412.02,
+        "post": 411.84,
         "prev_close": 417.17,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Taiwan Semiconductor's AI Push Hits Surprising Milestone",
-          "datetime": 1785884809,
+          "headline": "Taiwan Semiconductor Manufacturing (TSM) Eyes Faster 3 Nanometer Output, Is The Stock Expensive?",
+          "datetime": 1785967107,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/technology/ai/articles/taiwan-semiconductors-ai-push-hits-202554417.html"
+          "url": "https://finance.yahoo.com/markets/stocks/articles/taiwan-semiconductor-manufacturing-tsm-eyes-181131277.html"
         }
       ]
     },
     "MRVL": {
       "name": "Marvell Technology, Inc.",
       "quote": {
-        "c": 209.86,
-        "d": -1.16,
-        "dp": -0.5497,
+        "c": 210.13,
+        "d": -0.89,
+        "dp": -0.4218,
         "regular": 211.02,
         "reg_d": -7.57,
         "reg_dp": -3.4631,
         "pre": null,
-        "post": 209.86,
+        "post": 210.13,
         "prev_close": 218.59,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Marvell, Sandisk, SK Hynix lead semiconductor stock rally as S&P 500 trades at record highs",
-          "datetime": 1785884809,
+          "headline": "The companies emerging as new leaders in this renewed AI rally",
+          "datetime": 1785967107,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/markets/article/marvell-sandisk-sk-hynix-lead-semiconductor-stock-rally-as-sp-500-trades-at-record-highs-172216048.html"
+          "url": "https://finance.yahoo.com/video/companies-emerging-leaders-renewed-ai-191536658.html"
         }
       ]
     },
     "AVGO": {
       "name": "Broadcom Inc.",
       "quote": {
-        "c": 419.95,
-        "d": 1.67,
-        "dp": 0.3993,
+        "c": 419.73,
+        "d": 1.45,
+        "dp": 0.3467,
         "regular": 418.28,
         "reg_d": 0.12,
         "reg_dp": 0.0287,
         "pre": null,
-        "post": 419.95,
+        "post": 419.73,
         "prev_close": 418.16,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Marvell, Sandisk, SK Hynix lead semiconductor stock rally as S&P 500 trades at record highs",
-          "datetime": 1785884809,
+          "headline": "Top Analyst Reports for Broadcom, Coca-Cola & Palantir",
+          "datetime": 1785967107,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/markets/article/marvell-sandisk-sk-hynix-lead-semiconductor-stock-rally-as-sp-500-trades-at-record-highs-172216048.html"
+          "url": "https://finance.yahoo.com/markets/stocks/articles/top-analyst-reports-broadcom-coca-201500234.html"
         }
       ]
     },
     "MU": {
       "name": "Micron Technology, Inc.",
       "quote": {
-        "c": 889.95,
-        "d": -3.24,
-        "dp": -0.3627,
+        "c": 885.36,
+        "d": -7.83,
+        "dp": -0.8766,
         "regular": 893.19,
         "reg_d": 0.52,
         "reg_dp": 0.0583,
         "pre": null,
-        "post": 889.95,
+        "post": 885.36,
         "prev_close": 892.67,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Sandisk bulls are probably eyeing this number on earnings day: AlphaSpace stat of the evening",
-          "datetime": 1785884809,
+          "datetime": 1785967107,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/markets/article/sandisk-bulls-are-probably-eyeing-this-number-on-earnings-day-alphaspace-stat-of-the-evening-220000368.html"
         }
@@ -203,75 +203,75 @@
     "SNDK": {
       "name": "Sandisk Corporation",
       "quote": {
-        "c": 1277.7,
-        "d": -72.8,
-        "dp": -5.3906,
+        "c": 1267.9,
+        "d": -82.6,
+        "dp": -6.1163,
         "regular": 1350.5,
         "reg_d": -77.12,
         "reg_dp": -5.402,
         "pre": null,
-        "post": 1277.7,
+        "post": 1267.9,
         "prev_close": 1427.62,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Sandisk bulls are probably eyeing this number on earnings day: AlphaSpace stat of the evening",
-          "datetime": 1785884809,
+          "headline": "Earnings live updates: Western Digital stock sinks after 200% rally sets high bar, Expedia stock pops",
+          "datetime": 1785967107,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/markets/article/sandisk-bulls-are-probably-eyeing-this-number-on-earnings-day-alphaspace-stat-of-the-evening-220000368.html"
+          "url": "https://finance.yahoo.com/markets/live/earnings-live-updates-130425228.html"
         }
       ]
     },
     "SPCX": {
       "name": "Space Exploration Technologies",
       "quote": {
-        "c": 108.02,
-        "d": -0.25,
-        "dp": -0.2287,
+        "c": 109.16,
+        "d": 0.89,
+        "dp": 0.8206,
         "regular": 108.27,
         "reg_d": -17.06,
         "reg_dp": -13.6121,
         "pre": null,
-        "post": 108.02,
+        "post": 109.16,
         "prev_close": 125.33,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "SpaceX stock keeps sliding. What to do if you own shares.",
-          "datetime": 1785884809,
+          "headline": "SpaceX stock hits new all-time low as AI capex jumps in Q2",
+          "datetime": 1785967107,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/personal-finance/investing/article/spacex-stock-keeps-sliding-what-to-do-if-you-own-shares-141704338.html"
+          "url": "https://finance.yahoo.com/technology/article/spacex-stock-hits-new-all-time-low-as-ai-capex-jumps-in-q2-132323178.html"
         }
       ]
     },
     "ONDS": {
       "name": "Ondas Inc",
       "quote": {
-        "c": 8.82,
-        "d": -0.05,
-        "dp": -0.5637,
+        "c": 8.81,
+        "d": -0.06,
+        "dp": -0.6764,
         "regular": 8.87,
         "reg_d": 0.01,
         "reg_dp": 0.1129,
         "pre": null,
-        "post": 8.82,
+        "post": 8.81,
         "prev_close": 8.86,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Why BlackRock Is Betting Big on Ondas Stock Now",
-          "datetime": 1785884809,
+          "headline": "SoundHound AI Leads Wall Street's Most Shorted Stocks at 42%",
+          "datetime": 1785967107,
           "source": "Yahoo Finance",
-          "url": "https://www.barchart.com/story/news/3594136/why-blackrock-is-betting-big-on-ondas-stock-now"
+          "url": "https://finance.yahoo.com/markets/stocks/articles/soundhound-ai-leads-wall-streets-181309255.html"
         }
       ]
     }
   },
   "alert_sent": {
-    "morning": "2026-08-05",
+    "morning": "2026-08-06",
     "evening": "2026-08-05"
   }
 }
