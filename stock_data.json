@@ -1,7 +1,7 @@
 {
   "name": "美股盤前情報資料庫",
-  "updated_at": "2026-08-08T04:52:33.424485+08:00",
-  "next_update_at": "2026-08-07T21:30:00Z",
+  "updated_at": "2026-08-08T05:11:06.391187+08:00",
+  "next_update_at": "2026-08-07T22:00:00Z",
   "stocks": [
     "MSFT",
     "GOOG",
@@ -19,230 +19,230 @@
     "MSFT": {
       "name": "Microsoft Corporation",
       "quote": {
-        "c": 500.1,
-        "d": 0.11,
-        "dp": 0.022,
+        "c": 499.95,
+        "d": -0.04,
+        "dp": -0.008,
         "regular": 499.99,
         "reg_d": 0.13,
         "reg_dp": 0.026,
         "pre": null,
-        "post": 500.1,
+        "post": 499.95,
         "prev_close": 499.86,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Microsoft is starting to show its payoff on major AI plays",
-          "datetime": 1786053513,
+          "headline": "AI theme has 'a long way to run': Strategist",
+          "datetime": 1786137066,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/video/microsoft-starting-show-payoff-major-193732756.html"
+          "url": "https://finance.yahoo.com/video/ai-theme-long-way-run-204908888.html"
         }
       ]
     },
     "GOOG": {
       "name": "Alphabet Inc.",
       "quote": {
-        "c": 353.58,
-        "d": 0.11,
-        "dp": 0.0311,
+        "c": 353.62,
+        "d": 0.15,
+        "dp": 0.0433,
         "regular": 353.47,
         "reg_d": -3.15,
         "reg_dp": -0.8833,
         "pre": null,
-        "post": 353.58,
+        "post": 353.62,
         "prev_close": 356.62,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Tech stocks today: SpaceX lockup ends, Google faces AI leadership shakeup",
-          "datetime": 1786053513,
+          "headline": "Tech stocks today: Shares climb after rocky week",
+          "datetime": 1786137066,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/technology/live/tech-stocks-today-spacex-lockup-ends-google-faces-ai-leadership-shakeup-140419479.html"
+          "url": "https://finance.yahoo.com/technology/live/tech-stocks-today-shares-climb-after-rocky-week-140419479.html"
         }
       ]
     },
     "NVDA": {
       "name": "NVIDIA Corporation",
       "quote": {
-        "c": 223.47,
-        "d": -0.49,
-        "dp": -0.2188,
+        "c": 223.4,
+        "d": -0.56,
+        "dp": -0.2505,
         "regular": 223.96,
         "reg_d": 4.97,
         "reg_dp": 2.2695,
         "pre": null,
-        "post": 223.47,
+        "post": 223.4,
         "prev_close": 218.99,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Why SoundHound AI Stock Surged Today",
-          "datetime": 1786053513,
+          "headline": "Nvidia ends week up more than 10% as AI chip fears ease",
+          "datetime": 1786137066,
           "source": "Yahoo Finance",
-          "url": "https://www.fool.com/investing/2026/08/06/why-soundhound-ai-stock-surged-today/"
+          "url": "https://finance.yahoo.com/technology/article/nvidia-ends-week-up-more-than-10-as-ai-chip-fears-ease-205751147.html"
         }
       ]
     },
     "NOW": {
       "name": "ServiceNow, Inc.",
       "quote": {
-        "c": 124.72,
-        "d": -0.16,
-        "dp": -0.1281,
+        "c": 124.62,
+        "d": -0.26,
+        "dp": -0.21,
         "regular": 124.88,
         "reg_d": 7.53,
         "reg_dp": 6.4167,
         "pre": null,
-        "post": 124.72,
+        "post": 124.62,
         "prev_close": 117.35,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Software stocks sink, led by declines from Figma, Datadog",
-          "datetime": 1786053513,
+          "headline": "Cloud AI Update - Fortude Revolutionizes ERP with AI-Driven Delivery Model",
+          "datetime": 1786137066,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/markets/article/software-stocks-sink-led-by-declines-from-figma-datadog-144104020.html"
+          "url": "https://finance.yahoo.com/technology/ai/articles/cloud-ai-fortude-revolutionizes-erp-124036380.html"
         }
       ]
     },
     "TSM": {
       "name": "Taiwan Semiconductor Manufactur",
       "quote": {
-        "c": 420.76,
-        "d": 0.72,
-        "dp": 0.1714,
+        "c": 420.99,
+        "d": 0.95,
+        "dp": 0.2262,
         "regular": 420.04,
         "reg_d": 1.84,
         "reg_dp": 0.44,
         "pre": null,
-        "post": 420.76,
+        "post": 420.99,
         "prev_close": 418.2,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Dow Jones Futures: Cloudflare Leads 5 Software Earnings Winners Late; Jobs Report On Tap",
-          "datetime": 1786053513,
+          "headline": "Jim Cramer Called Linde plc (NASDAQ:LIN)’s Share Price Movement “Stupid”",
+          "datetime": 1786137066,
           "source": "Yahoo Finance",
-          "url": "https://www.investors.com/market-trend/stock-market-today/dow-jones-futures-jobs-report-cloudflare-sezzle-earnings-movers/?src=A00220&yptr=yahoo"
+          "url": "https://finance.yahoo.com/markets/stocks/articles/jim-cramer-called-linde-plc-183106534.html"
         }
       ]
     },
     "MRVL": {
       "name": "Marvell Technology, Inc.",
       "quote": {
-        "c": 218.0,
-        "d": -0.72,
-        "dp": -0.3292,
+        "c": 218.15,
+        "d": -0.57,
+        "dp": -0.2606,
         "regular": 218.72,
         "reg_d": 8.18,
         "reg_dp": 3.8852,
         "pre": null,
-        "post": 218.0,
+        "post": 218.15,
         "prev_close": 210.54,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Astera Labs Beat And Guided Higher, Then Fell Because The Rally Came First",
-          "datetime": 1786053513,
+          "headline": "Beyond NVIDIA and GPUs: The Next AI & Quantum Winners Leading 2026",
+          "datetime": 1786137066,
           "source": "Yahoo Finance",
-          "url": "https://www.trefis.com/articles/610418/astera-labs-beat-and-guided-higher-then-fell-because-the-rally-came-first/2026-08-06"
+          "url": "https://finance.yahoo.com/technology/ai/articles/beyond-nvidia-gpus-next-ai-190000472.html"
         }
       ]
     },
     "AVGO": {
       "name": "Broadcom Inc.",
       "quote": {
-        "c": 426.91,
-        "d": -0.85,
-        "dp": -0.1987,
+        "c": 427.32,
+        "d": -0.44,
+        "dp": -0.1029,
         "regular": 427.76,
         "reg_d": 7.19,
         "reg_dp": 1.7108,
         "pre": null,
-        "post": 426.91,
+        "post": 427.32,
         "prev_close": 420.56,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Astera Labs Beat And Guided Higher, Then Fell Because The Rally Came First",
-          "datetime": 1786053513,
+          "headline": "Beyond NVIDIA and GPUs: The Next AI & Quantum Winners Leading 2026",
+          "datetime": 1786137066,
           "source": "Yahoo Finance",
-          "url": "https://www.trefis.com/articles/610418/astera-labs-beat-and-guided-higher-then-fell-because-the-rally-came-first/2026-08-06"
+          "url": "https://finance.yahoo.com/technology/ai/articles/beyond-nvidia-gpus-next-ai-190000472.html"
         }
       ]
     },
     "MU": {
       "name": "Micron Technology, Inc.",
       "quote": {
-        "c": 875.95,
-        "d": -1.62,
-        "dp": -0.1846,
+        "c": 875.98,
+        "d": -1.59,
+        "dp": -0.1812,
         "regular": 877.57,
         "reg_d": -3.9,
         "reg_dp": -0.4424,
         "pre": null,
-        "post": 875.95,
+        "post": 875.98,
         "prev_close": 881.47,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Micron Shares Surge: What's Driving the Sudden Momentum",
-          "datetime": 1786053513,
+          "headline": "SK Hynix invests $38B in new plants amid AI memory shortages",
+          "datetime": 1786137066,
           "source": "Yahoo Finance",
-          "url": "https://www.fool.com/investing/2026/08/06/micron-shares-surge-whats-driving-the-sudden-momen/"
+          "url": "https://finance.yahoo.com/video/sk-hynix-invests-38b-plants-200856730.html"
         }
       ]
     },
     "SNDK": {
       "name": "Sandisk Corporation",
       "quote": {
-        "c": 1215.0,
-        "d": 2.79,
-        "dp": 0.2302,
+        "c": 1215.52,
+        "d": 3.31,
+        "dp": 0.2731,
         "regular": 1212.21,
         "reg_d": -46.37,
         "reg_dp": -3.6843,
         "pre": null,
-        "post": 1215.0,
+        "post": 1215.52,
         "prev_close": 1258.58,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Stock market today: Dow slips from record, S&P 500 and Nasdaq drop as oil gains, Treasury yields rise",
-          "datetime": 1786053513,
+          "headline": "What the vicious Sandisk bears are forgetting",
+          "datetime": 1786137066,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/markets/live/stock-market-today-thursday-august-6-dow-sp-nasdaq-091620000.html"
+          "url": "https://finance.yahoo.com/markets/article/what-the-vicious-sandisk-bears-are-forgetting-132927678.html"
         }
       ]
     },
     "SPCX": {
       "name": "Space Exploration Technologies",
       "quote": {
-        "c": 134.06,
-        "d": 0.95,
-        "dp": 0.7137,
+        "c": 134.0,
+        "d": 0.89,
+        "dp": 0.6686,
         "regular": 133.11,
         "reg_d": 18.19,
         "reg_dp": 15.8284,
         "pre": null,
-        "post": 134.06,
+        "post": 134.0,
         "prev_close": 114.92,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "SpaceX lockup expires today, with stock bucking higher",
-          "datetime": 1786053513,
+          "headline": "SpaceX's big week: Stock jumps despite earnings storm, lock-up expiration in crucial test for investors",
+          "datetime": 1786137066,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/markets/stocks/article/spacex-lockup-expires-today-with-stock-bucking-higher-100000039.html"
+          "url": "https://finance.yahoo.com/markets/stocks/article/spacexs-big-week-stock-jumps-despite-earnings-storm-lock-up-expiration-in-crucial-test-for-investors-131828277.html"
         }
       ]
     },
@@ -251,7 +251,7 @@
       "quote": {
         "c": 9.15,
         "d": 0.04,
-        "dp": 0.4402,
+        "dp": 0.4555,
         "regular": 9.11,
         "reg_d": 0.37,
         "reg_dp": 4.2334,
@@ -262,10 +262,10 @@
       },
       "news": [
         {
-          "headline": "Ondas Stock Gains 21% in a Month: Is There More Upside Ahead?",
-          "datetime": 1786053513,
+          "headline": "Ondas Bags Over $50M U.S. Army Order, Expands Defense Footprint",
+          "datetime": 1786137066,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/markets/stocks/articles/ondas-stock-gains-21-month-150800590.html"
+          "url": "https://finance.yahoo.com/technology/articles/ondas-bags-over-50m-u-160100644.html"
         }
       ]
     }
