@@ -1,7 +1,7 @@
 {
   "name": "美股盤前情報資料庫",
-  "updated_at": "2026-08-08T06:18:20.008789+08:00",
-  "next_update_at": "2026-08-07T23:00:00Z",
+  "updated_at": "2026-08-08T06:41:41.626606+08:00",
+  "next_update_at": "2026-08-07T23:30:00Z",
   "stocks": [
     "MSFT",
     "GOOG",
@@ -19,21 +19,21 @@
     "MSFT": {
       "name": "Microsoft Corporation",
       "quote": {
-        "c": 499.68,
-        "d": -0.31,
-        "dp": -0.062,
+        "c": 499.46,
+        "d": -0.53,
+        "dp": -0.106,
         "regular": 499.99,
         "reg_d": 0.13,
         "reg_dp": 0.026,
         "pre": null,
-        "post": 499.68,
+        "post": 499.46,
         "prev_close": 499.86,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "AI theme has 'a long way to run': Strategist",
-          "datetime": 1786141100,
+          "datetime": 1786142501,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/video/ai-theme-long-way-run-204908888.html"
         }
@@ -42,21 +42,21 @@
     "GOOG": {
       "name": "Alphabet Inc.",
       "quote": {
-        "c": 353.57,
-        "d": 0.1,
-        "dp": 0.0295,
+        "c": 353.56,
+        "d": 0.09,
+        "dp": 0.0255,
         "regular": 353.47,
         "reg_d": -3.15,
         "reg_dp": -0.8833,
         "pre": null,
-        "post": 353.57,
+        "post": 353.56,
         "prev_close": 356.62,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Tech stocks today: Shares climb after rocky week",
-          "datetime": 1786141100,
+          "datetime": 1786142501,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/technology/live/tech-stocks-today-shares-climb-after-rocky-week-140419479.html"
         }
@@ -65,21 +65,21 @@
     "NVDA": {
       "name": "NVIDIA Corporation",
       "quote": {
-        "c": 223.42,
-        "d": -0.54,
-        "dp": -0.241,
+        "c": 223.33,
+        "d": -0.63,
+        "dp": -0.2806,
         "regular": 223.96,
         "reg_d": 4.97,
         "reg_dp": 2.2695,
         "pre": null,
-        "post": 223.42,
+        "post": 223.33,
         "prev_close": 218.99,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Nvidia ends week up more than 10% as AI chip fears ease",
-          "datetime": 1786141100,
+          "datetime": 1786142501,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/technology/article/nvidia-ends-week-up-more-than-10-as-ai-chip-fears-ease-205751147.html"
         }
@@ -88,21 +88,21 @@
     "NOW": {
       "name": "ServiceNow, Inc.",
       "quote": {
-        "c": 124.44,
-        "d": -0.44,
-        "dp": -0.3523,
+        "c": 124.63,
+        "d": -0.25,
+        "dp": -0.2002,
         "regular": 124.88,
         "reg_d": 7.53,
         "reg_dp": 6.4167,
         "pre": null,
-        "post": 124.44,
+        "post": 124.63,
         "prev_close": 117.35,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Cloud AI Update - Fortude Revolutionizes ERP with AI-Driven Delivery Model",
-          "datetime": 1786141100,
+          "datetime": 1786142501,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/technology/ai/articles/cloud-ai-fortude-revolutionizes-erp-124036380.html"
         }
@@ -111,21 +111,21 @@
     "TSM": {
       "name": "Taiwan Semiconductor Manufactur",
       "quote": {
-        "c": 419.75,
-        "d": -0.29,
-        "dp": -0.069,
+        "c": 420.06,
+        "d": 0.02,
+        "dp": 0.0048,
         "regular": 420.04,
         "reg_d": 1.84,
         "reg_dp": 0.44,
         "pre": null,
-        "post": 419.75,
+        "post": 420.06,
         "prev_close": 418.2,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Jim Cramer Called Linde plc (NASDAQ:LIN)’s Share Price Movement “Stupid”",
-          "datetime": 1786141100,
+          "datetime": 1786142501,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/markets/stocks/articles/jim-cramer-called-linde-plc-183106534.html"
         }
@@ -134,21 +134,21 @@
     "MRVL": {
       "name": "Marvell Technology, Inc.",
       "quote": {
-        "c": 218.14,
-        "d": -0.58,
-        "dp": -0.2652,
+        "c": 218.15,
+        "d": -0.57,
+        "dp": -0.2611,
         "regular": 218.72,
         "reg_d": 8.18,
         "reg_dp": 3.8852,
         "pre": null,
-        "post": 218.14,
+        "post": 218.15,
         "prev_close": 210.54,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Beyond NVIDIA and GPUs: The Next AI & Quantum Winners Leading 2026",
-          "datetime": 1786141100,
+          "datetime": 1786142501,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/technology/ai/articles/beyond-nvidia-gpus-next-ai-190000472.html"
         }
@@ -157,21 +157,21 @@
     "AVGO": {
       "name": "Broadcom Inc.",
       "quote": {
-        "c": 425.5,
-        "d": -2.26,
-        "dp": -0.5283,
+        "c": 425.69,
+        "d": -2.07,
+        "dp": -0.4839,
         "regular": 427.76,
         "reg_d": 7.19,
         "reg_dp": 1.7108,
         "pre": null,
-        "post": 425.5,
+        "post": 425.69,
         "prev_close": 420.56,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Beyond NVIDIA and GPUs: The Next AI & Quantum Winners Leading 2026",
-          "datetime": 1786141100,
+          "datetime": 1786142501,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/technology/ai/articles/beyond-nvidia-gpus-next-ai-190000472.html"
         }
@@ -180,21 +180,21 @@
     "MU": {
       "name": "Micron Technology, Inc.",
       "quote": {
-        "c": 876.06,
-        "d": -1.51,
-        "dp": -0.1715,
+        "c": 875.5,
+        "d": -2.07,
+        "dp": -0.2359,
         "regular": 877.57,
         "reg_d": -3.9,
         "reg_dp": -0.4424,
         "pre": null,
-        "post": 876.06,
+        "post": 875.5,
         "prev_close": 881.47,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "SK Hynix invests $38B in new plants amid AI memory shortages",
-          "datetime": 1786141100,
+          "datetime": 1786142501,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/video/sk-hynix-invests-38b-plants-200856730.html"
         }
@@ -203,21 +203,21 @@
     "SNDK": {
       "name": "Sandisk Corporation",
       "quote": {
-        "c": 1211.26,
-        "d": -0.95,
-        "dp": -0.0784,
+        "c": 1212.2,
+        "d": -0.01,
+        "dp": -0.0008,
         "regular": 1212.21,
         "reg_d": -46.37,
         "reg_dp": -3.6843,
         "pre": null,
-        "post": 1211.26,
+        "post": 1212.2,
         "prev_close": 1258.58,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "What the vicious Sandisk bears are forgetting",
-          "datetime": 1786141100,
+          "datetime": 1786142501,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/markets/article/what-the-vicious-sandisk-bears-are-forgetting-132927678.html"
         }
@@ -226,21 +226,21 @@
     "SPCX": {
       "name": "Space Exploration Technologies",
       "quote": {
-        "c": 132.99,
-        "d": -0.12,
-        "dp": -0.0901,
+        "c": 133.1,
+        "d": -0.01,
+        "dp": -0.0075,
         "regular": 133.11,
         "reg_d": 18.19,
         "reg_dp": 15.8284,
         "pre": null,
-        "post": 132.99,
+        "post": 133.1,
         "prev_close": 114.92,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "SpaceX's big week: Stock jumps despite earnings storm, lock-up expiration in crucial test for investors",
-          "datetime": 1786141100,
+          "datetime": 1786142501,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/markets/stocks/article/spacexs-big-week-stock-jumps-despite-earnings-storm-lock-up-expiration-in-crucial-test-for-investors-131828277.html"
         }
@@ -249,21 +249,21 @@
     "ONDS": {
       "name": "Ondas Inc",
       "quote": {
-        "c": 9.14,
-        "d": 0.03,
-        "dp": 0.3293,
+        "c": 9.15,
+        "d": 0.04,
+        "dp": 0.4391,
         "regular": 9.11,
         "reg_d": 0.37,
         "reg_dp": 4.2334,
         "pre": null,
-        "post": 9.14,
+        "post": 9.15,
         "prev_close": 8.74,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Ondas Bags Over $50M U.S. Army Order, Expands Defense Footprint",
-          "datetime": 1786141100,
+          "datetime": 1786142501,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/technology/articles/ondas-bags-over-50m-u-160100644.html"
         }
