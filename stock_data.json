@@ -1,7 +1,7 @@
 {
-  "name": "Ã§Â¾ÂÃ¨ÂÂ¡Ã§ÂÂ¤Ã¥ÂÂÃ¦ÂÂÃ¥Â Â±Ã¨Â³ÂÃ¦ÂÂÃ¥ÂºÂ«",
-  "updated_at": "2026-08-08T06:41:41.626606+08:00",
-  "next_update_at": "2026-08-07T23:30:00Z",
+  "name": "美股盤前情報資料庫",
+  "updated_at": "2026-08-09T21:52:59.678009+08:00",
+  "next_update_at": "2026-08-09T14:30:00Z",
   "stocks": [
     "MSFT",
     "GOOG",
@@ -20,16 +20,16 @@
     "MSFT": {
       "name": "Microsoft Corporation",
       "quote": {
-        "c": 499.46,
-        "d": -0.53,
-        "dp": -0.106,
+        "c": 499.99,
+        "d": 0.13,
+        "dp": 0.026,
         "regular": 499.99,
         "reg_d": 0.13,
         "reg_dp": 0.026,
         "pre": null,
-        "post": 499.46,
+        "post": 499.45,
         "prev_close": 499.86,
-        "phase": "Ã§ÂÂ¤Ã¥Â¾Â"
+        "phase": "正式盤"
       },
       "news": [
         {
@@ -43,16 +43,16 @@
     "GOOG": {
       "name": "Alphabet Inc.",
       "quote": {
-        "c": 353.56,
-        "d": 0.09,
-        "dp": 0.0255,
+        "c": 353.47,
+        "d": -3.15,
+        "dp": -0.8833,
         "regular": 353.47,
         "reg_d": -3.15,
         "reg_dp": -0.8833,
         "pre": null,
-        "post": 353.56,
+        "post": 353.68,
         "prev_close": 356.62,
-        "phase": "Ã§ÂÂ¤Ã¥Â¾Â"
+        "phase": "正式盤"
       },
       "news": [
         {
@@ -66,16 +66,16 @@
     "NVDA": {
       "name": "NVIDIA Corporation",
       "quote": {
-        "c": 223.33,
-        "d": -0.63,
-        "dp": -0.2806,
+        "c": 223.96,
+        "d": 4.97,
+        "dp": 2.2695,
         "regular": 223.96,
         "reg_d": 4.97,
         "reg_dp": 2.2695,
         "pre": null,
-        "post": 223.33,
+        "post": 223.76,
         "prev_close": 218.99,
-        "phase": "Ã§ÂÂ¤Ã¥Â¾Â"
+        "phase": "正式盤"
       },
       "news": [
         {
@@ -89,16 +89,16 @@
     "NOW": {
       "name": "ServiceNow, Inc.",
       "quote": {
-        "c": 124.63,
-        "d": -0.25,
-        "dp": -0.2002,
+        "c": 124.88,
+        "d": 7.53,
+        "dp": 6.4167,
         "regular": 124.88,
         "reg_d": 7.53,
         "reg_dp": 6.4167,
         "pre": null,
-        "post": 124.63,
+        "post": 124.99,
         "prev_close": 117.35,
-        "phase": "Ã§ÂÂ¤Ã¥Â¾Â"
+        "phase": "正式盤"
       },
       "news": [
         {
@@ -112,16 +112,16 @@
     "TSM": {
       "name": "Taiwan Semiconductor Manufactur",
       "quote": {
-        "c": 420.06,
-        "d": 0.02,
-        "dp": 0.0048,
+        "c": 420.04,
+        "d": 1.84,
+        "dp": 0.44,
         "regular": 420.04,
         "reg_d": 1.84,
         "reg_dp": 0.44,
         "pre": null,
-        "post": 420.06,
+        "post": 420.95,
         "prev_close": 418.2,
-        "phase": "Ã§ÂÂ¤Ã¥Â¾Â"
+        "phase": "正式盤"
       },
       "news": [
         {
@@ -135,16 +135,16 @@
     "MRVL": {
       "name": "Marvell Technology, Inc.",
       "quote": {
-        "c": 218.15,
-        "d": -0.57,
-        "dp": -0.2611,
+        "c": 218.72,
+        "d": 8.18,
+        "dp": 3.8853,
         "regular": 218.72,
         "reg_d": 8.18,
         "reg_dp": 3.8852,
         "pre": null,
-        "post": 218.15,
+        "post": 218.72,
         "prev_close": 210.54,
-        "phase": "Ã§ÂÂ¤Ã¥Â¾Â"
+        "phase": "正式盤"
       },
       "news": [
         {
@@ -158,16 +158,16 @@
     "AVGO": {
       "name": "Broadcom Inc.",
       "quote": {
-        "c": 425.69,
-        "d": -2.07,
-        "dp": -0.4839,
+        "c": 427.76,
+        "d": 7.2,
+        "dp": 1.7108,
         "regular": 427.76,
         "reg_d": 7.19,
         "reg_dp": 1.7108,
         "pre": null,
-        "post": 425.69,
+        "post": 426.65,
         "prev_close": 420.56,
-        "phase": "Ã§ÂÂ¤Ã¥Â¾Â"
+        "phase": "正式盤"
       },
       "news": [
         {
@@ -181,16 +181,16 @@
     "MU": {
       "name": "Micron Technology, Inc.",
       "quote": {
-        "c": 875.5,
-        "d": -2.07,
-        "dp": -0.2359,
+        "c": 877.57,
+        "d": -3.9,
+        "dp": -0.4424,
         "regular": 877.57,
         "reg_d": -3.9,
         "reg_dp": -0.4424,
         "pre": null,
-        "post": 875.5,
+        "post": 880.0,
         "prev_close": 881.47,
-        "phase": "Ã§ÂÂ¤Ã¥Â¾Â"
+        "phase": "正式盤"
       },
       "news": [
         {
@@ -204,16 +204,16 @@
     "SNDK": {
       "name": "Sandisk Corporation",
       "quote": {
-        "c": 1212.2,
-        "d": -0.01,
-        "dp": -0.0008,
+        "c": 1212.21,
+        "d": -46.37,
+        "dp": -3.6843,
         "regular": 1212.21,
         "reg_d": -46.37,
         "reg_dp": -3.6843,
         "pre": null,
-        "post": 1212.2,
+        "post": 1219.99,
         "prev_close": 1258.58,
-        "phase": "Ã§ÂÂ¤Ã¥Â¾Â"
+        "phase": "正式盤"
       },
       "news": [
         {
@@ -227,16 +227,16 @@
     "SPCX": {
       "name": "Space Exploration Technologies",
       "quote": {
-        "c": 133.1,
-        "d": -0.01,
-        "dp": -0.0075,
+        "c": 133.11,
+        "d": 18.19,
+        "dp": 15.8284,
         "regular": 133.11,
         "reg_d": 18.19,
         "reg_dp": 15.8284,
         "pre": null,
-        "post": 133.1,
+        "post": 134.11,
         "prev_close": 114.92,
-        "phase": "Ã§ÂÂ¤Ã¥Â¾Â"
+        "phase": "正式盤"
       },
       "news": [
         {
@@ -250,16 +250,16 @@
     "ONDS": {
       "name": "Ondas Inc",
       "quote": {
-        "c": 9.15,
-        "d": 0.04,
-        "dp": 0.4391,
+        "c": 9.11,
+        "d": 0.37,
+        "dp": 4.2334,
         "regular": 9.11,
         "reg_d": 0.37,
         "reg_dp": 4.2334,
         "pre": null,
-        "post": 9.15,
+        "post": 9.16,
         "prev_close": 8.74,
-        "phase": "Ã§ÂÂ¤Ã¥Â¾Â"
+        "phase": "正式盤"
       },
       "news": [
         {
@@ -267,6 +267,29 @@
           "datetime": 1786142501,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/technology/articles/ondas-bags-over-50m-u-160100644.html"
+        }
+      ]
+    },
+    "PLTR": {
+      "name": "Palantir Technologies Inc.",
+      "quote": {
+        "c": 172.01,
+        "d": 16.09,
+        "dp": 10.3194,
+        "regular": 172.01,
+        "reg_d": 16.09,
+        "reg_dp": 10.3194,
+        "pre": null,
+        "post": 171.81,
+        "prev_close": 155.92,
+        "phase": "正式盤"
+      },
+      "news": [
+        {
+          "headline": "暫無最新新聞",
+          "datetime": 1786283579,
+          "source": "Yahoo Finance",
+          "url": "#"
         }
       ]
     }
