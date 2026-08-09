@@ -1,5 +1,5 @@
 {
-  "name": "美股盤前情報資料庫",
+  "name": "ç¾è¡ç¤åæå ±è³æåº«",
   "updated_at": "2026-08-08T06:41:41.626606+08:00",
   "next_update_at": "2026-08-07T23:30:00Z",
   "stocks": [
@@ -13,7 +13,8 @@
     "MU",
     "SNDK",
     "SPCX",
-    "ONDS"
+    "ONDS",
+    "PLTR"
   ],
   "data": {
     "MSFT": {
@@ -28,7 +29,7 @@
         "pre": null,
         "post": 499.46,
         "prev_close": 499.86,
-        "phase": "盤後"
+        "phase": "ç¤å¾"
       },
       "news": [
         {
@@ -51,7 +52,7 @@
         "pre": null,
         "post": 353.56,
         "prev_close": 356.62,
-        "phase": "盤後"
+        "phase": "ç¤å¾"
       },
       "news": [
         {
@@ -74,7 +75,7 @@
         "pre": null,
         "post": 223.33,
         "prev_close": 218.99,
-        "phase": "盤後"
+        "phase": "ç¤å¾"
       },
       "news": [
         {
@@ -97,7 +98,7 @@
         "pre": null,
         "post": 124.63,
         "prev_close": 117.35,
-        "phase": "盤後"
+        "phase": "ç¤å¾"
       },
       "news": [
         {
@@ -120,11 +121,11 @@
         "pre": null,
         "post": 420.06,
         "prev_close": 418.2,
-        "phase": "盤後"
+        "phase": "ç¤å¾"
       },
       "news": [
         {
-          "headline": "Jim Cramer Called Linde plc (NASDAQ:LIN)’s Share Price Movement “Stupid”",
+          "headline": "Jim Cramer Called Linde plc (NASDAQ:LIN)âs Share Price Movement âStupidâ",
           "datetime": 1786142501,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/markets/stocks/articles/jim-cramer-called-linde-plc-183106534.html"
@@ -143,7 +144,7 @@
         "pre": null,
         "post": 218.15,
         "prev_close": 210.54,
-        "phase": "盤後"
+        "phase": "ç¤å¾"
       },
       "news": [
         {
@@ -166,7 +167,7 @@
         "pre": null,
         "post": 425.69,
         "prev_close": 420.56,
-        "phase": "盤後"
+        "phase": "ç¤å¾"
       },
       "news": [
         {
@@ -189,7 +190,7 @@
         "pre": null,
         "post": 875.5,
         "prev_close": 881.47,
-        "phase": "盤後"
+        "phase": "ç¤å¾"
       },
       "news": [
         {
@@ -212,7 +213,7 @@
         "pre": null,
         "post": 1212.2,
         "prev_close": 1258.58,
-        "phase": "盤後"
+        "phase": "ç¤å¾"
       },
       "news": [
         {
@@ -235,7 +236,7 @@
         "pre": null,
         "post": 133.1,
         "prev_close": 114.92,
-        "phase": "盤後"
+        "phase": "ç¤å¾"
       },
       "news": [
         {
@@ -258,7 +259,7 @@
         "pre": null,
         "post": 9.15,
         "prev_close": 8.74,
-        "phase": "盤後"
+        "phase": "ç¤å¾"
       },
       "news": [
         {
