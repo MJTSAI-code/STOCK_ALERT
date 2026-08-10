@@ -1,7 +1,7 @@
 {
   "name": "美股盤前情報資料庫",
-  "updated_at": "2026-08-11T04:52:31.389454+08:00",
-  "next_update_at": "2026-08-10T21:30:00Z",
+  "updated_at": "2026-08-11T05:13:10.549711+08:00",
+  "next_update_at": "2026-08-10T22:00:00Z",
   "stocks": [
     "MSFT",
     "GOOG",
@@ -20,276 +20,276 @@
     "MSFT": {
       "name": "Microsoft Corporation",
       "quote": {
-        "c": 505.72,
-        "d": -0.34,
-        "dp": -0.0672,
+        "c": 505.91,
+        "d": -0.15,
+        "dp": -0.0296,
         "regular": 506.06,
         "reg_d": 6.07,
         "reg_dp": 1.214,
         "pre": null,
-        "post": 505.72,
+        "post": 505.91,
         "prev_close": 499.99,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "AI theme has 'a long way to run': Strategist",
-          "datetime": 1786142501,
+          "headline": "Memory chip crunch could last 2 more years, JPMorgan says",
+          "datetime": 1786396390,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/video/ai-theme-long-way-run-204908888.html"
+          "url": "https://finance.yahoo.com/video/memory-chip-crunch-could-last-143400576.html"
         }
       ]
     },
     "GOOG": {
       "name": "Alphabet Inc.",
       "quote": {
-        "c": 355.24,
-        "d": -0.6,
-        "dp": -0.1686,
+        "c": 335.86,
+        "d": -19.98,
+        "dp": -5.6141,
         "regular": 355.84,
         "reg_d": 2.37,
         "reg_dp": 0.6705,
         "pre": null,
-        "post": 355.24,
+        "post": 335.86,
         "prev_close": 353.47,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Tech stocks today: Shares climb after rocky week",
-          "datetime": 1786142501,
+          "headline": "Tech stocks still have plenty of believers on Wall Street, inflow data shows",
+          "datetime": 1786396390,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/technology/live/tech-stocks-today-shares-climb-after-rocky-week-140419479.html"
+          "url": "https://finance.yahoo.com/technology/article/tech-stocks-still-have-plenty-of-believers-on-wall-street-inflow-data-shows-163544665.html"
         }
       ]
     },
     "NVDA": {
       "name": "NVIDIA Corporation",
       "quote": {
-        "c": 219.43,
-        "d": 1.88,
-        "dp": 0.8627,
+        "c": 219.0,
+        "d": 1.45,
+        "dp": 0.6665,
         "regular": 217.55,
         "reg_d": -6.41,
         "reg_dp": -2.8621,
         "pre": null,
-        "post": 219.43,
+        "post": 219.0,
         "prev_close": 223.96,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Nvidia ends week up more than 10% as AI chip fears ease",
-          "datetime": 1786142501,
+          "headline": "SpaceX’s next chapter: How AI is reshaping the company",
+          "datetime": 1786396390,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/technology/article/nvidia-ends-week-up-more-than-10-as-ai-chip-fears-ease-205751147.html"
+          "url": "https://finance.yahoo.com/video/spacex-next-chapter-ai-reshaping-162900507.html"
         }
       ]
     },
     "NOW": {
       "name": "ServiceNow, Inc.",
       "quote": {
-        "c": 126.65,
-        "d": -0.79,
-        "dp": -0.6199,
+        "c": 126.59,
+        "d": -0.85,
+        "dp": -0.667,
         "regular": 127.44,
         "reg_d": 2.56,
         "reg_dp": 2.05,
         "pre": null,
-        "post": 126.65,
+        "post": 126.59,
         "prev_close": 124.88,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Cloud AI Update - Fortude Revolutionizes ERP with AI-Driven Delivery Model",
-          "datetime": 1786142501,
+          "headline": "Software rebound is real but selective, Jefferies says, as power crunch reshapes AI buildout",
+          "datetime": 1786396390,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/technology/ai/articles/cloud-ai-fortude-revolutionizes-erp-124036380.html"
+          "url": "https://www.proactiveinvestors.com/companies/news/1096829/software-rebound-is-real-but-selective-jefferies-says-as-power-crunch-reshapes-ai-buildout-1096829.html"
         }
       ]
     },
     "TSM": {
       "name": "Taiwan Semiconductor Manufactur",
       "quote": {
-        "c": 419.5,
-        "d": 1.03,
-        "dp": 0.2461,
+        "c": 421.39,
+        "d": 2.92,
+        "dp": 0.6968,
         "regular": 418.47,
         "reg_d": -1.57,
         "reg_dp": -0.3738,
         "pre": null,
-        "post": 419.5,
+        "post": 421.39,
         "prev_close": 420.04,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Jim Cramer Called Linde plc (NASDAQ:LIN)ÃÂ¢ÃÂÃÂs Share Price Movement ÃÂ¢ÃÂÃÂStupidÃÂ¢ÃÂÃÂ",
-          "datetime": 1786142501,
+          "headline": "Chip equipment stocks rise after Taiwan Semiconductor revenue surges 45%",
+          "datetime": 1786396390,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/markets/stocks/articles/jim-cramer-called-linde-plc-183106534.html"
+          "url": "https://finance.yahoo.com/markets/stocks/article/chip-equipment-stocks-rise-after-taiwan-semiconductor-revenue-surges-45-133813616.html"
         }
       ]
     },
     "MRVL": {
       "name": "Marvell Technology, Inc.",
       "quote": {
-        "c": 210.36,
-        "d": 1.8,
-        "dp": 0.8645,
+        "c": 209.83,
+        "d": 1.27,
+        "dp": 0.6089,
         "regular": 208.56,
         "reg_d": -10.16,
         "reg_dp": -4.6452,
         "pre": null,
-        "post": 210.36,
+        "post": 209.83,
         "prev_close": 218.72,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Beyond NVIDIA and GPUs: The Next AI & Quantum Winners Leading 2026",
-          "datetime": 1786142501,
+          "headline": "Marvell Technology Stock's Multiple Leans On Profit From Below The Operating Line",
+          "datetime": 1786396390,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/technology/ai/articles/beyond-nvidia-gpus-next-ai-190000472.html"
+          "url": "https://www.trefis.com/articles/610757/marvell-technology-stocks-multiple-leans-on-profit-from-below-the-operating-line/2026-08-10"
         }
       ]
     },
     "AVGO": {
       "name": "Broadcom Inc.",
       "quote": {
-        "c": 421.89,
-        "d": -0.51,
-        "dp": -0.1207,
+        "c": 421.75,
+        "d": -0.65,
+        "dp": -0.1551,
         "regular": 422.4,
         "reg_d": -5.36,
         "reg_dp": -1.253,
         "pre": null,
-        "post": 421.89,
+        "post": 421.75,
         "prev_close": 427.76,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Beyond NVIDIA and GPUs: The Next AI & Quantum Winners Leading 2026",
-          "datetime": 1786142501,
+          "headline": "Semiconductor Equipment Makers vs. Chip Designers: Who's Actually Winning the AI Cycle?",
+          "datetime": 1786396390,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/technology/ai/articles/beyond-nvidia-gpus-next-ai-190000472.html"
+          "url": "https://www.fool.com/investing/2026/08/10/semiconductor-equipment-makers-vs-chip-designers-w/"
         }
       ]
     },
     "MU": {
       "name": "Micron Technology, Inc.",
       "quote": {
-        "c": 866.51,
-        "d": 5.51,
-        "dp": 0.64,
+        "c": 864.89,
+        "d": 3.89,
+        "dp": 0.4518,
         "regular": 861.0,
         "reg_d": -16.57,
         "reg_dp": -1.8882,
         "pre": null,
-        "post": 866.51,
+        "post": 864.89,
         "prev_close": 877.57,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "SK Hynix invests $38B in new plants amid AI memory shortages",
-          "datetime": 1786142501,
+          "headline": "Memory chip crunch could last 2 more years, JPMorgan says",
+          "datetime": 1786396390,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/video/sk-hynix-invests-38b-plants-200856730.html"
+          "url": "https://finance.yahoo.com/video/memory-chip-crunch-could-last-143400576.html"
         }
       ]
     },
     "SNDK": {
       "name": "Sandisk Corporation",
       "quote": {
-        "c": 1240.87,
-        "d": 2.95,
-        "dp": 0.2383,
+        "c": 1239.0,
+        "d": 1.08,
+        "dp": 0.0872,
         "regular": 1237.92,
         "reg_d": 25.71,
         "reg_dp": 2.1209,
         "pre": null,
-        "post": 1240.87,
+        "post": 1239.0,
         "prev_close": 1212.21,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "What the vicious Sandisk bears are forgetting",
-          "datetime": 1786142501,
+          "headline": "Memory chip crunch could last 2 more years, JPMorgan says",
+          "datetime": 1786396390,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/markets/article/what-the-vicious-sandisk-bears-are-forgetting-132927678.html"
+          "url": "https://finance.yahoo.com/video/memory-chip-crunch-could-last-143400576.html"
         }
       ]
     },
     "SPCX": {
       "name": "Space Exploration Technologies",
       "quote": {
-        "c": 137.37,
-        "d": -1.37,
-        "dp": -0.9875,
+        "c": 137.25,
+        "d": -1.49,
+        "dp": -1.074,
         "regular": 138.74,
         "reg_d": 5.63,
         "reg_dp": 4.2296,
         "pre": null,
-        "post": 137.37,
+        "post": 137.25,
         "prev_close": 133.11,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "SpaceX's big week: Stock jumps despite earnings storm, lock-up expiration in crucial test for investors",
-          "datetime": 1786142501,
+          "headline": "Supermicro to report Q4 results in latest test for AI infrastructure company",
+          "datetime": 1786396390,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/markets/stocks/article/spacexs-big-week-stock-jumps-despite-earnings-storm-lock-up-expiration-in-crucial-test-for-investors-131828277.html"
+          "url": "https://finance.yahoo.com/technology/article/supermicro-to-report-q4-results-in-latest-test-for-ai-infrastructure-company-210004983.html"
         }
       ]
     },
     "ONDS": {
       "name": "Ondas Inc",
       "quote": {
-        "c": 9.35,
-        "d": 0.04,
-        "dp": 0.4296,
+        "c": 9.34,
+        "d": 0.03,
+        "dp": 0.3222,
         "regular": 9.31,
         "reg_d": 0.2,
         "reg_dp": 2.1954,
         "pre": null,
-        "post": 9.35,
+        "post": 9.34,
         "prev_close": 9.11,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Ondas Bags Over $50M U.S. Army Order, Expands Defense Footprint",
-          "datetime": 1786142501,
+          "headline": "Unusual Machines (UMAC) Stock Is Climbing Today: Is the Whole Drone Group Moving?",
+          "datetime": 1786396390,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/technology/articles/ondas-bags-over-50m-u-160100644.html"
+          "url": "https://247wallst.com/investing/2026/08/10/unusual-machines-umac-stock-is-climbing-today-is-the-whole-drone-group-moving/"
         }
       ]
     },
     "PLTR": {
       "name": "Palantir Technologies Inc.",
       "quote": {
-        "c": 173.9,
-        "d": -1.33,
-        "dp": -0.759,
+        "c": 173.75,
+        "d": -1.48,
+        "dp": -0.8446,
         "regular": 175.23,
         "reg_d": 3.22,
         "reg_dp": 1.872,
         "pre": null,
-        "post": 173.9,
+        "post": 173.75,
         "prev_close": 172.01,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "暫無最新新聞",
-          "datetime": 1786283615,
+          "headline": "Cathie Wood Invests $36.9 Million in Surging Stock",
+          "datetime": 1786396390,
           "source": "Yahoo Finance",
-          "url": "#"
+          "url": "https://finance.yahoo.com/markets/stocks/articles/cathie-wood-invests-36-9-201143798.html"
         }
       ]
     }
