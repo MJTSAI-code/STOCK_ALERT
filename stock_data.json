@@ -1,7 +1,7 @@
 {
   "name": "美股盤前情報資料庫",
-  "updated_at": "2026-08-11T05:13:10.549711+08:00",
-  "next_update_at": "2026-08-10T22:00:00Z",
+  "updated_at": "2026-08-11T06:19:59.648804+08:00",
+  "next_update_at": "2026-08-10T23:00:00Z",
   "stocks": [
     "MSFT",
     "GOOG",
@@ -20,21 +20,21 @@
     "MSFT": {
       "name": "Microsoft Corporation",
       "quote": {
-        "c": 505.91,
-        "d": -0.15,
-        "dp": -0.0296,
+        "c": 506.08,
+        "d": 0.02,
+        "dp": 0.0032,
         "regular": 506.06,
         "reg_d": 6.07,
         "reg_dp": 1.214,
         "pre": null,
-        "post": 505.91,
+        "post": 506.08,
         "prev_close": 499.99,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Memory chip crunch could last 2 more years, JPMorgan says",
-          "datetime": 1786396390,
+          "datetime": 1786400399,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/video/memory-chip-crunch-could-last-143400576.html"
         }
@@ -43,44 +43,44 @@
     "GOOG": {
       "name": "Alphabet Inc.",
       "quote": {
-        "c": 335.86,
-        "d": -19.98,
-        "dp": -5.6141,
+        "c": 355.85,
+        "d": 0.01,
+        "dp": 0.0028,
         "regular": 355.84,
         "reg_d": 2.37,
         "reg_dp": 0.6705,
         "pre": null,
-        "post": 335.86,
+        "post": 355.85,
         "prev_close": 353.47,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Tech stocks still have plenty of believers on Wall Street, inflow data shows",
-          "datetime": 1786396390,
+          "headline": "The loneliness epidemic is growing — can FeedIRL help solve it?",
+          "datetime": 1786400399,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/technology/article/tech-stocks-still-have-plenty-of-believers-on-wall-street-inflow-data-shows-163544665.html"
+          "url": "https://finance.yahoo.com/video/loneliness-epidemic-growing-feedirl-help-220000359.html"
         }
       ]
     },
     "NVDA": {
       "name": "NVIDIA Corporation",
       "quote": {
-        "c": 219.0,
-        "d": 1.45,
-        "dp": 0.6665,
+        "c": 218.99,
+        "d": 1.44,
+        "dp": 0.6632,
         "regular": 217.55,
         "reg_d": -6.41,
         "reg_dp": -2.8621,
         "pre": null,
-        "post": 219.0,
+        "post": 218.99,
         "prev_close": 223.96,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "SpaceX’s next chapter: How AI is reshaping the company",
-          "datetime": 1786396390,
+          "datetime": 1786400399,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/video/spacex-next-chapter-ai-reshaping-162900507.html"
         }
@@ -89,44 +89,44 @@
     "NOW": {
       "name": "ServiceNow, Inc.",
       "quote": {
-        "c": 126.59,
-        "d": -0.85,
-        "dp": -0.667,
+        "c": 126.0,
+        "d": -1.44,
+        "dp": -1.1299,
         "regular": 127.44,
         "reg_d": 2.56,
         "reg_dp": 2.05,
         "pre": null,
-        "post": 126.59,
+        "post": 126.0,
         "prev_close": 124.88,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Software rebound is real but selective, Jefferies says, as power crunch reshapes AI buildout",
-          "datetime": 1786396390,
+          "headline": "Why ServiceNow Soared 12% Higher Last Month",
+          "datetime": 1786400399,
           "source": "Yahoo Finance",
-          "url": "https://www.proactiveinvestors.com/companies/news/1096829/software-rebound-is-real-but-selective-jefferies-says-as-power-crunch-reshapes-ai-buildout-1096829.html"
+          "url": "https://www.fool.com/investing/2026/08/10/why-servicenow-soared-12-higher-last-month/"
         }
       ]
     },
     "TSM": {
       "name": "Taiwan Semiconductor Manufactur",
       "quote": {
-        "c": 421.39,
-        "d": 2.92,
-        "dp": 0.6968,
+        "c": 419.13,
+        "d": 0.66,
+        "dp": 0.1577,
         "regular": 418.47,
         "reg_d": -1.57,
         "reg_dp": -0.3738,
         "pre": null,
-        "post": 421.39,
+        "post": 419.13,
         "prev_close": 420.04,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Chip equipment stocks rise after Taiwan Semiconductor revenue surges 45%",
-          "datetime": 1786396390,
+          "datetime": 1786400399,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/markets/stocks/article/chip-equipment-stocks-rise-after-taiwan-semiconductor-revenue-surges-45-133813616.html"
         }
@@ -135,21 +135,21 @@
     "MRVL": {
       "name": "Marvell Technology, Inc.",
       "quote": {
-        "c": 209.83,
-        "d": 1.27,
-        "dp": 0.6089,
+        "c": 209.8,
+        "d": 1.24,
+        "dp": 0.5946,
         "regular": 208.56,
         "reg_d": -10.16,
         "reg_dp": -4.6452,
         "pre": null,
-        "post": 209.83,
+        "post": 209.8,
         "prev_close": 218.72,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Marvell Technology Stock's Multiple Leans On Profit From Below The Operating Line",
-          "datetime": 1786396390,
+          "datetime": 1786400399,
           "source": "Yahoo Finance",
           "url": "https://www.trefis.com/articles/610757/marvell-technology-stocks-multiple-leans-on-profit-from-below-the-operating-line/2026-08-10"
         }
@@ -158,44 +158,44 @@
     "AVGO": {
       "name": "Broadcom Inc.",
       "quote": {
-        "c": 421.75,
-        "d": -0.65,
-        "dp": -0.1551,
+        "c": 422.79,
+        "d": 0.39,
+        "dp": 0.0923,
         "regular": 422.4,
         "reg_d": -5.36,
         "reg_dp": -1.253,
         "pre": null,
-        "post": 421.75,
+        "post": 422.79,
         "prev_close": 427.76,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Semiconductor Equipment Makers vs. Chip Designers: Who's Actually Winning the AI Cycle?",
-          "datetime": 1786396390,
+          "headline": "VYM’s 2.2% Yield Hides $141,000 in Decade-Long Underperformance Versus the S&P 500",
+          "datetime": 1786400399,
           "source": "Yahoo Finance",
-          "url": "https://www.fool.com/investing/2026/08/10/semiconductor-equipment-makers-vs-chip-designers-w/"
+          "url": "https://247wallst.com/investing/etf/2026/08/10/vyms-2-2-yield-hides-141000-in-decade-long-underperformance-versus-the-sp-500/"
         }
       ]
     },
     "MU": {
       "name": "Micron Technology, Inc.",
       "quote": {
-        "c": 864.89,
-        "d": 3.89,
-        "dp": 0.4518,
+        "c": 866.02,
+        "d": 5.02,
+        "dp": 0.583,
         "regular": 861.0,
         "reg_d": -16.57,
         "reg_dp": -1.8882,
         "pre": null,
-        "post": 864.89,
+        "post": 866.02,
         "prev_close": 877.57,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Memory chip crunch could last 2 more years, JPMorgan says",
-          "datetime": 1786396390,
+          "datetime": 1786400399,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/video/memory-chip-crunch-could-last-143400576.html"
         }
@@ -204,21 +204,21 @@
     "SNDK": {
       "name": "Sandisk Corporation",
       "quote": {
-        "c": 1239.0,
-        "d": 1.08,
-        "dp": 0.0872,
+        "c": 1239.16,
+        "d": 1.24,
+        "dp": 0.1002,
         "regular": 1237.92,
         "reg_d": 25.71,
         "reg_dp": 2.1209,
         "pre": null,
-        "post": 1239.0,
+        "post": 1239.16,
         "prev_close": 1212.21,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Memory chip crunch could last 2 more years, JPMorgan says",
-          "datetime": 1786396390,
+          "datetime": 1786400399,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/video/memory-chip-crunch-could-last-143400576.html"
         }
@@ -227,44 +227,44 @@
     "SPCX": {
       "name": "Space Exploration Technologies",
       "quote": {
-        "c": 137.25,
-        "d": -1.49,
-        "dp": -1.074,
+        "c": 136.75,
+        "d": -1.99,
+        "dp": -1.4343,
         "regular": 138.74,
         "reg_d": 5.63,
         "reg_dp": 4.2296,
         "pre": null,
-        "post": 137.25,
+        "post": 136.75,
         "prev_close": 133.11,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Supermicro to report Q4 results in latest test for AI infrastructure company",
-          "datetime": 1786396390,
+          "headline": "SpaceX stock volatility: What to do if you own shares",
+          "datetime": 1786400399,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/technology/article/supermicro-to-report-q4-results-in-latest-test-for-ai-infrastructure-company-210004983.html"
+          "url": "https://finance.yahoo.com/personal-finance/investing/article/spacex-stock-volatility-what-to-do-if-you-own-shares-141704338.html"
         }
       ]
     },
     "ONDS": {
       "name": "Ondas Inc",
       "quote": {
-        "c": 9.34,
-        "d": 0.03,
-        "dp": 0.3222,
+        "c": 9.3,
+        "d": -0.01,
+        "dp": -0.1074,
         "regular": 9.31,
         "reg_d": 0.2,
         "reg_dp": 2.1954,
         "pre": null,
-        "post": 9.34,
+        "post": 9.3,
         "prev_close": 9.11,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Unusual Machines (UMAC) Stock Is Climbing Today: Is the Whole Drone Group Moving?",
-          "datetime": 1786396390,
+          "datetime": 1786400399,
           "source": "Yahoo Finance",
           "url": "https://247wallst.com/investing/2026/08/10/unusual-machines-umac-stock-is-climbing-today-is-the-whole-drone-group-moving/"
         }
@@ -273,21 +273,21 @@
     "PLTR": {
       "name": "Palantir Technologies Inc.",
       "quote": {
-        "c": 173.75,
-        "d": -1.48,
-        "dp": -0.8446,
+        "c": 172.66,
+        "d": -2.57,
+        "dp": -1.4666,
         "regular": 175.23,
         "reg_d": 3.22,
         "reg_dp": 1.872,
         "pre": null,
-        "post": 173.75,
+        "post": 172.66,
         "prev_close": 172.01,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Cathie Wood Invests $36.9 Million in Surging Stock",
-          "datetime": 1786396390,
+          "datetime": 1786400399,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/markets/stocks/articles/cathie-wood-invests-36-9-201143798.html"
         }
@@ -295,7 +295,7 @@
     }
   },
   "alert_sent": {
-    "morning": "2026-08-08",
+    "morning": "2026-08-11",
     "evening": "2026-08-10"
   }
 }
