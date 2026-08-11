@@ -1,7 +1,7 @@
 {
   "name": "美股盤前情報資料庫",
-  "updated_at": "2026-08-12T04:52:29.999524+08:00",
-  "next_update_at": "2026-08-11T21:30:00Z",
+  "updated_at": "2026-08-12T05:37:59.162409+08:00",
+  "next_update_at": "2026-08-11T22:30:00Z",
   "stocks": [
     "MSFT",
     "GOOG",
@@ -20,282 +20,282 @@
     "MSFT": {
       "name": "Microsoft Corporation",
       "quote": {
-        "c": 502.33,
-        "d": -1.48,
-        "dp": -0.2939,
+        "c": 501.7,
+        "d": -2.11,
+        "dp": -0.4188,
         "regular": 503.81,
         "reg_d": -2.25,
         "reg_dp": -0.4446,
         "pre": null,
-        "post": 502.33,
+        "post": 501.7,
         "prev_close": 506.06,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Memory chip crunch could last 2 more years, JPMorgan says",
-          "datetime": 1786401735,
+          "headline": "Tech stocks today: CoreWeave and Supermicro results win over investors",
+          "datetime": 1786484279,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/video/memory-chip-crunch-could-last-143400576.html"
+          "url": "https://finance.yahoo.com/technology/live/tech-stocks-today-coreweave-and-supermicro-results-win-over-investors-135605566.html"
         }
       ]
     },
     "GOOG": {
       "name": "Alphabet Inc.",
       "quote": {
-        "c": 343.85,
-        "d": 0.85,
-        "dp": 0.2478,
+        "c": 343.8,
+        "d": 0.8,
+        "dp": 0.2331,
         "regular": 343.0,
         "reg_d": -12.84,
         "reg_dp": -3.6084,
         "pre": null,
-        "post": 343.85,
+        "post": 343.8,
         "prev_close": 355.84,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "The loneliness epidemic is growing — can FeedIRL help solve it?",
-          "datetime": 1786401735,
+          "headline": "CoreWeave jumps 10% following Q2 earnings",
+          "datetime": 1786484279,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/video/loneliness-epidemic-growing-feedirl-help-220000359.html"
+          "url": "https://finance.yahoo.com/video/coreweave-jumps-10-following-q2-210500927.html"
         }
       ]
     },
     "NVDA": {
       "name": "NVIDIA Corporation",
       "quote": {
-        "c": 217.68,
-        "d": 0.18,
-        "dp": 0.0819,
+        "c": 217.91,
+        "d": 0.41,
+        "dp": 0.189,
         "regular": 217.5,
         "reg_d": -0.05,
         "reg_dp": -0.023,
         "pre": null,
-        "post": 217.68,
+        "post": 217.91,
         "prev_close": 217.55,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "SpaceX’s next chapter: How AI is reshaping the company",
-          "datetime": 1786401735,
+          "headline": "Intel's huge rally is helping pay for its AI comeback",
+          "datetime": 1786484279,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/video/spacex-next-chapter-ai-reshaping-162900507.html"
+          "url": "https://finance.yahoo.com/video/intels-huge-rally-helping-pay-161130430.html"
         }
       ]
     },
     "NOW": {
       "name": "ServiceNow, Inc.",
       "quote": {
-        "c": 127.2,
-        "d": -0.33,
-        "dp": -0.2627,
+        "c": 127.1,
+        "d": -0.44,
+        "dp": -0.3451,
         "regular": 127.54,
         "reg_d": 0.1,
         "reg_dp": 0.0785,
         "pre": null,
-        "post": 127.2,
+        "post": 127.1,
         "prev_close": 127.44,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Why ServiceNow Soared 12% Higher Last Month",
-          "datetime": 1786401735,
+          "headline": "The Palantir Bull Case Is Getting Harder to Ignore",
+          "datetime": 1786484279,
           "source": "Yahoo Finance",
-          "url": "https://www.fool.com/investing/2026/08/10/why-servicenow-soared-12-higher-last-month/"
+          "url": "https://247wallst.com/investing/2026/08/11/the-palantir-bull-case-is-getting-harder-to-ignore/"
         }
       ]
     },
     "TSM": {
       "name": "Taiwan Semiconductor Manufactur",
       "quote": {
-        "c": 422.0,
-        "d": -0.06,
-        "dp": -0.0142,
+        "c": 421.99,
+        "d": -0.07,
+        "dp": -0.0166,
         "regular": 422.06,
         "reg_d": 3.59,
         "reg_dp": 0.8579,
         "pre": null,
-        "post": 422.0,
+        "post": 421.99,
         "prev_close": 418.47,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Chip equipment stocks rise after Taiwan Semiconductor revenue surges 45%",
-          "datetime": 1786401735,
+          "headline": "Dow Jones Futures: Stocks Pause Before CPI Inflation; 3 Nvidia Partners Lead Earnings Movers Late",
+          "datetime": 1786484279,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/markets/stocks/article/chip-equipment-stocks-rise-after-taiwan-semiconductor-revenue-surges-45-133813616.html"
+          "url": "https://www.investors.com/market-trend/stock-market-today/dow-jones-futures-cpi-inflation-nvidia-partners-super-micro-earnings/?src=A00220&yptr=yahoo"
         }
       ]
     },
     "MRVL": {
       "name": "Marvell Technology, Inc.",
       "quote": {
-        "c": 213.09,
-        "d": 0.78,
-        "dp": 0.3674,
+        "c": 213.1,
+        "d": 0.79,
+        "dp": 0.3721,
         "regular": 212.31,
         "reg_d": 3.75,
         "reg_dp": 1.798,
         "pre": null,
-        "post": 213.09,
+        "post": 213.1,
         "prev_close": 208.56,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Marvell Technology Stock's Multiple Leans On Profit From Below The Operating Line",
-          "datetime": 1786401735,
+          "headline": "What Is The Market Really Expecting From AVGO Stock?",
+          "datetime": 1786484279,
           "source": "Yahoo Finance",
-          "url": "https://www.trefis.com/articles/610757/marvell-technology-stocks-multiple-leans-on-profit-from-below-the-operating-line/2026-08-10"
+          "url": "https://www.trefis.com/articles/610926/what-is-the-market-really-expecting-from-avgo-stock-3/2026-08-11"
         }
       ]
     },
     "AVGO": {
       "name": "Broadcom Inc.",
       "quote": {
-        "c": 416.61,
-        "d": 0.53,
-        "dp": 0.1284,
+        "c": 416.33,
+        "d": 0.25,
+        "dp": 0.0601,
         "regular": 416.08,
         "reg_d": -6.32,
         "reg_dp": -1.4962,
         "pre": null,
-        "post": 416.61,
+        "post": 416.33,
         "prev_close": 422.4,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "VYM’s 2.2% Yield Hides $141,000 in Decade-Long Underperformance Versus the S&P 500",
-          "datetime": 1786401735,
+          "headline": "Quantum trade moves beyond science fiction: AlphaCheck",
+          "datetime": 1786484279,
           "source": "Yahoo Finance",
-          "url": "https://247wallst.com/investing/etf/2026/08/10/vyms-2-2-yield-hides-141000-in-decade-long-underperformance-versus-the-sp-500/"
+          "url": "https://finance.yahoo.com/markets/article/quantum-trade-moves-beyond-science-fiction-alphacheck-152407486.html"
         }
       ]
     },
     "MU": {
       "name": "Micron Technology, Inc.",
       "quote": {
-        "c": 866.1,
-        "d": -2.42,
-        "dp": -0.2786,
+        "c": 865.71,
+        "d": -2.81,
+        "dp": -0.3235,
         "regular": 868.52,
         "reg_d": 7.52,
         "reg_dp": 0.8734,
         "pre": null,
-        "post": 866.1,
+        "post": 865.71,
         "prev_close": 861.0,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Memory chip crunch could last 2 more years, JPMorgan says",
-          "datetime": 1786401735,
+          "headline": "SanDisk Traded Margin Upside For Years Of Contracted Revenue",
+          "datetime": 1786484279,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/video/memory-chip-crunch-could-last-143400576.html"
+          "url": "https://www.trefis.com/articles/611013/sandisk-traded-margin-upside-for-years-of-contracted-revenue/2026-08-11"
         }
       ]
     },
     "SNDK": {
       "name": "Sandisk Corporation",
       "quote": {
-        "c": 1275.9,
-        "d": 4.85,
-        "dp": 0.3816,
+        "c": 1276.11,
+        "d": 5.06,
+        "dp": 0.3981,
         "regular": 1271.05,
         "reg_d": 33.13,
         "reg_dp": 2.6763,
         "pre": null,
-        "post": 1275.9,
+        "post": 1276.11,
         "prev_close": 1237.92,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Memory chip crunch could last 2 more years, JPMorgan says",
-          "datetime": 1786401735,
+          "headline": "SanDisk Traded Margin Upside For Years Of Contracted Revenue",
+          "datetime": 1786484279,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/video/memory-chip-crunch-could-last-143400576.html"
+          "url": "https://www.trefis.com/articles/611013/sandisk-traded-margin-upside-for-years-of-contracted-revenue/2026-08-11"
         }
       ]
     },
     "SPCX": {
       "name": "Space Exploration Technologies",
       "quote": {
-        "c": 132.7,
-        "d": -0.59,
-        "dp": -0.4426,
+        "c": 132.73,
+        "d": -0.56,
+        "dp": -0.4191,
         "regular": 133.29,
         "reg_d": -5.45,
         "reg_dp": -3.9282,
         "pre": null,
-        "post": 132.7,
+        "post": 132.73,
         "prev_close": 138.74,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "SpaceX stock volatility: What to do if you own shares",
-          "datetime": 1786401735,
+          "headline": "CoreWeave jumps 10% following Q2 earnings",
+          "datetime": 1786484279,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/personal-finance/investing/article/spacex-stock-volatility-what-to-do-if-you-own-shares-141704338.html"
+          "url": "https://finance.yahoo.com/video/coreweave-jumps-10-following-q2-210500927.html"
         }
       ]
     },
     "ONDS": {
       "name": "Ondas Inc",
       "quote": {
-        "c": 9.76,
-        "d": 0.02,
-        "dp": 0.2053,
+        "c": 9.77,
+        "d": 0.03,
+        "dp": 0.3255,
         "regular": 9.74,
         "reg_d": 0.43,
         "reg_dp": 4.6187,
         "pre": null,
-        "post": 9.76,
+        "post": 9.77,
         "prev_close": 9.31,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Unusual Machines (UMAC) Stock Is Climbing Today: Is the Whole Drone Group Moving?",
-          "datetime": 1786401735,
+          "headline": "Key Insights Ahead of Q2 Earnings: Buy, Hold or Sell Ondas Stock?",
+          "datetime": 1786484279,
           "source": "Yahoo Finance",
-          "url": "https://247wallst.com/investing/2026/08/10/unusual-machines-umac-stock-is-climbing-today-is-the-whole-drone-group-moving/"
+          "url": "https://finance.yahoo.com/markets/stocks/articles/key-insights-ahead-q2-earnings-144600040.html"
         }
       ]
     },
     "PLTR": {
       "name": "Palantir Technologies Inc.",
       "quote": {
-        "c": 174.1,
-        "d": -0.84,
-        "dp": -0.4802,
+        "c": 173.55,
+        "d": -1.39,
+        "dp": -0.792,
         "regular": 174.94,
         "reg_d": -0.29,
         "reg_dp": -0.1655,
         "pre": null,
-        "post": 174.1,
+        "post": 173.55,
         "prev_close": 175.23,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Cathie Wood Invests $36.9 Million in Surging Stock",
-          "datetime": 1786401735,
+          "headline": "Palantir is a 'narrative play,' strategist explains",
+          "datetime": 1786484279,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/markets/stocks/articles/cathie-wood-invests-36-9-201143798.html"
+          "url": "https://finance.yahoo.com/video/palantir-narrative-play-strategist-explains-120000920.html"
         }
       ]
     }
   },
   "alert_sent": {
-    "morning": "2026-08-11",
+    "morning": "2026-08-12",
     "evening": "2026-08-11"
   }
 }
