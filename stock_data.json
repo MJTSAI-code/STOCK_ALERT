@@ -1,6 +1,6 @@
 {
   "name": "美股盤前情報資料庫",
-  "updated_at": "2026-08-12T05:37:59.162409+08:00",
+  "updated_at": "2026-08-12T05:58:25.901155+08:00",
   "next_update_at": "2026-08-11T22:30:00Z",
   "stocks": [
     "MSFT",
@@ -20,21 +20,21 @@
     "MSFT": {
       "name": "Microsoft Corporation",
       "quote": {
-        "c": 501.7,
-        "d": -2.11,
-        "dp": -0.4188,
+        "c": 501.75,
+        "d": -2.06,
+        "dp": -0.4089,
         "regular": 503.81,
         "reg_d": -2.25,
         "reg_dp": -0.4446,
         "pre": null,
-        "post": 501.7,
+        "post": 501.75,
         "prev_close": 506.06,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Tech stocks today: CoreWeave and Supermicro results win over investors",
-          "datetime": 1786484279,
+          "datetime": 1786485505,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/technology/live/tech-stocks-today-coreweave-and-supermicro-results-win-over-investors-135605566.html"
         }
@@ -43,21 +43,21 @@
     "GOOG": {
       "name": "Alphabet Inc.",
       "quote": {
-        "c": 343.8,
-        "d": 0.8,
-        "dp": 0.2331,
+        "c": 343.85,
+        "d": 0.85,
+        "dp": 0.2477,
         "regular": 343.0,
         "reg_d": -12.84,
         "reg_dp": -3.6084,
         "pre": null,
-        "post": 343.8,
+        "post": 343.85,
         "prev_close": 355.84,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "CoreWeave jumps 10% following Q2 earnings",
-          "datetime": 1786484279,
+          "datetime": 1786485505,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/video/coreweave-jumps-10-following-q2-210500927.html"
         }
@@ -66,21 +66,21 @@
     "NVDA": {
       "name": "NVIDIA Corporation",
       "quote": {
-        "c": 217.91,
-        "d": 0.41,
-        "dp": 0.189,
+        "c": 217.94,
+        "d": 0.44,
+        "dp": 0.2004,
         "regular": 217.5,
         "reg_d": -0.05,
         "reg_dp": -0.023,
         "pre": null,
-        "post": 217.91,
+        "post": 217.94,
         "prev_close": 217.55,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Intel's huge rally is helping pay for its AI comeback",
-          "datetime": 1786484279,
+          "datetime": 1786485505,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/video/intels-huge-rally-helping-pay-161130430.html"
         }
@@ -89,21 +89,21 @@
     "NOW": {
       "name": "ServiceNow, Inc.",
       "quote": {
-        "c": 127.1,
-        "d": -0.44,
-        "dp": -0.3451,
+        "c": 127.03,
+        "d": -0.51,
+        "dp": -0.3999,
         "regular": 127.54,
         "reg_d": 0.1,
         "reg_dp": 0.0785,
         "pre": null,
-        "post": 127.1,
+        "post": 127.03,
         "prev_close": 127.44,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "The Palantir Bull Case Is Getting Harder to Ignore",
-          "datetime": 1786484279,
+          "datetime": 1786485505,
           "source": "Yahoo Finance",
           "url": "https://247wallst.com/investing/2026/08/11/the-palantir-bull-case-is-getting-harder-to-ignore/"
         }
@@ -112,21 +112,21 @@
     "TSM": {
       "name": "Taiwan Semiconductor Manufactur",
       "quote": {
-        "c": 421.99,
-        "d": -0.07,
-        "dp": -0.0166,
+        "c": 422.04,
+        "d": -0.02,
+        "dp": -0.0047,
         "regular": 422.06,
         "reg_d": 3.59,
         "reg_dp": 0.8579,
         "pre": null,
-        "post": 421.99,
+        "post": 422.04,
         "prev_close": 418.47,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Dow Jones Futures: Stocks Pause Before CPI Inflation; 3 Nvidia Partners Lead Earnings Movers Late",
-          "datetime": 1786484279,
+          "datetime": 1786485505,
           "source": "Yahoo Finance",
           "url": "https://www.investors.com/market-trend/stock-market-today/dow-jones-futures-cpi-inflation-nvidia-partners-super-micro-earnings/?src=A00220&yptr=yahoo"
         }
@@ -135,21 +135,21 @@
     "MRVL": {
       "name": "Marvell Technology, Inc.",
       "quote": {
-        "c": 213.1,
-        "d": 0.79,
-        "dp": 0.3721,
+        "c": 213.41,
+        "d": 1.1,
+        "dp": 0.5184,
         "regular": 212.31,
         "reg_d": 3.75,
         "reg_dp": 1.798,
         "pre": null,
-        "post": 213.1,
+        "post": 213.41,
         "prev_close": 208.56,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "What Is The Market Really Expecting From AVGO Stock?",
-          "datetime": 1786484279,
+          "datetime": 1786485505,
           "source": "Yahoo Finance",
           "url": "https://www.trefis.com/articles/610926/what-is-the-market-really-expecting-from-avgo-stock-3/2026-08-11"
         }
@@ -158,21 +158,21 @@
     "AVGO": {
       "name": "Broadcom Inc.",
       "quote": {
-        "c": 416.33,
-        "d": 0.25,
-        "dp": 0.0601,
+        "c": 416.15,
+        "d": 0.07,
+        "dp": 0.0171,
         "regular": 416.08,
         "reg_d": -6.32,
         "reg_dp": -1.4962,
         "pre": null,
-        "post": 416.33,
+        "post": 416.15,
         "prev_close": 422.4,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Quantum trade moves beyond science fiction: AlphaCheck",
-          "datetime": 1786484279,
+          "datetime": 1786485505,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/markets/article/quantum-trade-moves-beyond-science-fiction-alphacheck-152407486.html"
         }
@@ -181,21 +181,21 @@
     "MU": {
       "name": "Micron Technology, Inc.",
       "quote": {
-        "c": 865.71,
-        "d": -2.81,
-        "dp": -0.3235,
+        "c": 865.83,
+        "d": -2.69,
+        "dp": -0.3096,
         "regular": 868.52,
         "reg_d": 7.52,
         "reg_dp": 0.8734,
         "pre": null,
-        "post": 865.71,
+        "post": 865.83,
         "prev_close": 861.0,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "SanDisk Traded Margin Upside For Years Of Contracted Revenue",
-          "datetime": 1786484279,
+          "datetime": 1786485505,
           "source": "Yahoo Finance",
           "url": "https://www.trefis.com/articles/611013/sandisk-traded-margin-upside-for-years-of-contracted-revenue/2026-08-11"
         }
@@ -204,21 +204,21 @@
     "SNDK": {
       "name": "Sandisk Corporation",
       "quote": {
-        "c": 1276.11,
-        "d": 5.06,
-        "dp": 0.3981,
+        "c": 1275.0,
+        "d": 3.95,
+        "dp": 0.3108,
         "regular": 1271.05,
         "reg_d": 33.13,
         "reg_dp": 2.6763,
         "pre": null,
-        "post": 1276.11,
+        "post": 1275.0,
         "prev_close": 1237.92,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "SanDisk Traded Margin Upside For Years Of Contracted Revenue",
-          "datetime": 1786484279,
+          "datetime": 1786485505,
           "source": "Yahoo Finance",
           "url": "https://www.trefis.com/articles/611013/sandisk-traded-margin-upside-for-years-of-contracted-revenue/2026-08-11"
         }
@@ -227,21 +227,21 @@
     "SPCX": {
       "name": "Space Exploration Technologies",
       "quote": {
-        "c": 132.73,
-        "d": -0.56,
-        "dp": -0.4191,
+        "c": 132.78,
+        "d": -0.51,
+        "dp": -0.3826,
         "regular": 133.29,
         "reg_d": -5.45,
         "reg_dp": -3.9282,
         "pre": null,
-        "post": 132.73,
+        "post": 132.78,
         "prev_close": 138.74,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "CoreWeave jumps 10% following Q2 earnings",
-          "datetime": 1786484279,
+          "datetime": 1786485505,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/video/coreweave-jumps-10-following-q2-210500927.html"
         }
@@ -250,21 +250,21 @@
     "ONDS": {
       "name": "Ondas Inc",
       "quote": {
-        "c": 9.77,
-        "d": 0.03,
-        "dp": 0.3255,
+        "c": 9.8,
+        "d": 0.06,
+        "dp": 0.6088,
         "regular": 9.74,
         "reg_d": 0.43,
         "reg_dp": 4.6187,
         "pre": null,
-        "post": 9.77,
+        "post": 9.8,
         "prev_close": 9.31,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Key Insights Ahead of Q2 Earnings: Buy, Hold or Sell Ondas Stock?",
-          "datetime": 1786484279,
+          "datetime": 1786485505,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/markets/stocks/articles/key-insights-ahead-q2-earnings-144600040.html"
         }
@@ -275,7 +275,7 @@
       "quote": {
         "c": 173.55,
         "d": -1.39,
-        "dp": -0.792,
+        "dp": -0.7946,
         "regular": 174.94,
         "reg_d": -0.29,
         "reg_dp": -0.1655,
@@ -287,7 +287,7 @@
       "news": [
         {
           "headline": "Palantir is a 'narrative play,' strategist explains",
-          "datetime": 1786484279,
+          "datetime": 1786485505,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/video/palantir-narrative-play-strategist-explains-120000920.html"
         }
