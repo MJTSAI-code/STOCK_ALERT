@@ -1,7 +1,7 @@
 {
   "name": "美股盤前情報資料庫",
-  "updated_at": "2026-08-13T06:24:26.309808+08:00",
-  "next_update_at": "2026-08-12T23:00:00Z",
+  "updated_at": "2026-08-13T06:46:57.481707+08:00",
+  "next_update_at": "2026-08-12T23:30:00Z",
   "stocks": [
     "MSFT",
     "GOOG",
@@ -20,21 +20,21 @@
     "MSFT": {
       "name": "Microsoft Corporation",
       "quote": {
-        "c": 491.16,
-        "d": -1.27,
-        "dp": -0.2579,
+        "c": 490.57,
+        "d": -1.86,
+        "dp": -0.3777,
         "regular": 492.43,
         "reg_d": -11.38,
         "reg_dp": -2.2588,
         "pre": null,
-        "post": 491.16,
+        "post": 490.57,
         "prev_close": 503.81,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Tech just got cheaper - what it means for the bull market",
-          "datetime": 1786573466,
+          "datetime": 1786574817,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/video/tech-just-got-cheaper-means-154100291.html"
         }
@@ -43,21 +43,21 @@
     "GOOG": {
       "name": "Alphabet Inc.",
       "quote": {
-        "c": 342.48,
-        "d": 0.11,
-        "dp": 0.0321,
+        "c": 342.32,
+        "d": -0.05,
+        "dp": -0.0146,
         "regular": 342.37,
         "reg_d": -0.63,
         "reg_dp": -0.1837,
         "pre": null,
-        "post": 342.48,
+        "post": 342.32,
         "prev_close": 343.0,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Google’s Pixel 11 isn’t the story; Gemini AI is",
-          "datetime": 1786573466,
+          "datetime": 1786574817,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/video/google-pixel-11-isn-t-205900374.html"
         }
@@ -66,21 +66,21 @@
     "NVDA": {
       "name": "NVIDIA Corporation",
       "quote": {
-        "c": 223.47,
-        "d": -0.62,
-        "dp": -0.2767,
+        "c": 223.58,
+        "d": -0.51,
+        "dp": -0.2254,
         "regular": 224.09,
         "reg_d": 6.59,
         "reg_dp": 3.0299,
         "pre": null,
-        "post": 223.47,
+        "post": 223.58,
         "prev_close": 217.5,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Nvidia partners with Goldman Sachs, BlackRock to fund AI build-out — but there's one big risk",
-          "datetime": 1786573466,
+          "datetime": 1786574817,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/video/nvidia-partners-goldman-sachs-blackrock-152456010.html"
         }
@@ -89,21 +89,21 @@
     "NOW": {
       "name": "ServiceNow, Inc.",
       "quote": {
-        "c": 124.67,
-        "d": -0.27,
-        "dp": -0.2155,
+        "c": 124.56,
+        "d": -0.38,
+        "dp": -0.3041,
         "regular": 124.94,
         "reg_d": -2.6,
         "reg_dp": -2.0386,
         "pre": null,
-        "post": 124.67,
+        "post": 124.56,
         "prev_close": 127.54,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Palantir and Microsoft Drop. Why the AI Revival Is Hitting Software Stocks.",
-          "datetime": 1786573466,
+          "datetime": 1786574817,
           "source": "Yahoo Finance",
           "url": "https://www.barrons.com/articles/palantir-stock-microsoft-ai-software-81e21d89?siteid=yhoof2&yptr=yahoo"
         }
@@ -112,21 +112,21 @@
     "TSM": {
       "name": "Taiwan Semiconductor Manufactur",
       "quote": {
-        "c": 430.55,
-        "d": 1.4,
-        "dp": 0.3262,
+        "c": 430.54,
+        "d": 1.39,
+        "dp": 0.3235,
         "regular": 429.15,
         "reg_d": 7.09,
         "reg_dp": 1.6799,
         "pre": null,
-        "post": 430.55,
+        "post": 430.54,
         "prev_close": 422.06,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "TSMC Stock Rises 2.2% as $4.69 Billion Sony Venture Launches",
-          "datetime": 1786573466,
+          "datetime": 1786574817,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/markets/stocks/articles/tsmc-stock-rises-2-2-172557376.html"
         }
@@ -135,21 +135,21 @@
     "MRVL": {
       "name": "Marvell Technology, Inc.",
       "quote": {
-        "c": 217.9,
-        "d": 0.82,
-        "dp": 0.3777,
+        "c": 218.68,
+        "d": 1.6,
+        "dp": 0.7371,
         "regular": 217.08,
         "reg_d": 4.77,
         "reg_dp": 2.2467,
         "pre": null,
-        "post": 217.9,
+        "post": 218.68,
         "prev_close": 212.31,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Alpha and Omega Semiconductor (AOSL) Reports Q4 Loss, Beats Revenue Estimates",
-          "datetime": 1786573466,
+          "datetime": 1786574817,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/markets/stocks/articles/alpha-omega-semiconductor-aosl-reports-211001432.html"
         }
@@ -158,21 +158,21 @@
     "AVGO": {
       "name": "Broadcom Inc.",
       "quote": {
-        "c": 415.45,
-        "d": -0.6,
-        "dp": -0.1442,
+        "c": 415.07,
+        "d": -0.98,
+        "dp": -0.2356,
         "regular": 416.05,
         "reg_d": -0.03,
         "reg_dp": -0.0072,
         "pre": null,
-        "post": 415.45,
+        "post": 415.07,
         "prev_close": 416.08,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Cathie Wood buys $16.2 million of popular semiconductor stock",
-          "datetime": 1786573466,
+          "datetime": 1786574817,
           "source": "Yahoo Finance",
           "url": "https://www.thestreet.com/investing/stocks/cathie-wood-buys-16-million-semiconductor-stock-broadcom-avgo"
         }
@@ -181,21 +181,21 @@
     "MU": {
       "name": "Micron Technology, Inc.",
       "quote": {
-        "c": 914.9,
-        "d": 3.61,
-        "dp": 0.3961,
+        "c": 915.21,
+        "d": 3.92,
+        "dp": 0.4302,
         "regular": 911.29,
         "reg_d": 42.77,
         "reg_dp": 4.9245,
         "pre": null,
-        "post": 914.9,
+        "post": 915.21,
         "prev_close": 868.52,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "AI infrastructure stocks surge after strong earnings from CoreWeave, Supermicro",
-          "datetime": 1786573466,
+          "datetime": 1786574817,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/markets/article/ai-infrastructure-stocks-surge-after-strong-earnings-from-coreweave-supermicro-142304399.html"
         }
@@ -204,21 +204,21 @@
     "SNDK": {
       "name": "Sandisk Corporation",
       "quote": {
-        "c": 1346.9,
-        "d": 2.61,
-        "dp": 0.1942,
+        "c": 1349.5,
+        "d": 5.21,
+        "dp": 0.3876,
         "regular": 1344.29,
         "reg_d": 73.24,
         "reg_dp": 5.7622,
         "pre": null,
-        "post": 1346.9,
+        "post": 1349.5,
         "prev_close": 1271.05,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Memory Stocks Rally Wednesday: SK Hynix, SanDisk, Micron All Jump. Here’s Why",
-          "datetime": 1786573466,
+          "datetime": 1786574817,
           "source": "Yahoo Finance",
           "url": "https://247wallst.com/investing/2026/08/12/memory-stocks-rally-wednesday-sk-hynix-sandisk-micron-all-jump-heres-why/"
         }
@@ -227,21 +227,21 @@
     "SPCX": {
       "name": "Space Exploration Technologies",
       "quote": {
-        "c": 145.75,
-        "d": -0.4,
-        "dp": -0.2737,
+        "c": 146.15,
+        "d": 0.0,
+        "dp": 0.0,
         "regular": 146.15,
         "reg_d": 12.86,
         "reg_dp": 9.6481,
         "pre": null,
-        "post": 145.75,
+        "post": 146.15,
         "prev_close": 133.29,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Firefly Aerospace wins 6th moon mission amid surge in commercial space demand",
-          "datetime": 1786573466,
+          "datetime": 1786574817,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/video/firefly-aerospace-wins-6th-moon-mission-amid-surge-in-commercial-space-demand-155426501.html"
         }
@@ -250,21 +250,21 @@
     "ONDS": {
       "name": "Ondas Inc",
       "quote": {
-        "c": 9.98,
-        "d": 0.21,
-        "dp": 2.1484,
+        "c": 9.99,
+        "d": 0.22,
+        "dp": 2.2211,
         "regular": 9.77,
         "reg_d": 0.03,
         "reg_dp": 0.308,
         "pre": null,
-        "post": 9.98,
+        "post": 9.99,
         "prev_close": 9.74,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "ONDS Stock Rises Overnight: Retail Bulls Eye Return To Double-Digit Price As Q2 Results Loom",
-          "datetime": 1786573466,
+          "datetime": 1786574817,
           "source": "Yahoo Finance",
           "url": "https://stocktwits.com/news-articles/markets/equity/onds-stock-rises-overnight-retail-bulls-eye-return-to-double-digit-price-as-q2-results-loom/cZoFAiTRJXU"
         }
@@ -273,21 +273,21 @@
     "PLTR": {
       "name": "Palantir Technologies Inc.",
       "quote": {
-        "c": 170.2,
-        "d": -0.84,
-        "dp": -0.4911,
+        "c": 170.28,
+        "d": -0.76,
+        "dp": -0.4443,
         "regular": 171.04,
         "reg_d": -3.9,
         "reg_dp": -2.2293,
         "pre": null,
-        "post": 170.2,
+        "post": 170.28,
         "prev_close": 174.94,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Michael Burry delivers brutal verdict on $420 billion AI giant",
-          "datetime": 1786573466,
+          "datetime": 1786574817,
           "source": "Yahoo Finance",
           "url": "https://www.thestreet.com/investing/stocks/pltr-palantir-stock-michael-burry-says-surging-ai-giant-is-worth-under-1-long-term-despite-strong-q2-2026-earnings"
         }
