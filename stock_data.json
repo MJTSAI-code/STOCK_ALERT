@@ -1,7 +1,7 @@
 {
   "name": "美股盤前情報資料庫",
-  "updated_at": "2026-08-13T04:52:31.567813+08:00",
-  "next_update_at": "2026-08-12T21:30:00Z",
+  "updated_at": "2026-08-13T05:37:01.689251+08:00",
+  "next_update_at": "2026-08-12T22:30:00Z",
   "stocks": [
     "MSFT",
     "GOOG",
@@ -20,253 +20,253 @@
     "MSFT": {
       "name": "Microsoft Corporation",
       "quote": {
-        "c": 491.75,
-        "d": -0.68,
-        "dp": -0.1381,
+        "c": 491.7,
+        "d": -0.73,
+        "dp": -0.1482,
         "regular": 492.43,
         "reg_d": -11.38,
         "reg_dp": -2.2588,
         "pre": null,
-        "post": 491.75,
+        "post": 491.7,
         "prev_close": 503.81,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Tech stocks today: CoreWeave and Supermicro results win over investors",
-          "datetime": 1786488584,
+          "headline": "Tech just got cheaper - what it means for the bull market",
+          "datetime": 1786570621,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/technology/live/tech-stocks-today-coreweave-and-supermicro-results-win-over-investors-135605566.html"
+          "url": "https://finance.yahoo.com/video/tech-just-got-cheaper-means-154100291.html"
         }
       ]
     },
     "GOOG": {
       "name": "Alphabet Inc.",
       "quote": {
-        "c": 342.31,
-        "d": -0.06,
-        "dp": -0.0175,
+        "c": 342.57,
+        "d": 0.2,
+        "dp": 0.0584,
         "regular": 342.37,
         "reg_d": -0.63,
         "reg_dp": -0.1837,
         "pre": null,
-        "post": 342.31,
+        "post": 342.57,
         "prev_close": 343.0,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "CoreWeave jumps 10% following Q2 earnings",
-          "datetime": 1786488584,
+          "headline": "Google’s Pixel 11 isn’t the story; Gemini AI is",
+          "datetime": 1786570621,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/video/coreweave-jumps-10-following-q2-210500927.html"
+          "url": "https://finance.yahoo.com/video/google-pixel-11-isn-t-205900374.html"
         }
       ]
     },
     "NVDA": {
       "name": "NVIDIA Corporation",
       "quote": {
-        "c": 223.34,
-        "d": -0.75,
-        "dp": -0.3347,
+        "c": 223.61,
+        "d": -0.48,
+        "dp": -0.2138,
         "regular": 224.09,
         "reg_d": 6.59,
         "reg_dp": 3.0299,
         "pre": null,
-        "post": 223.34,
+        "post": 223.61,
         "prev_close": 217.5,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Intel's huge rally is helping pay for its AI comeback",
-          "datetime": 1786488584,
+          "headline": "Nvidia partners with Goldman Sachs, BlackRock to fund AI build-out — but there's one big risk",
+          "datetime": 1786570621,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/video/intels-huge-rally-helping-pay-161130430.html"
+          "url": "https://finance.yahoo.com/video/nvidia-partners-goldman-sachs-blackrock-152456010.html"
         }
       ]
     },
     "NOW": {
       "name": "ServiceNow, Inc.",
       "quote": {
-        "c": 124.8,
-        "d": -0.14,
-        "dp": -0.1121,
+        "c": 124.79,
+        "d": -0.15,
+        "dp": -0.1201,
         "regular": 124.94,
         "reg_d": -2.6,
         "reg_dp": -2.0386,
         "pre": null,
-        "post": 124.8,
+        "post": 124.79,
         "prev_close": 127.54,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "The Palantir Bull Case Is Getting Harder to Ignore",
-          "datetime": 1786488584,
+          "headline": "Palantir and Microsoft Drop. Why the AI Revival Is Hitting Software Stocks.",
+          "datetime": 1786570621,
           "source": "Yahoo Finance",
-          "url": "https://247wallst.com/investing/2026/08/11/the-palantir-bull-case-is-getting-harder-to-ignore/"
+          "url": "https://www.barrons.com/articles/palantir-stock-microsoft-ai-software-81e21d89?siteid=yhoof2&yptr=yahoo"
         }
       ]
     },
     "TSM": {
       "name": "Taiwan Semiconductor Manufactur",
       "quote": {
-        "c": 429.56,
-        "d": 0.41,
-        "dp": 0.0957,
+        "c": 430.12,
+        "d": 0.97,
+        "dp": 0.226,
         "regular": 429.15,
         "reg_d": 7.09,
         "reg_dp": 1.6799,
         "pre": null,
-        "post": 429.56,
+        "post": 430.12,
         "prev_close": 422.06,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Dow Jones Futures: Stocks Pause Before CPI Inflation; 3 Nvidia Partners Lead Earnings Movers Late",
-          "datetime": 1786488584,
+          "headline": "TSMC Stock Rises 2.2% as $4.69 Billion Sony Venture Launches",
+          "datetime": 1786570621,
           "source": "Yahoo Finance",
-          "url": "https://www.investors.com/market-trend/stock-market-today/dow-jones-futures-cpi-inflation-nvidia-partners-super-micro-earnings/?src=A00220&yptr=yahoo"
+          "url": "https://finance.yahoo.com/markets/stocks/articles/tsmc-stock-rises-2-2-172557376.html"
         }
       ]
     },
     "MRVL": {
       "name": "Marvell Technology, Inc.",
       "quote": {
-        "c": 217.3,
-        "d": 0.22,
-        "dp": 0.1013,
+        "c": 218.7,
+        "d": 1.62,
+        "dp": 0.7463,
         "regular": 217.08,
         "reg_d": 4.77,
         "reg_dp": 2.2467,
         "pre": null,
-        "post": 217.3,
+        "post": 218.7,
         "prev_close": 212.31,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "What Is The Market Really Expecting From AVGO Stock?",
-          "datetime": 1786488584,
+          "headline": "Broadcom is Overvalued at 23.8X P/E: Should You Still Buy the Stock?",
+          "datetime": 1786570621,
           "source": "Yahoo Finance",
-          "url": "https://www.trefis.com/articles/610926/what-is-the-market-really-expecting-from-avgo-stock-3/2026-08-11"
+          "url": "https://finance.yahoo.com/markets/stocks/articles/broadcom-overvalued-23-8x-p-165400587.html"
         }
       ]
     },
     "AVGO": {
       "name": "Broadcom Inc.",
       "quote": {
-        "c": 415.56,
-        "d": -0.49,
-        "dp": -0.1178,
+        "c": 415.91,
+        "d": -0.14,
+        "dp": -0.0337,
         "regular": 416.05,
         "reg_d": -0.03,
         "reg_dp": -0.0072,
         "pre": null,
-        "post": 415.56,
+        "post": 415.91,
         "prev_close": 416.08,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Quantum trade moves beyond science fiction: AlphaCheck",
-          "datetime": 1786488584,
+          "headline": "Intel Is Up 176% This Year. Is It Time to Take Profits on INTC, AMD, Broadcom, and NVIDIA?",
+          "datetime": 1786570621,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/markets/article/quantum-trade-moves-beyond-science-fiction-alphacheck-152407486.html"
+          "url": "https://247wallst.com/investing/2026/08/12/intel-is-up-176-this-year-is-it-time-to-take-profits-on-intc-amd-broadcom-and-nvidia/"
         }
       ]
     },
     "MU": {
       "name": "Micron Technology, Inc.",
       "quote": {
-        "c": 914.24,
-        "d": 2.95,
-        "dp": 0.3237,
+        "c": 917.76,
+        "d": 6.47,
+        "dp": 0.71,
         "regular": 911.29,
         "reg_d": 42.77,
         "reg_dp": 4.9245,
         "pre": null,
-        "post": 914.24,
+        "post": 917.76,
         "prev_close": 868.52,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "SanDisk Traded Margin Upside For Years Of Contracted Revenue",
-          "datetime": 1786488584,
+          "headline": "AI infrastructure stocks surge after strong earnings from CoreWeave, Supermicro",
+          "datetime": 1786570621,
           "source": "Yahoo Finance",
-          "url": "https://www.trefis.com/articles/611013/sandisk-traded-margin-upside-for-years-of-contracted-revenue/2026-08-11"
+          "url": "https://finance.yahoo.com/markets/article/ai-infrastructure-stocks-surge-after-strong-earnings-from-coreweave-supermicro-142304399.html"
         }
       ]
     },
     "SNDK": {
       "name": "Sandisk Corporation",
       "quote": {
-        "c": 1342.57,
-        "d": -1.72,
-        "dp": -0.1276,
+        "c": 1349.28,
+        "d": 4.99,
+        "dp": 0.3712,
         "regular": 1344.29,
         "reg_d": 73.24,
         "reg_dp": 5.7622,
         "pre": null,
-        "post": 1342.57,
+        "post": 1349.28,
         "prev_close": 1271.05,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "SanDisk Traded Margin Upside For Years Of Contracted Revenue",
-          "datetime": 1786488584,
+          "headline": "Update: US Equity Indexes Mixed as AI Infrastructure Players Boost Tech, Cooling Inflation Raises Odds of Sixth Fed Policy Pause",
+          "datetime": 1786570621,
           "source": "Yahoo Finance",
-          "url": "https://www.trefis.com/articles/611013/sandisk-traded-margin-upside-for-years-of-contracted-revenue/2026-08-11"
+          "url": "https://finance.yahoo.com/markets/stocks/articles/us-equity-indexes-mixed-ai-204853133.html"
         }
       ]
     },
     "SPCX": {
       "name": "Space Exploration Technologies",
       "quote": {
-        "c": 145.75,
-        "d": -0.4,
-        "dp": -0.2737,
+        "c": 146.67,
+        "d": 0.52,
+        "dp": 0.3558,
         "regular": 146.15,
         "reg_d": 12.86,
         "reg_dp": 9.6481,
         "pre": null,
-        "post": 145.75,
+        "post": 146.67,
         "prev_close": 133.29,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "CoreWeave jumps 10% following Q2 earnings",
-          "datetime": 1786488584,
+          "headline": "Firefly Aerospace wins 6th moon mission amid surge in commercial space demand",
+          "datetime": 1786570621,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/video/coreweave-jumps-10-following-q2-210500927.html"
+          "url": "https://finance.yahoo.com/video/firefly-aerospace-wins-6th-moon-mission-amid-surge-in-commercial-space-demand-155426501.html"
         }
       ]
     },
     "ONDS": {
       "name": "Ondas Inc",
       "quote": {
-        "c": 9.9,
-        "d": 0.13,
-        "dp": 1.3286,
+        "c": 9.93,
+        "d": 0.16,
+        "dp": 1.6438,
         "regular": 9.77,
         "reg_d": 0.03,
         "reg_dp": 0.308,
         "pre": null,
-        "post": 9.9,
+        "post": 9.93,
         "prev_close": 9.74,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "40% of Wall Street Is Betting Against This Little-Known Defense Stock. Here's Why They Might Be Wrong.",
-          "datetime": 1786488584,
+          "headline": "ONDS Stock Rises Overnight: Retail Bulls Eye Return To Double-Digit Price As Q2 Results Loom",
+          "datetime": 1786570621,
           "source": "Yahoo Finance",
-          "url": "https://www.barchart.com/story/news/3783688/40-of-wall-street-is-betting-against-this-little-known-defense-stock-here-s-why-they-might-be-wrong"
+          "url": "https://stocktwits.com/news-articles/markets/equity/onds-stock-rises-overnight-retail-bulls-eye-return-to-double-digit-price-as-q2-results-loom/cZoFAiTRJXU"
         }
       ]
     },
@@ -286,16 +286,16 @@
       },
       "news": [
         {
-          "headline": "Palantir is a 'narrative play,' strategist explains",
-          "datetime": 1786488584,
+          "headline": "Michael Burry delivers brutal verdict on $420 billion AI giant",
+          "datetime": 1786570621,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/video/palantir-narrative-play-strategist-explains-120000920.html"
+          "url": "https://www.thestreet.com/investing/stocks/pltr-palantir-stock-michael-burry-says-surging-ai-giant-is-worth-under-1-long-term-despite-strong-q2-2026-earnings"
         }
       ]
     }
   },
   "alert_sent": {
-    "morning": "2026-08-12",
+    "morning": "2026-08-13",
     "evening": "2026-08-12"
   }
 }
