@@ -1,7 +1,7 @@
 {
   "name": "美股盤前情報資料庫",
-  "updated_at": "2026-08-13T05:58:28.899061+08:00",
-  "next_update_at": "2026-08-12T22:30:00Z",
+  "updated_at": "2026-08-13T06:24:26.309808+08:00",
+  "next_update_at": "2026-08-12T23:00:00Z",
   "stocks": [
     "MSFT",
     "GOOG",
@@ -20,21 +20,21 @@
     "MSFT": {
       "name": "Microsoft Corporation",
       "quote": {
-        "c": 491.4,
-        "d": -1.03,
-        "dp": -0.2092,
+        "c": 491.16,
+        "d": -1.27,
+        "dp": -0.2579,
         "regular": 492.43,
         "reg_d": -11.38,
         "reg_dp": -2.2588,
         "pre": null,
-        "post": 491.4,
+        "post": 491.16,
         "prev_close": 503.81,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Tech just got cheaper - what it means for the bull market",
-          "datetime": 1786571908,
+          "datetime": 1786573466,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/video/tech-just-got-cheaper-means-154100291.html"
         }
@@ -43,21 +43,21 @@
     "GOOG": {
       "name": "Alphabet Inc.",
       "quote": {
-        "c": 342.64,
-        "d": 0.27,
-        "dp": 0.0789,
+        "c": 342.48,
+        "d": 0.11,
+        "dp": 0.0321,
         "regular": 342.37,
         "reg_d": -0.63,
         "reg_dp": -0.1837,
         "pre": null,
-        "post": 342.64,
+        "post": 342.48,
         "prev_close": 343.0,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Google’s Pixel 11 isn’t the story; Gemini AI is",
-          "datetime": 1786571908,
+          "datetime": 1786573466,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/video/google-pixel-11-isn-t-205900374.html"
         }
@@ -66,21 +66,21 @@
     "NVDA": {
       "name": "NVIDIA Corporation",
       "quote": {
-        "c": 223.85,
-        "d": -0.24,
-        "dp": -0.1069,
+        "c": 223.47,
+        "d": -0.62,
+        "dp": -0.2767,
         "regular": 224.09,
         "reg_d": 6.59,
         "reg_dp": 3.0299,
         "pre": null,
-        "post": 223.85,
+        "post": 223.47,
         "prev_close": 217.5,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Nvidia partners with Goldman Sachs, BlackRock to fund AI build-out — but there's one big risk",
-          "datetime": 1786571908,
+          "datetime": 1786573466,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/video/nvidia-partners-goldman-sachs-blackrock-152456010.html"
         }
@@ -89,21 +89,21 @@
     "NOW": {
       "name": "ServiceNow, Inc.",
       "quote": {
-        "c": 124.7,
-        "d": -0.24,
-        "dp": -0.1929,
+        "c": 124.67,
+        "d": -0.27,
+        "dp": -0.2155,
         "regular": 124.94,
         "reg_d": -2.6,
         "reg_dp": -2.0386,
         "pre": null,
-        "post": 124.7,
+        "post": 124.67,
         "prev_close": 127.54,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Palantir and Microsoft Drop. Why the AI Revival Is Hitting Software Stocks.",
-          "datetime": 1786571908,
+          "datetime": 1786573466,
           "source": "Yahoo Finance",
           "url": "https://www.barrons.com/articles/palantir-stock-microsoft-ai-software-81e21d89?siteid=yhoof2&yptr=yahoo"
         }
@@ -126,7 +126,7 @@
       "news": [
         {
           "headline": "TSMC Stock Rises 2.2% as $4.69 Billion Sony Venture Launches",
-          "datetime": 1786571908,
+          "datetime": 1786573466,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/markets/stocks/articles/tsmc-stock-rises-2-2-172557376.html"
         }
@@ -135,67 +135,67 @@
     "MRVL": {
       "name": "Marvell Technology, Inc.",
       "quote": {
-        "c": 218.7,
-        "d": 1.62,
-        "dp": 0.7463,
+        "c": 217.9,
+        "d": 0.82,
+        "dp": 0.3777,
         "regular": 217.08,
         "reg_d": 4.77,
         "reg_dp": 2.2467,
         "pre": null,
-        "post": 218.7,
+        "post": 217.9,
         "prev_close": 212.31,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Broadcom is Overvalued at 23.8X P/E: Should You Still Buy the Stock?",
-          "datetime": 1786571908,
+          "headline": "Alpha and Omega Semiconductor (AOSL) Reports Q4 Loss, Beats Revenue Estimates",
+          "datetime": 1786573466,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/markets/stocks/articles/broadcom-overvalued-23-8x-p-165400587.html"
+          "url": "https://finance.yahoo.com/markets/stocks/articles/alpha-omega-semiconductor-aosl-reports-211001432.html"
         }
       ]
     },
     "AVGO": {
       "name": "Broadcom Inc.",
       "quote": {
-        "c": 416.04,
-        "d": -0.01,
-        "dp": -0.0024,
+        "c": 415.45,
+        "d": -0.6,
+        "dp": -0.1442,
         "regular": 416.05,
         "reg_d": -0.03,
         "reg_dp": -0.0072,
         "pre": null,
-        "post": 416.04,
+        "post": 415.45,
         "prev_close": 416.08,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "You Skipped the AI Rally Because Retirement Felt Too Close. These 3 ETFs Get You In Without Betting Your Nest Egg",
-          "datetime": 1786571908,
+          "headline": "Cathie Wood buys $16.2 million of popular semiconductor stock",
+          "datetime": 1786573466,
           "source": "Yahoo Finance",
-          "url": "https://247wallst.com/investing/etf/2026/08/12/you-skipped-the-ai-rally-because-retirement-felt-too-close-these-3-etfs-get-you-in-without-betting-your-nest-egg/"
+          "url": "https://www.thestreet.com/investing/stocks/cathie-wood-buys-16-million-semiconductor-stock-broadcom-avgo"
         }
       ]
     },
     "MU": {
       "name": "Micron Technology, Inc.",
       "quote": {
-        "c": 917.34,
-        "d": 6.05,
-        "dp": 0.6639,
+        "c": 914.9,
+        "d": 3.61,
+        "dp": 0.3961,
         "regular": 911.29,
         "reg_d": 42.77,
         "reg_dp": 4.9245,
         "pre": null,
-        "post": 917.34,
+        "post": 914.9,
         "prev_close": 868.52,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "AI infrastructure stocks surge after strong earnings from CoreWeave, Supermicro",
-          "datetime": 1786571908,
+          "datetime": 1786573466,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/markets/article/ai-infrastructure-stocks-surge-after-strong-earnings-from-coreweave-supermicro-142304399.html"
         }
@@ -204,44 +204,44 @@
     "SNDK": {
       "name": "Sandisk Corporation",
       "quote": {
-        "c": 1349.89,
-        "d": 5.6,
-        "dp": 0.4166,
+        "c": 1346.9,
+        "d": 2.61,
+        "dp": 0.1942,
         "regular": 1344.29,
         "reg_d": 73.24,
         "reg_dp": 5.7622,
         "pre": null,
-        "post": 1349.89,
+        "post": 1346.9,
         "prev_close": 1271.05,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Update: US Equity Indexes Mixed as AI Infrastructure Players Boost Tech, Cooling Inflation Raises Odds of Sixth Fed Policy Pause",
-          "datetime": 1786571908,
+          "headline": "Memory Stocks Rally Wednesday: SK Hynix, SanDisk, Micron All Jump. Here’s Why",
+          "datetime": 1786573466,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/markets/stocks/articles/us-equity-indexes-mixed-ai-204853133.html"
+          "url": "https://247wallst.com/investing/2026/08/12/memory-stocks-rally-wednesday-sk-hynix-sandisk-micron-all-jump-heres-why/"
         }
       ]
     },
     "SPCX": {
       "name": "Space Exploration Technologies",
       "quote": {
-        "c": 146.06,
-        "d": -0.09,
-        "dp": -0.0632,
+        "c": 145.75,
+        "d": -0.4,
+        "dp": -0.2737,
         "regular": 146.15,
         "reg_d": 12.86,
         "reg_dp": 9.6481,
         "pre": null,
-        "post": 146.06,
+        "post": 145.75,
         "prev_close": 133.29,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Firefly Aerospace wins 6th moon mission amid surge in commercial space demand",
-          "datetime": 1786571908,
+          "datetime": 1786573466,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/video/firefly-aerospace-wins-6th-moon-mission-amid-surge-in-commercial-space-demand-155426501.html"
         }
@@ -250,21 +250,21 @@
     "ONDS": {
       "name": "Ondas Inc",
       "quote": {
-        "c": 9.94,
-        "d": 0.17,
-        "dp": 1.7339,
+        "c": 9.98,
+        "d": 0.21,
+        "dp": 2.1484,
         "regular": 9.77,
         "reg_d": 0.03,
         "reg_dp": 0.308,
         "pre": null,
-        "post": 9.94,
+        "post": 9.98,
         "prev_close": 9.74,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "ONDS Stock Rises Overnight: Retail Bulls Eye Return To Double-Digit Price As Q2 Results Loom",
-          "datetime": 1786571908,
+          "datetime": 1786573466,
           "source": "Yahoo Finance",
           "url": "https://stocktwits.com/news-articles/markets/equity/onds-stock-rises-overnight-retail-bulls-eye-return-to-double-digit-price-as-q2-results-loom/cZoFAiTRJXU"
         }
@@ -273,21 +273,21 @@
     "PLTR": {
       "name": "Palantir Technologies Inc.",
       "quote": {
-        "c": 170.83,
-        "d": -0.21,
-        "dp": -0.1206,
+        "c": 170.2,
+        "d": -0.84,
+        "dp": -0.4911,
         "regular": 171.04,
         "reg_d": -3.9,
         "reg_dp": -2.2293,
         "pre": null,
-        "post": 170.83,
+        "post": 170.2,
         "prev_close": 174.94,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Michael Burry delivers brutal verdict on $420 billion AI giant",
-          "datetime": 1786571908,
+          "datetime": 1786573466,
           "source": "Yahoo Finance",
           "url": "https://www.thestreet.com/investing/stocks/pltr-palantir-stock-michael-burry-says-surging-ai-giant-is-worth-under-1-long-term-despite-strong-q2-2026-earnings"
         }
