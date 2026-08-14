@@ -1,7 +1,7 @@
 {
   "name": "美股盤前情報資料庫",
-  "updated_at": "2026-08-15T04:56:19.167492+08:00",
-  "next_update_at": "2026-08-14T21:30:00Z",
+  "updated_at": "2026-08-15T05:18:07.322277+08:00",
+  "next_update_at": "2026-08-14T22:00:00Z",
   "stocks": [
     "MSFT",
     "GOOG",
@@ -20,258 +20,258 @@
     "MSFT": {
       "name": "Microsoft Corporation",
       "quote": {
-        "c": 495.0,
-        "d": -0.4,
-        "dp": -0.0802,
+        "c": 495.02,
+        "d": -0.38,
+        "dp": -0.0767,
         "regular": 495.4,
         "reg_d": -1.48,
         "reg_dp": -0.2979,
         "pre": null,
-        "post": 495.0,
+        "post": 495.02,
         "prev_close": 496.88,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Why this analyst sees another 30% rip in Microsoft stock",
-          "datetime": 1786661355,
+          "headline": "Wall Street's riskiest trades are suddenly back on top: Chart of the Day",
+          "datetime": 1786742287,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/markets/stocks/article/why-this-analyst-sees-another-30-rip-in-microsoft-stock-132716702.html"
+          "url": "https://finance.yahoo.com/markets/article/wall-streets-riskiest-trades-are-suddenly-back-on-top-chart-of-the-day-100100027.html"
         }
       ]
     },
     "GOOG": {
       "name": "Alphabet Inc.",
       "quote": {
-        "c": 356.16,
-        "d": 12.62,
-        "dp": 3.6729,
+        "c": 344.66,
+        "d": 1.12,
+        "dp": 0.326,
         "regular": 343.54,
         "reg_d": -0.4,
         "reg_dp": -0.1163,
         "pre": null,
-        "post": 356.16,
+        "post": 344.66,
         "prev_close": 343.94,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Gemini & Zocdoc launch AI doctor booking",
-          "datetime": 1786661355,
+          "headline": "Reddit is joining the S&P 500 next week. Here's what you need to know.",
+          "datetime": 1786742287,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/video/gemini-zocdoc-launch-ai-doctor-195932395.html"
+          "url": "https://finance.yahoo.com/video/reddit-joining-p-500-next-145131579.html"
         }
       ]
     },
     "NVDA": {
       "name": "NVIDIA Corporation",
       "quote": {
-        "c": 224.98,
-        "d": -0.18,
-        "dp": -0.0797,
+        "c": 225.03,
+        "d": -0.13,
+        "dp": -0.0586,
         "regular": 225.16,
         "reg_d": -0.14,
         "reg_dp": -0.0621,
         "pre": null,
-        "post": 224.98,
+        "post": 225.03,
         "prev_close": 225.3,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Nvidia bulls may have a small problem on their hands",
-          "datetime": 1786661355,
+          "headline": "Wall Street's riskiest trades are suddenly back on top: Chart of the Day",
+          "datetime": 1786742287,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/markets/stocks/article/nvidia-bulls-may-have-a-small-problem-on-their-hands-142341243.html"
+          "url": "https://finance.yahoo.com/markets/article/wall-streets-riskiest-trades-are-suddenly-back-on-top-chart-of-the-day-100100027.html"
         }
       ]
     },
     "NOW": {
       "name": "ServiceNow, Inc.",
       "quote": {
-        "c": 123.95,
-        "d": -0.05,
-        "dp": -0.0403,
+        "c": 123.85,
+        "d": -0.15,
+        "dp": -0.121,
         "regular": 124.0,
         "reg_d": -3.25,
         "reg_dp": -2.554,
         "pre": null,
-        "post": 123.95,
+        "post": 123.85,
         "prev_close": 127.25,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "FJTSY or NOW: Which Is the Better Value Stock Right Now?",
-          "datetime": 1786661355,
+          "headline": "JPMorgan Turns Bullish on Salesforce as the Stock Runs Three Straight Weeks",
+          "datetime": 1786742287,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/markets/stocks/articles/fjtsy-now-better-value-stock-154003803.html"
+          "url": "https://247wallst.com/investing/2026/08/14/jpmorgan-turns-bullish-on-salesforce-as-the-stock-runs-three-straight-weeks/"
         }
       ]
     },
     "TSM": {
       "name": "Taiwan Semiconductor Manufactur",
       "quote": {
-        "c": 426.01,
-        "d": -0.34,
-        "dp": -0.0797,
+        "c": 426.0,
+        "d": -0.35,
+        "dp": -0.0821,
         "regular": 426.35,
         "reg_d": -4.14,
         "reg_dp": -0.9617,
         "pre": null,
-        "post": 426.01,
+        "post": 426.0,
         "prev_close": 430.49,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Analyst Sees Trouble Brewing for Hot Chip Stocks",
-          "datetime": 1786661355,
+          "headline": "Soros Capital Loads Up On MU, AMAT, AMD And TSM In Massive Semiconductor Pivot",
+          "datetime": 1786742287,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/technology/articles/analyst-sees-trouble-brewing-hot-193124128.html"
+          "url": "https://stocktwits.com/news-articles/markets/equity/soros-capital-loads-up-on-mu-amat-amd-and-tsm-in-massive-semiconductor-pivot/cZotq9LRJ0D"
         }
       ]
     },
     "MRVL": {
       "name": "Marvell Technology, Inc.",
       "quote": {
-        "c": 221.83,
-        "d": -0.19,
-        "dp": -0.0856,
+        "c": 221.45,
+        "d": -0.57,
+        "dp": -0.2567,
         "regular": 222.02,
         "reg_d": -0.16,
         "reg_dp": -0.072,
         "pre": null,
-        "post": 221.83,
+        "post": 221.45,
         "prev_close": 222.18,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "AMD Stock Can Halve Or Nearly Double, And That Is The Calm Assumption",
-          "datetime": 1786661355,
+          "headline": "Marvell Technology, MACOM, Micron, Western Digital, and Semtech Shares Skyrocket, What You Need To Know",
+          "datetime": 1786742287,
           "source": "Yahoo Finance",
-          "url": "https://www.trefis.com/articles/611363/amd-stock-can-halve-or-nearly-double-and-that-is-the-calm-assumption/2026-08-13"
+          "url": "https://finance.yahoo.com/markets/stocks/articles/marvell-technology-macom-micron-western-195700965.html"
         }
       ]
     },
     "MU": {
       "name": "Micron Technology, Inc.",
       "quote": {
-        "c": 970.67,
-        "d": -0.99,
-        "dp": -0.1024,
+        "c": 970.8,
+        "d": -0.86,
+        "dp": -0.0883,
         "regular": 971.66,
         "reg_d": 21.83,
         "reg_dp": 2.2983,
         "pre": null,
-        "post": 970.67,
+        "post": 970.8,
         "prev_close": 949.83,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Sandisk Stock Jumps On Bullish Outlook, Leads Memory Names Higher",
-          "datetime": 1786661355,
+          "headline": "Wall Street's riskiest trades are suddenly back on top: Chart of the Day",
+          "datetime": 1786742287,
           "source": "Yahoo Finance",
-          "url": "https://www.investors.com/news/technology/sandisk-stock-jumps-bullish-outlook-memory-names-follow/?src=A00220&yptr=yahoo"
+          "url": "https://finance.yahoo.com/markets/article/wall-streets-riskiest-trades-are-suddenly-back-on-top-chart-of-the-day-100100027.html"
         }
       ]
     },
     "SNDK": {
       "name": "Sandisk Corporation",
       "quote": {
-        "c": 1644.99,
-        "d": 3.88,
-        "dp": 0.2364,
+        "c": 1645.15,
+        "d": 4.04,
+        "dp": 0.2462,
         "regular": 1641.11,
         "reg_d": 113.0,
         "reg_dp": 7.3948,
         "pre": null,
-        "post": 1644.99,
+        "post": 1645.15,
         "prev_close": 1528.11,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Sandisk Stock Jumps On Bullish Outlook, Leads Memory Names Higher",
-          "datetime": 1786661355,
+          "headline": "Sandisk stock surges as Wall Street cheers flash memory maker's bullish outlook",
+          "datetime": 1786742287,
           "source": "Yahoo Finance",
-          "url": "https://www.investors.com/news/technology/sandisk-stock-jumps-bullish-outlook-memory-names-follow/?src=A00220&yptr=yahoo"
+          "url": "https://finance.yahoo.com/markets/stocks/article/sandisk-stock-surges-as-wall-street-cheers-flash-memory-makers-bullish-outlook-131502540.html"
         }
       ]
     },
     "SPCX": {
       "name": "Space Exploration Technologies",
       "quote": {
-        "c": 140.0,
-        "d": 0.0,
-        "dp": 0.0,
+        "c": 139.99,
+        "d": -0.01,
+        "dp": -0.0038,
         "regular": 140.0,
         "reg_d": -1.29,
         "reg_dp": -0.913,
         "pre": null,
-        "post": 140.0,
+        "post": 139.99,
         "prev_close": 141.29,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Tech stocks today: Shares climb higher with AI trade back on",
-          "datetime": 1786661355,
+          "headline": "Wall Street's riskiest trades are suddenly back on top: Chart of the Day",
+          "datetime": 1786742287,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/technology/live/tech-stocks-today-shares-climb-higher-with-ai-trade-back-on-135605566.html"
+          "url": "https://finance.yahoo.com/markets/article/wall-streets-riskiest-trades-are-suddenly-back-on-top-chart-of-the-day-100100027.html"
         }
       ]
     },
     "ONDS": {
       "name": "Ondas Inc",
       "quote": {
-        "c": 9.23,
-        "d": -0.01,
-        "dp": -0.1093,
+        "c": 9.21,
+        "d": -0.03,
+        "dp": -0.3247,
         "regular": 9.24,
         "reg_d": 0.33,
         "reg_dp": 3.7037,
         "pre": null,
-        "post": 9.23,
+        "post": 9.21,
         "prev_close": 8.91,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Sandisk, Cisco, Micron, Ondas, Coherent, Cerebras, and More Stocks That Explain Today’s Market",
-          "datetime": 1786661355,
+          "headline": "Ondas (ONDS) Reports Strong Sales Growth, Is The Valuation Already Priced In?",
+          "datetime": 1786742287,
           "source": "Yahoo Finance",
-          "url": "https://www.barrons.com/articles/stock-movers-270ebfe7?siteid=yhoof2&yptr=yahoo"
+          "url": "https://finance.yahoo.com/markets/stocks/articles/ondas-onds-reports-strong-sales-190905099.html"
         }
       ]
     },
     "PLTR": {
       "name": "Palantir Technologies Inc.",
       "quote": {
-        "c": 173.91,
-        "d": -0.13,
-        "dp": -0.0747,
+        "c": 173.95,
+        "d": -0.09,
+        "dp": -0.0517,
         "regular": 174.04,
         "reg_d": -4.97,
         "reg_dp": -2.7764,
         "pre": null,
-        "post": 173.91,
+        "post": 173.95,
         "prev_close": 179.01,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Michael Burry Loads Up On QQQ Puts, Boosts MU Short As He Braces For ‘Larger Fall’ — Here’s What He Did To NVDA, PLTR And TSLA",
-          "datetime": 1786661355,
+          "headline": "Wall Street's riskiest trades are suddenly back on top: Chart of the Day",
+          "datetime": 1786742287,
           "source": "Yahoo Finance",
-          "url": "https://stocktwits.com/news-articles/markets/equity/michael-burry-loads-up-on-qqq-puts-boosts-mu-short-as-he-braces-for-larger-fall-heres-what-he-did-to-nvda-pltr-and-tsla/cZoqVbeRJLw"
+          "url": "https://finance.yahoo.com/markets/article/wall-streets-riskiest-trades-are-suddenly-back-on-top-chart-of-the-day-100100027.html"
         }
       ]
     },
     "SKHYV": {
-      "name": "SK hynix Inc. American Depositary Shares When Issued",
+      "name": "SK hynix Inc. - American Deposi",
       "quote": {
         "c": 168.01,
         "d": 0.0,
@@ -287,7 +287,7 @@
       "news": [
         {
           "headline": "Why Micron Stock Just Dropped Again",
-          "datetime": 1786661355,
+          "datetime": 1786742287,
           "source": "Yahoo Finance",
           "url": "https://www.fool.com/investing/2026/07/15/why-micron-stock-just-dropped-again/"
         }
