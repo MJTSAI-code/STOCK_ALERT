@@ -1,7 +1,7 @@
 {
   "name": "美股盤前情報資料庫",
-  "updated_at": "2026-08-18T05:58:35.832589+08:00",
-  "next_update_at": "2026-08-17T22:30:00Z",
+  "updated_at": "2026-08-18T06:00:08.325121+08:00",
+  "next_update_at": "2026-08-17T23:00:00Z",
   "stocks": [
     "MSFT",
     "GOOG",
@@ -20,21 +20,21 @@
     "MSFT": {
       "name": "Microsoft Corporation",
       "quote": {
-        "c": 480.16,
-        "d": -0.19,
-        "dp": -0.0396,
+        "c": 480.2,
+        "d": -0.15,
+        "dp": -0.0312,
         "regular": 480.35,
         "reg_d": -15.05,
         "reg_dp": -3.0379,
         "pre": null,
-        "post": 480.16,
+        "post": 480.2,
         "prev_close": 495.4,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Could Microsoft spin off Xbox? Why it might be worth billions",
-          "datetime": 1787003915,
+          "datetime": 1787004008,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/video/could-microsoft-spin-off-xbox-why-it-might-be-worth-billions-110000182.html"
         }
@@ -43,21 +43,21 @@
     "GOOG": {
       "name": "Alphabet Inc.",
       "quote": {
-        "c": 341.33,
-        "d": -0.12,
-        "dp": -0.0352,
+        "c": 341.35,
+        "d": -0.1,
+        "dp": -0.0293,
         "regular": 341.45,
         "reg_d": -2.09,
         "reg_dp": -0.6084,
         "pre": null,
-        "post": 341.33,
+        "post": 341.35,
         "prev_close": 343.54,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "SpaceX's biggest investors are finally visible — just as millions more shares unlock: Chart of the Day",
-          "datetime": 1787003915,
+          "datetime": 1787004008,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/markets/article/spacexs-biggest-investors-are-finally-visible--just-as-millions-more-shares-unlock-chart-of-the-day-154946600.html"
         }
@@ -66,21 +66,21 @@
     "NVDA": {
       "name": "NVIDIA Corporation",
       "quote": {
-        "c": 225.03,
-        "d": 0.02,
-        "dp": 0.0088,
+        "c": 225.02,
+        "d": 0.01,
+        "dp": 0.0044,
         "regular": 225.01,
         "reg_d": -0.15,
         "reg_dp": -0.0666,
         "pre": null,
-        "post": 225.03,
+        "post": 225.02,
         "prev_close": 225.16,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Tech stocks today: Anthropic's huge haul, Meta trial to kick off",
-          "datetime": 1787003915,
+          "datetime": 1787004008,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/technology/live/tech-stocks-today-anthropics-huge-haul-meta-trial-to-kick-off-132945569.html"
         }
@@ -103,7 +103,7 @@
       "news": [
         {
           "headline": "Workday Stock Is Downgraded After Buyout Report as Growth Expectations Are ‘Too Optimistic’",
-          "datetime": 1787003915,
+          "datetime": 1787004008,
           "source": "Yahoo Finance",
           "url": "https://www.barrons.com/articles/workday-stock-downgraded-buyout-report-9068d277?siteid=yhoof2&yptr=yahoo"
         }
@@ -112,21 +112,21 @@
     "TSM": {
       "name": "Taiwan Semiconductor Manufactur",
       "quote": {
-        "c": 430.57,
-        "d": -0.4,
-        "dp": -0.0928,
+        "c": 430.94,
+        "d": -0.03,
+        "dp": -0.007,
         "regular": 430.97,
         "reg_d": 4.62,
         "reg_dp": 1.0836,
         "pre": null,
-        "post": 430.57,
+        "post": 430.94,
         "prev_close": 426.35,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Nvidia's Next AI Infrastructure Bet Is Scaling Fast",
-          "datetime": 1787003915,
+          "datetime": 1787004008,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/technology/ai/articles/nvidias-next-ai-infrastructure-bet-203610188.html"
         }
@@ -135,21 +135,21 @@
     "MRVL": {
       "name": "Marvell Technology, Inc.",
       "quote": {
-        "c": 234.96,
-        "d": 0.63,
-        "dp": 0.2689,
+        "c": 234.89,
+        "d": 0.56,
+        "dp": 0.239,
         "regular": 234.33,
         "reg_d": 12.31,
         "reg_dp": 5.5445,
         "pre": null,
-        "post": 234.96,
+        "post": 234.89,
         "prev_close": 222.02,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Stocks to Watch Recap: Alibaba, L3Harris, Diana Shipping, BHP",
-          "datetime": 1787003915,
+          "datetime": 1787004008,
           "source": "Yahoo Finance",
           "url": "https://www.wsj.com/livecoverage/stock-market-today-dow-sp-500-nasdaq-08-17-2026/card/stocks-to-watch-alibaba-diana-shipping-bhp-xNrQSBdGgZVZiqNTks2N?siteid=yhoof2&yptr=yahoo"
         }
@@ -158,21 +158,21 @@
     "MU": {
       "name": "Micron Technology, Inc.",
       "quote": {
-        "c": 1013.0,
-        "d": 1.25,
-        "dp": 0.1235,
+        "c": 1013.89,
+        "d": 2.14,
+        "dp": 0.2114,
         "regular": 1011.75,
         "reg_d": 40.09,
         "reg_dp": 4.1259,
         "pre": null,
-        "post": 1013.0,
+        "post": 1013.89,
         "prev_close": 971.66,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Trump admin. urges Apple not to purchase Chinese memory chips, but this presents a problem",
-          "datetime": 1787003915,
+          "datetime": 1787004008,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/video/trump-admin-urges-apple-not-203543932.html"
         }
@@ -181,21 +181,21 @@
     "SNDK": {
       "name": "Sandisk Corporation",
       "quote": {
-        "c": 1789.77,
-        "d": 2.92,
-        "dp": 0.1634,
+        "c": 1789.86,
+        "d": 3.01,
+        "dp": 0.1685,
         "regular": 1786.85,
         "reg_d": 145.74,
         "reg_dp": 8.8806,
         "pre": null,
-        "post": 1789.77,
+        "post": 1789.86,
         "prev_close": 1641.11,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Tech searches for gains as stocks teeter at the open: AlphaCheck",
-          "datetime": 1787003915,
+          "datetime": 1787004008,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/markets/article/tech-searches-for-gains-as-stocks-teeter-at-the-open-alphacheck-135155576.html"
         }
@@ -204,21 +204,21 @@
     "SPCX": {
       "name": "Space Exploration Technologies",
       "quote": {
-        "c": 145.8,
-        "d": -0.43,
-        "dp": -0.2941,
+        "c": 145.7,
+        "d": -0.53,
+        "dp": -0.3624,
         "regular": 146.23,
         "reg_d": 6.23,
         "reg_dp": 4.45,
         "pre": null,
-        "post": 145.8,
+        "post": 145.7,
         "prev_close": 140.0,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "SpaceX shareholders include Google, Nvidia, BlackRock: Tracking the stock's volatility",
-          "datetime": 1787003915,
+          "datetime": 1787004008,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/video/spacex-shareholders-google-nvidia-blackrock-150348057.html"
         }
@@ -229,7 +229,7 @@
       "quote": {
         "c": 8.98,
         "d": -0.02,
-        "dp": -0.2389,
+        "dp": -0.2222,
         "regular": 9.0,
         "reg_d": -0.24,
         "reg_dp": -2.5974,
@@ -241,7 +241,7 @@
       "news": [
         {
           "headline": "Earnings, Fed Hopes Leave Markets in a Zen State. What Could Break It.",
-          "datetime": 1787003915,
+          "datetime": 1787004008,
           "source": "Yahoo Finance",
           "url": "https://www.barrons.com/articles/stock-market-things-to-know-today-9cb7b88a?siteid=yhoof2&yptr=yahoo"
         }
@@ -264,14 +264,14 @@
       "news": [
         {
           "headline": "Anthropic Projects $200 Billion of Revenue by 2028",
-          "datetime": 1787003915,
+          "datetime": 1787004008,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/technology/ai/articles/anthropic-projects-200-billion-revenue-205306475.html"
         }
       ]
     },
     "SKHYV": {
-      "name": "SK hynix Inc. - American Deposi",
+      "name": "SK hynix Inc. American Depositary Shares When Issued",
       "quote": {
         "c": 168.01,
         "d": 0.0,
@@ -287,7 +287,7 @@
       "news": [
         {
           "headline": "Why Micron Stock Just Dropped Again",
-          "datetime": 1787003915,
+          "datetime": 1787004008,
           "source": "Yahoo Finance",
           "url": "https://www.fool.com/investing/2026/07/15/why-micron-stock-just-dropped-again/"
         }
