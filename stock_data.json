@@ -1,7 +1,7 @@
 {
   "name": "美股盤前情報資料庫",
-  "updated_at": "2026-08-19T05:15:59.040241+08:00",
-  "next_update_at": "2026-08-18T22:00:00Z",
+  "updated_at": "2026-08-19T05:58:12.553380+08:00",
+  "next_update_at": "2026-08-18T22:30:00Z",
   "stocks": [
     "MSFT",
     "GOOG",
@@ -20,21 +20,21 @@
     "MSFT": {
       "name": "Microsoft Corporation",
       "quote": {
-        "c": 481.15,
-        "d": -0.48,
-        "dp": -0.1003,
+        "c": 480.59,
+        "d": -1.04,
+        "dp": -0.2157,
         "regular": 481.63,
         "reg_d": 1.28,
         "reg_dp": 0.2665,
         "pre": null,
-        "post": 481.15,
+        "post": 480.59,
         "prev_close": 480.35,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Why tech stock bulls may not shake this AI problem",
-          "datetime": 1787087759,
+          "datetime": 1787090292,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/markets/article/why-tech-stock-bulls-may-not-shake-this-ai-problem-132840379.html"
         }
@@ -43,21 +43,21 @@
     "GOOG": {
       "name": "Alphabet Inc.",
       "quote": {
-        "c": 341.18,
-        "d": -0.1,
-        "dp": -0.0293,
+        "c": 341.29,
+        "d": 0.01,
+        "dp": 0.0039,
         "regular": 341.28,
         "reg_d": -0.17,
         "reg_dp": -0.0498,
         "pre": null,
-        "post": 341.18,
+        "post": 341.29,
         "prev_close": 341.45,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "OpenAI releases new ChatGPT for Teens with parental controls, guardrails",
-          "datetime": 1787087759,
+          "datetime": 1787090292,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/video/openai-releases-chatgpt-teens-parental-195520710.html"
         }
@@ -66,21 +66,21 @@
     "NVDA": {
       "name": "NVIDIA Corporation",
       "quote": {
-        "c": 219.56,
-        "d": -0.18,
-        "dp": -0.0798,
+        "c": 219.48,
+        "d": -0.26,
+        "dp": -0.1169,
         "regular": 219.74,
         "reg_d": -5.27,
         "reg_dp": -2.3421,
         "pre": null,
-        "post": 219.56,
+        "post": 219.48,
         "prev_close": 225.01,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Chip-stock bears are back in control. Here's how to play the downside with limited risk: Alpha Options Playbook",
-          "datetime": 1787087759,
+          "datetime": 1787090292,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/markets/article/chip-stock-bears-are-back-in-control-heres-how-to-play-the-downside-with-limited-risk-alpha-options-playbook-161031671.html"
         }
@@ -89,21 +89,21 @@
     "NOW": {
       "name": "ServiceNow, Inc.",
       "quote": {
-        "c": 118.75,
-        "d": -0.74,
-        "dp": -0.6192,
+        "c": 119.18,
+        "d": -0.31,
+        "dp": -0.2624,
         "regular": 119.49,
         "reg_d": 1.79,
         "reg_dp": 1.5208,
         "pre": null,
-        "post": 118.75,
+        "post": 119.18,
         "prev_close": 117.7,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "CRM: A Cash Gusher At A Marked-Down Price",
-          "datetime": 1787087759,
+          "datetime": 1787090292,
           "source": "Yahoo Finance",
           "url": "https://www.trefis.com/articles/611859/crm-a-cash-gusher-at-a-marked-down-price/2026-08-18"
         }
@@ -126,7 +126,7 @@
       "news": [
         {
           "headline": "Bank of America Has a Message for Taiwan Semi Investors",
-          "datetime": 1787087759,
+          "datetime": 1787090292,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/technology/articles/bank-america-message-taiwan-semi-205042603.html"
         }
@@ -135,44 +135,44 @@
     "MRVL": {
       "name": "Marvell Technology, Inc.",
       "quote": {
-        "c": 215.9,
-        "d": -0.1,
-        "dp": -0.0463,
+        "c": 215.29,
+        "d": -0.71,
+        "dp": -0.3287,
         "regular": 216.0,
         "reg_d": -18.33,
         "reg_dp": -7.8223,
         "pre": null,
-        "post": 215.9,
+        "post": 215.29,
         "prev_close": 234.33,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Marvell Technology, Vishay Intertechnology, and Allegro MicroSystems Shares Plummet, What You Need To Know",
-          "datetime": 1787087759,
+          "headline": "Marvell CEO Just Made a $1.8 Million Move",
+          "datetime": 1787090292,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/markets/stocks/articles/marvell-technology-vishay-intertechnology-allegro-205333954.html"
+          "url": "https://finance.yahoo.com/technology/articles/marvell-ceo-just-made-1-211825247.html"
         }
       ]
     },
     "MU": {
       "name": "Micron Technology, Inc.",
       "quote": {
-        "c": 937.75,
-        "d": -3.01,
-        "dp": -0.32,
+        "c": 936.5,
+        "d": -4.26,
+        "dp": -0.4528,
         "regular": 940.76,
         "reg_d": -70.99,
         "reg_dp": -7.0166,
         "pre": null,
-        "post": 937.75,
+        "post": 936.5,
         "prev_close": 1011.75,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Chip-stock bears are back in control. Here's how to play the downside with limited risk: Alpha Options Playbook",
-          "datetime": 1787087759,
+          "datetime": 1787090292,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/markets/article/chip-stock-bears-are-back-in-control-heres-how-to-play-the-downside-with-limited-risk-alpha-options-playbook-161031671.html"
         }
@@ -181,21 +181,21 @@
     "SNDK": {
       "name": "Sandisk Corporation",
       "quote": {
-        "c": 1615.38,
-        "d": -10.4,
-        "dp": -0.6397,
+        "c": 1610.0,
+        "d": -15.78,
+        "dp": -0.9706,
         "regular": 1625.78,
         "reg_d": -161.07,
         "reg_dp": -9.0142,
         "pre": null,
-        "post": 1615.38,
+        "post": 1610.0,
         "prev_close": 1786.85,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Chip-stock bears are back in control. Here's how to play the downside with limited risk: Alpha Options Playbook",
-          "datetime": 1787087759,
+          "datetime": 1787090292,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/markets/article/chip-stock-bears-are-back-in-control-heres-how-to-play-the-downside-with-limited-risk-alpha-options-playbook-161031671.html"
         }
@@ -204,21 +204,21 @@
     "SPCX": {
       "name": "Space Exploration Technologies",
       "quote": {
-        "c": 142.94,
-        "d": -0.4,
-        "dp": -0.2791,
+        "c": 142.82,
+        "d": -0.52,
+        "dp": -0.3628,
         "regular": 143.34,
         "reg_d": -2.89,
         "reg_dp": -1.9763,
         "pre": null,
-        "post": 142.94,
+        "post": 142.82,
         "prev_close": 146.23,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Bond yields surge, presenting challenge for Fed ahead of Jackson Hole",
-          "datetime": 1787087759,
+          "datetime": 1787090292,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/video/bond-yields-surge-presenting-challenge-145000771.html"
         }
@@ -227,21 +227,21 @@
     "ONDS": {
       "name": "Ondas Inc",
       "quote": {
-        "c": 9.03,
-        "d": -0.03,
-        "dp": -0.3311,
+        "c": 9.0,
+        "d": -0.06,
+        "dp": -0.6612,
         "regular": 9.06,
         "reg_d": 0.06,
         "reg_dp": 0.6667,
         "pre": null,
-        "post": 9.03,
+        "post": 9.0,
         "prev_close": 9.0,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Ondas Shares Drop After Agreeing $33 Million Aran Defense Acquisition",
-          "datetime": 1787087759,
+          "datetime": 1787090292,
           "source": "Yahoo Finance",
           "url": "https://investorshub.advfn.com/market-news/article/34536/ondas-shares-drop-after-agreeing-33-million-aran-defense-acquisition"
         }
@@ -250,28 +250,28 @@
     "PLTR": {
       "name": "Palantir Technologies Inc.",
       "quote": {
-        "c": 170.88,
-        "d": -0.66,
-        "dp": -0.3847,
+        "c": 170.71,
+        "d": -0.83,
+        "dp": -0.4822,
         "regular": 171.54,
         "reg_d": -1.01,
         "reg_dp": -0.5853,
         "pre": null,
-        "post": 170.88,
+        "post": 170.71,
         "prev_close": 172.55,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Better Buy: Palantir at 108 Times Forward Earnings or Tesla at 190 Times?",
-          "datetime": 1787087759,
+          "headline": "Is Palantir the Next Trillion-Dollar Stock?",
+          "datetime": 1787090292,
           "source": "Yahoo Finance",
-          "url": "https://www.fool.com/investing/2026/08/18/better-buy-palantir-at-109x-forward-earnings-or-te/"
+          "url": "https://www.fool.com/investing/2026/08/18/is-palantir-the-next-trillion-dollar-stock/"
         }
       ]
     },
     "SKHYV": {
-      "name": "SK hynix Inc. - American Deposi",
+      "name": "SK hynix Inc. American Depositary Shares When Issued",
       "quote": {
         "c": 168.01,
         "d": 0.0,
@@ -287,7 +287,7 @@
       "news": [
         {
           "headline": "Why Micron Stock Just Dropped Again",
-          "datetime": 1787087759,
+          "datetime": 1787090292,
           "source": "Yahoo Finance",
           "url": "https://www.fool.com/investing/2026/07/15/why-micron-stock-just-dropped-again/"
         }
@@ -295,7 +295,7 @@
     }
   },
   "alert_sent": {
-    "morning": "2026-08-18",
+    "morning": "2026-08-19",
     "evening": "2026-08-18"
   }
 }
