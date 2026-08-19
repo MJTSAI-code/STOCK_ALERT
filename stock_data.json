@@ -1,7 +1,7 @@
 {
   "name": "美股盤前情報資料庫",
-  "updated_at": "2026-08-20T04:55:27.961642+08:00",
-  "next_update_at": "2026-08-19T21:30:00Z",
+  "updated_at": "2026-08-20T05:18:34.676081+08:00",
+  "next_update_at": "2026-08-19T22:00:00Z",
   "stocks": [
     "MSFT",
     "GOOG",
@@ -20,258 +20,258 @@
     "MSFT": {
       "name": "Microsoft Corporation",
       "quote": {
-        "c": 450.97,
-        "d": -33.34,
-        "dp": -6.8843,
+        "c": 484.8,
+        "d": 0.49,
+        "dp": 0.1012,
         "regular": 484.31,
         "reg_d": 2.68,
         "reg_dp": 0.5564,
         "pre": null,
-        "post": 450.97,
+        "post": 484.8,
         "prev_close": 481.63,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Why tech stock bulls may not shake this AI problem",
-          "datetime": 1787092102,
+          "headline": "U.S. Markets Prepare For AI Compute Derivatives Tied To TSMC, Nvidia GPU Prices",
+          "datetime": 1787174314,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/markets/article/why-tech-stock-bulls-may-not-shake-this-ai-problem-132840379.html"
+          "url": "https://www.investors.com/news/ai-compute-derivatives-nvidia-meta-tsmc-broadcom-microsoft-amazon-google/?src=A00220&yptr=yahoo"
         }
       ]
     },
     "GOOG": {
       "name": "Alphabet Inc.",
       "quote": {
-        "c": 341.55,
-        "d": -0.15,
-        "dp": -0.0439,
+        "c": 341.67,
+        "d": -0.03,
+        "dp": -0.0088,
         "regular": 341.7,
         "reg_d": 0.42,
         "reg_dp": 0.1231,
         "pre": null,
-        "post": 341.55,
+        "post": 341.67,
         "prev_close": 341.28,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "OpenAI releases new ChatGPT for Teens with parental controls, guardrails",
-          "datetime": 1787092102,
+          "headline": "There's 'light at the end of the tunnel' for tech stocks amid bond rout: Eric Jackson",
+          "datetime": 1787174314,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/video/openai-releases-chatgpt-teens-parental-195520710.html"
+          "url": "https://finance.yahoo.com/video/theres-light-end-tunnel-tech-140846636.html"
         }
       ]
     },
     "NVDA": {
       "name": "NVIDIA Corporation",
       "quote": {
-        "c": 217.96,
-        "d": 0.4,
-        "dp": 0.1849,
+        "c": 218.25,
+        "d": 0.69,
+        "dp": 0.3192,
         "regular": 217.56,
         "reg_d": -2.18,
         "reg_dp": -0.9921,
         "pre": null,
-        "post": 217.96,
+        "post": 218.25,
         "prev_close": 219.74,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Chip-stock bears are back in control. Here's how to play the downside with limited risk: Alpha Options Playbook",
-          "datetime": 1787092102,
+          "headline": "Is Nvidia stock too cheap right now?",
+          "datetime": 1787174314,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/markets/article/chip-stock-bears-are-back-in-control-heres-how-to-play-the-downside-with-limited-risk-alpha-options-playbook-161031671.html"
+          "url": "https://finance.yahoo.com/video/nvidia-stock-too-cheap-now-144036744.html"
         }
       ]
     },
     "NOW": {
       "name": "ServiceNow, Inc.",
       "quote": {
-        "c": 127.05,
-        "d": -0.15,
-        "dp": -0.1179,
+        "c": 126.71,
+        "d": -0.49,
+        "dp": -0.3852,
         "regular": 127.2,
         "reg_d": 7.71,
         "reg_dp": 6.4524,
         "pre": null,
-        "post": 127.05,
+        "post": 126.71,
         "prev_close": 119.49,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "CRM: A Cash Gusher At A Marked-Down Price",
-          "datetime": 1787092102,
+          "headline": "Is ServiceNow (NOW) Quietly Becoming the Default Orchestrator for Enterprise AI Automation?",
+          "datetime": 1787174314,
           "source": "Yahoo Finance",
-          "url": "https://www.trefis.com/articles/611859/crm-a-cash-gusher-at-a-marked-down-price/2026-08-18"
+          "url": "https://finance.yahoo.com/technology/ai/articles/servicenow-now-quietly-becoming-default-191029416.html"
         }
       ]
     },
     "TSM": {
       "name": "Taiwan Semiconductor Manufactur",
       "quote": {
-        "c": 421.47,
-        "d": 9.38,
-        "dp": 2.2751,
+        "c": 412.99,
+        "d": 0.9,
+        "dp": 0.2178,
         "regular": 412.09,
         "reg_d": -1.32,
         "reg_dp": -0.3193,
         "pre": null,
-        "post": 421.47,
+        "post": 412.99,
         "prev_close": 413.41,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Broadcom (AVGO) Faces Rising Hedge Fund Caution",
-          "datetime": 1787092102,
+          "headline": "U.S. Markets Prepare For AI Compute Derivatives Tied To TSMC, Nvidia GPU Prices",
+          "datetime": 1787174314,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/markets/stocks/articles/broadcom-avgo-faces-rising-hedge-221059949.html"
+          "url": "https://www.investors.com/news/ai-compute-derivatives-nvidia-meta-tsmc-broadcom-microsoft-amazon-google/?src=A00220&yptr=yahoo"
         }
       ]
     },
     "MRVL": {
       "name": "Marvell Technology, Inc.",
       "quote": {
-        "c": 239.16,
-        "d": 1.89,
-        "dp": 0.7966,
+        "c": 238.3,
+        "d": 1.03,
+        "dp": 0.4341,
         "regular": 237.27,
         "reg_d": 21.27,
         "reg_dp": 9.8472,
         "pre": null,
-        "post": 239.16,
+        "post": 238.3,
         "prev_close": 216.0,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Marvell CEO Just Made a $1.8 Million Move",
-          "datetime": 1787092102,
+          "headline": "Marvell Stock Jumps On Google Deal, Broadcom Slides",
+          "datetime": 1787174314,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/technology/articles/marvell-ceo-just-made-1-211825247.html"
+          "url": "https://www.investors.com/news/technology/marvell-stock-jumps-on-google-chip-investment-deal/?src=A00220&yptr=yahoo"
         }
       ]
     },
     "MU": {
       "name": "Micron Technology, Inc.",
       "quote": {
-        "c": 940.1,
-        "d": 2.99,
-        "dp": 0.3196,
+        "c": 940.8,
+        "d": 3.7,
+        "dp": 0.3943,
         "regular": 937.11,
         "reg_d": -3.65,
         "reg_dp": -0.3885,
         "pre": null,
-        "post": 940.1,
+        "post": 940.8,
         "prev_close": 940.76,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Chip-stock bears are back in control. Here's how to play the downside with limited risk: Alpha Options Playbook",
-          "datetime": 1787092102,
+          "headline": "This Billionaire Tech Investor Is Betting Big on SpaceX and Chip Stocks",
+          "datetime": 1787174314,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/markets/article/chip-stock-bears-are-back-in-control-heres-how-to-play-the-downside-with-limited-risk-alpha-options-playbook-161031671.html"
+          "url": "https://www.fool.com/investing/2026/08/19/this-billionaire-tech-investor-is-betting-big-on-s/"
         }
       ]
     },
     "SNDK": {
       "name": "Sandisk Corporation",
       "quote": {
-        "c": 1588.99,
-        "d": 20.12,
-        "dp": 1.2825,
+        "c": 1594.99,
+        "d": 26.12,
+        "dp": 1.6649,
         "regular": 1568.87,
         "reg_d": -56.91,
         "reg_dp": -3.5005,
         "pre": null,
-        "post": 1588.99,
+        "post": 1594.99,
         "prev_close": 1625.78,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Chip-stock bears are back in control. Here's how to play the downside with limited risk: Alpha Options Playbook",
-          "datetime": 1787092102,
+          "headline": "15 S&P 500 stocks are up 100% or more this year — here's what they have in common",
+          "datetime": 1787174314,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/markets/article/chip-stock-bears-are-back-in-control-heres-how-to-play-the-downside-with-limited-risk-alpha-options-playbook-161031671.html"
+          "url": "https://finance.yahoo.com/markets/article/15-sp-500-stocks-are-up-100-or-more-this-year--heres-what-they-have-in-common-135448325.html"
         }
       ]
     },
     "SPCX": {
       "name": "Space Exploration Technologies",
       "quote": {
-        "c": 139.66,
-        "d": 0.01,
-        "dp": 0.0072,
+        "c": 140.06,
+        "d": 0.41,
+        "dp": 0.2939,
         "regular": 139.65,
         "reg_d": -3.69,
         "reg_dp": -2.5743,
         "pre": null,
-        "post": 139.66,
+        "post": 140.06,
         "prev_close": 143.34,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Bond yields surge, presenting challenge for Fed ahead of Jackson Hole",
-          "datetime": 1787092102,
+          "headline": "SpaceX stock falls after China rocket milestone, share unlock ahead",
+          "datetime": 1787174314,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/video/bond-yields-surge-presenting-challenge-145000771.html"
+          "url": "https://finance.yahoo.com/markets/stocks/article/spacex-stock-falls-after-china-rocket-milestone-share-unlock-ahead-134536527.html"
         }
       ]
     },
     "ONDS": {
       "name": "Ondas Inc",
       "quote": {
-        "c": 8.88,
-        "d": -0.02,
-        "dp": -0.2236,
+        "c": 8.89,
+        "d": -0.01,
+        "dp": -0.1135,
         "regular": 8.9,
         "reg_d": -0.16,
         "reg_dp": -1.766,
         "pre": null,
-        "post": 8.88,
+        "post": 8.89,
         "prev_close": 9.06,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Swarmer’s SkyKnight & Platform Expansion Builds Commercial Momentum – Quarterly Update Report",
-          "datetime": 1787092102,
+          "headline": "Ondas’ Defense Push Gets Another Vote Of Confidence – Roth Capital Sees 44% Upside",
+          "datetime": 1787174314,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/technology/articles/swarmer-skyknight-platform-expansion-builds-220706231.html"
+          "url": "https://stocktwits.com/news-articles/markets/equity/ondas-defense-push-gets-another-vote-of-confidence-roth-capital-sees-44-upside/cZYdI14RJkX"
         }
       ]
     },
     "PLTR": {
       "name": "Palantir Technologies Inc.",
       "quote": {
-        "c": 175.33,
-        "d": 0.14,
-        "dp": 0.0799,
+        "c": 175.41,
+        "d": 0.22,
+        "dp": 0.1256,
         "regular": 175.19,
         "reg_d": 3.65,
         "reg_dp": 2.1278,
         "pre": null,
-        "post": 175.33,
+        "post": 175.41,
         "prev_close": 171.54,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Is Palantir the Next Trillion-Dollar Stock?",
-          "datetime": 1787092102,
+          "headline": "Software Companies' Second-Quarter Beat Rate Accelerates Sequentially, RBC Says",
+          "datetime": 1787174314,
           "source": "Yahoo Finance",
-          "url": "https://www.fool.com/investing/2026/08/18/is-palantir-the-next-trillion-dollar-stock/"
+          "url": "https://finance.yahoo.com/technology/articles/software-companies-apos-second-quarter-203412309.html"
         }
       ]
     },
     "SKHYV": {
-      "name": "SK hynix Inc. American Depositary Shares When Issued",
+      "name": "SK hynix Inc. - American Deposi",
       "quote": {
         "c": 168.01,
         "d": 0.0,
@@ -287,7 +287,7 @@
       "news": [
         {
           "headline": "Why Micron Stock Just Dropped Again",
-          "datetime": 1787092102,
+          "datetime": 1787174314,
           "source": "Yahoo Finance",
           "url": "https://www.fool.com/investing/2026/07/15/why-micron-stock-just-dropped-again/"
         }
