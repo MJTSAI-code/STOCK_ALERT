@@ -1,7 +1,7 @@
 {
   "name": "美股盤前情報資料庫",
-  "updated_at": "2026-08-20T05:58:28.031577+08:00",
-  "next_update_at": "2026-08-19T22:30:00Z",
+  "updated_at": "2026-08-20T06:00:50.971406+08:00",
+  "next_update_at": "2026-08-19T23:00:00Z",
   "stocks": [
     "MSFT",
     "GOOG",
@@ -20,21 +20,21 @@
     "MSFT": {
       "name": "Microsoft Corporation",
       "quote": {
-        "c": 484.09,
-        "d": -0.22,
-        "dp": -0.0462,
+        "c": 484.1,
+        "d": -0.21,
+        "dp": -0.0434,
         "regular": 484.31,
         "reg_d": 2.68,
         "reg_dp": 0.5564,
         "pre": null,
-        "post": 484.09,
+        "post": 484.1,
         "prev_close": 481.63,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "VUG’s 0.03% Fee Hides the Real Cost: 63% of Your Money Sits in Just Ten Stocks",
-          "datetime": 1787176708,
+          "datetime": 1787176850,
           "source": "Yahoo Finance",
           "url": "https://247wallst.com/investing/etf/2026/08/19/vugs-0-03-fee-hides-the-real-cost-63-of-your-money-sits-in-just-ten-stocks/"
         }
@@ -43,21 +43,21 @@
     "GOOG": {
       "name": "Alphabet Inc.",
       "quote": {
-        "c": 341.4,
-        "d": -0.3,
-        "dp": -0.0878,
+        "c": 341.48,
+        "d": -0.22,
+        "dp": -0.0634,
         "regular": 341.7,
         "reg_d": 0.42,
         "reg_dp": 0.1231,
         "pre": null,
-        "post": 341.4,
+        "post": 341.48,
         "prev_close": 341.28,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "There's 'light at the end of the tunnel' for tech stocks amid bond rout: Eric Jackson",
-          "datetime": 1787176708,
+          "datetime": 1787176850,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/video/theres-light-end-tunnel-tech-140846636.html"
         }
@@ -66,21 +66,21 @@
     "NVDA": {
       "name": "NVIDIA Corporation",
       "quote": {
-        "c": 218.35,
-        "d": 0.79,
-        "dp": 0.3631,
+        "c": 218.34,
+        "d": 0.78,
+        "dp": 0.3591,
         "regular": 217.56,
         "reg_d": -2.18,
         "reg_dp": -0.9921,
         "pre": null,
-        "post": 218.35,
+        "post": 218.34,
         "prev_close": 219.74,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Is Nvidia stock too cheap right now?",
-          "datetime": 1787176708,
+          "datetime": 1787176850,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/video/nvidia-stock-too-cheap-now-144036744.html"
         }
@@ -103,7 +103,7 @@
       "news": [
         {
           "headline": "Is ServiceNow (NOW) Quietly Becoming the Default Orchestrator for Enterprise AI Automation?",
-          "datetime": 1787176708,
+          "datetime": 1787176850,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/technology/ai/articles/servicenow-now-quietly-becoming-default-191029416.html"
         }
@@ -126,7 +126,7 @@
       "news": [
         {
           "headline": "Samsung Tumbled Nearly 8% in Seoul Even as AI Demand Drives Chip Prices Up To 15%",
-          "datetime": 1787176708,
+          "datetime": 1787176850,
           "source": "Yahoo Finance",
           "url": "https://www.benzinga.com/markets/prediction-markets/26/08/61317561/samsung-chip-prices-ai-demand?utm_source=yahooFinance&utm_campaign=partner_feed&utm_medium=referral"
         }
@@ -135,44 +135,44 @@
     "MRVL": {
       "name": "Marvell Technology, Inc.",
       "quote": {
-        "c": 240.35,
-        "d": 3.08,
-        "dp": 1.2981,
+        "c": 240.5,
+        "d": 3.23,
+        "dp": 1.3613,
         "regular": 237.27,
         "reg_d": 21.27,
         "reg_dp": 9.8472,
         "pre": null,
-        "post": 240.35,
+        "post": 240.5,
         "prev_close": 216.0,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Marvell Technology (MRVL) Expands Google AI Partnership: What Investors Need to Know",
-          "datetime": 1787176708,
+          "headline": "Broadcom (AVGO) Is Down More Than 20%—Why TD Cowen Still Sees 27% Upside",
+          "datetime": 1787176850,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/technology/ai/articles/marvell-technology-mrvl-expands-google-211507897.html"
+          "url": "https://finance.yahoo.com/markets/stocks/articles/broadcom-avgo-down-more-20-214954022.html"
         }
       ]
     },
     "MU": {
       "name": "Micron Technology, Inc.",
       "quote": {
-        "c": 938.36,
-        "d": 1.26,
-        "dp": 0.1339,
+        "c": 938.7,
+        "d": 1.6,
+        "dp": 0.1702,
         "regular": 937.11,
         "reg_d": -3.65,
         "reg_dp": -0.3885,
         "pre": null,
-        "post": 938.36,
+        "post": 938.7,
         "prev_close": 940.76,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Billionaire Stanley Druckenmiller Just Dumped Micron and Intel While Adding These 2 AI Stocks. Should Investors Follow Suit?",
-          "datetime": 1787176708,
+          "datetime": 1787176850,
           "source": "Yahoo Finance",
           "url": "https://www.fool.com/investing/2026/08/19/billionaire-stanley-druckenmiller-just-dumped-micr/"
         }
@@ -181,21 +181,21 @@
     "SNDK": {
       "name": "Sandisk Corporation",
       "quote": {
-        "c": 1587.67,
-        "d": 18.8,
-        "dp": 1.1986,
+        "c": 1589.0,
+        "d": 20.13,
+        "dp": 1.2831,
         "regular": 1568.87,
         "reg_d": -56.91,
         "reg_dp": -3.5005,
         "pre": null,
-        "post": 1587.67,
+        "post": 1589.0,
         "prev_close": 1625.78,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "15 S&P 500 stocks are up 100% or more this year — here's what they have in common",
-          "datetime": 1787176708,
+          "datetime": 1787176850,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/markets/article/15-sp-500-stocks-are-up-100-or-more-this-year--heres-what-they-have-in-common-135448325.html"
         }
@@ -218,7 +218,7 @@
       "news": [
         {
           "headline": "SpaceX stock falls after China rocket milestone, share unlock ahead",
-          "datetime": 1787176708,
+          "datetime": 1787176850,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/markets/stocks/article/spacex-stock-falls-after-china-rocket-milestone-share-unlock-ahead-134536527.html"
         }
@@ -227,21 +227,21 @@
     "ONDS": {
       "name": "Ondas Inc",
       "quote": {
-        "c": 8.9,
-        "d": 0.0,
-        "dp": 0.0,
+        "c": 8.89,
+        "d": -0.01,
+        "dp": -0.1112,
         "regular": 8.9,
         "reg_d": -0.16,
         "reg_dp": -1.766,
         "pre": null,
-        "post": 8.9,
+        "post": 8.89,
         "prev_close": 9.06,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Ondas’ Defense Push Gets Another Vote Of Confidence – Roth Capital Sees 44% Upside",
-          "datetime": 1787176708,
+          "datetime": 1787176850,
           "source": "Yahoo Finance",
           "url": "https://stocktwits.com/news-articles/markets/equity/ondas-defense-push-gets-another-vote-of-confidence-roth-capital-sees-44-upside/cZYdI14RJkX"
         }
@@ -250,21 +250,21 @@
     "PLTR": {
       "name": "Palantir Technologies Inc.",
       "quote": {
-        "c": 175.02,
-        "d": -0.17,
-        "dp": -0.0986,
+        "c": 175.07,
+        "d": -0.12,
+        "dp": -0.0708,
         "regular": 175.19,
         "reg_d": 3.65,
         "reg_dp": 2.1278,
         "pre": null,
-        "post": 175.02,
+        "post": 175.07,
         "prev_close": 171.54,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Software Companies' Second-Quarter Beat Rate Accelerates Sequentially, RBC Says",
-          "datetime": 1787176708,
+          "datetime": 1787176850,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/technology/articles/software-companies-apos-second-quarter-203412309.html"
         }
@@ -287,7 +287,7 @@
       "news": [
         {
           "headline": "Why Micron Stock Just Dropped Again",
-          "datetime": 1787176708,
+          "datetime": 1787176850,
           "source": "Yahoo Finance",
           "url": "https://www.fool.com/investing/2026/07/15/why-micron-stock-just-dropped-again/"
         }
