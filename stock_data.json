@@ -1,7 +1,7 @@
 {
   "name": "美股盤前情報資料庫",
-  "updated_at": "2026-08-22T04:52:27.506303+08:00",
-  "next_update_at": "2026-08-21T21:30:00Z",
+  "updated_at": "2026-08-22T05:16:19.963366+08:00",
+  "next_update_at": "2026-08-21T22:00:00Z",
   "stocks": [
     "MSFT",
     "GOOG",
@@ -20,253 +20,253 @@
     "MSFT": {
       "name": "Microsoft Corporation",
       "quote": {
-        "c": 482.32,
-        "d": -0.92,
-        "dp": -0.1912,
+        "c": 482.55,
+        "d": -0.69,
+        "dp": -0.1428,
         "regular": 483.24,
         "reg_d": 2.09,
         "reg_dp": 0.4344,
         "pre": null,
-        "post": 482.32,
+        "post": 482.55,
         "prev_close": 481.15,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "The Biggest Risk Facing the First Trust Nasdaq Semiconductor ETF (FTXL) Right Now",
-          "datetime": 1787265122,
+          "headline": "The Premium On AAPL Stock Vs What Its Peers Deliver",
+          "datetime": 1787346979,
           "source": "Yahoo Finance",
-          "url": "https://247wallst.com/investing/2026/08/20/the-biggest-risk-facing-the-first-trust-nasdaq-semiconductor-etf-ftxl-right-now/"
+          "url": "https://www.trefis.com/articles/612366/the-premium-on-aapl-stock-vs-what-its-peers-deliver/2026-08-21"
         }
       ]
     },
     "GOOG": {
       "name": "Alphabet Inc.",
       "quote": {
-        "c": 342.22,
-        "d": 0.47,
-        "dp": 0.1375,
+        "c": 341.92,
+        "d": 0.17,
+        "dp": 0.0497,
         "regular": 341.75,
         "reg_d": 3.55,
         "reg_dp": 1.0497,
         "pre": null,
-        "post": 342.22,
+        "post": 341.92,
         "prev_close": 338.2,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Waymo is making its own AI chip for its robotaxi service",
-          "datetime": 1787265122,
+          "headline": "Nvidia earnings are on deck next week. These 3 themes will be mission-critical.",
+          "datetime": 1787346979,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/video/waymo-making-own-ai-chip-194318039.html"
+          "url": "https://finance.yahoo.com/video/nvidia-earnings-deck-next-week-200251512.html"
         }
       ]
     },
     "NVDA": {
       "name": "NVIDIA Corporation",
       "quote": {
-        "c": 215.07,
-        "d": 0.35,
-        "dp": 0.1619,
+        "c": 215.03,
+        "d": 0.31,
+        "dp": 0.1454,
         "regular": 214.72,
         "reg_d": -2.13,
         "reg_dp": -0.9822,
         "pre": null,
-        "post": 215.07,
+        "post": 215.03,
         "prev_close": 216.85,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Tech stocks today: Anthropic's IPO plans come into focus, Nvidia earnings provide next test for AI trade",
-          "datetime": 1787265122,
+          "headline": "Stock market today: Dow, S&P 500, Nasdaq post weekly losses as bond volatility remains in focus, bitcoin soars",
+          "datetime": 1787346979,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/technology/live/tech-stocks-today-anthropics-ipo-plans-come-into-focus-nvidia-earnings-provide-next-test-for-ai-trade-132945569.html"
+          "url": "https://finance.yahoo.com/markets/live/stock-market-today-friday-august-21-dow-sp-500-nasdaq-bitcoin-080533702.html"
         }
       ]
     },
     "NOW": {
       "name": "ServiceNow, Inc.",
       "quote": {
-        "c": 127.76,
-        "d": -0.72,
-        "dp": -0.5604,
+        "c": 128.0,
+        "d": -0.48,
+        "dp": -0.3736,
         "regular": 128.48,
         "reg_d": -1.27,
         "reg_dp": -0.9788,
         "pre": null,
-        "post": 127.76,
+        "post": 128.0,
         "prev_close": 129.75,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Salesforce Stock Is Priced For A Wider Year Than The One It Just Had",
-          "datetime": 1787265122,
+          "headline": "Is UiPath's Expanding ARR Strengthening Its Long-Term Growth Story?",
+          "datetime": 1787346979,
           "source": "Yahoo Finance",
-          "url": "https://www.trefis.com/articles/612233/salesforce-stock-is-priced-for-a-wider-year-than-the-one-it-just-had/2026-08-20"
+          "url": "https://finance.yahoo.com/markets/stocks/articles/uipaths-expanding-arr-strengthening-long-180900883.html"
         }
       ]
     },
     "TSM": {
       "name": "Taiwan Semiconductor Manufactur",
       "quote": {
-        "c": 419.18,
-        "d": 0.23,
-        "dp": 0.0546,
+        "c": 419.0,
+        "d": 0.05,
+        "dp": 0.0119,
         "regular": 418.95,
         "reg_d": 2.95,
         "reg_dp": 0.7091,
         "pre": null,
-        "post": 419.18,
+        "post": 419.0,
         "prev_close": 416.0,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Waymo is making its own AI chip for its robotaxi service",
-          "datetime": 1787265122,
+          "headline": "Taiwan Semiconductor (TSM) Sales Just Jumped 45%. Why is the Chip Sector Still Selling Off?",
+          "datetime": 1787346979,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/video/waymo-making-own-ai-chip-194318039.html"
+          "url": "https://finance.yahoo.com/technology/ai/articles/taiwan-semiconductor-tsm-sales-just-205844477.html"
         }
       ]
     },
     "MRVL": {
       "name": "Marvell Technology, Inc.",
       "quote": {
-        "c": 237.28,
-        "d": 0.24,
-        "dp": 0.1013,
+        "c": 237.2,
+        "d": 0.16,
+        "dp": 0.0675,
         "regular": 237.04,
         "reg_d": -13.97,
         "reg_dp": -5.5655,
         "pre": null,
-        "post": 237.28,
+        "post": 237.2,
         "prev_close": 251.01,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Earn 17% On AMD Stock Now, For Capping Your Upside At 24%",
-          "datetime": 1787265122,
+          "headline": "Dow Jones Futures: Market Rally Repairs Some Damage; Nvidia, CrowdStrike, Warsh In Focus",
+          "datetime": 1787346979,
           "source": "Yahoo Finance",
-          "url": "https://www.trefis.com/articles/612208/earn-17-on-amd-stock-now-for-capping-your-upside-at-24/2026-08-20"
+          "url": "https://www.investors.com/market-trend/stock-market-today/dow-jones-futures-market-rally-nvidia-crowdstrike-warsh/?src=A00220&yptr=yahoo"
         }
       ]
     },
     "MU": {
       "name": "Micron Technology, Inc.",
       "quote": {
-        "c": 965.19,
-        "d": -1.59,
-        "dp": -0.1644,
+        "c": 964.9,
+        "d": -1.88,
+        "dp": -0.1941,
         "regular": 966.78,
         "reg_d": -7.55,
         "reg_dp": -0.7749,
         "pre": null,
-        "post": 965.19,
+        "post": 964.9,
         "prev_close": 974.33,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Waymo is making its own AI chip for its robotaxi service",
-          "datetime": 1787265122,
+          "headline": "Why higher yields aren't scaring off retail traders",
+          "datetime": 1787346979,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/video/waymo-making-own-ai-chip-194318039.html"
+          "url": "https://finance.yahoo.com/video/why-higher-yields-arent-scaring-201500563.html"
         }
       ]
     },
     "SNDK": {
       "name": "Sandisk Corporation",
       "quote": {
-        "c": 1596.25,
-        "d": 0.17,
-        "dp": 0.0107,
+        "c": 1597.5,
+        "d": 1.42,
+        "dp": 0.089,
         "regular": 1596.08,
         "reg_d": -4.54,
         "reg_dp": -0.2836,
         "pre": null,
-        "post": 1596.25,
+        "post": 1597.5,
         "prev_close": 1600.62,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Waymo is making its own AI chip for its robotaxi service",
-          "datetime": 1787265122,
+          "headline": "Why higher yields aren't scaring off retail traders",
+          "datetime": 1787346979,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/video/waymo-making-own-ai-chip-194318039.html"
+          "url": "https://finance.yahoo.com/video/why-higher-yields-arent-scaring-201500563.html"
         }
       ]
     },
     "SPCX": {
       "name": "Space Exploration Technologies",
       "quote": {
-        "c": 136.82,
-        "d": -0.15,
-        "dp": -0.1095,
+        "c": 136.8,
+        "d": -0.17,
+        "dp": -0.1241,
         "regular": 136.97,
         "reg_d": 2.97,
         "reg_dp": 2.2164,
         "pre": null,
-        "post": 136.82,
+        "post": 136.8,
         "prev_close": 134.0,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Tech stocks today: Anthropic's IPO plans come into focus, Nvidia earnings provide next test for AI trade",
-          "datetime": 1787265122,
+          "headline": "Stock market today: Dow, S&P 500, Nasdaq post weekly losses as bond volatility remains in focus, bitcoin soars",
+          "datetime": 1787346979,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/technology/live/tech-stocks-today-anthropics-ipo-plans-come-into-focus-nvidia-earnings-provide-next-test-for-ai-trade-132945569.html"
+          "url": "https://finance.yahoo.com/markets/live/stock-market-today-friday-august-21-dow-sp-500-nasdaq-bitcoin-080533702.html"
         }
       ]
     },
     "ONDS": {
       "name": "Ondas Inc",
       "quote": {
-        "c": 8.67,
-        "d": -0.04,
-        "dp": -0.4363,
+        "c": 8.71,
+        "d": 0.0,
+        "dp": 0.0,
         "regular": 8.71,
         "reg_d": 0.33,
         "reg_dp": 3.9379,
         "pre": null,
-        "post": 8.67,
+        "post": 8.71,
         "prev_close": 8.38,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Ondas Drops 7%, Unusual Machines Sinks 8%, Kratos Falls 5% as the Drone Trade Unwinds",
-          "datetime": 1787265122,
+          "headline": "Ondas vs. Red Cat: Which Drone Stock Is the Better Pick Now?",
+          "datetime": 1787346979,
           "source": "Yahoo Finance",
-          "url": "https://247wallst.com/investing/2026/08/20/ondas-drops-7-unusual-machines-sinks-8-kratos-falls-5-as-the-drone-trade-unwinds/"
+          "url": "https://finance.yahoo.com/markets/stocks/articles/ondas-vs-red-cat-drone-150600591.html"
         }
       ]
     },
     "PLTR": {
       "name": "Palantir Technologies Inc.",
       "quote": {
-        "c": 179.6,
-        "d": -0.34,
-        "dp": -0.1889,
+        "c": 179.71,
+        "d": -0.23,
+        "dp": -0.1256,
         "regular": 179.94,
         "reg_d": 5.98,
         "reg_dp": 3.4376,
         "pre": null,
-        "post": 179.6,
+        "post": 179.71,
         "prev_close": 173.96,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Dow Jones Futures: Market Triggers This Bearish Signal As Walmart, SpaceX, CrowdStrike Tumble",
-          "datetime": 1787265122,
+          "headline": "Stock Market Today: Dow Gains 500 Points; SpaceX Snaps A Losing Streak, Bitcoin Pops",
+          "datetime": 1787346979,
           "source": "Yahoo Finance",
-          "url": "https://www.investors.com/market-trend/stock-market-today/dow-jones-futures-market-triggers-bearish-signal-walmart-spacex-crowdstrike/?src=A00220&yptr=yahoo"
+          "url": "https://www.investors.com/market-trend/stock-market-today/dow-jones-sp500-nasdaq-stock-market-sell-off-bitcoin-surges/?src=A00220&yptr=yahoo"
         }
       ]
     },
@@ -287,7 +287,7 @@
       "news": [
         {
           "headline": "Why Micron Stock Just Dropped Again",
-          "datetime": 1787265122,
+          "datetime": 1787346979,
           "source": "Yahoo Finance",
           "url": "https://www.fool.com/investing/2026/07/15/why-micron-stock-just-dropped-again/"
         }
