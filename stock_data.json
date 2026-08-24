@@ -1,7 +1,7 @@
 {
   "name": "美股盤前情報資料庫",
-  "updated_at": "2026-08-25T06:01:30.893717+08:00",
-  "next_update_at": "2026-08-24T23:00:00Z",
+  "updated_at": "2026-08-25T06:31:15.779756+08:00",
+  "next_update_at": "2026-08-24T23:30:00Z",
   "stocks": [
     "MSFT",
     "GOOG",
@@ -20,21 +20,21 @@
     "MSFT": {
       "name": "Microsoft Corporation",
       "quote": {
-        "c": 487.46,
-        "d": 0.15,
-        "dp": 0.0308,
+        "c": 487.68,
+        "d": 0.37,
+        "dp": 0.0759,
         "regular": 487.31,
         "reg_d": 4.07,
         "reg_dp": 0.8422,
         "pre": null,
-        "post": 487.46,
+        "post": 487.68,
         "prev_close": 483.24,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Nvidia's Q2 earnings to test resurgent AI trade",
-          "datetime": 1787608890,
+          "datetime": 1787610675,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/news/nvidias-q2-earnings-to-test-resurgent-ai-trade-112502189.html"
         }
@@ -43,21 +43,21 @@
     "GOOG": {
       "name": "Alphabet Inc.",
       "quote": {
-        "c": 345.2,
-        "d": 0.61,
-        "dp": 0.177,
+        "c": 345.05,
+        "d": 0.46,
+        "dp": 0.1335,
         "regular": 344.59,
         "reg_d": 2.84,
         "reg_dp": 0.831,
         "pre": null,
-        "post": 345.2,
+        "post": 345.05,
         "prev_close": 341.75,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Tesla to launch Cybercabs in Austin starting Sept. 3",
-          "datetime": 1787608890,
+          "datetime": 1787610675,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/video/tesla-launch-cybercabs-austin-starting-205004873.html"
         }
@@ -66,21 +66,21 @@
     "NVDA": {
       "name": "NVIDIA Corporation",
       "quote": {
-        "c": 208.89,
-        "d": 0.41,
-        "dp": 0.1967,
+        "c": 208.67,
+        "d": 0.19,
+        "dp": 0.0911,
         "regular": 208.48,
         "reg_d": -6.24,
         "reg_dp": -2.9061,
         "pre": null,
-        "post": 208.89,
+        "post": 208.67,
         "prev_close": 214.72,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "What's at stake for Paramount, the Ellisons in Warner Bros. takeover bid",
-          "datetime": 1787608890,
+          "datetime": 1787610675,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/video/whats-stake-paramount-ellisons-warner-213000825.html"
         }
@@ -89,21 +89,21 @@
     "NOW": {
       "name": "ServiceNow, Inc.",
       "quote": {
-        "c": 127.41,
-        "d": -0.64,
-        "dp": -0.5,
+        "c": 127.35,
+        "d": -0.7,
+        "dp": -0.5467,
         "regular": 128.05,
         "reg_d": -0.43,
         "reg_dp": -0.3347,
         "pre": null,
-        "post": 127.41,
+        "post": 127.35,
         "prev_close": 128.48,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Can NOW's Tech Mahindra Deal Boost Its AI Edge Over CRM & MSFT?",
-          "datetime": 1787608890,
+          "datetime": 1787610675,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/technology/ai/articles/nows-tech-mahindra-deal-boost-161200830.html"
         }
@@ -112,21 +112,21 @@
     "TSM": {
       "name": "Taiwan Semiconductor Manufactur",
       "quote": {
-        "c": 410.75,
-        "d": 0.63,
-        "dp": 0.1536,
+        "c": 409.93,
+        "d": -0.19,
+        "dp": -0.0463,
         "regular": 410.12,
         "reg_d": -8.83,
         "reg_dp": -2.1077,
         "pre": null,
-        "post": 410.75,
+        "post": 409.93,
         "prev_close": 418.95,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "TSMC (TSM) Falls More Steeply Than Broader Market: What Investors Need to Know",
-          "datetime": 1787608890,
+          "datetime": 1787610675,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/markets/stocks/articles/tsmc-tsm-falls-more-steeply-214503484.html"
         }
@@ -135,21 +135,21 @@
     "MRVL": {
       "name": "Marvell Technology, Inc.",
       "quote": {
-        "c": 229.73,
-        "d": 0.44,
-        "dp": 0.1919,
+        "c": 229.56,
+        "d": 0.27,
+        "dp": 0.1178,
         "regular": 229.29,
         "reg_d": -7.75,
         "reg_dp": -3.2695,
         "pre": null,
-        "post": 229.73,
+        "post": 229.56,
         "prev_close": 237.04,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Semiconductor stocks drag S&P 500, Nasdaq lower: AlphaCheck",
-          "datetime": 1787608890,
+          "datetime": 1787610675,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/markets/article/semiconductor-stocks-drag-sp-500-nasdaq-lower-alphacheck-135725875.html"
         }
@@ -158,21 +158,21 @@
     "MU": {
       "name": "Micron Technology, Inc.",
       "quote": {
-        "c": 910.25,
-        "d": -0.18,
-        "dp": -0.0198,
+        "c": 908.63,
+        "d": -1.8,
+        "dp": -0.1979,
         "regular": 910.43,
         "reg_d": -56.35,
         "reg_dp": -5.8286,
         "pre": null,
-        "post": 910.25,
+        "post": 908.63,
         "prev_close": 966.78,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Stock market today: S&P 500, Nasdaq fall as chip stocks sink, US unveils new Iran sanctions",
-          "datetime": 1787608890,
+          "datetime": 1787610675,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/markets/live/stock-market-today-monday-august-24-dow-sp-500-nasdaq-080306047.html"
         }
@@ -181,21 +181,21 @@
     "SNDK": {
       "name": "Sandisk Corporation",
       "quote": {
-        "c": 1487.5,
-        "d": -5.62,
-        "dp": -0.3764,
+        "c": 1482.49,
+        "d": -10.63,
+        "dp": -0.7119,
         "regular": 1493.12,
         "reg_d": -102.96,
         "reg_dp": -6.4508,
         "pre": null,
-        "post": 1487.5,
+        "post": 1482.49,
         "prev_close": 1596.08,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Stock market today: S&P 500, Nasdaq fall as chip stocks sink, US unveils new Iran sanctions",
-          "datetime": 1787608890,
+          "datetime": 1787610675,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/markets/live/stock-market-today-monday-august-24-dow-sp-500-nasdaq-080306047.html"
         }
@@ -204,21 +204,21 @@
     "SPCX": {
       "name": "Space Exploration Technologies",
       "quote": {
-        "c": 135.09,
-        "d": 0.09,
-        "dp": 0.0667,
+        "c": 134.97,
+        "d": -0.03,
+        "dp": -0.0222,
         "regular": 135.0,
         "reg_d": -1.97,
         "reg_dp": -1.4383,
         "pre": null,
-        "post": 135.09,
+        "post": 134.97,
         "prev_close": 136.97,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "What's at stake for Paramount, the Ellisons in Warner Bros. takeover bid",
-          "datetime": 1787608890,
+          "datetime": 1787610675,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/video/whats-stake-paramount-ellisons-warner-213000825.html"
         }
@@ -227,21 +227,21 @@
     "ONDS": {
       "name": "Ondas Inc",
       "quote": {
-        "c": 8.24,
-        "d": 0.0,
-        "dp": 0.0,
+        "c": 8.22,
+        "d": -0.02,
+        "dp": -0.2427,
         "regular": 8.24,
         "reg_d": -0.47,
         "reg_dp": -5.3961,
         "pre": null,
-        "post": 8.24,
+        "post": 8.22,
         "prev_close": 8.71,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "High Growth, High Cash Burn: Decoding the Split Narrative on Ondas (ONDS)",
-          "datetime": 1787608890,
+          "datetime": 1787610675,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/markets/stocks/articles/high-growth-high-cash-burn-213535172.html"
         }
@@ -250,21 +250,21 @@
     "PLTR": {
       "name": "Palantir Technologies Inc.",
       "quote": {
-        "c": 175.89,
-        "d": 0.0,
-        "dp": 0.0,
+        "c": 175.73,
+        "d": -0.16,
+        "dp": -0.0898,
         "regular": 175.89,
         "reg_d": -4.05,
         "reg_dp": -2.2508,
         "pre": null,
-        "post": 175.89,
+        "post": 175.73,
         "prev_close": 179.94,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "How to Find the Market's Long-Term Winners",
-          "datetime": 1787608890,
+          "datetime": 1787610675,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/markets/stocks/articles/markets-long-term-winners-204300721.html"
         }
@@ -287,7 +287,7 @@
       "news": [
         {
           "headline": "Why Micron Stock Just Dropped Again",
-          "datetime": 1787608890,
+          "datetime": 1787610675,
           "source": "Yahoo Finance",
           "url": "https://www.fool.com/investing/2026/07/15/why-micron-stock-just-dropped-again/"
         }
