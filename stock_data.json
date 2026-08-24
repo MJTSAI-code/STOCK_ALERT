@@ -1,7 +1,7 @@
 {
   "name": "美股盤前情報資料庫",
-  "updated_at": "2026-08-25T04:52:31.815238+08:00",
-  "next_update_at": "2026-08-24T21:30:00Z",
+  "updated_at": "2026-08-25T05:01:19.519784+08:00",
+  "next_update_at": "2026-08-24T22:00:00Z",
   "stocks": [
     "MSFT",
     "GOOG",
@@ -20,207 +20,207 @@
     "MSFT": {
       "name": "Microsoft Corporation",
       "quote": {
-        "c": 487.39,
-        "d": 0.08,
-        "dp": 0.0164,
+        "c": 487.63,
+        "d": 0.32,
+        "dp": 0.0657,
         "regular": 487.31,
         "reg_d": 4.07,
         "reg_dp": 0.8422,
         "pre": null,
-        "post": 487.39,
+        "post": 487.63,
         "prev_close": 483.24,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Q2 Earnings Roundup: Expedia (NASDAQ:EXPE) And The Rest Of The Consumer Internet Segment",
-          "datetime": 1787351377,
+          "headline": "Nvidia's Q2 earnings to test resurgent AI trade",
+          "datetime": 1787605279,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/markets/stocks/articles/q2-earnings-roundup-expedia-nasdaq-221947445.html"
+          "url": "https://finance.yahoo.com/news/nvidias-q2-earnings-to-test-resurgent-ai-trade-112502189.html"
         }
       ]
     },
     "GOOG": {
       "name": "Alphabet Inc.",
       "quote": {
-        "c": 344.4,
-        "d": -0.19,
-        "dp": -0.0551,
+        "c": 344.7,
+        "d": 0.11,
+        "dp": 0.0319,
         "regular": 344.59,
         "reg_d": 2.84,
         "reg_dp": 0.831,
         "pre": null,
-        "post": 344.4,
+        "post": 344.7,
         "prev_close": 341.75,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Nvidia earnings are on deck next week. These 3 themes will be mission-critical.",
-          "datetime": 1787351377,
+          "headline": "Tesla to launch Cybercabs in Austin starting Sept. 3",
+          "datetime": 1787605279,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/video/nvidia-earnings-deck-next-week-200251512.html"
+          "url": "https://finance.yahoo.com/video/tesla-launch-cybercabs-austin-starting-205004873.html"
         }
       ]
     },
     "NVDA": {
       "name": "NVIDIA Corporation",
       "quote": {
-        "c": 208.42,
-        "d": -0.06,
-        "dp": -0.031,
+        "c": 208.63,
+        "d": 0.15,
+        "dp": 0.072,
         "regular": 208.48,
         "reg_d": -6.24,
         "reg_dp": -2.9061,
         "pre": null,
-        "post": 208.42,
+        "post": 208.63,
         "prev_close": 214.72,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Stock market today: Dow, S&P 500, Nasdaq post weekly losses as bond volatility remains in focus, bitcoin soars",
-          "datetime": 1787351377,
+          "headline": "Tesla to launch Cybercabs in Austin starting Sept. 3",
+          "datetime": 1787605279,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/markets/live/stock-market-today-friday-august-21-dow-sp-500-nasdaq-bitcoin-080533702.html"
+          "url": "https://finance.yahoo.com/video/tesla-launch-cybercabs-austin-starting-205004873.html"
         }
       ]
     },
     "NOW": {
       "name": "ServiceNow, Inc.",
       "quote": {
-        "c": 127.5,
-        "d": -0.55,
-        "dp": -0.4295,
+        "c": 127.65,
+        "d": -0.4,
+        "dp": -0.3124,
         "regular": 128.05,
         "reg_d": -0.43,
         "reg_dp": -0.3347,
         "pre": null,
-        "post": 127.5,
+        "post": 127.65,
         "prev_close": 128.48,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Is UiPath's Expanding ARR Strengthening Its Long-Term Growth Story?",
-          "datetime": 1787351377,
+          "headline": "Can NOW's Tech Mahindra Deal Boost Its AI Edge Over CRM & MSFT?",
+          "datetime": 1787605279,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/markets/stocks/articles/uipaths-expanding-arr-strengthening-long-180900883.html"
+          "url": "https://finance.yahoo.com/technology/ai/articles/nows-tech-mahindra-deal-boost-161200830.html"
         }
       ]
     },
     "TSM": {
       "name": "Taiwan Semiconductor Manufactur",
       "quote": {
-        "c": 410.03,
-        "d": -0.09,
-        "dp": -0.0222,
+        "c": 409.52,
+        "d": -0.6,
+        "dp": -0.1463,
         "regular": 410.12,
         "reg_d": -8.83,
         "reg_dp": -2.1077,
         "pre": null,
-        "post": 410.03,
+        "post": 409.52,
         "prev_close": 418.95,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Taiwan Semiconductor (TSM) Sales Just Jumped 45%. Why is the Chip Sector Still Selling Off?",
-          "datetime": 1787351377,
+          "headline": "Micron, Seagate, Western Digital, Semtech, and Penguin Solutions Shares Are Falling, What You Need To Know",
+          "datetime": 1787605279,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/technology/ai/articles/taiwan-semiconductor-tsm-sales-just-205844477.html"
+          "url": "https://finance.yahoo.com/markets/stocks/articles/micron-seagate-western-digital-semtech-200936690.html"
         }
       ]
     },
     "MRVL": {
       "name": "Marvell Technology, Inc.",
       "quote": {
-        "c": 229.35,
-        "d": 0.06,
-        "dp": 0.0262,
+        "c": 229.74,
+        "d": 0.45,
+        "dp": 0.1963,
         "regular": 229.29,
         "reg_d": -7.75,
         "reg_dp": -3.2695,
         "pre": null,
-        "post": 229.35,
+        "post": 229.74,
         "prev_close": 237.04,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Broadcom (AVGO) Is Down 6.2% After Google Expands AI Chip Ties With Marvell - What's Changed",
-          "datetime": 1787351377,
+          "headline": "Semiconductor stocks drag S&P 500, Nasdaq lower: AlphaCheck",
+          "datetime": 1787605279,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/technology/ai/articles/broadcom-avgo-down-6-2-221237826.html"
+          "url": "https://finance.yahoo.com/markets/article/semiconductor-stocks-drag-sp-500-nasdaq-lower-alphacheck-135725875.html"
         }
       ]
     },
     "MU": {
       "name": "Micron Technology, Inc.",
       "quote": {
-        "c": 908.38,
-        "d": -2.05,
-        "dp": -0.2252,
+        "c": 909.31,
+        "d": -1.12,
+        "dp": -0.1234,
         "regular": 910.43,
         "reg_d": -56.35,
         "reg_dp": -5.8286,
         "pre": null,
-        "post": 908.38,
+        "post": 909.31,
         "prev_close": 966.78,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Why higher yields aren't scaring off retail traders",
-          "datetime": 1787351377,
+          "headline": "Stock market today: S&P 500, Nasdaq fall as chip stocks sink, US unveils new Iran sanctions",
+          "datetime": 1787605279,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/video/why-higher-yields-arent-scaring-201500563.html"
+          "url": "https://finance.yahoo.com/markets/live/stock-market-today-monday-august-24-dow-sp-500-nasdaq-080306047.html"
         }
       ]
     },
     "SNDK": {
       "name": "Sandisk Corporation",
       "quote": {
-        "c": 1487.03,
-        "d": -6.09,
-        "dp": -0.4079,
+        "c": 1488.63,
+        "d": -4.49,
+        "dp": -0.3007,
         "regular": 1493.12,
         "reg_d": -102.96,
         "reg_dp": -6.4508,
         "pre": null,
-        "post": 1487.03,
+        "post": 1488.63,
         "prev_close": 1596.08,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Why higher yields aren't scaring off retail traders",
-          "datetime": 1787351377,
+          "headline": "Stock market today: S&P 500, Nasdaq fall as chip stocks sink, US unveils new Iran sanctions",
+          "datetime": 1787605279,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/video/why-higher-yields-arent-scaring-201500563.html"
+          "url": "https://finance.yahoo.com/markets/live/stock-market-today-monday-august-24-dow-sp-500-nasdaq-080306047.html"
         }
       ]
     },
     "SPCX": {
       "name": "Space Exploration Technologies",
       "quote": {
-        "c": 134.76,
-        "d": -0.24,
-        "dp": -0.1778,
+        "c": 134.95,
+        "d": -0.05,
+        "dp": -0.0373,
         "regular": 135.0,
         "reg_d": -1.97,
         "reg_dp": -1.4383,
         "pre": null,
-        "post": 134.76,
+        "post": 134.95,
         "prev_close": 136.97,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Stock market today: Dow, S&P 500, Nasdaq post weekly losses as bond volatility remains in focus, bitcoin soars",
-          "datetime": 1787351377,
+          "headline": "Semiconductor stocks drag S&P 500, Nasdaq lower: AlphaCheck",
+          "datetime": 1787605279,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/markets/live/stock-market-today-friday-august-21-dow-sp-500-nasdaq-bitcoin-080533702.html"
+          "url": "https://finance.yahoo.com/markets/article/semiconductor-stocks-drag-sp-500-nasdaq-lower-alphacheck-135725875.html"
         }
       ]
     },
@@ -229,7 +229,7 @@
       "quote": {
         "c": 8.23,
         "d": -0.01,
-        "dp": -0.1226,
+        "dp": -0.1396,
         "regular": 8.24,
         "reg_d": -0.47,
         "reg_dp": -5.3961,
@@ -241,7 +241,7 @@
       "news": [
         {
           "headline": "High Growth, High Cash Burn: Decoding the Split Narrative on Ondas (ONDS)",
-          "datetime": 1787351377,
+          "datetime": 1787605279,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/markets/stocks/articles/high-growth-high-cash-burn-213535172.html"
         }
@@ -250,28 +250,28 @@
     "PLTR": {
       "name": "Palantir Technologies Inc.",
       "quote": {
-        "c": 175.55,
-        "d": -0.34,
-        "dp": -0.1933,
+        "c": 175.84,
+        "d": -0.05,
+        "dp": -0.0263,
         "regular": 175.89,
         "reg_d": -4.05,
         "reg_dp": -2.2508,
         "pre": null,
-        "post": 175.55,
+        "post": 175.84,
         "prev_close": 179.94,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Palantir Stock Clears Buy Zone But Could Offer Alternative Entry",
-          "datetime": 1787351377,
+          "headline": "How to Find the Market's Long-Term Winners",
+          "datetime": 1787605279,
           "source": "Yahoo Finance",
-          "url": "https://www.investors.com/stock-lists/ibd-big-cap-20/palantir-stock-clears-buy-zone-but-could-offer-alternative-entry/?src=A00220&yptr=yahoo"
+          "url": "https://finance.yahoo.com/markets/stocks/articles/markets-long-term-winners-204300721.html"
         }
       ]
     },
     "SKHYV": {
-      "name": "SK hynix Inc. American Depositary Shares When Issued",
+      "name": "SK hynix Inc. - American Deposi",
       "quote": {
         "c": 168.01,
         "d": 0.0,
@@ -287,7 +287,7 @@
       "news": [
         {
           "headline": "Why Micron Stock Just Dropped Again",
-          "datetime": 1787351377,
+          "datetime": 1787605279,
           "source": "Yahoo Finance",
           "url": "https://www.fool.com/investing/2026/07/15/why-micron-stock-just-dropped-again/"
         }
