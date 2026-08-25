@@ -1,7 +1,7 @@
 {
   "name": "美股盤前情報資料庫",
-  "updated_at": "2026-08-26T05:19:56.946453+08:00",
-  "next_update_at": "2026-08-25T22:00:00Z",
+  "updated_at": "2026-08-26T05:58:33.234884+08:00",
+  "next_update_at": "2026-08-25T22:30:00Z",
   "stocks": [
     "MSFT",
     "GOOG",
@@ -20,21 +20,21 @@
     "MSFT": {
       "name": "Microsoft Corporation",
       "quote": {
-        "c": 491.29,
-        "d": -0.42,
-        "dp": -0.0859,
+        "c": 490.98,
+        "d": -0.73,
+        "dp": -0.1485,
         "regular": 491.71,
         "reg_d": 4.4,
         "reg_dp": 0.9029,
         "pre": null,
-        "post": 491.29,
+        "post": 490.98,
         "prev_close": 487.31,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "The real question investors should be asking ahead of Nvidia earnings",
-          "datetime": 1787692796,
+          "datetime": 1787695113,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/video/real-investors-asking-ahead-nvidia-160432776.html"
         }
@@ -43,21 +43,21 @@
     "GOOG": {
       "name": "Alphabet Inc.",
       "quote": {
-        "c": 343.77,
-        "d": 0.43,
-        "dp": 0.124,
+        "c": 343.61,
+        "d": 0.27,
+        "dp": 0.0778,
         "regular": 343.34,
         "reg_d": -1.25,
         "reg_dp": -0.3627,
         "pre": null,
-        "post": 343.77,
+        "post": 343.61,
         "prev_close": 344.59,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Nvidia's Q2 earnings to test resurgent AI trade",
-          "datetime": 1787692796,
+          "datetime": 1787695113,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/markets/stocks/article/nvidias-q2-earnings-to-test-resurgent-ai-trade-112502189.html"
         }
@@ -66,21 +66,21 @@
     "NVDA": {
       "name": "NVIDIA Corporation",
       "quote": {
-        "c": 213.61,
-        "d": 0.56,
-        "dp": 0.2622,
+        "c": 213.99,
+        "d": 0.94,
+        "dp": 0.4412,
         "regular": 213.05,
         "reg_d": 4.57,
         "reg_dp": 2.1921,
         "pre": null,
-        "post": 213.61,
+        "post": 213.99,
         "prev_close": 208.48,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Earnings live updates: Intuit stock drops on soft guidance, Dick's Sporting Goods stock plummets 30%",
-          "datetime": 1787692796,
+          "datetime": 1787695113,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/markets/live/earnings-live-updates-q2-nvidia-115314802.html"
         }
@@ -89,21 +89,21 @@
     "NOW": {
       "name": "ServiceNow, Inc.",
       "quote": {
-        "c": 125.2,
-        "d": -1.8,
-        "dp": -1.4173,
+        "c": 125.18,
+        "d": -1.82,
+        "dp": -1.4366,
         "regular": 127.0,
         "reg_d": -1.05,
         "reg_dp": -0.82,
         "pre": null,
-        "post": 125.2,
+        "post": 125.18,
         "prev_close": 128.05,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "ServiceNow Just Ripped 29% in a Month. What Would It Take to Get NOW Stock Up to $150?",
-          "datetime": 1787692796,
+          "datetime": 1787695113,
           "source": "Yahoo Finance",
           "url": "https://247wallst.com/investing/2026/08/25/servicenow-just-ripped-29-in-a-month-what-would-it-take-to-get-now-stock-up-to-150/"
         }
@@ -112,21 +112,21 @@
     "TSM": {
       "name": "Taiwan Semiconductor Manufactur",
       "quote": {
-        "c": 417.34,
-        "d": -0.07,
-        "dp": -0.0168,
+        "c": 417.64,
+        "d": 0.23,
+        "dp": 0.0551,
         "regular": 417.41,
         "reg_d": 7.29,
         "reg_dp": 1.7775,
         "pre": null,
-        "post": 417.34,
+        "post": 417.64,
         "prev_close": 410.12,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "TSMC Jumps Before Nvidia Tests Its Capacity Bet",
-          "datetime": 1787692796,
+          "datetime": 1787695113,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/technology/articles/tsmc-jumps-nvidia-tests-capacity-195825384.html"
         }
@@ -135,21 +135,21 @@
     "MRVL": {
       "name": "Marvell Technology, Inc.",
       "quote": {
-        "c": 241.2,
-        "d": 0.82,
-        "dp": 0.3415,
+        "c": 241.7,
+        "d": 1.32,
+        "dp": 0.5491,
         "regular": 240.38,
         "reg_d": 11.09,
         "reg_dp": 4.8367,
         "pre": null,
-        "post": 241.2,
+        "post": 241.7,
         "prev_close": 229.29,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Investors rotate into tech stocks as inflation concerns ease: AlphaCheck",
-          "datetime": 1787692796,
+          "datetime": 1787695113,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/markets/article/investors-rotate-into-tech-stocks-as-inflation-concerns-ease-alphacheck-135258775.html"
         }
@@ -158,44 +158,44 @@
     "MU": {
       "name": "Micron Technology, Inc.",
       "quote": {
-        "c": 932.53,
-        "d": -0.44,
-        "dp": -0.0471,
+        "c": 934.6,
+        "d": 1.63,
+        "dp": 0.1747,
         "regular": 932.97,
         "reg_d": 22.54,
         "reg_dp": 2.4758,
         "pre": null,
-        "post": 932.53,
+        "post": 934.6,
         "prev_close": 910.43,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Stock Market Today: Nasdaq Leads As Key Inflation Report Looms; Nvidia, Micron Gain",
-          "datetime": 1787692796,
+          "headline": "Prediction: This Memory Stock Will Soar 165% in 3 Years (Hint: It's not Micron or Sandisk)",
+          "datetime": 1787695113,
           "source": "Yahoo Finance",
-          "url": "https://www.investors.com/market-trend/stock-market-today/dow-jones-futures-sp500-treasury-yields-nvidia-micron-sandisk/?src=A00220&yptr=yahoo"
+          "url": "https://www.fool.com/investing/2026/08/25/prediction-this-memory-stock-will-soar-165-in-3-years-hint-it-s-not-micron-or-sandisk/"
         }
       ]
     },
     "SNDK": {
       "name": "Sandisk Corporation",
       "quote": {
-        "c": 1479.5,
-        "d": -1.27,
-        "dp": -0.0858,
+        "c": 1485.02,
+        "d": 4.25,
+        "dp": 0.287,
         "regular": 1480.77,
         "reg_d": -12.35,
         "reg_dp": -0.8271,
         "pre": null,
-        "post": 1479.5,
+        "post": 1485.02,
         "prev_close": 1493.12,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Investors rotate into tech stocks as inflation concerns ease: AlphaCheck",
-          "datetime": 1787692796,
+          "datetime": 1787695113,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/markets/article/investors-rotate-into-tech-stocks-as-inflation-concerns-ease-alphacheck-135258775.html"
         }
@@ -204,21 +204,21 @@
     "SPCX": {
       "name": "Space Exploration Technologies",
       "quote": {
-        "c": 137.95,
-        "d": 0.0,
-        "dp": 0.0,
+        "c": 137.94,
+        "d": -0.01,
+        "dp": -0.0072,
         "regular": 137.95,
         "reg_d": 2.95,
         "reg_dp": 2.1852,
         "pre": null,
-        "post": 137.95,
+        "post": 137.94,
         "prev_close": 135.0,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "The real question investors should be asking ahead of Nvidia earnings",
-          "datetime": 1787692796,
+          "datetime": 1787695113,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/video/real-investors-asking-ahead-nvidia-160432776.html"
         }
@@ -227,21 +227,21 @@
     "ONDS": {
       "name": "Ondas Inc",
       "quote": {
-        "c": 8.26,
-        "d": 0.02,
-        "dp": 0.2257,
+        "c": 8.24,
+        "d": 0.0,
+        "dp": 0.0,
         "regular": 8.24,
         "reg_d": 0.0,
         "reg_dp": 0.0,
         "pre": null,
-        "post": 8.26,
+        "post": 8.24,
         "prev_close": 8.24,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "High Growth, High Cash Burn: Decoding the Split Narrative on Ondas (ONDS)",
-          "datetime": 1787692796,
+          "datetime": 1787695113,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/markets/stocks/articles/high-growth-high-cash-burn-213535172.html"
         }
@@ -250,21 +250,21 @@
     "PLTR": {
       "name": "Palantir Technologies Inc.",
       "quote": {
-        "c": 172.55,
-        "d": -0.18,
-        "dp": -0.1042,
+        "c": 172.49,
+        "d": -0.24,
+        "dp": -0.1389,
         "regular": 172.73,
         "reg_d": -3.16,
         "reg_dp": -1.7966,
         "pre": null,
-        "post": 172.55,
+        "post": 172.49,
         "prev_close": 175.89,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "New disclosure: Trump owns SpaceX, Disney shares — and is reaping profits from oil & gas stocks",
-          "datetime": 1787692796,
+          "datetime": 1787695113,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/video/disclosure-trump-owns-spacex-disney-151222555.html"
         }
@@ -287,7 +287,7 @@
       "news": [
         {
           "headline": "Why Micron Stock Just Dropped Again",
-          "datetime": 1787692796,
+          "datetime": 1787695113,
           "source": "Yahoo Finance",
           "url": "https://www.fool.com/investing/2026/07/15/why-micron-stock-just-dropped-again/"
         }
@@ -295,7 +295,7 @@
     }
   },
   "alert_sent": {
-    "morning": "2026-08-25",
+    "morning": "2026-08-26",
     "evening": "2026-08-25"
   }
 }
