@@ -1,7 +1,7 @@
 {
   "name": "美股盤前情報資料庫",
-  "updated_at": "2026-08-26T17:58:31.747732+08:00",
-  "next_update_at": "2026-08-26T10:30:00Z",
+  "updated_at": "2026-08-26T18:18:38.631965+08:00",
+  "next_update_at": "2026-08-26T11:00:00Z",
   "stocks": [
     "MSFT",
     "GOOG",
@@ -20,13 +20,13 @@
     "MSFT": {
       "name": "Microsoft Corporation",
       "quote": {
-        "c": 488.17,
-        "d": -3.54,
-        "dp": -0.7199,
+        "c": 487.84,
+        "d": -3.87,
+        "dp": -0.787,
         "regular": 491.71,
         "reg_d": 4.4,
         "reg_dp": 0.9029,
-        "pre": 488.17,
+        "pre": 487.84,
         "post": null,
         "prev_close": 487.31,
         "phase": "盤前"
@@ -43,13 +43,13 @@
     "GOOG": {
       "name": "Alphabet Inc.",
       "quote": {
-        "c": 343.18,
-        "d": -0.16,
-        "dp": -0.0466,
+        "c": 343.05,
+        "d": -0.29,
+        "dp": -0.0845,
         "regular": 343.34,
         "reg_d": -1.25,
         "reg_dp": -0.3627,
-        "pre": 343.18,
+        "pre": 343.05,
         "post": null,
         "prev_close": 344.59,
         "phase": "盤前"
@@ -66,13 +66,13 @@
     "NVDA": {
       "name": "NVIDIA Corporation",
       "quote": {
-        "c": 213.75,
-        "d": 0.7,
-        "dp": 0.3286,
+        "c": 213.7,
+        "d": 0.65,
+        "dp": 0.3056,
         "regular": 213.05,
         "reg_d": 4.57,
         "reg_dp": 2.1921,
-        "pre": 213.75,
+        "pre": 213.7,
         "post": null,
         "prev_close": 208.48,
         "phase": "盤前"
@@ -89,13 +89,13 @@
     "NOW": {
       "name": "ServiceNow, Inc.",
       "quote": {
-        "c": 124.17,
-        "d": -2.83,
-        "dp": -2.2322,
+        "c": 124.05,
+        "d": -2.95,
+        "dp": -2.3261,
         "regular": 127.0,
         "reg_d": -1.05,
         "reg_dp": -0.82,
-        "pre": 124.17,
+        "pre": 124.05,
         "post": null,
         "prev_close": 128.05,
         "phase": "盤前"
@@ -112,13 +112,13 @@
     "TSM": {
       "name": "Taiwan Semiconductor Manufactur",
       "quote": {
-        "c": 420.07,
-        "d": 2.69,
-        "dp": 0.6454,
+        "c": 419.55,
+        "d": 2.17,
+        "dp": 0.5199,
         "regular": 417.41,
         "reg_d": 7.29,
         "reg_dp": 1.7775,
-        "pre": 420.07,
+        "pre": 419.55,
         "post": null,
         "prev_close": 410.12,
         "phase": "盤前"
@@ -135,13 +135,13 @@
     "MRVL": {
       "name": "Marvell Technology, Inc.",
       "quote": {
-        "c": 241.18,
-        "d": 0.8,
-        "dp": 0.3328,
+        "c": 241.79,
+        "d": 1.41,
+        "dp": 0.5866,
         "regular": 240.38,
         "reg_d": 11.09,
         "reg_dp": 4.8367,
-        "pre": 241.18,
+        "pre": 241.79,
         "post": null,
         "prev_close": 229.29,
         "phase": "盤前"
@@ -158,13 +158,13 @@
     "MU": {
       "name": "Micron Technology, Inc.",
       "quote": {
-        "c": 926.99,
-        "d": -5.98,
-        "dp": -0.641,
+        "c": 924.8,
+        "d": -8.17,
+        "dp": -0.8757,
         "regular": 932.97,
         "reg_d": 22.54,
         "reg_dp": 2.4758,
-        "pre": 926.99,
+        "pre": 924.8,
         "post": null,
         "prev_close": 910.43,
         "phase": "盤前"
@@ -181,13 +181,13 @@
     "SNDK": {
       "name": "Sandisk Corporation",
       "quote": {
-        "c": 1470.28,
-        "d": -10.49,
-        "dp": -0.7084,
+        "c": 1468.94,
+        "d": -11.83,
+        "dp": -0.7991,
         "regular": 1480.77,
         "reg_d": -12.35,
         "reg_dp": -0.8271,
-        "pre": 1470.28,
+        "pre": 1468.94,
         "post": null,
         "prev_close": 1493.12,
         "phase": "盤前"
@@ -204,13 +204,13 @@
     "SPCX": {
       "name": "Space Exploration Technologies",
       "quote": {
-        "c": 138.08,
-        "d": 0.13,
-        "dp": 0.0937,
+        "c": 137.84,
+        "d": -0.11,
+        "dp": -0.0797,
         "regular": 137.95,
         "reg_d": 2.95,
         "reg_dp": 2.1852,
-        "pre": 138.08,
+        "pre": 137.84,
         "post": null,
         "prev_close": 135.0,
         "phase": "盤前"
@@ -227,13 +227,13 @@
     "ONDS": {
       "name": "Ondas Inc",
       "quote": {
-        "c": 8.22,
-        "d": -0.02,
-        "dp": -0.2427,
+        "c": 8.2,
+        "d": -0.04,
+        "dp": -0.4854,
         "regular": 8.24,
         "reg_d": 0.0,
         "reg_dp": 0.0,
-        "pre": 8.22,
+        "pre": 8.2,
         "post": null,
         "prev_close": 8.24,
         "phase": "盤前"
@@ -250,13 +250,13 @@
     "PLTR": {
       "name": "Palantir Technologies Inc.",
       "quote": {
-        "c": 170.94,
-        "d": -1.79,
-        "dp": -1.038,
+        "c": 170.61,
+        "d": -2.12,
+        "dp": -1.2276,
         "regular": 172.73,
         "reg_d": -3.16,
         "reg_dp": -1.7966,
-        "pre": 170.94,
+        "pre": 170.61,
         "post": null,
         "prev_close": 175.89,
         "phase": "盤前"
