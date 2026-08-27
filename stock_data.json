@@ -1,7 +1,7 @@
 {
   "name": "美股盤前情報資料庫",
-  "updated_at": "2026-08-27T11:01:09.129177+08:00",
-  "next_update_at": "2026-08-27T04:00:00Z",
+  "updated_at": "2026-08-27T17:58:30.262442+08:00",
+  "next_update_at": "2026-08-27T10:30:00Z",
   "stocks": [
     "MSFT",
     "GOOG",
@@ -20,16 +20,16 @@
     "MSFT": {
       "name": "Microsoft Corporation",
       "quote": {
-        "c": 495.95,
-        "d": -0.42,
-        "dp": -0.0846,
+        "c": 491.66,
+        "d": -4.71,
+        "dp": -0.9489,
         "regular": 496.37,
         "reg_d": 4.66,
         "reg_dp": 0.9477,
-        "pre": null,
-        "post": 495.95,
+        "pre": 491.66,
+        "post": null,
         "prev_close": 491.71,
-        "phase": "盤後"
+        "phase": "盤前"
       },
       "news": [
         {
@@ -43,16 +43,16 @@
     "GOOG": {
       "name": "Alphabet Inc.",
       "quote": {
-        "c": 339.99,
-        "d": 0.89,
-        "dp": 0.2625,
+        "c": 337.86,
+        "d": -1.24,
+        "dp": -0.3657,
         "regular": 339.1,
         "reg_d": -4.24,
         "reg_dp": -1.2349,
-        "pre": null,
-        "post": 339.99,
+        "pre": 337.86,
+        "post": null,
         "prev_close": 343.34,
-        "phase": "盤後"
+        "phase": "盤前"
       },
       "news": [
         {
@@ -66,16 +66,16 @@
     "NVDA": {
       "name": "NVIDIA Corporation",
       "quote": {
-        "c": 219.53,
-        "d": 9.87,
-        "dp": 4.7076,
+        "c": 224.54,
+        "d": 14.88,
+        "dp": 7.0959,
         "regular": 209.66,
         "reg_d": -3.39,
         "reg_dp": -1.5912,
-        "pre": null,
-        "post": 219.53,
+        "pre": 224.54,
+        "post": null,
         "prev_close": 213.05,
-        "phase": "盤後"
+        "phase": "盤前"
       },
       "news": [
         {
@@ -89,16 +89,16 @@
     "NOW": {
       "name": "ServiceNow, Inc.",
       "quote": {
-        "c": 130.04,
-        "d": 4.24,
-        "dp": 3.3704,
+        "c": 128.77,
+        "d": 2.95,
+        "dp": 2.3446,
         "regular": 125.8,
         "reg_d": -1.2,
         "reg_dp": -0.9449,
-        "pre": null,
-        "post": 130.04,
+        "pre": 128.77,
+        "post": null,
         "prev_close": 127.0,
-        "phase": "盤後"
+        "phase": "盤前"
       },
       "news": [
         {
@@ -112,16 +112,16 @@
     "TSM": {
       "name": "Taiwan Semiconductor Manufactur",
       "quote": {
-        "c": 424.9,
-        "d": 7.21,
-        "dp": 1.7262,
+        "c": 425.0,
+        "d": 7.35,
+        "dp": 1.7598,
         "regular": 417.69,
         "reg_d": 0.28,
         "reg_dp": 0.0671,
-        "pre": null,
-        "post": 424.9,
+        "pre": 425.0,
+        "post": null,
         "prev_close": 417.41,
-        "phase": "盤後"
+        "phase": "盤前"
       },
       "news": [
         {
@@ -135,16 +135,16 @@
     "MRVL": {
       "name": "Marvell Technology, Inc.",
       "quote": {
-        "c": 255.88,
-        "d": 10.77,
-        "dp": 4.3939,
+        "c": 257.92,
+        "d": 12.81,
+        "dp": 5.2262,
         "regular": 245.11,
         "reg_d": 4.73,
         "reg_dp": 1.9677,
-        "pre": null,
-        "post": 255.88,
+        "pre": 257.92,
+        "post": null,
         "prev_close": 240.38,
-        "phase": "盤後"
+        "phase": "盤前"
       },
       "news": [
         {
@@ -158,16 +158,16 @@
     "MU": {
       "name": "Micron Technology, Inc.",
       "quote": {
-        "c": 974.0,
-        "d": 35.6,
-        "dp": 3.7937,
+        "c": 977.01,
+        "d": 38.61,
+        "dp": 4.1144,
         "regular": 938.4,
         "reg_d": 5.43,
         "reg_dp": 0.582,
-        "pre": null,
-        "post": 974.0,
+        "pre": 977.01,
+        "post": null,
         "prev_close": 932.97,
-        "phase": "盤後"
+        "phase": "盤前"
       },
       "news": [
         {
@@ -181,16 +181,16 @@
     "SNDK": {
       "name": "Sandisk Corporation",
       "quote": {
-        "c": 1555.08,
-        "d": 55.71,
-        "dp": 3.7152,
+        "c": 1568.5,
+        "d": 69.13,
+        "dp": 4.6106,
         "regular": 1499.37,
         "reg_d": 18.6,
         "reg_dp": 1.2561,
-        "pre": null,
-        "post": 1555.08,
+        "pre": 1568.5,
+        "post": null,
         "prev_close": 1480.77,
-        "phase": "盤後"
+        "phase": "盤前"
       },
       "news": [
         {
@@ -204,16 +204,16 @@
     "SPCX": {
       "name": "Space Exploration Technologies",
       "quote": {
-        "c": 140.51,
-        "d": 0.88,
-        "dp": 0.6302,
+        "c": 140.73,
+        "d": 1.1,
+        "dp": 0.7878,
         "regular": 139.63,
         "reg_d": 1.68,
         "reg_dp": 1.2178,
-        "pre": null,
-        "post": 140.51,
+        "pre": 140.73,
+        "post": null,
         "prev_close": 137.95,
-        "phase": "盤後"
+        "phase": "盤前"
       },
       "news": [
         {
@@ -227,16 +227,16 @@
     "ONDS": {
       "name": "Ondas Inc",
       "quote": {
-        "c": 8.28,
-        "d": 0.06,
-        "dp": 0.7299,
+        "c": 8.3,
+        "d": 0.08,
+        "dp": 0.9732,
         "regular": 8.22,
         "reg_d": -0.02,
         "reg_dp": -0.2427,
-        "pre": null,
-        "post": 8.28,
+        "pre": 8.3,
+        "post": null,
         "prev_close": 8.24,
-        "phase": "盤後"
+        "phase": "盤前"
       },
       "news": [
         {
@@ -250,16 +250,16 @@
     "PLTR": {
       "name": "Palantir Technologies Inc.",
       "quote": {
-        "c": 178.15,
-        "d": 0.65,
-        "dp": 0.3662,
+        "c": 176.55,
+        "d": -0.95,
+        "dp": -0.5368,
         "regular": 177.5,
         "reg_d": 4.77,
         "reg_dp": 2.7615,
-        "pre": null,
-        "post": 178.15,
+        "pre": 176.55,
+        "post": null,
         "prev_close": 172.73,
-        "phase": "盤後"
+        "phase": "盤前"
       },
       "news": [
         {
@@ -271,7 +271,7 @@
       ]
     },
     "SKHYV": {
-      "name": "SK hynix Inc. American Depositary Shares When Issued",
+      "name": "SK hynix Inc. - American Deposi",
       "quote": {
         "c": 168.01,
         "d": 0.0,
@@ -296,6 +296,6 @@
   },
   "alert_sent": {
     "morning": "2026-08-27",
-    "evening": "2026-08-26"
+    "evening": "2026-08-27"
   }
 }
