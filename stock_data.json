@@ -1,7 +1,7 @@
 {
   "name": "美股盤前情報資料庫",
-  "updated_at": "2026-08-28T04:58:14.406747+08:00",
-  "next_update_at": "2026-08-27T21:30:00Z",
+  "updated_at": "2026-08-28T05:58:32.725180+08:00",
+  "next_update_at": "2026-08-27T22:30:00Z",
   "stocks": [
     "MSFT",
     "GOOG",
@@ -20,207 +20,207 @@
     "MSFT": {
       "name": "Microsoft Corporation",
       "quote": {
-        "c": 503.3,
-        "d": -1.76,
-        "dp": -0.3485,
+        "c": 503.5,
+        "d": -1.56,
+        "dp": -0.3089,
         "regular": 505.06,
         "reg_d": 8.69,
         "reg_dp": 1.7507,
         "pre": null,
-        "post": 503.3,
+        "post": 503.5,
         "prev_close": 496.37,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Stocks in holding pattern ahead of Nvidia earnings: AlphaCheck",
-          "datetime": 1787781508,
+          "headline": "Why Nvidia probably just lit a new fire under these once-hot trades",
+          "datetime": 1787867912,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/markets/article/stocks-in-holding-pattern-ahead-of-nvidia-earnings-alphacheck-141558586.html"
+          "url": "https://finance.yahoo.com/markets/stocks/article/why-nvidia-probably-just-lit-a-new-fire-under-these-once-hot-trades-103645649.html"
         }
       ]
     },
     "GOOG": {
       "name": "Alphabet Inc.",
       "quote": {
-        "c": 337.65,
-        "d": -0.06,
-        "dp": -0.0178,
+        "c": 337.9,
+        "d": 0.19,
+        "dp": 0.0563,
         "regular": 337.71,
         "reg_d": -1.39,
         "reg_dp": -0.4099,
         "pre": null,
-        "post": 337.65,
+        "post": 337.9,
         "prev_close": 339.1,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Nvidia tops Q2 expectations on revenue of $96.2 billion, offers strong Q3 outlook",
-          "datetime": 1787781508,
+          "headline": "How tokenization benefits SpaceX stock 'without taking crypto risk'",
+          "datetime": 1787867912,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/markets/stocks/article/nvidia-tops-q2-expectations-offers-strong-q3-outlook-revenue-96-billion-112502189.html"
+          "url": "https://finance.yahoo.com/video/tokenization-benefits-spacex-stock-without-153500839.html"
         }
       ]
     },
     "NVDA": {
       "name": "NVIDIA Corporation",
       "quote": {
-        "c": 226.87,
-        "d": -1.11,
-        "dp": -0.4869,
+        "c": 225.96,
+        "d": -2.02,
+        "dp": -0.8852,
         "regular": 227.98,
         "reg_d": 18.32,
         "reg_dp": 8.738,
         "pre": null,
-        "post": 226.87,
+        "post": 225.96,
         "prev_close": 209.66,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Nvidia is looking more like the central bank of AI",
-          "datetime": 1787781508,
+          "headline": "Just how big of a problem area is China for Nvidia?",
+          "datetime": 1787867912,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/markets/article/nvidia-is-looking-more-like-the-central-bank-of-ai-213156835.html"
+          "url": "https://finance.yahoo.com/video/just-big-problem-area-china-205642327.html"
         }
       ]
     },
     "NOW": {
       "name": "ServiceNow, Inc.",
       "quote": {
-        "c": 137.32,
-        "d": -1.11,
-        "dp": -0.8018,
+        "c": 136.97,
+        "d": -1.46,
+        "dp": -1.0547,
         "regular": 138.43,
         "reg_d": 12.63,
         "reg_dp": 10.0397,
         "pre": null,
-        "post": 137.32,
+        "post": 136.97,
         "prev_close": 125.8,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "ServiceNow (NOW) In Focus Following Tech Mahindra AI Deal As Fair Value Debate Builds",
-          "datetime": 1787781508,
+          "headline": "Stock Market Today, Aug. 27: Salesforce Surges 23% on Anthropic Partnership and Q2 Earnings Beat",
+          "datetime": 1787867912,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/technology/ai/articles/servicenow-now-focus-following-tech-210941599.html"
+          "url": "https://www.fool.com/coverage/stock-market-today/2026/08/27/stock-market-today-aug-27-salesforce-surges-23-on-anthropic-partnership-and-q2-earnings-beat/"
         }
       ]
     },
     "TSM": {
       "name": "Taiwan Semiconductor Manufactur",
       "quote": {
-        "c": 426.27,
-        "d": -1.03,
-        "dp": -0.242,
+        "c": 426.2,
+        "d": -1.1,
+        "dp": -0.2574,
         "regular": 427.3,
         "reg_d": 9.61,
         "reg_dp": 2.3007,
         "pre": null,
-        "post": 426.27,
+        "post": 426.2,
         "prev_close": 417.69,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Dow Jones Futures Rise; Nvidia, CrowdStrike, Okta, Salesforce Lead Earnings Movers Late",
-          "datetime": 1787781508,
+          "headline": "Morgan Stanley reveals Cisco's quiet edge over rivals",
+          "datetime": 1787867912,
           "source": "Yahoo Finance",
-          "url": "https://www.investors.com/market-trend/stock-market-today/dow-jones-futures-nvidia-crowdstrike-okta-salesforce-earnings-movers/?src=A00220&yptr=yahoo"
+          "url": "https://www.thestreet.com/investing/stocks/morgan-stanley-keeps-cisco-at-135-on-tsmc-supply-edge"
         }
       ]
     },
     "MRVL": {
       "name": "Marvell Technology, Inc.",
       "quote": {
-        "c": 238.0,
-        "d": -3.45,
-        "dp": -1.4289,
+        "c": 225.34,
+        "d": -16.11,
+        "dp": -6.6728,
         "regular": 241.45,
         "reg_d": -3.66,
         "reg_dp": -1.4932,
         "pre": null,
-        "post": 238.0,
+        "post": 225.34,
         "prev_close": 245.11,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Marvell Reports Thursday. Here's Where the Google Contract Would Actually Show Up in the Numbers.",
-          "datetime": 1787781508,
+          "headline": "Earnings live updates: Marvell stock falls despite strong earnings and guidance",
+          "datetime": 1787867912,
           "source": "Yahoo Finance",
-          "url": "https://www.fool.com/investing/2026/08/26/marvell-reports-thursday-here-s-where-the-google-contract-would-actually-show-up-in-the-numbers/"
+          "url": "https://finance.yahoo.com/markets/live/earnings-live-updates-q2-nvidia-115314802.html"
         }
       ]
     },
     "MU": {
       "name": "Micron Technology, Inc.",
       "quote": {
-        "c": 926.78,
-        "d": -8.61,
-        "dp": -0.9203,
+        "c": 924.0,
+        "d": -11.39,
+        "dp": -1.2177,
         "regular": 935.39,
         "reg_d": -3.01,
         "reg_dp": -0.3208,
         "pre": null,
-        "post": 926.78,
+        "post": 924.0,
         "prev_close": 938.4,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Why the sustainability of the AI boom could be in focus after Nvidia's earnings call",
-          "datetime": 1787781508,
+          "headline": "Why Nvidia probably just lit a new fire under these once-hot trades",
+          "datetime": 1787867912,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/video/why-sustainability-ai-boom-could-135959475.html"
+          "url": "https://finance.yahoo.com/markets/stocks/article/why-nvidia-probably-just-lit-a-new-fire-under-these-once-hot-trades-103645649.html"
         }
       ]
     },
     "SNDK": {
       "name": "Sandisk Corporation",
       "quote": {
-        "c": 1478.35,
-        "d": -6.6,
-        "dp": -0.4445,
+        "c": 1471.75,
+        "d": -13.2,
+        "dp": -0.8889,
         "regular": 1484.95,
         "reg_d": -14.42,
         "reg_dp": -0.9617,
         "pre": null,
-        "post": 1478.35,
+        "post": 1471.75,
         "prev_close": 1499.37,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Stocks in holding pattern ahead of Nvidia earnings: AlphaCheck",
-          "datetime": 1787781508,
+          "headline": "Stock Market Today: Nasdaq Up, Nvidia Teases New Entry As Salesforce Nears Buy Point (Live Coverage)",
+          "datetime": 1787867912,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/markets/article/stocks-in-holding-pattern-ahead-of-nvidia-earnings-alphacheck-141558586.html"
+          "url": "https://www.investors.com/market-trend/stock-market-today/dow-jones-sp500-nasdaq-nvidia-nvda-salesforce-crm-crowdstrike-crwd/?src=A00220&yptr=yahoo"
         }
       ]
     },
     "SPCX": {
       "name": "Space Exploration Technologies",
       "quote": {
-        "c": 140.57,
-        "d": -0.3,
-        "dp": -0.213,
+        "c": 140.28,
+        "d": -0.59,
+        "dp": -0.4188,
         "regular": 140.87,
         "reg_d": 1.24,
         "reg_dp": 0.8881,
         "pre": null,
-        "post": 140.57,
+        "post": 140.28,
         "prev_close": 139.63,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Why Anthropic’s $30T TAM may not be as crazy as it sounds",
-          "datetime": 1787781508,
+          "headline": "Inside Nvidia and SpaceX’s growing relationship",
+          "datetime": 1787867912,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/video/why-anthropic-30t-tam-may-144000468.html"
+          "url": "https://finance.yahoo.com/video/inside-nvidia-spacex-growing-relationship-194500109.html"
         }
       ]
     },
@@ -229,7 +229,7 @@
       "quote": {
         "c": 8.7,
         "d": -0.05,
-        "dp": -0.5714,
+        "dp": -0.5886,
         "regular": 8.75,
         "reg_d": 0.53,
         "reg_dp": 6.4477,
@@ -240,33 +240,33 @@
       },
       "news": [
         {
-          "headline": "High Growth, High Cash Burn: Decoding the Split Narrative on Ondas (ONDS)",
-          "datetime": 1787781508,
+          "headline": "Unusual Machines Jumps 8%, Ondas Holdings Rises 6% as Risk Appetite Returns to Drone Stocks",
+          "datetime": 1787867912,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/markets/stocks/articles/high-growth-high-cash-burn-213535172.html"
+          "url": "https://247wallst.com/investing/2026/08/27/unusual-machines-jumps-8-ondas-holdings-rises-6-as-risk-appetite-returns-to-drone-stocks/"
         }
       ]
     },
     "PLTR": {
       "name": "Palantir Technologies Inc.",
       "quote": {
-        "c": 184.75,
-        "d": -1.18,
-        "dp": -0.6346,
+        "c": 184.8,
+        "d": -1.13,
+        "dp": -0.6096,
         "regular": 185.93,
         "reg_d": 8.43,
         "reg_dp": 4.7493,
         "pre": null,
-        "post": 184.75,
+        "post": 184.8,
         "prev_close": 177.5,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Michael Burry Buys NVDA Calls As A ‘Hedge,’ Adds To ORCL, PLTR, NBIS Shorts — Why He Thinks ‘Nvidia Will Not Distribute Enough To Shareholders’",
-          "datetime": 1787781508,
+          "headline": "Dow Jones Futures: Market Rallies Into Fed Chief Warsh; Nvidia Jumps, But This Sector Is On Fire",
+          "datetime": 1787867912,
           "source": "Yahoo Finance",
-          "url": "https://stocktwits.com/news-articles/markets/equity/michael-burry-buys-nvda-calls-as-a-hedge-adds-to-orcl-pltr-nbis-shorts-why-he-thinks-nvidia-will-not-distribute-enough-to-shareholders/cZYVdSURJpP"
+          "url": "https://www.investors.com/market-trend/stock-market-today/dow-jones-futures-fed-chief-warsh-speech-nvidia-jumps-software-sector-on-fire/?src=A00220&yptr=yahoo"
         }
       ]
     },
@@ -287,7 +287,7 @@
       "news": [
         {
           "headline": "Why Micron Stock Just Dropped Again",
-          "datetime": 1787781508,
+          "datetime": 1787867912,
           "source": "Yahoo Finance",
           "url": "https://www.fool.com/investing/2026/07/15/why-micron-stock-just-dropped-again/"
         }
@@ -295,7 +295,7 @@
     }
   },
   "alert_sent": {
-    "morning": "2026-08-27",
+    "morning": "2026-08-28",
     "evening": "2026-08-27"
   }
 }
