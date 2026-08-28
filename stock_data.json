@@ -1,7 +1,7 @@
 {
   "name": "美股盤前情報資料庫",
-  "updated_at": "2026-08-29T05:20:47.446401+08:00",
-  "next_update_at": "2026-08-28T22:00:00Z",
+  "updated_at": "2026-08-29T05:58:32.013227+08:00",
+  "next_update_at": "2026-08-28T22:30:00Z",
   "stocks": [
     "MSFT",
     "GOOG",
@@ -20,21 +20,21 @@
     "MSFT": {
       "name": "Microsoft Corporation",
       "quote": {
-        "c": 512.94,
-        "d": -0.59,
-        "dp": -0.1149,
+        "c": 512.6,
+        "d": -0.93,
+        "dp": -0.1811,
         "regular": 513.53,
         "reg_d": 8.47,
         "reg_dp": 1.677,
         "pre": null,
-        "post": 512.94,
+        "post": 512.6,
         "prev_close": 505.06,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Quantum computing company Pasqual goes public via SPAC",
-          "datetime": 1787952047,
+          "datetime": 1787954312,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/video/quantum-computing-company-pasqual-goes-public-via-spac-202504983.html"
         }
@@ -43,21 +43,21 @@
     "GOOG": {
       "name": "Alphabet Inc.",
       "quote": {
-        "c": 342.52,
-        "d": -0.36,
-        "dp": -0.105,
+        "c": 342.6,
+        "d": -0.28,
+        "dp": -0.0817,
         "regular": 342.88,
         "reg_d": 5.17,
         "reg_dp": 1.5309,
         "pre": null,
-        "post": 342.52,
+        "post": 342.6,
         "prev_close": 337.71,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Trending: Take-Two Interactive price ascends as 'Grand Theft Auto VI' is teased",
-          "datetime": 1787952047,
+          "datetime": 1787954312,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/video/trending-take-two-interactive-price-ascends-as-grand-theft-auto-vi-is-teased-160729740.html"
         }
@@ -66,44 +66,44 @@
     "NVDA": {
       "name": "NVIDIA Corporation",
       "quote": {
-        "c": 217.6,
-        "d": 0.05,
-        "dp": 0.023,
+        "c": 217.84,
+        "d": 0.29,
+        "dp": 0.1333,
         "regular": 217.55,
         "reg_d": -10.43,
         "reg_dp": -4.575,
         "pre": null,
-        "post": 217.6,
+        "post": 217.84,
         "prev_close": 227.98,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "6 things investors need to watch in the week ahead",
-          "datetime": 1787952047,
+          "datetime": 1787954312,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/video/6-things-investors-watch-week-210300637.html"
+          "url": "https://finance.yahoo.com/video/6-things-investors-need-to-watch-in-the-week-ahead-210300637.html"
         }
       ]
     },
     "NOW": {
       "name": "ServiceNow, Inc.",
       "quote": {
-        "c": 144.22,
-        "d": -0.49,
-        "dp": -0.3386,
+        "c": 143.24,
+        "d": -1.47,
+        "dp": -1.0158,
         "regular": 144.71,
         "reg_d": 6.28,
         "reg_dp": 4.5366,
         "pre": null,
-        "post": 144.22,
+        "post": 143.24,
         "prev_close": 138.43,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Is now the time to buy software stocks?",
-          "datetime": 1787952047,
+          "datetime": 1787954312,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/video/now-time-buy-software-stocks-160600652.html"
         }
@@ -112,21 +112,21 @@
     "TSM": {
       "name": "Taiwan Semiconductor Manufactur",
       "quote": {
-        "c": 418.45,
-        "d": 0.93,
-        "dp": 0.2227,
+        "c": 418.34,
+        "d": 0.82,
+        "dp": 0.1964,
         "regular": 417.52,
         "reg_d": -9.78,
         "reg_dp": -2.2888,
         "pre": null,
-        "post": 418.45,
+        "post": 418.34,
         "prev_close": 427.3,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Nvidia Breaks Ranks With Chip Stocks as Correlation Hits Just 0.03",
-          "datetime": 1787952047,
+          "datetime": 1787954312,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/markets/stocks/articles/nvidia-breaks-ranks-chip-stocks-174824369.html"
         }
@@ -135,21 +135,21 @@
     "MRVL": {
       "name": "Marvell Technology, Inc.",
       "quote": {
-        "c": 216.55,
-        "d": -0.07,
-        "dp": -0.0323,
+        "c": 216.87,
+        "d": 0.25,
+        "dp": 0.1154,
         "regular": 216.62,
         "reg_d": -24.83,
         "reg_dp": -10.2837,
         "pre": null,
-        "post": 216.55,
+        "post": 216.87,
         "prev_close": 241.45,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Trending: Take-Two Interactive price ascends as 'Grand Theft Auto VI' is teased",
-          "datetime": 1787952047,
+          "datetime": 1787954312,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/video/trending-take-two-interactive-price-ascends-as-grand-theft-auto-vi-is-teased-160729740.html"
         }
@@ -158,21 +158,21 @@
     "MU": {
       "name": "Micron Technology, Inc.",
       "quote": {
-        "c": 930.9,
-        "d": -1.96,
-        "dp": -0.21,
+        "c": 931.42,
+        "d": -1.44,
+        "dp": -0.1547,
         "regular": 932.86,
         "reg_d": -2.53,
         "reg_dp": -0.2705,
         "pre": null,
-        "post": 930.9,
+        "post": 931.42,
         "prev_close": 935.39,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "This AI Fund Is Crushing QQQ, and Nvidia Is Barely 2% of It",
-          "datetime": 1787952047,
+          "datetime": 1787954312,
           "source": "Yahoo Finance",
           "url": "https://247wallst.com/investing/2026/08/28/this-ai-fund-is-crushing-qqq-and-nvidia-is-barely-2-of-it/"
         }
@@ -181,21 +181,21 @@
     "SNDK": {
       "name": "Sandisk Corporation",
       "quote": {
-        "c": 1480.0,
-        "d": -4.98,
-        "dp": -0.3353,
+        "c": 1481.0,
+        "d": -3.98,
+        "dp": -0.268,
         "regular": 1484.98,
         "reg_d": 0.03,
         "reg_dp": 0.002,
         "pre": null,
-        "post": 1480.0,
+        "post": 1481.0,
         "prev_close": 1484.95,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Sandisk’s (SNDK) $31B Japan Bet Raises A Bigger Question",
-          "datetime": 1787952047,
+          "datetime": 1787954312,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/technology/ai/articles/sandisk-sndk-31b-japan-bet-182458609.html"
         }
@@ -204,21 +204,21 @@
     "SPCX": {
       "name": "Space Exploration Technologies",
       "quote": {
-        "c": 140.95,
-        "d": -0.55,
-        "dp": -0.3887,
+        "c": 141.01,
+        "d": -0.49,
+        "dp": -0.3446,
         "regular": 141.5,
         "reg_d": 0.63,
         "reg_dp": 0.4472,
         "pre": null,
-        "post": 140.95,
+        "post": 141.01,
         "prev_close": 140.87,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Some major IPOs may be coming, but does that make the market healthy?",
-          "datetime": 1787952047,
+          "datetime": 1787954312,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/video/major-ipos-may-coming-does-195944831.html"
         }
@@ -227,21 +227,21 @@
     "ONDS": {
       "name": "Ondas Inc",
       "quote": {
-        "c": 7.94,
-        "d": 0.04,
-        "dp": 0.5063,
+        "c": 7.91,
+        "d": 0.01,
+        "dp": 0.1241,
         "regular": 7.9,
         "reg_d": -0.85,
         "reg_dp": -9.7143,
         "pre": null,
-        "post": 7.94,
+        "post": 7.91,
         "prev_close": 8.75,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Drone Stocks Drop While Broad Market Rises: Unusual Machines Sinks 9%, Ondas Falls 6%, Red Cat Slides 5%",
-          "datetime": 1787952047,
+          "datetime": 1787954312,
           "source": "Yahoo Finance",
           "url": "https://247wallst.com/investing/2026/08/28/drone-stocks-drop-while-broad-market-rises-unusual-machines-sinks-9-ondas-falls-6-red-cat-slides-5/"
         }
@@ -250,21 +250,21 @@
     "PLTR": {
       "name": "Palantir Technologies Inc.",
       "quote": {
-        "c": 185.6,
-        "d": -0.69,
-        "dp": -0.3704,
+        "c": 185.5,
+        "d": -0.79,
+        "dp": -0.4241,
         "regular": 186.29,
         "reg_d": 0.36,
         "reg_dp": 0.1936,
         "pre": null,
-        "post": 185.6,
+        "post": 185.5,
         "prev_close": 185.93,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Dow Jones Futures: Microsoft, Titans Mask Market Weakness. Here's What To Do.",
-          "datetime": 1787952047,
+          "datetime": 1787954312,
           "source": "Yahoo Finance",
           "url": "https://www.investors.com/market-trend/stock-market-today/dow-jones-futures-microsoft-titans-mask-market-weakness/?src=A00220&yptr=yahoo"
         }
@@ -287,7 +287,7 @@
       "news": [
         {
           "headline": "Why Micron Stock Just Dropped Again",
-          "datetime": 1787952047,
+          "datetime": 1787954312,
           "source": "Yahoo Finance",
           "url": "https://www.fool.com/investing/2026/07/15/why-micron-stock-just-dropped-again/"
         }
@@ -295,7 +295,7 @@
     }
   },
   "alert_sent": {
-    "morning": "2026-08-28",
+    "morning": "2026-08-29",
     "evening": "2026-08-28"
   }
 }
