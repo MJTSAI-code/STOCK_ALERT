@@ -1,7 +1,7 @@
 {
   "name": "美股盤前情報資料庫",
-  "updated_at": "2026-09-01T05:58:31.241559+08:00",
-  "next_update_at": "2026-08-31T22:30:00Z",
+  "updated_at": "2026-09-01T07:17:25.140950+08:00",
+  "next_update_at": "2026-09-01T00:00:00Z",
   "stocks": [
     "MSFT",
     "GOOG",
@@ -20,21 +20,21 @@
     "MSFT": {
       "name": "Microsoft Corporation",
       "quote": {
-        "c": 507.4,
-        "d": 0.11,
-        "dp": 0.0217,
+        "c": 507.31,
+        "d": 0.02,
+        "dp": 0.0039,
         "regular": 507.29,
         "reg_d": -6.24,
         "reg_dp": -1.2151,
         "pre": null,
-        "post": 507.4,
+        "post": 507.31,
         "prev_close": 513.53,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Here comes the AI capex shocker, Goldman Sachs says",
-          "datetime": 1788213511,
+          "datetime": 1788218245,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/markets/article/here-comes-the-ai-capex-shocker-goldman-sachs-says-171026577.html"
         }
@@ -43,21 +43,21 @@
     "GOOG": {
       "name": "Alphabet Inc.",
       "quote": {
-        "c": 336.21,
-        "d": 0.8,
-        "dp": 0.2378,
+        "c": 336.02,
+        "d": 0.61,
+        "dp": 0.1819,
         "regular": 335.41,
         "reg_d": -7.47,
         "reg_dp": -2.1786,
         "pre": null,
-        "post": 336.21,
+        "post": 336.02,
         "prev_close": 342.88,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Here comes the AI capex shocker, Goldman Sachs says",
-          "datetime": 1788213511,
+          "datetime": 1788218245,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/markets/article/here-comes-the-ai-capex-shocker-goldman-sachs-says-171026577.html"
         }
@@ -66,21 +66,21 @@
     "NVDA": {
       "name": "NVIDIA Corporation",
       "quote": {
-        "c": 220.55,
-        "d": -0.23,
-        "dp": -0.1052,
+        "c": 220.21,
+        "d": -0.57,
+        "dp": -0.2582,
         "regular": 220.78,
         "reg_d": 3.23,
         "reg_dp": 1.4847,
         "pre": null,
-        "post": 220.55,
+        "post": 220.21,
         "prev_close": 217.55,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Tech stocks today: Apple stock slips as Tim Cook prepares to step down",
-          "datetime": 1788213511,
+          "datetime": 1788218245,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/technology/live/tech-stocks-today-apple-ceo-steps-down-nvidia-mag-7-145623375.html"
         }
@@ -89,21 +89,21 @@
     "NOW": {
       "name": "ServiceNow, Inc.",
       "quote": {
-        "c": 147.5,
-        "d": -0.49,
-        "dp": -0.3311,
+        "c": 147.67,
+        "d": -0.32,
+        "dp": -0.2162,
         "regular": 147.99,
         "reg_d": 3.28,
         "reg_dp": 2.2666,
         "pre": null,
-        "post": 147.5,
+        "post": 147.67,
         "prev_close": 144.71,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Software Stocks & ETFs: Is the AI Sell-Off Over?",
-          "datetime": 1788213511,
+          "datetime": 1788218245,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/markets/stocks/articles/software-stocks-etfs-ai-sell-205000363.html"
         }
@@ -112,21 +112,21 @@
     "TSM": {
       "name": "Taiwan Semiconductor Manufactur",
       "quote": {
-        "c": 416.0,
-        "d": 0.68,
-        "dp": 0.1637,
+        "c": 416.2,
+        "d": 0.88,
+        "dp": 0.2119,
         "regular": 415.32,
         "reg_d": -2.2,
         "reg_dp": -0.5269,
         "pre": null,
-        "post": 416.0,
+        "post": 416.2,
         "prev_close": 417.52,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Corning vs. Applied Materials: One Stock Beat the Other by 75 Percentage Points. The Better AI Infrastructure Play Is Clear.",
-          "datetime": 1788213511,
+          "datetime": 1788218245,
           "source": "Yahoo Finance",
           "url": "https://www.barchart.com/story/news/4355448/corning-vs-applied-materials-one-stock-beat-the-other-by-75-percentage-points-the-better-ai-infrastructure-play-is-clear"
         }
@@ -135,21 +135,21 @@
     "MRVL": {
       "name": "Marvell Technology, Inc.",
       "quote": {
-        "c": 211.83,
-        "d": 0.17,
-        "dp": 0.0803,
+        "c": 211.06,
+        "d": -0.6,
+        "dp": -0.2835,
         "regular": 211.66,
         "reg_d": -4.96,
         "reg_dp": -2.2897,
         "pre": null,
-        "post": 211.83,
+        "post": 211.06,
         "prev_close": 216.62,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "The Biggest Risk To Cerebras Systems Stock Is Sitting Inside Its Backlog",
-          "datetime": 1788213511,
+          "datetime": 1788218245,
           "source": "Yahoo Finance",
           "url": "https://www.trefis.com/articles/613716/the-biggest-risk-to-cerebras-systems-stock-is-sitting-inside-its-backlog/2026-08-31"
         }
@@ -158,21 +158,21 @@
     "MU": {
       "name": "Micron Technology, Inc.",
       "quote": {
-        "c": 958.0,
-        "d": -0.73,
-        "dp": -0.0761,
+        "c": 954.5,
+        "d": -4.23,
+        "dp": -0.4417,
         "regular": 958.73,
         "reg_d": 25.87,
         "reg_dp": 2.7732,
         "pre": null,
-        "post": 958.0,
+        "post": 954.5,
         "prev_close": 932.86,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Dow Jones Futures: Trump's Iran Warning Sparks Stock Market Losses; Elon Musk-Led SpaceX, Tesla Rally",
-          "datetime": 1788213511,
+          "datetime": 1788218245,
           "source": "Yahoo Finance",
           "url": "https://www.investors.com/market-trend/stock-market-today/dow-jones-futures-sp500-nasdaq-trump-iran-warning-elon-musk-spacex-tesla/?src=A00220&yptr=yahoo"
         }
@@ -181,21 +181,21 @@
     "SNDK": {
       "name": "Sandisk Corporation",
       "quote": {
-        "c": 1553.01,
-        "d": -13.69,
-        "dp": -0.8738,
+        "c": 1547.6,
+        "d": -19.1,
+        "dp": -1.2191,
         "regular": 1566.7,
         "reg_d": 81.72,
         "reg_dp": 5.5031,
         "pre": null,
-        "post": 1553.01,
+        "post": 1547.6,
         "prev_close": 1484.98,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Dow Jones Futures: Trump's Iran Warning Sparks Stock Market Losses; Elon Musk-Led SpaceX, Tesla Rally",
-          "datetime": 1788213511,
+          "datetime": 1788218245,
           "source": "Yahoo Finance",
           "url": "https://www.investors.com/market-trend/stock-market-today/dow-jones-futures-sp500-nasdaq-trump-iran-warning-elon-musk-spacex-tesla/?src=A00220&yptr=yahoo"
         }
@@ -204,21 +204,21 @@
     "SPCX": {
       "name": "Space Exploration Technologies",
       "quote": {
-        "c": 143.47,
-        "d": -0.22,
-        "dp": -0.1553,
+        "c": 143.42,
+        "d": -0.27,
+        "dp": -0.1879,
         "regular": 143.69,
         "reg_d": 2.19,
         "reg_dp": 1.5477,
         "pre": null,
-        "post": 143.47,
+        "post": 143.42,
         "prev_close": 141.5,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "OpenAI takes aim at Cursor as Musk-Altman feud continues",
-          "datetime": 1788213511,
+          "datetime": 1788218245,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/video/openai-takes-aim-cursor-musk-194200477.html"
         }
@@ -227,21 +227,21 @@
     "ONDS": {
       "name": "Ondas Inc",
       "quote": {
-        "c": 7.66,
-        "d": 0.0,
-        "dp": 0.0536,
+        "c": 7.65,
+        "d": -0.01,
+        "dp": -0.0666,
         "regular": 7.66,
         "reg_d": -0.25,
         "reg_dp": -3.1013,
         "pre": null,
-        "post": 7.66,
+        "post": 7.65,
         "prev_close": 7.9,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Drone Stocks Drop While Broad Market Rises: Unusual Machines Sinks 9%, Ondas Falls 6%, Red Cat Slides 5%",
-          "datetime": 1788213511,
+          "datetime": 1788218245,
           "source": "Yahoo Finance",
           "url": "https://247wallst.com/investing/2026/08/28/drone-stocks-drop-while-broad-market-rises-unusual-machines-sinks-9-ondas-falls-6-red-cat-slides-5/"
         }
@@ -250,28 +250,28 @@
     "PLTR": {
       "name": "Palantir Technologies Inc.",
       "quote": {
-        "c": 185.99,
-        "d": -0.39,
-        "dp": -0.2092,
+        "c": 185.9,
+        "d": -0.48,
+        "dp": -0.2575,
         "regular": 186.38,
         "reg_d": 0.09,
         "reg_dp": 0.0483,
         "pre": null,
-        "post": 185.99,
+        "post": 185.9,
         "prev_close": 186.29,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Software Stocks & ETFs: Is the AI Sell-Off Over?",
-          "datetime": 1788213511,
+          "headline": "There Was No Beating Moderna in August. These Are the Best and Worst S&P 500 Stocks for the Month.",
+          "datetime": 1788218245,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/markets/stocks/articles/software-stocks-etfs-ai-sell-205000363.html"
+          "url": "https://www.barrons.com/articles/moderna-stock-sp500-best-worst-august-f24aa440?siteid=yhoof2&yptr=yahoo"
         }
       ]
     },
     "SKHYV": {
-      "name": "SK hynix Inc. - American Deposi",
+      "name": "SK hynix Inc. American Depositary Shares When Issued",
       "quote": {
         "c": 168.01,
         "d": 0.0,
@@ -287,7 +287,7 @@
       "news": [
         {
           "headline": "Why Micron Stock Just Dropped Again",
-          "datetime": 1788213511,
+          "datetime": 1788218245,
           "source": "Yahoo Finance",
           "url": "https://www.fool.com/investing/2026/07/15/why-micron-stock-just-dropped-again/"
         }
