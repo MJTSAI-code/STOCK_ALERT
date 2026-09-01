@@ -1,6 +1,6 @@
 {
   "name": "美股盤前情報資料庫",
-  "updated_at": "2026-09-02T07:34:15.018135+08:00",
+  "updated_at": "2026-09-02T07:53:57.936165+08:00",
   "next_update_at": "2026-09-02T00:30:00Z",
   "stocks": [
     "MSFT",
@@ -20,21 +20,21 @@
     "MSFT": {
       "name": "Microsoft Corporation",
       "quote": {
-        "c": 501.16,
-        "d": 0.14,
-        "dp": 0.0277,
+        "c": 500.62,
+        "d": -0.4,
+        "dp": -0.0798,
         "regular": 501.02,
         "reg_d": -6.27,
         "reg_dp": -1.236,
         "pre": null,
-        "post": 501.16,
+        "post": 500.62,
         "prev_close": 507.29,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Nvidia makes its biggest investment abroad with Mediatek: Why it's a uniquely important deal",
-          "datetime": 1788305655,
+          "datetime": 1788306837,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/video/nvidia-makes-its-biggest-investment-abroad-with-mediatek-why-its-a-uniquely-important-deal-150520120.html"
         }
@@ -43,21 +43,21 @@
     "GOOG": {
       "name": "Alphabet Inc.",
       "quote": {
-        "c": 334.05,
-        "d": 2.02,
-        "dp": 0.6084,
+        "c": 333.73,
+        "d": 1.7,
+        "dp": 0.512,
         "regular": 332.03,
         "reg_d": -3.38,
         "reg_dp": -1.0077,
         "pre": null,
-        "post": 334.05,
+        "post": 333.73,
         "prev_close": 335.41,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Are you willing to pay $2,000 for an iPhone? These customers may.",
-          "datetime": 1788305655,
+          "datetime": 1788306837,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/video/willing-pay-2-000-iphone-203311978.html"
         }
@@ -66,21 +66,21 @@
     "NVDA": {
       "name": "NVIDIA Corporation",
       "quote": {
-        "c": 217.49,
-        "d": 0.05,
-        "dp": 0.023,
+        "c": 217.57,
+        "d": 0.13,
+        "dp": 0.0584,
         "regular": 217.44,
         "reg_d": -3.06,
         "reg_dp": -1.3878,
         "pre": null,
-        "post": 217.49,
+        "post": 217.57,
         "prev_close": 220.5,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Two deals, one Nvidia strategy: What's behind the chip giant's recent partnerships",
-          "datetime": 1788305655,
+          "datetime": 1788306837,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/video/two-deals-one-nvidia-strategy-193213308.html"
         }
@@ -89,21 +89,21 @@
     "NOW": {
       "name": "ServiceNow, Inc.",
       "quote": {
-        "c": 140.31,
-        "d": -2.59,
-        "dp": -1.8135,
+        "c": 140.41,
+        "d": -2.49,
+        "dp": -1.7446,
         "regular": 142.9,
         "reg_d": -5.09,
         "reg_dp": -3.4394,
         "pre": null,
-        "post": 140.31,
+        "post": 140.41,
         "prev_close": 147.99,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Dow Jones Software Giant Microsoft, AI Leader Palantir Eye Latest Entries",
-          "datetime": 1788305655,
+          "datetime": 1788306837,
           "source": "Yahoo Finance",
           "url": "https://www.investors.com/stock-lists/stocks-near-a-buy-zone/dow-jones-software-giant-microsoft-ai-leader-palantir-eye-latest-entries/?src=A00220&yptr=yahoo"
         }
@@ -112,44 +112,44 @@
     "TSM": {
       "name": "Taiwan Semiconductor Manufactur",
       "quote": {
-        "c": 414.23,
-        "d": 0.23,
-        "dp": 0.0556,
+        "c": 414.27,
+        "d": 0.27,
+        "dp": 0.0642,
         "regular": 414.0,
         "reg_d": -1.32,
         "reg_dp": -0.3178,
         "pre": null,
-        "post": 414.23,
+        "post": 414.27,
         "prev_close": 415.32,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "TSMC's $269 Billion Expansion Puts Its 67.7% Margin in Focus",
-          "datetime": 1788305655,
+          "headline": "Roundtable 100 analysts put Nvidia at No. 76 in new tech power ranking",
+          "datetime": 1788306837,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/markets/stocks/articles/tsmcs-269-billion-expansion-puts-170918317.html"
+          "url": "https://www.thestreet.com/crypto/markets/roundtable-100-analysts-put-nvidia-at-no-76-in-new-tech-power-ranking"
         }
       ]
     },
     "MRVL": {
       "name": "Marvell Technology, Inc.",
       "quote": {
-        "c": 207.4,
-        "d": -2.99,
-        "dp": -1.4212,
+        "c": 207.48,
+        "d": -2.91,
+        "dp": -1.3825,
         "regular": 210.39,
         "reg_d": -1.27,
         "reg_dp": -0.6,
         "pre": null,
-        "post": 207.4,
+        "post": 207.48,
         "prev_close": 211.66,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Nvidia makes its biggest investment abroad with Mediatek: Why it's a uniquely important deal",
-          "datetime": 1788305655,
+          "datetime": 1788306837,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/video/nvidia-makes-its-biggest-investment-abroad-with-mediatek-why-its-a-uniquely-important-deal-150520120.html"
         }
@@ -158,21 +158,21 @@
     "MU": {
       "name": "Micron Technology, Inc.",
       "quote": {
-        "c": 929.49,
-        "d": -3.95,
-        "dp": -0.4232,
+        "c": 929.27,
+        "d": -4.17,
+        "dp": -0.4465,
         "regular": 933.44,
         "reg_d": -25.29,
         "reg_dp": -2.6379,
         "pre": null,
-        "post": 929.49,
+        "post": 929.27,
         "prev_close": 958.73,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Stock Market Today: Nasdaq Ends Lower As Oil Prices Top $90; Micron, Nvidia Shares Wrapped in Red",
-          "datetime": 1788305655,
+          "datetime": 1788306837,
           "source": "Yahoo Finance",
           "url": "https://www.investors.com/market-trend/stock-market-today/dow-jones-sp500-nasdaq-oil-prices-treasury-yields-nvidia-stock-micron-stock/?src=A00220&yptr=yahoo"
         }
@@ -181,21 +181,21 @@
     "SNDK": {
       "name": "Sandisk Corporation",
       "quote": {
-        "c": 1531.2,
-        "d": -5.67,
-        "dp": -0.3689,
+        "c": 1532.0,
+        "d": -4.87,
+        "dp": -0.3169,
         "regular": 1536.87,
         "reg_d": -29.83,
         "reg_dp": -1.904,
         "pre": null,
-        "post": 1531.2,
+        "post": 1532.0,
         "prev_close": 1566.7,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Stock Market Today: Nasdaq Ends Lower As Oil Prices Top $90; Micron, Nvidia Shares Wrapped in Red",
-          "datetime": 1788305655,
+          "datetime": 1788306837,
           "source": "Yahoo Finance",
           "url": "https://www.investors.com/market-trend/stock-market-today/dow-jones-sp500-nasdaq-oil-prices-treasury-yields-nvidia-stock-micron-stock/?src=A00220&yptr=yahoo"
         }
@@ -204,21 +204,21 @@
     "SPCX": {
       "name": "Space Exploration Technologies",
       "quote": {
-        "c": 142.02,
-        "d": -0.21,
-        "dp": -0.146,
+        "c": 142.06,
+        "d": -0.17,
+        "dp": -0.1195,
         "regular": 142.23,
         "reg_d": -1.46,
         "reg_dp": -1.0161,
         "pre": null,
-        "post": 142.02,
+        "post": 142.06,
         "prev_close": 143.69,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "How Mark Zuckerberg and Elon Musk made the case for AI at the G20 meeting",
-          "datetime": 1788305655,
+          "datetime": 1788306837,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/video/how-mark-zuckerberg-and-elon-musk-made-the-case-for-ai-at-the-g20-meeting-200154913.html"
         }
@@ -229,7 +229,7 @@
       "quote": {
         "c": 7.05,
         "d": 0.01,
-        "dp": 0.1378,
+        "dp": 0.1136,
         "regular": 7.04,
         "reg_d": -0.62,
         "reg_dp": -8.0484,
@@ -241,7 +241,7 @@
       "news": [
         {
           "headline": "Ondas Drops 6% as Risk-Off Selling Cascades Through Drone Names, Red Cat Slides 3%",
-          "datetime": 1788305655,
+          "datetime": 1788306837,
           "source": "Yahoo Finance",
           "url": "https://247wallst.com/investing/2026/09/01/ondas-drops-6-as-risk-off-selling-cascades-through-drone-names-red-cat-slides-3/"
         }
@@ -250,21 +250,21 @@
     "PLTR": {
       "name": "Palantir Technologies Inc.",
       "quote": {
-        "c": 179.88,
-        "d": -0.04,
-        "dp": -0.0222,
+        "c": 179.92,
+        "d": 0.0,
+        "dp": 0.0,
         "regular": 179.92,
         "reg_d": -6.46,
         "reg_dp": -3.466,
         "pre": null,
-        "post": 179.88,
+        "post": 179.92,
         "prev_close": 186.38,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "As AI Models Become Commoditized, Palantir Is Betting Its Ontology Is the New Moat",
-          "datetime": 1788305655,
+          "datetime": 1788306837,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/technology/ai/articles/ai-models-become-commoditized-palantir-220151115.html"
         }
@@ -287,7 +287,7 @@
       "news": [
         {
           "headline": "Why Micron Stock Just Dropped Again",
-          "datetime": 1788305655,
+          "datetime": 1788306837,
           "source": "Yahoo Finance",
           "url": "https://www.fool.com/investing/2026/07/15/why-micron-stock-just-dropped-again/"
         }
