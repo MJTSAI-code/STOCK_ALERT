@@ -1,7 +1,7 @@
 {
   "name": "美股盤前情報資料庫",
-  "updated_at": "2026-09-03T06:55:44.995796+08:00",
-  "next_update_at": "2026-09-02T23:30:00Z",
+  "updated_at": "2026-09-03T07:33:20.412236+08:00",
+  "next_update_at": "2026-09-03T00:30:00Z",
   "stocks": [
     "MSFT",
     "GOOG",
@@ -20,21 +20,21 @@
     "MSFT": {
       "name": "Microsoft Corporation",
       "quote": {
-        "c": 498.42,
-        "d": 1.6,
-        "dp": 0.322,
+        "c": 497.96,
+        "d": 1.14,
+        "dp": 0.2295,
         "regular": 496.82,
         "reg_d": -4.2,
         "reg_dp": -0.8383,
         "pre": null,
-        "post": 498.42,
+        "post": 497.96,
         "prev_close": 501.02,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Steve Ballmer banned, Clippers fined $30M over Kawhi Leonard scandal",
-          "datetime": 1788389744,
+          "datetime": 1788392000,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/video/steve-ballmer-banned-clippers-fined-211000131.html"
         }
@@ -43,21 +43,21 @@
     "GOOG": {
       "name": "Alphabet Inc.",
       "quote": {
-        "c": 334.79,
-        "d": 1.01,
-        "dp": 0.3026,
+        "c": 334.8,
+        "d": 1.02,
+        "dp": 0.3056,
         "regular": 333.78,
         "reg_d": 1.75,
         "reg_dp": 0.5271,
         "pre": null,
-        "post": 334.79,
+        "post": 334.8,
         "prev_close": 332.03,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Broadcom's Q3 earnings beat just isn't 'enough' to keep investors happy",
-          "datetime": 1788389744,
+          "datetime": 1788392000,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/video/broadcoms-q3-earnings-beat-just-204909744.html"
         }
@@ -66,21 +66,21 @@
     "NVDA": {
       "name": "NVIDIA Corporation",
       "quote": {
-        "c": 225.02,
-        "d": 0.61,
-        "dp": 0.2727,
+        "c": 225.11,
+        "d": 0.7,
+        "dp": 0.3119,
         "regular": 224.41,
         "reg_d": 6.97,
         "reg_dp": 3.2055,
         "pre": null,
-        "post": 225.02,
+        "post": 225.11,
         "prev_close": 217.44,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Broadcom's Q3 earnings beat just isn't 'enough' to keep investors happy",
-          "datetime": 1788389744,
+          "datetime": 1788392000,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/video/broadcoms-q3-earnings-beat-just-204909744.html"
         }
@@ -89,21 +89,21 @@
     "NOW": {
       "name": "ServiceNow, Inc.",
       "quote": {
-        "c": 140.35,
-        "d": 3.63,
-        "dp": 2.6551,
+        "c": 140.49,
+        "d": 3.77,
+        "dp": 2.7565,
         "regular": 136.72,
         "reg_d": -6.18,
         "reg_dp": -4.3247,
         "pre": null,
-        "post": 140.35,
+        "post": 140.49,
         "prev_close": 142.9,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Is ServiceNow (NOW) Quietly Becoming the Default AI Commerce Platform for Enterprise Partners?",
-          "datetime": 1788389744,
+          "datetime": 1788392000,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/technology/ai/articles/servicenow-now-quietly-becoming-default-211056308.html"
         }
@@ -112,21 +112,21 @@
     "TSM": {
       "name": "Taiwan Semiconductor Manufactur",
       "quote": {
-        "c": 415.43,
-        "d": -0.07,
-        "dp": -0.017,
+        "c": 415.5,
+        "d": 0.0,
+        "dp": 0.0,
         "regular": 415.5,
         "reg_d": 1.5,
         "reg_dp": 0.3623,
         "pre": null,
-        "post": 415.43,
+        "post": 415.5,
         "prev_close": 414.0,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Billionaire David Tepper Cut Micron 41% and Kept Buying This AI Chip Stock for a Sixth Quarter",
-          "datetime": 1788389744,
+          "datetime": 1788392000,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/markets/stocks/articles/billionaire-david-tepper-cut-micron-220154130.html"
         }
@@ -135,44 +135,44 @@
     "MRVL": {
       "name": "Marvell Technology, Inc.",
       "quote": {
-        "c": 206.25,
-        "d": -0.23,
-        "dp": -0.1114,
+        "c": 206.14,
+        "d": -0.34,
+        "dp": -0.1647,
         "regular": 206.48,
         "reg_d": -3.91,
         "reg_dp": -1.8585,
         "pre": null,
-        "post": 206.25,
+        "post": 206.14,
         "prev_close": 210.39,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Broadcom pares losses as revenue is projected to double in both 2027 and 2028",
-          "datetime": 1788389744,
+          "headline": "Broadcom’s Outlook Shows Surging AI Chip Sales",
+          "datetime": 1788392000,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/markets/stocks/articles/broadcom-shares-fall-3-revenue-211557374.html"
+          "url": "https://www.barrons.com/articles/broadcom-earnings-todya-stock-price-13672771?siteid=yhoof2&yptr=yahoo"
         }
       ]
     },
     "MU": {
       "name": "Micron Technology, Inc.",
       "quote": {
-        "c": 952.63,
-        "d": -3.45,
-        "dp": -0.3608,
+        "c": 952.81,
+        "d": -3.27,
+        "dp": -0.342,
         "regular": 956.08,
         "reg_d": 22.64,
         "reg_dp": 2.4254,
         "pre": null,
-        "post": 952.63,
+        "post": 952.81,
         "prev_close": 933.44,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Billionaire David Tepper Cut Micron 41% and Kept Buying This AI Chip Stock for a Sixth Quarter",
-          "datetime": 1788389744,
+          "datetime": 1788392000,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/markets/stocks/articles/billionaire-david-tepper-cut-micron-220154130.html"
         }
@@ -181,21 +181,21 @@
     "SNDK": {
       "name": "Sandisk Corporation",
       "quote": {
-        "c": 1543.18,
-        "d": -10.22,
-        "dp": -0.6579,
+        "c": 1543.49,
+        "d": -9.91,
+        "dp": -0.638,
         "regular": 1553.4,
         "reg_d": 16.53,
         "reg_dp": 1.0756,
         "pre": null,
-        "post": 1543.18,
+        "post": 1543.49,
         "prev_close": 1536.87,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Here's the biggest thing keeping AI stock investors up at night",
-          "datetime": 1788389744,
+          "datetime": 1788392000,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/markets/stocks/article/heres-the-biggest-thing-keeping-ai-stock-investors-up-at-night-095513638.html"
         }
@@ -204,21 +204,21 @@
     "SPCX": {
       "name": "Space Exploration Technologies",
       "quote": {
-        "c": 140.36,
-        "d": -0.35,
-        "dp": -0.2487,
+        "c": 140.39,
+        "d": -0.32,
+        "dp": -0.2248,
         "regular": 140.71,
         "reg_d": -1.52,
         "reg_dp": -1.0687,
         "pre": null,
-        "post": 140.36,
+        "post": 140.39,
         "prev_close": 142.23,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Wall Street Just Put a $280 Target on SpaceX's AI Bet",
-          "datetime": 1788389744,
+          "datetime": 1788392000,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/technology/ai/articles/wall-street-just-put-280-220746044.html"
         }
@@ -227,21 +227,21 @@
     "ONDS": {
       "name": "Ondas Inc",
       "quote": {
-        "c": 7.59,
-        "d": -0.02,
-        "dp": -0.2628,
+        "c": 7.58,
+        "d": -0.03,
+        "dp": -0.3942,
         "regular": 7.61,
         "reg_d": 0.57,
         "reg_dp": 8.0966,
         "pre": null,
-        "post": 7.59,
+        "post": 7.58,
         "prev_close": 7.04,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Ondas, SoundHound AI Among 5 Stocks Facing Heavy Short Bets",
-          "datetime": 1788389744,
+          "datetime": 1788392000,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/markets/stocks/articles/ondas-soundhound-ai-among-5-162643707.html"
         }
@@ -250,28 +250,28 @@
     "PLTR": {
       "name": "Palantir Technologies Inc.",
       "quote": {
-        "c": 169.84,
-        "d": 0.38,
-        "dp": 0.2242,
+        "c": 169.87,
+        "d": 0.41,
+        "dp": 0.2419,
         "regular": 169.46,
         "reg_d": -10.46,
         "reg_dp": -5.8137,
         "pre": null,
-        "post": 169.84,
+        "post": 169.87,
         "prev_close": 179.92,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "AI has become a 'non-negotiable', Sam Altman says at G20 summit",
-          "datetime": 1788389744,
+          "datetime": 1788392000,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/video/ai-become-non-negotiable-sam-194000759.html"
         }
       ]
     },
     "SKHYV": {
-      "name": "SK hynix Inc. American Depositary Shares When Issued",
+      "name": "SK hynix Inc. - American Deposi",
       "quote": {
         "c": 168.01,
         "d": 0.0,
@@ -287,7 +287,7 @@
       "news": [
         {
           "headline": "Why Micron Stock Just Dropped Again",
-          "datetime": 1788389744,
+          "datetime": 1788392000,
           "source": "Yahoo Finance",
           "url": "https://www.fool.com/investing/2026/07/15/why-micron-stock-just-dropped-again/"
         }
