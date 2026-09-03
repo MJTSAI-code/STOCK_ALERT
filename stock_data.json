@@ -1,6 +1,6 @@
 {
   "name": "美股盤前情報資料庫",
-  "updated_at": "2026-09-04T07:32:07.132779+08:00",
+  "updated_at": "2026-09-04T07:52:39.002527+08:00",
   "next_update_at": "2026-09-04T00:30:00Z",
   "stocks": [
     "MSFT",
@@ -20,44 +20,44 @@
     "MSFT": {
       "name": "Microsoft Corporation",
       "quote": {
-        "c": 509.22,
-        "d": -0.9,
-        "dp": -0.1764,
+        "c": 509.5,
+        "d": -0.62,
+        "dp": -0.1215,
         "regular": 510.12,
         "reg_d": 13.3,
         "reg_dp": 2.677,
         "pre": null,
-        "post": 509.22,
+        "post": 509.5,
         "prev_close": 496.82,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Dow Jones Futures: Stocks Jump On Fed's Waller; Tesla Cybercab Event Private, Jobs Report Looms",
-          "datetime": 1788478327,
+          "headline": "Why Microsoft Stock Is Up Today",
+          "datetime": 1788479559,
           "source": "Yahoo Finance",
-          "url": "https://www.investors.com/market-trend/stock-market-today/dow-jones-futures-fed-waller-tesla-cybercab-jobs-report/?src=A00220&yptr=yahoo"
+          "url": "https://www.fool.com/investing/2026/09/03/why-microsoft-stock-is-up-today/"
         }
       ]
     },
     "GOOG": {
       "name": "Alphabet Inc.",
       "quote": {
-        "c": 339.51,
-        "d": 0.43,
-        "dp": 0.1268,
+        "c": 339.69,
+        "d": 0.61,
+        "dp": 0.1791,
         "regular": 339.08,
         "reg_d": 5.3,
         "reg_dp": 1.5879,
         "pre": null,
-        "post": 339.51,
+        "post": 339.69,
         "prev_close": 333.78,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Nvidia's Jensen Huang is 'playing both sides' of AI with Hugging Face purchase",
-          "datetime": 1788478327,
+          "datetime": 1788479559,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/video/nvidias-jensen-huang-playing-both-203620881.html"
         }
@@ -66,21 +66,21 @@
     "NVDA": {
       "name": "NVIDIA Corporation",
       "quote": {
-        "c": 229.75,
-        "d": 1.3,
-        "dp": 0.5691,
+        "c": 229.85,
+        "d": 1.4,
+        "dp": 0.6113,
         "regular": 228.45,
         "reg_d": 4.04,
         "reg_dp": 1.8003,
         "pre": null,
-        "post": 229.75,
+        "post": 229.85,
         "prev_close": 224.41,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Tech stocks today: Tesla stock pops ahead of Cybercab event, Nvidia acquires Hugging Face",
-          "datetime": 1788478327,
+          "datetime": 1788479559,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/technology/live/tech-stocks-today-apple-ceo-steps-down-nvidia-mag-7-145623375.html"
         }
@@ -89,21 +89,21 @@
     "NOW": {
       "name": "ServiceNow, Inc.",
       "quote": {
-        "c": 145.44,
-        "d": -0.15,
-        "dp": -0.103,
+        "c": 145.28,
+        "d": -0.31,
+        "dp": -0.2138,
         "regular": 145.59,
         "reg_d": 8.87,
         "reg_dp": 6.4877,
         "pre": null,
-        "post": 145.44,
+        "post": 145.28,
         "prev_close": 136.72,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Dow Jones Futures: Stocks Jump On Fed's Waller; Tesla Cybercab Event Private, Jobs Report Looms",
-          "datetime": 1788478327,
+          "datetime": 1788479559,
           "source": "Yahoo Finance",
           "url": "https://www.investors.com/market-trend/stock-market-today/dow-jones-futures-fed-waller-tesla-cybercab-jobs-report/?src=A00220&yptr=yahoo"
         }
@@ -112,21 +112,21 @@
     "TSM": {
       "name": "Taiwan Semiconductor Manufactur",
       "quote": {
-        "c": 416.08,
-        "d": -0.93,
-        "dp": -0.223,
+        "c": 416.37,
+        "d": -0.64,
+        "dp": -0.1535,
         "regular": 417.01,
         "reg_d": 1.51,
         "reg_dp": 0.3634,
         "pre": null,
-        "post": 416.08,
+        "post": 416.37,
         "prev_close": 415.5,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "SpaceX Reclaims $2 Trillion Market Cap As Tech Rally, Cybercab Ties Boost Investor Confidence",
-          "datetime": 1788478327,
+          "datetime": 1788479559,
           "source": "Yahoo Finance",
           "url": "https://stocktwits.com/news-articles/markets/equity/space-x-reclaims-2-trillion-market-cap/cZsu9YqRJvt"
         }
@@ -135,21 +135,21 @@
     "MRVL": {
       "name": "Marvell Technology, Inc.",
       "quote": {
-        "c": 208.45,
-        "d": -0.38,
-        "dp": -0.182,
+        "c": 208.79,
+        "d": -0.04,
+        "dp": -0.0205,
         "regular": 208.83,
         "reg_d": 2.35,
         "reg_dp": 1.1381,
         "pre": null,
-        "post": 208.45,
+        "post": 208.79,
         "prev_close": 206.48,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "How Nvidia's latest deal continues to target all points of the AI trade",
-          "datetime": 1788478327,
+          "datetime": 1788479559,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/video/nvidias-latest-deal-continues-target-143717372.html"
         }
@@ -158,21 +158,21 @@
     "MU": {
       "name": "Micron Technology, Inc.",
       "quote": {
-        "c": 954.5,
-        "d": -3.66,
-        "dp": -0.382,
+        "c": 953.51,
+        "d": -4.65,
+        "dp": -0.4853,
         "regular": 958.16,
         "reg_d": 2.08,
         "reg_dp": 0.2176,
         "pre": null,
-        "post": 954.5,
+        "post": 953.51,
         "prev_close": 956.08,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "eGain (EGAN) Q4 Earnings and Revenues Beat Estimates",
-          "datetime": 1788478327,
+          "datetime": 1788479559,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/markets/stocks/articles/egain-egan-q4-earnings-revenues-214002994.html"
         }
@@ -181,21 +181,21 @@
     "SNDK": {
       "name": "Sandisk Corporation",
       "quote": {
-        "c": 1549.07,
-        "d": -5.92,
-        "dp": -0.3809,
+        "c": 1549.21,
+        "d": -5.78,
+        "dp": -0.372,
         "regular": 1554.99,
         "reg_d": 1.59,
         "reg_dp": 0.1024,
         "pre": null,
-        "post": 1549.07,
+        "post": 1549.21,
         "prev_close": 1553.4,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "What Does Sandisk (SNDK) Losing NAND Share To China Mean Now?",
-          "datetime": 1788478327,
+          "datetime": 1788479559,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/markets/stocks/articles/does-sandisk-sndk-losing-nand-230917506.html"
         }
@@ -204,21 +204,21 @@
     "SPCX": {
       "name": "Space Exploration Technologies",
       "quote": {
-        "c": 149.5,
-        "d": -0.24,
-        "dp": -0.1603,
+        "c": 149.68,
+        "d": -0.06,
+        "dp": -0.0401,
         "regular": 149.74,
         "reg_d": 9.03,
         "reg_dp": 6.4175,
         "pre": null,
-        "post": 149.5,
+        "post": 149.68,
         "prev_close": 140.71,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Protolabs CEO sees big impact from US reshoring despite potential tariffs",
-          "datetime": 1788478327,
+          "datetime": 1788479559,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/video/protolabs-ceo-sees-big-impact-201750043.html"
         }
@@ -227,21 +227,21 @@
     "ONDS": {
       "name": "Ondas Inc",
       "quote": {
-        "c": 7.64,
-        "d": 0.01,
-        "dp": 0.1048,
+        "c": 7.62,
+        "d": -0.01,
+        "dp": -0.1311,
         "regular": 7.63,
         "reg_d": 0.02,
         "reg_dp": 0.2628,
         "pre": null,
-        "post": 7.64,
+        "post": 7.62,
         "prev_close": 7.61,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Ondas, SoundHound AI Among 5 Stocks Facing Heavy Short Bets",
-          "datetime": 1788478327,
+          "datetime": 1788479559,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/markets/stocks/articles/ondas-soundhound-ai-among-5-162643707.html"
         }
@@ -250,28 +250,28 @@
     "PLTR": {
       "name": "Palantir Technologies Inc.",
       "quote": {
-        "c": 182.15,
-        "d": -0.38,
-        "dp": -0.2082,
+        "c": 182.3,
+        "d": -0.23,
+        "dp": -0.1249,
         "regular": 182.53,
         "reg_d": 13.07,
         "reg_dp": 7.7127,
         "pre": null,
-        "post": 182.15,
+        "post": 182.3,
         "prev_close": 169.46,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Palantir Technologies, Workiva, Elastic, RingCentral, and 8x8 Shares Skyrocket, What You Need To Know",
-          "datetime": 1788478327,
+          "datetime": 1788479559,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/markets/stocks/articles/palantir-technologies-workiva-elastic-ringcentral-220718501.html"
         }
       ]
     },
     "SKHYV": {
-      "name": "SK hynix Inc. American Depositary Shares When Issued",
+      "name": "SK hynix Inc. - American Deposi",
       "quote": {
         "c": 168.01,
         "d": 0.0,
@@ -287,7 +287,7 @@
       "news": [
         {
           "headline": "Why Micron Stock Just Dropped Again",
-          "datetime": 1788478327,
+          "datetime": 1788479559,
           "source": "Yahoo Finance",
           "url": "https://www.fool.com/investing/2026/07/15/why-micron-stock-just-dropped-again/"
         }
