@@ -1,7 +1,7 @@
 {
   "name": "美股盤前情報資料庫",
-  "updated_at": "2026-09-04T04:52:40.706383+08:00",
-  "next_update_at": "2026-09-03T21:30:00Z",
+  "updated_at": "2026-09-04T05:58:30.617591+08:00",
+  "next_update_at": "2026-09-03T22:30:00Z",
   "stocks": [
     "MSFT",
     "GOOG",
@@ -20,228 +20,228 @@
     "MSFT": {
       "name": "Microsoft Corporation",
       "quote": {
-        "c": 509.51,
-        "d": -0.61,
-        "dp": -0.1196,
+        "c": 509.65,
+        "d": -0.47,
+        "dp": -0.0921,
         "regular": 510.12,
         "reg_d": 13.3,
         "reg_dp": 2.677,
         "pre": null,
-        "post": 509.51,
+        "post": 509.65,
         "prev_close": 496.82,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Steve Ballmer banned, Clippers fined $30M over Kawhi Leonard scandal",
-          "datetime": 1788393340,
+          "headline": "Dow Jones Futures: Stocks Jump On Fed's Waller; Tesla Cybercab Event Private, Jobs Report In Focus",
+          "datetime": 1788472710,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/video/steve-ballmer-banned-clippers-fined-211000131.html"
+          "url": "https://www.investors.com/market-trend/stock-market-today/dow-jones-futures-fed-waller-tesla-cybercab-jobs-report/?src=A00220&yptr=yahoo"
         }
       ]
     },
     "GOOG": {
       "name": "Alphabet Inc.",
       "quote": {
-        "c": 339.2,
-        "d": 0.12,
-        "dp": 0.0355,
+        "c": 339.31,
+        "d": 0.23,
+        "dp": 0.0678,
         "regular": 339.08,
         "reg_d": 5.3,
         "reg_dp": 1.5879,
         "pre": null,
-        "post": 339.2,
+        "post": 339.31,
         "prev_close": 333.78,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Broadcom's Q3 earnings beat just isn't 'enough' to keep investors happy",
-          "datetime": 1788393340,
+          "headline": "Nvidia's Jensen Huang is 'playing both sides' of AI with Hugging Face purchase",
+          "datetime": 1788472710,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/video/broadcoms-q3-earnings-beat-just-204909744.html"
+          "url": "https://finance.yahoo.com/video/nvidias-jensen-huang-playing-both-203620881.html"
         }
       ]
     },
     "NVDA": {
       "name": "NVIDIA Corporation",
       "quote": {
-        "c": 228.44,
-        "d": -0.01,
-        "dp": -0.0027,
+        "c": 228.98,
+        "d": 0.53,
+        "dp": 0.232,
         "regular": 228.45,
         "reg_d": 4.04,
         "reg_dp": 1.8003,
         "pre": null,
-        "post": 228.44,
+        "post": 228.98,
         "prev_close": 224.41,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Broadcom's Q3 earnings beat just isn't 'enough' to keep investors happy",
-          "datetime": 1788393340,
+          "headline": "Tech stocks today: Tesla stock pops ahead of Cybercab event, Nvidia acquires Hugging Face",
+          "datetime": 1788472710,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/video/broadcoms-q3-earnings-beat-just-204909744.html"
+          "url": "https://finance.yahoo.com/technology/live/tech-stocks-today-apple-ceo-steps-down-nvidia-mag-7-145623375.html"
         }
       ]
     },
     "NOW": {
       "name": "ServiceNow, Inc.",
       "quote": {
-        "c": 144.95,
-        "d": -0.64,
-        "dp": -0.442,
+        "c": 144.85,
+        "d": -0.74,
+        "dp": -0.5069,
         "regular": 145.59,
         "reg_d": 8.87,
         "reg_dp": 6.4877,
         "pre": null,
-        "post": 144.95,
+        "post": 144.85,
         "prev_close": 136.72,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Is ServiceNow (NOW) Quietly Becoming the Default AI Commerce Platform for Enterprise Partners?",
-          "datetime": 1788393340,
+          "headline": "Dow Jones Futures: Stocks Jump On Fed's Waller; Tesla Cybercab Event Private, Jobs Report In Focus",
+          "datetime": 1788472710,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/technology/ai/articles/servicenow-now-quietly-becoming-default-211056308.html"
+          "url": "https://www.investors.com/market-trend/stock-market-today/dow-jones-futures-fed-waller-tesla-cybercab-jobs-report/?src=A00220&yptr=yahoo"
         }
       ]
     },
     "TSM": {
       "name": "Taiwan Semiconductor Manufactur",
       "quote": {
-        "c": 416.67,
-        "d": -0.34,
-        "dp": -0.0812,
+        "c": 416.54,
+        "d": -0.47,
+        "dp": -0.1127,
         "regular": 417.01,
         "reg_d": 1.51,
         "reg_dp": 0.3634,
         "pre": null,
-        "post": 416.67,
+        "post": 416.54,
         "prev_close": 415.5,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Billionaire David Tepper Cut Micron 41% and Kept Buying This AI Chip Stock for a Sixth Quarter",
-          "datetime": 1788393340,
+          "headline": "SpaceX Reclaims $2 Trillion Market Cap As Tech Rally, Cybercab Ties Boost Investor Confidence",
+          "datetime": 1788472710,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/markets/stocks/articles/billionaire-david-tepper-cut-micron-220154130.html"
+          "url": "https://stocktwits.com/news-articles/markets/equity/space-x-reclaims-2-trillion-market-cap/cZsu9YqRJvt"
         }
       ]
     },
     "MRVL": {
       "name": "Marvell Technology, Inc.",
       "quote": {
-        "c": 208.48,
-        "d": -0.35,
-        "dp": -0.1676,
+        "c": 208.28,
+        "d": -0.55,
+        "dp": -0.2638,
         "regular": 208.83,
         "reg_d": 2.35,
         "reg_dp": 1.1381,
         "pre": null,
-        "post": 208.48,
+        "post": 208.28,
         "prev_close": 206.48,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Broadcom’s Outlook Shows Surging AI Chip Sales",
-          "datetime": 1788393340,
+          "headline": "How Nvidia's latest deal continues to target all points of the AI trade",
+          "datetime": 1788472710,
           "source": "Yahoo Finance",
-          "url": "https://www.barrons.com/articles/broadcom-earnings-todya-stock-price-13672771?siteid=yhoof2&yptr=yahoo"
+          "url": "https://finance.yahoo.com/video/nvidias-latest-deal-continues-target-143717372.html"
         }
       ]
     },
     "MU": {
       "name": "Micron Technology, Inc.",
       "quote": {
-        "c": 953.75,
-        "d": -4.41,
-        "dp": -0.4603,
+        "c": 954.5,
+        "d": -3.66,
+        "dp": -0.382,
         "regular": 958.16,
         "reg_d": 2.08,
         "reg_dp": 0.2176,
         "pre": null,
-        "post": 953.75,
+        "post": 954.5,
         "prev_close": 956.08,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Billionaire David Tepper Cut Micron 41% and Kept Buying This AI Chip Stock for a Sixth Quarter",
-          "datetime": 1788393340,
+          "headline": "eGain (EGAN) Q4 Earnings and Revenues Beat Estimates",
+          "datetime": 1788472710,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/markets/stocks/articles/billionaire-david-tepper-cut-micron-220154130.html"
+          "url": "https://finance.yahoo.com/markets/stocks/articles/egain-egan-q4-earnings-revenues-214002994.html"
         }
       ]
     },
     "SNDK": {
       "name": "Sandisk Corporation",
       "quote": {
-        "c": 1549.32,
-        "d": -5.67,
-        "dp": -0.3646,
+        "c": 1547.86,
+        "d": -7.13,
+        "dp": -0.4587,
         "regular": 1554.99,
         "reg_d": 1.59,
         "reg_dp": 0.1024,
         "pre": null,
-        "post": 1549.32,
+        "post": 1547.86,
         "prev_close": 1553.4,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Here's the biggest thing keeping AI stock investors up at night",
-          "datetime": 1788393340,
+          "headline": "China Is Grabbing Memory Market Share. This Stock Could Be a Big Loser.",
+          "datetime": 1788472710,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/markets/stocks/article/heres-the-biggest-thing-keeping-ai-stock-investors-up-at-night-095513638.html"
+          "url": "https://www.barrons.com/articles/micron-stock-memory-chip-market-share-china-sk-hynix-493ec42b?siteid=yhoof2&yptr=yahoo"
         }
       ]
     },
     "SPCX": {
       "name": "Space Exploration Technologies",
       "quote": {
-        "c": 149.54,
-        "d": -0.2,
-        "dp": -0.1336,
+        "c": 149.31,
+        "d": -0.43,
+        "dp": -0.2872,
         "regular": 149.74,
         "reg_d": 9.03,
         "reg_dp": 6.4175,
         "pre": null,
-        "post": 149.54,
+        "post": 149.31,
         "prev_close": 140.71,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Wall Street Just Put a $280 Target on SpaceX's AI Bet",
-          "datetime": 1788393340,
+          "headline": "Protolabs CEO sees big impact from US reshoring despite potential tariffs",
+          "datetime": 1788472710,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/technology/ai/articles/wall-street-just-put-280-220746044.html"
+          "url": "https://finance.yahoo.com/video/protolabs-ceo-sees-big-impact-201750043.html"
         }
       ]
     },
     "ONDS": {
       "name": "Ondas Inc",
       "quote": {
-        "c": 7.62,
-        "d": -0.01,
-        "dp": -0.1311,
+        "c": 7.63,
+        "d": 0.0,
+        "dp": 0.0,
         "regular": 7.63,
         "reg_d": 0.02,
         "reg_dp": 0.2628,
         "pre": null,
-        "post": 7.62,
+        "post": 7.63,
         "prev_close": 7.61,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Ondas, SoundHound AI Among 5 Stocks Facing Heavy Short Bets",
-          "datetime": 1788393340,
+          "datetime": 1788472710,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/markets/stocks/articles/ondas-soundhound-ai-among-5-162643707.html"
         }
@@ -250,23 +250,23 @@
     "PLTR": {
       "name": "Palantir Technologies Inc.",
       "quote": {
-        "c": 182.48,
-        "d": -0.05,
-        "dp": -0.0274,
+        "c": 182.33,
+        "d": -0.2,
+        "dp": -0.1096,
         "regular": 182.53,
         "reg_d": 13.07,
         "reg_dp": 7.7127,
         "pre": null,
-        "post": 182.48,
+        "post": 182.33,
         "prev_close": 169.46,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "AI has become a 'non-negotiable', Sam Altman says at G20 summit",
-          "datetime": 1788393340,
+          "headline": "Palantir Stock Jumps on Expanded PwC AI Deal",
+          "datetime": 1788472710,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/video/ai-become-non-negotiable-sam-194000759.html"
+          "url": "https://finance.yahoo.com/technology/ai/articles/palantir-stock-jumps-expanded-pwc-212850892.html"
         }
       ]
     },
@@ -287,7 +287,7 @@
       "news": [
         {
           "headline": "Why Micron Stock Just Dropped Again",
-          "datetime": 1788393340,
+          "datetime": 1788472710,
           "source": "Yahoo Finance",
           "url": "https://www.fool.com/investing/2026/07/15/why-micron-stock-just-dropped-again/"
         }
@@ -295,7 +295,7 @@
     }
   },
   "alert_sent": {
-    "morning": "2026-09-03",
+    "morning": "2026-09-04",
     "evening": "2026-09-03"
   }
 }
