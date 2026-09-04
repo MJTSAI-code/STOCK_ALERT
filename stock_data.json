@@ -1,7 +1,7 @@
 {
   "name": "美股盤前情報資料庫",
-  "updated_at": "2026-09-05T07:21:00.698237+08:00",
-  "next_update_at": "2026-09-05T00:00:00Z",
+  "updated_at": "2026-09-05T07:50:21.486023+08:00",
+  "next_update_at": "2026-09-05T00:30:00Z",
   "stocks": [
     "MSFT",
     "GOOG",
@@ -33,31 +33,31 @@
       },
       "news": [
         {
-          "headline": "What Will Microsoft (MSFT) Reveal With Its New AI And Cloud Reporting?",
-          "datetime": 1788564060,
+          "headline": "ChronoScale Says It Plans a 50 MW Microsoft AI Deployment. Can CHRN Fund the Build Without Diluting Shareholders?",
+          "datetime": 1788565821,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/technology/ai/articles/microsoft-msft-reveal-ai-cloud-230555807.html"
+          "url": "https://finance.yahoo.com/technology/ai/articles/chronoscale-says-plans-50-mw-231034421.html"
         }
       ]
     },
     "GOOG": {
       "name": "Alphabet Inc.",
       "quote": {
-        "c": 335.75,
-        "d": 0.44,
-        "dp": 0.1312,
+        "c": 335.7,
+        "d": 0.39,
+        "dp": 0.1159,
         "regular": 335.31,
         "reg_d": -3.77,
         "reg_dp": -1.1118,
         "pre": null,
-        "post": 335.75,
+        "post": 335.7,
         "prev_close": 339.08,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Entergy Says Google’s Arkansas Solar Payments Could Total $2.1 Billion. Is Power Becoming Alphabet’s New Bottleneck?",
-          "datetime": 1788564060,
+          "datetime": 1788565821,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/energy/articles/entergy-says-google-arkansas-solar-230127052.html"
         }
@@ -66,21 +66,21 @@
     "NVDA": {
       "name": "NVIDIA Corporation",
       "quote": {
-        "c": 229.94,
-        "d": -0.42,
-        "dp": -0.1823,
+        "c": 229.73,
+        "d": -0.63,
+        "dp": -0.2735,
         "regular": 230.36,
         "reg_d": 1.91,
         "reg_dp": 0.8361,
         "pre": null,
-        "post": 229.94,
+        "post": 229.73,
         "prev_close": 228.45,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Apple's John Ternus needs to be his own type of CEO and 'not Tim Cook 2'",
-          "datetime": 1788564060,
+          "datetime": 1788565821,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/video/apples-john-ternus-needs-own-203847038.html"
         }
@@ -103,7 +103,7 @@
       "news": [
         {
           "headline": "Why Is Dynatrace (DT) Up 8% Since Last Earnings Report?",
-          "datetime": 1788564060,
+          "datetime": 1788565821,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/markets/stocks/articles/why-dynatrace-dt-8-since-153021204.html"
         }
@@ -112,21 +112,21 @@
     "TSM": {
       "name": "Taiwan Semiconductor Manufactur",
       "quote": {
-        "c": 427.66,
-        "d": -1.25,
-        "dp": -0.2921,
+        "c": 427.73,
+        "d": -1.18,
+        "dp": -0.2751,
         "regular": 428.91,
         "reg_d": 11.9,
         "reg_dp": 2.8536,
         "pre": null,
-        "post": 427.66,
+        "post": 427.73,
         "prev_close": 417.01,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Dow Jones Futures: Nvidia, Micron, Sandisk Flash Buy Signals; Apple, Inflation Reports Ahead",
-          "datetime": 1788564060,
+          "datetime": 1788565821,
           "source": "Yahoo Finance",
           "url": "https://www.investors.com/market-trend/stock-market-today/dow-jones-futures-nvidia-micron-sandisk-buy-signals-apple-inflation-reports/?src=A00220&yptr=yahoo"
         }
@@ -135,21 +135,21 @@
     "MRVL": {
       "name": "Marvell Technology, Inc.",
       "quote": {
-        "c": 222.2,
-        "d": -1.35,
-        "dp": -0.6039,
+        "c": 222.14,
+        "d": -1.41,
+        "dp": -0.6295,
         "regular": 223.55,
         "reg_d": 14.72,
         "reg_dp": 7.0488,
         "pre": null,
-        "post": 222.2,
+        "post": 222.14,
         "prev_close": 208.83,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Marvell Raised Its Outlook but Fell as Google Chip Revenue Stayed Distant. Has the AI Payoff Been Priced In? (Ready for review)",
-          "datetime": 1788564060,
+          "datetime": 1788565821,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/markets/stocks/articles/marvell-raised-outlook-fell-google-225856871.html"
         }
@@ -158,21 +158,21 @@
     "MU": {
       "name": "Micron Technology, Inc.",
       "quote": {
-        "c": 1013.5,
-        "d": -3.09,
-        "dp": -0.304,
+        "c": 1014.3,
+        "d": -2.29,
+        "dp": -0.2253,
         "regular": 1016.59,
         "reg_d": 58.43,
         "reg_dp": 6.0981,
         "pre": null,
-        "post": 1013.5,
+        "post": 1014.3,
         "prev_close": 958.16,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Why ASML Holding Stock Bumped 4% Higher Today",
-          "datetime": 1788564060,
+          "datetime": 1788565821,
           "source": "Yahoo Finance",
           "url": "https://www.fool.com/investing/2026/09/04/why-asml-holding-stock-bumped-4-higher-today/"
         }
@@ -181,21 +181,21 @@
     "SNDK": {
       "name": "Sandisk Corporation",
       "quote": {
-        "c": 1730.57,
-        "d": -9.43,
-        "dp": -0.542,
+        "c": 1732.0,
+        "d": -8.0,
+        "dp": -0.4598,
         "regular": 1740.0,
         "reg_d": 185.01,
         "reg_dp": 11.8978,
         "pre": null,
-        "post": 1730.57,
+        "post": 1732.0,
         "prev_close": 1554.99,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Why ASML Holding Stock Bumped 4% Higher Today",
-          "datetime": 1788564060,
+          "datetime": 1788565821,
           "source": "Yahoo Finance",
           "url": "https://www.fool.com/investing/2026/09/04/why-asml-holding-stock-bumped-4-higher-today/"
         }
@@ -204,21 +204,21 @@
     "SPCX": {
       "name": "Space Exploration Technologies",
       "quote": {
-        "c": 147.82,
-        "d": -0.13,
-        "dp": -0.0867,
+        "c": 147.84,
+        "d": -0.11,
+        "dp": -0.0743,
         "regular": 147.95,
         "reg_d": -1.79,
         "reg_dp": -1.1954,
         "pre": null,
-        "post": 147.82,
+        "post": 147.84,
         "prev_close": 149.74,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Planet Labs lifts revenue guidance on strong military demand: AlphaSpace",
-          "datetime": 1788564060,
+          "datetime": 1788565821,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/video/planet-labs-lifts-revenue-guidance-151235842.html"
         }
@@ -241,7 +241,7 @@
       "news": [
         {
           "headline": "Ondas, SoundHound AI Among 5 Stocks Facing Heavy Short Bets",
-          "datetime": 1788564060,
+          "datetime": 1788565821,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/markets/stocks/articles/ondas-soundhound-ai-among-5-162643707.html"
         }
@@ -250,28 +250,28 @@
     "PLTR": {
       "name": "Palantir Technologies Inc.",
       "quote": {
-        "c": 174.49,
-        "d": 0.16,
-        "dp": 0.0942,
+        "c": 174.53,
+        "d": 0.2,
+        "dp": 0.1147,
         "regular": 174.33,
         "reg_d": -8.2,
         "reg_dp": -4.4924,
         "pre": null,
-        "post": 174.49,
+        "post": 174.53,
         "prev_close": 182.53,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Inside Zeta's Transformation From Hopeful Do-Over To Surging AI Marketing Stock",
-          "datetime": 1788564060,
+          "datetime": 1788565821,
           "source": "Yahoo Finance",
           "url": "https://www.investors.com/research/the-new-america/zeta-stock-ai-stock-inference-hyper-personalized-ads/?src=A00220&yptr=yahoo"
         }
       ]
     },
     "SKHYV": {
-      "name": "SK hynix Inc. American Depositary Shares When Issued",
+      "name": "SK hynix Inc. - American Deposi",
       "quote": {
         "c": 168.01,
         "d": 0.0,
@@ -287,7 +287,7 @@
       "news": [
         {
           "headline": "Why Micron Stock Just Dropped Again",
-          "datetime": 1788564060,
+          "datetime": 1788565821,
           "source": "Yahoo Finance",
           "url": "https://www.fool.com/investing/2026/07/15/why-micron-stock-just-dropped-again/"
         }
