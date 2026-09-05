@@ -1,7 +1,7 @@
 {
-  "name": "ç¾è¡ç¤åæå ±è³æåº«",
-  "updated_at": "2026-09-05T07:50:21.486023+08:00",
-  "next_update_at": "2026-09-05T00:30:00Z",
+  "name": "美股盤前情報資料庫",
+  "updated_at": "2026-09-05T14:16:16.731777+08:00",
+  "next_update_at": "2026-09-05T07:00:00Z",
   "stocks": [
     "MSFT",
     "NVDA",
@@ -19,16 +19,16 @@
     "MSFT": {
       "name": "Microsoft Corporation",
       "quote": {
-        "c": 499.6,
-        "d": -0.1,
-        "dp": -0.02,
+        "c": 499.7,
+        "d": -10.42,
+        "dp": -2.0427,
         "regular": 499.7,
         "reg_d": -10.42,
         "reg_dp": -2.0427,
         "pre": null,
-        "post": 499.6,
+        "post": 499.62,
         "prev_close": 510.12,
-        "phase": "ç¤å¾"
+        "phase": "正式盤"
       },
       "news": [
         {
@@ -39,42 +39,19 @@
         }
       ]
     },
-    "GOOG": {
-      "name": "Alphabet Inc.",
-      "quote": {
-        "c": 335.7,
-        "d": 0.39,
-        "dp": 0.1159,
-        "regular": 335.31,
-        "reg_d": -3.77,
-        "reg_dp": -1.1118,
-        "pre": null,
-        "post": 335.7,
-        "prev_close": 339.08,
-        "phase": "ç¤å¾"
-      },
-      "news": [
-        {
-          "headline": "Entergy Says Googleâs Arkansas Solar Payments Could Total $2.1 Billion. Is Power Becoming Alphabetâs New Bottleneck?",
-          "datetime": 1788565821,
-          "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/energy/articles/entergy-says-google-arkansas-solar-230127052.html"
-        }
-      ]
-    },
     "NVDA": {
       "name": "NVIDIA Corporation",
       "quote": {
-        "c": 229.73,
-        "d": -0.63,
-        "dp": -0.2735,
+        "c": 230.36,
+        "d": 1.91,
+        "dp": 0.8361,
         "regular": 230.36,
         "reg_d": 1.91,
         "reg_dp": 0.8361,
         "pre": null,
-        "post": 229.73,
+        "post": 229.5,
         "prev_close": 228.45,
-        "phase": "ç¤å¾"
+        "phase": "正式盤"
       },
       "news": [
         {
@@ -88,16 +65,16 @@
     "NOW": {
       "name": "ServiceNow, Inc.",
       "quote": {
-        "c": 141.1,
-        "d": -0.16,
-        "dp": -0.1133,
+        "c": 141.26,
+        "d": -4.33,
+        "dp": -2.9741,
         "regular": 141.26,
         "reg_d": -4.33,
         "reg_dp": -2.9741,
         "pre": null,
-        "post": 141.1,
+        "post": 141.24,
         "prev_close": 145.59,
-        "phase": "ç¤å¾"
+        "phase": "正式盤"
       },
       "news": [
         {
@@ -111,16 +88,16 @@
     "TSM": {
       "name": "Taiwan Semiconductor Manufactur",
       "quote": {
-        "c": 427.73,
-        "d": -1.18,
-        "dp": -0.2751,
+        "c": 428.91,
+        "d": 11.9,
+        "dp": 2.8536,
         "regular": 428.91,
         "reg_d": 11.9,
         "reg_dp": 2.8536,
         "pre": null,
-        "post": 427.73,
+        "post": 427.88,
         "prev_close": 417.01,
-        "phase": "ç¤å¾"
+        "phase": "正式盤"
       },
       "news": [
         {
@@ -134,16 +111,16 @@
     "MRVL": {
       "name": "Marvell Technology, Inc.",
       "quote": {
-        "c": 222.14,
-        "d": -1.41,
-        "dp": -0.6295,
+        "c": 223.55,
+        "d": 14.72,
+        "dp": 7.0488,
         "regular": 223.55,
         "reg_d": 14.72,
         "reg_dp": 7.0488,
         "pre": null,
-        "post": 222.14,
+        "post": 222.39,
         "prev_close": 208.83,
-        "phase": "ç¤å¾"
+        "phase": "正式盤"
       },
       "news": [
         {
@@ -157,16 +134,16 @@
     "MU": {
       "name": "Micron Technology, Inc.",
       "quote": {
-        "c": 1014.3,
-        "d": -2.29,
-        "dp": -0.2253,
+        "c": 1016.59,
+        "d": 58.43,
+        "dp": 6.0982,
         "regular": 1016.59,
         "reg_d": 58.43,
         "reg_dp": 6.0981,
         "pre": null,
-        "post": 1014.3,
+        "post": 1014.95,
         "prev_close": 958.16,
-        "phase": "ç¤å¾"
+        "phase": "正式盤"
       },
       "news": [
         {
@@ -180,16 +157,16 @@
     "SNDK": {
       "name": "Sandisk Corporation",
       "quote": {
-        "c": 1732,
-        "d": -8,
-        "dp": -0.4598,
-        "regular": 1740,
+        "c": 1740.0,
+        "d": 185.01,
+        "dp": 11.8978,
+        "regular": 1740.0,
         "reg_d": 185.01,
         "reg_dp": 11.8978,
         "pre": null,
-        "post": 1732,
+        "post": 1734.01,
         "prev_close": 1554.99,
-        "phase": "ç¤å¾"
+        "phase": "正式盤"
       },
       "news": [
         {
@@ -203,16 +180,16 @@
     "SPCX": {
       "name": "Space Exploration Technologies",
       "quote": {
-        "c": 147.84,
-        "d": -0.11,
-        "dp": -0.0743,
+        "c": 147.95,
+        "d": -1.79,
+        "dp": -1.1954,
         "regular": 147.95,
         "reg_d": -1.79,
         "reg_dp": -1.1954,
         "pre": null,
-        "post": 147.84,
+        "post": 147.89,
         "prev_close": 149.74,
-        "phase": "ç¤å¾"
+        "phase": "正式盤"
       },
       "news": [
         {
@@ -227,15 +204,15 @@
       "name": "Ondas Inc",
       "quote": {
         "c": 7.62,
-        "d": 0,
-        "dp": 0,
+        "d": -0.01,
+        "dp": -0.1311,
         "regular": 7.62,
         "reg_d": -0.01,
         "reg_dp": -0.1311,
         "pre": null,
-        "post": 7.62,
+        "post": 7.61,
         "prev_close": 7.63,
-        "phase": "ç¤å¾"
+        "phase": "正式盤"
       },
       "news": [
         {
@@ -249,16 +226,16 @@
     "PLTR": {
       "name": "Palantir Technologies Inc.",
       "quote": {
-        "c": 174.53,
-        "d": 0.2,
-        "dp": 0.1147,
+        "c": 174.33,
+        "d": -8.2,
+        "dp": -4.4924,
         "regular": 174.33,
         "reg_d": -8.2,
         "reg_dp": -4.4924,
         "pre": null,
-        "post": 174.53,
+        "post": 174.43,
         "prev_close": 182.53,
-        "phase": "ç¤å¾"
+        "phase": "正式盤"
       },
       "news": [
         {
@@ -270,18 +247,18 @@
       ]
     },
     "SKHYV": {
-      "name": "SK hynix Inc. - American Deposi",
+      "name": "SK hynix Inc. American Depositary Shares When Issued",
       "quote": {
         "c": 168.01,
-        "d": 0,
-        "dp": 0,
+        "d": 0.0,
+        "dp": 0.0,
         "regular": 168.01,
         "reg_d": 168.01,
-        "reg_dp": 0,
+        "reg_dp": 0.0,
         "pre": null,
         "post": null,
-        "prev_close": 0,
-        "phase": "ç¤å¾"
+        "prev_close": 0.0,
+        "phase": "盤前"
       },
       "news": [
         {
