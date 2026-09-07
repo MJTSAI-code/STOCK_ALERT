@@ -1,7 +1,7 @@
 {
   "name": "美股盤前情報資料庫",
-  "updated_at": "2026-09-07T21:22:38.014895+08:00",
-  "next_update_at": "2026-09-07T14:00:00Z",
+  "updated_at": "2026-09-07T21:42:34.020298+08:00",
+  "next_update_at": "2026-09-07T13:50:00Z",
   "stocks": [
     "MSFT",
     "NVDA",
@@ -247,10 +247,10 @@
       ]
     },
     "SKHYV": {
-      "name": "SK hynix Inc. American Depositary Shares When Issued",
+      "name": "SK hynix Inc. - American Deposi",
       "quote": {
         "c": 168.01,
-        "d": 0.0,
+        "d": 168.01,
         "dp": 0.0,
         "regular": 168.01,
         "reg_d": 168.01,
@@ -258,7 +258,7 @@
         "pre": null,
         "post": null,
         "prev_close": 0.0,
-        "phase": "盤前"
+        "phase": "正式盤"
       },
       "news": [
         {
