@@ -1,7 +1,7 @@
 {
   "name": "美股盤前情報資料庫",
-  "updated_at": "2026-09-09T04:52:38.983789+08:00",
-  "next_update_at": "2026-09-08T21:30:00Z",
+  "updated_at": "2026-09-09T05:58:30.921712+08:00",
+  "next_update_at": "2026-09-08T22:30:00Z",
   "stocks": [
     "MSFT",
     "NVDA",
@@ -19,235 +19,235 @@
     "MSFT": {
       "name": "Microsoft Corporation",
       "quote": {
-        "c": 493.76,
-        "d": -0.19,
-        "dp": -0.0385,
+        "c": 493.55,
+        "d": -0.4,
+        "dp": -0.081,
         "regular": 493.95,
         "reg_d": -5.75,
         "reg_dp": -1.1507,
         "pre": null,
-        "post": 493.76,
+        "post": 493.55,
         "prev_close": 499.7,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Weight loss is just the beginning of GLP-1's: Novo Nordisk CEO",
-          "datetime": 1788824804,
+          "headline": "What investors 'really' need to see from Oracle earnings this week",
+          "datetime": 1788904710,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/video/weight-loss-just-beginning-glp-100000472.html"
+          "url": "https://finance.yahoo.com/video/investors-really-see-oracle-earnings-150710768.html"
         }
       ]
     },
     "NVDA": {
       "name": "NVIDIA Corporation",
       "quote": {
-        "c": 225.67,
-        "d": -0.06,
-        "dp": -0.027,
+        "c": 225.61,
+        "d": -0.12,
+        "dp": -0.0532,
         "regular": 225.73,
         "reg_d": -4.63,
         "reg_dp": -2.0099,
         "pre": null,
-        "post": 225.67,
+        "post": 225.61,
         "prev_close": 230.36,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Wall Street Investment Firm Bernstein Thinks Bitcoin Could Hit $300,000 by 2029. Is Bitcoin Now a Buy?",
-          "datetime": 1788824804,
+          "headline": "Bond yield worries persist as oil edges higher: AlphaCheck",
+          "datetime": 1788904710,
           "source": "Yahoo Finance",
-          "url": "https://www.fool.com/investing/2026/09/07/investment-firm-bernstein-thinks-bitcoin-could-hit/"
+          "url": "https://finance.yahoo.com/markets/article/bond-yield-worries-persist-as-oil-edges-higher-alphacheck-135158227.html"
         }
       ]
     },
     "NOW": {
       "name": "ServiceNow, Inc.",
       "quote": {
-        "c": 134.15,
-        "d": -0.06,
-        "dp": -0.0447,
+        "c": 134.07,
+        "d": -0.14,
+        "dp": -0.1072,
         "regular": 134.21,
         "reg_d": -7.05,
         "reg_dp": -4.9908,
         "pre": null,
-        "post": 134.15,
+        "post": 134.07,
         "prev_close": 141.26,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "ServiceNow Leads Five Stocks To Watch Near Buy Points",
-          "datetime": 1788824804,
+          "headline": "S&P 500 falls as AI worries hit software makers",
+          "datetime": 1788904710,
           "source": "Yahoo Finance",
-          "url": "https://www.investors.com/news/servicenow-stocks-to-watch-buy-points/?src=A00220&yptr=yahoo"
+          "url": "https://finance.yahoo.com/markets/articles/wall-st-futures-slip-oil-091327897.html"
         }
       ]
     },
     "TSM": {
       "name": "Taiwan Semiconductor Manufactur",
       "quote": {
-        "c": 438.2,
-        "d": -0.8,
-        "dp": -0.1822,
+        "c": 438.33,
+        "d": -0.67,
+        "dp": -0.1526,
         "regular": 439.0,
         "reg_d": 10.09,
         "reg_dp": 2.3525,
         "pre": null,
-        "post": 438.2,
+        "post": 438.33,
         "prev_close": 428.91,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "TSMC Rises Nearly 3% as $265 Billion Becomes Taiwan's Diplomatic Currency",
-          "datetime": 1788824804,
+          "headline": "Dow Jones Futures: Dow Breaks Support But AMD, HPE Are New Buys; Apple iPhone Event Due",
+          "datetime": 1788904710,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/markets/stocks/articles/tsmc-rises-nearly-3-265-213735953.html"
+          "url": "https://www.investors.com/market-trend/stock-market-today/dow-jones-futures-oil-prices-amd-hpe-new-buys-apple-iphone-event/?src=A00220&yptr=yahoo"
         }
       ]
     },
     "MRVL": {
       "name": "Marvell Technology, Inc.",
       "quote": {
-        "c": 225.42,
-        "d": 0.01,
-        "dp": 0.0044,
+        "c": 225.46,
+        "d": 0.05,
+        "dp": 0.0222,
         "regular": 225.41,
         "reg_d": 1.86,
         "reg_dp": 0.832,
         "pre": null,
-        "post": 225.42,
+        "post": 225.46,
         "prev_close": 223.55,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Should You Buy Marvell Technology Stock Before Oct. 6?",
-          "datetime": 1788824804,
+          "headline": "Broadcom vs. Marvell: Which Custom AI Chip Stock Is the Better Buy?",
+          "datetime": 1788904710,
           "source": "Yahoo Finance",
-          "url": "https://www.fool.com/investing/2026/09/07/should-you-buy-marvell-technology-stock-before-oct-6/"
+          "url": "https://www.fool.com/investing/2026/09/08/broadcom-vs-marvell-which-custom-ai-chip-stock-is/"
         }
       ]
     },
     "MU": {
       "name": "Micron Technology, Inc.",
       "quote": {
-        "c": 1003.24,
-        "d": 2.98,
-        "dp": 0.2978,
+        "c": 1004.31,
+        "d": 4.05,
+        "dp": 0.4053,
         "regular": 1000.26,
         "reg_d": -16.33,
         "reg_dp": -1.6064,
         "pre": null,
-        "post": 1003.24,
+        "post": 1004.31,
         "prev_close": 1016.59,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "The AI Memory Stock That Could Outshine the Obvious Picks",
-          "datetime": 1788824804,
+          "headline": "Micron (MU) Falls More Steeply Than Broader Market: What Investors Need to Know",
+          "datetime": 1788904710,
           "source": "Yahoo Finance",
-          "url": "https://www.fool.com/investing/2026/09/07/the-ai-memory-stock-that-could-outshine-the-obviou/"
+          "url": "https://finance.yahoo.com/markets/stocks/articles/micron-mu-falls-more-steeply-214507442.html"
         }
       ]
     },
     "SNDK": {
       "name": "Sandisk Corporation",
       "quote": {
-        "c": 1741.29,
-        "d": 3.3,
-        "dp": 0.1899,
+        "c": 1746.92,
+        "d": 8.93,
+        "dp": 0.5138,
         "regular": 1737.99,
         "reg_d": -2.01,
         "reg_dp": -0.1155,
         "pre": null,
-        "post": 1741.29,
+        "post": 1746.92,
         "prev_close": 1740.0,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "The AI Memory Stock That Could Outshine the Obvious Picks",
-          "datetime": 1788824804,
+          "headline": "Bond yield worries persist as oil edges higher: AlphaCheck",
+          "datetime": 1788904710,
           "source": "Yahoo Finance",
-          "url": "https://www.fool.com/investing/2026/09/07/the-ai-memory-stock-that-could-outshine-the-obviou/"
+          "url": "https://finance.yahoo.com/markets/article/bond-yield-worries-persist-as-oil-edges-higher-alphacheck-135158227.html"
         }
       ]
     },
     "SPCX": {
       "name": "Space Exploration Technologies",
       "quote": {
-        "c": 153.21,
-        "d": -0.26,
-        "dp": -0.1694,
+        "c": 152.75,
+        "d": -0.72,
+        "dp": -0.4691,
         "regular": 153.47,
         "reg_d": 5.52,
         "reg_dp": 3.731,
         "pre": null,
-        "post": 153.21,
+        "post": 152.75,
         "prev_close": 147.95,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Is AST SpaceMobile a Millionaire-Maker Over The Next Decade?",
-          "datetime": 1788824804,
+          "headline": "Can Robinhood compete with banks after underwriting Oura's IPO?",
+          "datetime": 1788904710,
           "source": "Yahoo Finance",
-          "url": "https://www.fool.com/investing/2026/09/07/is-ast-spacemobile-a-millionaire-maker-over-the-ne/"
+          "url": "https://finance.yahoo.com/video/robinhood-compete-banks-underwriting-ouras-152450783.html"
         }
       ]
     },
     "ONDS": {
       "name": "Ondas Inc",
       "quote": {
-        "c": 7.65,
-        "d": 0.03,
-        "dp": 0.3937,
+        "c": 7.64,
+        "d": 0.02,
+        "dp": 0.2625,
         "regular": 7.62,
         "reg_d": 0.0,
         "reg_dp": 0.0,
         "pre": null,
-        "post": 7.65,
+        "post": 7.64,
         "prev_close": 7.62,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "ONDS Raises 2026 Revenue Outlook as Backlog Surges Higher",
-          "datetime": 1788824804,
+          "headline": "Unusual Machines Just Doubled in a Month: Take Profits, or Buy More?",
+          "datetime": 1788904710,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/markets/stocks/articles/onds-raises-2026-revenue-outlook-155800212.html"
+          "url": "https://247wallst.com/investing/2026/09/08/unusual-machines-just-doubled-in-a-month-take-profits-or-buy-more/"
         }
       ]
     },
     "PLTR": {
       "name": "Palantir Technologies Inc.",
       "quote": {
-        "c": 170.53,
-        "d": 0.23,
-        "dp": 0.1351,
+        "c": 170.59,
+        "d": 0.29,
+        "dp": 0.1703,
         "regular": 170.3,
         "reg_d": -4.03,
         "reg_dp": -2.3117,
         "pre": null,
-        "post": 170.53,
+        "post": 170.59,
         "prev_close": 174.33,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Palantir Stock Leads August Rally -- Nvidia, Salesforce and Super Micro Jump",
-          "datetime": 1788824804,
+          "headline": "Palantir Technologies Inc. (PLTR) Falls More Steeply Than Broader Market: What Investors Need to Know",
+          "datetime": 1788904710,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/markets/stocks/articles/palantir-stock-leads-august-rally-215855985.html"
+          "url": "https://finance.yahoo.com/markets/stocks/articles/palantir-technologies-inc-pltr-falls-214503368.html"
         }
       ]
     },
     "SKHYV": {
-      "name": "SK hynix Inc. American Depositary Shares When Issued",
+      "name": "SK hynix Inc. - American Deposi",
       "quote": {
         "c": 168.01,
         "d": 0.0,
@@ -263,7 +263,7 @@
       "news": [
         {
           "headline": "Why Micron Stock Just Dropped Again",
-          "datetime": 1788824804,
+          "datetime": 1788904710,
           "source": "Yahoo Finance",
           "url": "https://www.fool.com/investing/2026/07/15/why-micron-stock-just-dropped-again/"
         }
@@ -271,7 +271,7 @@
     }
   },
   "alert_sent": {
-    "morning": "2026-09-05",
+    "morning": "2026-09-09",
     "evening": "2026-09-08"
   }
 }
