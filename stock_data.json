@@ -1,7 +1,7 @@
 {
   "name": "美股盤前情報資料庫",
-  "updated_at": "2026-09-11T07:24:57.787655+08:00",
-  "next_update_at": "2026-09-11T00:00:00Z",
+  "updated_at": "2026-09-11T07:52:20.727022+08:00",
+  "next_update_at": "2026-09-11T00:30:00Z",
   "stocks": [
     "MSFT",
     "NVDA",
@@ -33,7 +33,7 @@
       "news": [
         {
           "headline": "People Inc. CEO on rebranding, AI challenges",
-          "datetime": 1789082697,
+          "datetime": 1789084340,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/video/people-inc-ceo-rebranding-ai-205700002.html"
         }
@@ -42,21 +42,21 @@
     "NVDA": {
       "name": "NVIDIA Corporation",
       "quote": {
-        "c": 218.21,
-        "d": -0.15,
-        "dp": -0.0688,
+        "c": 218.02,
+        "d": -0.34,
+        "dp": -0.1559,
         "regular": 218.36,
         "reg_d": -5.31,
         "reg_dp": -2.374,
         "pre": null,
-        "post": 218.21,
+        "post": 218.02,
         "prev_close": 223.67,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "SpaceX stock rises with data center overhaul, budding UK defense deal in focus",
-          "datetime": 1789082697,
+          "datetime": 1789084340,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/markets/stocks/article/spacex-stock-rises-with-data-center-overhaul-budding-uk-defense-deal-in-focus-160039841.html"
         }
@@ -65,21 +65,21 @@
     "NOW": {
       "name": "ServiceNow, Inc.",
       "quote": {
-        "c": 130.8,
-        "d": -0.37,
-        "dp": -0.2796,
+        "c": 130.6,
+        "d": -0.57,
+        "dp": -0.4345,
         "regular": 131.17,
         "reg_d": 0.06,
         "reg_dp": 0.0458,
         "pre": null,
-        "post": 130.8,
+        "post": 130.6,
         "prev_close": 131.11,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Dow Jones Futures: S&P 500 Breaks Support As Oil Prices, Yields Surge; Oracle Jumps Late With CPI Inflation Due",
-          "datetime": 1789082697,
+          "datetime": 1789084340,
           "source": "Yahoo Finance",
           "url": "https://www.investors.com/market-trend/stock-market-today/dow-jones-futures-sp500-oil-prices-treasury-yields-cpi-inflation-oracle-earnings/?src=A00220&yptr=yahoo"
         }
@@ -88,21 +88,21 @@
     "TSM": {
       "name": "Taiwan Semiconductor Manufactur",
       "quote": {
-        "c": 428.24,
-        "d": 0.21,
-        "dp": 0.0491,
+        "c": 427.75,
+        "d": -0.28,
+        "dp": -0.0654,
         "regular": 428.03,
         "reg_d": -7.33,
         "reg_dp": -1.6837,
         "pre": null,
-        "post": 428.24,
+        "post": 427.75,
         "prev_close": 435.36,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Dow Jones Futures: S&P 500 Breaks Support As Oil Prices, Yields Surge; Oracle Jumps Late With CPI Inflation Due",
-          "datetime": 1789082697,
+          "datetime": 1789084340,
           "source": "Yahoo Finance",
           "url": "https://www.investors.com/market-trend/stock-market-today/dow-jones-futures-sp500-oil-prices-treasury-yields-cpi-inflation-oracle-earnings/?src=A00220&yptr=yahoo"
         }
@@ -111,21 +111,21 @@
     "MRVL": {
       "name": "Marvell Technology, Inc.",
       "quote": {
-        "c": 224.8,
-        "d": -2.16,
-        "dp": -0.9517,
+        "c": 225.3,
+        "d": -1.66,
+        "dp": -0.7314,
         "regular": 226.96,
         "reg_d": -8.05,
         "reg_dp": -3.4254,
         "pre": null,
-        "post": 224.8,
+        "post": 225.3,
         "prev_close": 235.01,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Marvell Calls Itself the ‘Switzerland’ of AI, and Says It Works With Everybody",
-          "datetime": 1789082697,
+          "datetime": 1789084340,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/technology/ai/articles/marvell-calls-itself-switzerland-ai-220012922.html"
         }
@@ -134,21 +134,21 @@
     "MU": {
       "name": "Micron Technology, Inc.",
       "quote": {
-        "c": 973.77,
-        "d": -3.64,
-        "dp": -0.3724,
+        "c": 973.0,
+        "d": -4.41,
+        "dp": -0.4512,
         "regular": 977.41,
         "reg_d": -50.36,
         "reg_dp": -4.8999,
         "pre": null,
-        "post": 973.77,
+        "post": 973.0,
         "prev_close": 1027.77,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Micron Is Down 19% From Its High. History Suggests a $5,000 Investment Today Could Be Worth This Much by 2030.",
-          "datetime": 1789082697,
+          "datetime": 1789084340,
           "source": "Yahoo Finance",
           "url": "https://www.fool.com/investing/2026/09/10/micron-is-down-16-from-its-high-history-suggests-a/"
         }
@@ -157,21 +157,21 @@
     "SNDK": {
       "name": "Sandisk Corporation",
       "quote": {
-        "c": 1680.03,
-        "d": -12.56,
-        "dp": -0.7421,
+        "c": 1677.1,
+        "d": -15.49,
+        "dp": -0.9152,
         "regular": 1692.59,
         "reg_d": -71.58,
         "reg_dp": -4.0574,
         "pre": null,
-        "post": 1680.03,
+        "post": 1677.1,
         "prev_close": 1764.17,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Super Micro (SMCI) Up 3.5% Since Last Earnings Report: Can It Continue?",
-          "datetime": 1789082697,
+          "datetime": 1789084340,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/markets/stocks/articles/super-micro-smci-3-5-153005797.html"
         }
@@ -180,21 +180,21 @@
     "SPCX": {
       "name": "Space Exploration Technologies",
       "quote": {
-        "c": 147.8,
-        "d": -0.38,
-        "dp": -0.2564,
+        "c": 147.87,
+        "d": -0.31,
+        "dp": -0.2095,
         "regular": 148.18,
         "reg_d": 0.63,
         "reg_dp": 0.427,
         "pre": null,
-        "post": 147.8,
+        "post": 147.87,
         "prev_close": 147.55,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "The key stocks behind the high returns for college endowments",
-          "datetime": 1789082697,
+          "datetime": 1789084340,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/video/key-stocks-behind-high-returns-153847801.html"
         }
@@ -205,7 +205,7 @@
       "quote": {
         "c": 7.24,
         "d": -0.01,
-        "dp": -0.1393,
+        "dp": -0.1379,
         "regular": 7.25,
         "reg_d": -0.04,
         "reg_dp": -0.5487,
@@ -217,7 +217,7 @@
       "news": [
         {
           "headline": "Drone Stocks Slide as Risk-Off Sentiment Hits High-Beta Names: AeroVironment Sinks 4%, Red Cat Drops 3%, Ondas Eases",
-          "datetime": 1789082697,
+          "datetime": 1789084340,
           "source": "Yahoo Finance",
           "url": "https://247wallst.com/investing/2026/09/09/drone-stocks-slide-as-risk-off-sentiment-hits-high-beta-names-aerovironment-sinks-4-red-cat-drops-3-ondas-eases/"
         }
@@ -226,21 +226,21 @@
     "PLTR": {
       "name": "Palantir Technologies Inc.",
       "quote": {
-        "c": 166.02,
-        "d": 0.16,
-        "dp": 0.0994,
+        "c": 166.03,
+        "d": 0.17,
+        "dp": 0.1036,
         "regular": 165.86,
         "reg_d": -3.67,
         "reg_dp": -2.1648,
         "pre": null,
-        "post": 166.02,
+        "post": 166.03,
         "prev_close": 169.53,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Palantir Technologies Showcases Sovereign AI Wins With NVIDIA, Cisco and FAA",
-          "datetime": 1789082697,
+          "datetime": 1789084340,
           "source": "Yahoo Finance",
           "url": "https://www.marketbeat.com/instant-alerts/event-palantir-technologies-showcases-sovereign-ai-wins-with-nvidia-cisco-and-faa-2026-09-10/?utm_source=yahoofinance&utm_medium=yahoofinance"
         }
@@ -263,7 +263,7 @@
       "news": [
         {
           "headline": "Why Micron Stock Just Dropped Again",
-          "datetime": 1789082697,
+          "datetime": 1789084340,
           "source": "Yahoo Finance",
           "url": "https://www.fool.com/investing/2026/07/15/why-micron-stock-just-dropped-again/"
         }
