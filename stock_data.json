@@ -1,7 +1,7 @@
 {
   "name": "美股盤前情報資料庫",
-  "updated_at": "2026-09-11T04:52:43.435505+08:00",
-  "next_update_at": "2026-09-10T21:30:00Z",
+  "updated_at": "2026-09-11T05:46:46.482174+08:00",
+  "next_update_at": "2026-09-10T22:30:00Z",
   "stocks": [
     "MSFT",
     "NVDA",
@@ -19,205 +19,205 @@
     "MSFT": {
       "name": "Microsoft Corporation",
       "quote": {
-        "c": 492.32,
-        "d": -0.12,
-        "dp": -0.0244,
+        "c": 489.5,
+        "d": -2.94,
+        "dp": -0.5961,
         "regular": 492.44,
         "reg_d": 0.79,
         "reg_dp": 0.1607,
         "pre": null,
-        "post": 492.32,
+        "post": 489.5,
         "prev_close": 491.65,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "HIVE joins Google, Microsoft, and Amazon in new Canada data center pledge",
-          "datetime": 1788998185,
+          "headline": "People Inc. CEO on rebranding, AI challenges",
+          "datetime": 1789076806,
           "source": "Yahoo Finance",
-          "url": "https://www.thestreet.com/crypto/markets/hive-joins-google-microsoft-and-amazon-in-new-canada-data-center-pledge"
+          "url": "https://finance.yahoo.com/video/people-inc-ceo-rebranding-ai-205700002.html"
         }
       ]
     },
     "NVDA": {
       "name": "NVIDIA Corporation",
       "quote": {
-        "c": 218.48,
-        "d": 0.12,
-        "dp": 0.0546,
+        "c": 218.63,
+        "d": 0.27,
+        "dp": 0.1256,
         "regular": 218.36,
         "reg_d": -5.31,
         "reg_dp": -2.374,
         "pre": null,
-        "post": 218.48,
+        "post": 218.63,
         "prev_close": 223.67,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "CoreWeave struggling to keep up with demand for Nvidia chips, CEO says",
-          "datetime": 1788998185,
+          "headline": "SpaceX stock rises with data center overhaul, budding UK defense deal in focus",
+          "datetime": 1789076806,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/markets/article/coreweave-struggling-to-keep-up-with-demand-for-nvidia-chips-ceo-says-145336930.html"
+          "url": "https://finance.yahoo.com/markets/stocks/article/spacex-stock-rises-with-data-center-overhaul-budding-uk-defense-deal-in-focus-160039841.html"
         }
       ]
     },
     "NOW": {
       "name": "ServiceNow, Inc.",
       "quote": {
-        "c": 131.16,
-        "d": -0.01,
-        "dp": -0.0076,
+        "c": 130.72,
+        "d": -0.45,
+        "dp": -0.3431,
         "regular": 131.17,
         "reg_d": 0.06,
         "reg_dp": 0.0458,
         "pre": null,
-        "post": 131.16,
+        "post": 130.72,
         "prev_close": 131.11,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "What CRM Shareholders Got Paid While The Stock Stood Still",
-          "datetime": 1788998185,
+          "headline": "Dow Jones Futures: S&P 500 Breaks Support As Oil Prices, Yields Surge; Oracle Jumps Late With CPI Inflation Due",
+          "datetime": 1789076806,
           "source": "Yahoo Finance",
-          "url": "https://www.trefis.com/articles/614669/what-crm-shareholders-got-paid-while-the-stock-stood-still/2026-09-09"
+          "url": "https://www.investors.com/market-trend/stock-market-today/dow-jones-futures-sp500-oil-prices-treasury-yields-cpi-inflation-oracle-earnings/?src=A00220&yptr=yahoo"
         }
       ]
     },
     "TSM": {
       "name": "Taiwan Semiconductor Manufactur",
       "quote": {
-        "c": 428.01,
-        "d": -0.02,
-        "dp": -0.0047,
+        "c": 428.43,
+        "d": 0.4,
+        "dp": 0.0934,
         "regular": 428.03,
         "reg_d": -7.33,
         "reg_dp": -1.6837,
         "pre": null,
-        "post": 428.01,
+        "post": 428.43,
         "prev_close": 435.36,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Defiance Politely Asks the SEC to Let It Sell An ETF 8-Ball",
-          "datetime": 1788998185,
+          "headline": "Positron AI’s $875M Bet: Commodity Memory Could Break NVIDIA’s Inference Lock",
+          "datetime": 1789076806,
           "source": "Yahoo Finance",
-          "url": "https://app.moby.co/home/news/news-defiance-politely-asks-the-sec-to-let-it-sell-an-etf-8-ball?utm_source=yahoo_finance&utm_medium=rss"
+          "url": "https://finance.yahoo.com/technology/ai/articles/positron-ai-875m-bet-commodity-212452199.html"
         }
       ]
     },
     "MRVL": {
       "name": "Marvell Technology, Inc.",
       "quote": {
-        "c": 227.47,
-        "d": 0.51,
-        "dp": 0.2247,
+        "c": 226.36,
+        "d": -0.6,
+        "dp": -0.2657,
         "regular": 226.96,
         "reg_d": -8.05,
         "reg_dp": -3.4254,
         "pre": null,
-        "post": 227.47,
+        "post": 226.36,
         "prev_close": 235.01,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Marvell Or NVIDIA: Which One Costs Less Per Dollar Of Profit?",
-          "datetime": 1788998185,
+          "headline": "Prediction: Marvell Technology Stock Will Jump 150% in 5 Years. Here’s the Math.",
+          "datetime": 1789076806,
           "source": "Yahoo Finance",
-          "url": "https://www.trefis.com/articles/614719/marvell-or-nvidia-which-one-costs-less-per-dollar-of-profit/2026-09-09"
+          "url": "https://www.fool.com/investing/2026/09/10/prediction-marvell-technology-stock-will-jump-150-in-5-years-here-s-the-math/"
         }
       ]
     },
     "MU": {
       "name": "Micron Technology, Inc.",
       "quote": {
-        "c": 978.17,
-        "d": 0.76,
-        "dp": 0.0778,
+        "c": 977.5,
+        "d": 0.09,
+        "dp": 0.0092,
         "regular": 977.41,
         "reg_d": -50.36,
         "reg_dp": -4.8999,
         "pre": null,
-        "post": 978.17,
+        "post": 977.5,
         "prev_close": 1027.77,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Micron's Operating Margin Surged Past 80% for the First Time Ever. History Says This Is What's Coming Next.",
-          "datetime": 1788998185,
+          "headline": "Semiconductors Stocks Q2 Highlights: Micron (NASDAQ:MU)",
+          "datetime": 1789076806,
           "source": "Yahoo Finance",
-          "url": "https://www.fool.com/investing/2026/09/09/microns-operating-margin-surged-past-80-for-the-fi/"
+          "url": "https://finance.yahoo.com/markets/stocks/articles/semiconductors-stocks-q2-highlights-micron-202504233.html"
         }
       ]
     },
     "SNDK": {
       "name": "Sandisk Corporation",
       "quote": {
-        "c": 1691.33,
-        "d": -1.26,
-        "dp": -0.0746,
+        "c": 1686.34,
+        "d": -6.25,
+        "dp": -0.3693,
         "regular": 1692.59,
         "reg_d": -71.58,
         "reg_dp": -4.0574,
         "pre": null,
-        "post": 1691.33,
+        "post": 1686.34,
         "prev_close": 1764.17,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "SanDisk Traded Its Best Prices For Something Rarer",
-          "datetime": 1788998185,
+          "headline": "Super Micro (SMCI) Up 3.5% Since Last Earnings Report: Can It Continue?",
+          "datetime": 1789076806,
           "source": "Yahoo Finance",
-          "url": "https://www.trefis.com/articles/614776/sandisk-traded-its-best-prices-for-something-rarer/2026-09-09"
+          "url": "https://finance.yahoo.com/markets/stocks/articles/super-micro-smci-3-5-153005797.html"
         }
       ]
     },
     "SPCX": {
       "name": "Space Exploration Technologies",
       "quote": {
-        "c": 148.03,
-        "d": -0.15,
-        "dp": -0.1031,
+        "c": 147.88,
+        "d": -0.3,
+        "dp": -0.2024,
         "regular": 148.18,
         "reg_d": 0.63,
         "reg_dp": 0.427,
         "pre": null,
-        "post": 148.03,
+        "post": 147.88,
         "prev_close": 147.55,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "An 'IPO stampede' is coming: Why one name will be an important test",
-          "datetime": 1788998185,
+          "headline": "The key stocks behind the high returns for college endowments",
+          "datetime": 1789076806,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/video/ipo-stampede-coming-why-one-120000398.html"
+          "url": "https://finance.yahoo.com/video/key-stocks-behind-high-returns-153847801.html"
         }
       ]
     },
     "ONDS": {
       "name": "Ondas Inc",
       "quote": {
-        "c": 7.25,
-        "d": -0.0,
-        "dp": -0.0055,
+        "c": 7.24,
+        "d": -0.01,
+        "dp": -0.1379,
         "regular": 7.25,
         "reg_d": -0.04,
         "reg_dp": -0.5487,
         "pre": null,
-        "post": 7.25,
+        "post": 7.24,
         "prev_close": 7.29,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Drone Stocks Slide as Risk-Off Sentiment Hits High-Beta Names: AeroVironment Sinks 4%, Red Cat Drops 3%, Ondas Eases",
-          "datetime": 1788998185,
+          "datetime": 1789076806,
           "source": "Yahoo Finance",
           "url": "https://247wallst.com/investing/2026/09/09/drone-stocks-slide-as-risk-off-sentiment-hits-high-beta-names-aerovironment-sinks-4-red-cat-drops-3-ondas-eases/"
         }
@@ -226,23 +226,23 @@
     "PLTR": {
       "name": "Palantir Technologies Inc.",
       "quote": {
-        "c": 166.34,
-        "d": 0.48,
-        "dp": 0.2894,
+        "c": 166.35,
+        "d": 0.49,
+        "dp": 0.2954,
         "regular": 165.86,
         "reg_d": -3.67,
         "reg_dp": -2.1648,
         "pre": null,
-        "post": 166.34,
+        "post": 166.35,
         "prev_close": 169.53,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Jim Cramer Compares Palantir (PLTR) to an NFL Wide Receiver",
-          "datetime": 1788998185,
+          "headline": "Michael Burry Dumps Nvidia and Palantir Put Options in Fresh Risk Warning",
+          "datetime": 1789076806,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/markets/stocks/articles/jim-cramer-compares-palantir-pltr-230017699.html"
+          "url": "https://finance.yahoo.com/markets/options/articles/michael-burry-dumps-nvidia-palantir-194635018.html"
         }
       ]
     },
@@ -263,7 +263,7 @@
       "news": [
         {
           "headline": "Why Micron Stock Just Dropped Again",
-          "datetime": 1788998185,
+          "datetime": 1789076806,
           "source": "Yahoo Finance",
           "url": "https://www.fool.com/investing/2026/07/15/why-micron-stock-just-dropped-again/"
         }
@@ -271,7 +271,7 @@
     }
   },
   "alert_sent": {
-    "morning": "2026-09-10",
+    "morning": "2026-09-11",
     "evening": "2026-09-10"
   }
 }
