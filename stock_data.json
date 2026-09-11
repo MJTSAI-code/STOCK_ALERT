@@ -1,6 +1,6 @@
 {
   "name": "美股盤前情報資料庫",
-  "updated_at": "2026-09-12T05:51:51.421663+08:00",
+  "updated_at": "2026-09-12T05:58:27.225470+08:00",
   "next_update_at": "2026-09-11T22:30:00Z",
   "stocks": [
     "MSFT",
@@ -19,21 +19,21 @@
     "MSFT": {
       "name": "Microsoft Corporation",
       "quote": {
-        "c": 495.04,
-        "d": -0.59,
-        "dp": -0.1196,
+        "c": 495.03,
+        "d": -0.6,
+        "dp": -0.1211,
         "regular": 495.63,
         "reg_d": 3.19,
         "reg_dp": 0.6478,
         "pre": null,
-        "post": 495.04,
+        "post": 495.03,
         "prev_close": 492.44,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Oracle is the most attractive AI cloud, analyst says",
-          "datetime": 1789163511,
+          "datetime": 1789163907,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/video/oracle-most-attractive-ai-cloud-144500691.html"
         }
@@ -44,7 +44,7 @@
       "quote": {
         "c": 218.38,
         "d": 0.09,
-        "dp": 0.041,
+        "dp": 0.0409,
         "regular": 218.29,
         "reg_d": -0.07,
         "reg_dp": -0.0321,
@@ -56,7 +56,7 @@
       "news": [
         {
           "headline": "SpaceX signs $1.1 billion-per month computing deal",
-          "datetime": 1789163511,
+          "datetime": 1789163907,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/video/spacex-signs-1-1-billion-195052486.html"
         }
@@ -65,23 +65,23 @@
     "NOW": {
       "name": "ServiceNow, Inc.",
       "quote": {
-        "c": 132.23,
-        "d": -0.3,
-        "dp": -0.2264,
+        "c": 132.3,
+        "d": -0.23,
+        "dp": -0.1735,
         "regular": 132.53,
         "reg_d": 1.36,
         "reg_dp": 1.0368,
         "pre": null,
-        "post": 132.23,
+        "post": 132.3,
         "prev_close": 131.17,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Is Salesforce Stock Cheap Because Software Is Dying?",
-          "datetime": 1789163511,
+          "headline": "ServiceNow (NOW) Outperforms Broader Market: What You Need to Know",
+          "datetime": 1789163907,
           "source": "Yahoo Finance",
-          "url": "https://www.trefis.com/articles/615054/is-salesforce-stock-cheap-because-software-is-dying/2026-09-11"
+          "url": "https://finance.yahoo.com/markets/stocks/articles/servicenow-now-outperforms-broader-market-214503848.html"
         }
       ]
     },
@@ -102,7 +102,7 @@
       "news": [
         {
           "headline": "TSMC Rebounds as August Sales Smash NT$500 Billion",
-          "datetime": 1789163511,
+          "datetime": 1789163907,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/markets/stocks/articles/tsmc-rebounds-august-sales-smash-211137661.html"
         }
@@ -111,21 +111,21 @@
     "MRVL": {
       "name": "Marvell Technology, Inc.",
       "quote": {
-        "c": 235.86,
-        "d": -0.24,
-        "dp": -0.1017,
+        "c": 235.78,
+        "d": -0.32,
+        "dp": -0.1352,
         "regular": 236.1,
         "reg_d": 9.14,
         "reg_dp": 4.0271,
         "pre": null,
-        "post": 235.86,
+        "post": 235.78,
         "prev_close": 226.96,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Top Stock Reports for Meta Platforms, Marvell & Amphenol",
-          "datetime": 1789163511,
+          "datetime": 1789163907,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/markets/stocks/articles/top-stock-reports-meta-platforms-212300174.html"
         }
@@ -134,21 +134,21 @@
     "MU": {
       "name": "Micron Technology, Inc.",
       "quote": {
-        "c": 974.1,
-        "d": -1.16,
-        "dp": -0.1189,
+        "c": 974.15,
+        "d": -1.11,
+        "dp": -0.1138,
         "regular": 975.26,
         "reg_d": -2.15,
         "reg_dp": -0.22,
         "pre": null,
-        "post": 974.1,
+        "post": 974.15,
         "prev_close": 977.41,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Applied Materials vs. Micron Technology: Which Technology Stock Is a Better Buy in 2026?",
-          "datetime": 1789163511,
+          "datetime": 1789163907,
           "source": "Yahoo Finance",
           "url": "https://www.fool.com/coverage/better-buy/2026/09/11/applied-materials-vs-micron-technology-which-technology-stock-is-a-better-buy-in-2026/"
         }
@@ -157,21 +157,21 @@
     "SNDK": {
       "name": "Sandisk Corporation",
       "quote": {
-        "c": 1628.13,
-        "d": -5.22,
-        "dp": -0.3195,
+        "c": 1628.77,
+        "d": -4.58,
+        "dp": -0.2801,
         "regular": 1633.35,
         "reg_d": -59.24,
         "reg_dp": -3.5,
         "pre": null,
-        "post": 1628.13,
+        "post": 1628.77,
         "prev_close": 1692.59,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Former OpenAI Researcher Bets on AI Stocks After $35 Billion Wipeout",
-          "datetime": 1789163511,
+          "datetime": 1789163907,
           "source": "Yahoo Finance",
           "url": "https://beincrypto.com/former-openai-researcher-leopold-aschenbrenner-ai-bet/"
         }
@@ -180,21 +180,21 @@
     "SPCX": {
       "name": "Space Exploration Technologies",
       "quote": {
-        "c": 150.75,
-        "d": -0.46,
-        "dp": -0.3034,
+        "c": 150.79,
+        "d": -0.42,
+        "dp": -0.2753,
         "regular": 151.21,
         "reg_d": 3.03,
         "reg_dp": 2.0448,
         "pre": null,
-        "post": 150.75,
+        "post": 150.79,
         "prev_close": 148.18,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Elon Musk’s Boring Company raises $3B at $23B valuation",
-          "datetime": 1789163511,
+          "datetime": 1789163907,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/video/elon-musk-boring-company-raises-195300108.html"
         }
@@ -203,21 +203,21 @@
     "ONDS": {
       "name": "Ondas Inc",
       "quote": {
-        "c": 7.24,
-        "d": 0.01,
-        "dp": 0.1383,
+        "c": 7.23,
+        "d": 0.0,
+        "dp": 0.0207,
         "regular": 7.23,
         "reg_d": -0.02,
         "reg_dp": -0.2759,
         "pre": null,
-        "post": 7.24,
+        "post": 7.23,
         "prev_close": 7.25,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Will Counter-UAS Demand Sustain Ondas' Momentum Into 2027?",
-          "datetime": 1789163511,
+          "datetime": 1789163907,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/markets/stocks/articles/counter-uas-demand-sustain-ondas-134500400.html"
         }
@@ -226,21 +226,21 @@
     "PLTR": {
       "name": "Palantir Technologies Inc.",
       "quote": {
-        "c": 167.44,
-        "d": 0.21,
-        "dp": 0.127,
+        "c": 167.4,
+        "d": 0.17,
+        "dp": 0.0993,
         "regular": 167.23,
         "reg_d": 1.37,
         "reg_dp": 0.826,
         "pre": null,
-        "post": 167.44,
+        "post": 167.4,
         "prev_close": 165.86,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Oracle's AI Cloud Growth Lifts CoreWeave, Nebius and IREN",
-          "datetime": 1789163511,
+          "datetime": 1789163907,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/technology/ai/articles/oracles-ai-cloud-growth-lifts-211041374.html"
         }
@@ -263,7 +263,7 @@
       "news": [
         {
           "headline": "Why Micron Stock Just Dropped Again",
-          "datetime": 1789163511,
+          "datetime": 1789163907,
           "source": "Yahoo Finance",
           "url": "https://www.fool.com/investing/2026/07/15/why-micron-stock-just-dropped-again/"
         }
