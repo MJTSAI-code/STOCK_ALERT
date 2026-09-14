@@ -1,6 +1,6 @@
 {
   "name": "美股盤前情報資料庫",
-  "updated_at": "2026-09-15T07:38:48.195658+08:00",
+  "updated_at": "2026-09-15T07:59:16.153690+08:00",
   "next_update_at": "2026-09-15T00:30:00Z",
   "stocks": [
     "MSFT",
@@ -19,21 +19,21 @@
     "MSFT": {
       "name": "Microsoft Corporation",
       "quote": {
-        "c": 504.25,
-        "d": -1.16,
-        "dp": -0.2303,
+        "c": 504.0,
+        "d": -1.41,
+        "dp": -0.279,
         "regular": 505.41,
         "reg_d": 9.78,
         "reg_dp": 1.9732,
         "pre": null,
-        "post": 504.25,
+        "post": 504.0,
         "prev_close": 495.63,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Tech stocks today: AI warnings send shock through chip stocks",
-          "datetime": 1789429128,
+          "datetime": 1789430356,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/technology/live/tech-stocks-today-ai-warnings-send-shock-through-chip-stocks-140134624.html"
         }
@@ -42,21 +42,21 @@
     "NVDA": {
       "name": "NVIDIA Corporation",
       "quote": {
-        "c": 212.2,
-        "d": 1.24,
-        "dp": 0.5872,
+        "c": 212.05,
+        "d": 1.09,
+        "dp": 0.5167,
         "regular": 210.96,
         "reg_d": -7.33,
         "reg_dp": -3.3579,
         "pre": null,
-        "post": 212.2,
+        "post": 212.05,
         "prev_close": 218.29,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Tech pulls back on AI concerns, cybersecurity takes a step up",
-          "datetime": 1789429128,
+          "datetime": 1789430356,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/video/tech-pulls-back-ai-concerns-143900977.html"
         }
@@ -65,21 +65,21 @@
     "NOW": {
       "name": "ServiceNow, Inc.",
       "quote": {
-        "c": 141.71,
-        "d": -0.64,
-        "dp": -0.4496,
+        "c": 141.7,
+        "d": -0.65,
+        "dp": -0.4566,
         "regular": 142.35,
         "reg_d": 9.82,
         "reg_dp": 7.4096,
         "pre": null,
-        "post": 141.71,
+        "post": 141.7,
         "prev_close": 132.53,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "ServiceNow Jumps 6.4% as AI Slowdown Flips the Software Trade",
-          "datetime": 1789429128,
+          "datetime": 1789430356,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/technology/ai/articles/servicenow-jumps-6-4-ai-205808694.html"
         }
@@ -88,21 +88,21 @@
     "TSM": {
       "name": "Taiwan Semiconductor Manufactur",
       "quote": {
-        "c": 419.75,
-        "d": 1.74,
-        "dp": 0.4171,
+        "c": 419.99,
+        "d": 1.98,
+        "dp": 0.4737,
         "regular": 418.01,
         "reg_d": -15.23,
         "reg_dp": -3.5154,
         "pre": null,
-        "post": 419.75,
+        "post": 419.99,
         "prev_close": 433.24,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "5 Top AI Stocks to Buy on the Dip as Slowdown Fears Hit Markets",
-          "datetime": 1789429128,
+          "datetime": 1789430356,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/technology/ai/articles/5-top-ai-stocks-buy-203700535.html"
         }
@@ -111,21 +111,21 @@
     "MRVL": {
       "name": "Marvell Technology, Inc.",
       "quote": {
-        "c": 221.3,
-        "d": 2.48,
-        "dp": 1.1333,
+        "c": 220.97,
+        "d": 2.15,
+        "dp": 0.9835,
         "regular": 218.82,
         "reg_d": -17.28,
         "reg_dp": -7.3189,
         "pre": null,
-        "post": 221.3,
+        "post": 220.97,
         "prev_close": 236.1,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Stocks to Watch Monday Recap: Nvidia, Oracle, SoftBank",
-          "datetime": 1789429128,
+          "datetime": 1789430356,
           "source": "Yahoo Finance",
           "url": "https://www.wsj.com/livecoverage/stock-market-today-dow-sp-500-nasdaq-09-14-2026/card/stocks-to-watch-monday-nvidia-oracle-softbank-z8oHxWLCC1rwQAwr0oUs?siteid=yhoof2&yptr=yahoo"
         }
@@ -134,21 +134,21 @@
     "MU": {
       "name": "Micron Technology, Inc.",
       "quote": {
-        "c": 930.0,
-        "d": 5.97,
-        "dp": 0.6461,
+        "c": 931.68,
+        "d": 7.65,
+        "dp": 0.8279,
         "regular": 924.03,
         "reg_d": -51.23,
         "reg_dp": -5.253,
         "pre": null,
-        "post": 930.0,
+        "post": 931.68,
         "prev_close": 975.26,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Tech pulls back on AI concerns, cybersecurity takes a step up",
-          "datetime": 1789429128,
+          "datetime": 1789430356,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/video/tech-pulls-back-ai-concerns-143900977.html"
         }
@@ -157,21 +157,21 @@
     "SNDK": {
       "name": "Sandisk Corporation",
       "quote": {
-        "c": 1563.37,
-        "d": 11.38,
-        "dp": 0.7335,
+        "c": 1563.99,
+        "d": 12.0,
+        "dp": 0.7732,
         "regular": 1551.99,
         "reg_d": -81.36,
         "reg_dp": -4.9812,
         "pre": null,
-        "post": 1563.37,
+        "post": 1563.99,
         "prev_close": 1633.35,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Tech pulls back on AI concerns, cybersecurity takes a step up",
-          "datetime": 1789429128,
+          "datetime": 1789430356,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/video/tech-pulls-back-ai-concerns-143900977.html"
         }
@@ -180,21 +180,21 @@
     "SPCX": {
       "name": "Space Exploration Technologies",
       "quote": {
-        "c": 148.62,
-        "d": 0.47,
-        "dp": 0.3172,
+        "c": 148.65,
+        "d": 0.5,
+        "dp": 0.3375,
         "regular": 148.15,
         "reg_d": -3.06,
         "reg_dp": -2.0237,
         "pre": null,
-        "post": 148.62,
+        "post": 148.65,
         "prev_close": 151.21,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Trump dismisses calls to slow AI development, blames 'conspiracy' against AI and data centers",
-          "datetime": 1789429128,
+          "datetime": 1789430356,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/technology/article/trump-dismisses-calls-to-slow-ai-development-blames-conspiracy-against-ai-and-data-centers-153021111.html"
         }
@@ -217,7 +217,7 @@
       "news": [
         {
           "headline": "Jim Cramer on Ondas (ONDS): “It’s Not Great, Not Bad”",
-          "datetime": 1789429128,
+          "datetime": 1789430356,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/markets/stocks/articles/jim-cramer-ondas-onds-not-184508361.html"
         }
@@ -226,21 +226,21 @@
     "PLTR": {
       "name": "Palantir Technologies Inc.",
       "quote": {
-        "c": 172.8,
-        "d": -0.51,
-        "dp": -0.2943,
+        "c": 172.9,
+        "d": -0.41,
+        "dp": -0.2366,
         "regular": 173.31,
         "reg_d": 6.08,
         "reg_dp": 3.6357,
         "pre": null,
-        "post": 172.8,
+        "post": 172.9,
         "prev_close": 167.23,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Oklo Has Massive Potential Due to Artificial Intelligence, but the Stock Is Sinking. Here's What I'd Do",
-          "datetime": 1789429128,
+          "datetime": 1789430356,
           "source": "Yahoo Finance",
           "url": "https://www.fool.com/investing/2026/09/14/oklo-has-massive-potential-due-to-artificial-intelligence-but-the-stock-is-sinking-here-s-what-i-d-do/"
         }
