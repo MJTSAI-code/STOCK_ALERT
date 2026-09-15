@@ -1,7 +1,7 @@
 {
   "name": "美股盤前情報資料庫",
-  "updated_at": "2026-09-16T05:58:28.186133+08:00",
-  "next_update_at": "2026-09-15T22:30:00Z",
+  "updated_at": "2026-09-16T07:04:20.953517+08:00",
+  "next_update_at": "2026-09-16T00:00:00Z",
   "stocks": [
     "MSFT",
     "NVDA",
@@ -19,44 +19,44 @@
     "MSFT": {
       "name": "Microsoft Corporation",
       "quote": {
-        "c": 497.32,
-        "d": 0.2,
-        "dp": 0.0405,
+        "c": 498.7,
+        "d": 1.58,
+        "dp": 0.3178,
         "regular": 497.12,
         "reg_d": -8.29,
         "reg_dp": -1.6403,
         "pre": null,
-        "post": 497.32,
+        "post": 498.7,
         "prev_close": 505.41,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Microsoft Pays Out More in Dividends Than It Spends Buying Back Stock. Here's What That Does for Investors.",
-          "datetime": 1789509508,
+          "headline": "Should TD SYNNEX’s New ORCA AI Power SKU Require Action From TD SYNNEX (SNX) Investors?",
+          "datetime": 1789513460,
           "source": "Yahoo Finance",
-          "url": "https://www.fool.com/investing/2026/09/15/microsoft-pays-out-more-in-dividends-than-it-spends-buying-back-stock-here-s-what-that-has-done-to-the-share-count/"
+          "url": "https://finance.yahoo.com/technology/ai/articles/td-synnex-orca-ai-power-221324901.html"
         }
       ]
     },
     "NVDA": {
       "name": "NVIDIA Corporation",
       "quote": {
-        "c": 212.37,
-        "d": 0.2,
-        "dp": 0.0943,
+        "c": 212.42,
+        "d": 0.25,
+        "dp": 0.1176,
         "regular": 212.17,
         "reg_d": 1.21,
         "reg_dp": 0.5736,
         "pre": null,
-        "post": 212.37,
+        "post": 212.42,
         "prev_close": 210.96,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Tech stocks today: CEOs call for pacing AI, as Nvidia CEO says extinction fears are made up",
-          "datetime": 1789509508,
+          "datetime": 1789513460,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/technology/live/tech-stocks-today-ceos-call-for-pacing-ai-as-nvidia-ceo-says-extinction-fears-are-made-up-140134624.html"
         }
@@ -65,21 +65,21 @@
     "NOW": {
       "name": "ServiceNow, Inc.",
       "quote": {
-        "c": 141.5,
-        "d": -0.4,
-        "dp": -0.2819,
+        "c": 141.9,
+        "d": 0.0,
+        "dp": 0.0,
         "regular": 141.9,
         "reg_d": -0.45,
         "reg_dp": -0.3161,
         "pre": null,
-        "post": 141.5,
+        "post": 141.9,
         "prev_close": 142.35,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Dow Jones Futures: S&P 500, Nasdaq Break Support; ServiceNow, Twilio Lead New Buys As Fed Hike Looms",
-          "datetime": 1789509508,
+          "headline": "Dow Jones Futures Rise; ServiceNow, Twilio Lead New Buys As Fed Hike Looms",
+          "datetime": 1789513460,
           "source": "Yahoo Finance",
           "url": "https://www.investors.com/market-trend/stock-market-today/dow-jones-futures-sp500-nasdaq-how-will-bonds-react-to-fed-rate-hike/?src=A00220&yptr=yahoo"
         }
@@ -88,90 +88,90 @@
     "TSM": {
       "name": "Taiwan Semiconductor Manufactur",
       "quote": {
-        "c": 414.07,
-        "d": 0.32,
-        "dp": 0.0773,
+        "c": 414.34,
+        "d": 0.59,
+        "dp": 0.1426,
         "regular": 413.75,
         "reg_d": -4.26,
         "reg_dp": -1.0191,
         "pre": null,
-        "post": 414.07,
+        "post": 414.34,
         "prev_close": 418.01,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Dow Jones Tech Titan Apple, Nvidia Chipmaker TSMC, AMD, Bloom Energy In Or Near Buy Zones",
-          "datetime": 1789509508,
+          "headline": "TSMC’s 2nm Era Is Accelerating With MediaTek. Nvidia and Alphabet Already Have Money on the Table",
+          "datetime": 1789513460,
           "source": "Yahoo Finance",
-          "url": "https://www.investors.com/stock-lists/stocks-near-a-buy-zone/dow-jones-apple-stock-aapl-nvidia-chipmaker-tsm-amd-bloom/?src=A00220&yptr=yahoo"
+          "url": "https://finance.yahoo.com/technology/articles/tsmc-2nm-era-accelerating-mediatek-214827953.html"
         }
       ]
     },
     "MRVL": {
       "name": "Marvell Technology, Inc.",
       "quote": {
-        "c": 221.39,
-        "d": -0.31,
-        "dp": -0.1398,
+        "c": 221.25,
+        "d": -0.45,
+        "dp": -0.203,
         "regular": 221.7,
         "reg_d": 2.88,
         "reg_dp": 1.3162,
         "pre": null,
-        "post": 221.39,
+        "post": 221.25,
         "prev_close": 218.82,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Nvidia Just Invited a Rival Chipmaker Into Its Own Racks. Here’s Why",
-          "datetime": 1789509508,
+          "headline": "Credo (CRDO) vs. Marvell (MRVL): Which AI Chip Stock Is the Better Buy?",
+          "datetime": 1789513460,
           "source": "Yahoo Finance",
-          "url": "https://247wallst.com/investing/2026/09/15/nvidia-just-invited-a-rival-chipmaker-into-its-own-racks-heres-why/"
+          "url": "https://finance.yahoo.com/technology/ai/articles/credo-crdo-vs-marvell-mrvl-221100887.html"
         }
       ]
     },
     "MU": {
       "name": "Micron Technology, Inc.",
       "quote": {
-        "c": 924.9,
-        "d": -2.7,
-        "dp": -0.2911,
+        "c": 925.58,
+        "d": -2.02,
+        "dp": -0.2178,
         "regular": 927.6,
         "reg_d": 3.57,
         "reg_dp": 0.3864,
         "pre": null,
-        "post": 924.9,
+        "post": 925.58,
         "prev_close": 924.03,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Micron Investors Get New Reason to Watch Closely",
-          "datetime": 1789509508,
+          "headline": "Micron Technology (MU), What Is Behind The Fresh Attention?",
+          "datetime": 1789513460,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/markets/stocks/articles/micron-investors-reason-watch-closely-205224932.html"
+          "url": "https://finance.yahoo.com/markets/stocks/articles/micron-technology-mu-behind-fresh-221419399.html"
         }
       ]
     },
     "SNDK": {
       "name": "Sandisk Corporation",
       "quote": {
-        "c": 1528.33,
-        "d": -2.57,
-        "dp": -0.1676,
+        "c": 1529.58,
+        "d": -1.32,
+        "dp": -0.0859,
         "regular": 1530.89,
         "reg_d": -21.1,
         "reg_dp": -1.3592,
         "pre": null,
-        "post": 1528.33,
+        "post": 1529.58,
         "prev_close": 1551.99,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Nvidia, Coinbase, Skyworks, Axon, Tesla, Applied Aerospace, and More Stocks That Explain Today’s Market",
-          "datetime": 1789509508,
+          "datetime": 1789513460,
           "source": "Yahoo Finance",
           "url": "https://www.barrons.com/articles/stock-movers-bb7c16dd?siteid=yhoof2&yptr=yahoo"
         }
@@ -180,21 +180,21 @@
     "SPCX": {
       "name": "Space Exploration Technologies",
       "quote": {
-        "c": 142.73,
-        "d": -0.76,
-        "dp": -0.5297,
+        "c": 143.0,
+        "d": -0.49,
+        "dp": -0.3415,
         "regular": 143.49,
         "reg_d": -4.66,
         "reg_dp": -3.1455,
         "pre": null,
-        "post": 142.73,
+        "post": 143.0,
         "prev_close": 148.15,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Bessent defends Trump administration's safety stance on AI",
-          "datetime": 1789509508,
+          "datetime": 1789513460,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/technology/ai/article/bessent-defends-trump-administrations-safety-stance-on-ai-201653080.html"
         }
@@ -205,7 +205,7 @@
       "quote": {
         "c": 7.23,
         "d": -0.01,
-        "dp": -0.1478,
+        "dp": -0.1381,
         "regular": 7.24,
         "reg_d": 0.01,
         "reg_dp": 0.1383,
@@ -217,7 +217,7 @@
       "news": [
         {
           "headline": "Swarmer Targets $200M in Pro Forma Revenue Next Year – Report",
-          "datetime": 1789509508,
+          "datetime": 1789513460,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/markets/stocks/articles/swarmer-targets-200m-pro-forma-190125987.html"
         }
@@ -226,23 +226,23 @@
     "PLTR": {
       "name": "Palantir Technologies Inc.",
       "quote": {
-        "c": 172.18,
-        "d": -0.38,
-        "dp": -0.2228,
+        "c": 172.11,
+        "d": -0.45,
+        "dp": -0.263,
         "regular": 172.56,
         "reg_d": -0.75,
         "reg_dp": -0.4328,
         "pre": null,
-        "post": 172.18,
+        "post": 172.11,
         "prev_close": 173.31,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Nvidia, Coinbase, Skyworks, Axon, Tesla, Applied Aerospace, and More Stocks That Explain Today’s Market",
-          "datetime": 1789509508,
+          "headline": "Palantir and Nvidia Are Restricting Anthropic’s AI. Microsoft Could Win the Enterprise Trust War",
+          "datetime": 1789513460,
           "source": "Yahoo Finance",
-          "url": "https://www.barrons.com/articles/stock-movers-bb7c16dd?siteid=yhoof2&yptr=yahoo"
+          "url": "https://finance.yahoo.com/technology/ai/articles/palantir-nvidia-restricting-anthropic-ai-215533551.html"
         }
       ]
     },
