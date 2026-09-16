@@ -1,7 +1,7 @@
 {
   "name": "美股盤前情報資料庫",
-  "updated_at": "2026-09-17T04:52:30.459247+08:00",
-  "next_update_at": "2026-09-16T21:30:00Z",
+  "updated_at": "2026-09-17T05:58:29.586822+08:00",
+  "next_update_at": "2026-09-16T22:30:00Z",
   "stocks": [
     "MSFT",
     "NVDA",
@@ -19,69 +19,69 @@
     "MSFT": {
       "name": "Microsoft Corporation",
       "quote": {
-        "c": 490.39,
-        "d": 0.09,
-        "dp": 0.0184,
+        "c": 491.1,
+        "d": 0.8,
+        "dp": 0.1632,
         "regular": 490.3,
         "reg_d": -6.82,
         "reg_dp": -1.3719,
         "pre": null,
-        "post": 490.39,
+        "post": 491.1,
         "prev_close": 497.12,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Trump Pushes Back on AI Slowdown, Says 'Whoever Wins With AI Wins,' Microsoft CEO Satya Nadella Says Tech Must Stay 'Under Human Control'",
-          "datetime": 1789515799,
+          "headline": "How worried should software, semiconductor stocks be about AI risks?",
+          "datetime": 1789595909,
           "source": "Yahoo Finance",
-          "url": "https://www.yahoo.com/news/politics/articles/trump-pushes-back-ai-slowdown-223006486.html"
+          "url": "https://finance.yahoo.com/video/worried-software-semiconductor-stocks-ai-141500749.html"
         }
       ]
     },
     "NVDA": {
       "name": "NVIDIA Corporation",
       "quote": {
-        "c": 214.43,
-        "d": 0.53,
-        "dp": 0.2474,
+        "c": 214.67,
+        "d": 0.77,
+        "dp": 0.3597,
         "regular": 213.9,
         "reg_d": 1.73,
         "reg_dp": 0.8154,
         "pre": null,
-        "post": 214.43,
+        "post": 214.67,
         "prev_close": 212.17,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Tech stocks today: CEOs call for pacing AI, as Nvidia CEO says extinction fears are made up",
-          "datetime": 1789515799,
+          "headline": "Frontier AI developers must be 'liable for the things their products do': Autodesk CEO",
+          "datetime": 1789595909,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/technology/live/tech-stocks-today-ceos-call-for-pacing-ai-as-nvidia-ceo-says-extinction-fears-are-made-up-140134624.html"
+          "url": "https://finance.yahoo.com/video/frontier-ai-developers-must-liable-150955074.html"
         }
       ]
     },
     "NOW": {
       "name": "ServiceNow, Inc.",
       "quote": {
-        "c": 139.88,
-        "d": 0.06,
-        "dp": 0.042,
+        "c": 139.83,
+        "d": 0.01,
+        "dp": 0.0079,
         "regular": 139.82,
         "reg_d": -2.08,
         "reg_dp": -1.4658,
         "pre": null,
-        "post": 139.88,
+        "post": 139.83,
         "prev_close": 141.9,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Dow Jones Futures Rise; ServiceNow, Twilio Lead New Buys As Fed Hike Looms",
-          "datetime": 1789515799,
+          "headline": "Why human emotion is the biggest threat to your portfolio",
+          "datetime": 1789595909,
           "source": "Yahoo Finance",
-          "url": "https://www.investors.com/market-trend/stock-market-today/dow-jones-futures-sp500-nasdaq-how-will-bonds-react-to-fed-rate-hike/?src=A00220&yptr=yahoo"
+          "url": "https://finance.yahoo.com/video/why-human-emotion-biggest-threat-100000196.html"
         }
       ]
     },
@@ -101,77 +101,77 @@
       },
       "news": [
         {
-          "headline": "TSMC’s 2nm Era Is Accelerating With MediaTek. Nvidia and Alphabet Already Have Money on the Table",
-          "datetime": 1789515799,
+          "headline": "Stock Market Today, Sept. 16: Intel Jumps on SK Hynix Memory-Chip Manufacturing Talks",
+          "datetime": 1789595909,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/technology/articles/tsmc-2nm-era-accelerating-mediatek-214827953.html"
+          "url": "https://www.fool.com/coverage/stock-market-today/2026/09/16/stock-market-today-sept-16-intel-jumps-on-sk-hynix-memory-chip-manufacturing-talks/"
         }
       ]
     },
     "MRVL": {
       "name": "Marvell Technology, Inc.",
       "quote": {
-        "c": 230.39,
-        "d": 0.68,
-        "dp": 0.2978,
+        "c": 230.5,
+        "d": 0.79,
+        "dp": 0.3439,
         "regular": 229.71,
         "reg_d": 8.01,
         "reg_dp": 3.613,
         "pre": null,
-        "post": 230.39,
+        "post": 230.5,
         "prev_close": 221.7,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Credo (CRDO) vs. Marvell (MRVL): Which AI Chip Stock Is the Better Buy?",
-          "datetime": 1789515799,
+          "headline": "Bank of America Makes Massive Call on AI Chip Market",
+          "datetime": 1789595909,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/technology/ai/articles/credo-crdo-vs-marvell-mrvl-221100887.html"
+          "url": "https://finance.yahoo.com/technology/ai/articles/bank-america-makes-massive-call-184326204.html"
         }
       ]
     },
     "MU": {
       "name": "Micron Technology, Inc.",
       "quote": {
-        "c": 929.85,
-        "d": 3.3,
-        "dp": 0.3562,
+        "c": 930.3,
+        "d": 3.75,
+        "dp": 0.4047,
         "regular": 926.55,
         "reg_d": -1.05,
         "reg_dp": -0.1132,
         "pre": null,
-        "post": 929.85,
+        "post": 930.3,
         "prev_close": 927.6,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Micron Technology (MU), What Is Behind The Fresh Attention?",
-          "datetime": 1789515799,
+          "headline": "A Broad-Based Earnings Growth Picture as Revisions Stay Positive",
+          "datetime": 1789595909,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/markets/stocks/articles/micron-technology-mu-behind-fresh-221419399.html"
+          "url": "https://finance.yahoo.com/markets/stocks/articles/broad-based-earnings-growth-picture-205000426.html"
         }
       ]
     },
     "SNDK": {
       "name": "Sandisk Corporation",
       "quote": {
-        "c": 1528.0,
-        "d": 8.03,
-        "dp": 0.5283,
+        "c": 1525.62,
+        "d": 5.65,
+        "dp": 0.3717,
         "regular": 1519.97,
         "reg_d": -10.92,
         "reg_dp": -0.7136,
         "pre": null,
-        "post": 1528.0,
+        "post": 1525.62,
         "prev_close": 1530.89,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Sandisk (SNDK) Refinances Credit Line As Valuation Debate Sharpens",
-          "datetime": 1789515799,
+          "datetime": 1789595909,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/markets/stocks/articles/sandisk-sndk-refinances-credit-line-231549595.html"
         }
@@ -180,69 +180,69 @@
     "SPCX": {
       "name": "Space Exploration Technologies",
       "quote": {
-        "c": 151.07,
-        "d": 0.19,
-        "dp": 0.1251,
+        "c": 151.31,
+        "d": 0.43,
+        "dp": 0.285,
         "regular": 150.88,
         "reg_d": 7.39,
         "reg_dp": 5.1502,
         "pre": null,
-        "post": 151.07,
+        "post": 151.31,
         "prev_close": 143.49,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Bessent defends Trump administration's safety stance on AI",
-          "datetime": 1789515799,
+          "headline": "SpaceX stock pops ahead of Starship launch",
+          "datetime": 1789595909,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/technology/ai/article/bessent-defends-trump-administrations-safety-stance-on-ai-201653080.html"
+          "url": "https://finance.yahoo.com/markets/stocks/article/spacex-stock-pops-ahead-of-starship-launch-180435710.html"
         }
       ]
     },
     "ONDS": {
       "name": "Ondas Inc",
       "quote": {
-        "c": 7.2,
-        "d": 0.0,
-        "dp": 0.0,
+        "c": 7.22,
+        "d": 0.02,
+        "dp": 0.2681,
         "regular": 7.2,
         "reg_d": -0.04,
         "reg_dp": -0.5525,
         "pre": null,
-        "post": 7.2,
+        "post": 7.22,
         "prev_close": 7.24,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Swarmer Targets $200M in Pro Forma Revenue Next Year – Report",
-          "datetime": 1789515799,
+          "headline": "Ondas vs. AeroVironment: Which Drone Stock Is the Better Pick Now?",
+          "datetime": 1789595909,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/markets/stocks/articles/swarmer-targets-200m-pro-forma-190125987.html"
+          "url": "https://finance.yahoo.com/markets/stocks/articles/ondas-vs-aerovironment-drone-stock-154000018.html"
         }
       ]
     },
     "PLTR": {
       "name": "Palantir Technologies Inc.",
       "quote": {
-        "c": 174.3,
-        "d": -0.04,
-        "dp": -0.0205,
+        "c": 173.97,
+        "d": -0.37,
+        "dp": -0.2095,
         "regular": 174.34,
         "reg_d": 1.78,
         "reg_dp": 1.0315,
         "pre": null,
-        "post": 174.3,
+        "post": 173.97,
         "prev_close": 172.56,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Palantir and Nvidia Are Restricting Anthropic’s AI. Microsoft Could Win the Enterprise Trust War",
-          "datetime": 1789515799,
+          "headline": "Death of software 'greatly overstated' as sector flips the script on chip stocks: Chart of the Day",
+          "datetime": 1789595909,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/technology/ai/articles/palantir-nvidia-restricting-anthropic-ai-215533551.html"
+          "url": "https://finance.yahoo.com/markets/article/death-of-software-greatly-overstated-as-sector-flips-the-script-on-chip-stocks-chart-of-the-day-100000695.html"
         }
       ]
     },
@@ -271,7 +271,7 @@
     }
   },
   "alert_sent": {
-    "morning": "2026-09-16",
+    "morning": "2026-09-17",
     "evening": "2026-09-16"
   }
 }
