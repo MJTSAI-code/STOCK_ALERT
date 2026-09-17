@@ -1,7 +1,7 @@
 {
   "name": "美股盤前情報資料庫",
-  "updated_at": "2026-09-17T07:52:15.126370+08:00",
-  "next_update_at": "2026-09-17T00:30:00Z",
+  "updated_at": "2026-09-17T08:13:56.438605+08:00",
+  "next_update_at": "2026-09-17T01:00:00Z",
   "stocks": [
     "MSFT",
     "NVDA",
@@ -19,14 +19,14 @@
     "MSFT": {
       "name": "Microsoft Corporation",
       "quote": {
-        "c": 492.8,
-        "d": 2.5,
-        "dp": 0.5099,
+        "c": 492.52,
+        "d": 2.22,
+        "dp": 0.4528,
         "regular": 490.3,
         "reg_d": -6.82,
         "reg_dp": -1.3719,
         "pre": null,
-        "post": 492.8,
+        "post": 492.52,
         "prev_close": 497.12,
         "phase": "盤後"
       },
@@ -42,14 +42,14 @@
     "NVDA": {
       "name": "NVIDIA Corporation",
       "quote": {
-        "c": 215.7,
-        "d": 1.8,
-        "dp": 0.8415,
+        "c": 215.68,
+        "d": 1.78,
+        "dp": 0.8322,
         "regular": 213.9,
         "reg_d": 1.73,
         "reg_dp": 0.8154,
         "pre": null,
-        "post": 215.7,
+        "post": 215.68,
         "prev_close": 212.17,
         "phase": "盤後"
       },
@@ -65,14 +65,14 @@
     "NOW": {
       "name": "ServiceNow, Inc.",
       "quote": {
-        "c": 140.26,
-        "d": 0.44,
-        "dp": 0.3167,
+        "c": 139.98,
+        "d": 0.16,
+        "dp": 0.111,
         "regular": 139.82,
         "reg_d": -2.08,
         "reg_dp": -1.4658,
         "pre": null,
-        "post": 140.26,
+        "post": 139.98,
         "prev_close": 141.9,
         "phase": "盤後"
       },
@@ -88,14 +88,14 @@
     "TSM": {
       "name": "Taiwan Semiconductor Manufactur",
       "quote": {
-        "c": 420.35,
-        "d": 2.63,
-        "dp": 0.6296,
+        "c": 421.11,
+        "d": 3.39,
+        "dp": 0.8117,
         "regular": 417.72,
         "reg_d": 5.08,
         "reg_dp": 1.2304,
         "pre": null,
-        "post": 420.35,
+        "post": 421.11,
         "prev_close": 412.64,
         "phase": "盤後"
       },
@@ -111,14 +111,14 @@
     "MRVL": {
       "name": "Marvell Technology, Inc.",
       "quote": {
-        "c": 233.74,
-        "d": 4.03,
-        "dp": 1.7544,
+        "c": 233.95,
+        "d": 4.24,
+        "dp": 1.8458,
         "regular": 229.71,
         "reg_d": 8.01,
         "reg_dp": 3.613,
         "pre": null,
-        "post": 233.74,
+        "post": 233.95,
         "prev_close": 221.7,
         "phase": "盤後"
       },
@@ -134,14 +134,14 @@
     "MU": {
       "name": "Micron Technology, Inc.",
       "quote": {
-        "c": 934.99,
-        "d": 8.44,
-        "dp": 0.9105,
+        "c": 934.5,
+        "d": 7.95,
+        "dp": 0.858,
         "regular": 926.55,
         "reg_d": -1.05,
         "reg_dp": -0.1132,
         "pre": null,
-        "post": 934.99,
+        "post": 934.5,
         "prev_close": 927.6,
         "phase": "盤後"
       },
@@ -157,14 +157,14 @@
     "SNDK": {
       "name": "Sandisk Corporation",
       "quote": {
-        "c": 1540.16,
-        "d": 20.19,
-        "dp": 1.3283,
+        "c": 1538.49,
+        "d": 18.52,
+        "dp": 1.2184,
         "regular": 1519.97,
         "reg_d": -10.93,
         "reg_dp": -0.714,
         "pre": null,
-        "post": 1540.16,
+        "post": 1538.49,
         "prev_close": 1530.9,
         "phase": "盤後"
       },
@@ -180,14 +180,14 @@
     "SPCX": {
       "name": "Space Exploration Technologies",
       "quote": {
-        "c": 152.06,
-        "d": 1.18,
-        "dp": 0.7851,
+        "c": 152.08,
+        "d": 1.2,
+        "dp": 0.7953,
         "regular": 150.88,
         "reg_d": 7.39,
         "reg_dp": 5.1502,
         "pre": null,
-        "post": 152.06,
+        "post": 152.08,
         "prev_close": 143.49,
         "phase": "盤後"
       },
@@ -205,7 +205,7 @@
       "quote": {
         "c": 7.24,
         "d": 0.04,
-        "dp": 0.5431,
+        "dp": 0.5556,
         "regular": 7.2,
         "reg_d": -0.04,
         "reg_dp": -0.5525,
@@ -226,14 +226,14 @@
     "PLTR": {
       "name": "Palantir Technologies Inc.",
       "quote": {
-        "c": 174.98,
-        "d": 0.64,
-        "dp": 0.3663,
+        "c": 175.29,
+        "d": 0.95,
+        "dp": 0.5449,
         "regular": 174.34,
         "reg_d": 1.78,
         "reg_dp": 1.0315,
         "pre": null,
-        "post": 174.98,
+        "post": 175.29,
         "prev_close": 172.56,
         "phase": "盤後"
       },
