@@ -1,7 +1,7 @@
 {
   "name": "美股盤前情報資料庫",
-  "updated_at": "2026-09-19T05:58:31.557682+08:00",
-  "next_update_at": "2026-09-18T22:30:00Z",
+  "updated_at": "2026-09-19T06:55:58.270283+08:00",
+  "next_update_at": "2026-09-18T23:30:00Z",
   "stocks": [
     "MSFT",
     "NVDA",
@@ -19,21 +19,21 @@
     "MSFT": {
       "name": "Microsoft Corporation",
       "quote": {
-        "c": 494.76,
-        "d": 0.98,
-        "dp": 0.1977,
+        "c": 494.95,
+        "d": 1.17,
+        "dp": 0.237,
         "regular": 493.78,
         "reg_d": -3.97,
         "reg_dp": -0.7976,
         "pre": null,
-        "post": 494.76,
+        "post": 494.95,
         "prev_close": 497.75,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "'Astonishing theft of unprecedented proportions': NYT vs. OpenAI, Microsoft lawsuit",
-          "datetime": 1789768711,
+          "datetime": 1789772158,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/video/astonishing-theft-unprecedented-proportions-nyt-134822530.html"
         }
@@ -42,21 +42,21 @@
     "NVDA": {
       "name": "NVIDIA Corporation",
       "quote": {
-        "c": 222.3,
-        "d": 0.03,
-        "dp": 0.0125,
+        "c": 222.25,
+        "d": -0.02,
+        "dp": -0.0092,
         "regular": 222.27,
         "reg_d": 2.93,
         "reg_dp": 1.3358,
         "pre": null,
-        "post": 222.3,
+        "post": 222.25,
         "prev_close": 219.34,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "S&P 500 wavers after best one-day rally in six weeks: AlphaCheck",
-          "datetime": 1789768711,
+          "datetime": 1789772158,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/markets/article/sp-500-wavers-after-best-one-day-rally-in-six-weeks-alphacheck-141322068.html"
         }
@@ -65,44 +65,44 @@
     "NOW": {
       "name": "ServiceNow, Inc.",
       "quote": {
-        "c": 136.0,
-        "d": 0.53,
-        "dp": 0.3914,
+        "c": 136.09,
+        "d": 0.62,
+        "dp": 0.4577,
         "regular": 135.47,
         "reg_d": -3.0,
         "reg_dp": -2.1665,
         "pre": null,
-        "post": 136.0,
+        "post": 136.09,
         "prev_close": 138.47,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "ServiceNow (NOW) Stock Falls Amid Market Uptick: What Investors Need to Know",
-          "datetime": 1789768711,
+          "headline": "How Low Can UiPath Stock Go When Its Numbers Are Not The Problem?",
+          "datetime": 1789772158,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/markets/stocks/articles/servicenow-now-stock-falls-amid-214503145.html"
+          "url": "https://www.trefis.com/articles/615833/how-low-can-uipath-stock-go-when-its-numbers-are-not-the-problem/2026-09-18"
         }
       ]
     },
     "TSM": {
       "name": "Taiwan Semiconductor Manufactur",
       "quote": {
-        "c": 433.39,
-        "d": -1.28,
-        "dp": -0.2945,
+        "c": 433.6,
+        "d": -1.07,
+        "dp": -0.2464,
         "regular": 434.67,
         "reg_d": 4.41,
         "reg_dp": 1.025,
         "pre": null,
-        "post": 433.39,
+        "post": 433.6,
         "prev_close": 430.26,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "TSMC (TSM) Beats Stock Market Upswing: What Investors Need to Know",
-          "datetime": 1789768711,
+          "datetime": 1789772158,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/markets/stocks/articles/tsmc-tsm-beats-stock-market-214505465.html"
         }
@@ -111,21 +111,21 @@
     "MRVL": {
       "name": "Marvell Technology, Inc.",
       "quote": {
-        "c": 243.04,
-        "d": -1.21,
-        "dp": -0.4954,
+        "c": 242.5,
+        "d": -1.75,
+        "dp": -0.7165,
         "regular": 244.25,
         "reg_d": 3.49,
         "reg_dp": 1.4496,
         "pre": null,
-        "post": 243.04,
+        "post": 242.5,
         "prev_close": 240.76,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Bet on These Photonics ETFs to Exploit the Next Wave of AI Revolution",
-          "datetime": 1789768711,
+          "datetime": 1789772158,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/technology/ai/articles/bet-photonics-etfs-exploit-next-191600293.html"
         }
@@ -134,67 +134,67 @@
     "MU": {
       "name": "Micron Technology, Inc.",
       "quote": {
-        "c": 1015.85,
-        "d": 0.05,
-        "dp": 0.0049,
+        "c": 1014.85,
+        "d": -0.95,
+        "dp": -0.0935,
         "regular": 1015.8,
         "reg_d": 38.3,
         "reg_dp": 3.9182,
         "pre": null,
-        "post": 1015.85,
+        "post": 1014.85,
         "prev_close": 977.5,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Stock Market Today: Nasdaq, S&P Reverse Slightly Higher; Sandisk, Lumentum Lead This Tech Rally (Live Coverage)",
-          "datetime": 1789768711,
+          "headline": "Q3 Earnings Season Preview: What Can Investors Expect?",
+          "datetime": 1789772158,
           "source": "Yahoo Finance",
-          "url": "https://www.investors.com/market-trend/stock-market-today/dow-jones-sp500-nasdaq-oil-prices-apple-amd-micron-sandisk/?src=A00220&yptr=yahoo"
+          "url": "https://finance.yahoo.com/markets/stocks/articles/q3-earnings-season-preview-investors-223700771.html"
         }
       ]
     },
     "SNDK": {
       "name": "Sandisk Corporation",
       "quote": {
-        "c": 1794.75,
-        "d": 2.93,
-        "dp": 0.1635,
+        "c": 1792.1,
+        "d": 0.28,
+        "dp": 0.0158,
         "regular": 1791.82,
         "reg_d": 177.43,
         "reg_dp": 10.9905,
         "pre": null,
-        "post": 1794.75,
+        "post": 1792.1,
         "prev_close": 1614.39,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Stock Market Today: Nasdaq, S&P Reverse Slightly Higher; Sandisk, Lumentum Lead This Tech Rally (Live Coverage)",
-          "datetime": 1789768711,
+          "headline": "Dow Jones Futures: Market Still Choppy; Robinhood, Sandisk, AMD, Moderna Surge Into Buy Areas",
+          "datetime": 1789772158,
           "source": "Yahoo Finance",
-          "url": "https://www.investors.com/market-trend/stock-market-today/dow-jones-sp500-nasdaq-oil-prices-apple-amd-micron-sandisk/?src=A00220&yptr=yahoo"
+          "url": "https://www.investors.com/market-trend/stock-market-today/dow-jones-futures-robinhood-sandisk-amd-moderna-surge-buy-areas/?src=A00220&yptr=yahoo"
         }
       ]
     },
     "SPCX": {
       "name": "Space Exploration Technologies",
       "quote": {
-        "c": 152.44,
-        "d": -0.27,
-        "dp": -0.1768,
+        "c": 152.62,
+        "d": -0.09,
+        "dp": -0.0589,
         "regular": 152.71,
         "reg_d": -2.1,
         "reg_dp": -1.3565,
         "pre": null,
-        "post": 152.44,
+        "post": 152.62,
         "prev_close": 154.81,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Big Tech’s sudden millionaires experience growing pains settling into new wealth",
-          "datetime": 1789768711,
+          "datetime": 1789772158,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/video/big-tech-sudden-millionaires-experience-180000718.html"
         }
@@ -203,21 +203,21 @@
     "ONDS": {
       "name": "Ondas Inc",
       "quote": {
-        "c": 7.39,
-        "d": -0.0,
-        "dp": -0.0108,
+        "c": 7.48,
+        "d": 0.09,
+        "dp": 1.2179,
         "regular": 7.39,
         "reg_d": 0.0,
         "reg_dp": 0.0,
         "pre": null,
-        "post": 7.39,
+        "post": 7.48,
         "prev_close": 7.39,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Ondas (ONDS) Buys GATE and Bron. Can Component Ownership Improve Defense Returns?",
-          "datetime": 1789768711,
+          "datetime": 1789772158,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/markets/stocks/articles/ondas-onds-buys-gate-bron-205019338.html"
         }
@@ -226,21 +226,21 @@
     "PLTR": {
       "name": "Palantir Technologies Inc.",
       "quote": {
-        "c": 177.25,
-        "d": -0.39,
-        "dp": -0.2195,
+        "c": 177.48,
+        "d": -0.16,
+        "dp": -0.0879,
         "regular": 177.64,
         "reg_d": 1.4,
         "reg_dp": 0.7944,
         "pre": null,
-        "post": 177.25,
+        "post": 177.48,
         "prev_close": 176.24,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "The ARK Trade Watch: Cathie Wood Cuts Crypto Exposure, Then Reverses Course On CoreWeave",
-          "datetime": 1789768711,
+          "datetime": 1789772158,
           "source": "Yahoo Finance",
           "url": "https://stocktwits.com/news-articles/markets/equity/crwv-arkb-crcl-coin-cathie-wood-biggest-ark-invest-trades-week/cZtH7mZRBEg"
         }
