@@ -1,7 +1,7 @@
 {
   "name": "美股盤前情報資料庫",
-  "updated_at": "2026-09-19T04:52:37.382105+08:00",
-  "next_update_at": "2026-09-18T21:30:00Z",
+  "updated_at": "2026-09-19T05:46:39.019071+08:00",
+  "next_update_at": "2026-09-18T22:30:00Z",
   "stocks": [
     "MSFT",
     "NVDA",
@@ -19,205 +19,205 @@
     "MSFT": {
       "name": "Microsoft Corporation",
       "quote": {
-        "c": 495.0,
-        "d": 1.22,
-        "dp": 0.2471,
+        "c": 494.6,
+        "d": 0.82,
+        "dp": 0.1651,
         "regular": 493.78,
         "reg_d": -3.97,
         "reg_dp": -0.7976,
         "pre": null,
-        "post": 495.0,
+        "post": 494.6,
         "prev_close": 497.75,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "10-year Treasury yield eases, oil falls to $100: AlphaCheck",
-          "datetime": 1789688526,
+          "headline": "'Astonishing theft of unprecedented proportions': NYT vs. OpenAI, Microsoft lawsuit",
+          "datetime": 1789767999,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/markets/article/10-year-treasury-yield-eases-oil-falls-to-100-alphacheck-134408021.html"
+          "url": "https://finance.yahoo.com/video/astonishing-theft-unprecedented-proportions-nyt-134822530.html"
         }
       ]
     },
     "NVDA": {
       "name": "NVIDIA Corporation",
       "quote": {
-        "c": 221.93,
-        "d": -0.34,
-        "dp": -0.1538,
+        "c": 222.25,
+        "d": -0.02,
+        "dp": -0.0081,
         "regular": 222.27,
         "reg_d": 2.93,
         "reg_dp": 1.3358,
         "pre": null,
-        "post": 221.93,
+        "post": 222.25,
         "prev_close": 219.34,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "AI industry is just following Jensen Huang's lead, Salesforce CEO explains",
-          "datetime": 1789688526,
+          "headline": "S&P 500 wavers after best one-day rally in six weeks: AlphaCheck",
+          "datetime": 1789767999,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/video/ai-industry-just-following-jensen-153000978.html"
+          "url": "https://finance.yahoo.com/markets/article/sp-500-wavers-after-best-one-day-rally-in-six-weeks-alphacheck-141322068.html"
         }
       ]
     },
     "NOW": {
       "name": "ServiceNow, Inc.",
       "quote": {
-        "c": 136.02,
-        "d": 0.55,
-        "dp": 0.4089,
+        "c": 136.06,
+        "d": 0.59,
+        "dp": 0.4355,
         "regular": 135.47,
         "reg_d": -3.0,
         "reg_dp": -2.1665,
         "pre": null,
-        "post": 136.02,
+        "post": 136.06,
         "prev_close": 138.47,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Would You Want CRM Stock Back At The Price It Just Left?",
-          "datetime": 1789688526,
+          "headline": "Why Salesforce’s Homegrown AI Model Won’t Move the Stock Until 2027",
+          "datetime": 1789767999,
           "source": "Yahoo Finance",
-          "url": "https://www.trefis.com/articles/615696/would-you-want-crm-stock-back-at-the-price-it-just-left/2026-09-17"
+          "url": "https://247wallst.com/investing/2026/09/18/why-salesforces-homegrown-ai-model-wont-move-the-stock-until-2027/"
         }
       ]
     },
     "TSM": {
       "name": "Taiwan Semiconductor Manufactur",
       "quote": {
-        "c": 434.14,
-        "d": -0.53,
-        "dp": -0.1219,
+        "c": 433.32,
+        "d": -1.35,
+        "dp": -0.3106,
         "regular": 434.67,
         "reg_d": 4.41,
         "reg_dp": 1.025,
         "pre": null,
-        "post": 434.14,
+        "post": 433.32,
         "prev_close": 430.26,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "TSMC Gains 1.65% as 2-Nanometer Phones Leave the Lab",
-          "datetime": 1789688526,
+          "headline": "Can GFS' Marvell Deal for SiGe Capacity Expansion Accelerate Growth?",
+          "datetime": 1789767999,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/technology/articles/tsmc-gains-1-65-2-182718646.html"
+          "url": "https://finance.yahoo.com/technology/articles/gfs-marvell-deal-sige-capacity-151900054.html"
         }
       ]
     },
     "MRVL": {
       "name": "Marvell Technology, Inc.",
       "quote": {
-        "c": 242.98,
-        "d": -1.27,
-        "dp": -0.518,
+        "c": 242.99,
+        "d": -1.26,
+        "dp": -0.5159,
         "regular": 244.25,
         "reg_d": 3.49,
         "reg_dp": 1.4496,
         "pre": null,
-        "post": 242.98,
+        "post": 242.99,
         "prev_close": 240.76,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "SentinelOne, Marvell Technology, FormFactor, Teradyne, and Intel Shares Are Soaring, What You Need To Know",
-          "datetime": 1789688526,
+          "headline": "Bet on These Photonics ETFs to Exploit the Next Wave of AI Revolution",
+          "datetime": 1789767999,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/markets/stocks/articles/sentinelone-marvell-technology-formfactor-teradyne-205817432.html"
+          "url": "https://finance.yahoo.com/technology/ai/articles/bet-photonics-etfs-exploit-next-191600293.html"
         }
       ]
     },
     "MU": {
       "name": "Micron Technology, Inc.",
       "quote": {
-        "c": 1014.34,
-        "d": -1.46,
-        "dp": -0.1437,
+        "c": 1015.5,
+        "d": -0.3,
+        "dp": -0.0295,
         "regular": 1015.8,
         "reg_d": 38.3,
         "reg_dp": 3.9182,
         "pre": null,
-        "post": 1014.34,
+        "post": 1015.5,
         "prev_close": 977.5,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Why Was Micron Technology Stock Up Today?",
-          "datetime": 1789688526,
+          "headline": "Stock Market Today: Nasdaq, S&P Reverse Slightly Higher; Sandisk, Lumentum Lead This Tech Rally (Live Coverage)",
+          "datetime": 1789767999,
           "source": "Yahoo Finance",
-          "url": "https://www.fool.com/investing/2026/09/17/why-was-micron-technology-stock-up-today/"
+          "url": "https://www.investors.com/market-trend/stock-market-today/dow-jones-sp500-nasdaq-oil-prices-apple-amd-micron-sandisk/?src=A00220&yptr=yahoo"
         }
       ]
     },
     "SNDK": {
       "name": "Sandisk Corporation",
       "quote": {
-        "c": 1792.25,
-        "d": 0.43,
-        "dp": 0.024,
+        "c": 1795.0,
+        "d": 3.18,
+        "dp": 0.1775,
         "regular": 1791.82,
         "reg_d": 177.43,
         "reg_dp": 10.9905,
         "pre": null,
-        "post": 1792.25,
+        "post": 1795.0,
         "prev_close": 1614.39,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Prediction: A $5,000 Investment Split Between Micron and Sandisk Will Triple Before 2028",
-          "datetime": 1789688526,
+          "headline": "Stock Market Today: Nasdaq, S&P Reverse Slightly Higher; Sandisk, Lumentum Lead This Tech Rally (Live Coverage)",
+          "datetime": 1789767999,
           "source": "Yahoo Finance",
-          "url": "https://www.fool.com/investing/2026/09/17/prediction-a-5000-investment-split-between-micron/"
+          "url": "https://www.investors.com/market-trend/stock-market-today/dow-jones-sp500-nasdaq-oil-prices-apple-amd-micron-sandisk/?src=A00220&yptr=yahoo"
         }
       ]
     },
     "SPCX": {
       "name": "Space Exploration Technologies",
       "quote": {
-        "c": 152.5,
-        "d": -0.21,
-        "dp": -0.1377,
+        "c": 152.43,
+        "d": -0.28,
+        "dp": -0.1834,
         "regular": 152.71,
         "reg_d": -2.1,
         "reg_dp": -1.3565,
         "pre": null,
-        "post": 152.5,
+        "post": 152.43,
         "prev_close": 154.81,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Tech stocks today: OpenAI reveals six more instances of 'concerning model behavior'",
-          "datetime": 1789688526,
+          "headline": "Big Tech’s sudden millionaires experience growing pains settling into new wealth",
+          "datetime": 1789767999,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/technology/live/tech-stocks-today-openai-reveals-six-more-instances-of-concerning-model-behavior-140134624.html"
+          "url": "https://finance.yahoo.com/video/big-tech-sudden-millionaires-experience-180000718.html"
         }
       ]
     },
     "ONDS": {
       "name": "Ondas Inc",
       "quote": {
-        "c": 7.4,
-        "d": 0.01,
-        "dp": 0.1353,
+        "c": 7.39,
+        "d": 0.0,
+        "dp": 0.0014,
         "regular": 7.39,
         "reg_d": 0.0,
         "reg_dp": 0.0,
         "pre": null,
-        "post": 7.4,
+        "post": 7.39,
         "prev_close": 7.39,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Ondas (ONDS) Buys GATE and Bron. Can Component Ownership Improve Defense Returns?",
-          "datetime": 1789688526,
+          "datetime": 1789767999,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/markets/stocks/articles/ondas-onds-buys-gate-bron-205019338.html"
         }
@@ -226,23 +226,23 @@
     "PLTR": {
       "name": "Palantir Technologies Inc.",
       "quote": {
-        "c": 177.58,
-        "d": -0.06,
-        "dp": -0.0365,
+        "c": 177.49,
+        "d": -0.15,
+        "dp": -0.0844,
         "regular": 177.64,
         "reg_d": 1.4,
         "reg_dp": 0.7944,
         "pre": null,
-        "post": 177.58,
+        "post": 177.49,
         "prev_close": 176.24,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Palantir, Rocket Lab among biggest climbers in power ranking",
-          "datetime": 1789688526,
+          "headline": "Palantir CEO offers surprising solution to AI threats that involves Washington, D.C.",
+          "datetime": 1789767999,
           "source": "Yahoo Finance",
-          "url": "https://www.thestreet.com/crypto/markets/palantir-rocket-lab-among-biggest-climbers-in-power-ranking"
+          "url": "https://www.thestreet.com/technology/palantir-karp-ai-liability-warning-nationalization"
         }
       ]
     },
@@ -271,7 +271,7 @@
     }
   },
   "alert_sent": {
-    "morning": "2026-09-18",
+    "morning": "2026-09-19",
     "evening": "2026-09-18"
   }
 }
