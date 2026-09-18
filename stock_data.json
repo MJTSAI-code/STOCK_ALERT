@@ -1,7 +1,7 @@
 {
   "name": "美股盤前情報資料庫",
-  "updated_at": "2026-09-19T06:55:58.270283+08:00",
-  "next_update_at": "2026-09-18T23:30:00Z",
+  "updated_at": "2026-09-19T07:35:27.023059+08:00",
+  "next_update_at": "2026-09-19T00:30:00Z",
   "stocks": [
     "MSFT",
     "NVDA",
@@ -19,21 +19,21 @@
     "MSFT": {
       "name": "Microsoft Corporation",
       "quote": {
-        "c": 494.95,
-        "d": 1.17,
-        "dp": 0.237,
+        "c": 494.45,
+        "d": 0.67,
+        "dp": 0.1357,
         "regular": 493.78,
         "reg_d": -3.97,
         "reg_dp": -0.7976,
         "pre": null,
-        "post": 494.95,
+        "post": 494.45,
         "prev_close": 497.75,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "'Astonishing theft of unprecedented proportions': NYT vs. OpenAI, Microsoft lawsuit",
-          "datetime": 1789772158,
+          "datetime": 1789774527,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/video/astonishing-theft-unprecedented-proportions-nyt-134822530.html"
         }
@@ -42,21 +42,21 @@
     "NVDA": {
       "name": "NVIDIA Corporation",
       "quote": {
-        "c": 222.25,
-        "d": -0.02,
-        "dp": -0.0092,
+        "c": 222.41,
+        "d": 0.14,
+        "dp": 0.0628,
         "regular": 222.27,
         "reg_d": 2.93,
         "reg_dp": 1.3358,
         "pre": null,
-        "post": 222.25,
+        "post": 222.41,
         "prev_close": 219.34,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "S&P 500 wavers after best one-day rally in six weeks: AlphaCheck",
-          "datetime": 1789772158,
+          "datetime": 1789774527,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/markets/article/sp-500-wavers-after-best-one-day-rally-in-six-weeks-alphacheck-141322068.html"
         }
@@ -65,21 +65,21 @@
     "NOW": {
       "name": "ServiceNow, Inc.",
       "quote": {
-        "c": 136.09,
-        "d": 0.62,
-        "dp": 0.4577,
+        "c": 136.06,
+        "d": 0.59,
+        "dp": 0.436,
         "regular": 135.47,
         "reg_d": -3.0,
         "reg_dp": -2.1665,
         "pre": null,
-        "post": 136.09,
+        "post": 136.06,
         "prev_close": 138.47,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "How Low Can UiPath Stock Go When Its Numbers Are Not The Problem?",
-          "datetime": 1789772158,
+          "datetime": 1789774527,
           "source": "Yahoo Finance",
           "url": "https://www.trefis.com/articles/615833/how-low-can-uipath-stock-go-when-its-numbers-are-not-the-problem/2026-09-18"
         }
@@ -88,21 +88,21 @@
     "TSM": {
       "name": "Taiwan Semiconductor Manufactur",
       "quote": {
-        "c": 433.6,
-        "d": -1.07,
-        "dp": -0.2464,
+        "c": 433.3,
+        "d": -1.37,
+        "dp": -0.3149,
         "regular": 434.67,
         "reg_d": 4.41,
         "reg_dp": 1.025,
         "pre": null,
-        "post": 433.6,
+        "post": 433.3,
         "prev_close": 430.26,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "TSMC (TSM) Beats Stock Market Upswing: What Investors Need to Know",
-          "datetime": 1789772158,
+          "datetime": 1789774527,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/markets/stocks/articles/tsmc-tsm-beats-stock-market-214505465.html"
         }
@@ -111,21 +111,21 @@
     "MRVL": {
       "name": "Marvell Technology, Inc.",
       "quote": {
-        "c": 242.5,
-        "d": -1.75,
-        "dp": -0.7165,
+        "c": 242.75,
+        "d": -1.5,
+        "dp": -0.6141,
         "regular": 244.25,
         "reg_d": 3.49,
         "reg_dp": 1.4496,
         "pre": null,
-        "post": 242.5,
+        "post": 242.75,
         "prev_close": 240.76,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Bet on These Photonics ETFs to Exploit the Next Wave of AI Revolution",
-          "datetime": 1789772158,
+          "datetime": 1789774527,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/technology/ai/articles/bet-photonics-etfs-exploit-next-191600293.html"
         }
@@ -134,21 +134,21 @@
     "MU": {
       "name": "Micron Technology, Inc.",
       "quote": {
-        "c": 1014.85,
-        "d": -0.95,
-        "dp": -0.0935,
+        "c": 1016.9,
+        "d": 1.1,
+        "dp": 0.1083,
         "regular": 1015.8,
         "reg_d": 38.3,
         "reg_dp": 3.9182,
         "pre": null,
-        "post": 1014.85,
+        "post": 1016.9,
         "prev_close": 977.5,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Q3 Earnings Season Preview: What Can Investors Expect?",
-          "datetime": 1789772158,
+          "datetime": 1789774527,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/markets/stocks/articles/q3-earnings-season-preview-investors-223700771.html"
         }
@@ -157,21 +157,21 @@
     "SNDK": {
       "name": "Sandisk Corporation",
       "quote": {
-        "c": 1792.1,
-        "d": 0.28,
-        "dp": 0.0158,
+        "c": 1793.8,
+        "d": 1.98,
+        "dp": 0.1105,
         "regular": 1791.82,
         "reg_d": 177.43,
         "reg_dp": 10.9905,
         "pre": null,
-        "post": 1792.1,
+        "post": 1793.8,
         "prev_close": 1614.39,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Dow Jones Futures: Market Still Choppy; Robinhood, Sandisk, AMD, Moderna Surge Into Buy Areas",
-          "datetime": 1789772158,
+          "datetime": 1789774527,
           "source": "Yahoo Finance",
           "url": "https://www.investors.com/market-trend/stock-market-today/dow-jones-futures-robinhood-sandisk-amd-moderna-surge-buy-areas/?src=A00220&yptr=yahoo"
         }
@@ -180,21 +180,21 @@
     "SPCX": {
       "name": "Space Exploration Technologies",
       "quote": {
-        "c": 152.62,
-        "d": -0.09,
-        "dp": -0.0589,
+        "c": 152.6,
+        "d": -0.11,
+        "dp": -0.072,
         "regular": 152.71,
         "reg_d": -2.1,
         "reg_dp": -1.3565,
         "pre": null,
-        "post": 152.62,
+        "post": 152.6,
         "prev_close": 154.81,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Big Tech’s sudden millionaires experience growing pains settling into new wealth",
-          "datetime": 1789772158,
+          "datetime": 1789774527,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/video/big-tech-sudden-millionaires-experience-180000718.html"
         }
@@ -203,21 +203,21 @@
     "ONDS": {
       "name": "Ondas Inc",
       "quote": {
-        "c": 7.48,
-        "d": 0.09,
-        "dp": 1.2179,
+        "c": 7.4,
+        "d": 0.01,
+        "dp": 0.1353,
         "regular": 7.39,
         "reg_d": 0.0,
         "reg_dp": 0.0,
         "pre": null,
-        "post": 7.48,
+        "post": 7.4,
         "prev_close": 7.39,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Ondas (ONDS) Buys GATE and Bron. Can Component Ownership Improve Defense Returns?",
-          "datetime": 1789772158,
+          "datetime": 1789774527,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/markets/stocks/articles/ondas-onds-buys-gate-bron-205019338.html"
         }
@@ -226,23 +226,23 @@
     "PLTR": {
       "name": "Palantir Technologies Inc.",
       "quote": {
-        "c": 177.48,
-        "d": -0.16,
-        "dp": -0.0879,
+        "c": 177.55,
+        "d": -0.09,
+        "dp": -0.0507,
         "regular": 177.64,
         "reg_d": 1.4,
         "reg_dp": 0.7944,
         "pre": null,
-        "post": 177.48,
+        "post": 177.55,
         "prev_close": 176.24,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "The ARK Trade Watch: Cathie Wood Cuts Crypto Exposure, Then Reverses Course On CoreWeave",
-          "datetime": 1789772158,
+          "headline": "Jim Cramer Says His Palantir Technologies Inc. (NASDAQ:PLTR) Price Target Is $250",
+          "datetime": 1789774527,
           "source": "Yahoo Finance",
-          "url": "https://stocktwits.com/news-articles/markets/equity/crwv-arkb-crcl-coin-cathie-wood-biggest-ark-invest-trades-week/cZtH7mZRBEg"
+          "url": "https://finance.yahoo.com/markets/stocks/articles/jim-cramer-says-palantir-technologies-230154955.html"
         }
       ]
     },
