@@ -1,6 +1,6 @@
 {
   "name": "美股盤前情報資料庫",
-  "updated_at": "2026-09-19T05:46:39.019071+08:00",
+  "updated_at": "2026-09-19T05:58:31.557682+08:00",
   "next_update_at": "2026-09-18T22:30:00Z",
   "stocks": [
     "MSFT",
@@ -19,21 +19,21 @@
     "MSFT": {
       "name": "Microsoft Corporation",
       "quote": {
-        "c": 494.6,
-        "d": 0.82,
-        "dp": 0.1651,
+        "c": 494.76,
+        "d": 0.98,
+        "dp": 0.1977,
         "regular": 493.78,
         "reg_d": -3.97,
         "reg_dp": -0.7976,
         "pre": null,
-        "post": 494.6,
+        "post": 494.76,
         "prev_close": 497.75,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "'Astonishing theft of unprecedented proportions': NYT vs. OpenAI, Microsoft lawsuit",
-          "datetime": 1789767999,
+          "datetime": 1789768711,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/video/astonishing-theft-unprecedented-proportions-nyt-134822530.html"
         }
@@ -42,21 +42,21 @@
     "NVDA": {
       "name": "NVIDIA Corporation",
       "quote": {
-        "c": 222.25,
-        "d": -0.02,
-        "dp": -0.0081,
+        "c": 222.3,
+        "d": 0.03,
+        "dp": 0.0125,
         "regular": 222.27,
         "reg_d": 2.93,
         "reg_dp": 1.3358,
         "pre": null,
-        "post": 222.25,
+        "post": 222.3,
         "prev_close": 219.34,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "S&P 500 wavers after best one-day rally in six weeks: AlphaCheck",
-          "datetime": 1789767999,
+          "datetime": 1789768711,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/markets/article/sp-500-wavers-after-best-one-day-rally-in-six-weeks-alphacheck-141322068.html"
         }
@@ -65,67 +65,67 @@
     "NOW": {
       "name": "ServiceNow, Inc.",
       "quote": {
-        "c": 136.06,
-        "d": 0.59,
-        "dp": 0.4355,
+        "c": 136.0,
+        "d": 0.53,
+        "dp": 0.3914,
         "regular": 135.47,
         "reg_d": -3.0,
         "reg_dp": -2.1665,
         "pre": null,
-        "post": 136.06,
+        "post": 136.0,
         "prev_close": 138.47,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Why Salesforce’s Homegrown AI Model Won’t Move the Stock Until 2027",
-          "datetime": 1789767999,
+          "headline": "ServiceNow (NOW) Stock Falls Amid Market Uptick: What Investors Need to Know",
+          "datetime": 1789768711,
           "source": "Yahoo Finance",
-          "url": "https://247wallst.com/investing/2026/09/18/why-salesforces-homegrown-ai-model-wont-move-the-stock-until-2027/"
+          "url": "https://finance.yahoo.com/markets/stocks/articles/servicenow-now-stock-falls-amid-214503145.html"
         }
       ]
     },
     "TSM": {
       "name": "Taiwan Semiconductor Manufactur",
       "quote": {
-        "c": 433.32,
-        "d": -1.35,
-        "dp": -0.3106,
+        "c": 433.39,
+        "d": -1.28,
+        "dp": -0.2945,
         "regular": 434.67,
         "reg_d": 4.41,
         "reg_dp": 1.025,
         "pre": null,
-        "post": 433.32,
+        "post": 433.39,
         "prev_close": 430.26,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Can GFS' Marvell Deal for SiGe Capacity Expansion Accelerate Growth?",
-          "datetime": 1789767999,
+          "headline": "TSMC (TSM) Beats Stock Market Upswing: What Investors Need to Know",
+          "datetime": 1789768711,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/technology/articles/gfs-marvell-deal-sige-capacity-151900054.html"
+          "url": "https://finance.yahoo.com/markets/stocks/articles/tsmc-tsm-beats-stock-market-214505465.html"
         }
       ]
     },
     "MRVL": {
       "name": "Marvell Technology, Inc.",
       "quote": {
-        "c": 242.99,
-        "d": -1.26,
-        "dp": -0.5159,
+        "c": 243.04,
+        "d": -1.21,
+        "dp": -0.4954,
         "regular": 244.25,
         "reg_d": 3.49,
         "reg_dp": 1.4496,
         "pre": null,
-        "post": 242.99,
+        "post": 243.04,
         "prev_close": 240.76,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Bet on These Photonics ETFs to Exploit the Next Wave of AI Revolution",
-          "datetime": 1789767999,
+          "datetime": 1789768711,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/technology/ai/articles/bet-photonics-etfs-exploit-next-191600293.html"
         }
@@ -134,21 +134,21 @@
     "MU": {
       "name": "Micron Technology, Inc.",
       "quote": {
-        "c": 1015.5,
-        "d": -0.3,
-        "dp": -0.0295,
+        "c": 1015.85,
+        "d": 0.05,
+        "dp": 0.0049,
         "regular": 1015.8,
         "reg_d": 38.3,
         "reg_dp": 3.9182,
         "pre": null,
-        "post": 1015.5,
+        "post": 1015.85,
         "prev_close": 977.5,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Stock Market Today: Nasdaq, S&P Reverse Slightly Higher; Sandisk, Lumentum Lead This Tech Rally (Live Coverage)",
-          "datetime": 1789767999,
+          "datetime": 1789768711,
           "source": "Yahoo Finance",
           "url": "https://www.investors.com/market-trend/stock-market-today/dow-jones-sp500-nasdaq-oil-prices-apple-amd-micron-sandisk/?src=A00220&yptr=yahoo"
         }
@@ -157,21 +157,21 @@
     "SNDK": {
       "name": "Sandisk Corporation",
       "quote": {
-        "c": 1795.0,
-        "d": 3.18,
-        "dp": 0.1775,
+        "c": 1794.75,
+        "d": 2.93,
+        "dp": 0.1635,
         "regular": 1791.82,
         "reg_d": 177.43,
         "reg_dp": 10.9905,
         "pre": null,
-        "post": 1795.0,
+        "post": 1794.75,
         "prev_close": 1614.39,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Stock Market Today: Nasdaq, S&P Reverse Slightly Higher; Sandisk, Lumentum Lead This Tech Rally (Live Coverage)",
-          "datetime": 1789767999,
+          "datetime": 1789768711,
           "source": "Yahoo Finance",
           "url": "https://www.investors.com/market-trend/stock-market-today/dow-jones-sp500-nasdaq-oil-prices-apple-amd-micron-sandisk/?src=A00220&yptr=yahoo"
         }
@@ -180,21 +180,21 @@
     "SPCX": {
       "name": "Space Exploration Technologies",
       "quote": {
-        "c": 152.43,
-        "d": -0.28,
-        "dp": -0.1834,
+        "c": 152.44,
+        "d": -0.27,
+        "dp": -0.1768,
         "regular": 152.71,
         "reg_d": -2.1,
         "reg_dp": -1.3565,
         "pre": null,
-        "post": 152.43,
+        "post": 152.44,
         "prev_close": 154.81,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Big Tech’s sudden millionaires experience growing pains settling into new wealth",
-          "datetime": 1789767999,
+          "datetime": 1789768711,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/video/big-tech-sudden-millionaires-experience-180000718.html"
         }
@@ -204,8 +204,8 @@
       "name": "Ondas Inc",
       "quote": {
         "c": 7.39,
-        "d": 0.0,
-        "dp": 0.0014,
+        "d": -0.0,
+        "dp": -0.0108,
         "regular": 7.39,
         "reg_d": 0.0,
         "reg_dp": 0.0,
@@ -217,7 +217,7 @@
       "news": [
         {
           "headline": "Ondas (ONDS) Buys GATE and Bron. Can Component Ownership Improve Defense Returns?",
-          "datetime": 1789767999,
+          "datetime": 1789768711,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/markets/stocks/articles/ondas-onds-buys-gate-bron-205019338.html"
         }
@@ -226,23 +226,23 @@
     "PLTR": {
       "name": "Palantir Technologies Inc.",
       "quote": {
-        "c": 177.49,
-        "d": -0.15,
-        "dp": -0.0844,
+        "c": 177.25,
+        "d": -0.39,
+        "dp": -0.2195,
         "regular": 177.64,
         "reg_d": 1.4,
         "reg_dp": 0.7944,
         "pre": null,
-        "post": 177.49,
+        "post": 177.25,
         "prev_close": 176.24,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Palantir CEO offers surprising solution to AI threats that involves Washington, D.C.",
-          "datetime": 1789767999,
+          "headline": "The ARK Trade Watch: Cathie Wood Cuts Crypto Exposure, Then Reverses Course On CoreWeave",
+          "datetime": 1789768711,
           "source": "Yahoo Finance",
-          "url": "https://www.thestreet.com/technology/palantir-karp-ai-liability-warning-nationalization"
+          "url": "https://stocktwits.com/news-articles/markets/equity/crwv-arkb-crcl-coin-cathie-wood-biggest-ark-invest-trades-week/cZtH7mZRBEg"
         }
       ]
     },
