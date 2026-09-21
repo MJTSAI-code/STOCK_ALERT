@@ -1,7 +1,7 @@
 {
   "name": "美股盤前情報資料庫",
-  "updated_at": "2026-09-22T06:08:30.936550+08:00",
-  "next_update_at": "2026-09-21T23:00:00Z",
+  "updated_at": "2026-09-22T07:44:55.730210+08:00",
+  "next_update_at": "2026-09-22T00:30:00Z",
   "stocks": [
     "MSFT",
     "NVDA",
@@ -19,21 +19,21 @@
     "MSFT": {
       "name": "Microsoft Corporation",
       "quote": {
-        "c": 501.61,
-        "d": 0.0,
-        "dp": 0.0,
+        "c": 501.44,
+        "d": -0.17,
+        "dp": -0.0343,
         "regular": 501.61,
         "reg_d": 7.83,
         "reg_dp": 1.5857,
         "pre": null,
-        "post": 501.61,
+        "post": 501.44,
         "prev_close": 493.78,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Meta stock jumps as Wells Fargo raises price target",
-          "datetime": 1790028510,
+          "datetime": 1790034295,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/video/meta-stock-jumps-wells-fargo-195200224.html"
         }
@@ -42,21 +42,21 @@
     "NVDA": {
       "name": "NVIDIA Corporation",
       "quote": {
-        "c": 227.14,
-        "d": -0.24,
-        "dp": -0.1064,
+        "c": 227.26,
+        "d": -0.12,
+        "dp": -0.0532,
         "regular": 227.38,
         "reg_d": 5.11,
         "reg_dp": 2.299,
         "pre": null,
-        "post": 227.14,
+        "post": 227.26,
         "prev_close": 222.27,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Could Nvidia's prospects in China shift following the Trump and Xi's meeting?",
-          "datetime": 1790028510,
+          "datetime": 1790034295,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/video/could-nvidias-prospects-china-shift-183517435.html"
         }
@@ -65,44 +65,44 @@
     "NOW": {
       "name": "ServiceNow, Inc.",
       "quote": {
-        "c": 137.61,
-        "d": -0.07,
-        "dp": -0.0508,
+        "c": 137.66,
+        "d": -0.02,
+        "dp": -0.0145,
         "regular": 137.68,
         "reg_d": 2.21,
         "reg_dp": 1.6314,
         "pre": null,
-        "post": 137.61,
+        "post": 137.66,
         "prev_close": 135.47,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "SNX vs. NOW: Which Stock Is the Better Value Option?",
-          "datetime": 1790028510,
+          "headline": "Why ServiceNow Stock Inched Higher on Monday",
+          "datetime": 1790034295,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/markets/stocks/articles/snx-vs-now-stock-better-154005949.html"
+          "url": "https://www.fool.com/investing/2026/09/21/why-servicenow-stock-inched-higher-on-monday/"
         }
       ]
     },
     "TSM": {
       "name": "Taiwan Semiconductor Manufactur",
       "quote": {
-        "c": 445.1,
-        "d": -0.04,
-        "dp": -0.009,
+        "c": 446.47,
+        "d": 1.33,
+        "dp": 0.2988,
         "regular": 445.14,
         "reg_d": 10.47,
         "reg_dp": 2.4087,
         "pre": null,
-        "post": 445.1,
+        "post": 446.47,
         "prev_close": 434.67,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "3 Chip Stocks Set to Win TSMC’s Packaging Boom",
-          "datetime": 1790028510,
+          "datetime": 1790034295,
           "source": "Yahoo Finance",
           "url": "https://247wallst.com/investing/2026/09/21/3-chip-stocks-set-to-win-tsmcs-packaging-boom/"
         }
@@ -111,21 +111,21 @@
     "MRVL": {
       "name": "Marvell Technology, Inc.",
       "quote": {
-        "c": 257.62,
-        "d": 0.24,
-        "dp": 0.0932,
+        "c": 259.1,
+        "d": 1.72,
+        "dp": 0.6683,
         "regular": 257.38,
         "reg_d": 13.13,
         "reg_dp": 5.3756,
         "pre": null,
-        "post": 257.62,
+        "post": 259.1,
         "prev_close": 244.25,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "AMD, Intel, Meta, Warner Bros., Moderna, Grail, Strategy, and More Stocks That Explain Today’s Market",
-          "datetime": 1790028510,
+          "datetime": 1790034295,
           "source": "Yahoo Finance",
           "url": "https://www.barrons.com/articles/stock-movers-7769c3ad?siteid=yhoof2&yptr=yahoo"
         }
@@ -134,21 +134,21 @@
     "MU": {
       "name": "Micron Technology, Inc.",
       "quote": {
-        "c": 1042.64,
-        "d": -1.32,
-        "dp": -0.1264,
+        "c": 1044.82,
+        "d": 0.86,
+        "dp": 0.0825,
         "regular": 1043.96,
         "reg_d": 28.16,
         "reg_dp": 2.7722,
         "pre": null,
-        "post": 1042.64,
+        "post": 1044.82,
         "prev_close": 1015.8,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Why Micron and Dell stocks may have more juice than Nvidia",
-          "datetime": 1790028510,
+          "datetime": 1790034295,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/video/why-micron-dell-stocks-may-142553422.html"
         }
@@ -157,21 +157,21 @@
     "SNDK": {
       "name": "Sandisk Corporation",
       "quote": {
-        "c": 1771.42,
-        "d": 4.78,
-        "dp": 0.2707,
+        "c": 1776.99,
+        "d": 10.35,
+        "dp": 0.5859,
         "regular": 1766.64,
         "reg_d": -25.18,
         "reg_dp": -1.4053,
         "pre": null,
-        "post": 1771.42,
+        "post": 1776.99,
         "prev_close": 1791.82,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Dow Jones Futures: Falling Oil Prices, Yields Spark Market Rally; AMD, Intel, Micron, Nvidia, Sandisk Are Key Movers",
-          "datetime": 1790028510,
+          "datetime": 1790034295,
           "source": "Yahoo Finance",
           "url": "https://www.investors.com/market-trend/stock-market-today/dow-jones-sp500-nasdaq-oil-prices-treasury-yields-amd-intel-micron-nvidia-sandisk/?src=A00220&yptr=yahoo"
         }
@@ -180,21 +180,21 @@
     "SPCX": {
       "name": "Space Exploration Technologies",
       "quote": {
-        "c": 152.55,
-        "d": 0.7,
-        "dp": 0.461,
+        "c": 152.73,
+        "d": 0.88,
+        "dp": 0.5795,
         "regular": 151.85,
         "reg_d": -0.86,
         "reg_dp": -0.5632,
         "pre": null,
-        "post": 152.55,
+        "post": 152.73,
         "prev_close": 152.71,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Maye Musk: Elon really wants to live on Mars in the coming decades",
-          "datetime": 1790028510,
+          "datetime": 1790034295,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/markets/article/maye-musk-elon-really-wants-to-live-on-mars-in-the-coming-decades-193421298.html"
         }
@@ -217,7 +217,7 @@
       "news": [
         {
           "headline": "Ondas (ONDS) Buys GATE and Bron. Can Component Ownership Improve Defense Returns?",
-          "datetime": 1790028510,
+          "datetime": 1790034295,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/markets/stocks/articles/ondas-onds-buys-gate-bron-205019338.html"
         }
@@ -226,21 +226,21 @@
     "PLTR": {
       "name": "Palantir Technologies Inc.",
       "quote": {
-        "c": 182.89,
-        "d": -0.2,
-        "dp": -0.1076,
+        "c": 182.91,
+        "d": -0.18,
+        "dp": -0.1008,
         "regular": 183.09,
         "reg_d": 5.45,
         "reg_dp": 3.068,
         "pre": null,
-        "post": 182.89,
+        "post": 182.91,
         "prev_close": 177.64,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Palantir's Alex Karp says AI's biggest names may never IPO — the play is telling Washington 'nationalize us, please'",
-          "datetime": 1790028510,
+          "datetime": 1790034295,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/technology/ai/articles/palantirs-alex-karp-says-ais-213000729.html"
         }
