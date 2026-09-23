@@ -1,7 +1,7 @@
 {
   "name": "美股盤前情報資料庫",
-  "updated_at": "2026-09-24T07:22:37.070473+08:00",
-  "next_update_at": "2026-09-24T00:00:00Z",
+  "updated_at": "2026-09-24T07:58:37.971340+08:00",
+  "next_update_at": "2026-09-24T00:30:00Z",
   "stocks": [
     "MSFT",
     "NVDA",
@@ -19,21 +19,21 @@
     "MSFT": {
       "name": "Microsoft Corporation",
       "quote": {
-        "c": 499.66,
-        "d": -0.93,
-        "dp": -0.1858,
+        "c": 499.95,
+        "d": -0.64,
+        "dp": -0.1278,
         "regular": 500.59,
         "reg_d": 2.59,
         "reg_dp": 0.5201,
         "pre": null,
-        "post": 499.66,
+        "post": 499.95,
         "prev_close": 498.0,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Nasdaq climbs higher, McDonald's investor day updates",
-          "datetime": 1790205757,
+          "datetime": 1790207917,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/video/nasdaq-climbs-higher-mcdonalds-investor-day-updates-141449878.html"
         }
@@ -42,21 +42,21 @@
     "NVDA": {
       "name": "NVIDIA Corporation",
       "quote": {
-        "c": 225.24,
-        "d": -0.27,
-        "dp": -0.1207,
+        "c": 225.13,
+        "d": -0.38,
+        "dp": -0.1685,
         "regular": 225.51,
         "reg_d": -3.36,
         "reg_dp": -1.4681,
         "pre": null,
-        "post": 225.24,
+        "post": 225.13,
         "prev_close": 228.87,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "How Qualcomm is targeting agentic AI with its 2 new smartphone chips",
-          "datetime": 1790205757,
+          "datetime": 1790207917,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/video/qualcomm-targeting-agentic-ai-2-195058732.html"
         }
@@ -65,21 +65,21 @@
     "NOW": {
       "name": "ServiceNow, Inc.",
       "quote": {
-        "c": 140.67,
-        "d": -0.11,
-        "dp": -0.0781,
+        "c": 140.56,
+        "d": -0.22,
+        "dp": -0.1563,
         "regular": 140.78,
         "reg_d": 3.78,
         "reg_dp": 2.7591,
         "pre": null,
-        "post": 140.67,
+        "post": 140.56,
         "prev_close": 137.0,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Wells Fargo Raises Salesforce’s Price Target. Can $1.5 Billion Agentforce ARR Drive Growth?",
-          "datetime": 1790205757,
+          "datetime": 1790207917,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/technology/ai/articles/wells-fargo-raises-salesforce-price-215900311.html"
         }
@@ -88,21 +88,21 @@
     "TSM": {
       "name": "Taiwan Semiconductor Manufactur",
       "quote": {
-        "c": 446.8,
-        "d": 0.23,
-        "dp": 0.0515,
+        "c": 446.78,
+        "d": 0.21,
+        "dp": 0.047,
         "regular": 446.57,
         "reg_d": -5.43,
         "reg_dp": -1.2013,
         "pre": null,
-        "post": 446.8,
+        "post": 446.78,
         "prev_close": 452.0,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Nasdaq rally hasn't stopped these tech stocks from flashing warning signs",
-          "datetime": 1790205757,
+          "datetime": 1790207917,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/markets/article/nasdaq-rally-hasnt-stopped-these-tech-stocks-from-flashing-warning-signs-141710781.html"
         }
@@ -111,21 +111,21 @@
     "MRVL": {
       "name": "Marvell Technology, Inc.",
       "quote": {
-        "c": 260.25,
-        "d": -0.65,
-        "dp": -0.2491,
+        "c": 260.51,
+        "d": -0.39,
+        "dp": -0.1495,
         "regular": 260.9,
         "reg_d": -1.46,
         "reg_dp": -0.5565,
         "pre": null,
-        "post": 260.25,
+        "post": 260.51,
         "prev_close": 262.36,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Marvell and 2 More Stocks to Play the AI Data-Center Boom",
-          "datetime": 1790205757,
+          "datetime": 1790207917,
           "source": "Yahoo Finance",
           "url": "https://www.barrons.com/articles/buy-marvell-stock-on-semi-semtech-ai-data-center-935843a8?siteid=yhoof2&yptr=yahoo"
         }
@@ -134,21 +134,21 @@
     "MU": {
       "name": "Micron Technology, Inc.",
       "quote": {
-        "c": 1074.92,
-        "d": 3.04,
-        "dp": 0.2836,
+        "c": 1072.7,
+        "d": 0.82,
+        "dp": 0.0765,
         "regular": 1071.88,
         "reg_d": -24.28,
         "reg_dp": -2.215,
         "pre": null,
-        "post": 1074.92,
+        "post": 1072.7,
         "prev_close": 1096.16,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "AI magic sends markets higher, plus one-on-one with IBM vice chair",
-          "datetime": 1790205757,
+          "datetime": 1790207917,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/video/ai-magic-sends-markets-higher-143210140.html"
         }
@@ -157,21 +157,21 @@
     "SNDK": {
       "name": "Sandisk Corporation",
       "quote": {
-        "c": 1824.31,
-        "d": 7.74,
-        "dp": 0.4261,
+        "c": 1819.84,
+        "d": 3.27,
+        "dp": 0.1798,
         "regular": 1816.57,
         "reg_d": -70.47,
         "reg_dp": -3.7344,
         "pre": null,
-        "post": 1824.31,
+        "post": 1819.84,
         "prev_close": 1887.04,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Stock Market Today: Small Caps, Gold Miners Spanked Amid Sell-Off; Meta Makes A Bullish Move",
-          "datetime": 1790205757,
+          "datetime": 1790207917,
           "source": "Yahoo Finance",
           "url": "https://www.investors.com/market-trend/stock-market-today/dow-jones-sp500-nasdaq-record-high-micron-sandisk/?src=A00220&yptr=yahoo"
         }
@@ -180,21 +180,21 @@
     "SPCX": {
       "name": "Space Exploration Technologies",
       "quote": {
-        "c": 148.98,
-        "d": 0.62,
-        "dp": 0.4178,
+        "c": 148.78,
+        "d": 0.42,
+        "dp": 0.2831,
         "regular": 148.36,
         "reg_d": -6.36,
         "reg_dp": -4.1107,
         "pre": null,
-        "post": 148.98,
+        "post": 148.78,
         "prev_close": 154.72,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "How Meta's Muse is driving a magic moment for the stock market",
-          "datetime": 1790205757,
+          "datetime": 1790207917,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/video/metas-muse-driving-magic-moment-144433013.html"
         }
@@ -203,21 +203,21 @@
     "ONDS": {
       "name": "Ondas Inc",
       "quote": {
-        "c": 7.4,
-        "d": 0.0,
-        "dp": 0.0,
+        "c": 7.43,
+        "d": 0.03,
+        "dp": 0.3932,
         "regular": 7.4,
         "reg_d": -0.32,
         "reg_dp": -4.1451,
         "pre": null,
-        "post": 7.4,
+        "post": 7.43,
         "prev_close": 7.72,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Ondas (ONDS) Buys GATE and Bron. Can Component Ownership Improve Defense Returns?",
-          "datetime": 1790205757,
+          "datetime": 1790207917,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/markets/stocks/articles/ondas-onds-buys-gate-bron-205019338.html"
         }
@@ -226,21 +226,21 @@
     "PLTR": {
       "name": "Palantir Technologies Inc.",
       "quote": {
-        "c": 191.05,
-        "d": -0.74,
-        "dp": -0.3858,
+        "c": 191.07,
+        "d": -0.72,
+        "dp": -0.3754,
         "regular": 191.79,
         "reg_d": 6.8,
         "reg_dp": 3.6759,
         "pre": null,
-        "post": 191.05,
+        "post": 191.07,
         "prev_close": 184.99,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Dow Jones Futures: Stocks Fall As Treasury Yields Soar; Palantir, Palo Alto Flash Buy Signals",
-          "datetime": 1790205757,
+          "datetime": 1790207917,
           "source": "Yahoo Finance",
           "url": "https://www.investors.com/market-trend/stock-market-today/dow-jones-futures-treasury-yields-soar-palantir-palo-alto-buy-signal/?src=A00220&yptr=yahoo"
         }
