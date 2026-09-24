@@ -1,7 +1,7 @@
 {
   "name": "美股盤前情報資料庫",
-  "updated_at": "2026-09-25T04:52:32.726473+08:00",
-  "next_update_at": "2026-09-24T21:30:00Z",
+  "updated_at": "2026-09-25T05:14:19.428318+08:00",
+  "next_update_at": "2026-09-24T22:00:00Z",
   "stocks": [
     "MSFT",
     "NVDA",
@@ -19,23 +19,23 @@
     "MSFT": {
       "name": "Microsoft Corporation",
       "quote": {
-        "c": 497.84,
-        "d": -0.09,
-        "dp": -0.0181,
+        "c": 497.3,
+        "d": -0.63,
+        "dp": -0.1265,
         "regular": 497.93,
         "reg_d": -2.66,
         "reg_dp": -0.5314,
         "pre": null,
-        "post": 497.84,
+        "post": 497.3,
         "prev_close": 500.59,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Nasdaq climbs higher, McDonald's investor day updates",
-          "datetime": 1790207917,
+          "headline": "Nvidia leads tech stocks lower as Treasury yields surge: AlphaCheck",
+          "datetime": 1790284459,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/video/nasdaq-climbs-higher-mcdonalds-investor-day-updates-141449878.html"
+          "url": "https://finance.yahoo.com/markets/article/nvidia-leads-tech-stocks-lower-as-treasury-yields-surge-alphacheck-133744347.html"
         }
       ]
     },
@@ -44,7 +44,7 @@
       "quote": {
         "c": 223.95,
         "d": -0.63,
-        "dp": -0.281,
+        "dp": -0.2809,
         "regular": 224.58,
         "reg_d": -0.93,
         "reg_dp": -0.4124,
@@ -55,194 +55,194 @@
       },
       "news": [
         {
-          "headline": "How Qualcomm is targeting agentic AI with its 2 new smartphone chips",
-          "datetime": 1790207917,
+          "headline": "Nvidia's valuation is falling, but it might not be a warning sign",
+          "datetime": 1790284459,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/video/qualcomm-targeting-agentic-ai-2-195058732.html"
+          "url": "https://finance.yahoo.com/video/nvidias-valuation-falling-might-not-140207364.html"
         }
       ]
     },
     "NOW": {
       "name": "ServiceNow, Inc.",
       "quote": {
-        "c": 138.13,
-        "d": 0.35,
-        "dp": 0.254,
+        "c": 137.73,
+        "d": -0.05,
+        "dp": -0.0363,
         "regular": 137.78,
         "reg_d": -3.0,
         "reg_dp": -2.131,
         "pre": null,
-        "post": 138.13,
+        "post": 137.73,
         "prev_close": 140.78,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Wells Fargo Raises Salesforce’s Price Target. Can $1.5 Billion Agentforce ARR Drive Growth?",
-          "datetime": 1790207917,
+          "headline": "Zscaler stock falls on CRO leadership change",
+          "datetime": 1790284459,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/technology/ai/articles/wells-fargo-raises-salesforce-price-215900311.html"
+          "url": "https://finance.yahoo.com/markets/stocks/articles/zscaler-stock-falls-cro-leadership-205136908.html"
         }
       ]
     },
     "TSM": {
       "name": "Taiwan Semiconductor Manufactur",
       "quote": {
-        "c": 450.6,
-        "d": -0.55,
-        "dp": -0.1219,
+        "c": 450.32,
+        "d": -0.83,
+        "dp": -0.184,
         "regular": 451.15,
         "reg_d": 4.58,
         "reg_dp": 1.0256,
         "pre": null,
-        "post": 450.6,
+        "post": 450.32,
         "prev_close": 446.57,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Nasdaq rally hasn't stopped these tech stocks from flashing warning signs",
-          "datetime": 1790207917,
+          "headline": "Why Did Cadence Design Systems (CDNS) Stock Climb Today?",
+          "datetime": 1790284459,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/markets/article/nasdaq-rally-hasnt-stopped-these-tech-stocks-from-flashing-warning-signs-141710781.html"
+          "url": "https://finance.yahoo.com/markets/stocks/articles/why-did-cadence-design-systems-201823533.html"
         }
       ]
     },
     "MRVL": {
       "name": "Marvell Technology, Inc.",
       "quote": {
-        "c": 258.95,
-        "d": 0.0,
-        "dp": 0.0,
+        "c": 259.42,
+        "d": 0.47,
+        "dp": 0.1815,
         "regular": 258.95,
         "reg_d": -1.95,
         "reg_dp": -0.7474,
         "pre": null,
-        "post": 258.95,
+        "post": 259.42,
         "prev_close": 260.9,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Marvell and 2 More Stocks to Play the AI Data-Center Boom",
-          "datetime": 1790207917,
+          "headline": "Marvell vs. NVIDIA: One AI Stock Looks Like the Better Buy Now",
+          "datetime": 1790284459,
           "source": "Yahoo Finance",
-          "url": "https://www.barrons.com/articles/buy-marvell-stock-on-semi-semtech-ai-data-center-935843a8?siteid=yhoof2&yptr=yahoo"
+          "url": "https://finance.yahoo.com/markets/stocks/articles/marvell-vs-nvidia-one-ai-180000492.html"
         }
       ]
     },
     "MU": {
       "name": "Micron Technology, Inc.",
       "quote": {
-        "c": 1077.17,
-        "d": -3.36,
-        "dp": -0.311,
+        "c": 1077.57,
+        "d": -2.96,
+        "dp": -0.2739,
         "regular": 1080.53,
         "reg_d": 8.65,
         "reg_dp": 0.807,
         "pre": null,
-        "post": 1077.17,
+        "post": 1077.57,
         "prev_close": 1071.88,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "AI magic sends markets higher, plus one-on-one with IBM vice chair",
-          "datetime": 1790207917,
+          "headline": "Stock Market Today: Dow Slides As Treasury Yields Surge; Nvidia Slips While Micron Rises",
+          "datetime": 1790284459,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/video/ai-magic-sends-markets-higher-143210140.html"
+          "url": "https://www.investors.com/market-trend/stock-market-today/dow-jones-sp500-nasdaq-treasury-yields-nvidia-stock-nvda-buy-point/?src=A00220&yptr=yahoo"
         }
       ]
     },
     "SNDK": {
       "name": "Sandisk Corporation",
       "quote": {
-        "c": 1749.2,
-        "d": -4.42,
-        "dp": -0.2521,
+        "c": 1753.0,
+        "d": -0.62,
+        "dp": -0.0354,
         "regular": 1753.62,
         "reg_d": -62.95,
         "reg_dp": -3.4653,
         "pre": null,
-        "post": 1749.2,
+        "post": 1753.0,
         "prev_close": 1816.57,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Stock Market Today: Small Caps, Gold Miners Spanked Amid Sell-Off; Meta Makes A Bullish Move",
-          "datetime": 1790207917,
+          "headline": "Stock Market Today: Dow Slides As Treasury Yields Surge; Nvidia Slips While Micron Rises",
+          "datetime": 1790284459,
           "source": "Yahoo Finance",
-          "url": "https://www.investors.com/market-trend/stock-market-today/dow-jones-sp500-nasdaq-record-high-micron-sandisk/?src=A00220&yptr=yahoo"
+          "url": "https://www.investors.com/market-trend/stock-market-today/dow-jones-sp500-nasdaq-treasury-yields-nvidia-stock-nvda-buy-point/?src=A00220&yptr=yahoo"
         }
       ]
     },
     "SPCX": {
       "name": "Space Exploration Technologies",
       "quote": {
-        "c": 147.57,
-        "d": -0.46,
-        "dp": -0.3076,
+        "c": 147.82,
+        "d": -0.21,
+        "dp": -0.1421,
         "regular": 148.03,
         "reg_d": -0.33,
         "reg_dp": -0.2224,
         "pre": null,
-        "post": 147.57,
+        "post": 147.82,
         "prev_close": 148.36,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "How Meta's Muse is driving a magic moment for the stock market",
-          "datetime": 1790207917,
+          "headline": "3 Catalysts That Could Help SpaceX Stock Double",
+          "datetime": 1790284459,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/video/metas-muse-driving-magic-moment-144433013.html"
+          "url": "https://www.fool.com/investing/2026/09/24/3-catalysts-that-could-help-spacex-stock-double/"
         }
       ]
     },
     "ONDS": {
       "name": "Ondas Inc",
       "quote": {
-        "c": 7.62,
-        "d": 0.02,
-        "dp": 0.2632,
+        "c": 7.61,
+        "d": 0.01,
+        "dp": 0.0908,
         "regular": 7.6,
         "reg_d": 0.2,
         "reg_dp": 2.7027,
         "pre": null,
-        "post": 7.62,
+        "post": 7.61,
         "prev_close": 7.4,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Ondas (ONDS) Buys GATE and Bron. Can Component Ownership Improve Defense Returns?",
-          "datetime": 1790207917,
+          "headline": "Unusual Machines Jumps 6% as Drone Names Bounce Together; Ondas Climbs 4%, Red Cat Rises 3%",
+          "datetime": 1790284459,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/markets/stocks/articles/ondas-onds-buys-gate-bron-205019338.html"
+          "url": "https://247wallst.com/investing/2026/09/24/unusual-machines-jumps-6-as-drone-names-bounce-together-ondas-climbs-4-red-cat-rises-3/"
         }
       ]
     },
     "PLTR": {
       "name": "Palantir Technologies Inc.",
       "quote": {
-        "c": 191.8,
-        "d": -0.79,
-        "dp": -0.4102,
+        "c": 192.04,
+        "d": -0.55,
+        "dp": -0.2844,
         "regular": 192.59,
         "reg_d": 0.8,
         "reg_dp": 0.4171,
         "pre": null,
-        "post": 191.8,
+        "post": 192.04,
         "prev_close": 191.79,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Dow Jones Futures: Stocks Fall As Treasury Yields Soar; Palantir, Palo Alto Flash Buy Signals",
-          "datetime": 1790207917,
+          "headline": "Rosenblatt Has Message For Palantir Stock Investors",
+          "datetime": 1790284459,
           "source": "Yahoo Finance",
-          "url": "https://www.investors.com/market-trend/stock-market-today/dow-jones-futures-treasury-yields-soar-palantir-palo-alto-buy-signal/?src=A00220&yptr=yahoo"
+          "url": "https://finance.yahoo.com/markets/stocks/articles/rosenblatt-message-palantir-stock-investors-202721575.html"
         }
       ]
     },
