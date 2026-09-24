@@ -1,7 +1,7 @@
 {
   "name": "美股盤前情報資料庫",
-  "updated_at": "2026-09-25T05:14:19.428318+08:00",
-  "next_update_at": "2026-09-24T22:00:00Z",
+  "updated_at": "2026-09-25T05:58:39.493230+08:00",
+  "next_update_at": "2026-09-24T22:30:00Z",
   "stocks": [
     "MSFT",
     "NVDA",
@@ -19,21 +19,21 @@
     "MSFT": {
       "name": "Microsoft Corporation",
       "quote": {
-        "c": 497.3,
-        "d": -0.63,
-        "dp": -0.1265,
+        "c": 497.09,
+        "d": -0.84,
+        "dp": -0.1687,
         "regular": 497.93,
         "reg_d": -2.66,
         "reg_dp": -0.5314,
         "pre": null,
-        "post": 497.3,
+        "post": 497.09,
         "prev_close": 500.59,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Nvidia leads tech stocks lower as Treasury yields surge: AlphaCheck",
-          "datetime": 1790284459,
+          "datetime": 1790287119,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/markets/article/nvidia-leads-tech-stocks-lower-as-treasury-yields-surge-alphacheck-133744347.html"
         }
@@ -42,21 +42,21 @@
     "NVDA": {
       "name": "NVIDIA Corporation",
       "quote": {
-        "c": 223.95,
-        "d": -0.63,
-        "dp": -0.2809,
+        "c": 224.14,
+        "d": -0.44,
+        "dp": -0.1975,
         "regular": 224.58,
         "reg_d": -0.93,
         "reg_dp": -0.4124,
         "pre": null,
-        "post": 223.95,
+        "post": 224.14,
         "prev_close": 225.51,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Nvidia's valuation is falling, but it might not be a warning sign",
-          "datetime": 1790284459,
+          "datetime": 1790287119,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/video/nvidias-valuation-falling-might-not-140207364.html"
         }
@@ -65,21 +65,21 @@
     "NOW": {
       "name": "ServiceNow, Inc.",
       "quote": {
-        "c": 137.73,
-        "d": -0.05,
-        "dp": -0.0363,
+        "c": 138.0,
+        "d": 0.22,
+        "dp": 0.1597,
         "regular": 137.78,
         "reg_d": -3.0,
         "reg_dp": -2.131,
         "pre": null,
-        "post": 137.73,
+        "post": 138.0,
         "prev_close": 140.78,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Zscaler stock falls on CRO leadership change",
-          "datetime": 1790284459,
+          "datetime": 1790287119,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/markets/stocks/articles/zscaler-stock-falls-cro-leadership-205136908.html"
         }
@@ -88,44 +88,44 @@
     "TSM": {
       "name": "Taiwan Semiconductor Manufactur",
       "quote": {
-        "c": 450.32,
-        "d": -0.83,
-        "dp": -0.184,
+        "c": 451.0,
+        "d": -0.15,
+        "dp": -0.0332,
         "regular": 451.15,
         "reg_d": 4.58,
         "reg_dp": 1.0256,
         "pre": null,
-        "post": 450.32,
+        "post": 451.0,
         "prev_close": 446.57,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Why Did Cadence Design Systems (CDNS) Stock Climb Today?",
-          "datetime": 1790284459,
+          "headline": "Dow Jones Futures: Market Rally Resilient As Yields, Oil Prices Keep Rising; Tesla Event On Deck",
+          "datetime": 1790287119,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/markets/stocks/articles/why-did-cadence-design-systems-201823533.html"
+          "url": "https://www.investors.com/market-trend/stock-market-today/dow-jones-futures-market-rally-resilient-yields-oil-prices-rising-tesla-semi-event/?src=A00220&yptr=yahoo"
         }
       ]
     },
     "MRVL": {
       "name": "Marvell Technology, Inc.",
       "quote": {
-        "c": 259.42,
-        "d": 0.47,
-        "dp": 0.1815,
+        "c": 258.8,
+        "d": -0.15,
+        "dp": -0.0579,
         "regular": 258.95,
         "reg_d": -1.95,
         "reg_dp": -0.7474,
         "pre": null,
-        "post": 259.42,
+        "post": 258.8,
         "prev_close": 260.9,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Marvell vs. NVIDIA: One AI Stock Looks Like the Better Buy Now",
-          "datetime": 1790284459,
+          "datetime": 1790287119,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/markets/stocks/articles/marvell-vs-nvidia-one-ai-180000492.html"
         }
@@ -134,44 +134,44 @@
     "MU": {
       "name": "Micron Technology, Inc.",
       "quote": {
-        "c": 1077.57,
-        "d": -2.96,
-        "dp": -0.2739,
+        "c": 1078.8,
+        "d": -1.73,
+        "dp": -0.16,
         "regular": 1080.53,
         "reg_d": 8.65,
         "reg_dp": 0.807,
         "pre": null,
-        "post": 1077.57,
+        "post": 1078.8,
         "prev_close": 1071.88,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Stock Market Today: Dow Slides As Treasury Yields Surge; Nvidia Slips While Micron Rises",
-          "datetime": 1790284459,
+          "headline": "Forget Betting on Micron Alone: The $26B Memory ETF Owns MU, SK Hynix, and Samsung at a September Discount",
+          "datetime": 1790287119,
           "source": "Yahoo Finance",
-          "url": "https://www.investors.com/market-trend/stock-market-today/dow-jones-sp500-nasdaq-treasury-yields-nvidia-stock-nvda-buy-point/?src=A00220&yptr=yahoo"
+          "url": "https://247wallst.com/investing/etf/2026/09/24/forget-betting-on-micron-alone-the-26b-memory-etf-owns-mu-sk-hynix-and-samsung-at-a-september-discount/"
         }
       ]
     },
     "SNDK": {
       "name": "Sandisk Corporation",
       "quote": {
-        "c": 1753.0,
-        "d": -0.62,
-        "dp": -0.0354,
+        "c": 1757.22,
+        "d": 3.6,
+        "dp": 0.2052,
         "regular": 1753.62,
         "reg_d": -62.95,
         "reg_dp": -3.4653,
         "pre": null,
-        "post": 1753.0,
+        "post": 1757.22,
         "prev_close": 1816.57,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Stock Market Today: Dow Slides As Treasury Yields Surge; Nvidia Slips While Micron Rises",
-          "datetime": 1790284459,
+          "datetime": 1790287119,
           "source": "Yahoo Finance",
           "url": "https://www.investors.com/market-trend/stock-market-today/dow-jones-sp500-nasdaq-treasury-yields-nvidia-stock-nvda-buy-point/?src=A00220&yptr=yahoo"
         }
@@ -180,44 +180,44 @@
     "SPCX": {
       "name": "Space Exploration Technologies",
       "quote": {
-        "c": 147.82,
-        "d": -0.21,
-        "dp": -0.1421,
+        "c": 147.88,
+        "d": -0.15,
+        "dp": -0.1013,
         "regular": 148.03,
         "reg_d": -0.33,
         "reg_dp": -0.2224,
         "pre": null,
-        "post": 147.82,
+        "post": 147.88,
         "prev_close": 148.36,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "3 Catalysts That Could Help SpaceX Stock Double",
-          "datetime": 1790284459,
+          "headline": "Jeff Bezos’ Blue Origin Is Fueled With $30 Billion of His Fortune",
+          "datetime": 1790287119,
           "source": "Yahoo Finance",
-          "url": "https://www.fool.com/investing/2026/09/24/3-catalysts-that-could-help-spacex-stock-double/"
+          "url": "https://www.wsj.com/business/jeff-bezos-blue-origin-is-fueled-with-30-billion-of-his-fortune-b7407e6e?siteid=yhoof2&yptr=yahoo"
         }
       ]
     },
     "ONDS": {
       "name": "Ondas Inc",
       "quote": {
-        "c": 7.61,
-        "d": 0.01,
-        "dp": 0.0908,
+        "c": 7.6,
+        "d": 0.0,
+        "dp": 0.0,
         "regular": 7.6,
         "reg_d": 0.2,
         "reg_dp": 2.7027,
         "pre": null,
-        "post": 7.61,
+        "post": 7.6,
         "prev_close": 7.4,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Unusual Machines Jumps 6% as Drone Names Bounce Together; Ondas Climbs 4%, Red Cat Rises 3%",
-          "datetime": 1790284459,
+          "datetime": 1790287119,
           "source": "Yahoo Finance",
           "url": "https://247wallst.com/investing/2026/09/24/unusual-machines-jumps-6-as-drone-names-bounce-together-ondas-climbs-4-red-cat-rises-3/"
         }
@@ -226,23 +226,23 @@
     "PLTR": {
       "name": "Palantir Technologies Inc.",
       "quote": {
-        "c": 192.04,
-        "d": -0.55,
-        "dp": -0.2844,
+        "c": 191.82,
+        "d": -0.77,
+        "dp": -0.3979,
         "regular": 192.59,
         "reg_d": 0.8,
         "reg_dp": 0.4171,
         "pre": null,
-        "post": 192.04,
+        "post": 191.82,
         "prev_close": 191.79,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Rosenblatt Has Message For Palantir Stock Investors",
-          "datetime": 1790284459,
+          "headline": "Does Palantir (PLTR) Have a Moat Strong Enough to Protect Its AI Dominance?",
+          "datetime": 1790287119,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/markets/stocks/articles/rosenblatt-message-palantir-stock-investors-202721575.html"
+          "url": "https://finance.yahoo.com/technology/ai/articles/does-palantir-pltr-moat-strong-211858600.html"
         }
       ]
     },
@@ -271,7 +271,7 @@
     }
   },
   "alert_sent": {
-    "morning": "2026-09-24",
+    "morning": "2026-09-25",
     "evening": "2026-09-24"
   }
 }
