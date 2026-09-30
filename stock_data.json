@@ -1,7 +1,7 @@
 {
   "name": "美股盤前情報資料庫",
-  "updated_at": "2026-10-01T05:58:36.777555+08:00",
-  "next_update_at": "2026-09-30T22:30:00Z",
+  "updated_at": "2026-10-01T06:28:49.464332+08:00",
+  "next_update_at": "2026-09-30T23:00:00Z",
   "stocks": [
     "MSFT",
     "NVDA",
@@ -19,21 +19,21 @@
     "MSFT": {
       "name": "Microsoft Corporation",
       "quote": {
-        "c": 512.99,
-        "d": 0.09,
-        "dp": 0.0175,
+        "c": 513.6,
+        "d": 0.7,
+        "dp": 0.1365,
         "regular": 512.9,
         "reg_d": 3.94,
         "reg_dp": 0.7741,
         "pre": null,
-        "post": 512.99,
+        "post": 513.6,
         "prev_close": 508.96,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "AI in America has a huge 1.7 million job shortage problem",
-          "datetime": 1790805516,
+          "datetime": 1790807329,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/technology/article/ai-in-america-has-a-huge-17-million-job-shortage-problem-100847922.html"
         }
@@ -42,21 +42,21 @@
     "NVDA": {
       "name": "NVIDIA Corporation",
       "quote": {
-        "c": 228.74,
-        "d": 0.36,
-        "dp": 0.1557,
+        "c": 229.23,
+        "d": 0.85,
+        "dp": 0.3739,
         "regular": 228.38,
         "reg_d": 1.17,
         "reg_dp": 0.5149,
         "pre": null,
-        "post": 228.74,
+        "post": 229.23,
         "prev_close": 227.21,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Breaking down Jensen Huang's biggest moves of Q3 2026",
-          "datetime": 1790805516,
+          "datetime": 1790807329,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/video/breaking-down-jensen-huangs-biggest-moves-of-q3-2026-141014414.html"
         }
@@ -65,21 +65,21 @@
     "NOW": {
       "name": "ServiceNow, Inc.",
       "quote": {
-        "c": 134.01,
-        "d": 0.0,
-        "dp": 0.0,
+        "c": 133.76,
+        "d": -0.25,
+        "dp": -0.1866,
         "regular": 134.01,
         "reg_d": 4.07,
         "reg_dp": 3.1322,
         "pre": null,
-        "post": 134.01,
+        "post": 133.76,
         "prev_close": 129.94,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Should You Buy The Dip In UiPath Stock?",
-          "datetime": 1790805516,
+          "datetime": 1790807329,
           "source": "Yahoo Finance",
           "url": "https://www.trefis.com/articles/617153/should-you-buy-the-dip-in-uipath-stock/2026-09-30"
         }
@@ -88,21 +88,21 @@
     "TSM": {
       "name": "Taiwan Semiconductor Manufactur",
       "quote": {
-        "c": 456.4,
-        "d": 0.21,
-        "dp": 0.046,
+        "c": 456.6,
+        "d": 0.41,
+        "dp": 0.0899,
         "regular": 456.19,
         "reg_d": -0.75,
         "reg_dp": -0.1641,
         "pre": null,
-        "post": 456.4,
+        "post": 456.6,
         "prev_close": 456.94,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Nvidia Supplier FormFactor’s Stock Surges After Deutsche Bank Says It’s a Buy",
-          "datetime": 1790805516,
+          "datetime": 1790807329,
           "source": "Yahoo Finance",
           "url": "https://www.barrons.com/articles/nvidia-formfactor-stock-4aca02ed?siteid=yhoof2&yptr=yahoo"
         }
@@ -111,21 +111,21 @@
     "MRVL": {
       "name": "Marvell Technology, Inc.",
       "quote": {
-        "c": 262.56,
-        "d": -1.65,
-        "dp": -0.623,
+        "c": 264.05,
+        "d": -0.16,
+        "dp": -0.0606,
         "regular": 264.21,
         "reg_d": 0.94,
         "reg_dp": 0.357,
         "pre": null,
-        "post": 262.56,
+        "post": 264.05,
         "prev_close": 263.27,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "What Changed In Marvell's Story?",
-          "datetime": 1790805516,
+          "datetime": 1790807329,
           "source": "Yahoo Finance",
           "url": "https://www.trefis.com/articles/616923/what-changed-in-marvells-story/2026-09-30"
         }
@@ -134,21 +134,21 @@
     "MU": {
       "name": "Micron Technology, Inc.",
       "quote": {
-        "c": 1056.44,
-        "d": -8.67,
-        "dp": -0.814,
+        "c": 1064.3,
+        "d": -0.81,
+        "dp": -0.076,
         "regular": 1065.11,
         "reg_d": 0.03,
         "reg_dp": 0.0028,
         "pre": null,
-        "post": 1056.44,
+        "post": 1064.3,
         "prev_close": 1065.08,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Robinhood expands AI agentic trading with automation and 24/7 cycle",
-          "datetime": 1790805516,
+          "datetime": 1790807329,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/video/robinhood-expands-ai-agentic-trading-with-automation-and-247-cycle-135003062.html"
         }
@@ -157,21 +157,21 @@
     "SNDK": {
       "name": "Sandisk Corporation",
       "quote": {
-        "c": 1729.79,
-        "d": -10.1,
-        "dp": -0.5805,
+        "c": 1734.84,
+        "d": -5.05,
+        "dp": -0.2901,
         "regular": 1739.89,
         "reg_d": 10.13,
         "reg_dp": 0.5856,
         "pre": null,
-        "post": 1729.79,
+        "post": 1734.84,
         "prev_close": 1729.76,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Sandisk bulls had a surprising third quarter",
-          "datetime": 1790805516,
+          "datetime": 1790807329,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/markets/stocks/article/sandisk-bulls-had-a-surprising-third-quarter-105830766.html"
         }
@@ -180,21 +180,21 @@
     "SPCX": {
       "name": "Space Exploration Technologies",
       "quote": {
-        "c": 150.64,
-        "d": -0.22,
-        "dp": -0.1453,
+        "c": 150.82,
+        "d": -0.04,
+        "dp": -0.0265,
         "regular": 150.86,
         "reg_d": 1.62,
         "reg_dp": 1.0855,
         "pre": null,
-        "post": 150.64,
+        "post": 150.82,
         "prev_close": 149.24,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Elon Musk takes aim at Delta for refusing to use Starlink for Wi-Fi",
-          "datetime": 1790805516,
+          "datetime": 1790807329,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/video/elon-musk-takes-aim-at-delta-for-refusing-to-use-starlink-for-wi-fi-131005924.html"
         }
@@ -203,21 +203,21 @@
     "ONDS": {
       "name": "Ondas Inc",
       "quote": {
-        "c": 7.38,
-        "d": 0.05,
-        "dp": 0.6821,
+        "c": 7.39,
+        "d": 0.06,
+        "dp": 0.8145,
         "regular": 7.33,
         "reg_d": -0.15,
         "reg_dp": -2.0053,
         "pre": null,
-        "post": 7.38,
+        "post": 7.39,
         "prev_close": 7.48,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Red Cat's 2026 Target Requires a Sharp H2 Ramp: Can It Deliver?",
-          "datetime": 1790805516,
+          "datetime": 1790807329,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/markets/stocks/articles/red-cats-2026-target-requires-124100398.html"
         }
@@ -226,21 +226,21 @@
     "PLTR": {
       "name": "Palantir Technologies Inc.",
       "quote": {
-        "c": 186.2,
-        "d": -0.85,
-        "dp": -0.4544,
+        "c": 186.27,
+        "d": -0.78,
+        "dp": -0.4187,
         "regular": 187.05,
         "reg_d": 0.08,
         "reg_dp": 0.0428,
         "pre": null,
-        "post": 186.2,
+        "post": 186.27,
         "prev_close": 186.97,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Was There Any Sign Palantir Stock Would Run?",
-          "datetime": 1790805516,
+          "datetime": 1790807329,
           "source": "Yahoo Finance",
           "url": "https://www.trefis.com/articles/617133/was-there-any-sign-palantir-stock-would-run/2026-09-30"
         }
