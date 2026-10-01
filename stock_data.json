@@ -1,6 +1,6 @@
 {
   "name": "美股盤前情報資料庫",
-  "updated_at": "2026-10-01T21:12:32.475310+08:00",
+  "updated_at": "2026-10-01T21:22:35.755388+08:00",
   "next_update_at": "2026-10-01T14:00:00Z",
   "stocks": [
     "MSFT",
@@ -19,13 +19,13 @@
     "MSFT": {
       "name": "Microsoft Corporation",
       "quote": {
-        "c": 520.13,
-        "d": 7.23,
-        "dp": 1.4096,
+        "c": 520.25,
+        "d": 7.35,
+        "dp": 1.433,
         "regular": 512.9,
         "reg_d": 3.94,
         "reg_dp": 0.7741,
-        "pre": 520.13,
+        "pre": 520.25,
         "post": null,
         "prev_close": 508.96,
         "phase": "盤前"
@@ -42,13 +42,13 @@
     "NVDA": {
       "name": "NVIDIA Corporation",
       "quote": {
-        "c": 230.33,
-        "d": 1.95,
-        "dp": 0.8527,
+        "c": 230.06,
+        "d": 1.68,
+        "dp": 0.7346,
         "regular": 228.38,
         "reg_d": 1.17,
         "reg_dp": 0.5149,
-        "pre": 230.33,
+        "pre": 230.06,
         "post": null,
         "prev_close": 227.21,
         "phase": "盤前"
@@ -65,13 +65,13 @@
     "NOW": {
       "name": "ServiceNow, Inc.",
       "quote": {
-        "c": 138.99,
-        "d": 4.98,
-        "dp": 3.7161,
+        "c": 138.87,
+        "d": 4.86,
+        "dp": 3.6266,
         "regular": 134.01,
         "reg_d": 4.07,
         "reg_dp": 3.1322,
-        "pre": 138.99,
+        "pre": 138.87,
         "post": null,
         "prev_close": 129.94,
         "phase": "盤前"
@@ -88,13 +88,13 @@
     "TSM": {
       "name": "Taiwan Semiconductor Manufactur",
       "quote": {
-        "c": 457.45,
-        "d": 1.18,
-        "dp": 0.2586,
+        "c": 457.8,
+        "d": 1.53,
+        "dp": 0.3353,
         "regular": 456.19,
         "reg_d": -0.75,
         "reg_dp": -0.1641,
-        "pre": 457.45,
+        "pre": 457.8,
         "post": null,
         "prev_close": 456.94,
         "phase": "盤前"
@@ -111,13 +111,13 @@
     "MRVL": {
       "name": "Marvell Technology, Inc.",
       "quote": {
-        "c": 264.9,
-        "d": 0.69,
-        "dp": 0.2619,
+        "c": 264.92,
+        "d": 0.71,
+        "dp": 0.2687,
         "regular": 264.21,
         "reg_d": 0.94,
         "reg_dp": 0.357,
-        "pre": 264.9,
+        "pre": 264.92,
         "post": null,
         "prev_close": 263.27,
         "phase": "盤前"
@@ -134,13 +134,13 @@
     "MU": {
       "name": "Micron Technology, Inc.",
       "quote": {
-        "c": 1054.43,
-        "d": -10.68,
-        "dp": -1.0027,
+        "c": 1053.99,
+        "d": -11.11,
+        "dp": -1.0436,
         "regular": 1065.11,
         "reg_d": 0.03,
         "reg_dp": 0.0028,
-        "pre": 1054.43,
+        "pre": 1053.99,
         "post": null,
         "prev_close": 1065.08,
         "phase": "盤前"
@@ -157,13 +157,13 @@
     "SNDK": {
       "name": "Sandisk Corporation",
       "quote": {
-        "c": 1742.99,
-        "d": 3.1,
-        "dp": 0.1782,
+        "c": 1744.01,
+        "d": 4.12,
+        "dp": 0.2368,
         "regular": 1739.89,
         "reg_d": 10.13,
         "reg_dp": 0.5856,
-        "pre": 1742.99,
+        "pre": 1744.01,
         "post": null,
         "prev_close": 1729.76,
         "phase": "盤前"
@@ -180,13 +180,13 @@
     "SPCX": {
       "name": "Space Exploration Technologies",
       "quote": {
-        "c": 151.14,
-        "d": 0.28,
-        "dp": 0.1841,
+        "c": 151.1,
+        "d": 0.24,
+        "dp": 0.1564,
         "regular": 150.86,
         "reg_d": 1.62,
         "reg_dp": 1.0855,
-        "pre": 151.14,
+        "pre": 151.1,
         "post": null,
         "prev_close": 149.24,
         "phase": "盤前"
@@ -226,13 +226,13 @@
     "PLTR": {
       "name": "Palantir Technologies Inc.",
       "quote": {
-        "c": 189.21,
-        "d": 2.16,
-        "dp": 1.1548,
+        "c": 189.09,
+        "d": 2.04,
+        "dp": 1.0906,
         "regular": 187.05,
         "reg_d": 0.08,
         "reg_dp": 0.0428,
-        "pre": 189.21,
+        "pre": 189.09,
         "post": null,
         "prev_close": 186.97,
         "phase": "盤前"
