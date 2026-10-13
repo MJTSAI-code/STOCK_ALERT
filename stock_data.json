@@ -1,6 +1,6 @@
 {
   "name": "美股盤前情報資料庫",
-  "updated_at": "2026-10-13T21:12:32.432493+08:00",
+  "updated_at": "2026-10-13T21:22:27.916991+08:00",
   "next_update_at": "2026-10-13T14:00:00Z",
   "stocks": [
     "MSFT",
@@ -42,13 +42,13 @@
     "NVDA": {
       "name": "NVIDIA Corporation",
       "quote": {
-        "c": 224.1,
-        "d": -2.22,
-        "dp": -0.9809,
+        "c": 224.09,
+        "d": -2.23,
+        "dp": -0.984,
         "regular": 226.32,
         "reg_d": -2.96,
         "reg_dp": -1.291,
-        "pre": 224.1,
+        "pre": 224.09,
         "post": null,
         "prev_close": 229.28,
         "phase": "盤前"
@@ -65,13 +65,13 @@
     "NOW": {
       "name": "ServiceNow, Inc.",
       "quote": {
-        "c": 141.5,
-        "d": 1.21,
-        "dp": 0.8625,
+        "c": 140.56,
+        "d": 0.27,
+        "dp": 0.1925,
         "regular": 140.32,
         "reg_d": -0.54,
         "reg_dp": -0.3834,
-        "pre": 141.5,
+        "pre": 140.56,
         "post": null,
         "prev_close": 140.86,
         "phase": "盤前"
@@ -88,13 +88,13 @@
     "TSM": {
       "name": "Taiwan Semiconductor Manufactur",
       "quote": {
-        "c": 439.77,
-        "d": -4.82,
-        "dp": -1.0841,
+        "c": 440.34,
+        "d": -4.25,
+        "dp": -0.9559,
         "regular": 444.35,
         "reg_d": -8.96,
         "reg_dp": -1.9766,
-        "pre": 439.77,
+        "pre": 440.34,
         "post": null,
         "prev_close": 453.31,
         "phase": "盤前"
@@ -111,13 +111,13 @@
     "MRVL": {
       "name": "Marvell Technology, Inc.",
       "quote": {
-        "c": 256.65,
-        "d": -9.21,
-        "dp": -3.4642,
+        "c": 256.4,
+        "d": -9.46,
+        "dp": -3.5583,
         "regular": 265.86,
         "reg_d": -9.42,
         "reg_dp": -3.422,
-        "pre": 256.65,
+        "pre": 256.4,
         "post": null,
         "prev_close": 275.28,
         "phase": "盤前"
@@ -134,13 +134,13 @@
     "MU": {
       "name": "Micron Technology, Inc.",
       "quote": {
-        "c": 939.6,
-        "d": -49.44,
-        "dp": -4.9988,
+        "c": 940.87,
+        "d": -48.17,
+        "dp": -4.8708,
         "regular": 989.04,
         "reg_d": -39.96,
         "reg_dp": -3.8834,
-        "pre": 939.6,
+        "pre": 940.87,
         "post": null,
         "prev_close": 1029.0,
         "phase": "盤前"
@@ -157,13 +157,13 @@
     "SNDK": {
       "name": "Sandisk Corporation",
       "quote": {
-        "c": 1421.0,
-        "d": -66.33,
-        "dp": -4.4597,
+        "c": 1423.0,
+        "d": -64.33,
+        "dp": -4.3252,
         "regular": 1487.33,
         "reg_d": -94.49,
         "reg_dp": -5.9735,
-        "pre": 1421.0,
+        "pre": 1423.0,
         "post": null,
         "prev_close": 1581.82,
         "phase": "盤前"
@@ -180,13 +180,13 @@
     "SPCX": {
       "name": "Space Exploration Technologies",
       "quote": {
-        "c": 162.23,
-        "d": -1.19,
-        "dp": -0.7297,
+        "c": 162.22,
+        "d": -1.2,
+        "dp": -0.733,
         "regular": 163.42,
         "reg_d": 0.85,
         "reg_dp": 0.5229,
-        "pre": 162.23,
+        "pre": 162.22,
         "post": null,
         "prev_close": 162.57,
         "phase": "盤前"
@@ -203,13 +203,13 @@
     "ONDS": {
       "name": "Ondas Inc",
       "quote": {
-        "c": 6.48,
-        "d": -0.19,
-        "dp": -2.8486,
+        "c": 6.47,
+        "d": -0.2,
+        "dp": -2.9985,
         "regular": 6.67,
         "reg_d": -0.06,
         "reg_dp": -0.8915,
-        "pre": 6.48,
+        "pre": 6.47,
         "post": null,
         "prev_close": 6.73,
         "phase": "盤前"
@@ -226,13 +226,13 @@
     "PLTR": {
       "name": "Palantir Technologies Inc.",
       "quote": {
-        "c": 208.3,
-        "d": -0.7,
-        "dp": -0.3326,
+        "c": 208.09,
+        "d": -0.91,
+        "dp": -0.4354,
         "regular": 209.0,
         "reg_d": -0.05,
         "reg_dp": -0.0239,
-        "pre": 208.3,
+        "pre": 208.09,
         "post": null,
         "prev_close": 209.05,
         "phase": "盤前"
