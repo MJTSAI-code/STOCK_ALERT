@@ -1,7 +1,7 @@
 {
   "name": "美股盤前情報資料庫",
-  "updated_at": "2026-11-04T04:52:35.888638+08:00",
-  "next_update_at": "2026-11-03T21:00:00Z",
+  "updated_at": "2026-11-04T05:58:32.388416+08:00",
+  "next_update_at": "2026-11-03T22:30:00Z",
   "stocks": [
     "MSFT",
     "NVDA",
@@ -19,230 +19,230 @@
     "MSFT": {
       "name": "Microsoft Corporation",
       "quote": {
-        "c": 522.17,
-        "d": 15.05,
-        "dp": 2.9687,
-        "regular": 522.17,
-        "reg_d": 15.05,
-        "reg_dp": 2.9687,
+        "c": 517.9,
+        "d": -3.09,
+        "dp": -0.5931,
+        "regular": 520.99,
+        "reg_d": 13.87,
+        "reg_dp": 2.7351,
         "pre": null,
-        "post": null,
+        "post": 517.9,
         "prev_close": 507.12,
-        "phase": "正式盤"
+        "phase": "盤後"
       },
       "news": [
         {
-          "headline": "AI in America has a huge 1.7 million job shortage problem",
-          "datetime": 1790807329,
+          "headline": "Apple just made twice as much free cash as Microsoft, Meta, Alphabet and Amazon combined: Chart of the Day",
+          "datetime": 1793743112,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/technology/article/ai-in-america-has-a-huge-17-million-job-shortage-problem-100847922.html"
+          "url": "https://finance.yahoo.com/markets/article/apple-just-made-twice-as-much-free-cash-as-microsoft-meta-alphabet-and-amazon-combined-chart-of-the-day-110000928.html"
         }
       ]
     },
     "NVDA": {
       "name": "NVIDIA Corporation",
       "quote": {
-        "c": 206.78,
-        "d": 4.72,
-        "dp": 2.3359,
-        "regular": 206.78,
-        "reg_d": 4.72,
-        "reg_dp": 2.3359,
+        "c": 209.71,
+        "d": 3.02,
+        "dp": 1.4611,
+        "regular": 206.69,
+        "reg_d": 4.63,
+        "reg_dp": 2.2914,
         "pre": null,
-        "post": null,
+        "post": 209.71,
         "prev_close": 202.06,
-        "phase": "正式盤"
+        "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Breaking down Jensen Huang's biggest moves of Q3 2026",
-          "datetime": 1790807329,
+          "headline": "Micron, Nvidia, and AMD lead chip stocks' rebound",
+          "datetime": 1793743112,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/video/breaking-down-jensen-huangs-biggest-moves-of-q3-2026-141014414.html"
+          "url": "https://finance.yahoo.com/markets/article/micron-nvidia-amd-lead-chip-stocks-rebound-140538628.html"
         }
       ]
     },
     "NOW": {
       "name": "ServiceNow, Inc.",
       "quote": {
-        "c": 108.86,
-        "d": 2.85,
-        "dp": 2.6884,
-        "regular": 108.86,
-        "reg_d": 2.85,
-        "reg_dp": 2.6884,
+        "c": 108.75,
+        "d": -0.41,
+        "dp": -0.3744,
+        "regular": 109.16,
+        "reg_d": 3.15,
+        "reg_dp": 2.9714,
         "pre": null,
-        "post": null,
+        "post": 108.75,
         "prev_close": 106.01,
-        "phase": "正式盤"
+        "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Should You Buy The Dip In UiPath Stock?",
-          "datetime": 1790807329,
+          "headline": "Byron Donalds Could Be Next Florida Governor: Here Are the Stocks He's Been Buying in 2026",
+          "datetime": 1793743112,
           "source": "Yahoo Finance",
-          "url": "https://www.trefis.com/articles/617153/should-you-buy-the-dip-in-uipath-stock/2026-09-30"
+          "url": "https://www.benzinga.com/news/politics/26/11/62839577/byron-donalds-could-be-next-florida-governor-here-are-the-stocks-hes-been-buying-in-2026?utm_source=yahooFinance&utm_campaign=partner_feed&utm_medium=referral"
         }
       ]
     },
     "TSM": {
       "name": "Taiwan Semiconductor Manufactur",
       "quote": {
-        "c": 405.37,
-        "d": 6.74,
-        "dp": 1.6908,
-        "regular": 405.37,
-        "reg_d": 6.74,
-        "reg_dp": 1.6908,
+        "c": 411.2,
+        "d": 6.4,
+        "dp": 1.581,
+        "regular": 404.8,
+        "reg_d": 6.17,
+        "reg_dp": 1.5478,
         "pre": null,
-        "post": null,
+        "post": 411.2,
         "prev_close": 398.63,
-        "phase": "正式盤"
+        "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Nvidia Supplier FormFactor’s Stock Surges After Deutsche Bank Says It’s a Buy",
-          "datetime": 1790807329,
+          "headline": "Taiwan Semi or Broadcom: If I Could Only Own 1 for the Next 5 Years, It Would Be This",
+          "datetime": 1793743112,
           "source": "Yahoo Finance",
-          "url": "https://www.barrons.com/articles/nvidia-formfactor-stock-4aca02ed?siteid=yhoof2&yptr=yahoo"
+          "url": "https://www.fool.com/investing/2026/11/03/taiwan-semi-or-broadcom-if-i-could-only-own-1-for/"
         }
       ]
     },
     "MRVL": {
       "name": "Marvell Technology, Inc.",
       "quote": {
-        "c": 171.51,
-        "d": 0.1,
-        "dp": 0.0583,
-        "regular": 171.51,
-        "reg_d": 0.1,
-        "reg_dp": 0.0583,
+        "c": 174.0,
+        "d": 2.03,
+        "dp": 1.1804,
+        "regular": 171.97,
+        "reg_d": 0.56,
+        "reg_dp": 0.3267,
         "pre": null,
-        "post": null,
+        "post": 174.0,
         "prev_close": 171.41,
-        "phase": "正式盤"
+        "phase": "盤後"
       },
       "news": [
         {
-          "headline": "What Changed In Marvell's Story?",
-          "datetime": 1790807329,
+          "headline": "Why Wall Street isn't exactly loving Marvell's $115B Lumentum deal",
+          "datetime": 1793743112,
           "source": "Yahoo Finance",
-          "url": "https://www.trefis.com/articles/616923/what-changed-in-marvells-story/2026-09-30"
+          "url": "https://finance.yahoo.com/video/why-wall-street-isnt-exactly-loving-marvells-115b-lumentum-deal-145204052.html"
         }
       ]
     },
     "MU": {
       "name": "Micron Technology, Inc.",
       "quote": {
-        "c": 852.33,
-        "d": 18.73,
-        "dp": 2.2475,
-        "regular": 852.33,
-        "reg_d": 18.74,
-        "reg_dp": 2.2475,
+        "c": 870.0,
+        "d": 14.9,
+        "dp": 1.7425,
+        "regular": 855.1,
+        "reg_d": 21.51,
+        "reg_dp": 2.5804,
         "pre": null,
-        "post": null,
+        "post": 870.0,
         "prev_close": 833.59,
-        "phase": "正式盤"
+        "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Robinhood expands AI agentic trading with automation and 24/7 cycle",
-          "datetime": 1790807329,
+          "headline": "Micron, Nvidia, and AMD lead chip stocks' rebound",
+          "datetime": 1793743112,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/video/robinhood-expands-ai-agentic-trading-with-automation-and-247-cycle-135003062.html"
+          "url": "https://finance.yahoo.com/markets/article/micron-nvidia-amd-lead-chip-stocks-rebound-140538628.html"
         }
       ]
     },
     "SNDK": {
       "name": "Sandisk Corporation",
       "quote": {
-        "c": 1121.35,
-        "d": 46.27,
-        "dp": 4.3039,
-        "regular": 1121.35,
-        "reg_d": 46.27,
-        "reg_dp": 4.3039,
+        "c": 1140.59,
+        "d": 14.07,
+        "dp": 1.249,
+        "regular": 1126.52,
+        "reg_d": 51.44,
+        "reg_dp": 4.7848,
         "pre": null,
-        "post": null,
+        "post": 1140.59,
         "prev_close": 1075.08,
-        "phase": "正式盤"
+        "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Sandisk bulls had a surprising third quarter",
-          "datetime": 1790807329,
+          "headline": "Micron, Nvidia, and AMD lead chip stocks' rebound",
+          "datetime": 1793743112,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/markets/stocks/article/sandisk-bulls-had-a-surprising-third-quarter-105830766.html"
+          "url": "https://finance.yahoo.com/markets/article/micron-nvidia-amd-lead-chip-stocks-rebound-140538628.html"
         }
       ]
     },
     "SPCX": {
       "name": "Space Exploration Technologies",
       "quote": {
-        "c": 140.64,
-        "d": 4.27,
-        "dp": 3.1312,
-        "regular": 140.64,
-        "reg_d": 4.27,
-        "reg_dp": 3.1312,
+        "c": 142.1,
+        "d": 0.79,
+        "dp": 0.5593,
+        "regular": 141.31,
+        "reg_d": 4.94,
+        "reg_dp": 3.6225,
         "pre": null,
-        "post": null,
+        "post": 142.1,
         "prev_close": 136.37,
-        "phase": "正式盤"
+        "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Elon Musk takes aim at Delta for refusing to use Starlink for Wi-Fi",
-          "datetime": 1790807329,
+          "headline": "Stock Market Election Night Live Coverage: Dow Futures, AI Stocks, Elon Musk In Focus; AMD, Arista, Amgen, Astera Move On Earnings",
+          "datetime": 1793743112,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/video/elon-musk-takes-aim-at-delta-for-refusing-to-use-starlink-for-wi-fi-131005924.html"
+          "url": "https://www.investors.com/market-trend/stock-market-today/stock-market-election-night-dow-jones-futures-ai-oil-prices-elon-musk-amd/?src=A00220&yptr=yahoo"
         }
       ]
     },
     "ONDS": {
       "name": "Ondas Inc",
       "quote": {
-        "c": 5.79,
-        "d": 0.03,
-        "dp": 0.6087,
+        "c": 5.88,
+        "d": 0.1,
+        "dp": 1.6408,
         "regular": 5.79,
         "reg_d": 0.04,
-        "reg_dp": 0.6087,
+        "reg_dp": 0.6957,
         "pre": null,
-        "post": null,
+        "post": 5.88,
         "prev_close": 5.75,
-        "phase": "正式盤"
+        "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Red Cat's 2026 Target Requires a Sharp H2 Ramp: Can It Deliver?",
-          "datetime": 1790807329,
+          "headline": "22 Hedge Funds Back This Defeated Robotics Stock: Time to Buy the Dip?",
+          "datetime": 1793743112,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/markets/stocks/articles/red-cats-2026-target-requires-124100398.html"
+          "url": "https://finance.yahoo.com/markets/stocks/articles/22-hedge-funds-back-defeated-155920761.html"
         }
       ]
     },
     "PLTR": {
       "name": "Palantir Technologies Inc.",
       "quote": {
-        "c": 175.88,
-        "d": -2.46,
-        "dp": -1.3822,
-        "regular": 175.88,
-        "reg_d": -2.47,
-        "reg_dp": -1.3822,
+        "c": 175.33,
+        "d": -0.07,
+        "dp": -0.0414,
+        "regular": 175.4,
+        "reg_d": -2.94,
+        "reg_dp": -1.6485,
         "pre": null,
-        "post": null,
+        "post": 175.33,
         "prev_close": 178.34,
-        "phase": "正式盤"
+        "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Was There Any Sign Palantir Stock Would Run?",
-          "datetime": 1790807329,
+          "headline": "Palantir beats Q3 earnings estimates, stock falls over worries of slowing revenue growth",
+          "datetime": 1793743112,
           "source": "Yahoo Finance",
-          "url": "https://www.trefis.com/articles/617133/was-there-any-sign-palantir-stock-would-run/2026-09-30"
+          "url": "https://finance.yahoo.com/markets/stocks/article/palantir-beats-q3-estimates-raises-full-year-revenue-outlook-as-us-commercial-sales-top-us-government-revenue-for-the-first-time-234245540.html"
         }
       ]
     },
@@ -271,7 +271,7 @@
     }
   },
   "alert_sent": {
-    "morning": "2026-11-03",
+    "morning": "2026-11-04",
     "evening": "2026-11-03"
   }
 }
