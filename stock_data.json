@@ -1,7 +1,7 @@
 {
   "name": "美股盤前情報資料庫",
-  "updated_at": "2026-11-05T04:52:33.816588+08:00",
-  "next_update_at": "2026-11-04T21:00:00Z",
+  "updated_at": "2026-11-05T05:58:29.334587+08:00",
+  "next_update_at": "2026-11-04T22:30:00Z",
   "stocks": [
     "MSFT",
     "NVDA",
@@ -19,205 +19,205 @@
     "MSFT": {
       "name": "Microsoft Corporation",
       "quote": {
-        "c": 554.73,
-        "d": 33.74,
-        "dp": 6.4761,
-        "regular": 554.73,
-        "reg_d": 33.74,
-        "reg_dp": 6.4761,
+        "c": 554.65,
+        "d": -1.15,
+        "dp": -0.2069,
+        "regular": 555.8,
+        "reg_d": 34.81,
+        "reg_dp": 6.6815,
         "pre": null,
-        "post": null,
+        "post": 554.65,
         "prev_close": 520.99,
-        "phase": "正式盤"
+        "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Apple just made twice as much free cash as Microsoft, Meta, Alphabet and Amazon combined: Chart of the Day",
-          "datetime": 1793743112,
+          "headline": "Apple, Microsoft hit all-time highs as Nasdaq surges 2% in post-election rally: AlphaCheck",
+          "datetime": 1793829509,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/markets/article/apple-just-made-twice-as-much-free-cash-as-microsoft-meta-alphabet-and-amazon-combined-chart-of-the-day-110000928.html"
+          "url": "https://finance.yahoo.com/markets/article/apple-microsoft-hit-all-time-highs-as-nasdaq-surges-2-in-post-election-rally-alphacheck-152548814.html"
         }
       ]
     },
     "NVDA": {
       "name": "NVIDIA Corporation",
       "quote": {
-        "c": 200.69,
-        "d": -6.01,
-        "dp": -2.9053,
-        "regular": 200.69,
-        "reg_d": -6.0,
-        "reg_dp": -2.9053,
+        "c": 201.64,
+        "d": 1.51,
+        "dp": 0.7546,
+        "regular": 200.13,
+        "reg_d": -6.56,
+        "reg_dp": -3.1738,
         "pre": null,
-        "post": null,
+        "post": 201.64,
         "prev_close": 206.69,
-        "phase": "正式盤"
+        "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Micron, Nvidia, and AMD lead chip stocks' rebound",
-          "datetime": 1793743112,
+          "headline": "2 ETFs I'm Buying and Holding for Decades -- No Matter What the Market Does",
+          "datetime": 1793829509,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/markets/article/micron-nvidia-amd-lead-chip-stocks-rebound-140538628.html"
+          "url": "https://www.fool.com/investing/2026/11/04/2-etfs-im-buying-and-holding-for-decades-no-matter/"
         }
       ]
     },
     "NOW": {
       "name": "ServiceNow, Inc.",
       "quote": {
-        "c": 108.38,
-        "d": -0.78,
-        "dp": -0.7146,
-        "regular": 108.38,
-        "reg_d": -0.78,
-        "reg_dp": -0.7145,
+        "c": 108.98,
+        "d": 0.17,
+        "dp": 0.1562,
+        "regular": 108.81,
+        "reg_d": -0.35,
+        "reg_dp": -0.3206,
         "pre": null,
-        "post": null,
+        "post": 108.98,
         "prev_close": 109.16,
-        "phase": "正式盤"
+        "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Byron Donalds Could Be Next Florida Governor: Here Are the Stocks He's Been Buying in 2026",
-          "datetime": 1793743112,
+          "headline": "5 Large Cap Tech Stocks to Buy According to Billionaires",
+          "datetime": 1793829509,
           "source": "Yahoo Finance",
-          "url": "https://www.benzinga.com/news/politics/26/11/62839577/byron-donalds-could-be-next-florida-governor-here-are-the-stocks-hes-been-buying-in-2026?utm_source=yahooFinance&utm_campaign=partner_feed&utm_medium=referral"
+          "url": "https://finance.yahoo.com/markets/stocks/articles/5-large-cap-tech-stocks-175941681.html"
         }
       ]
     },
     "TSM": {
       "name": "Taiwan Semiconductor Manufactur",
       "quote": {
-        "c": 394.92,
-        "d": -9.88,
-        "dp": -2.4419,
-        "regular": 394.92,
-        "reg_d": -9.88,
-        "reg_dp": -2.4419,
+        "c": 396.81,
+        "d": 1.06,
+        "dp": 0.2678,
+        "regular": 395.75,
+        "reg_d": -9.05,
+        "reg_dp": -2.2357,
         "pre": null,
-        "post": null,
+        "post": 396.81,
         "prev_close": 404.8,
-        "phase": "正式盤"
+        "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Taiwan Semi or Broadcom: If I Could Only Own 1 for the Next 5 Years, It Would Be This",
-          "datetime": 1793743112,
+          "headline": "TSMC Stocks Move Lower as November Sales Data Face a $53.3 Billion Quarterly Hurdle",
+          "datetime": 1793829509,
           "source": "Yahoo Finance",
-          "url": "https://www.fool.com/investing/2026/11/03/taiwan-semi-or-broadcom-if-i-could-only-own-1-for/"
+          "url": "https://finance.yahoo.com/markets/stocks/articles/tsmc-stocks-move-lower-november-151537685.html"
         }
       ]
     },
     "MRVL": {
       "name": "Marvell Technology, Inc.",
       "quote": {
-        "c": 158.65,
-        "d": -13.32,
-        "dp": -7.7484,
-        "regular": 158.65,
-        "reg_d": -13.32,
-        "reg_dp": -7.7484,
+        "c": 160.25,
+        "d": 0.45,
+        "dp": 0.2816,
+        "regular": 159.8,
+        "reg_d": -12.17,
+        "reg_dp": -7.0768,
         "pre": null,
-        "post": null,
+        "post": 160.25,
         "prev_close": 171.97,
-        "phase": "正式盤"
+        "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Why Wall Street isn't exactly loving Marvell's $115B Lumentum deal",
-          "datetime": 1793743112,
+          "headline": "Chip Stocks Take a Hit",
+          "datetime": 1793829509,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/video/why-wall-street-isnt-exactly-loving-marvells-115b-lumentum-deal-145204052.html"
+          "url": "https://www.wsj.com/livecoverage/stock-market-today-dow-sp-500-nasdaq-11-04-2026/card/chip-stocks-take-a-hit-YOCGYXdxhJ2NABQB2DC5?siteid=yhoof2&yptr=yahoo"
         }
       ]
     },
     "MU": {
       "name": "Micron Technology, Inc.",
       "quote": {
-        "c": 795.94,
-        "d": -59.16,
-        "dp": -6.9185,
-        "regular": 795.94,
-        "reg_d": -59.16,
-        "reg_dp": -6.9185,
+        "c": 800.4,
+        "d": 5.17,
+        "dp": 0.6501,
+        "regular": 795.23,
+        "reg_d": -59.87,
+        "reg_dp": -7.0015,
         "pre": null,
-        "post": null,
+        "post": 800.4,
         "prev_close": 855.1,
-        "phase": "正式盤"
+        "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Micron, Nvidia, and AMD lead chip stocks' rebound",
-          "datetime": 1793743112,
+          "headline": "Chip Stocks Take a Hit",
+          "datetime": 1793829509,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/markets/article/micron-nvidia-amd-lead-chip-stocks-rebound-140538628.html"
+          "url": "https://www.wsj.com/livecoverage/stock-market-today-dow-sp-500-nasdaq-11-04-2026/card/chip-stocks-take-a-hit-YOCGYXdxhJ2NABQB2DC5?siteid=yhoof2&yptr=yahoo"
         }
       ]
     },
     "SNDK": {
       "name": "Sandisk Corporation",
       "quote": {
-        "c": 1032.39,
-        "d": -94.12,
-        "dp": -8.3554,
-        "regular": 1032.39,
-        "reg_d": -94.12,
-        "reg_dp": -8.3554,
+        "c": 1044.66,
+        "d": 7.26,
+        "dp": 0.7002,
+        "regular": 1037.4,
+        "reg_d": -89.12,
+        "reg_dp": -7.9111,
         "pre": null,
-        "post": null,
+        "post": 1044.66,
         "prev_close": 1126.52,
-        "phase": "正式盤"
+        "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Micron, Nvidia, and AMD lead chip stocks' rebound",
-          "datetime": 1793743112,
+          "headline": "Chip Stocks Take a Hit",
+          "datetime": 1793829509,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/markets/article/micron-nvidia-amd-lead-chip-stocks-rebound-140538628.html"
+          "url": "https://www.wsj.com/livecoverage/stock-market-today-dow-sp-500-nasdaq-11-04-2026/card/chip-stocks-take-a-hit-YOCGYXdxhJ2NABQB2DC5?siteid=yhoof2&yptr=yahoo"
         }
       ]
     },
     "SPCX": {
       "name": "Space Exploration Technologies",
       "quote": {
-        "c": 135.06,
-        "d": -6.26,
-        "dp": -4.4264,
-        "regular": 135.06,
-        "reg_d": -6.25,
-        "reg_dp": -4.4264,
+        "c": 135.54,
+        "d": -0.38,
+        "dp": -0.2796,
+        "regular": 135.92,
+        "reg_d": -5.39,
+        "reg_dp": -3.8143,
         "pre": null,
-        "post": null,
+        "post": 135.54,
         "prev_close": 141.31,
-        "phase": "正式盤"
+        "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Stock Market Election Night Live Coverage: Dow Futures, AI Stocks, Elon Musk In Focus; AMD, Arista, Amgen, Astera Move On Earnings",
-          "datetime": 1793743112,
+          "headline": "SpaceX, Tesla stocks sink as analyst warns Democrats' victory will create 'major hurdles' for AI build-out",
+          "datetime": 1793829509,
           "source": "Yahoo Finance",
-          "url": "https://www.investors.com/market-trend/stock-market-today/stock-market-election-night-dow-jones-futures-ai-oil-prices-elon-musk-amd/?src=A00220&yptr=yahoo"
+          "url": "https://finance.yahoo.com/markets/stocks/article/spacex-tesla-stocks-sink-as-analyst-warns-democrats-victory-will-create-major-hurdles-for-ai-build-out-135511616.html"
         }
       ]
     },
     "ONDS": {
       "name": "Ondas Inc",
       "quote": {
-        "c": 5.23,
-        "d": -0.56,
-        "dp": -9.62,
-        "regular": 5.23,
-        "reg_d": -0.56,
-        "reg_dp": -9.62,
+        "c": 5.28,
+        "d": 0.01,
+        "dp": 0.1898,
+        "regular": 5.27,
+        "reg_d": -0.52,
+        "reg_dp": -8.981,
         "pre": null,
-        "post": null,
+        "post": 5.28,
         "prev_close": 5.79,
-        "phase": "正式盤"
+        "phase": "盤後"
       },
       "news": [
         {
           "headline": "22 Hedge Funds Back This Defeated Robotics Stock: Time to Buy the Dip?",
-          "datetime": 1793743112,
+          "datetime": 1793829509,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/markets/stocks/articles/22-hedge-funds-back-defeated-155920761.html"
         }
@@ -226,23 +226,23 @@
     "PLTR": {
       "name": "Palantir Technologies Inc.",
       "quote": {
-        "c": 170.19,
-        "d": -5.2,
-        "dp": -2.9675,
-        "regular": 170.19,
-        "reg_d": -5.21,
-        "reg_dp": -2.9675,
+        "c": 172.45,
+        "d": 0.75,
+        "dp": 0.4368,
+        "regular": 171.7,
+        "reg_d": -3.7,
+        "reg_dp": -2.1095,
         "pre": null,
-        "post": null,
+        "post": 172.45,
         "prev_close": 175.4,
-        "phase": "正式盤"
+        "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Palantir beats Q3 earnings estimates, stock falls over worries of slowing revenue growth",
-          "datetime": 1793743112,
+          "headline": "Earnings live updates: Cava stock falls after cyclospora outbreak dented Q3 results",
+          "datetime": 1793829509,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/markets/stocks/article/palantir-beats-q3-estimates-raises-full-year-revenue-outlook-as-us-commercial-sales-top-us-government-revenue-for-the-first-time-234245540.html"
+          "url": "https://finance.yahoo.com/markets/live/earnings-live-updates-apple-palantir-roku-and-more-212856249.html"
         }
       ]
     },
@@ -271,7 +271,7 @@
     }
   },
   "alert_sent": {
-    "morning": "2026-11-04",
+    "morning": "2026-11-05",
     "evening": "2026-11-04"
   }
 }
