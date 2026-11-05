@@ -1,7 +1,7 @@
 {
   "name": "美股盤前情報資料庫",
-  "updated_at": "2026-11-06T04:52:36.417165+08:00",
-  "next_update_at": "2026-11-05T21:00:00Z",
+  "updated_at": "2026-11-06T05:58:45.412587+08:00",
+  "next_update_at": "2026-11-05T22:30:00Z",
   "stocks": [
     "MSFT",
     "NVDA",
@@ -19,230 +19,230 @@
     "MSFT": {
       "name": "Microsoft Corporation",
       "quote": {
-        "c": 536.76,
-        "d": -19.04,
-        "dp": -3.4257,
-        "regular": 536.76,
-        "reg_d": -19.04,
-        "reg_dp": -3.4257,
+        "c": 530.33,
+        "d": -5.6,
+        "dp": -1.0449,
+        "regular": 535.93,
+        "reg_d": -19.87,
+        "reg_dp": -3.575,
         "pre": null,
-        "post": null,
+        "post": 530.33,
         "prev_close": 555.8,
-        "phase": "正式盤"
+        "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Apple, Microsoft hit all-time highs as Nasdaq surges 2% in post-election rally: AlphaCheck",
-          "datetime": 1793829509,
+          "headline": "Oil's Sudden Price Drop Surprises Citi's Chronert",
+          "datetime": 1793915925,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/markets/article/apple-microsoft-hit-all-time-highs-as-nasdaq-surges-2-in-post-election-rally-alphacheck-152548814.html"
+          "url": "https://finance.yahoo.com/video/oils-sudden-price-drop-surprises-212850303.html"
         }
       ]
     },
     "NVDA": {
       "name": "NVIDIA Corporation",
       "quote": {
-        "c": 182.7,
-        "d": -17.43,
-        "dp": -8.708,
-        "regular": 182.7,
-        "reg_d": -17.43,
-        "reg_dp": -8.708,
+        "c": 182.3,
+        "d": 0.7,
+        "dp": 0.3855,
+        "regular": 181.6,
+        "reg_d": -18.53,
+        "reg_dp": -9.259,
         "pre": null,
-        "post": null,
+        "post": 182.3,
         "prev_close": 200.13,
-        "phase": "正式盤"
+        "phase": "盤後"
       },
       "news": [
         {
-          "headline": "2 ETFs I'm Buying and Holding for Decades -- No Matter What the Market Does",
-          "datetime": 1793829509,
+          "headline": "Nvidia has lost nearly $1.4 trillion since its October record",
+          "datetime": 1793915925,
           "source": "Yahoo Finance",
-          "url": "https://www.fool.com/investing/2026/11/04/2-etfs-im-buying-and-holding-for-decades-no-matter/"
+          "url": "https://finance.yahoo.com/markets/article/nvidia-has-lost-nearly-14-trillion-since-its-october-record-165912910.html"
         }
       ]
     },
     "NOW": {
       "name": "ServiceNow, Inc.",
       "quote": {
-        "c": 102.38,
-        "d": -6.43,
-        "dp": -5.9094,
-        "regular": 102.38,
-        "reg_d": -6.43,
-        "reg_dp": -5.9094,
+        "c": 100.62,
+        "d": -1.74,
+        "dp": -1.6999,
+        "regular": 102.36,
+        "reg_d": -6.45,
+        "reg_dp": -5.9278,
         "pre": null,
-        "post": null,
+        "post": 100.62,
         "prev_close": 108.81,
-        "phase": "正式盤"
+        "phase": "盤後"
       },
       "news": [
         {
-          "headline": "5 Large Cap Tech Stocks to Buy According to Billionaires",
-          "datetime": 1793829509,
+          "headline": "Arista Networks vs. ServiceNow: Which Technology Stock Is a Better Buy for 2027?",
+          "datetime": 1793915925,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/markets/stocks/articles/5-large-cap-tech-stocks-175941681.html"
+          "url": "https://www.fool.com/coverage/better-buy/2026/11/05/arista-networks-vs-servicenow-which-technology-stock-is-a-better-buy-for-2027/"
         }
       ]
     },
     "TSM": {
       "name": "Taiwan Semiconductor Manufactur",
       "quote": {
-        "c": 356.36,
-        "d": -39.39,
-        "dp": -9.9533,
-        "regular": 356.36,
-        "reg_d": -39.39,
-        "reg_dp": -9.9533,
+        "c": 359.8,
+        "d": 6.7,
+        "dp": 1.8975,
+        "regular": 353.1,
+        "reg_d": -42.65,
+        "reg_dp": -10.777,
         "pre": null,
-        "post": null,
+        "post": 359.8,
         "prev_close": 395.75,
-        "phase": "正式盤"
+        "phase": "盤後"
       },
       "news": [
         {
-          "headline": "TSMC Stocks Move Lower as November Sales Data Face a $53.3 Billion Quarterly Hurdle",
-          "datetime": 1793829509,
+          "headline": "Nvidia has lost nearly $1.4 trillion since its October record",
+          "datetime": 1793915925,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/markets/stocks/articles/tsmc-stocks-move-lower-november-151537685.html"
+          "url": "https://finance.yahoo.com/markets/article/nvidia-has-lost-nearly-14-trillion-since-its-october-record-165912910.html"
         }
       ]
     },
     "MRVL": {
       "name": "Marvell Technology, Inc.",
       "quote": {
-        "c": 136.41,
-        "d": -23.39,
-        "dp": -14.6339,
-        "regular": 136.41,
-        "reg_d": -23.39,
-        "reg_dp": -14.6339,
+        "c": 135.69,
+        "d": 2.14,
+        "dp": 1.6052,
+        "regular": 133.55,
+        "reg_d": -26.25,
+        "reg_dp": -16.4268,
         "pre": null,
-        "post": null,
+        "post": 135.69,
         "prev_close": 159.8,
-        "phase": "正式盤"
+        "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Chip Stocks Take a Hit",
-          "datetime": 1793829509,
+          "headline": "Why Marvell Stock Is Falling Today",
+          "datetime": 1793915925,
           "source": "Yahoo Finance",
-          "url": "https://www.wsj.com/livecoverage/stock-market-today-dow-sp-500-nasdaq-11-04-2026/card/chip-stocks-take-a-hit-YOCGYXdxhJ2NABQB2DC5?siteid=yhoof2&yptr=yahoo"
+          "url": "https://www.fool.com/investing/2026/11/05/why-marvell-stock-is-falling-today/"
         }
       ]
     },
     "MU": {
       "name": "Micron Technology, Inc.",
       "quote": {
-        "c": 671.65,
-        "d": -123.58,
-        "dp": -15.5402,
-        "regular": 671.65,
-        "reg_d": -123.58,
-        "reg_dp": -15.5402,
+        "c": 672.27,
+        "d": 15.88,
+        "dp": 2.4195,
+        "regular": 656.39,
+        "reg_d": -138.84,
+        "reg_dp": -17.4591,
         "pre": null,
-        "post": null,
+        "post": 672.27,
         "prev_close": 795.23,
-        "phase": "正式盤"
+        "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Chip Stocks Take a Hit",
-          "datetime": 1793829509,
+          "headline": "Micron stock sinks 17% as chip sector crashes",
+          "datetime": 1793915925,
           "source": "Yahoo Finance",
-          "url": "https://www.wsj.com/livecoverage/stock-market-today-dow-sp-500-nasdaq-11-04-2026/card/chip-stocks-take-a-hit-YOCGYXdxhJ2NABQB2DC5?siteid=yhoof2&yptr=yahoo"
+          "url": "https://finance.yahoo.com/markets/article/micron-declines-12-as-chip-sell-off-deepens-163137019.html"
         }
       ]
     },
     "SNDK": {
       "name": "Sandisk Corporation",
       "quote": {
-        "c": 827.92,
-        "d": -209.48,
-        "dp": -20.1928,
-        "regular": 827.92,
-        "reg_d": -209.48,
-        "reg_dp": -20.1928,
+        "c": 834.6,
+        "d": 28.17,
+        "dp": 3.4932,
+        "regular": 806.43,
+        "reg_d": -230.97,
+        "reg_dp": -22.2643,
         "pre": null,
-        "post": null,
+        "post": 834.6,
         "prev_close": 1037.4,
-        "phase": "正式盤"
+        "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Chip Stocks Take a Hit",
-          "datetime": 1793829509,
+          "headline": "Qualcomm, Micron, Sandisk, and AMD stocks sink, leading chip sector lower",
+          "datetime": 1793915925,
           "source": "Yahoo Finance",
-          "url": "https://www.wsj.com/livecoverage/stock-market-today-dow-sp-500-nasdaq-11-04-2026/card/chip-stocks-take-a-hit-YOCGYXdxhJ2NABQB2DC5?siteid=yhoof2&yptr=yahoo"
+          "url": "https://finance.yahoo.com/markets/article/qualcomm-micron-arm-stocks-sink-lead-chip-sector-lower-133100607.html"
         }
       ]
     },
     "SPCX": {
       "name": "Space Exploration Technologies",
       "quote": {
-        "c": 124.67,
-        "d": -11.25,
-        "dp": -8.2806,
-        "regular": 124.67,
-        "reg_d": -11.25,
-        "reg_dp": -8.2806,
+        "c": 123.41,
+        "d": -0.21,
+        "dp": -0.1704,
+        "regular": 123.62,
+        "reg_d": -12.3,
+        "reg_dp": -9.0494,
         "pre": null,
-        "post": null,
+        "post": 123.41,
         "prev_close": 135.92,
-        "phase": "正式盤"
+        "phase": "盤後"
       },
       "news": [
         {
-          "headline": "SpaceX, Tesla stocks sink as analyst warns Democrats' victory will create 'major hurdles' for AI build-out",
-          "datetime": 1793829509,
+          "headline": "Stocks slide as Wall Street's post-election rally fizzles",
+          "datetime": 1793915925,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/markets/stocks/article/spacex-tesla-stocks-sink-as-analyst-warns-democrats-victory-will-create-major-hurdles-for-ai-build-out-135511616.html"
+          "url": "https://finance.yahoo.com/video/stocks-slide-as-wall-streets-post-election-rally-fizzles-214250142.html"
         }
       ]
     },
     "ONDS": {
       "name": "Ondas Inc",
       "quote": {
-        "c": 4.58,
-        "d": -0.69,
-        "dp": -13.093,
-        "regular": 4.58,
-        "reg_d": -0.69,
-        "reg_dp": -13.093,
+        "c": 4.48,
+        "d": -0.04,
+        "dp": -0.885,
+        "regular": 4.52,
+        "reg_d": -0.75,
+        "reg_dp": -14.2315,
         "pre": null,
-        "post": null,
+        "post": 4.48,
         "prev_close": 5.27,
-        "phase": "正式盤"
+        "phase": "盤後"
       },
       "news": [
         {
-          "headline": "22 Hedge Funds Back This Defeated Robotics Stock: Time to Buy the Dip?",
-          "datetime": 1793829509,
+          "headline": "Ondas Just Dropped 38% in a Month: Is ONDS Stock a Falling Knife or Poised for a Comeback?",
+          "datetime": 1793915925,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/markets/stocks/articles/22-hedge-funds-back-defeated-155920761.html"
+          "url": "https://247wallst.com/investing/2026/11/05/ondas-just-dropped-38-in-a-month-is-onds-stock-a-falling-knife-or-poised-for-a-comeback/"
         }
       ]
     },
     "PLTR": {
       "name": "Palantir Technologies Inc.",
       "quote": {
-        "c": 154.98,
-        "d": -16.72,
-        "dp": -9.7391,
-        "regular": 154.98,
-        "reg_d": -16.72,
-        "reg_dp": -9.7391,
+        "c": 153.21,
+        "d": -1.78,
+        "dp": -1.1505,
+        "regular": 154.99,
+        "reg_d": -16.71,
+        "reg_dp": -9.7321,
         "pre": null,
-        "post": null,
+        "post": 153.21,
         "prev_close": 171.7,
-        "phase": "正式盤"
+        "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Earnings live updates: Cava stock falls after cyclospora outbreak dented Q3 results",
-          "datetime": 1793829509,
+          "headline": "Palantir and CrowdStrike stocks tumble as Wall Street dumps software's AI winners",
+          "datetime": 1793915925,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/markets/live/earnings-live-updates-apple-palantir-roku-and-more-212856249.html"
+          "url": "https://finance.yahoo.com/markets/article/palantir-and-crowdstrike-stocks-tumble-as-wall-street-dumps-softwares-ai-winners-173540737.html"
         }
       ]
     },
@@ -271,7 +271,7 @@
     }
   },
   "alert_sent": {
-    "morning": "2026-11-05",
+    "morning": "2026-11-06",
     "evening": "2026-11-05"
   }
 }
