@@ -1,7 +1,7 @@
 {
   "name": "美股盤前情報資料庫",
-  "updated_at": "2026-11-07T04:52:34.322054+08:00",
-  "next_update_at": "2026-11-06T21:00:00Z",
+  "updated_at": "2026-11-07T07:58:21.607358+08:00",
+  "next_update_at": "2026-11-07T00:30:00Z",
   "stocks": [
     "MSFT",
     "NVDA",
@@ -19,230 +19,230 @@
     "MSFT": {
       "name": "Microsoft Corporation",
       "quote": {
-        "c": 531.96,
-        "d": -3.97,
-        "dp": -0.7417,
-        "regular": 531.96,
-        "reg_d": -3.97,
-        "reg_dp": -0.7417,
+        "c": 531.48,
+        "d": 0.87,
+        "dp": 0.164,
+        "regular": 530.61,
+        "reg_d": -5.32,
+        "reg_dp": -0.9927,
         "pre": null,
-        "post": null,
+        "post": 531.48,
         "prev_close": 535.93,
-        "phase": "正式盤"
+        "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Oil's Sudden Price Drop Surprises Citi's Chronert",
-          "datetime": 1793915925,
+          "headline": "The US adds in the latest  jobs report, markets try to bounce back from an awful sell-off",
+          "datetime": 1794009501,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/video/oils-sudden-price-drop-surprises-212850303.html"
+          "url": "https://finance.yahoo.com/video/the-us-adds-in-the-latest-jobs-report-markets-try-to-bounce-back-from-an-awful-sell-off-190148849.html"
         }
       ]
     },
     "NVDA": {
       "name": "NVIDIA Corporation",
       "quote": {
-        "c": 187.09,
-        "d": 5.49,
-        "dp": 3.0253,
-        "regular": 187.09,
-        "reg_d": 5.49,
-        "reg_dp": 3.0253,
+        "c": 188.04,
+        "d": 1.4,
+        "dp": 0.7498,
+        "regular": 186.64,
+        "reg_d": 5.04,
+        "reg_dp": 2.7753,
         "pre": null,
-        "post": null,
+        "post": 188.04,
         "prev_close": 181.6,
-        "phase": "正式盤"
+        "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Nvidia has lost nearly $1.4 trillion since its October record",
-          "datetime": 1793915925,
+          "headline": "Chip rally may be time for investors to 'harvest cash and wait'",
+          "datetime": 1794009501,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/markets/article/nvidia-has-lost-nearly-14-trillion-since-its-october-record-165912910.html"
+          "url": "https://finance.yahoo.com/video/chip-rally-may-be-time-for-investors-to-harvest-cash-and-wait-221657650.html"
         }
       ]
     },
     "NOW": {
       "name": "ServiceNow, Inc.",
       "quote": {
-        "c": 101.86,
-        "d": -0.5,
-        "dp": -0.4894,
-        "regular": 101.86,
-        "reg_d": -0.5,
-        "reg_dp": -0.4894,
+        "c": 101.92,
+        "d": -0.05,
+        "dp": -0.049,
+        "regular": 101.97,
+        "reg_d": -0.39,
+        "reg_dp": -0.381,
         "pre": null,
-        "post": null,
+        "post": 101.92,
         "prev_close": 102.36,
-        "phase": "正式盤"
+        "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Arista Networks vs. ServiceNow: Which Technology Stock Is a Better Buy for 2027?",
-          "datetime": 1793915925,
+          "headline": "Zscaler Just Dropped 14% in a Week. Is It Time to Sell, or Load Up?",
+          "datetime": 1794009501,
           "source": "Yahoo Finance",
-          "url": "https://www.fool.com/coverage/better-buy/2026/11/05/arista-networks-vs-servicenow-which-technology-stock-is-a-better-buy-for-2027/"
+          "url": "https://www.tikr.com/blog/zscaler-just-dropped-14-in-a-week-is-it-time-to-sell-or-load-up?ref=yahoofinance&tlnk=yf-261106-4qjfwpgm"
         }
       ]
     },
     "TSM": {
       "name": "Taiwan Semiconductor Manufactur",
       "quote": {
-        "c": 374.37,
-        "d": 21.27,
-        "dp": 6.0238,
-        "regular": 374.37,
-        "reg_d": 21.27,
-        "reg_dp": 6.0238,
+        "c": 377.26,
+        "d": 1.82,
+        "dp": 0.4848,
+        "regular": 375.44,
+        "reg_d": 22.34,
+        "reg_dp": 6.3268,
         "pre": null,
-        "post": null,
+        "post": 377.26,
         "prev_close": 353.1,
-        "phase": "正式盤"
+        "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Nvidia has lost nearly $1.4 trillion since its October record",
-          "datetime": 1793915925,
+          "headline": "Intel Stock’s (INTC) Deep Sell-Off Shows Signs of an Overreaction",
+          "datetime": 1794009501,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/markets/article/nvidia-has-lost-nearly-14-trillion-since-its-october-record-165912910.html"
+          "url": "https://finance.yahoo.com/markets/stocks/articles/intel-stock-intc-deep-sell-213300842.html"
         }
       ]
     },
     "MRVL": {
       "name": "Marvell Technology, Inc.",
       "quote": {
-        "c": 140.67,
-        "d": 7.12,
-        "dp": 5.331,
-        "regular": 140.67,
-        "reg_d": 7.12,
-        "reg_dp": 5.331,
+        "c": 141.1,
+        "d": -0.1,
+        "dp": -0.0708,
+        "regular": 141.2,
+        "reg_d": 7.65,
+        "reg_dp": 5.7282,
         "pre": null,
-        "post": null,
+        "post": 141.1,
         "prev_close": 133.55,
-        "phase": "正式盤"
+        "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Why Marvell Stock Is Falling Today",
-          "datetime": 1793915925,
+          "headline": "The Stocks That Got Hit Hardest This Week",
+          "datetime": 1794009501,
           "source": "Yahoo Finance",
-          "url": "https://www.fool.com/investing/2026/11/05/why-marvell-stock-is-falling-today/"
+          "url": "https://www.wsj.com/livecoverage/october-jobs-report-stock-market-11-06-2026/card/the-stocks-that-got-hit-hardest-this-week-DLRF5wdD4jAoGBT46rER?siteid=yhoof2&yptr=yahoo"
         }
       ]
     },
     "MU": {
       "name": "Micron Technology, Inc.",
       "quote": {
-        "c": 689.11,
-        "d": 32.72,
-        "dp": 4.9848,
-        "regular": 689.11,
-        "reg_d": 32.72,
-        "reg_dp": 4.9848,
+        "c": 690.45,
+        "d": 0.45,
+        "dp": 0.0657,
+        "regular": 690.0,
+        "reg_d": 33.61,
+        "reg_dp": 5.1204,
         "pre": null,
-        "post": null,
+        "post": 690.45,
         "prev_close": 656.39,
-        "phase": "正式盤"
+        "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Micron stock sinks 17% as chip sector crashes",
-          "datetime": 1793915925,
+          "headline": "Dow Jones Futures: Market Needs Repair But Sandisk, Micron Look Broken; Apple, Amazon, Microsoft Strong",
+          "datetime": 1794009501,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/markets/article/micron-declines-12-as-chip-sell-off-deepens-163137019.html"
+          "url": "https://www.investors.com/market-trend/stock-market-today/dow-jones-futures-sandisk-micron-broken-apple-amazon-microsoft-strong-berkshire-earnings/?src=A00220&yptr=yahoo"
         }
       ]
     },
     "SNDK": {
       "name": "Sandisk Corporation",
       "quote": {
-        "c": 834.14,
-        "d": 27.71,
-        "dp": 3.4358,
-        "regular": 834.14,
-        "reg_d": 27.71,
-        "reg_dp": 3.4358,
+        "c": 836.5,
+        "d": 1.44,
+        "dp": 0.1724,
+        "regular": 835.06,
+        "reg_d": 28.63,
+        "reg_dp": 3.5502,
         "pre": null,
-        "post": null,
+        "post": 836.5,
         "prev_close": 806.43,
-        "phase": "正式盤"
+        "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Qualcomm, Micron, Sandisk, and AMD stocks sink, leading chip sector lower",
-          "datetime": 1793915925,
+          "headline": "Dow Jones Futures: Market Needs Repair But Sandisk, Micron Look Broken; Apple, Amazon, Microsoft Strong",
+          "datetime": 1794009501,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/markets/article/qualcomm-micron-arm-stocks-sink-lead-chip-sector-lower-133100607.html"
+          "url": "https://www.investors.com/market-trend/stock-market-today/dow-jones-futures-sandisk-micron-broken-apple-amazon-microsoft-strong-berkshire-earnings/?src=A00220&yptr=yahoo"
         }
       ]
     },
     "SPCX": {
       "name": "Space Exploration Technologies",
       "quote": {
-        "c": 133.95,
-        "d": 10.33,
-        "dp": 8.3571,
-        "regular": 133.95,
-        "reg_d": 10.33,
-        "reg_dp": 8.3571,
+        "c": 135.15,
+        "d": 0.88,
+        "dp": 0.6554,
+        "regular": 134.27,
+        "reg_d": 10.65,
+        "reg_dp": 8.6151,
         "pre": null,
-        "post": null,
+        "post": 135.15,
         "prev_close": 123.62,
-        "phase": "正式盤"
+        "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Stocks slide as Wall Street's post-election rally fizzles",
-          "datetime": 1793915925,
+          "headline": "Chip stocks lead tech rebound as SpaceX, Tesla jump: AlphaCheck",
+          "datetime": 1794009501,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/video/stocks-slide-as-wall-streets-post-election-rally-fizzles-214250142.html"
+          "url": "https://finance.yahoo.com/markets/article/semiconductor-stocks-lead-tech-rebound-spacex-and-tesla-jump-alphacheck-150906077.html"
         }
       ]
     },
     "ONDS": {
       "name": "Ondas Inc",
       "quote": {
-        "c": 5.35,
-        "d": 0.83,
-        "dp": 18.365,
-        "regular": 5.35,
-        "reg_d": 0.83,
-        "reg_dp": 18.365,
+        "c": 5.33,
+        "d": -0.01,
+        "dp": -0.0937,
+        "regular": 5.33,
+        "reg_d": 0.82,
+        "reg_dp": 18.031,
         "pre": null,
-        "post": null,
+        "post": 5.33,
         "prev_close": 4.52,
-        "phase": "正式盤"
+        "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Ondas Just Dropped 38% in a Month: Is ONDS Stock a Falling Knife or Poised for a Comeback?",
-          "datetime": 1793915925,
+          "headline": "Ondas Surges 15% as Drone Stocks Rebound Ahead of Its Earnings Report; Red Cat Jumps 14%, AeroVironment Surges 9%",
+          "datetime": 1794009501,
           "source": "Yahoo Finance",
-          "url": "https://247wallst.com/investing/2026/11/05/ondas-just-dropped-38-in-a-month-is-onds-stock-a-falling-knife-or-poised-for-a-comeback/"
+          "url": "https://247wallst.com/investing/2026/11/06/ondas-surges-15-as-drone-stocks-rebound-ahead-of-its-earnings-report-red-cat-jumps-14-aerovironment-surges-9/"
         }
       ]
     },
     "PLTR": {
       "name": "Palantir Technologies Inc.",
       "quote": {
-        "c": 160.52,
-        "d": 5.53,
-        "dp": 3.568,
-        "regular": 160.52,
-        "reg_d": 5.53,
-        "reg_dp": 3.568,
+        "c": 160.5,
+        "d": 0.12,
+        "dp": 0.0748,
+        "regular": 160.38,
+        "reg_d": 5.39,
+        "reg_dp": 3.4776,
         "pre": null,
-        "post": null,
+        "post": 160.5,
         "prev_close": 154.99,
-        "phase": "正式盤"
+        "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Palantir and CrowdStrike stocks tumble as Wall Street dumps software's AI winners",
-          "datetime": 1793915925,
+          "headline": "$3 trillion wipe-out, CEOs on the volatility of politics, and the status of the AI trade",
+          "datetime": 1794009501,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/markets/article/palantir-and-crowdstrike-stocks-tumble-as-wall-street-dumps-softwares-ai-winners-173540737.html"
+          "url": "https://finance.yahoo.com/video/3-trillion-wipe-out-ceos-on-the-volatility-of-politics-and-the-status-of-the-ai-trade-151554253.html"
         }
       ]
     },
