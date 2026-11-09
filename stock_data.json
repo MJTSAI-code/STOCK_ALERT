@@ -1,7 +1,7 @@
 {
   "name": "美股盤前情報資料庫",
-  "updated_at": "2026-11-10T05:22:57.658110+08:00",
-  "next_update_at": "2026-11-09T22:00:00Z",
+  "updated_at": "2026-11-10T05:58:32.264560+08:00",
+  "next_update_at": "2026-11-09T22:30:00Z",
   "stocks": [
     "MSFT",
     "NVDA",
@@ -19,67 +19,67 @@
     "MSFT": {
       "name": "Microsoft Corporation",
       "quote": {
-        "c": 544.5,
-        "d": -0.68,
-        "dp": -0.1244,
+        "c": 545.03,
+        "d": -0.15,
+        "dp": -0.0275,
         "regular": 545.18,
         "reg_d": 14.57,
         "reg_dp": 2.7459,
         "pre": null,
-        "post": 544.5,
+        "post": 545.03,
         "prev_close": 530.61,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Adobe (ADBE) Expands AI Reach, Is The 25% Discount Too Wide?",
-          "datetime": 1794259377,
+          "headline": "Could IREN Actually Climb 117%? Or Is Cantor Fitzgerald Totally Wrong?",
+          "datetime": 1794261512,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/technology/ai/articles/adobe-adbe-expands-ai-reach-200712841.html"
+          "url": "https://www.tikr.com/blog/could-iren-actually-climb-117-or-is-cantor-fitzgerald-totally-wrong?ref=yahoofinance&tlnk=yf-261109-4cgmr9mq"
         }
       ]
     },
     "NVDA": {
       "name": "NVIDIA Corporation",
       "quote": {
-        "c": 178.35,
-        "d": -0.32,
-        "dp": -0.1787,
+        "c": 179.5,
+        "d": 0.83,
+        "dp": 0.4643,
         "regular": 178.67,
         "reg_d": -7.97,
         "reg_dp": -4.2703,
         "pre": null,
-        "post": 178.35,
+        "post": 179.5,
         "prev_close": 186.64,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Nvidia CEO Jensen Huang's affair with a reported Chinese spy damages this key investing factor",
-          "datetime": 1794259377,
+          "headline": "Jensen Huang's stance against cutting China off from US chips holds a lot less weight",
+          "datetime": 1794261512,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/technology/article/nvidia-ceo-jensen-huangs-affair-with-a-reported-chinese-spy-damages-this-key-investing-factor-201922852.html"
+          "url": "https://finance.yahoo.com/video/jensen-huangs-stance-against-cutting-china-off-from-us-chips-holds-a-lot-less-weight-213031755.html"
         }
       ]
     },
     "NOW": {
       "name": "ServiceNow, Inc.",
       "quote": {
-        "c": 102.98,
-        "d": 0.22,
-        "dp": 0.2167,
+        "c": 103.17,
+        "d": 0.41,
+        "dp": 0.398,
         "regular": 102.76,
         "reg_d": 0.79,
         "reg_dp": 0.7747,
         "pre": null,
-        "post": 102.98,
+        "post": 103.17,
         "prev_close": 101.97,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Palantir Rises 5%, Snowflake Up 6% as AI Stocks Rebound After Market Was “Freaking Out”",
-          "datetime": 1794259377,
+          "datetime": 1794261512,
           "source": "Yahoo Finance",
           "url": "https://www.tikr.com/blog/palantir-rises-5-snowflake-up-6-as-ai-stocks-rebound-after-market-was-freaking-out?ref=yahoofinance&tlnk=yf-261109-h4v79xjq"
         }
@@ -88,21 +88,21 @@
     "TSM": {
       "name": "Taiwan Semiconductor Manufactur",
       "quote": {
-        "c": 389.0,
-        "d": 0.38,
-        "dp": 0.0978,
+        "c": 391.37,
+        "d": 2.75,
+        "dp": 0.708,
         "regular": 388.62,
         "reg_d": 13.18,
         "reg_dp": 3.5105,
         "pre": null,
-        "post": 389.0,
+        "post": 391.37,
         "prev_close": 375.44,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Nvidia stock sinks 4% as chipmaker investigates CEO Jensen Huang's relationship with alleged Chinese spy",
-          "datetime": 1794259377,
+          "datetime": 1794261512,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/markets/article/nvidia-stock-sinks-as-chipmaker-investigates-ceo-jensen-huangs-relationship-with-alleged-chinese-spy-130346548.html"
         }
@@ -111,21 +111,21 @@
     "MRVL": {
       "name": "Marvell Technology, Inc.",
       "quote": {
-        "c": 155.19,
-        "d": 0.59,
-        "dp": 0.3816,
+        "c": 156.72,
+        "d": 2.12,
+        "dp": 1.3713,
         "regular": 154.6,
         "reg_d": 13.4,
         "reg_dp": 9.4901,
         "pre": null,
-        "post": 155.19,
+        "post": 156.72,
         "prev_close": 141.2,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Why Marvell Technology Stock Fell Hard in October",
-          "datetime": 1794259377,
+          "datetime": 1794261512,
           "source": "Yahoo Finance",
           "url": "https://www.fool.com/investing/2026/11/09/why-marvell-technology-stock-fell-hard-in-october/"
         }
@@ -134,21 +134,21 @@
     "MU": {
       "name": "Micron Technology, Inc.",
       "quote": {
-        "c": 732.7,
-        "d": -0.45,
-        "dp": -0.0614,
+        "c": 736.0,
+        "d": 2.85,
+        "dp": 0.3882,
         "regular": 733.15,
         "reg_d": 43.15,
         "reg_dp": 6.2536,
         "pre": null,
-        "post": 732.7,
+        "post": 736.0,
         "prev_close": 690.0,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Nvidia stock sinks 4% as chipmaker investigates CEO Jensen Huang's relationship with alleged Chinese spy",
-          "datetime": 1794259377,
+          "datetime": 1794261512,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/markets/article/nvidia-stock-sinks-as-chipmaker-investigates-ceo-jensen-huangs-relationship-with-alleged-chinese-spy-130346548.html"
         }
@@ -157,44 +157,44 @@
     "SNDK": {
       "name": "Sandisk Corporation",
       "quote": {
-        "c": 888.0,
-        "d": 1.49,
-        "dp": 0.1681,
+        "c": 897.4,
+        "d": 10.89,
+        "dp": 1.2284,
         "regular": 886.51,
         "reg_d": 51.45,
         "reg_dp": 6.1612,
         "pre": null,
-        "post": 888.0,
+        "post": 897.4,
         "prev_close": 835.06,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Nvidia stock sinks 4% as chipmaker investigates CEO Jensen Huang's relationship with alleged Chinese spy",
-          "datetime": 1794259377,
+          "headline": "Intel took 25 years to get back to its dot-com peak — and lost it in 6 months: Chart of the Day",
+          "datetime": 1794261512,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/markets/article/nvidia-stock-sinks-as-chipmaker-investigates-ceo-jensen-huangs-relationship-with-alleged-chinese-spy-130346548.html"
+          "url": "https://finance.yahoo.com/markets/article/intel-took-25-years-to-get-back-to-its-dot-com-peak--and-lost-it-in-6-months-chart-of-the-day-144715722.html"
         }
       ]
     },
     "SPCX": {
       "name": "Space Exploration Technologies",
       "quote": {
-        "c": 142.09,
-        "d": 0.02,
-        "dp": 0.017,
+        "c": 142.29,
+        "d": 0.22,
+        "dp": 0.1548,
         "regular": 142.07,
         "reg_d": 7.8,
         "reg_dp": 5.8092,
         "pre": null,
-        "post": 142.09,
+        "post": 142.29,
         "prev_close": 134.27,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "SpaceX, Rocket Lab blast higher as NASA hands out $10 billion in moon base awards",
-          "datetime": 1794259377,
+          "datetime": 1794261512,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/markets/article/spacex-rocket-lab-blast-higher-as-nasa-hands-out-10-billion-in-moon-base-awards-164320855.html"
         }
@@ -203,21 +203,21 @@
     "ONDS": {
       "name": "Ondas Inc",
       "quote": {
-        "c": 5.96,
-        "d": -0.01,
-        "dp": -0.144,
+        "c": 6.03,
+        "d": 0.06,
+        "dp": 1.005,
         "regular": 5.97,
         "reg_d": 0.63,
         "reg_dp": 11.9025,
         "pre": null,
-        "post": 5.96,
+        "post": 6.03,
         "prev_close": 5.33,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Ondas Rallies 13% Ahead of Earnings, AeroVironment Jumps 10% on $315 Million Award; Red Cat Surges 10%",
-          "datetime": 1794259377,
+          "datetime": 1794261512,
           "source": "Yahoo Finance",
           "url": "https://247wallst.com/investing/2026/11/09/ondas-rallies-13-ahead-of-earnings-aerovironment-jumps-10-on-315-million-award-red-cat-surges-10/"
         }
@@ -226,21 +226,21 @@
     "PLTR": {
       "name": "Palantir Technologies Inc.",
       "quote": {
-        "c": 169.57,
-        "d": 0.37,
-        "dp": 0.2187,
+        "c": 170.14,
+        "d": 0.94,
+        "dp": 0.5556,
         "regular": 169.2,
         "reg_d": 8.82,
         "reg_dp": 5.4994,
         "pre": null,
-        "post": 169.57,
+        "post": 170.14,
         "prev_close": 160.38,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Palantir Stocks Rise 5.96% as Former Senator Jon Tester Joins as Adviser",
-          "datetime": 1794259377,
+          "datetime": 1794261512,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/markets/stocks/articles/palantir-stocks-rise-5-96-183823596.html"
         }
@@ -271,7 +271,7 @@
     }
   },
   "alert_sent": {
-    "morning": "2026-11-06",
+    "morning": "2026-11-10",
     "evening": "2026-11-09"
   }
 }
