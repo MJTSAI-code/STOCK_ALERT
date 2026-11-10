@@ -1,7 +1,7 @@
 {
   "name": "美股盤前情報資料庫",
-  "updated_at": "2026-11-11T04:52:33.775957+08:00",
-  "next_update_at": "2026-11-10T21:00:00Z",
+  "updated_at": "2026-11-11T05:58:35.097356+08:00",
+  "next_update_at": "2026-11-10T22:30:00Z",
   "stocks": [
     "MSFT",
     "NVDA",
@@ -19,184 +19,184 @@
     "MSFT": {
       "name": "Microsoft Corporation",
       "quote": {
-        "c": 534.6,
-        "d": -10.58,
-        "dp": -1.9406,
-        "regular": 534.6,
-        "reg_d": -10.58,
-        "reg_dp": -1.9406,
+        "c": 534.75,
+        "d": 1.59,
+        "dp": 0.2982,
+        "regular": 533.16,
+        "reg_d": -12.02,
+        "reg_dp": -2.2048,
         "pre": null,
-        "post": null,
+        "post": 534.75,
         "prev_close": 545.18,
-        "phase": "正式盤"
+        "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Why the Jensen Huang scandal is a 'net loss for China'",
-          "datetime": 1794264808,
+          "headline": "Stock Market Today: Dow Dips As Yields Soar; Nvidia Dives; Anthropic Seeks This IPO Price",
+          "datetime": 1794347915,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/video/why-the-jensen-huang-scandal-is-a-net-loss-for-china-221329322.html"
+          "url": "https://www.investors.com/market-trend/stock-market-today/dow-jones-sp500-nasdaq-cpi-inflation-report-anthropic-ipo/?src=A00220&yptr=yahoo"
         }
       ]
     },
     "NVDA": {
       "name": "NVIDIA Corporation",
       "quote": {
-        "c": 168.7,
-        "d": -9.97,
-        "dp": -5.5801,
-        "regular": 168.7,
-        "reg_d": -9.97,
-        "reg_dp": -5.5801,
+        "c": 169.6,
+        "d": 0.71,
+        "dp": 0.418,
+        "regular": 168.89,
+        "reg_d": -9.78,
+        "reg_dp": -5.4738,
         "pre": null,
-        "post": null,
+        "post": 169.6,
         "prev_close": 178.67,
-        "phase": "正式盤"
+        "phase": "盤後"
       },
       "news": [
         {
-          "headline": "AI infrastructure spending is still accelerating—but can it last?",
-          "datetime": 1794264808,
+          "headline": "Chip stocks' slide nears $5 trillion as Nvidia hits most extreme selling level since 2019",
+          "datetime": 1794347915,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/video/ai-infrastructure-spending-is-still-acceleratingbut-can-it-last-221359947.html"
+          "url": "https://finance.yahoo.com/markets/article/chip-stocks-slide-nears-5-trillion-as-nvidia-hits-most-extreme-selling-level-since-2019-191532559.html"
         }
       ]
     },
     "NOW": {
       "name": "ServiceNow, Inc.",
       "quote": {
-        "c": 99.08,
-        "d": -3.68,
-        "dp": -3.5812,
-        "regular": 99.08,
-        "reg_d": -3.68,
-        "reg_dp": -3.5812,
+        "c": 99.91,
+        "d": 0.3,
+        "dp": 0.3012,
+        "regular": 99.61,
+        "reg_d": -3.15,
+        "reg_dp": -3.0654,
         "pre": null,
-        "post": null,
+        "post": 99.91,
         "prev_close": 102.76,
-        "phase": "正式盤"
+        "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Palantir Rises 5%, Snowflake Up 6% as AI Stocks Rebound After Market Was “Freaking Out”",
-          "datetime": 1794264808,
+          "headline": "Why Has Workday Stock Trailed Cadence?",
+          "datetime": 1794347915,
           "source": "Yahoo Finance",
-          "url": "https://www.tikr.com/blog/palantir-rises-5-snowflake-up-6-as-ai-stocks-rebound-after-market-was-freaking-out?ref=yahoofinance&tlnk=yf-261109-h4v79xjq"
+          "url": "https://www.trefis.com/stock/wday/articles/624053/why-has-workday-stock-trailed-cadence/2026-11-10"
         }
       ]
     },
     "TSM": {
       "name": "Taiwan Semiconductor Manufactur",
       "quote": {
-        "c": 396.69,
-        "d": 8.07,
-        "dp": 2.0766,
-        "regular": 396.69,
-        "reg_d": 8.07,
-        "reg_dp": 2.0766,
+        "c": 399.15,
+        "d": 2.67,
+        "dp": 0.6734,
+        "regular": 396.48,
+        "reg_d": 7.86,
+        "reg_dp": 2.0225,
         "pre": null,
-        "post": null,
+        "post": 399.15,
         "prev_close": 388.62,
-        "phase": "正式盤"
+        "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Nvidia stock sinks 4% as chipmaker investigates CEO Jensen Huang's relationship with alleged Chinese spy",
-          "datetime": 1794264808,
+          "headline": "Taiwan Semiconductor Sales Jump 60% In October As AI Boom Continues",
+          "datetime": 1794347915,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/markets/article/nvidia-stock-sinks-as-chipmaker-investigates-ceo-jensen-huangs-relationship-with-alleged-chinese-spy-130346548.html"
+          "url": "https://www.investors.com/news/technology/tsm-stock-taiwan-semiconductor-october-2026-sales/?src=A00220&yptr=yahoo"
         }
       ]
     },
     "MRVL": {
       "name": "Marvell Technology, Inc.",
       "quote": {
-        "c": 154.48,
-        "d": -0.12,
-        "dp": -0.0776,
-        "regular": 154.48,
-        "reg_d": -0.12,
-        "reg_dp": -0.0776,
+        "c": 155.0,
+        "d": 0.61,
+        "dp": 0.3951,
+        "regular": 154.39,
+        "reg_d": -0.21,
+        "reg_dp": -0.1358,
         "pre": null,
-        "post": null,
+        "post": 155.0,
         "prev_close": 154.6,
-        "phase": "正式盤"
+        "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Why Marvell Technology Stock Fell Hard in October",
-          "datetime": 1794264808,
+          "headline": "Lumentum Sinks 11% in a Week as Marvell’s All-Stock Offer Shrinks: “Our Demand Couldn’t Be Stronger”",
+          "datetime": 1794347915,
           "source": "Yahoo Finance",
-          "url": "https://www.fool.com/investing/2026/11/09/why-marvell-technology-stock-fell-hard-in-october/"
+          "url": "https://www.tikr.com/blog/lumentum-sinks-13-in-a-week-as-marvells-all-stock-offer-shrinks-our-demand-couldnt-be-stronger?ref=yahoofinance&tlnk=yf-261110-vr9m5442"
         }
       ]
     },
     "MU": {
       "name": "Micron Technology, Inc.",
       "quote": {
-        "c": 724.05,
-        "d": -9.1,
-        "dp": -1.2412,
-        "regular": 724.05,
-        "reg_d": -9.1,
-        "reg_dp": -1.2412,
+        "c": 724.6,
+        "d": -0.51,
+        "dp": -0.0703,
+        "regular": 725.11,
+        "reg_d": -8.04,
+        "reg_dp": -1.0966,
         "pre": null,
-        "post": null,
+        "post": 724.6,
         "prev_close": 733.15,
-        "phase": "正式盤"
+        "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Micron Technology: Is the Stock a No-Brainer Buy at Less Than $740?",
-          "datetime": 1794264808,
+          "headline": "Micron stock is a screaming buy at current valuation levels: Goldman Sachs",
+          "datetime": 1794347915,
           "source": "Yahoo Finance",
-          "url": "https://www.fool.com/investing/2026/11/09/micron-technology-is-the-stock-a-no-brainer-buy-at-less-than-740/"
+          "url": "https://finance.yahoo.com/markets/stocks/article/micron-stock-is-a-screaming-buy-at-current-valuation-levels-goldman-sachs-172852076.html"
         }
       ]
     },
     "SNDK": {
       "name": "Sandisk Corporation",
       "quote": {
-        "c": 861.16,
-        "d": -25.35,
-        "dp": -2.8595,
-        "regular": 861.16,
-        "reg_d": -25.35,
-        "reg_dp": -2.8595,
+        "c": 860.0,
+        "d": 0.01,
+        "dp": 0.0012,
+        "regular": 859.99,
+        "reg_d": -26.52,
+        "reg_dp": -2.9915,
         "pre": null,
-        "post": null,
+        "post": 860.0,
         "prev_close": 886.51,
-        "phase": "正式盤"
+        "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Intel took 25 years to get back to its dot-com peak — and lost it in 6 months: Chart of the Day",
-          "datetime": 1794264808,
+          "headline": "Micron & 2 Profitable Stocks to Buy Now for Explosive Upside",
+          "datetime": 1794347915,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/markets/article/intel-took-25-years-to-get-back-to-its-dot-com-peak--and-lost-it-in-6-months-chart-of-the-day-144715722.html"
+          "url": "https://finance.yahoo.com/markets/stocks/articles/micron-2-profitable-stocks-buy-190000487.html"
         }
       ]
     },
     "SPCX": {
       "name": "Space Exploration Technologies",
       "quote": {
-        "c": 142.47,
-        "d": 0.4,
-        "dp": 0.2815,
-        "regular": 142.47,
-        "reg_d": 0.4,
-        "reg_dp": 0.2816,
+        "c": 143.04,
+        "d": -0.05,
+        "dp": -0.0349,
+        "regular": 143.09,
+        "reg_d": 1.02,
+        "reg_dp": 0.718,
         "pre": null,
-        "post": null,
+        "post": 143.04,
         "prev_close": 142.07,
-        "phase": "正式盤"
+        "phase": "盤後"
       },
       "news": [
         {
-          "headline": "SpaceX, Rocket Lab blast higher as NASA hands out $10 billion in moon base awards",
-          "datetime": 1794264808,
+          "headline": "Nvidia in the hot seat, Anthropic to test the IPO market, hotter-than-expected US inflation",
+          "datetime": 1794347915,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/markets/article/spacex-rocket-lab-blast-higher-as-nasa-hands-out-10-billion-in-moon-base-awards-164320855.html"
+          "url": "https://finance.yahoo.com/video/nvidia-in-the-hot-seat-anthropic-to-test-the-ipo-market-hotter-than-expected-us-inflation-184626512.html"
         }
       ]
     },
@@ -204,45 +204,45 @@
       "name": "Ondas Inc",
       "quote": {
         "c": 5.61,
-        "d": -0.36,
-        "dp": -6.0168,
-        "regular": 5.61,
-        "reg_d": -0.36,
-        "reg_dp": -6.0168,
+        "d": 0.04,
+        "dp": 0.7145,
+        "regular": 5.57,
+        "reg_d": -0.4,
+        "reg_dp": -6.7002,
         "pre": null,
-        "post": null,
+        "post": 5.61,
         "prev_close": 5.97,
-        "phase": "正式盤"
+        "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Ondas Rallies 13% Ahead of Earnings, AeroVironment Jumps 10% on $315 Million Award; Red Cat Surges 10%",
-          "datetime": 1794264808,
+          "headline": "Ondas (ONDS) Received A Tactical Drone Purchase Order",
+          "datetime": 1794347915,
           "source": "Yahoo Finance",
-          "url": "https://247wallst.com/investing/2026/11/09/ondas-rallies-13-ahead-of-earnings-aerovironment-jumps-10-on-315-million-award-red-cat-surges-10/"
+          "url": "https://finance.yahoo.com/technology/articles/ondas-onds-received-tactical-drone-201015667.html"
         }
       ]
     },
     "PLTR": {
       "name": "Palantir Technologies Inc.",
       "quote": {
-        "c": 168.6,
-        "d": -0.6,
-        "dp": -0.3546,
-        "regular": 168.6,
-        "reg_d": -0.6,
-        "reg_dp": -0.3546,
+        "c": 169.2,
+        "d": 0.38,
+        "dp": 0.2251,
+        "regular": 168.82,
+        "reg_d": -0.38,
+        "reg_dp": -0.2246,
         "pre": null,
-        "post": null,
+        "post": 169.2,
         "prev_close": 169.2,
-        "phase": "正式盤"
+        "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Palantir Stocks Rise 5.96% as Former Senator Jon Tester Joins as Adviser",
-          "datetime": 1794264808,
+          "headline": "Supporting Your CFO in the AI Era, 6th Palm Beach CorpGov Forum",
+          "datetime": 1794347915,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/markets/stocks/articles/palantir-stocks-rise-5-96-183823596.html"
+          "url": "https://finance.yahoo.com/technology/ai/articles/supporting-cfo-ai-era-6th-201430862.html"
         }
       ]
     },
@@ -271,7 +271,7 @@
     }
   },
   "alert_sent": {
-    "morning": "2026-11-10",
+    "morning": "2026-11-11",
     "evening": "2026-11-10"
   }
 }
