@@ -1,7 +1,7 @@
 {
   "name": "美股盤前情報資料庫",
-  "updated_at": "2026-11-12T04:57:13.872687+08:00",
-  "next_update_at": "2026-11-11T21:05:00Z",
+  "updated_at": "2026-11-12T05:58:36.209741+08:00",
+  "next_update_at": "2026-11-11T22:30:00Z",
   "stocks": [
     "MSFT",
     "NVDA",
@@ -19,230 +19,230 @@
     "MSFT": {
       "name": "Microsoft Corporation",
       "quote": {
-        "c": 521.38,
-        "d": -11.78,
-        "dp": -2.2095,
-        "regular": 521.38,
-        "reg_d": -11.78,
-        "reg_dp": -2.2095,
+        "c": 520.07,
+        "d": -1.05,
+        "dp": -0.2024,
+        "regular": 521.12,
+        "reg_d": -12.03,
+        "reg_dp": -2.2573,
         "pre": null,
-        "post": null,
+        "post": 520.07,
         "prev_close": 533.16,
-        "phase": "正式盤"
+        "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Stock Market Today: Dow Dips As Yields Soar; Nvidia Dives; Anthropic Seeks This IPO Price",
-          "datetime": 1794347915,
+          "headline": "Is the AI boom hiding a jobs crisis for graduates?",
+          "datetime": 1794434316,
           "source": "Yahoo Finance",
-          "url": "https://www.investors.com/market-trend/stock-market-today/dow-jones-sp500-nasdaq-cpi-inflation-report-anthropic-ipo/?src=A00220&yptr=yahoo"
+          "url": "https://finance.yahoo.com/video/is-the-ai-boom-hiding-a-jobs-crisis-for-graduates-214503208.html"
         }
       ]
     },
     "NVDA": {
       "name": "NVIDIA Corporation",
       "quote": {
-        "c": 173.68,
-        "d": 4.88,
-        "dp": 2.8936,
-        "regular": 173.68,
-        "reg_d": 4.88,
-        "reg_dp": 2.8937,
+        "c": 169.48,
+        "d": -4.25,
+        "dp": -2.4463,
+        "regular": 173.73,
+        "reg_d": 4.93,
+        "reg_dp": 2.9233,
         "pre": null,
-        "post": null,
+        "post": 169.48,
         "prev_close": 168.8,
-        "phase": "正式盤"
+        "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Chip stocks' slide nears $5 trillion as Nvidia hits most extreme selling level since 2019",
-          "datetime": 1794347915,
+          "headline": "Anthropic's Mythos claim may put Nvidia’s CUDA moat in a vulnerable spot",
+          "datetime": 1794434316,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/markets/article/chip-stocks-slide-nears-5-trillion-as-nvidia-hits-most-extreme-selling-level-since-2019-191532559.html"
+          "url": "https://finance.yahoo.com/video/anthropics-mythos-claim-may-put-nvidias-cuda-moat-in-a-vulnerable-spot-214346380.html"
         }
       ]
     },
     "NOW": {
       "name": "ServiceNow, Inc.",
       "quote": {
-        "c": 102.9,
-        "d": 3.29,
-        "dp": 3.3029,
-        "regular": 102.9,
-        "reg_d": 3.29,
-        "reg_dp": 3.3029,
+        "c": 102.78,
+        "d": 0.02,
+        "dp": 0.0195,
+        "regular": 102.76,
+        "reg_d": 3.15,
+        "reg_dp": 3.1623,
         "pre": null,
-        "post": null,
+        "post": 102.78,
         "prev_close": 99.61,
-        "phase": "正式盤"
+        "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Why Has Workday Stock Trailed Cadence?",
-          "datetime": 1794347915,
+          "headline": "Docusign vs. ServiceNow: Which Technology Stock Is a Better Buy for 2027?",
+          "datetime": 1794434316,
           "source": "Yahoo Finance",
-          "url": "https://www.trefis.com/stock/wday/articles/624053/why-has-workday-stock-trailed-cadence/2026-11-10"
+          "url": "https://www.fool.com/coverage/better-buy/2026/11/11/docusign-vs-servicenow-which-technology-stock-is-a-better-buy-for-2027/"
         }
       ]
     },
     "TSM": {
       "name": "Taiwan Semiconductor Manufactur",
       "quote": {
-        "c": 412.87,
-        "d": 16.38,
-        "dp": 4.1326,
-        "regular": 412.87,
-        "reg_d": 16.38,
-        "reg_dp": 4.1326,
+        "c": 413.44,
+        "d": 0.09,
+        "dp": 0.0218,
+        "regular": 413.35,
+        "reg_d": 16.87,
+        "reg_dp": 4.2549,
         "pre": null,
-        "post": null,
+        "post": 413.44,
         "prev_close": 396.48,
-        "phase": "正式盤"
+        "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Taiwan Semiconductor Sales Jump 60% In October As AI Boom Continues",
-          "datetime": 1794347915,
+          "headline": "Cathie Wood, Brad Gerstner and 8 Other Big Funds Bought Cerebras. Is It a Buy Before Earnings?",
+          "datetime": 1794434316,
           "source": "Yahoo Finance",
-          "url": "https://www.investors.com/news/technology/tsm-stock-taiwan-semiconductor-october-2026-sales/?src=A00220&yptr=yahoo"
+          "url": "https://www.tikr.com/blog/cathie-wood-brad-gerstner-and-8-other-big-funds-bought-cerebras-is-it-a-buy-before-earnings?ref=yahoofinance&tlnk=yf-261111-qj8p8m8j"
         }
       ]
     },
     "MRVL": {
       "name": "Marvell Technology, Inc.",
       "quote": {
-        "c": 169.01,
-        "d": 14.62,
-        "dp": 9.4695,
-        "regular": 169.01,
-        "reg_d": 14.62,
-        "reg_dp": 9.4695,
+        "c": 170.7,
+        "d": 1.9,
+        "dp": 1.1256,
+        "regular": 168.8,
+        "reg_d": 14.41,
+        "reg_dp": 9.3335,
         "pre": null,
-        "post": null,
+        "post": 170.7,
         "prev_close": 154.39,
-        "phase": "正式盤"
+        "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Lumentum Sinks 11% in a Week as Marvell’s All-Stock Offer Shrinks: “Our Demand Couldn’t Be Stronger”",
-          "datetime": 1794347915,
+          "headline": "Marvell Acquires Lumentum in Blockbuster $80 Billion Deal",
+          "datetime": 1794434316,
           "source": "Yahoo Finance",
-          "url": "https://www.tikr.com/blog/lumentum-sinks-13-in-a-week-as-marvells-all-stock-offer-shrinks-our-demand-couldnt-be-stronger?ref=yahoofinance&tlnk=yf-261110-vr9m5442"
+          "url": "https://247wallst.com/videos/marvell-acquires-lumentum-in-blockbuster-80-billion-deal/"
         }
       ]
     },
     "MU": {
       "name": "Micron Technology, Inc.",
       "quote": {
-        "c": 811.73,
-        "d": 86.62,
-        "dp": 11.9458,
-        "regular": 811.73,
-        "reg_d": 86.62,
-        "reg_dp": 11.9458,
+        "c": 813.98,
+        "d": 2.68,
+        "dp": 0.3303,
+        "regular": 811.3,
+        "reg_d": 86.19,
+        "reg_dp": 11.8865,
         "pre": null,
-        "post": null,
+        "post": 813.98,
         "prev_close": 725.11,
-        "phase": "正式盤"
+        "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Micron stock is a screaming buy at current valuation levels: Goldman Sachs",
-          "datetime": 1794347915,
+          "headline": "AI Trade bounces back, Kalshi possibly facing charges, OpenAI continues to see heavy losses",
+          "datetime": 1794434316,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/markets/stocks/article/micron-stock-is-a-screaming-buy-at-current-valuation-levels-goldman-sachs-172852076.html"
+          "url": "https://finance.yahoo.com/video/ai-trade-bounces-back-kalshi-possibly-facing-charges-openai-continues-to-see-heavy-losses-144418293.html"
         }
       ]
     },
     "SNDK": {
       "name": "Sandisk Corporation",
       "quote": {
-        "c": 977.42,
-        "d": 117.43,
-        "dp": 13.6548,
-        "regular": 977.42,
-        "reg_d": 117.43,
-        "reg_dp": 13.6548,
+        "c": 983.08,
+        "d": 5.39,
+        "dp": 0.5512,
+        "regular": 977.69,
+        "reg_d": 117.7,
+        "reg_dp": 13.6862,
         "pre": null,
-        "post": null,
+        "post": 983.08,
         "prev_close": 859.99,
-        "phase": "正式盤"
+        "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Micron & 2 Profitable Stocks to Buy Now for Explosive Upside",
-          "datetime": 1794347915,
+          "headline": "Dow Jones Futures: CoreWeave, Sandisk, Nvidia, AMD, Nebius Lead Bullish Market Move; What To Do Now",
+          "datetime": 1794434316,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/markets/stocks/articles/micron-2-profitable-stocks-buy-190000487.html"
+          "url": "https://www.investors.com/market-trend/stock-market-today/dow-jones-futures-coreweave-sandisk-nvidia-amd-nebius-bloom/?src=A00220&yptr=yahoo"
         }
       ]
     },
     "SPCX": {
       "name": "Space Exploration Technologies",
       "quote": {
-        "c": 139.65,
-        "d": -3.44,
-        "dp": -2.4041,
-        "regular": 139.65,
-        "reg_d": -3.44,
-        "reg_dp": -2.4041,
+        "c": 140.16,
+        "d": 0.41,
+        "dp": 0.2927,
+        "regular": 139.75,
+        "reg_d": -3.34,
+        "reg_dp": -2.3342,
         "pre": null,
-        "post": null,
+        "post": 140.16,
         "prev_close": 143.09,
-        "phase": "正式盤"
+        "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Nvidia in the hot seat, Anthropic to test the IPO market, hotter-than-expected US inflation",
-          "datetime": 1794347915,
+          "headline": "Anthropic IPO eyes higher valuation as stronger demand pushes price up",
+          "datetime": 1794434316,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/video/nvidia-in-the-hot-seat-anthropic-to-test-the-ipo-market-hotter-than-expected-us-inflation-184626512.html"
+          "url": "https://finance.yahoo.com/video/anthropic-ipo-eyes-higher-valuation-as-stronger-demand-pushes-price-up-145520633.html"
         }
       ]
     },
     "ONDS": {
       "name": "Ondas Inc",
       "quote": {
-        "c": 5.74,
-        "d": 0.16,
-        "dp": 2.9623,
-        "regular": 5.74,
-        "reg_d": 0.17,
-        "reg_dp": 2.9623,
+        "c": 5.85,
+        "d": 0.12,
+        "dp": 2.0942,
+        "regular": 5.73,
+        "reg_d": 0.16,
+        "reg_dp": 2.8725,
         "pre": null,
-        "post": null,
+        "post": 5.85,
         "prev_close": 5.57,
-        "phase": "正式盤"
+        "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Ondas (ONDS) Received A Tactical Drone Purchase Order",
-          "datetime": 1794347915,
+          "headline": "ONDS Stock Rises Overnight: Ondas Scores New ‘Digital Bat’ Drones Order Ahead Of Earnings",
+          "datetime": 1794434316,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/technology/articles/ondas-onds-received-tactical-drone-201015667.html"
+          "url": "https://stocktwits.com/news-articles/markets/equity/onds-stock-rises-overnight-ondas-scores-new-digital-bat-drones-order-ahead-of-earnings/cNGDJKGR9JN"
         }
       ]
     },
     "PLTR": {
       "name": "Palantir Technologies Inc.",
       "quote": {
-        "c": 172.53,
-        "d": 3.71,
-        "dp": 2.2006,
-        "regular": 172.53,
-        "reg_d": 3.72,
-        "reg_dp": 2.2006,
+        "c": 171.0,
+        "d": -1.4,
+        "dp": -0.8118,
+        "regular": 172.4,
+        "reg_d": 3.58,
+        "reg_dp": 2.1206,
         "pre": null,
-        "post": null,
+        "post": 171.0,
         "prev_close": 168.82,
-        "phase": "正式盤"
+        "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Supporting Your CFO in the AI Era, 6th Palm Beach CorpGov Forum",
-          "datetime": 1794347915,
+          "headline": "3 Possible Paths Forward for AI Stocks (Bull Case, Bear Case, Base Case) -- and How to Invest for Each",
+          "datetime": 1794434316,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/technology/ai/articles/supporting-cfo-ai-era-6th-201430862.html"
+          "url": "https://www.fool.com/investing/2026/11/11/3-possible-paths-forward-for-ai-stocks-bull-case-b/"
         }
       ]
     },
@@ -271,7 +271,7 @@
     }
   },
   "alert_sent": {
-    "morning": "2026-11-11",
+    "morning": "2026-11-12",
     "evening": "2026-11-11"
   }
 }
