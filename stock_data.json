@@ -1,7 +1,7 @@
 {
   "name": "美股盤前情報資料庫",
-  "updated_at": "2026-11-13T04:52:32.626673+08:00",
-  "next_update_at": "2026-11-12T21:00:00Z",
+  "updated_at": "2026-11-13T05:58:32.924914+08:00",
+  "next_update_at": "2026-11-12T22:30:00Z",
   "stocks": [
     "MSFT",
     "NVDA",
@@ -19,184 +19,184 @@
     "MSFT": {
       "name": "Microsoft Corporation",
       "quote": {
-        "c": 521.5,
-        "d": 0.38,
-        "dp": 0.072,
-        "regular": 521.5,
-        "reg_d": 0.38,
-        "reg_dp": 0.072,
+        "c": 521.25,
+        "d": -1.75,
+        "dp": -0.3346,
+        "regular": 523.0,
+        "reg_d": 1.88,
+        "reg_dp": 0.3598,
         "pre": null,
-        "post": null,
+        "post": 521.25,
         "prev_close": 521.12,
-        "phase": "正式盤"
+        "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Is the AI boom hiding a jobs crisis for graduates?",
-          "datetime": 1794434316,
+          "headline": "Microsoft outage disrupts Outlook, Teams, and Copilot for users 'in any region'",
+          "datetime": 1794520712,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/video/is-the-ai-boom-hiding-a-jobs-crisis-for-graduates-214503208.html"
+          "url": "https://finance.yahoo.com/markets/article/microsoft-outage-disrupts-outlook-teams-and-copilot-for-users-in-any-region-212333470.html"
         }
       ]
     },
     "NVDA": {
       "name": "NVIDIA Corporation",
       "quote": {
-        "c": 165.37,
-        "d": -8.36,
-        "dp": -4.812,
-        "regular": 165.37,
-        "reg_d": -8.36,
-        "reg_dp": -4.812,
+        "c": 167.12,
+        "d": 0.93,
+        "dp": 0.5577,
+        "regular": 166.19,
+        "reg_d": -7.54,
+        "reg_dp": -4.3401,
         "pre": null,
-        "post": null,
+        "post": 167.12,
         "prev_close": 173.73,
-        "phase": "正式盤"
+        "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Anthropic's Mythos claim may put Nvidia’s CUDA moat in a vulnerable spot",
-          "datetime": 1794434316,
+          "headline": "Retail investors are buying Nvidia's stock crash like never before — history urges patience",
+          "datetime": 1794520712,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/video/anthropics-mythos-claim-may-put-nvidias-cuda-moat-in-a-vulnerable-spot-214346380.html"
+          "url": "https://finance.yahoo.com/markets/article/retail-investors-are-buying-nvidias-stock-crash-like-never-before--history-urges-patience-194808211.html"
         }
       ]
     },
     "NOW": {
       "name": "ServiceNow, Inc.",
       "quote": {
-        "c": 100.72,
-        "d": -2.04,
-        "dp": -1.9803,
-        "regular": 100.72,
-        "reg_d": -2.04,
-        "reg_dp": -1.9803,
+        "c": 100.64,
+        "d": -0.02,
+        "dp": -0.0199,
+        "regular": 100.66,
+        "reg_d": -2.1,
+        "reg_dp": -2.0436,
         "pre": null,
-        "post": null,
+        "post": 100.64,
         "prev_close": 102.76,
-        "phase": "正式盤"
+        "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Docusign vs. ServiceNow: Which Technology Stock Is a Better Buy for 2027?",
-          "datetime": 1794434316,
+          "headline": "ServiceNow Targets Back-Office AI Growth as EmployeeWorks Hits $100 Million",
+          "datetime": 1794520712,
           "source": "Yahoo Finance",
-          "url": "https://www.fool.com/coverage/better-buy/2026/11/11/docusign-vs-servicenow-which-technology-stock-is-a-better-buy-for-2027/"
+          "url": "https://www.marketbeat.com/instant-alerts/event-servicenow-targets-back-office-ai-growth-as-employeeworks-hits-100-million-2026-11-12/?utm_source=yahoofinance&utm_medium=yahoofinance"
         }
       ]
     },
     "TSM": {
       "name": "Taiwan Semiconductor Manufactur",
       "quote": {
-        "c": 405.5,
-        "d": -7.86,
-        "dp": -1.9003,
-        "regular": 405.5,
+        "c": 407.19,
+        "d": 1.7,
+        "dp": 0.4192,
+        "regular": 405.49,
         "reg_d": -7.86,
-        "reg_dp": -1.9003,
+        "reg_dp": -1.9015,
         "pre": null,
-        "post": null,
+        "post": 407.19,
         "prev_close": 413.35,
-        "phase": "正式盤"
+        "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Cathie Wood, Brad Gerstner and 8 Other Big Funds Bought Cerebras. Is It a Buy Before Earnings?",
-          "datetime": 1794434316,
+          "headline": "Ranking NVIDIA, Taiwan Semiconductor And Other AI Compute Stocks",
+          "datetime": 1794520712,
           "source": "Yahoo Finance",
-          "url": "https://www.tikr.com/blog/cathie-wood-brad-gerstner-and-8-other-big-funds-bought-cerebras-is-it-a-buy-before-earnings?ref=yahoofinance&tlnk=yf-261111-qj8p8m8j"
+          "url": "https://247wallst.com/videos/ranking-nvidia-taiwan-semiconductor-and-other-ai-compute-stocks/"
         }
       ]
     },
     "MRVL": {
       "name": "Marvell Technology, Inc.",
       "quote": {
-        "c": 164.29,
-        "d": -4.51,
-        "dp": -2.6688,
-        "regular": 164.29,
-        "reg_d": -4.51,
-        "reg_dp": -2.6688,
+        "c": 165.87,
+        "d": 1.42,
+        "dp": 0.8635,
+        "regular": 164.45,
+        "reg_d": -4.35,
+        "reg_dp": -2.577,
         "pre": null,
-        "post": null,
+        "post": 165.87,
         "prev_close": 168.8,
-        "phase": "正式盤"
+        "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Marvell Acquires Lumentum in Blockbuster $80 Billion Deal",
-          "datetime": 1794434316,
+          "headline": "Chip Stocks Finish Lower as Industry Digests Jensen Huang Exit",
+          "datetime": 1794520712,
           "source": "Yahoo Finance",
-          "url": "https://247wallst.com/videos/marvell-acquires-lumentum-in-blockbuster-80-billion-deal/"
+          "url": "https://www.wsj.com/livecoverage/stock-market-today-dow-sp-500-nasdaq-11-12-2026/card/chip-stocks-down-as-industry-digests-jensen-huang-exit-Lq6UDhwOoZUotX38oTUL?siteid=yhoof2&yptr=yahoo"
         }
       ]
     },
     "MU": {
       "name": "Micron Technology, Inc.",
       "quote": {
-        "c": 797.18,
-        "d": -14.12,
-        "dp": -1.7404,
-        "regular": 797.18,
-        "reg_d": -14.12,
-        "reg_dp": -1.7404,
+        "c": 802.92,
+        "d": 4.48,
+        "dp": 0.5611,
+        "regular": 798.44,
+        "reg_d": -12.86,
+        "reg_dp": -1.5851,
         "pre": null,
-        "post": null,
+        "post": 802.92,
         "prev_close": 811.3,
-        "phase": "正式盤"
+        "phase": "盤後"
       },
       "news": [
         {
-          "headline": "AI Trade bounces back, Kalshi possibly facing charges, OpenAI continues to see heavy losses",
-          "datetime": 1794434316,
+          "headline": "Nvidia Tumbles as its CEO Jensen Huang Departs Amid Multiplying Scandals",
+          "datetime": 1794520712,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/video/ai-trade-bounces-back-kalshi-possibly-facing-charges-openai-continues-to-see-heavy-losses-144418293.html"
+          "url": "https://www.wsj.com/finance/stocks/nvidia-tumbles-as-its-ceo-jensen-huang-departs-amid-multiplying-scandals-d380df1f?siteid=yhoof2&yptr=yahoo"
         }
       ]
     },
     "SNDK": {
       "name": "Sandisk Corporation",
       "quote": {
-        "c": 936.74,
-        "d": -40.95,
-        "dp": -4.1884,
-        "regular": 936.74,
-        "reg_d": -40.95,
-        "reg_dp": -4.1884,
+        "c": 942.0,
+        "d": 4.54,
+        "dp": 0.4843,
+        "regular": 937.46,
+        "reg_d": -40.23,
+        "reg_dp": -4.1148,
         "pre": null,
-        "post": null,
+        "post": 942.0,
         "prev_close": 977.69,
-        "phase": "正式盤"
+        "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Dow Jones Futures: CoreWeave, Sandisk, Nvidia, AMD, Nebius Lead Bullish Market Move; What To Do Now",
-          "datetime": 1794434316,
+          "headline": "Sandisk Stocks Slide 7.83% as NVIDIA Exit Hits Storage a Week Before 8-for-1 Split",
+          "datetime": 1794520712,
           "source": "Yahoo Finance",
-          "url": "https://www.investors.com/market-trend/stock-market-today/dow-jones-futures-coreweave-sandisk-nvidia-amd-nebius-bloom/?src=A00220&yptr=yahoo"
+          "url": "https://finance.yahoo.com/markets/stocks/articles/sandisk-stocks-slide-7-83-194401943.html"
         }
       ]
     },
     "SPCX": {
       "name": "Space Exploration Technologies",
       "quote": {
-        "c": 141.29,
-        "d": 1.54,
-        "dp": 1.102,
-        "regular": 141.29,
-        "reg_d": 1.54,
-        "reg_dp": 1.102,
+        "c": 140.73,
+        "d": 0.79,
+        "dp": 0.5645,
+        "regular": 139.94,
+        "reg_d": 0.19,
+        "reg_dp": 0.136,
         "pre": null,
-        "post": null,
+        "post": 140.73,
         "prev_close": 139.75,
-        "phase": "正式盤"
+        "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Anthropic IPO eyes higher valuation as stronger demand pushes price up",
-          "datetime": 1794434316,
+          "headline": "United Airlines CEO: Starlink is our biggest competitive advantage in 100 years",
+          "datetime": 1794520712,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/video/anthropic-ipo-eyes-higher-valuation-as-stronger-demand-pushes-price-up-145520633.html"
+          "url": "https://finance.yahoo.com/markets/article/united-airlines-ceo-starlink-is-our-biggest-competitive-advantage-in-100-years-212741824.html"
         }
       ]
     },
@@ -204,45 +204,45 @@
       "name": "Ondas Inc",
       "quote": {
         "c": 5.32,
-        "d": -0.41,
-        "dp": -7.2426,
+        "d": 0.0,
+        "dp": 0.0,
         "regular": 5.32,
-        "reg_d": -0.42,
-        "reg_dp": -7.2426,
+        "reg_d": -0.41,
+        "reg_dp": -7.1553,
         "pre": null,
-        "post": null,
+        "post": 5.32,
         "prev_close": 5.73,
-        "phase": "正式盤"
+        "phase": "盤後"
       },
       "news": [
         {
-          "headline": "ONDS Stock Rises Overnight: Ondas Scores New ‘Digital Bat’ Drones Order Ahead Of Earnings",
-          "datetime": 1794434316,
+          "headline": "Ondas Q3 Earnings Call Highlights",
+          "datetime": 1794520712,
           "source": "Yahoo Finance",
-          "url": "https://stocktwits.com/news-articles/markets/equity/onds-stock-rises-overnight-ondas-scores-new-digital-bat-drones-order-ahead-of-earnings/cNGDJKGR9JN"
+          "url": "https://www.marketbeat.com/instant-alerts/transcript-ondas-q3-earnings-call-highlights-2026-11-12/?utm_source=yahoofinance&utm_medium=yahoofinance"
         }
       ]
     },
     "PLTR": {
       "name": "Palantir Technologies Inc.",
       "quote": {
-        "c": 171.52,
-        "d": -0.88,
-        "dp": -0.5104,
-        "regular": 171.52,
-        "reg_d": -0.88,
-        "reg_dp": -0.5104,
+        "c": 171.73,
+        "d": 0.15,
+        "dp": 0.0874,
+        "regular": 171.58,
+        "reg_d": -0.82,
+        "reg_dp": -0.4756,
         "pre": null,
-        "post": null,
+        "post": 171.73,
         "prev_close": 172.4,
-        "phase": "正式盤"
+        "phase": "盤後"
       },
       "news": [
         {
-          "headline": "3 Possible Paths Forward for AI Stocks (Bull Case, Bear Case, Base Case) -- and How to Invest for Each",
-          "datetime": 1794434316,
+          "headline": "Drone Maker Ondas Updates Its Profitability Forecast as Revenue Surges 1,558%",
+          "datetime": 1794520712,
           "source": "Yahoo Finance",
-          "url": "https://www.fool.com/investing/2026/11/11/3-possible-paths-forward-for-ai-stocks-bull-case-b/"
+          "url": "https://www.barrons.com/articles/ondas-earnings-stock-price-palantir-240cf71c?siteid=yhoof2&yptr=yahoo"
         }
       ]
     },
@@ -271,7 +271,7 @@
     }
   },
   "alert_sent": {
-    "morning": "2026-11-12",
+    "morning": "2026-11-13",
     "evening": "2026-11-12"
   }
 }
