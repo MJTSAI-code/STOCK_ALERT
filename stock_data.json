@@ -1,7 +1,7 @@
 {
   "name": "美股盤前情報資料庫",
-  "updated_at": "2026-11-17T06:04:31.667744+08:00",
-  "next_update_at": "2026-11-16T23:00:00Z",
+  "updated_at": "2026-11-17T06:45:17.329868+08:00",
+  "next_update_at": "2026-11-16T23:30:00Z",
   "stocks": [
     "MSFT",
     "NVDA",
@@ -19,44 +19,44 @@
     "MSFT": {
       "name": "Microsoft Corporation",
       "quote": {
-        "c": 517.7,
-        "d": -0.29,
-        "dp": -0.056,
+        "c": 518.56,
+        "d": 0.57,
+        "dp": 0.1105,
         "regular": 517.99,
         "reg_d": -5.89,
         "reg_dp": -1.1243,
         "pre": null,
-        "post": 517.7,
+        "post": 518.56,
         "prev_close": 523.88,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "What's dragging down the S&P 500? Apple in focus",
-          "datetime": 1794866671,
+          "headline": "Customers report difficulty accessing online services at major US banks",
+          "datetime": 1794869117,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/video/whats-dragging-down-the-sp-500-apple-in-focus-214949304.html"
+          "url": "https://finance.yahoo.com/markets/articles/customers-report-difficulty-accessing-online-220140007.html"
         }
       ]
     },
     "NVDA": {
       "name": "NVIDIA Corporation",
       "quote": {
-        "c": 155.85,
-        "d": -0.29,
-        "dp": -0.1857,
+        "c": 156.14,
+        "d": 0.0,
+        "dp": 0.0,
         "regular": 156.14,
         "reg_d": -6.71,
         "reg_dp": -4.1204,
         "pre": null,
-        "post": 155.85,
+        "post": 156.14,
         "prev_close": 162.85,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Nvidia stock valuation looks 'draconian,' even without Jensen Huang: Analyst",
-          "datetime": 1794866671,
+          "datetime": 1794869117,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/markets/stocks/article/nvidia-stock-valuation-looks-draconian-even-without-jensen-huang-analyst-220000337.html"
         }
@@ -65,21 +65,21 @@
     "NOW": {
       "name": "ServiceNow, Inc.",
       "quote": {
-        "c": 99.41,
-        "d": 0.04,
-        "dp": 0.0403,
+        "c": 99.49,
+        "d": 0.12,
+        "dp": 0.1208,
         "regular": 99.37,
         "reg_d": -2.88,
         "reg_dp": -2.8166,
         "pre": null,
-        "post": 99.41,
+        "post": 99.49,
         "prev_close": 102.25,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "ServiceNow Stock’s (NOW) Historic Sell-Off May Have Gone Too Far",
-          "datetime": 1794866671,
+          "datetime": 1794869117,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/markets/stocks/articles/servicenow-stock-now-historic-sell-213800295.html"
         }
@@ -88,113 +88,113 @@
     "TSM": {
       "name": "Taiwan Semiconductor Manufactur",
       "quote": {
-        "c": 374.25,
-        "d": 0.8,
-        "dp": 0.2142,
+        "c": 375.39,
+        "d": 1.94,
+        "dp": 0.5195,
         "regular": 373.45,
         "reg_d": -25.28,
         "reg_dp": -6.3401,
         "pre": null,
-        "post": 374.25,
+        "post": 375.39,
         "prev_close": 398.73,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "TSMC Slumps Nearly 6% as Jensen Huang’s Exit and AI Debt Fears Rattle Investors Ahead of Nvidia Earnings",
-          "datetime": 1794866671,
+          "headline": "Top Analyst Reports for Taiwan Semiconductor, Johnson & Johnson and Palantir",
+          "datetime": 1794869117,
           "source": "Yahoo Finance",
-          "url": "https://www.benzinga.com/markets/prediction-markets/26/11/63319299/tsmc-nvidia-financing?utm_source=yahooFinance&utm_campaign=partner_feed&utm_medium=referral"
+          "url": "https://finance.yahoo.com/markets/stocks/articles/top-analyst-reports-taiwan-semiconductor-205900812.html"
         }
       ]
     },
     "MRVL": {
       "name": "Marvell Technology, Inc.",
       "quote": {
-        "c": 145.5,
-        "d": 0.14,
-        "dp": 0.0963,
+        "c": 145.7,
+        "d": 0.34,
+        "dp": 0.2339,
         "regular": 145.36,
         "reg_d": -11.4,
         "reg_dp": -7.2723,
         "pre": null,
-        "post": 145.5,
+        "post": 145.7,
         "prev_close": 156.76,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "What Mattered Most In Cerebras's Latest Quarter?",
-          "datetime": 1794866671,
+          "headline": "5 Unstoppable Stocks to Buy According to Analysts",
+          "datetime": 1794869117,
           "source": "Yahoo Finance",
-          "url": "https://www.trefis.com/stock/cbrs/articles/625166/what-mattered-most-in-cerebrass-latest-quarter/2026-11-16"
+          "url": "https://finance.yahoo.com/markets/stocks/articles/5-unstoppable-stocks-buy-according-220213130.html"
         }
       ]
     },
     "MU": {
       "name": "Micron Technology, Inc.",
       "quote": {
-        "c": 719.5,
-        "d": 0.48,
-        "dp": 0.0668,
+        "c": 720.7,
+        "d": 1.68,
+        "dp": 0.2337,
         "regular": 719.02,
         "reg_d": -59.29,
         "reg_dp": -7.6178,
         "pre": null,
-        "post": 719.5,
+        "post": 720.7,
         "prev_close": 778.31,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Dow Jones Futures: AMD, Nvidia, Micron Lead AI Trade Lower With Nvidia Earnings On Deck",
-          "datetime": 1794866671,
+          "headline": "5 Unstoppable Stocks to Buy According to Analysts",
+          "datetime": 1794869117,
           "source": "Yahoo Finance",
-          "url": "https://www.investors.com/market-trend/stock-market-today/dow-jones-futures-nvidia-stock-nvda-nvidia-earnings-next/?src=A00220&yptr=yahoo"
+          "url": "https://finance.yahoo.com/markets/stocks/articles/5-unstoppable-stocks-buy-according-220213130.html"
         }
       ]
     },
     "SNDK": {
       "name": "Sandisk Corporation",
       "quote": {
-        "c": 810.04,
-        "d": 0.93,
-        "dp": 0.1149,
+        "c": 812.51,
+        "d": 3.4,
+        "dp": 0.4202,
         "regular": 809.11,
         "reg_d": -75.9,
         "reg_dp": -8.5762,
         "pre": null,
-        "post": 810.04,
+        "post": 812.51,
         "prev_close": 885.01,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Nvidia, Sandisk, SpaceX, L3Harris, Strategy, Tyson, and More Stocks That Explain Today’s Market",
-          "datetime": 1794866671,
+          "headline": "5 Unstoppable Stocks to Buy According to Analysts",
+          "datetime": 1794869117,
           "source": "Yahoo Finance",
-          "url": "https://www.barrons.com/articles/stock-movers-dcfe4add?siteid=yhoof2&yptr=yahoo"
+          "url": "https://finance.yahoo.com/markets/stocks/articles/5-unstoppable-stocks-buy-according-220213130.html"
         }
       ]
     },
     "SPCX": {
       "name": "Space Exploration Technologies",
       "quote": {
-        "c": 137.55,
-        "d": 0.19,
-        "dp": 0.1383,
+        "c": 137.81,
+        "d": 0.45,
+        "dp": 0.3259,
         "regular": 137.36,
         "reg_d": -1.75,
         "reg_dp": -1.258,
         "pre": null,
-        "post": 137.55,
+        "post": 137.81,
         "prev_close": 139.11,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Anthropic gears up for the largest IPO in history, but do the economics work?",
-          "datetime": 1794866671,
+          "datetime": 1794869117,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/video/anthropic-gears-up-for-the-largest-ipo-in-history-but-do-the-economics-work-154323636.html"
         }
@@ -203,21 +203,21 @@
     "ONDS": {
       "name": "Ondas Inc",
       "quote": {
-        "c": 4.68,
-        "d": -0.03,
-        "dp": -0.6369,
+        "c": 4.69,
+        "d": -0.02,
+        "dp": -0.4246,
         "regular": 4.71,
         "reg_d": -0.45,
         "reg_dp": -8.7209,
         "pre": null,
-        "post": 4.68,
+        "post": 4.69,
         "prev_close": 5.16,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Ondas Falls 8% Despite $1.1 Billion 2027 Revenue Target as Drone Stocks Extend Losses; Red Cat Drops 5%, Unusual Machines Slides 4%",
-          "datetime": 1794866671,
+          "datetime": 1794869117,
           "source": "Yahoo Finance",
           "url": "https://247wallst.com/investing/2026/11/16/ondas-falls-8-despite-1-1-billion-2027-revenue-target-as-drone-stocks-extend-losses-red-cat-drops-5-unusual-machines-slides-4/"
         }
@@ -226,21 +226,21 @@
     "PLTR": {
       "name": "Palantir Technologies Inc.",
       "quote": {
-        "c": 160.18,
-        "d": -0.21,
-        "dp": -0.1309,
+        "c": 160.09,
+        "d": -0.3,
+        "dp": -0.1852,
         "regular": 160.39,
         "reg_d": -7.6,
         "reg_dp": -4.5241,
         "pre": null,
-        "post": 160.18,
+        "post": 160.09,
         "prev_close": 167.99,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Top 3 Growth Stocks To Watch In November 2026",
-          "datetime": 1794866671,
+          "datetime": 1794869117,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/markets/stocks/articles/top-3-growth-stocks-watch-211558743.html"
         }
