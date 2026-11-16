@@ -1,7 +1,7 @@
 {
   "name": "美股盤前情報資料庫",
-  "updated_at": "2026-11-17T04:54:43.310068+08:00",
-  "next_update_at": "2026-11-16T21:00:00Z",
+  "updated_at": "2026-11-17T06:04:31.667744+08:00",
+  "next_update_at": "2026-11-16T23:00:00Z",
   "stocks": [
     "MSFT",
     "NVDA",
@@ -19,230 +19,230 @@
     "MSFT": {
       "name": "Microsoft Corporation",
       "quote": {
-        "c": 518.38,
-        "d": -5.5,
-        "dp": -1.0499,
-        "regular": 518.38,
-        "reg_d": -5.5,
-        "reg_dp": -1.0499,
+        "c": 517.7,
+        "d": -0.29,
+        "dp": -0.056,
+        "regular": 517.99,
+        "reg_d": -5.89,
+        "reg_dp": -1.1243,
         "pre": null,
-        "post": null,
+        "post": 517.7,
         "prev_close": 523.88,
-        "phase": "正式盤"
+        "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Cerebras stock surges on Microsoft deal: What it means for Nvidia",
-          "datetime": 1794607116,
+          "headline": "What's dragging down the S&P 500? Apple in focus",
+          "datetime": 1794866671,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/video/cerebras-stock-surges-on-microsoft-deal-what-it-means-for-nvidia-213123807.html"
+          "url": "https://finance.yahoo.com/video/whats-dragging-down-the-sp-500-apple-in-focus-214949304.html"
         }
       ]
     },
     "NVDA": {
       "name": "NVIDIA Corporation",
       "quote": {
-        "c": 155.8,
-        "d": -7.05,
-        "dp": -4.3291,
-        "regular": 155.8,
-        "reg_d": -7.05,
-        "reg_dp": -4.3291,
+        "c": 155.85,
+        "d": -0.29,
+        "dp": -0.1857,
+        "regular": 156.14,
+        "reg_d": -6.71,
+        "reg_dp": -4.1204,
         "pre": null,
-        "post": null,
+        "post": 155.85,
         "prev_close": 162.85,
-        "phase": "正式盤"
+        "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Cerebras stock surges on Microsoft deal: What it means for Nvidia",
-          "datetime": 1794607116,
+          "headline": "Nvidia stock valuation looks 'draconian,' even without Jensen Huang: Analyst",
+          "datetime": 1794866671,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/video/cerebras-stock-surges-on-microsoft-deal-what-it-means-for-nvidia-213123807.html"
+          "url": "https://finance.yahoo.com/markets/stocks/article/nvidia-stock-valuation-looks-draconian-even-without-jensen-huang-analyst-220000337.html"
         }
       ]
     },
     "NOW": {
       "name": "ServiceNow, Inc.",
       "quote": {
-        "c": 99.68,
-        "d": -2.57,
-        "dp": -2.5182,
-        "regular": 99.68,
-        "reg_d": -2.57,
-        "reg_dp": -2.5182,
+        "c": 99.41,
+        "d": 0.04,
+        "dp": 0.0403,
+        "regular": 99.37,
+        "reg_d": -2.88,
+        "reg_dp": -2.8166,
         "pre": null,
-        "post": null,
+        "post": 99.41,
         "prev_close": 102.25,
-        "phase": "正式盤"
+        "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Are You Overpaying For Datadog Stock Versus Its Rivals?",
-          "datetime": 1794607116,
+          "headline": "ServiceNow Stock’s (NOW) Historic Sell-Off May Have Gone Too Far",
+          "datetime": 1794866671,
           "source": "Yahoo Finance",
-          "url": "https://www.trefis.com/stock/ddog/articles/624976/are-you-overpaying-for-datadog-stock-versus-its-rivals/2026-11-13"
+          "url": "https://finance.yahoo.com/markets/stocks/articles/servicenow-stock-now-historic-sell-213800295.html"
         }
       ]
     },
     "TSM": {
       "name": "Taiwan Semiconductor Manufactur",
       "quote": {
-        "c": 374.15,
-        "d": -24.58,
-        "dp": -6.1633,
-        "regular": 374.15,
-        "reg_d": -24.58,
-        "reg_dp": -6.1633,
+        "c": 374.25,
+        "d": 0.8,
+        "dp": 0.2142,
+        "regular": 373.45,
+        "reg_d": -25.28,
+        "reg_dp": -6.3401,
         "pre": null,
-        "post": null,
+        "post": 374.25,
         "prev_close": 398.73,
-        "phase": "正式盤"
+        "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Nvidia stock slips as investors digest CEO exit, broader chip sell-off accelerates",
-          "datetime": 1794607116,
+          "headline": "TSMC Slumps Nearly 6% as Jensen Huang’s Exit and AI Debt Fears Rattle Investors Ahead of Nvidia Earnings",
+          "datetime": 1794866671,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/markets/article/nvidia-stock-slips-as-investors-digest-ceo-exit-rest-of-chip-sector-falls-144818245.html"
+          "url": "https://www.benzinga.com/markets/prediction-markets/26/11/63319299/tsmc-nvidia-financing?utm_source=yahooFinance&utm_campaign=partner_feed&utm_medium=referral"
         }
       ]
     },
     "MRVL": {
       "name": "Marvell Technology, Inc.",
       "quote": {
-        "c": 145.6,
-        "d": -11.16,
-        "dp": -7.1192,
-        "regular": 145.6,
-        "reg_d": -11.16,
-        "reg_dp": -7.1192,
+        "c": 145.5,
+        "d": 0.14,
+        "dp": 0.0963,
+        "regular": 145.36,
+        "reg_d": -11.4,
+        "reg_dp": -7.2723,
         "pre": null,
-        "post": null,
+        "post": 145.5,
         "prev_close": 156.76,
-        "phase": "正式盤"
+        "phase": "盤後"
       },
       "news": [
         {
-          "headline": "The Deal Behind TD Cowen’s Downgrade of Marvell (MRVL)",
-          "datetime": 1794607116,
+          "headline": "What Mattered Most In Cerebras's Latest Quarter?",
+          "datetime": 1794866671,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/markets/stocks/articles/deal-behind-td-cowen-downgrade-213101784.html"
+          "url": "https://www.trefis.com/stock/cbrs/articles/625166/what-mattered-most-in-cerebrass-latest-quarter/2026-11-16"
         }
       ]
     },
     "MU": {
       "name": "Micron Technology, Inc.",
       "quote": {
-        "c": 720.05,
-        "d": -58.26,
-        "dp": -7.4848,
-        "regular": 720.05,
-        "reg_d": -58.25,
-        "reg_dp": -7.4848,
+        "c": 719.5,
+        "d": 0.48,
+        "dp": 0.0668,
+        "regular": 719.02,
+        "reg_d": -59.29,
+        "reg_dp": -7.6178,
         "pre": null,
-        "post": null,
+        "post": 719.5,
         "prev_close": 778.31,
-        "phase": "正式盤"
+        "phase": "盤後"
       },
       "news": [
         {
-          "headline": "5 Multibagger Stocks to Buy According to Wall Street",
-          "datetime": 1794607116,
+          "headline": "Dow Jones Futures: AMD, Nvidia, Micron Lead AI Trade Lower With Nvidia Earnings On Deck",
+          "datetime": 1794866671,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/markets/stocks/articles/5-multibagger-stocks-buy-according-213206089.html"
+          "url": "https://www.investors.com/market-trend/stock-market-today/dow-jones-futures-nvidia-stock-nvda-nvidia-earnings-next/?src=A00220&yptr=yahoo"
         }
       ]
     },
     "SNDK": {
       "name": "Sandisk Corporation",
       "quote": {
-        "c": 812.5,
-        "d": -72.51,
-        "dp": -8.1926,
-        "regular": 812.5,
-        "reg_d": -72.5,
-        "reg_dp": -8.1926,
+        "c": 810.04,
+        "d": 0.93,
+        "dp": 0.1149,
+        "regular": 809.11,
+        "reg_d": -75.9,
+        "reg_dp": -8.5762,
         "pre": null,
-        "post": null,
+        "post": 810.04,
         "prev_close": 885.01,
-        "phase": "正式盤"
+        "phase": "盤後"
       },
       "news": [
         {
-          "headline": "5 Multibagger Stocks to Buy According to Wall Street",
-          "datetime": 1794607116,
+          "headline": "Nvidia, Sandisk, SpaceX, L3Harris, Strategy, Tyson, and More Stocks That Explain Today’s Market",
+          "datetime": 1794866671,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/markets/stocks/articles/5-multibagger-stocks-buy-according-213206089.html"
+          "url": "https://www.barrons.com/articles/stock-movers-dcfe4add?siteid=yhoof2&yptr=yahoo"
         }
       ]
     },
     "SPCX": {
       "name": "Space Exploration Technologies",
       "quote": {
-        "c": 139.55,
-        "d": 0.44,
-        "dp": 0.3163,
-        "regular": 139.55,
-        "reg_d": 0.44,
-        "reg_dp": 0.3163,
+        "c": 137.55,
+        "d": 0.19,
+        "dp": 0.1383,
+        "regular": 137.36,
+        "reg_d": -1.75,
+        "reg_dp": -1.258,
         "pre": null,
-        "post": null,
+        "post": 137.55,
         "prev_close": 139.11,
-        "phase": "正式盤"
+        "phase": "盤後"
       },
       "news": [
         {
-          "headline": "SpaceX faces key launch test tonight with 'double catch' of Starship and Super Heavy Booster",
-          "datetime": 1794607116,
+          "headline": "Anthropic gears up for the largest IPO in history, but do the economics work?",
+          "datetime": 1794866671,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/markets/stocks/article/spacex-faces-key-launch-test-tonight-with-double-catch-of-starship-and-super-heavy-booster-170032171.html"
+          "url": "https://finance.yahoo.com/video/anthropic-gears-up-for-the-largest-ipo-in-history-but-do-the-economics-work-154323636.html"
         }
       ]
     },
     "ONDS": {
       "name": "Ondas Inc",
       "quote": {
-        "c": 4.73,
-        "d": -0.43,
-        "dp": -8.3333,
-        "regular": 4.73,
-        "reg_d": -0.43,
-        "reg_dp": -8.3333,
+        "c": 4.68,
+        "d": -0.03,
+        "dp": -0.6369,
+        "regular": 4.71,
+        "reg_d": -0.45,
+        "reg_dp": -8.7209,
         "pre": null,
-        "post": null,
+        "post": 4.68,
         "prev_close": 5.16,
-        "phase": "正式盤"
+        "phase": "盤後"
       },
       "news": [
         {
-          "headline": "ONDS Q3 Earnings Call Highlights Growth Targets and Margin Pressures",
-          "datetime": 1794607116,
+          "headline": "Ondas Falls 8% Despite $1.1 Billion 2027 Revenue Target as Drone Stocks Extend Losses; Red Cat Drops 5%, Unusual Machines Slides 4%",
+          "datetime": 1794866671,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/markets/stocks/articles/onds-q3-earnings-call-highlights-180800136.html"
+          "url": "https://247wallst.com/investing/2026/11/16/ondas-falls-8-despite-1-1-billion-2027-revenue-target-as-drone-stocks-extend-losses-red-cat-drops-5-unusual-machines-slides-4/"
         }
       ]
     },
     "PLTR": {
       "name": "Palantir Technologies Inc.",
       "quote": {
-        "c": 160.41,
-        "d": -7.58,
-        "dp": -4.5092,
-        "regular": 160.41,
-        "reg_d": -7.58,
-        "reg_dp": -4.5092,
+        "c": 160.18,
+        "d": -0.21,
+        "dp": -0.1309,
+        "regular": 160.39,
+        "reg_d": -7.6,
+        "reg_dp": -4.5241,
         "pre": null,
-        "post": null,
+        "post": 160.18,
         "prev_close": 167.99,
-        "phase": "正式盤"
+        "phase": "盤後"
       },
       "news": [
         {
-          "headline": "PLTR's Rule of 40 Hits 158%: Can This Momentum Continue?",
-          "datetime": 1794607116,
+          "headline": "Top 3 Growth Stocks To Watch In November 2026",
+          "datetime": 1794866671,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/markets/stocks/articles/pltrs-rule-40-hits-158-174000798.html"
+          "url": "https://finance.yahoo.com/markets/stocks/articles/top-3-growth-stocks-watch-211558743.html"
         }
       ]
     },
@@ -271,7 +271,7 @@
     }
   },
   "alert_sent": {
-    "morning": "2026-11-14",
+    "morning": "2026-11-17",
     "evening": "2026-11-16"
   }
 }
