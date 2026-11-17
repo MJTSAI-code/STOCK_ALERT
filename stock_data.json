@@ -1,7 +1,7 @@
 {
   "name": "美股盤前情報資料庫",
-  "updated_at": "2026-11-18T04:52:31.243651+08:00",
-  "next_update_at": "2026-11-17T21:00:00Z",
+  "updated_at": "2026-11-18T05:31:41.285478+08:00",
+  "next_update_at": "2026-11-17T22:30:00Z",
   "stocks": [
     "MSFT",
     "NVDA",
@@ -19,230 +19,230 @@
     "MSFT": {
       "name": "Microsoft Corporation",
       "quote": {
-        "c": 504.68,
-        "d": -13.31,
-        "dp": -2.5695,
-        "regular": 504.68,
-        "reg_d": -13.31,
-        "reg_dp": -2.5695,
+        "c": 506.34,
+        "d": 0.1,
+        "dp": 0.0198,
+        "regular": 506.24,
+        "reg_d": -11.75,
+        "reg_dp": -2.2684,
         "pre": null,
-        "post": null,
+        "post": 506.34,
         "prev_close": 517.99,
-        "phase": "正式盤"
+        "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Customers report difficulty accessing online services at major US banks",
-          "datetime": 1794869117,
+          "headline": "Microsoft's AI pitch at Ignite: Cheaper models as business 'token spend is going through the roof'",
+          "datetime": 1794951101,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/markets/articles/customers-report-difficulty-accessing-online-220140007.html"
+          "url": "https://finance.yahoo.com/markets/article/microsoft-ignite-focuses-on-ai-models-for-specific-tasks-lowering-costs-for-enterprise-203433266.html"
         }
       ]
     },
     "NVDA": {
       "name": "NVIDIA Corporation",
       "quote": {
-        "c": 153.75,
-        "d": -2.39,
-        "dp": -1.5307,
-        "regular": 153.75,
-        "reg_d": -2.39,
-        "reg_dp": -1.5307,
+        "c": 160.67,
+        "d": 5.21,
+        "dp": 3.3519,
+        "regular": 155.46,
+        "reg_d": -0.68,
+        "reg_dp": -0.4355,
         "pre": null,
-        "post": null,
+        "post": 160.67,
         "prev_close": 156.14,
-        "phase": "正式盤"
+        "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Nvidia stock valuation looks 'draconian,' even without Jensen Huang: Analyst",
-          "datetime": 1794869117,
+          "headline": "Memo to Nvidia interim CEO Colette Kress: Remind the world why you've been Jensen Huang's CFO for 13-plus years",
+          "datetime": 1794951101,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/markets/stocks/article/nvidia-stock-valuation-looks-draconian-even-without-jensen-huang-analyst-220000337.html"
+          "url": "https://finance.yahoo.com/markets/stocks/article/memo-to-nvidia-interim-ceo-colette-kress-remind-the-world-why-youve-been-jensen-huangs-cfo-for-13-plus-years-200000740.html"
         }
       ]
     },
     "NOW": {
       "name": "ServiceNow, Inc.",
       "quote": {
-        "c": 92.5,
-        "d": -6.87,
-        "dp": -6.9085,
-        "regular": 92.5,
-        "reg_d": -6.87,
-        "reg_dp": -6.9085,
+        "c": 93.2,
+        "d": 0.3,
+        "dp": 0.3229,
+        "regular": 92.9,
+        "reg_d": -6.47,
+        "reg_dp": -6.511,
         "pre": null,
-        "post": null,
+        "post": 93.2,
         "prev_close": 99.37,
-        "phase": "正式盤"
+        "phase": "盤後"
       },
       "news": [
         {
-          "headline": "ServiceNow Stock’s (NOW) Historic Sell-Off May Have Gone Too Far",
-          "datetime": 1794869117,
+          "headline": "Why ServiceNow Stock Is Moving On Software Outages And Cyber Risk",
+          "datetime": 1794951101,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/markets/stocks/articles/servicenow-stock-now-historic-sell-213800295.html"
+          "url": "https://finance.yahoo.com/markets/stocks/articles/why-servicenow-stock-moving-software-181013301.html"
         }
       ]
     },
     "TSM": {
       "name": "Taiwan Semiconductor Manufactur",
       "quote": {
-        "c": 358.75,
-        "d": -14.7,
-        "dp": -3.9363,
-        "regular": 358.75,
-        "reg_d": -14.7,
-        "reg_dp": -3.9363,
+        "c": 372.0,
+        "d": 12.31,
+        "dp": 3.4224,
+        "regular": 359.69,
+        "reg_d": -13.76,
+        "reg_dp": -3.6846,
         "pre": null,
-        "post": null,
+        "post": 372.0,
         "prev_close": 373.45,
-        "phase": "正式盤"
+        "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Top Analyst Reports for Taiwan Semiconductor, Johnson & Johnson and Palantir",
-          "datetime": 1794869117,
+          "headline": "Surging AI Demand and Advanced Chipmaking Strengthens Taiwan Semiconductor Manufacturing Company Limited (TSM) Growth Outlook",
+          "datetime": 1794951101,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/markets/stocks/articles/top-analyst-reports-taiwan-semiconductor-205900812.html"
+          "url": "https://finance.yahoo.com/technology/ai/articles/surging-ai-demand-advanced-chipmaking-202155834.html"
         }
       ]
     },
     "MRVL": {
       "name": "Marvell Technology, Inc.",
       "quote": {
-        "c": 146.08,
-        "d": 0.72,
-        "dp": 0.4953,
-        "regular": 146.08,
-        "reg_d": 0.72,
-        "reg_dp": 0.4953,
+        "c": 154.89,
+        "d": 6.15,
+        "dp": 4.1378,
+        "regular": 148.74,
+        "reg_d": 3.38,
+        "reg_dp": 2.3253,
         "pre": null,
-        "post": null,
+        "post": 154.89,
         "prev_close": 145.36,
-        "phase": "正式盤"
+        "phase": "盤後"
       },
       "news": [
         {
-          "headline": "5 Unstoppable Stocks to Buy According to Analysts",
-          "datetime": 1794869117,
+          "headline": "A $2.7 Billion Fund Dumps These 3 Stocks",
+          "datetime": 1794951101,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/markets/stocks/articles/5-unstoppable-stocks-buy-according-220213130.html"
+          "url": "https://www.tikr.com/blog/a-2-7-billion-fund-dumps-these-3-stocks?ref=yahoofinance&tlnk=yf-261117-4c7w55ww"
         }
       ]
     },
     "MU": {
       "name": "Micron Technology, Inc.",
       "quote": {
-        "c": 700.07,
-        "d": -18.95,
-        "dp": -2.6355,
-        "regular": 700.07,
-        "reg_d": -18.95,
-        "reg_dp": -2.6355,
+        "c": 731.19,
+        "d": 18.77,
+        "dp": 2.6353,
+        "regular": 712.42,
+        "reg_d": -6.6,
+        "reg_dp": -0.9179,
         "pre": null,
-        "post": null,
+        "post": 731.19,
         "prev_close": 719.02,
-        "phase": "正式盤"
+        "phase": "盤後"
       },
       "news": [
         {
-          "headline": "5 Unstoppable Stocks to Buy According to Analysts",
-          "datetime": 1794869117,
+          "headline": "Billionaire David Tepper Grew His SpaceX Stake 17-Fold While Dumping AMD and Broadcom",
+          "datetime": 1794951101,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/markets/stocks/articles/5-unstoppable-stocks-buy-according-220213130.html"
+          "url": "https://247wallst.com/investing/2026/11/17/billionaire-david-tepper-grew-his-spacex-stake-17-fold-while-dumping-amd-and-broadcom/"
         }
       ]
     },
     "SNDK": {
       "name": "Sandisk Corporation",
       "quote": {
-        "c": 791.87,
-        "d": -17.24,
-        "dp": -2.1306,
-        "regular": 791.87,
-        "reg_d": -17.24,
-        "reg_dp": -2.1306,
+        "c": 833.81,
+        "d": 36.57,
+        "dp": 4.5871,
+        "regular": 797.24,
+        "reg_d": -11.87,
+        "reg_dp": -1.467,
         "pre": null,
-        "post": null,
+        "post": 833.81,
         "prev_close": 809.11,
-        "phase": "正式盤"
+        "phase": "盤後"
       },
       "news": [
         {
-          "headline": "5 Unstoppable Stocks to Buy According to Analysts",
-          "datetime": 1794869117,
+          "headline": "Why Is Micron Down? GF Securities Warns a “NAND Glut” Could Hit in 2027",
+          "datetime": 1794951101,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/markets/stocks/articles/5-unstoppable-stocks-buy-according-220213130.html"
+          "url": "https://www.tikr.com/blog/why-is-micron-down-gf-securities-warns-a-nand-glut-could-hit-in-2027?ref=yahoofinance&tlnk=yf-261117-7qfq4x2g"
         }
       ]
     },
     "SPCX": {
       "name": "Space Exploration Technologies",
       "quote": {
-        "c": 141.25,
-        "d": 3.89,
-        "dp": 2.8321,
-        "regular": 141.25,
-        "reg_d": 3.89,
-        "reg_dp": 2.832,
+        "c": 142.85,
+        "d": 1.15,
+        "dp": 0.8116,
+        "regular": 141.7,
+        "reg_d": 4.34,
+        "reg_dp": 3.1596,
         "pre": null,
-        "post": null,
+        "post": 142.85,
         "prev_close": 137.36,
-        "phase": "正式盤"
+        "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Anthropic gears up for the largest IPO in history, but do the economics work?",
-          "datetime": 1794869117,
+          "headline": "SpaceX is leasing $47 billion of Nvidia chips like a car — and lenders hold the title",
+          "datetime": 1794951101,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/video/anthropic-gears-up-for-the-largest-ipo-in-history-but-do-the-economics-work-154323636.html"
+          "url": "https://finance.yahoo.com/markets/article/spacex-is-leasing-47-billion-of-nvidia-chips-like-a-car--and-lenders-hold-the-title-192002200.html"
         }
       ]
     },
     "ONDS": {
       "name": "Ondas Inc",
       "quote": {
-        "c": 4.34,
-        "d": -0.37,
-        "dp": -7.7495,
-        "regular": 4.34,
-        "reg_d": -0.37,
-        "reg_dp": -7.7495,
+        "c": 4.48,
+        "d": 0.09,
+        "dp": 2.0501,
+        "regular": 4.39,
+        "reg_d": -0.32,
+        "reg_dp": -6.7941,
         "pre": null,
-        "post": null,
+        "post": 4.48,
         "prev_close": 4.71,
-        "phase": "正式盤"
+        "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Ondas Falls 8% Despite $1.1 Billion 2027 Revenue Target as Drone Stocks Extend Losses; Red Cat Drops 5%, Unusual Machines Slides 4%",
-          "datetime": 1794869117,
+          "headline": "ONDS Raises 2026 Outlook as Backlog and Defense Demand Accelerate",
+          "datetime": 1794951101,
           "source": "Yahoo Finance",
-          "url": "https://247wallst.com/investing/2026/11/16/ondas-falls-8-despite-1-1-billion-2027-revenue-target-as-drone-stocks-extend-losses-red-cat-drops-5-unusual-machines-slides-4/"
+          "url": "https://finance.yahoo.com/markets/stocks/articles/onds-raises-2026-outlook-backlog-143300473.html"
         }
       ]
     },
     "PLTR": {
       "name": "Palantir Technologies Inc.",
       "quote": {
-        "c": 156.14,
-        "d": -4.25,
-        "dp": -2.6498,
-        "regular": 156.14,
-        "reg_d": -4.25,
-        "reg_dp": -2.6498,
+        "c": 159.25,
+        "d": 2.69,
+        "dp": 1.7182,
+        "regular": 156.56,
+        "reg_d": -3.83,
+        "reg_dp": -2.3879,
         "pre": null,
-        "post": null,
+        "post": 159.25,
         "prev_close": 160.39,
-        "phase": "正式盤"
+        "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Top 3 Growth Stocks To Watch In November 2026",
-          "datetime": 1794869117,
+          "headline": "Cathie Wood Says AI Isn't Even in the First Inning Yet of Its Long-Term Technological Revolution, Pointing to Palantir's 123% U.S. Revenue Growth as Evidence the Market Is Underestimating the Trade. Is Her Concentrated AI Bet Still the Right One?",
+          "datetime": 1794951101,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/markets/stocks/articles/top-3-growth-stocks-watch-211558743.html"
+          "url": "https://www.fool.com/investing/2026/11/17/cathie-wood-says-ai-is-in-the-first-innings-of-a-long-term-technological-revolution-pointing-to-palantirs-123-us-revenue-growth-as-evidence-the-market-is-underestimating-the-trade-is-her-concentrated-ai-bet-still-the-right-one/"
         }
       ]
     },
@@ -271,7 +271,7 @@
     }
   },
   "alert_sent": {
-    "morning": "2026-11-17",
+    "morning": "2026-11-18",
     "evening": "2026-11-17"
   }
 }
