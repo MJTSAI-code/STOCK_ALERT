@@ -1,7 +1,7 @@
 {
   "name": "美股盤前情報資料庫",
-  "updated_at": "2026-11-17T12:22:58.866531+08:00",
-  "next_update_at": "2026-11-17T05:00:00Z",
+  "updated_at": "2026-11-17T17:58:32.838818+08:00",
+  "next_update_at": "2026-11-17T10:30:00Z",
   "stocks": [
     "MSFT",
     "NVDA",
@@ -17,17 +17,17 @@
   ],
   "data": {
     "MSFT": {
-      "name": "MSFT",
+      "name": "Microsoft Corporation",
       "quote": {
-        "c": 517.99,
-        "d": 0.0,
-        "dp": 0.0,
+        "c": 516.18,
+        "d": -1.81,
+        "dp": -0.3494,
         "regular": 517.99,
-        "reg_d": -2.59,
-        "reg_dp": -0.4975,
-        "pre": null,
+        "reg_d": -5.89,
+        "reg_dp": -1.1243,
+        "pre": 516.18,
         "post": null,
-        "prev_close": 520.58,
+        "prev_close": 523.88,
         "phase": "盤前"
       },
       "news": [
@@ -40,17 +40,17 @@
       ]
     },
     "NVDA": {
-      "name": "NVDA",
+      "name": "NVIDIA Corporation",
       "quote": {
-        "c": 156.14,
-        "d": 0.0,
-        "dp": 0.0,
+        "c": 155.61,
+        "d": -0.53,
+        "dp": -0.3394,
         "regular": 156.14,
-        "reg_d": -4.75,
-        "reg_dp": -2.9524,
-        "pre": null,
+        "reg_d": -6.71,
+        "reg_dp": -4.1204,
+        "pre": 155.61,
         "post": null,
-        "prev_close": 160.89,
+        "prev_close": 162.85,
         "phase": "盤前"
       },
       "news": [
@@ -63,17 +63,17 @@
       ]
     },
     "NOW": {
-      "name": "NOW",
+      "name": "ServiceNow, Inc.",
       "quote": {
-        "c": 99.37,
-        "d": 0.0,
-        "dp": 0.0,
+        "c": 98.32,
+        "d": -1.07,
+        "dp": -1.0766,
         "regular": 99.37,
-        "reg_d": -1.71,
-        "reg_dp": -1.6917,
-        "pre": null,
+        "reg_d": -2.88,
+        "reg_dp": -2.8166,
+        "pre": 98.32,
         "post": null,
-        "prev_close": 101.08,
+        "prev_close": 102.25,
         "phase": "盤前"
       },
       "news": [
@@ -86,17 +86,17 @@
       ]
     },
     "TSM": {
-      "name": "TSM",
+      "name": "Taiwan Semiconductor Manufactur",
       "quote": {
-        "c": 373.45,
-        "d": 0.0,
-        "dp": 0.0,
+        "c": 368.7,
+        "d": -4.74,
+        "dp": -1.2688,
         "regular": 373.45,
-        "reg_d": -21.13,
-        "reg_dp": -5.3551,
-        "pre": null,
+        "reg_d": -25.28,
+        "reg_dp": -6.3401,
+        "pre": 368.7,
         "post": null,
-        "prev_close": 394.58,
+        "prev_close": 398.73,
         "phase": "盤前"
       },
       "news": [
@@ -109,17 +109,17 @@
       ]
     },
     "MRVL": {
-      "name": "MRVL",
+      "name": "Marvell Technology, Inc.",
       "quote": {
-        "c": 145.36,
-        "d": 0.0,
-        "dp": 0.0,
+        "c": 144.6,
+        "d": -0.76,
+        "dp": -0.5228,
         "regular": 145.36,
-        "reg_d": -7.82,
-        "reg_dp": -5.1052,
-        "pre": null,
+        "reg_d": -11.4,
+        "reg_dp": -7.2723,
+        "pre": 144.6,
         "post": null,
-        "prev_close": 153.18,
+        "prev_close": 156.76,
         "phase": "盤前"
       },
       "news": [
@@ -132,17 +132,17 @@
       ]
     },
     "MU": {
-      "name": "MU",
+      "name": "Micron Technology, Inc.",
       "quote": {
-        "c": 719.02,
-        "d": 0.0,
-        "dp": 0.0,
+        "c": 714.45,
+        "d": -4.57,
+        "dp": -0.6356,
         "regular": 719.02,
-        "reg_d": -44.75,
-        "reg_dp": -5.8595,
-        "pre": null,
+        "reg_d": -59.29,
+        "reg_dp": -7.6178,
+        "pre": 714.45,
         "post": null,
-        "prev_close": 763.77,
+        "prev_close": 778.31,
         "phase": "盤前"
       },
       "news": [
@@ -155,17 +155,17 @@
       ]
     },
     "SNDK": {
-      "name": "SNDK",
+      "name": "Sandisk Corporation",
       "quote": {
-        "c": 809.11,
-        "d": 0.0,
-        "dp": 0.0,
+        "c": 795.0,
+        "d": -14.11,
+        "dp": -1.7439,
         "regular": 809.11,
-        "reg_d": -57.77,
-        "reg_dp": -6.6642,
-        "pre": null,
+        "reg_d": -75.9,
+        "reg_dp": -8.5762,
+        "pre": 795.0,
         "post": null,
-        "prev_close": 866.88,
+        "prev_close": 885.01,
         "phase": "盤前"
       },
       "news": [
@@ -178,17 +178,17 @@
       ]
     },
     "SPCX": {
-      "name": "SPCX",
+      "name": "Space Exploration Technologies",
       "quote": {
-        "c": 137.36,
-        "d": 0.0,
-        "dp": 0.0,
+        "c": 136.44,
+        "d": -0.92,
+        "dp": -0.6698,
         "regular": 137.36,
-        "reg_d": 0.71,
-        "reg_dp": 0.5196,
-        "pre": null,
+        "reg_d": -1.75,
+        "reg_dp": -1.258,
+        "pre": 136.44,
         "post": null,
-        "prev_close": 136.65,
+        "prev_close": 139.11,
         "phase": "盤前"
       },
       "news": [
@@ -201,17 +201,17 @@
       ]
     },
     "ONDS": {
-      "name": "ONDS",
+      "name": "Ondas Inc",
       "quote": {
-        "c": 4.71,
-        "d": 0.0,
-        "dp": 0.0,
+        "c": 4.62,
+        "d": -0.09,
+        "dp": -1.9108,
         "regular": 4.71,
-        "reg_d": -0.38,
-        "reg_dp": -7.4656,
-        "pre": null,
+        "reg_d": -0.45,
+        "reg_dp": -8.7209,
+        "pre": 4.62,
         "post": null,
-        "prev_close": 5.09,
+        "prev_close": 5.16,
         "phase": "盤前"
       },
       "news": [
@@ -224,17 +224,17 @@
       ]
     },
     "PLTR": {
-      "name": "PLTR",
+      "name": "Palantir Technologies Inc.",
       "quote": {
-        "c": 160.39,
-        "d": 0.0,
-        "dp": 0.0,
+        "c": 158.95,
+        "d": -1.44,
+        "dp": -0.8978,
         "regular": 160.39,
-        "reg_d": -4.86,
-        "reg_dp": -2.941,
-        "pre": null,
+        "reg_d": -7.6,
+        "reg_dp": -4.5241,
+        "pre": 158.95,
         "post": null,
-        "prev_close": 165.25,
+        "prev_close": 167.99,
         "phase": "盤前"
       },
       "news": [
@@ -272,6 +272,6 @@
   },
   "alert_sent": {
     "morning": "2026-11-17",
-    "evening": "2026-11-16"
+    "evening": "2026-11-17"
   }
 }
