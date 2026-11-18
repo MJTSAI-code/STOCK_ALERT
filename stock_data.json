@@ -1,7 +1,7 @@
 {
   "name": "美股盤前情報資料庫",
-  "updated_at": "2026-11-19T04:52:33.417633+08:00",
-  "next_update_at": "2026-11-18T21:00:00Z",
+  "updated_at": "2026-11-19T05:07:31.007712+08:00",
+  "next_update_at": "2026-11-18T22:00:00Z",
   "stocks": [
     "MSFT",
     "NVDA",
@@ -19,230 +19,230 @@
     "MSFT": {
       "name": "Microsoft Corporation",
       "quote": {
-        "c": 507.24,
-        "d": 1.0,
-        "dp": 0.1975,
-        "regular": 507.24,
-        "reg_d": 1.0,
-        "reg_dp": 0.1975,
+        "c": 508.29,
+        "d": 0.0,
+        "dp": 0.0,
+        "regular": 508.29,
+        "reg_d": 2.05,
+        "reg_dp": 0.4049,
         "pre": null,
-        "post": null,
+        "post": 508.29,
         "prev_close": 506.24,
-        "phase": "正式盤"
+        "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Microsoft AI chief says compute isn't a bottleneck — for now",
-          "datetime": 1794952712,
+          "headline": "Major tech outages raise new cybersecurity concerns",
+          "datetime": 1795036051,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/video/microsoft-ai-chief-says-compute-isnt-a-bottleneck--for-now-213157737.html"
+          "url": "https://finance.yahoo.com/video/major-tech-outages-raise-new-cybersecurity-concerns-144024816.html"
         }
       ]
     },
     "NVDA": {
       "name": "NVIDIA Corporation",
       "quote": {
-        "c": 150.56,
-        "d": -4.9,
-        "dp": -3.1519,
-        "regular": 150.56,
-        "reg_d": -4.9,
-        "reg_dp": -3.1519,
+        "c": 150.71,
+        "d": -0.25,
+        "dp": -0.1656,
+        "regular": 150.96,
+        "reg_d": -4.5,
+        "reg_dp": -2.8946,
         "pre": null,
-        "post": null,
+        "post": 150.71,
         "prev_close": 155.46,
-        "phase": "正式盤"
+        "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Why a Jensen Huang comeback could become a major battle in Washington",
-          "datetime": 1794952712,
+          "headline": "Nvidia interim CEO Colette Kress has taken over one of the most consequential companies on the planet; those who know her say she's up to the task",
+          "datetime": 1795036051,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/video/why-a-jensen-huang-comeback-could-become-a-major-battle-in-washington-214402053.html"
+          "url": "https://finance.yahoo.com/technology/article/nvidia-interim-ceo-colette-kress-has-taken-over-one-of-the-most-consequential-companies-on-the-planet-those-who-know-her-say-shes-up-to-the-task-210312776.html"
         }
       ]
     },
     "NOW": {
       "name": "ServiceNow, Inc.",
       "quote": {
-        "c": 90.53,
-        "d": -2.37,
-        "dp": -2.5511,
-        "regular": 90.53,
-        "reg_d": -2.37,
-        "reg_dp": -2.5511,
+        "c": 90.71,
+        "d": 0.16,
+        "dp": 0.1767,
+        "regular": 90.55,
+        "reg_d": -2.35,
+        "reg_dp": -2.5296,
         "pre": null,
-        "post": null,
+        "post": 90.71,
         "prev_close": 92.9,
-        "phase": "正式盤"
+        "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Why ServiceNow Stock Is Moving On Software Outages And Cyber Risk",
-          "datetime": 1794952712,
+          "headline": "Salesforce Stocks Fall 9.45% in Worst Day Since 2024 as AI Agents Rattle Software",
+          "datetime": 1795036051,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/markets/stocks/articles/why-servicenow-stock-moving-software-181013301.html"
+          "url": "https://finance.yahoo.com/markets/stocks/articles/salesforce-stocks-fall-9-45-194046758.html"
         }
       ]
     },
     "TSM": {
       "name": "Taiwan Semiconductor Manufactur",
       "quote": {
-        "c": 360.86,
-        "d": 1.17,
-        "dp": 0.3253,
-        "regular": 360.86,
-        "reg_d": 1.17,
-        "reg_dp": 0.3253,
+        "c": 363.01,
+        "d": 0.39,
+        "dp": 0.1076,
+        "regular": 362.62,
+        "reg_d": 2.93,
+        "reg_dp": 0.8146,
         "pre": null,
-        "post": null,
+        "post": 363.01,
         "prev_close": 359.69,
-        "phase": "正式盤"
+        "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Surging AI Demand and Advanced Chipmaking Strengthens Taiwan Semiconductor Manufacturing Company Limited (TSM) Growth Outlook",
-          "datetime": 1794952712,
+          "headline": "AMD, Broadcom, CoreWeave stocks mixed on Nvidia Q3 earnings beat",
+          "datetime": 1795036051,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/technology/ai/articles/surging-ai-demand-advanced-chipmaking-202155834.html"
+          "url": "https://finance.yahoo.com/markets/stocks/article/amd-broadcom-tsmc-stocks-rise-on-nvidia-earnings-coreweave-nebius-shares-also-rally-220159436.html"
         }
       ]
     },
     "MRVL": {
       "name": "Marvell Technology, Inc.",
       "quote": {
-        "c": 144.62,
-        "d": -4.12,
-        "dp": -2.7699,
-        "regular": 144.62,
-        "reg_d": -4.12,
-        "reg_dp": -2.7699,
+        "c": 145.0,
+        "d": -0.54,
+        "dp": -0.371,
+        "regular": 145.54,
+        "reg_d": -3.2,
+        "reg_dp": -2.1514,
         "pre": null,
-        "post": null,
+        "post": 145.0,
         "prev_close": 148.74,
-        "phase": "正式盤"
+        "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Nvidia Bet Big on AI Stocks. Now They’re Getting Hit.",
-          "datetime": 1794952712,
+          "headline": "Lumentum Is Down 33% in a Month as Marvell’s Slide Shrinks Its Buyout Value. Can LITE Stock Get Back to Bernstein’s $700 Target?",
+          "datetime": 1795036051,
           "source": "Yahoo Finance",
-          "url": "https://www.barrons.com/articles/nvidia-ai-stock-selloff-3bd126bf?siteid=yhoof2&yptr=yahoo"
+          "url": "https://247wallst.com/investing/2026/11/18/lumentum-is-down-33-in-a-month-as-marvells-slide-shrinks-its-buyout-value-can-lite-stock-get-back-to-bernsteins-700-target/"
         }
       ]
     },
     "MU": {
       "name": "Micron Technology, Inc.",
       "quote": {
-        "c": 703.6,
-        "d": -8.82,
-        "dp": -1.238,
-        "regular": 703.6,
-        "reg_d": -8.82,
-        "reg_dp": -1.238,
+        "c": 703.54,
+        "d": -1.73,
+        "dp": -0.2453,
+        "regular": 705.27,
+        "reg_d": -7.15,
+        "reg_dp": -1.0036,
         "pre": null,
-        "post": null,
+        "post": 703.54,
         "prev_close": 712.42,
-        "phase": "正式盤"
+        "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Billionaire David Tepper Grew His SpaceX Stake 17-Fold While Dumping AMD and Broadcom",
-          "datetime": 1794952712,
+          "headline": "Is Micron Undervalued?",
+          "datetime": 1795036051,
           "source": "Yahoo Finance",
-          "url": "https://247wallst.com/investing/2026/11/17/billionaire-david-tepper-grew-his-spacex-stake-17-fold-while-dumping-amd-and-broadcom/"
+          "url": "https://www.fool.com/investing/2026/11/18/is-micron-undervalued/"
         }
       ]
     },
     "SNDK": {
       "name": "Sandisk Corporation",
       "quote": {
-        "c": 775.62,
-        "d": -21.62,
-        "dp": -2.7119,
-        "regular": 775.62,
-        "reg_d": -21.62,
-        "reg_dp": -2.7119,
+        "c": 774.5,
+        "d": -1.72,
+        "dp": -0.2216,
+        "regular": 776.22,
+        "reg_d": -21.02,
+        "reg_dp": -2.6366,
         "pre": null,
-        "post": null,
+        "post": 774.5,
         "prev_close": 797.24,
-        "phase": "正式盤"
+        "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Why Is Micron Down? GF Securities Warns a “NAND Glut” Could Hit in 2027",
-          "datetime": 1794952712,
+          "headline": "Not Micron, Not Sandisk. This Is My Top Memory Stock for 2027.",
+          "datetime": 1795036051,
           "source": "Yahoo Finance",
-          "url": "https://www.tikr.com/blog/why-is-micron-down-gf-securities-warns-a-nand-glut-could-hit-in-2027?ref=yahoofinance&tlnk=yf-261117-7qfq4x2g"
+          "url": "https://www.fool.com/investing/2026/11/18/not-micron-not-sandisk-this-is-my-top-memory-stock-for-2027/"
         }
       ]
     },
     "SPCX": {
       "name": "Space Exploration Technologies",
       "quote": {
-        "c": 143.52,
-        "d": 1.82,
-        "dp": 1.2844,
-        "regular": 143.52,
-        "reg_d": 1.82,
-        "reg_dp": 1.2844,
+        "c": 143.2,
+        "d": -0.3,
+        "dp": -0.2091,
+        "regular": 143.5,
+        "reg_d": 1.8,
+        "reg_dp": 1.2703,
         "pre": null,
-        "post": null,
+        "post": 143.2,
         "prev_close": 141.7,
-        "phase": "正式盤"
+        "phase": "盤後"
       },
       "news": [
         {
-          "headline": "SpaceX is leasing $47 billion of Nvidia chips like a car — and lenders hold the title",
-          "datetime": 1794952712,
+          "headline": "Skydance's David Ellison calls Elon Musk 'the greatest entrepreneur of our time'",
+          "datetime": 1795036051,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/markets/article/spacex-is-leasing-47-billion-of-nvidia-chips-like-a-car--and-lenders-hold-the-title-192002200.html"
+          "url": "https://finance.yahoo.com/media-advertising/article/skydances-david-ellison-calls-elon-musk-the-greatest-entrepreneur-of-our-time-205405607.html"
         }
       ]
     },
     "ONDS": {
       "name": "Ondas Inc",
       "quote": {
-        "c": 4.44,
-        "d": 0.05,
-        "dp": 1.139,
-        "regular": 4.44,
-        "reg_d": 0.05,
-        "reg_dp": 1.139,
+        "c": 4.41,
+        "d": -0.01,
+        "dp": -0.2262,
+        "regular": 4.42,
+        "reg_d": 0.03,
+        "reg_dp": 0.6834,
         "pre": null,
-        "post": null,
+        "post": 4.41,
         "prev_close": 4.39,
-        "phase": "正式盤"
+        "phase": "盤後"
       },
       "news": [
         {
-          "headline": "ONDS Raises 2026 Outlook as Backlog and Defense Demand Accelerate",
-          "datetime": 1794952712,
+          "headline": "Red Cat Falls 6% as Post-Earnings Selloff Extends; Unusual Machines Slides 3%, AeroVironment Drops 2%",
+          "datetime": 1795036051,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/markets/stocks/articles/onds-raises-2026-outlook-backlog-143300473.html"
+          "url": "https://247wallst.com/investing/2026/11/18/red-cat-falls-6-as-post-earnings-selloff-extends-unusual-machines-slides-3-aerovironment-drops-2/"
         }
       ]
     },
     "PLTR": {
       "name": "Palantir Technologies Inc.",
       "quote": {
-        "c": 156.82,
-        "d": 0.26,
-        "dp": 0.1693,
-        "regular": 156.82,
-        "reg_d": 0.26,
-        "reg_dp": 0.1693,
+        "c": 156.34,
+        "d": -0.33,
+        "dp": -0.2106,
+        "regular": 156.67,
+        "reg_d": 0.11,
+        "reg_dp": 0.0703,
         "pre": null,
-        "post": null,
+        "post": 156.34,
         "prev_close": 156.56,
-        "phase": "正式盤"
+        "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Cathie Wood Says AI Isn't Even in the First Inning Yet of Its Long-Term Technological Revolution, Pointing to Palantir's 123% U.S. Revenue Growth as Evidence the Market Is Underestimating the Trade. Is Her Concentrated AI Bet Still the Right One?",
-          "datetime": 1794952712,
+          "headline": "Anthropic Valuation Is 8.5 Times Next Year’s Sales: Multiples More Like Microsoft, Alphabet Than Palantir, New Street Analyst Says",
+          "datetime": 1795036051,
           "source": "Yahoo Finance",
-          "url": "https://www.fool.com/investing/2026/11/17/cathie-wood-says-ai-is-in-the-first-innings-of-a-long-term-technological-revolution-pointing-to-palantirs-123-us-revenue-growth-as-evidence-the-market-is-underestimating-the-trade-is-her-concentrated-ai-bet-still-the-right-one/"
+          "url": "https://stocktwits.com/news-articles/markets/equity/anthropic-valuation-is-8-5-times-next-year-s-sales-multiples-more-like-microsoft-alphabet-than-palantir-new-street-analyst-says/cNbg9fWR9LC"
         }
       ]
     },
