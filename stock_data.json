@@ -1,7 +1,7 @@
 {
   "name": "美股盤前情報資料庫",
-  "updated_at": "2026-11-20T04:52:30.818602+08:00",
-  "next_update_at": "2026-11-19T21:00:00Z",
+  "updated_at": "2026-11-20T05:12:58.054197+08:00",
+  "next_update_at": "2026-11-19T22:00:00Z",
   "stocks": [
     "MSFT",
     "NVDA",
@@ -19,230 +19,230 @@
     "MSFT": {
       "name": "Microsoft Corporation",
       "quote": {
-        "c": 499.91,
-        "d": -7.4,
-        "dp": -1.4587,
-        "regular": 499.91,
-        "reg_d": -7.4,
-        "reg_dp": -1.4587,
+        "c": 499.0,
+        "d": 0.7,
+        "dp": 0.1405,
+        "regular": 498.3,
+        "reg_d": -9.01,
+        "reg_dp": -1.776,
         "pre": null,
-        "post": null,
+        "post": 499.0,
         "prev_close": 507.31,
-        "phase": "正式盤"
+        "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Major tech outages raise new cybersecurity concerns",
-          "datetime": 1795039112,
+          "headline": "GTA VI: Why the 13-year wait could be worth $8 billion",
+          "datetime": 1795122778,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/video/major-tech-outages-raise-new-cybersecurity-concerns-144024816.html"
+          "url": "https://finance.yahoo.com/video/gta-vi-why-13-wait-120000877.html"
         }
       ]
     },
     "NVDA": {
       "name": "NVIDIA Corporation",
       "quote": {
-        "c": 147.25,
-        "d": -3.71,
-        "dp": -2.4576,
-        "regular": 147.25,
-        "reg_d": -3.71,
-        "reg_dp": -2.4576,
+        "c": 146.13,
+        "d": 0.15,
+        "dp": 0.1028,
+        "regular": 145.98,
+        "reg_d": -4.98,
+        "reg_dp": -3.2989,
         "pre": null,
-        "post": null,
+        "post": 146.13,
         "prev_close": 150.96,
-        "phase": "正式盤"
+        "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Nvidia interim CEO Colette Kress has taken over one of the most consequential companies on the planet; those who know her say she's up to the task",
-          "datetime": 1795039112,
+          "headline": "Nvidia will not be the leader 5 years from now: Tiernan Ray",
+          "datetime": 1795122778,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/technology/article/nvidia-interim-ceo-colette-kress-has-taken-over-one-of-the-most-consequential-companies-on-the-planet-those-who-know-her-say-shes-up-to-the-task-210312776.html"
+          "url": "https://finance.yahoo.com/video/nvidia-will-not-be-the-leader-5-years-from-now-tiernan-ray-185954396.html"
         }
       ]
     },
     "NOW": {
       "name": "ServiceNow, Inc.",
       "quote": {
-        "c": 88.74,
-        "d": -1.85,
-        "dp": -2.0422,
-        "regular": 88.74,
-        "reg_d": -1.85,
-        "reg_dp": -2.0422,
+        "c": 88.15,
+        "d": -0.69,
+        "dp": -0.7767,
+        "regular": 88.84,
+        "reg_d": -1.75,
+        "reg_dp": -1.9318,
         "pre": null,
-        "post": null,
+        "post": 88.15,
         "prev_close": 90.59,
-        "phase": "正式盤"
+        "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Salesforce Stocks Fall 9.45% in Worst Day Since 2024 as AI Agents Rattle Software",
-          "datetime": 1795039112,
+          "headline": "ServiceNow vs. UiPath: Which Technology Stock Is a Better Buy for 2027?",
+          "datetime": 1795122778,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/markets/stocks/articles/salesforce-stocks-fall-9-45-194046758.html"
+          "url": "https://www.fool.com/coverage/better-buy/2026/11/19/servicenow-vs-uipath-which-technology-stock-is-a-better-buy-for-2027/"
         }
       ]
     },
     "TSM": {
       "name": "Taiwan Semiconductor Manufactur",
       "quote": {
-        "c": 354.85,
-        "d": -7.77,
-        "dp": -2.1441,
-        "regular": 354.85,
-        "reg_d": -7.77,
-        "reg_dp": -2.1441,
+        "c": 351.1,
+        "d": -0.91,
+        "dp": -0.2577,
+        "regular": 352.01,
+        "reg_d": -10.61,
+        "reg_dp": -2.9268,
         "pre": null,
-        "post": null,
+        "post": 351.1,
         "prev_close": 362.62,
-        "phase": "正式盤"
+        "phase": "盤後"
       },
       "news": [
         {
-          "headline": "AMD, Broadcom, CoreWeave stocks mixed on Nvidia Q3 earnings beat",
-          "datetime": 1795039112,
+          "headline": "Billionaire Stanley Druckenmiller Cut TSMC 94% in One Quarter, Leaving Just $14.9 Million",
+          "datetime": 1795122778,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/markets/stocks/article/amd-broadcom-tsmc-stocks-rise-on-nvidia-earnings-coreweave-nebius-shares-also-rally-220159436.html"
+          "url": "https://247wallst.com/investing/2026/11/19/billionaire-stanley-druckenmiller-cut-tsmc-94-in-one-quarter-leaving-just-14-9-million/"
         }
       ]
     },
     "MRVL": {
       "name": "Marvell Technology, Inc.",
       "quote": {
-        "c": 139.57,
-        "d": -5.97,
-        "dp": -4.102,
-        "regular": 139.57,
-        "reg_d": -5.97,
-        "reg_dp": -4.102,
+        "c": 138.8,
+        "d": 0.33,
+        "dp": 0.2383,
+        "regular": 138.47,
+        "reg_d": -7.07,
+        "reg_dp": -4.8578,
         "pre": null,
-        "post": null,
+        "post": 138.8,
         "prev_close": 145.54,
-        "phase": "正式盤"
+        "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Marvell And Intel Halved: How Long Until They Recover?",
-          "datetime": 1795039112,
+          "headline": "Lumentum’s sales surged 137%—so why is its stock crashing?",
+          "datetime": 1795122778,
           "source": "Yahoo Finance",
-          "url": "https://www.trefis.com/stock/mrvl/articles/626099/marvell-and-intel-halved-how-long-until-they-recover/2026-11-18"
+          "url": "https://finance.yahoo.com/markets/stocks/articles/lumentum-sales-surged-137-why-202833709.html"
         }
       ]
     },
     "MU": {
       "name": "Micron Technology, Inc.",
       "quote": {
-        "c": 696.34,
-        "d": -8.93,
-        "dp": -1.2662,
-        "regular": 696.34,
-        "reg_d": -8.93,
-        "reg_dp": -1.2662,
+        "c": 690.07,
+        "d": -0.37,
+        "dp": -0.0532,
+        "regular": 690.44,
+        "reg_d": -14.83,
+        "reg_dp": -2.1027,
         "pre": null,
-        "post": null,
+        "post": 690.07,
         "prev_close": 705.27,
-        "phase": "正式盤"
+        "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Micron President on AI memory demand: \"We can't meet all requirements'",
-          "datetime": 1795039112,
+          "headline": "Memory supply constraints will be even 'tighter' in 2027: Micron CTO",
+          "datetime": 1795122778,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/video/micron-president-on-ai-memory-demand-we-cant-meet-all-requirements-215817196.html"
+          "url": "https://finance.yahoo.com/technology/ai/article/memory-supply-constraints-will-be-even-tighter-in-2027-micron-cto-173141999.html"
         }
       ]
     },
     "SNDK": {
       "name": "Sandisk Corporation",
       "quote": {
-        "c": 760.03,
-        "d": -16.18,
-        "dp": -2.0851,
-        "regular": 760.03,
-        "reg_d": -16.19,
-        "reg_dp": -2.0851,
+        "c": 754.85,
+        "d": -0.31,
+        "dp": -0.0407,
+        "regular": 755.16,
+        "reg_d": -21.06,
+        "reg_dp": -2.7131,
         "pre": null,
-        "post": null,
+        "post": 754.85,
         "prev_close": 776.22,
-        "phase": "正式盤"
+        "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Not Micron, Not Sandisk. This Is My Top Memory Stock for 2027.",
-          "datetime": 1795039112,
+          "headline": "Billionaire Stanley Druckenmiller Cut TSMC 94% in One Quarter, Leaving Just $14.9 Million",
+          "datetime": 1795122778,
           "source": "Yahoo Finance",
-          "url": "https://www.fool.com/investing/2026/11/18/not-micron-not-sandisk-this-is-my-top-memory-stock-for-2027/"
+          "url": "https://247wallst.com/investing/2026/11/19/billionaire-stanley-druckenmiller-cut-tsmc-94-in-one-quarter-leaving-just-14-9-million/"
         }
       ]
     },
     "SPCX": {
       "name": "Space Exploration Technologies",
       "quote": {
-        "c": 137.78,
-        "d": -5.73,
-        "dp": -3.9896,
-        "regular": 137.78,
-        "reg_d": -5.72,
-        "reg_dp": -3.9895,
+        "c": 137.84,
+        "d": -0.59,
+        "dp": -0.4262,
+        "regular": 138.43,
+        "reg_d": -5.07,
+        "reg_dp": -3.5331,
         "pre": null,
-        "post": null,
+        "post": 137.84,
         "prev_close": 143.5,
-        "phase": "正式盤"
+        "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Will Apollo's $40 billion for SpaceX to rent GPUs pay off?",
-          "datetime": 1795039112,
+          "headline": "What does SpaceX have that Anthropic doesn't? Why the stock is losing steam",
+          "datetime": 1795122778,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/video/will-apollos-40-billion-for-spacex-to-rent-gpus-pay-off-214146452.html"
+          "url": "https://finance.yahoo.com/video/what-does-spacex-have-that-anthropic-doesnt-why-the-stock-is-losing-steam-202232861.html"
         }
       ]
     },
     "ONDS": {
       "name": "Ondas Inc",
       "quote": {
-        "c": 4.26,
-        "d": -0.16,
-        "dp": -3.6199,
-        "regular": 4.26,
-        "reg_d": -0.16,
-        "reg_dp": -3.6199,
+        "c": 4.21,
+        "d": -0.02,
+        "dp": -0.4728,
+        "regular": 4.23,
+        "reg_d": -0.19,
+        "reg_dp": -4.2986,
         "pre": null,
-        "post": null,
+        "post": 4.21,
         "prev_close": 4.42,
-        "phase": "正式盤"
+        "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Red Cat Falls 6% as Post-Earnings Selloff Extends; Unusual Machines Slides 3%, AeroVironment Drops 2%",
-          "datetime": 1795039112,
+          "headline": "Unusual Machines Rallies 7% on Oppenheimer’s $30 Target; Red Cat Falls 7% in Extended Post-Earnings Rout, Ondas Holds Steady",
+          "datetime": 1795122778,
           "source": "Yahoo Finance",
-          "url": "https://247wallst.com/investing/2026/11/18/red-cat-falls-6-as-post-earnings-selloff-extends-unusual-machines-slides-3-aerovironment-drops-2/"
+          "url": "https://247wallst.com/investing/2026/11/19/unusual-machines-rallies-7-on-oppenheimers-30-target-red-cat-falls-7-in-extended-post-earnings-rout-ondas-holds-steady/"
         }
       ]
     },
     "PLTR": {
       "name": "Palantir Technologies Inc.",
       "quote": {
-        "c": 154.01,
-        "d": -2.66,
-        "dp": -1.6978,
-        "regular": 154.01,
-        "reg_d": -2.66,
-        "reg_dp": -1.6978,
+        "c": 153.2,
+        "d": -0.48,
+        "dp": -0.3123,
+        "regular": 153.68,
+        "reg_d": -2.99,
+        "reg_dp": -1.9085,
         "pre": null,
-        "post": null,
+        "post": 153.2,
         "prev_close": 156.67,
-        "phase": "正式盤"
+        "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Anthropic Valuation Is 8.5 Times Next Year’s Sales: Multiples More Like Microsoft, Alphabet Than Palantir, New Street Analyst Says",
-          "datetime": 1795039112,
+          "headline": "Palantir Technologies (PLTR) Gets A Fresh AI Signal From A Key Platform Partner",
+          "datetime": 1795122778,
           "source": "Yahoo Finance",
-          "url": "https://stocktwits.com/news-articles/markets/equity/anthropic-valuation-is-8-5-times-next-year-s-sales-multiples-more-like-microsoft-alphabet-than-palantir-new-street-analyst-says/cNbg9fWR9LC"
+          "url": "https://finance.yahoo.com/technology/ai/articles/palantir-technologies-pltr-gets-fresh-200954508.html"
         }
       ]
     },
