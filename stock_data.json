@@ -1,7 +1,7 @@
 {
   "name": "美股盤前情報資料庫",
-  "updated_at": "2026-11-24T05:59:44.736859+08:00",
-  "next_update_at": "2026-11-23T22:30:00Z",
+  "updated_at": "2026-11-24T06:11:11.057605+08:00",
+  "next_update_at": "2026-11-23T23:00:00Z",
   "stocks": [
     "MSFT",
     "NVDA",
@@ -19,21 +19,21 @@
     "MSFT": {
       "name": "Microsoft Corporation",
       "quote": {
-        "c": 493.59,
-        "d": 1.09,
-        "dp": 0.2221,
+        "c": 493.6,
+        "d": 1.1,
+        "dp": 0.2234,
         "regular": 492.5,
         "reg_d": 7.98,
         "reg_dp": 1.647,
         "pre": null,
-        "post": 493.59,
+        "post": 493.6,
         "prev_close": 484.52,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Nvidia gains nearly $1T as Trump says nobody could 'revive the stock like it's being revived'",
-          "datetime": 1795471184,
+          "datetime": 1795471871,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/markets/article/nvidia-gains-nearly-1t-as-trump-says-nobody-could-revive-the-stock-like-its-being-revived-194634496.html"
         }
@@ -42,44 +42,44 @@
     "NVDA": {
       "name": "NVIDIA Corporation",
       "quote": {
-        "c": 165.23,
-        "d": 0.18,
-        "dp": 0.1091,
+        "c": 165.02,
+        "d": -0.03,
+        "dp": -0.0179,
         "regular": 165.05,
         "reg_d": 39.52,
         "reg_dp": 31.4825,
         "pre": null,
-        "post": 165.23,
+        "post": 165.02,
         "prev_close": 125.53,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Nvidia gains nearly $1T as Trump says nobody could 'revive the stock like it's being revived'",
-          "datetime": 1795471184,
+          "headline": "Nvidia's stability is a systemic issue for the US now, this AI CEO says",
+          "datetime": 1795471871,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/markets/article/nvidia-gains-nearly-1t-as-trump-says-nobody-could-revive-the-stock-like-its-being-revived-194634496.html"
+          "url": "https://finance.yahoo.com/video/nvidias-stability-is-a-systemic-issue-for-the-us-now-this-ai-ceo-says-220035003.html"
         }
       ]
     },
     "NOW": {
       "name": "ServiceNow, Inc.",
       "quote": {
-        "c": 92.03,
-        "d": 0.31,
-        "dp": 0.338,
+        "c": 92.08,
+        "d": 0.36,
+        "dp": 0.388,
         "regular": 91.72,
         "reg_d": 4.11,
         "reg_dp": 4.6912,
         "pre": null,
-        "post": 92.03,
+        "post": 92.08,
         "prev_close": 87.61,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "ServiceNow stock: catalysts, technicals, and outlook after the selloff",
-          "datetime": 1795471184,
+          "datetime": 1795471871,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/markets/stocks/articles/servicenow-stock-catalysts-technicals-outlook-212029012.html"
         }
@@ -88,21 +88,21 @@
     "TSM": {
       "name": "Taiwan Semiconductor Manufactur",
       "quote": {
-        "c": 367.93,
-        "d": 4.33,
-        "dp": 1.1909,
+        "c": 367.99,
+        "d": 4.39,
+        "dp": 1.2074,
         "regular": 363.6,
         "reg_d": 44.89,
         "reg_dp": 14.0849,
         "pre": null,
-        "post": 367.93,
+        "post": 367.99,
         "prev_close": 318.71,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Jensen Huang back as Nvidia CEO after 12 days: Shares surge 30%",
-          "datetime": 1795471184,
+          "datetime": 1795471871,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/video/jensen-huang-back-as-nvidia-ceo-after-12-days-shares-surge-30-161302539.html"
         }
@@ -111,21 +111,21 @@
     "MRVL": {
       "name": "Marvell Technology, Inc.",
       "quote": {
-        "c": 145.66,
-        "d": 0.92,
-        "dp": 0.6356,
+        "c": 145.79,
+        "d": 1.05,
+        "dp": 0.7254,
         "regular": 144.74,
         "reg_d": 22.46,
         "reg_dp": 18.3677,
         "pre": null,
-        "post": 145.66,
+        "post": 145.79,
         "prev_close": 122.28,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Coherent Is the Real Winner of Huang’s Return. Nvidia Paid $2 Billion for Its Stock",
-          "datetime": 1795471184,
+          "datetime": 1795471871,
           "source": "Yahoo Finance",
           "url": "https://www.tikr.com/blog/coherent-is-the-real-winner-of-huangs-return-nvidia-paid-2-billion-for-its-stock?ref=yahoofinance&tlnk=yf-261123-h5c2xv48"
         }
@@ -134,21 +134,21 @@
     "MU": {
       "name": "Micron Technology, Inc.",
       "quote": {
-        "c": 709.34,
-        "d": 1.64,
-        "dp": 0.2317,
+        "c": 709.45,
+        "d": 1.75,
+        "dp": 0.2472,
         "regular": 707.7,
         "reg_d": 113.19,
         "reg_dp": 19.0392,
         "pre": null,
-        "post": 709.34,
+        "post": 709.45,
         "prev_close": 594.51,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Jensen Huang's return to Nvidia: Long or short accountability?",
-          "datetime": 1795471184,
+          "datetime": 1795471871,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/video/jensen-huangs-return-to-nvidia-long-or-short-accountability-185949254.html"
         }
@@ -157,21 +157,21 @@
     "SNDK": {
       "name": "Sandisk Corporation",
       "quote": {
-        "c": 88.74,
-        "d": 1.03,
-        "dp": 1.1743,
+        "c": 88.61,
+        "d": 0.9,
+        "dp": 1.0261,
         "regular": 87.71,
         "reg_d": 8.47,
         "reg_dp": 10.689,
         "pre": null,
-        "post": 88.74,
+        "post": 88.61,
         "prev_close": 79.24,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Jensen Huang back as Nvidia CEO after 12 days: Shares surge 30%",
-          "datetime": 1795471184,
+          "datetime": 1795471871,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/video/jensen-huang-back-as-nvidia-ceo-after-12-days-shares-surge-30-161302539.html"
         }
@@ -194,7 +194,7 @@
       "news": [
         {
           "headline": "Elon Musk on his support for Jensen Huang: 'Fair-weather friends are worthless'",
-          "datetime": 1795471184,
+          "datetime": 1795471871,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/markets/article/musk-on-support-for-jensen-huangs-return-to-nvidia-fair-weather-friends-are-worthless-212613771.html"
         }
@@ -203,21 +203,21 @@
     "ONDS": {
       "name": "Ondas Inc",
       "quote": {
-        "c": 4.06,
-        "d": 0.03,
-        "dp": 0.6898,
+        "c": 4.07,
+        "d": 0.04,
+        "dp": 0.9826,
         "regular": 4.03,
         "reg_d": 0.27,
         "reg_dp": 7.1809,
         "pre": null,
-        "post": 4.06,
+        "post": 4.07,
         "prev_close": 3.76,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "MarketBeat Week in Review – 11/16 - 11/20",
-          "datetime": 1795471184,
+          "datetime": 1795471871,
           "source": "Yahoo Finance",
           "url": "https://www.marketbeat.com/articles/marketbeat-week-in-review-2026-11-16-11-20/?utm_source=yahoofinance&utm_medium=yahoofinance"
         }
@@ -226,21 +226,21 @@
     "PLTR": {
       "name": "Palantir Technologies Inc.",
       "quote": {
-        "c": 159.7,
-        "d": 0.34,
-        "dp": 0.2134,
+        "c": 159.69,
+        "d": 0.33,
+        "dp": 0.2081,
         "regular": 159.36,
         "reg_d": 15.87,
         "reg_dp": 11.06,
         "pre": null,
-        "post": 159.7,
+        "post": 159.69,
         "prev_close": 143.49,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "3 AI Stocks Billionaire Stanley Druckenmiller Has Been Quietly Buying",
-          "datetime": 1795471184,
+          "datetime": 1795471871,
           "source": "Yahoo Finance",
           "url": "https://www.fool.com/investing/2026/11/23/3-ai-stocks-billionaire-stanley-druckenmiller-has-been-quietly-buying/"
         }
