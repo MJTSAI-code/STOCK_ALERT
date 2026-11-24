@@ -1,7 +1,7 @@
 {
   "name": "美股盤前情報資料庫",
-  "updated_at": "2026-11-25T05:58:34.954548+08:00",
-  "next_update_at": "2026-11-24T22:30:00Z",
+  "updated_at": "2026-11-25T06:55:54.027018+08:00",
+  "next_update_at": "2026-11-24T23:30:00Z",
   "stocks": [
     "MSFT",
     "NVDA",
@@ -19,90 +19,90 @@
     "MSFT": {
       "name": "Microsoft Corporation",
       "quote": {
-        "c": 496.64,
-        "d": 0.51,
-        "dp": 0.1028,
+        "c": 497.07,
+        "d": 0.94,
+        "dp": 0.1895,
         "regular": 496.13,
         "reg_d": 3.63,
         "reg_dp": 0.7371,
         "pre": null,
-        "post": 496.64,
+        "post": 497.07,
         "prev_close": 492.5,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Microsoft declares a code red in the middle of a 'Patchpocalypse'",
-          "datetime": 1795557514,
+          "headline": "Anthropic falls below IPO price as Nvidia gives back gains",
+          "datetime": 1795560954,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/markets/article/microsoft-declares-a-code-red-in-the-middle-of-a-patchpocalypse-193740712.html"
+          "url": "https://finance.yahoo.com/video/anthropic-falls-below-ipo-price-as-nvidia-gives-back-gains-214558309.html"
         }
       ]
     },
     "NVDA": {
       "name": "NVIDIA Corporation",
       "quote": {
-        "c": 153.0,
-        "d": -2.38,
-        "dp": -1.5318,
+        "c": 154.1,
+        "d": -1.28,
+        "dp": -0.8238,
         "regular": 155.38,
         "reg_d": -9.67,
         "reg_dp": -5.8588,
         "pre": null,
-        "post": 153.0,
+        "post": 154.1,
         "prev_close": 165.05,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Why Nvidia is 'bar none' the 'cheapest growth stock in the market'",
-          "datetime": 1795557514,
+          "headline": "Why Trump wanted Jensen Huang back at the helm of Nvidia",
+          "datetime": 1795560954,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/video/why-nvidia-is-bar-none-the-cheapest-growth-stock-in-the-market-213425021.html"
+          "url": "https://finance.yahoo.com/markets/article/why-trump-wanted-jensen-huang-back-at-the-helm-of-nvidia-224325153.html"
         }
       ]
     },
     "NOW": {
       "name": "ServiceNow, Inc.",
       "quote": {
-        "c": 91.81,
-        "d": 0.07,
-        "dp": 0.0763,
+        "c": 91.17,
+        "d": -0.57,
+        "dp": -0.6213,
         "regular": 91.74,
         "reg_d": 0.02,
         "reg_dp": 0.0218,
         "pre": null,
-        "post": 91.81,
+        "post": 91.17,
         "prev_close": 91.72,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "ZoomInfo (GTM) Stock Is Up 8.3% Today Without Company News",
-          "datetime": 1795557514,
+          "headline": "Anthropic falls below IPO price as Nvidia gives back gains",
+          "datetime": 1795560954,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/markets/stocks/articles/zoominfo-gtm-stock-8-3-204534730.html"
+          "url": "https://finance.yahoo.com/video/anthropic-falls-below-ipo-price-as-nvidia-gives-back-gains-214558309.html"
         }
       ]
     },
     "TSM": {
       "name": "Taiwan Semiconductor Manufactur",
       "quote": {
-        "c": 350.0,
-        "d": 0.8,
-        "dp": 0.2291,
+        "c": 351.19,
+        "d": 1.99,
+        "dp": 0.57,
         "regular": 349.2,
         "reg_d": -14.4,
         "reg_dp": -3.9604,
         "pre": null,
-        "post": 350.0,
+        "post": 351.19,
         "prev_close": 363.6,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Nvidia, AMD, Broadcom lead chip stocks lower as AI trade comes under pressure",
-          "datetime": 1795557514,
+          "datetime": 1795560954,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/markets/article/nvidia-amd-broadcom-lead-chip-stocks-lower-as-ai-trade-comes-under-pressure-141635463.html"
         }
@@ -111,90 +111,90 @@
     "MRVL": {
       "name": "Marvell Technology, Inc.",
       "quote": {
-        "c": 131.79,
-        "d": 0.22,
-        "dp": 0.1672,
+        "c": 132.84,
+        "d": 1.27,
+        "dp": 0.9653,
         "regular": 131.57,
         "reg_d": -13.17,
         "reg_dp": -9.0991,
         "pre": null,
-        "post": 131.79,
+        "post": 132.84,
         "prev_close": 144.74,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Morgan Stanley’s 4 Best Semiconductor and Server Stocks to Buy for 2027",
-          "datetime": 1795557514,
+          "headline": "Stephanie Link Says Marvell Could Earn $30 a Share by 2031. Is She Right?",
+          "datetime": 1795560954,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/technology/articles/morgan-stanley-4-best-semiconductor-205040524.html"
+          "url": "https://247wallst.com/investing/2026/11/24/stephanie-link-says-marvell-could-earn-30-a-share-by-2031-is-she-right/"
         }
       ]
     },
     "MU": {
       "name": "Micron Technology, Inc.",
       "quote": {
-        "c": 627.7,
-        "d": -2.09,
-        "dp": -0.3319,
+        "c": 633.24,
+        "d": 3.45,
+        "dp": 0.5478,
         "regular": 629.79,
         "reg_d": -77.91,
         "reg_dp": -11.0089,
         "pre": null,
-        "post": 627.7,
+        "post": 633.24,
         "prev_close": 707.7,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Stocks give back gains as Anthropic dips below IPO price",
-          "datetime": 1795557514,
+          "headline": "Anthropic falls below IPO price as Nvidia gives back gains",
+          "datetime": 1795560954,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/video/stocks-give-back-gains-as-anthropic-dips-below-ipo-price-154408548.html"
+          "url": "https://finance.yahoo.com/video/anthropic-falls-below-ipo-price-as-nvidia-gives-back-gains-214558309.html"
         }
       ]
     },
     "SNDK": {
       "name": "Sandisk Corporation",
       "quote": {
-        "c": 77.4,
-        "d": -0.55,
-        "dp": -0.7056,
+        "c": 78.07,
+        "d": 0.12,
+        "dp": 0.1539,
         "regular": 77.95,
         "reg_d": -9.76,
         "reg_dp": -11.1276,
         "pre": null,
-        "post": 77.4,
+        "post": 78.07,
         "prev_close": 87.71,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Nvidia, AMD, Broadcom lead chip stocks lower as AI trade comes under pressure",
-          "datetime": 1795557514,
+          "headline": "Dow Jones Futures: Nvidia, Anthropic Lead AI Retreat But Many Sectors Strong; Fed Inflation Data Due",
+          "datetime": 1795560954,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/markets/article/nvidia-amd-broadcom-lead-chip-stocks-lower-as-ai-trade-comes-under-pressure-141635463.html"
+          "url": "https://www.investors.com/market-trend/stock-market-today/dow-jones-futures-nvidia-anthropic-ai-retreat-fed-inflation-data/?src=A00220&yptr=yahoo"
         }
       ]
     },
     "SPCX": {
       "name": "Space Exploration Technologies",
       "quote": {
-        "c": 126.5,
-        "d": 0.69,
-        "dp": 0.5484,
+        "c": 126.71,
+        "d": 0.9,
+        "dp": 0.7151,
         "regular": 125.81,
         "reg_d": -7.54,
         "reg_dp": -5.6543,
         "pre": null,
-        "post": 126.5,
+        "post": 126.71,
         "prev_close": 133.35,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Tesla and SpaceX assemble deal teams for a merger that could give Musk majority control",
-          "datetime": 1795557514,
+          "datetime": 1795560954,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/technology/article/tesla-and-spacex-assemble-deal-teams-for-a-merger-that-could-give-musk-majority-control-144555932.html"
         }
@@ -203,21 +203,21 @@
     "ONDS": {
       "name": "Ondas Inc",
       "quote": {
-        "c": 3.89,
-        "d": 0.0,
-        "dp": 0.0,
+        "c": 3.91,
+        "d": 0.02,
+        "dp": 0.5141,
         "regular": 3.89,
         "reg_d": -0.14,
         "reg_dp": -3.4739,
         "pre": null,
-        "post": 3.89,
+        "post": 3.91,
         "prev_close": 4.03,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Unusual Machines Is Down 47% in a Month. Can UMAC Stock Hit Oppenheimer’s $30 Target by 2030?",
-          "datetime": 1795557514,
+          "datetime": 1795560954,
           "source": "Yahoo Finance",
           "url": "https://247wallst.com/investing/2026/11/24/unusual-machines-is-down-47-in-a-month-can-umac-stock-hit-oppenheimers-30-target-by-2030/"
         }
@@ -226,23 +226,23 @@
     "PLTR": {
       "name": "Palantir Technologies Inc.",
       "quote": {
-        "c": 161.62,
-        "d": 0.44,
-        "dp": 0.273,
+        "c": 161.65,
+        "d": 0.47,
+        "dp": 0.2916,
         "regular": 161.18,
         "reg_d": 1.82,
         "reg_dp": 1.1421,
         "pre": null,
-        "post": 161.62,
+        "post": 161.65,
         "prev_close": 159.36,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Dropbox (DBX) Stock Is Up 5.8% Today Without Company News",
-          "datetime": 1795557514,
+          "headline": "Anthropic falls below IPO price as Nvidia gives back gains",
+          "datetime": 1795560954,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/markets/stocks/articles/dropbox-dbx-stock-5-8-203052038.html"
+          "url": "https://finance.yahoo.com/video/anthropic-falls-below-ipo-price-as-nvidia-gives-back-gains-214558309.html"
         }
       ]
     },
