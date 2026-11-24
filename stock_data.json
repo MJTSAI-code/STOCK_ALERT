@@ -1,7 +1,7 @@
 {
   "name": "美股盤前情報資料庫",
-  "updated_at": "2026-11-25T04:52:30.170660+08:00",
-  "next_update_at": "2026-11-24T21:00:00Z",
+  "updated_at": "2026-11-25T05:04:38.868085+08:00",
+  "next_update_at": "2026-11-24T22:00:00Z",
   "stocks": [
     "MSFT",
     "NVDA",
@@ -19,230 +19,230 @@
     "MSFT": {
       "name": "Microsoft Corporation",
       "quote": {
-        "c": 495.6,
-        "d": 3.1,
-        "dp": 0.6294,
-        "regular": 495.6,
-        "reg_d": 3.1,
-        "reg_dp": 0.6294,
+        "c": 496.13,
+        "d": 0.0,
+        "dp": 0.0,
+        "regular": 496.13,
+        "reg_d": 3.63,
+        "reg_dp": 0.7371,
         "pre": null,
-        "post": null,
+        "post": 496.13,
         "prev_close": 492.5,
-        "phase": "正式盤"
+        "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Nvidia gains nearly $1T as Trump says nobody could 'revive the stock like it's being revived'",
-          "datetime": 1795473106,
+          "headline": "Microsoft declares a code red in the middle of a 'Patchpocalypse'",
+          "datetime": 1795554278,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/markets/article/nvidia-gains-nearly-1t-as-trump-says-nobody-could-revive-the-stock-like-its-being-revived-194634496.html"
+          "url": "https://finance.yahoo.com/markets/article/microsoft-declares-a-code-red-in-the-middle-of-a-patchpocalypse-193740712.html"
         }
       ]
     },
     "NVDA": {
       "name": "NVIDIA Corporation",
       "quote": {
-        "c": 155.03,
-        "d": -10.01,
-        "dp": -6.0679,
-        "regular": 155.03,
-        "reg_d": -10.02,
-        "reg_dp": -6.0679,
+        "c": 154.55,
+        "d": -0.83,
+        "dp": -0.5317,
+        "regular": 155.38,
+        "reg_d": -9.67,
+        "reg_dp": -5.8588,
         "pre": null,
-        "post": null,
+        "post": 154.55,
         "prev_close": 165.05,
-        "phase": "正式盤"
+        "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Ex-Nvidia employee: 'Stability and accountability can coexist'",
-          "datetime": 1795473106,
+          "headline": "Why HubSpot's CEO thinks Jensen Huang came back to Nvidia too soon",
+          "datetime": 1795554278,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/video/ex-nvidia-employee-stability-and-accountability-can-coexist-221105947.html"
+          "url": "https://finance.yahoo.com/markets/article/why-hubspots-ceo-thinks-jensen-huang-came-back-to-nvidia-too-soon-183053258.html"
         }
       ]
     },
     "NOW": {
       "name": "ServiceNow, Inc.",
       "quote": {
-        "c": 91.65,
-        "d": -0.07,
-        "dp": -0.0763,
-        "regular": 91.65,
-        "reg_d": -0.07,
-        "reg_dp": -0.0763,
+        "c": 91.74,
+        "d": -0.02,
+        "dp": -0.0218,
+        "regular": 91.76,
+        "reg_d": 0.04,
+        "reg_dp": 0.0436,
         "pre": null,
-        "post": null,
+        "post": 91.74,
         "prev_close": 91.72,
-        "phase": "正式盤"
+        "phase": "盤後"
       },
       "news": [
         {
-          "headline": "ServiceNow stock: catalysts, technicals, and outlook after the selloff",
-          "datetime": 1795473106,
+          "headline": "ZoomInfo (GTM) Stock Is Up 8.3% Today Without Company News",
+          "datetime": 1795554278,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/markets/stocks/articles/servicenow-stock-catalysts-technicals-outlook-212029012.html"
+          "url": "https://finance.yahoo.com/markets/stocks/articles/zoominfo-gtm-stock-8-3-204534730.html"
         }
       ]
     },
     "TSM": {
       "name": "Taiwan Semiconductor Manufactur",
       "quote": {
-        "c": 349.01,
-        "d": -14.59,
-        "dp": -4.0127,
-        "regular": 349.01,
-        "reg_d": -14.59,
-        "reg_dp": -4.0127,
+        "c": 349.29,
+        "d": -0.37,
+        "dp": -0.1058,
+        "regular": 349.66,
+        "reg_d": -13.94,
+        "reg_dp": -3.8339,
         "pre": null,
-        "post": null,
+        "post": 349.29,
         "prev_close": 363.6,
-        "phase": "正式盤"
+        "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Jensen Huang back as Nvidia CEO after 12 days: Shares surge 30%",
-          "datetime": 1795473106,
+          "headline": "Nvidia, AMD, Broadcom lead chip stocks lower as AI trade comes under pressure",
+          "datetime": 1795554278,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/video/jensen-huang-back-as-nvidia-ceo-after-12-days-shares-surge-30-161302539.html"
+          "url": "https://finance.yahoo.com/markets/article/nvidia-amd-broadcom-lead-chip-stocks-lower-as-ai-trade-comes-under-pressure-141635463.html"
         }
       ]
     },
     "MRVL": {
       "name": "Marvell Technology, Inc.",
       "quote": {
-        "c": 132.28,
-        "d": -12.46,
-        "dp": -8.6085,
-        "regular": 132.28,
-        "reg_d": -12.46,
-        "reg_dp": -8.6085,
+        "c": 131.31,
+        "d": -0.26,
+        "dp": -0.1976,
+        "regular": 131.57,
+        "reg_d": -13.17,
+        "reg_dp": -9.0991,
         "pre": null,
-        "post": null,
+        "post": 131.31,
         "prev_close": 144.74,
-        "phase": "正式盤"
+        "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Why Marvell Technology Stock Crushed it Today",
-          "datetime": 1795473106,
+          "headline": "Morgan Stanley’s 4 Best Semiconductor and Server Stocks to Buy for 2027",
+          "datetime": 1795554278,
           "source": "Yahoo Finance",
-          "url": "https://www.fool.com/investing/2026/11/23/why-marvell-technology-stock-crushed-it-today/"
+          "url": "https://finance.yahoo.com/technology/articles/morgan-stanley-4-best-semiconductor-205040524.html"
         }
       ]
     },
     "MU": {
       "name": "Micron Technology, Inc.",
       "quote": {
-        "c": 633.7,
-        "d": -74.01,
-        "dp": -10.4571,
-        "regular": 633.7,
-        "reg_d": -74.0,
-        "reg_dp": -10.4571,
+        "c": 627.86,
+        "d": -2.21,
+        "dp": -0.3512,
+        "regular": 630.07,
+        "reg_d": -77.63,
+        "reg_dp": -10.9689,
         "pre": null,
-        "post": null,
+        "post": 627.86,
         "prev_close": 707.7,
-        "phase": "正式盤"
+        "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Jensen Huang's return to Nvidia: Long or short accountability?",
-          "datetime": 1795473106,
+          "headline": "Stocks give back gains as Anthropic dips below IPO price",
+          "datetime": 1795554278,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/video/jensen-huangs-return-to-nvidia-long-or-short-accountability-185949254.html"
+          "url": "https://finance.yahoo.com/video/stocks-give-back-gains-as-anthropic-dips-below-ipo-price-154408548.html"
         }
       ]
     },
     "SNDK": {
       "name": "Sandisk Corporation",
       "quote": {
-        "c": 78.27,
-        "d": -9.45,
-        "dp": -10.7684,
-        "regular": 78.27,
-        "reg_d": -9.44,
-        "reg_dp": -10.7684,
+        "c": 77.56,
+        "d": -0.39,
+        "dp": -0.5003,
+        "regular": 77.95,
+        "reg_d": -9.76,
+        "reg_dp": -11.1276,
         "pre": null,
-        "post": null,
+        "post": 77.56,
         "prev_close": 87.71,
-        "phase": "正式盤"
+        "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Jensen Huang back as Nvidia CEO after 12 days: Shares surge 30%",
-          "datetime": 1795473106,
+          "headline": "Nvidia, AMD, Broadcom lead chip stocks lower as AI trade comes under pressure",
+          "datetime": 1795554278,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/video/jensen-huang-back-as-nvidia-ceo-after-12-days-shares-surge-30-161302539.html"
+          "url": "https://finance.yahoo.com/markets/article/nvidia-amd-broadcom-lead-chip-stocks-lower-as-ai-trade-comes-under-pressure-141635463.html"
         }
       ]
     },
     "SPCX": {
       "name": "Space Exploration Technologies",
       "quote": {
-        "c": 126.16,
-        "d": -7.19,
-        "dp": -5.3918,
-        "regular": 126.16,
-        "reg_d": -7.19,
-        "reg_dp": -5.3918,
+        "c": 126.02,
+        "d": 0.21,
+        "dp": 0.1669,
+        "regular": 125.81,
+        "reg_d": -7.54,
+        "reg_dp": -5.6543,
         "pre": null,
-        "post": null,
+        "post": 126.02,
         "prev_close": 133.35,
-        "phase": "正式盤"
+        "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Elon Musk on his support for Jensen Huang: 'Fair-weather friends are worthless'",
-          "datetime": 1795473106,
+          "headline": "Tesla and SpaceX assemble deal teams for a merger that could give Musk majority control",
+          "datetime": 1795554278,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/markets/article/musk-on-support-for-jensen-huangs-return-to-nvidia-fair-weather-friends-are-worthless-212613771.html"
+          "url": "https://finance.yahoo.com/technology/article/tesla-and-spacex-assemble-deal-teams-for-a-merger-that-could-give-musk-majority-control-144555932.html"
         }
       ]
     },
     "ONDS": {
       "name": "Ondas Inc",
       "quote": {
-        "c": 3.94,
-        "d": -0.1,
-        "dp": -2.3573,
-        "regular": 3.94,
-        "reg_d": -0.1,
-        "reg_dp": -2.3573,
+        "c": 3.87,
+        "d": -0.02,
+        "dp": -0.5141,
+        "regular": 3.89,
+        "reg_d": -0.14,
+        "reg_dp": -3.4739,
         "pre": null,
-        "post": null,
+        "post": 3.87,
         "prev_close": 4.03,
-        "phase": "正式盤"
+        "phase": "盤後"
       },
       "news": [
         {
-          "headline": "MarketBeat Week in Review – 11/16 - 11/20",
-          "datetime": 1795473106,
+          "headline": "Unusual Machines Is Down 47% in a Month. Can UMAC Stock Hit Oppenheimer’s $30 Target by 2030?",
+          "datetime": 1795554278,
           "source": "Yahoo Finance",
-          "url": "https://www.marketbeat.com/articles/marketbeat-week-in-review-2026-11-16-11-20/?utm_source=yahoofinance&utm_medium=yahoofinance"
+          "url": "https://247wallst.com/investing/2026/11/24/unusual-machines-is-down-47-in-a-month-can-umac-stock-hit-oppenheimers-30-target-by-2030/"
         }
       ]
     },
     "PLTR": {
       "name": "Palantir Technologies Inc.",
       "quote": {
-        "c": 161.1,
-        "d": 1.74,
-        "dp": 1.0919,
-        "regular": 161.1,
-        "reg_d": 1.74,
-        "reg_dp": 1.0919,
+        "c": 161.15,
+        "d": -0.03,
+        "dp": -0.0186,
+        "regular": 161.18,
+        "reg_d": 1.82,
+        "reg_dp": 1.1421,
         "pre": null,
-        "post": null,
+        "post": 161.15,
         "prev_close": 159.36,
-        "phase": "正式盤"
+        "phase": "盤後"
       },
       "news": [
         {
-          "headline": "3 AI Stocks Billionaire Stanley Druckenmiller Has Been Quietly Buying",
-          "datetime": 1795473106,
+          "headline": "Dropbox (DBX) Stock Is Up 5.8% Today Without Company News",
+          "datetime": 1795554278,
           "source": "Yahoo Finance",
-          "url": "https://www.fool.com/investing/2026/11/23/3-ai-stocks-billionaire-stanley-druckenmiller-has-been-quietly-buying/"
+          "url": "https://finance.yahoo.com/markets/stocks/articles/dropbox-dbx-stock-5-8-203052038.html"
         }
       ]
     },
