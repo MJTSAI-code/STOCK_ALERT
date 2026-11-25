@@ -1,7 +1,7 @@
 {
   "name": "美股盤前情報資料庫",
-  "updated_at": "2026-11-26T05:58:32.864181+08:00",
-  "next_update_at": "2026-11-25T22:30:00Z",
+  "updated_at": "2026-11-26T06:10:03.462697+08:00",
+  "next_update_at": "2026-11-25T23:00:00Z",
   "stocks": [
     "MSFT",
     "NVDA",
@@ -33,7 +33,7 @@
       "news": [
         {
           "headline": "Japan's biggest banks pick Solana as Fidelity adds DeFi tokens",
-          "datetime": 1795643912,
+          "datetime": 1795644603,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/video/japans-biggest-banks-pick-solana-170000036.html"
         }
@@ -42,21 +42,21 @@
     "NVDA": {
       "name": "NVIDIA Corporation",
       "quote": {
-        "c": 148.8,
-        "d": -0.5,
-        "dp": -0.3349,
+        "c": 148.6,
+        "d": -0.7,
+        "dp": -0.4689,
         "regular": 149.3,
         "reg_d": -6.08,
         "reg_dp": -3.913,
         "pre": null,
-        "post": 148.8,
+        "post": 148.6,
         "prev_close": 155.38,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Jensen Huang reclaims throne at Nvidia: Here's the bottom line for investors",
-          "datetime": 1795643912,
+          "datetime": 1795644603,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/video/jensen-huang-reclaims-throne-at-nvidia-heres-the-bottom-line-for-investors-212803135.html"
         }
@@ -65,21 +65,21 @@
     "NOW": {
       "name": "ServiceNow, Inc.",
       "quote": {
-        "c": 92.0,
-        "d": -0.16,
-        "dp": -0.1736,
+        "c": 92.35,
+        "d": 0.19,
+        "dp": 0.2062,
         "regular": 92.16,
         "reg_d": 0.42,
         "reg_dp": 0.4578,
         "pre": null,
-        "post": 92.0,
+        "post": 92.35,
         "prev_close": 91.74,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Salesforce Stock (CRM) Looks Mispriced After the AI Sell-Off",
-          "datetime": 1795643912,
+          "datetime": 1795644603,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/markets/stocks/articles/salesforce-stock-crm-looks-mispriced-205300259.html"
         }
@@ -88,21 +88,21 @@
     "TSM": {
       "name": "Taiwan Semiconductor Manufactur",
       "quote": {
-        "c": 342.36,
-        "d": 0.02,
-        "dp": 0.0058,
+        "c": 341.8,
+        "d": -0.54,
+        "dp": -0.1577,
         "regular": 342.34,
         "reg_d": -6.86,
         "reg_dp": -1.9645,
         "pre": null,
-        "post": 342.36,
+        "post": 341.8,
         "prev_close": 349.2,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "The $2 trillion chip rally is unraveling — here's what history says comes next",
-          "datetime": 1795643912,
+          "datetime": 1795644603,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/markets/article/the-2-trillion-chip-rally-is-getting-wiped-out--heres-what-history-says-comes-next-145306996.html"
         }
@@ -111,21 +111,21 @@
     "MRVL": {
       "name": "Marvell Technology, Inc.",
       "quote": {
-        "c": 129.5,
-        "d": -1.43,
-        "dp": -1.0922,
+        "c": 129.8,
+        "d": -1.13,
+        "dp": -0.863,
         "regular": 130.93,
         "reg_d": -0.64,
         "reg_dp": -0.4864,
         "pre": null,
-        "post": 129.5,
+        "post": 129.8,
         "prev_close": 131.57,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Why Is Credo Stock Going Up?",
-          "datetime": 1795643912,
+          "datetime": 1795644603,
           "source": "Yahoo Finance",
           "url": "https://www.trefis.com/stock/crdo/articles/628617/why-is-credo-stock-going-up/2026-11-25"
         }
@@ -134,21 +134,21 @@
     "MU": {
       "name": "Micron Technology, Inc.",
       "quote": {
-        "c": 599.59,
-        "d": -1.66,
-        "dp": -0.2761,
+        "c": 599.42,
+        "d": -1.83,
+        "dp": -0.3051,
         "regular": 601.25,
         "reg_d": -28.82,
         "reg_dp": -4.5745,
         "pre": null,
-        "post": 599.59,
+        "post": 599.42,
         "prev_close": 630.07,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Nvidia, AMD, and Micron stocks trim steep losses amid jittery AI trade",
-          "datetime": 1795643912,
+          "datetime": 1795644603,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/markets/article/nvidia-amd-micron-stocks-sink-as-investors-flee-ai-trade-134518921.html"
         }
@@ -157,21 +157,21 @@
     "SNDK": {
       "name": "Sandisk Corporation",
       "quote": {
-        "c": 73.43,
-        "d": -0.18,
-        "dp": -0.2445,
+        "c": 73.46,
+        "d": -0.15,
+        "dp": -0.2038,
         "regular": 73.61,
         "reg_d": -4.34,
         "reg_dp": -5.5677,
         "pre": null,
-        "post": 73.43,
+        "post": 73.46,
         "prev_close": 77.95,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Nvidia, AMD, and Micron stocks trim steep losses amid jittery AI trade",
-          "datetime": 1795643912,
+          "datetime": 1795644603,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/markets/article/nvidia-amd-micron-stocks-sink-as-investors-flee-ai-trade-134518921.html"
         }
@@ -180,21 +180,21 @@
     "SPCX": {
       "name": "Space Exploration Technologies",
       "quote": {
-        "c": 127.33,
-        "d": -0.11,
-        "dp": -0.0863,
+        "c": 127.31,
+        "d": -0.13,
+        "dp": -0.1022,
         "regular": 127.44,
         "reg_d": 1.63,
         "reg_dp": 1.2956,
         "pre": null,
-        "post": 127.33,
+        "post": 127.31,
         "prev_close": 125.81,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "SpaceX, Elon Musk to give one share each to active Trump Accounts",
-          "datetime": 1795643912,
+          "datetime": 1795644603,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/markets/article/spacex-elon-musk-to-give-one-share-each-to-active-trump-accounts-205719872.html"
         }
@@ -205,7 +205,7 @@
       "quote": {
         "c": 3.91,
         "d": 0.01,
-        "dp": 0.2487,
+        "dp": 0.2,
         "regular": 3.9,
         "reg_d": 0.01,
         "reg_dp": 0.2571,
@@ -217,7 +217,7 @@
       "news": [
         {
           "headline": "Unusual Machines Is Down 47% in a Month. Can UMAC Stock Hit Oppenheimer’s $30 Target by 2030?",
-          "datetime": 1795643912,
+          "datetime": 1795644603,
           "source": "Yahoo Finance",
           "url": "https://247wallst.com/investing/2026/11/24/unusual-machines-is-down-47-in-a-month-can-umac-stock-hit-oppenheimers-30-target-by-2030/"
         }
@@ -226,21 +226,21 @@
     "PLTR": {
       "name": "Palantir Technologies Inc.",
       "quote": {
-        "c": 162.53,
-        "d": -1.06,
-        "dp": -0.6473,
+        "c": 162.64,
+        "d": -0.95,
+        "dp": -0.579,
         "regular": 163.59,
         "reg_d": 2.41,
         "reg_dp": 1.4952,
         "pre": null,
-        "post": 162.53,
+        "post": 162.64,
         "prev_close": 161.18,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Goldman Sachs bets on Palantir's 'mega customers' after NYC demo",
-          "datetime": 1795643912,
+          "datetime": 1795644603,
           "source": "Yahoo Finance",
           "url": "https://www.thestreet.com/investing/palantir-mega-customers-goldman-sachs"
         }
