@@ -1,6 +1,6 @@
 {
   "name": "美股盤前情報資料庫",
-  "updated_at": "2026-11-28T05:49:54.968577+08:00",
+  "updated_at": "2026-11-28T05:58:36.414243+08:00",
   "next_update_at": "2026-11-27T22:30:00Z",
   "stocks": [
     "MSFT",
@@ -19,21 +19,21 @@
     "MSFT": {
       "name": "Microsoft Corporation",
       "quote": {
-        "c": 495.0,
-        "d": 2.15,
-        "dp": 0.4362,
+        "c": 495.98,
+        "d": 3.13,
+        "dp": 0.6351,
         "regular": 492.85,
         "reg_d": 2.92,
         "reg_dp": 0.596,
         "pre": null,
-        "post": 495.0,
+        "post": 495.98,
         "prev_close": 489.93,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Billionaire Chase Coleman’s Tiger Global Raised Its Cerebras Stake 48% to $790 Million",
-          "datetime": 1795816194,
+          "datetime": 1795816716,
           "source": "Yahoo Finance",
           "url": "https://247wallst.com/investing/2026/11/27/billionaire-chase-colemans-tiger-global-raised-its-cerebras-stake-48-to-790-million/"
         }
@@ -42,21 +42,21 @@
     "NVDA": {
       "name": "NVIDIA Corporation",
       "quote": {
-        "c": 149.85,
-        "d": -0.64,
-        "dp": -0.4244,
+        "c": 149.8,
+        "d": -0.69,
+        "dp": -0.4554,
         "regular": 150.49,
         "reg_d": 1.19,
         "reg_dp": 0.7971,
         "pre": null,
-        "post": 149.85,
+        "post": 149.8,
         "prev_close": 149.3,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Stocks snap from a $6 trillion washout to a $3.5 trillion surge as Nvidia, Micron, and SpaceX bounce back",
-          "datetime": 1795816194,
+          "datetime": 1795816716,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/markets/article/stocks-snap-from-a-6-trillion-washout-to-a-3-trillion-surge-as-nvidia-micron-and-spacex-bounce-back-151218930.html"
         }
@@ -65,44 +65,44 @@
     "NOW": {
       "name": "ServiceNow, Inc.",
       "quote": {
-        "c": 92.87,
-        "d": 0.07,
-        "dp": 0.077,
+        "c": 93.25,
+        "d": 0.45,
+        "dp": 0.4849,
         "regular": 92.8,
         "reg_d": 0.64,
         "reg_dp": 0.6944,
         "pre": null,
-        "post": 92.87,
+        "post": 93.25,
         "prev_close": 92.16,
         "phase": "盤後"
       },
       "news": [
         {
-          "headline": "Baron Fund Reestablishes Position in ServiceNow (NOW) Following Attractive Valuation Pullback",
-          "datetime": 1795816194,
+          "headline": "Palantir Stock (PLTR) Has No Room for Error at This Valuation",
+          "datetime": 1795816716,
           "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/markets/stocks/articles/baron-fund-reestablishes-position-servicenow-164101736.html"
+          "url": "https://finance.yahoo.com/markets/stocks/articles/palantir-stock-pltr-no-room-213800829.html"
         }
       ]
     },
     "TSM": {
       "name": "Taiwan Semiconductor Manufactur",
       "quote": {
-        "c": 352.9,
-        "d": -0.44,
-        "dp": -0.1245,
+        "c": 352.83,
+        "d": -0.51,
+        "dp": -0.1454,
         "regular": 353.34,
         "reg_d": 11.0,
         "reg_dp": 3.2132,
         "pre": null,
-        "post": 352.9,
+        "post": 352.83,
         "prev_close": 342.34,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "TSMC Stocks Climb 1.84% as U.S. Tariff Proposal Leaves Chips Off the List",
-          "datetime": 1795816194,
+          "datetime": 1795816716,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/markets/stocks/articles/tsmc-stocks-climb-1-84-194609822.html"
         }
@@ -111,21 +111,21 @@
     "MRVL": {
       "name": "Marvell Technology, Inc.",
       "quote": {
-        "c": 139.9,
-        "d": -0.64,
-        "dp": -0.4541,
+        "c": 139.87,
+        "d": -0.67,
+        "dp": -0.4789,
         "regular": 140.54,
         "reg_d": 9.61,
         "reg_dp": 7.3398,
         "pre": null,
-        "post": 139.9,
+        "post": 139.87,
         "prev_close": 130.93,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Astera Labs is suddenly back in the AI spotlight after rough patch",
-          "datetime": 1795816194,
+          "datetime": 1795816716,
           "source": "Yahoo Finance",
           "url": "https://www.thestreet.com/investing/stocks/astera-labs-is-suddenly-back-in-the-ai-spotlight-after-rough-patch"
         }
@@ -134,21 +134,21 @@
     "MU": {
       "name": "Micron Technology, Inc.",
       "quote": {
-        "c": 645.25,
-        "d": -1.7,
-        "dp": -0.2627,
+        "c": 645.86,
+        "d": -1.09,
+        "dp": -0.1679,
         "regular": 646.95,
         "reg_d": 45.7,
         "reg_dp": 7.6008,
         "pre": null,
-        "post": 645.25,
+        "post": 645.86,
         "prev_close": 601.25,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Stocks snap from a $6 trillion washout to a $3.5 trillion surge as Nvidia, Micron, and SpaceX bounce back",
-          "datetime": 1795816194,
+          "datetime": 1795816716,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/markets/article/stocks-snap-from-a-6-trillion-washout-to-a-3-trillion-surge-as-nvidia-micron-and-spacex-bounce-back-151218930.html"
         }
@@ -157,21 +157,21 @@
     "SNDK": {
       "name": "Sandisk Corporation",
       "quote": {
-        "c": 85.2,
-        "d": -0.16,
-        "dp": -0.1879,
+        "c": 85.36,
+        "d": 0.0,
+        "dp": 0.0,
         "regular": 85.36,
         "reg_d": 11.75,
         "reg_dp": 15.9625,
         "pre": null,
-        "post": 85.2,
+        "post": 85.36,
         "prev_close": 73.61,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "How Leopold Aschenbrenner made a $225 million bet on AI infrastructure",
-          "datetime": 1795816194,
+          "datetime": 1795816716,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/video/leopold-aschenbrenner-made-225-million-143000764.html"
         }
@@ -180,21 +180,21 @@
     "SPCX": {
       "name": "Space Exploration Technologies",
       "quote": {
-        "c": 132.64,
-        "d": -0.95,
-        "dp": -0.7132,
+        "c": 132.63,
+        "d": -0.96,
+        "dp": -0.7186,
         "regular": 133.59,
         "reg_d": 6.15,
         "reg_dp": 4.8258,
         "pre": null,
-        "post": 132.64,
+        "post": 132.63,
         "prev_close": 127.44,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Stocks snap from a $6 trillion washout to a $3.5 trillion surge as Nvidia, Micron, and SpaceX bounce back",
-          "datetime": 1795816194,
+          "datetime": 1795816716,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/markets/article/stocks-snap-from-a-6-trillion-washout-to-a-3-trillion-surge-as-nvidia-micron-and-spacex-bounce-back-151218930.html"
         }
@@ -203,21 +203,21 @@
     "ONDS": {
       "name": "Ondas Inc",
       "quote": {
-        "c": 4.08,
-        "d": -0.02,
-        "dp": -0.4878,
+        "c": 4.09,
+        "d": -0.01,
+        "dp": -0.261,
         "regular": 4.1,
         "reg_d": 0.2,
         "reg_dp": 5.1282,
         "pre": null,
-        "post": 4.08,
+        "post": 4.09,
         "prev_close": 3.9,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Ondas Rises 4% as It Tries to Snap a Three-Week Losing Streak; Unusual Machines Gains 2%, Red Cat Ticks Up",
-          "datetime": 1795816194,
+          "datetime": 1795816716,
           "source": "Yahoo Finance",
           "url": "https://247wallst.com/investing/2026/11/27/ondas-rises-4-as-it-tries-to-snap-a-three-week-losing-streak-unusual-machines-gains-2-red-cat-ticks-up/"
         }
@@ -226,21 +226,21 @@
     "PLTR": {
       "name": "Palantir Technologies Inc.",
       "quote": {
-        "c": 172.1,
-        "d": -0.07,
-        "dp": -0.0433,
+        "c": 172.0,
+        "d": -0.17,
+        "dp": -0.0968,
         "regular": 172.17,
         "reg_d": 8.58,
         "reg_dp": 5.2448,
         "pre": null,
-        "post": 172.1,
+        "post": 172.0,
         "prev_close": 163.59,
         "phase": "盤後"
       },
       "news": [
         {
           "headline": "Palantir Stock (PLTR) Has No Room for Error at This Valuation",
-          "datetime": 1795816194,
+          "datetime": 1795816716,
           "source": "Yahoo Finance",
           "url": "https://finance.yahoo.com/markets/stocks/articles/palantir-stock-pltr-no-room-213800829.html"
         }
